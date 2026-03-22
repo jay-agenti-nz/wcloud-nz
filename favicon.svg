@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Rounded square background -->
+  <rect width="100" height="100" rx="22" ry="22" fill="#7fa8be"/>
+  <!-- Wave 1 - main, white -->
+  <path d="M12 52 C22 32, 38 72, 50 46 C62 20, 78 60, 88 36"
+        stroke="white" stroke-width="7.5" stroke-linecap="round" fill="none"/>
+  <!-- Wave 2 - secondary, semi-transparent white -->
+  <path d="M12 66 C24 44, 42 82, 56 58 C68 36, 82 70, 90 52"
+        stroke="rgba(255,255,255,0.5)" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+</svg>

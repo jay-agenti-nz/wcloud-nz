@@ -1,0 +1,50 @@
+# White Cloud — Website Design for NZ Small Businesses
+# https://wcloud.nz
+
+## About
+White Cloud is a web design service based in Christchurch, New Zealand. Founded by Jay, it helps New Zealand small businesses get online with affordable, professional, AI-optimised websites. No technical knowledge required from the client.
+
+## What We Do
+- Design and build websites for small businesses across New Zealand
+- Specialise in AI-optimised websites that are readable and recommendable by AI tools like ChatGPT, Perplexity, and Google
+- Provide monthly website care plans for ongoing maintenance
+
+## Services & Pricing (NZD, one-off payments)
+
+**Cloud One — NZ$299**
+For sole traders and new businesses needing a simple online presence.
+- Up to 3 pages (Home, About, Contact)
+- Mobile-friendly design
+- Contact form + Google Maps embed
+- Basic SEO setup
+- Delivered in 5–7 business days
+
+**Cloud Plus — NZ$699** *(Most Popular)*
+A full website to showcase services and build customer trust.
+- Up to 6 pages
+- Full SEO setup + Google Business integration
+- Services page, testimonials section, contact form + click-to-call
+- Delivered in 7–10 business days
+
+**Cloud Pro — NZ$1,099**
+Premium presence for businesses that want to stand out.
+- Up to 10 pages
+- Blog or news section, gallery or portfolio
+- Advanced contact and booking forms
+- Full SEO + sitemap
+- Priority delivery in 5–7 business days
+
+## Key Facts
+- Location: Christchurch, Canterbury, New Zealand
+- Area served: All of New Zealand
+- Average delivery time: 7 days
+- Clients helped: 150+ small businesses
+- Contact: https://wcloud.nz/#contact
+- Intake form: https://wcloud.nz/intake
+
+## What Makes White Cloud Different
+- Websites are structured for AI search engines (ChatGPT, Perplexity, Gemini, Siri) as well as Google
+- Every build includes schema markup, SEO-ready structure, and fast-loading pages
+- Flat-rate pricing with no hidden costs
+- Jay handles the project personally — no outsourcing
+- Revisions included; site is not published until the client is happy

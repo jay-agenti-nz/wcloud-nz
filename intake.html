@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>White Cloud — New Website Intake Form</title>
+
+  <!-- Open Graph / Social Share -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://wcloud.nz/intake">
+  <meta property="og:title"       content="White Cloud – New Client Intake Form">
+  <meta property="og:description" content="Let's get your website started. Fill in our quick intake form and Jay will be in touch within one business day.">
+  <meta property="og:image"       content="https://wcloud.nz/og-intake.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="White Cloud – New Client Intake Form">
+  <meta name="twitter:description" content="Let's get your website started. Fill in our quick intake form and Jay will be in touch within one business day.">
+  <meta name="twitter:image"       content="https://wcloud.nz/og-intake.png">
+
+  <!-- SEO -->
+  <meta name="description" content="Start your new website with White Cloud. Fill in our short intake form and Jay will be in touch within one business day. Based in Christchurch, NZ.">
+  <link rel="canonical" href="https://wcloud.nz/intake">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' ry='22' fill='%237fa8be'/%3E%3Cpath d='M12 52 C22 32,38 72,50 46 C62 20,78 60,88 36' stroke='white' stroke-width='7.5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M12 66 C24 44,42 82,56 58 C68 36,82 70,90 52' stroke='rgba(255,255,255,0.5)' stroke-width='5.5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E"/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --brand:       #7fa8be;
+      --brand-light: #c8dce6;
+      --brand-pale:  #eaf3f7;
+      --brand-mist:  #d6e8f0;
+      --white:       #ffffff;
+      --deep:        #2a3d4a;
+      --body:        #5a7080;
+      --dusk:        #4d6e80;
+      --sage:        #6bbf9e;
+      --bg:          #f5f9fb;
+      --serif:       'Lora', Georgia, serif;
+      --sans:        'Nunito', sans-serif;
+      --display:     'Raleway', sans-serif;
+      --r-sm:   8px;
+      --r-md:   12px;
+      --r-lg:   18px;
+      --r-xl:   22px;
+      --r-pill: 50px;
+      --shadow-sm: 0 4px 16px rgba(42,61,74,.06);
+      --shadow-md: 0 12px 40px rgba(127,168,190,.15);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--deep);
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      background: var(--white);
+      border-bottom: 1.5px solid var(--brand-mist);
+      padding: 0 2.5rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-logo { display:flex; align-items:center; gap:.65rem; text-decoration:none; }
+    .nav-logo svg { width:38px; height:22px; flex-shrink:0; }
+    .nav-logo-text { display:flex; flex-direction:column; line-height:1.05; }
+    .nav-logo-text span {
+      font-family: var(--display);
+      font-weight: 600;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      font-size: .58rem;
+      color: var(--deep);
+    }
+    .nav-logo-text span:last-child { color: var(--brand); }
+    .nav-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: var(--brand-mist);
+      color: var(--dusk);
+      padding: .28rem .9rem;
+      border-radius: var(--r-pill);
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.35; transform:scale(.6); }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--white);
+      border-bottom: 1.5px solid var(--brand-mist);
+      padding: 5rem 2.5rem 4.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 400px;
+      background: radial-gradient(ellipse at center, rgba(127,168,190,.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: var(--brand-mist);
+      color: var(--dusk);
+      padding: .3rem 1rem;
+      border-radius: var(--r-pill);
+      font-size: .64rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+    .hero-pill-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--sage);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      color: var(--deep);
+      line-height: 1.12;
+      margin-bottom: .7rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--brand); }
+    .hero p {
+      font-size: .96rem;
+      color: var(--body);
+      font-weight: 500;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ── PROGRESS ── */
+    .progress-bar-wrap {
+      background: var(--white);
+      border-bottom: 1.5px solid var(--brand-mist);
+      padding: .9rem 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .progress-label {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--brand);
+      white-space: nowrap;
+      min-width: 80px;
+    }
+    .progress-track {
+      flex: 1;
+      height: 5px;
+      background: var(--brand-mist);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--brand), var(--dusk));
+      border-radius: 10px;
+      width: 0%;
+      transition: width .4s cubic-bezier(.4,0,.2,1);
+    }
+    .progress-steps {
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--body);
+      white-space: nowrap;
+    }
+
+    /* ── WRAPPER ── */
+    .wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+    }
+
+    /* ── SECTION CARDS ── */
+    .form-section {
+      background: var(--white);
+      border: 1.5px solid var(--brand-mist);
+      border-radius: var(--r-xl);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: box-shadow .25s;
+    }
+    .form-section:hover { box-shadow: var(--shadow-md); }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem 1.8rem 1.3rem;
+      border-bottom: 1.5px solid var(--brand-pale);
+    }
+    .section-icon {
+      width: 44px; height: 44px;
+      background: var(--brand-mist);
+      border-radius: var(--r-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .section-meta { flex: 1; }
+    .section-meta h2 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--deep);
+      line-height: 1.2;
+    }
+    .section-meta p {
+      font-size: .76rem;
+      color: var(--body);
+      font-weight: 500;
+      margin-top: .1rem;
+    }
+    .section-step {
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--brand);
+      background: var(--brand-pale);
+      padding: .25rem .8rem;
+      border-radius: var(--r-pill);
+      white-space: nowrap;
+    }
+    .section-body { padding: 1.8rem 1.8rem; }
+
+    /* ── FORM ELEMENTS ── */
+    .field-group { margin-bottom: 1.25rem; }
+    .field-group:last-child { margin-bottom: 0; }
+    .field-row { display: flex; flex-direction: column; gap: 0; }
+    .field-row .field-group { margin-bottom: 1.25rem; }
+    .field-row .field-group:last-child { margin-bottom: 0; }
+
+    .field-label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--dusk);
+      margin-bottom: .38rem;
+    }
+    .field-label .req { color: var(--brand); margin-left: .2rem; }
+    .field-optional {
+      font-size: .6rem;
+      font-weight: 600;
+      color: var(--body);
+      background: var(--bg);
+      border: 1px solid var(--brand-mist);
+      padding: .12rem .55rem;
+      border-radius: var(--r-pill);
+      margin-left: .5rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+    .field-hint {
+      font-size: .72rem;
+      color: var(--body);
+      font-weight: 500;
+      margin-top: .35rem;
+      line-height: 1.55;
+    }
+    .field-hint a { color: var(--brand); text-decoration: none; }
+    .field-hint a:hover { text-decoration: underline; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="url"],
+    textarea,
+    select {
+      width: 100%;
+      padding: .85rem 1rem;
+      border: 1.5px solid var(--brand-mist);
+      border-radius: var(--r-md);
+      font-family: var(--sans);
+      font-size: .92rem;
+      font-weight: 500;
+      color: var(--deep);
+      background: var(--white);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+      appearance: none;
+    }
+    input::placeholder, textarea::placeholder { color: var(--brand-light); }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px rgba(127,168,190,.15);
+    }
+    textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237fa8be' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      cursor: pointer;
+      padding-right: 2.5rem;
+    }
+
+    /* ── CHECKBOXES ── */
+    .check-grid { display: grid; grid-template-columns: 1fr; gap: .6rem; }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      padding: .7rem .9rem;
+      border: 1.5px solid var(--brand-mist);
+      border-radius: var(--r-md);
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+      user-select: none;
+    }
+    .check-item:hover { border-color: var(--brand-light); background: var(--brand-pale); }
+    .check-item input[type="checkbox"] { display: none; }
+    .check-box {
+      width: 20px; height: 20px;
+      border: 2px solid var(--brand-light);
+      border-radius: 5px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+      background: var(--white);
+    }
+    .check-item.is-checked { border-color: rgba(107,191,158,.4); background: rgba(107,191,158,.05); }
+    .check-item.is-checked .check-box { background: var(--sage); border-color: var(--sage); }
+    .check-item.is-checked .check-box svg { opacity: 1; transform: scale(1); }
+    .check-item.is-checked .check-label { color: var(--deep); font-weight: 600; }
+    .check-box svg { opacity: 0; transform: scale(.4); transition: all .18s cubic-bezier(.4,0,.2,1); }
+    .check-label { font-size: .84rem; font-weight: 500; color: var(--body); line-height: 1.3; }
+
+    /* ── ASSET UPLOAD CARD ── */
+    .asset-card {
+      background: var(--brand-pale);
+      border: 1.5px solid var(--brand-mist);
+      border-radius: var(--r-lg);
+      padding: 1.4rem 1.6rem;
+      margin-top: 1.25rem;
+    }
+    .asset-card-title {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: .9rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .asset-steps {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+      margin-bottom: 1.1rem;
+    }
+    .asset-step {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+    }
+    .asset-step-num {
+      width: 22px; height: 22px;
+      background: var(--brand);
+      color: white;
+      border-radius: 50%;
+      font-size: .65rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: .1rem;
+    }
+    .asset-step-text {
+      font-size: .84rem;
+      color: var(--body);
+      font-weight: 500;
+      line-height: 1.55;
+    }
+    .asset-step-text strong { color: var(--deep); font-weight: 700; }
+    .asset-drive-btn {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      padding: .85rem 1rem;
+      background: var(--white);
+      border: 1.5px solid var(--brand-mist);
+      border-radius: var(--r-md);
+      text-decoration: none;
+      color: var(--deep);
+      font-size: .84rem;
+      font-weight: 700;
+      transition: border-color .2s, box-shadow .2s;
+      width: 100%;
+    }
+    .asset-drive-btn:hover {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px rgba(127,168,190,.12);
+    }
+    .asset-drive-btn span { flex: 1; }
+    .asset-drive-btn svg:last-child { opacity: .35; flex-shrink: 0; }
+    .asset-note {
+      font-size: .7rem;
+      color: var(--body);
+      font-weight: 500;
+      margin-top: .8rem;
+      opacity: .75;
+    }
+
+    /* ── YES/NO ── */
+    .yesno-row { display:flex; gap:.6rem; }
+    .yesno-btn {
+      flex: 1;
+      padding: .65rem 1rem;
+      border: 1.5px solid var(--brand-mist);
+      border-radius: var(--r-pill);
+      background: var(--white);
+      font-family: var(--sans);
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--body);
+      cursor: pointer;
+      text-align: center;
+      transition: all .2s;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+    .yesno-btn:hover { border-color: var(--brand); color: var(--brand); background: var(--brand-pale); }
+    .yesno-btn.active { border-color: var(--brand-mist) !important; background: var(--brand-mist) !important; color: var(--dusk) !important; font-weight: 800; }
+
+    /* ── SUBMIT ── */
+    .submit-wrap { padding-top: 2rem; text-align: center; }
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: 1rem 3rem;
+      background: var(--brand);
+      color: white;
+      border: none;
+      border-radius: var(--r-pill);
+      font-family: var(--sans);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(127,168,190,.35);
+      transition: all .25s cubic-bezier(.22,1,.36,1);
+    }
+    .btn-submit:hover { background: var(--dusk); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(77,110,128,.25); }
+    .btn-submit:active { transform: translateY(0); }
+    .submit-note { font-size:.74rem; color:var(--body); font-weight:500; margin-top:.9rem; }
+
+    /* ── ERROR STATE ── */
+    input.error, textarea.error, select.error {
+      border-color: #e07a7a;
+      box-shadow: 0 0 0 3px rgba(224,122,122,.1);
+    }
+
+    /* ── THANK YOU ── */
+    .thankyou {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      background: var(--white);
+      border: 1.5px solid var(--brand-mist);
+      border-radius: var(--r-xl);
+      padding: 4rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .thankyou.show { display: flex; animation: fadeUp .6s ease both; }
+
+    .thankyou-icon {
+      width: 72px; height: 72px;
+      background: rgba(107,191,158,.12);
+      border: 2px solid rgba(107,191,158,.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.8rem;
+    }
+    .thankyou h2 {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--deep);
+      margin-bottom: .6rem;
+    }
+    .thankyou h2 em { font-style: italic; color: var(--brand); }
+    .thankyou > p {
+      font-size: .96rem;
+      color: var(--body);
+      font-weight: 500;
+      max-width: 460px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+    }
+
+    /* Thank-you asset box */
+    .ty-asset-box {
+      background: var(--brand-pale);
+      border: 1.5px solid var(--brand-mist);
+      border-radius: var(--r-lg);
+      padding: 1.6rem 1.8rem;
+      text-align: left;
+      max-width: 500px;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+    .ty-asset-box-title {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 1rem;
+    }
+    .ty-steps {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+      margin-bottom: 1.2rem;
+    }
+    .ty-step { display:flex; align-items:flex-start; gap:.75rem; }
+    .ty-step-num {
+      width: 22px; height: 22px;
+      background: var(--brand);
+      color: white;
+      border-radius: 50%;
+      font-size: .65rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: .15rem;
+    }
+    .ty-step-text { font-size:.85rem; color:var(--body); font-weight:500; line-height:1.55; }
+    .ty-step-text strong { color:var(--deep); font-weight:700; }
+
+    .ty-btns { display:flex; flex-direction:column; gap:.65rem; }
+    .ty-btn {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .85rem 1.1rem;
+      background: var(--white);
+      border: 1.5px solid var(--brand-mist);
+      border-radius: var(--r-md);
+      text-decoration: none;
+      color: var(--deep);
+      font-size: .85rem;
+      font-weight: 700;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .ty-btn:hover { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(127,168,190,.12); }
+    .ty-btn span { flex: 1; }
+    .ty-btn .arrow { opacity: .35; }
+    .ty-hint {
+      font-size: .7rem;
+      color: var(--body);
+      margin-top: .8rem;
+      font-weight: 500;
+      opacity: .75;
+      line-height: 1.5;
+    }
+
+    .thankyou-stats {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      background: var(--brand-pale);
+      border: 1.5px solid var(--brand-mist);
+      border-radius: var(--r-lg);
+      padding: 1rem 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 460px;
+      width: 100%;
+    }
+    .ty-stat { text-align: center; }
+    .ty-stat-num { font-family:var(--serif); font-size:1.4rem; font-weight:700; color:var(--brand); display:block; }
+    .ty-stat-label { font-size:.65rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--body); }
+    .ty-divider { width:1.5px; height:36px; background:var(--brand-mist); }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.8rem;
+      background: transparent;
+      color: var(--brand);
+      border: 1.5px solid var(--brand);
+      border-radius: var(--r-pill);
+      font-family: var(--sans);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .btn-back:hover { background: var(--brand-pale); }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--brand-pale);
+      border-top: 1.5px solid var(--brand-mist);
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .footer-logo { display:flex; align-items:center; justify-content:center; gap:.65rem; text-decoration:none; margin-bottom:.7rem; }
+    .footer p { font-size:.72rem; font-weight:600; color:var(--body); letter-spacing:.04em; }
+    .footer a { color:var(--brand); text-decoration:none; }
+    .footer a:hover { color:var(--dusk); }
+
+    /* ── ANIMATION ── */
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(16px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .nav, .hero, .progress-bar-wrap { padding-left:1.2rem; padding-right:1.2rem; }
+      .hero { padding:3rem 1.2rem 2.5rem; }
+      .wrapper { padding:1.5rem 1rem 4rem; }
+      .check-grid { grid-template-columns:1fr; }
+      .section-head { padding:1.2rem 1.2rem; }
+      .section-body { padding:1.2rem 1.2rem; }
+      .footer { padding:2rem 1.2rem; }
+    }
+
+    @media print {
+      .nav, .progress-bar-wrap, .submit-wrap, .footer { display:none; }
+      .form-section { box-shadow:none; border:1px solid #ddd; break-inside:avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="https://wcloud.nz" class="nav-logo" target="_blank">
+    <svg viewBox="0 0 76 44" fill="none">
+      <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#7fa8be" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#c8dce6" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span>White</span>
+      <span>Cloud</span>
+    </div>
+  </a>
+  <div class="nav-badge">
+    <div style="width:5px;height:5px;border-radius:50%;background:var(--sage);animation:pulse 2.5s ease-in-out infinite;flex-shrink:0;"></div>
+    New Client Intake
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pill">
+    <div class="hero-pill-dot"></div>
+    New Website Project
+  </div>
+  <h1>Let's get your<br/><em>website started.</em></h1>
+  <p>Fill in as much as you can — nothing here is make-or-break. We'll follow up personally once you submit and work through everything together.</p>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-bar-wrap">
+  <span class="progress-label" id="progressLabel">Section 1 of 6</span>
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <span class="progress-steps" id="progressSteps">0% complete</span>
+</div>
+
+<!-- MAIN -->
+<div class="wrapper">
+
+  <!-- THANK YOU (hidden until submit) -->
+  <div class="thankyou" id="thankyou">
+    <div class="thankyou-icon">
+      <svg width="30" height="22" viewBox="0 0 30 22" fill="none">
+        <path d="M2 11L11 20L28 2" stroke="#6bbf9e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h2>You're all set,<br/><em>thanks!</em></h2>
+    <p>We've received your details and will be in touch within one business day. While you wait — if you have photos, your logo, or other files ready, here's how to send them through.</p>
+
+    <!-- Asset upload instructions -->
+    <div class="ty-asset-box">
+      <div class="ty-asset-box-title">📁 How to share your files with us</div>
+      <div class="ty-steps">
+        <div class="ty-step">
+          <div class="ty-step-num">1</div>
+          <div class="ty-step-text">Click the Google Drive link below — it opens our shared folder.</div>
+        </div>
+        <div class="ty-step">
+          <div class="ty-step-num">2</div>
+          <div class="ty-step-text"><strong>Create a new folder</strong> inside and name it after your business — e.g. <em>"Smith Builders"</em>.</div>
+        </div>
+        <div class="ty-step">
+          <div class="ty-step-num">3</div>
+          <div class="ty-step-text"><strong>Upload your files</strong> — photos, logo, brochures, anything you have. High-res images are best.</div>
+        </div>
+        <div class="ty-step">
+          <div class="ty-step-num">4</div>
+          <div class="ty-step-text">That's it! We'll find your folder and grab everything we need.</div>
+        </div>
+      </div>
+      <div class="ty-btns">
+        <a href="https://drive.google.com/drive/folders/12S7tFuUfhsN2crqPpiNwIIR_kF-aL5jw" target="_blank" class="ty-btn">
+          <svg width="20" height="17" viewBox="0 0 20 17" fill="none">
+            <path d="M7 1L1 11H8L7 1Z" fill="#4285F4"/>
+            <path d="M13 1L19 11H12L13 1Z" fill="#34A853"/>
+            <path d="M1 11L4.5 17H15.5L19 11H1Z" fill="#FBBC04"/>
+          </svg>
+          <span>Open White Cloud Google Drive folder</span>
+          <svg class="arrow" width="13" height="13" viewBox="0 0 13 13"><path d="M1 12L12 1M12 1H5.5M12 1V7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </a>
+        <a data-cfasync="false" href="/cdn-cgi/l/email-protection#a7cccec6c8d5c6e7d0c4cbc8d2c389c9dd98d4d2c5cdc2c4d39ae6d4d4c2d3d487c1c8d587cade87d0c2c5d4ced3c287d7d5c8cdc2c4d3" class="ty-btn">
+          <svg width="20" height="15" viewBox="0 0 20 15" fill="none">
+            <rect x="1" y="1" width="18" height="13" rx="2" stroke="#7fa8be" stroke-width="1.5"/>
+            <path d="M1 3.5L10 9.5L19 3.5" stroke="#7fa8be" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>Or email to <span class="__cf_email__" data-cfemail="d4bfbdb5bba6b594a3b7b8bba1b0fabaae">[email&#160;protected]</span></span>
+          <svg class="arrow" width="13" height="13" viewBox="0 0 13 13"><path d="M1 12L12 1M12 1H5.5M12 1V7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+      <p class="ty-hint">No files ready yet? No problem — just send them through when you do. We won't start without checking in with you first.</p>
+    </div>
+
+    <a href="https://wcloud.nz" class="btn-back" target="_blank">← Back to wcloud.nz</a>
+  </div>
+
+  <!-- FORM -->
+  <form name="white-cloud-intake" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="intakeForm" novalidate>
+    <input type="hidden" name="form-name" value="white-cloud-intake"/>
+    <p style="display:none;"><label>Don't fill this out: <input name="bot-field"/></label></p>
+
+    <!-- ── 1: About ── -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-icon">🏢</div>
+        <div class="section-meta">
+          <h2>About Your Business</h2>
+          <p>The foundations of your story</p>
+        </div>
+        <span class="section-step">Step 1</span>
+      </div>
+      <div class="section-body">
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="business_name">Business Name <span class="req">*</span></label>
+            <input type="text" id="business_name" name="business_name" placeholder="e.g. Jay's Plumbing, Bloom Florist, Pacific Legal" required/>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="tagline">Tagline or Motto <span class="field-optional">Optional</span></label>
+            <input type="text" id="tagline" name="tagline" placeholder="e.g. Fresh flowers, fast delivery / Your local expert"/>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="years_operating">Years Operating <span class="req">*</span></label>
+            <select id="years_operating" name="years_operating" required>
+              <option value="" disabled selected>Select…</option>
+              <option>Less than 1 year</option>
+              <option>1–2 years</option>
+              <option>3–5 years</option>
+              <option>6–10 years</option>
+              <option>10+ years</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="service_areas">Regions / Areas You Service <span class="req">*</span></label>
+            <input type="text" id="service_areas" name="service_areas" placeholder="e.g. Christchurch, Canterbury" required/>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="services">Main Services You Offer <span class="req">*</span></label>
+          <textarea id="services" name="services" placeholder="e.g. Haircuts & colouring, mens grooming / Tax returns, bookkeeping, GST filing / Plumbing repairs, hot water systems / Personal training, yoga classes…" required></textarea>
+          <div class="field-hint">A simple list is fine. Don't overthink it.</div>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="why_you">What Makes You Different — Your "Why Us" <span class="req">*</span></label>
+          <textarea id="why_you" name="why_you" placeholder="e.g. 10 years experience, locally owned, same-day service / No hidden fees, friendly advice, free consultations…" required></textarea>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="ideal_customers">Who Are Your Ideal Customers? <span class="req">*</span></label>
+          <input type="text" id="ideal_customers" name="ideal_customers" placeholder="e.g. Local families, small business owners, busy professionals, tradies" required/>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 2: Contact ── -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-icon">📋</div>
+        <div class="section-meta">
+          <h2>Contact & Legal</h2>
+          <p>How customers will reach you</p>
+        </div>
+        <span class="section-step">Step 2</span>
+      </div>
+      <div class="section-body">
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="contact_name">Your Full Name <span class="req">*</span></label>
+            <input type="text" id="contact_name" name="contact_name" placeholder="e.g. Sam Wilson" required/>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="contact_email">Business Email <span class="req">*</span></label>
+            <input type="email" id="contact_email" name="contact_email" placeholder="e.g. sam@yourbusiness.co.nz" required/>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="phone">Phone Number <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 021 123 4567" required/>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="address">Physical / Postal Address <span class="field-optional">Optional</span></label>
+            <input type="text" id="address" name="address" placeholder="Only if you want it shown on the site"/>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="gst_number">GST / Business Reg. Number <span class="field-optional">Optional</span></label>
+            <input type="text" id="gst_number" name="gst_number" placeholder="e.g. 123-456-789"/>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="licences">Licences or Trade Memberships <span class="field-optional">Optional</span></label>
+            <input type="text" id="licences" name="licences" placeholder="e.g. LBP (builders), NZQA cert, Real Estate licence, Master Electricians, NZRC (hairdressers)"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 3: Branding ── -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-icon">🎨</div>
+        <div class="section-meta">
+          <h2>Branding & Content</h2>
+          <p>Logos, photos, and your story</p>
+        </div>
+        <span class="section-step">Step 3</span>
+      </div>
+      <div class="section-body">
+
+        <div class="field-group">
+          <label class="field-label">Do you have a logo? <span class="req">*</span></label>
+          <div class="yesno-row">
+            <button type="button" class="yesno-btn" data-target="has_logo" data-value="Yes">✓ Yes, I have one</button>
+            <button type="button" class="yesno-btn" data-target="has_logo" data-value="No">✗ No, I need one</button>
+          </div>
+          <input type="hidden" name="has_logo" id="has_logo" value=""/>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="brand_colours">Brand Colours <span class="field-optional">Optional</span></label>
+          <input type="text" id="brand_colours" name="brand_colours" placeholder="e.g. Navy blue and gold — or just describe it in words"/>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">What content do you have ready?</label>
+          <div style="font-size:.65rem;font-weight:600;color:var(--body);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.6rem;opacity:.7;">Tick all that apply</div>
+          <div class="check-grid">
+            <label class="check-item">
+              <input type="checkbox" name="assets" value="Photos of work"/>
+              <div class="check-box"><svg width="11" height="8" viewBox="0 0 11 8"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+              <span class="check-label">Photos of my work</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" name="assets" value="Team photos"/>
+              <div class="check-box"><svg width="11" height="8" viewBox="0 0 11 8"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+              <span class="check-label">Team / headshots</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" name="assets" value="Written content"/>
+              <div class="check-box"><svg width="11" height="8" viewBox="0 0 11 8"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+              <span class="check-label">Written content / copy</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" name="assets" value="Google reviews"/>
+              <div class="check-box"><svg width="11" height="8" viewBox="0 0 11 8"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+              <span class="check-label">Google reviews</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" name="assets" value="Brochures or flyers"/>
+              <div class="check-box"><svg width="11" height="8" viewBox="0 0 11 8"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+              <span class="check-label">Old brochures / flyers</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" name="assets" value="None yet"/>
+              <div class="check-box"><svg width="11" height="8" viewBox="0 0 11 8"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+              <span class="check-label">Nothing yet — starting fresh</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Asset link field + instructions -->
+        <div class="field-group">
+          <label class="field-label" for="assets_link">Already Have a Shared Folder? <span class="field-optional">Optional</span></label>
+          <input type="url" id="assets_link" name="assets_link" placeholder="Paste your Google Drive, Dropbox or WeTransfer link here"/>
+          <div class="field-hint">If your files are already in a shared folder online, just drop the link here and we'll grab what we need.</div>
+        </div>
+
+        <!-- Upload card with step-by-step instructions -->
+        <div class="asset-card">
+          <div class="asset-card-title">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 1v9M4 7l3.5 3L11 7" stroke="#7fa8be" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 11v1.5A1.5 1.5 0 002.5 14h10a1.5 1.5 0 001.5-1.5V11" stroke="#7fa8be" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Don't have a shared folder yet? Here's how
+          </div>
+          <div class="asset-steps">
+            <div class="asset-step">
+              <div class="asset-step-num">1</div>
+              <div class="asset-step-text">Click the Google Drive button below — it opens our shared uploads folder.</div>
+            </div>
+            <div class="asset-step">
+              <div class="asset-step-num">2</div>
+              <div class="asset-step-text"><strong>Create a new folder</strong> inside it and name it after your business — e.g. <em>"Smith Builders"</em>.</div>
+            </div>
+            <div class="asset-step">
+              <div class="asset-step-num">3</div>
+              <div class="asset-step-text"><strong>Upload your files</strong> — photos, logo, brochures, anything you have. High-res images work best.</div>
+            </div>
+            <div class="asset-step">
+              <div class="asset-step-num">4</div>
+              <div class="asset-step-text">Done! We'll find your folder and take it from there. No need to tell us separately.</div>
+            </div>
+          </div>
+          <a href="https://drive.google.com/drive/folders/12S7tFuUfhsN2crqPpiNwIIR_kF-aL5jw" target="_blank" class="asset-drive-btn">
+            <svg width="20" height="17" viewBox="0 0 20 17" fill="none">
+              <path d="M7 1L1 11H8L7 1Z" fill="#4285F4"/>
+              <path d="M13 1L19 11H12L13 1Z" fill="#34A853"/>
+              <path d="M1 11L4.5 17H15.5L19 11H1Z" fill="#FBBC04"/>
+            </svg>
+            <span>Open White Cloud Google Drive</span>
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 12L12 1M12 1H5.5M12 1V7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </a>
+          <p class="asset-note">No files ready yet? No worries — you can always send them through after submitting. Just email <a data-cfasync="false" href="/cdn-cgi/l/email-protection#e9828088869b88a99e8a85869c8dc78793"><span class="__cf_email__" data-cfemail="c6adafa7a9b4a786b1a5aaa9b3a2e8a8bc">[email&#160;protected]</span></a>.</p>
+        </div>
+
+        <div class="field-group" style="margin-top:1.25rem;">
+          <label class="field-label" for="testimonials">Testimonials or Reviews to Feature <span class="field-optional">Optional</span></label>
+          <textarea id="testimonials" name="testimonials" placeholder="Paste 2–3 of your favourite customer reviews here, or a link to your Google profile…"></textarea>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── 4: Portfolio ── -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-icon">🏗️</div>
+        <div class="section-meta">
+          <h2>Portfolio / Projects</h2>
+          <p>Show off your best work</p>
+        </div>
+        <span class="section-step">Step 4</span>
+      </div>
+      <div class="section-body">
+        <div class="field-group">
+          <label class="field-label" for="project_1">Project 1</label>
+          <input type="text" id="project_1" name="project_1" placeholder="e.g. Website for a local café, Christchurch CBD"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="project_2">Project 2</label>
+          <input type="text" id="project_2" name="project_2" placeholder="e.g. Online booking site for a physio clinic, Wellington"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="project_3">Project 3</label>
+          <input type="text" id="project_3" name="project_3" placeholder="e.g. Portfolio site for a photographer, Auckland"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="project_4">Project 4 <span class="field-optional">Optional</span></label>
+          <input type="text" id="project_4" name="project_4" placeholder="e.g. E-commerce store for a clothing brand, Hamilton"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="project_5">Project 5 <span class="field-optional">Optional</span></label>
+          <input type="text" id="project_5" name="project_5" placeholder="e.g. Landing page for a landscaping business, Tauranga"/>
+        </div>
+        <div class="field-hint" style="margin-top:.5rem;">Upload project photos to the Google Drive folder in Step 3. Before &amp; after shots work especially well.</div>
+      </div>
+    </div>
+
+    <!-- ── 5: Social ── -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-icon">🔗</div>
+        <div class="section-meta">
+          <h2>Social & Online</h2>
+          <p>Links we'll connect up</p>
+        </div>
+        <span class="section-step">Step 5</span>
+      </div>
+      <div class="section-body">
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="facebook">Facebook <span class="field-optional">Optional</span></label>
+            <input type="url" id="facebook" name="facebook" placeholder="https://facebook.com/yourbusiness"/>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="instagram">Instagram <span class="field-optional">Optional</span></label>
+            <input type="url" id="instagram" name="instagram" placeholder="https://instagram.com/yourbusiness"/>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="google_business">Google Business Profile <span class="field-optional">Optional</span></label>
+            <input type="url" id="google_business" name="google_business" placeholder="Paste your Google Business link"/>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="other_social">Other <span class="field-optional">Optional</span></label>
+            <input type="text" id="other_social" name="other_social" placeholder="LinkedIn, TikTok, Tradify, etc."/>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="inspo_sites">Sites You Like the Look Of <span class="field-optional">Optional</span></label>
+          <textarea id="inspo_sites" name="inspo_sites" placeholder="Paste links to any websites you think look great — competitors or otherwise." style="min-height:70px;"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 6: Technical ── -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-icon">⚙️</div>
+        <div class="section-meta">
+          <h2>Technical</h2>
+          <p>Domain, hosting & the practicalities</p>
+        </div>
+        <span class="section-step">Step 6</span>
+      </div>
+      <div class="section-body">
+
+        <div class="field-group">
+          <label class="field-label">Do you have a domain name already? <span class="req">*</span></label>
+          <div class="yesno-row">
+            <button type="button" class="yesno-btn" data-target="has_domain" data-value="Yes">✓ Yes</button>
+            <button type="button" class="yesno-btn" data-target="has_domain" data-value="No">✗ No — help me choose one</button>
+          </div>
+          <input type="hidden" name="has_domain" id="has_domain" value=""/>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="domain_name">Domain Name + Registrar <span class="field-optional">If yes</span></label>
+          <input type="text" id="domain_name" name="domain_name" placeholder="e.g. yourbusiness.co.nz — registered with Domains.co.nz"/>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Do you have existing hosting? <span class="req">*</span></label>
+          <div class="yesno-row">
+            <button type="button" class="yesno-btn" data-target="has_hosting" data-value="Yes">✓ Yes</button>
+            <button type="button" class="yesno-btn" data-target="has_hosting" data-value="No">✗ No — help me sort it</button>
+          </div>
+          <input type="hidden" name="has_hosting" id="has_hosting" value=""/>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="hosting_provider">Hosting Provider <span class="field-optional">If yes</span></label>
+          <input type="text" id="hosting_provider" name="hosting_provider" placeholder="e.g. Netlify, SiteGround, GoDaddy"/>
+        </div>
+
+
+        <div class="field-group">
+          <label class="field-label" for="anything_else">Anything Else? <span class="field-optional">Optional</span></label>
+          <textarea id="anything_else" name="anything_else" placeholder="Deadlines, special requirements, ideas, questions — anything goes here." style="min-height:80px;"></textarea>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-wrap">
+      <button type="submit" class="btn-submit">
+        Send My Details
+        <svg width="14" height="12" viewBox="0 0 14 12" fill="none">
+          <path d="M1 6h12M8 1l5 5-5 5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <p class="submit-note">Jay will be in touch within one business day · All prices NZD · No lock-in contracts</p>
+    </div>
+
+  </form>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <a href="https://wcloud.nz" class="footer-logo" target="_blank">
+    <svg viewBox="0 0 76 44" fill="none" style="width:32px;height:18px;">
+      <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#7fa8be" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#c8dce6" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </a>
+  <p style="margin-bottom:.3rem;font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);">White Cloud</p>
+  <p>Simple websites for small businesses · <a href="https://wcloud.nz" target="_blank">wcloud.nz</a> · Christchurch, NZ</p>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    /* ── Yes/No toggles ── */
+    function setYesNo(btn) {
+      var target = btn.getAttribute('data-target');
+      var value  = btn.getAttribute('data-value');
+      btn.closest('.yesno-row').querySelectorAll('.yesno-btn').forEach(function(b) {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+      document.getElementById(target).value = value;
+      updateProgress();
+    }
+
+    document.querySelectorAll('.yesno-btn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        setYesNo(this);
+      });
+    });
+
+    /* ── Checkbox toggle ── */
+    function toggleCheck(label) {
+      var cb = label.querySelector('input[type="checkbox"]');
+      cb.checked = !cb.checked;
+      label.classList.toggle('is-checked', cb.checked);
+      updateProgress();
+    }
+
+    document.querySelectorAll('.check-item').forEach(function(label) {
+      label.addEventListener('click', function(e) {
+        if (e.target.type === 'checkbox') return;
+        e.preventDefault();
+        toggleCheck(this);
+      });
+    });
+
+    /* ── Progress ── */
+    function updateProgress() {
+      var required = document.querySelectorAll('#intakeForm [required]');
+      var filled = 0;
+      required.forEach(function(f) {
+        if (f.value && f.value.trim() !== '') filled++;
+      });
+      var extras = 0, extrasFilled = 0;
+      ['has_logo','has_domain','has_hosting'].forEach(function(id) {
+        extras++;
+        var el = document.getElementById(id);
+        if (el && el.value) extrasFilled++;
+      });
+      var total = required.length + extras;
+      var pct = Math.min(100, Math.round(((filled + extrasFilled) / total) * 100));
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressSteps').textContent = pct + '% complete';
+    }
+
+    /* ── Scroll section label ── */
+    var sections = document.querySelectorAll('.form-section');
+    function updateSectionLabel() {
+      var y = window.scrollY + 130;
+      var current = 1;
+      sections.forEach(function(s, i) {
+        if (s.offsetTop <= y) current = i + 1;
+      });
+      document.getElementById('progressLabel').textContent = 'Section ' + current + ' of ' + sections.length;
+    }
+    window.addEventListener('scroll', updateSectionLabel, { passive: true });
+
+    /* ── Input listeners ── */
+    document.querySelectorAll('#intakeForm input, #intakeForm textarea, #intakeForm select').forEach(function(el) {
+      el.addEventListener('input', updateProgress);
+      el.addEventListener('change', updateProgress);
+      el.addEventListener('input', function() { this.classList.remove('error'); });
+    });
+
+    /* ── Form submit ── */
+    document.getElementById('intakeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var form = this;
+
+      var missing = [];
+      form.querySelectorAll('[required]').forEach(function(f) {
+        if (!f.value.trim()) {
+          missing.push(f);
+          f.classList.add('error');
+        }
+      });
+
+      if (missing.length) {
+        missing[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      var btn = form.querySelector('.btn-submit');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+      .then(function() {
+        form.style.display = 'none';
+        var ty = document.getElementById('thankyou');
+        ty.classList.add('show');
+        ty.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('progressFill').style.width = '100%';
+        document.getElementById('progressSteps').textContent = '100% complete';
+      })
+      .catch(function() {
+        btn.disabled = false;
+        btn.textContent = 'Send My Details';
+        alert('Something went wrong. Please try again or email us directly.');
+      });
+    });
+
+    updateProgress();
+  });
+</script>
+<script src="chat-widget.js"></script>
+</body>
+</html>

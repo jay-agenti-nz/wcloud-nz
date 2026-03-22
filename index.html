@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>White Cloud – Simple Websites for Small Businesses | Christchurch, NZ</title>
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<!-- Open Graph / Social Share -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://wcloud.nz/">
+<meta property="og:title"       content="White Cloud – Simple Websites for Small Businesses">
+<meta property="og:description" content="Affordable, professional websites for NZ small businesses. From NZ$299. No tech knowledge needed. Based in Christchurch.">
+<meta property="og:image"       content="https://wcloud.nz/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="White Cloud – Simple Websites for Small Businesses">
+<meta name="twitter:description" content="Affordable, professional websites for NZ small businesses. From NZ$299. No tech knowledge needed.">
+<meta name="twitter:image"       content="https://wcloud.nz/og-image.png">
+
+<!-- SEO -->
+<meta name="description" content="White Cloud builds affordable, AI-optimised websites for NZ small businesses. Based in Christchurch. From NZ$299 with 7-day turnaround. No tech knowledge needed.">
+<link rel="canonical" href="https://wcloud.nz/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand:       #7fa8be;
+    --brand-light: #c8dce6;
+    --brand-pale:  #eaf3f7;
+    --brand-mist:  #d6e8f0;
+    --white:       #ffffff;
+    --deep:        #2a3d4a;
+    --body:        #5a7080;
+    --dusk:        #4d6e80;
+    --sage:        #6bbf9e;
+    --serif: 'Lora', Georgia, serif;
+    --sans:  'Nunito', sans-serif;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--white); color: var(--deep); font-size: 16px; line-height: 1.75; overflow-x: hidden; }
+
+  /* ── LOGO ─────────────────────────────────────────────────── */
+  .logo-mark { display:inline-flex; align-items:center; gap:.75rem; text-decoration:none; transition:opacity .2s; }
+  .logo-mark:hover { opacity:.8; }
+  .logo-wave-svg { width:38px; height:22px; flex-shrink:0; }
+  .logo-wordmark { display:flex; flex-direction:column; line-height:1.15; }
+  .logo-wordmark span { font-family:'Raleway',sans-serif; font-weight:600; letter-spacing:.28em; text-transform:uppercase; font-size:.72rem; color:var(--white); display:block; }
+  .logo-wordmark span:last-child { color:rgba(255,255,255,.65); }
+
+  /* ── NAV ──────────────────────────────────────────────────── */
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.1rem 6%; background:var(--brand); transition:box-shadow .3s; }
+  nav.scrolled { box-shadow:0 4px 28px rgba(77,110,128,.35); }
+  .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
+  .nav-links a { text-decoration:none; color:rgba(255,255,255,.7); font-size:.76rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; transition:color .2s; }
+  .nav-links a:hover { color:var(--white); }
+  .nav-cta { background:var(--white)!important; color:var(--brand)!important; padding:.5rem 1.5rem; border-radius:50px; letter-spacing:.1em!important; font-weight:700!important; transition:background .2s,color .2s!important; }
+  .nav-cta:hover { background:var(--brand-pale)!important; color:var(--dusk)!important; }
+
+  /* ── BUTTONS ──────────────────────────────────────────────── */
+  .btn-p { display:inline-block; background:var(--brand); color:var(--white); padding:.9rem 2.2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:background .25s,transform .25s,box-shadow .25s; box-shadow:0 6px 24px rgba(127,168,190,.35); }
+  .btn-p:hover { background:var(--dusk); transform:translateY(-2px); box-shadow:0 10px 32px rgba(77,110,128,.25); }
+  .btn-o { display:inline-block; border:2px solid var(--brand); color:var(--brand); padding:.85rem 2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; }
+  .btn-o:hover { background:var(--brand); color:var(--white); }
+  .btn-w { display:inline-block; background:var(--white); color:var(--deep); padding:.9rem 2.2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; }
+  .btn-w:hover { background:var(--brand-pale); }
+  .btn-g { display:inline-block; border:2px solid rgba(255,255,255,.35); color:var(--white); padding:.85rem 2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; }
+  .btn-g:hover { border-color:rgba(255,255,255,.7); background:rgba(255,255,255,.08); }
+
+  /* ── SHARED ───────────────────────────────────────────────── */
+  section { padding:6.5rem 6%; }
+  .lbl { display:inline-block; font-size:.7rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--brand); margin-bottom:1.1rem; }
+  h1 { font-family:var(--serif); font-size:clamp(2.4rem,5vw,3.9rem); font-weight:700; line-height:1.15; color:var(--deep); }
+  h2 { font-family:var(--serif); font-size:clamp(1.9rem,3.5vw,2.7rem); font-weight:700; line-height:1.2; color:var(--deep); }
+  h3 { font-family:var(--serif); font-size:1.2rem; font-weight:700; color:var(--deep); margin-bottom:.5rem; }
+  p { color:var(--body); font-weight:500; }
+  .sec-hd { text-align:center; max-width:640px; margin:0 auto; }
+  .sec-hd p { margin-top:1rem; font-size:1.05rem; }
+
+  /* ── HERO ─────────────────────────────────────────────────── */
+  #hero { min-height:100vh; display:flex; align-items:center; padding-top:7rem; background:linear-gradient(155deg,var(--brand-pale) 0%,var(--white) 52%,#f2eff9 100%); position:relative; overflow:hidden; }
+  .hero-bg-svg { position:absolute; pointer-events:none; }
+  .hero-bg-svg.right { bottom:-30px; right:-60px; width:560px; opacity:.07; }
+  .hero-bg-svg.left { top:100px; left:-40px; width:360px; opacity:.05; transform:rotate(180deg) scaleX(-1); }
+  .hero-inner { max-width:1140px; margin:0 auto; display:grid; grid-template-columns:1.1fr 1fr; gap:5rem; align-items:center; width:100%; }
+  .badge { display:inline-flex; align-items:center; gap:.55rem; background:var(--brand-mist); color:var(--dusk); padding:.4rem 1.1rem; border-radius:50px; font-size:.73rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:1.8rem; }
+  .badge-dot { width:6px; height:6px; background:var(--brand); border-radius:50%; animation:pulse 2.5s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.65)} }
+  h1 em { font-style:italic; color:var(--brand); }
+  .hero-sub { font-size:1.1rem; color:var(--body); margin:1.6rem 0 2.6rem; font-weight:500; max-width:500px; line-height:1.8; }
+  .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
+  .hero-note { margin-top:1.4rem; font-size:.78rem; color:var(--body); font-weight:600; opacity:.75; letter-spacing:.03em; }
+  .hero-note span { margin:0 .4rem; opacity:.4; }
+
+  /* Browser mock */
+  .hero-vis { position:relative; }
+  .browser { background:var(--white); border-radius:18px; box-shadow:0 30px 90px rgba(127,168,190,.22),0 4px 16px rgba(42,61,74,.06); overflow:hidden; width:100%; max-width:460px; margin-left:auto; animation:floatY 7s ease-in-out infinite; }
+  @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+  .b-bar { background:#f4f7f9; padding:.75rem 1.1rem; display:flex; align-items:center; gap:.5rem; border-bottom:1px solid #e8ecef; }
+  .dot { width:10px; height:10px; border-radius:50%; }
+  .dr{background:#ff6058} .dy{background:#ffbc2e} .dg{background:#28c840}
+  .b-url { margin-left:.6rem; background:var(--white); border-radius:6px; padding:.28rem .9rem; font-size:.72rem; color:var(--body); flex:1; font-weight:500; }
+  .b-body { padding:1.4rem 1.6rem 1.8rem; }
+  .b-nav-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem; }
+  .b-logo-pill { display:flex; align-items:center; gap:5px; background:var(--brand); padding:4px 10px 4px 7px; border-radius:50px; }
+  .b-logo-pill svg { width:22px; height:13px; }
+  .b-logo-text { display:flex; flex-direction:column; line-height:1.1; }
+  .b-logo-text i { display:block; height:4px; border-radius:2px; background:var(--white); }
+  .b-logo-text i:first-child { width:26px; margin-bottom:3px; }
+  .b-logo-text i:last-child { width:20px; opacity:.55; }
+  .b-nav-links { display:flex; gap:7px; }
+  .b-nl { height:6px; background:var(--brand-mist); border-radius:3px; width:24px; }
+  .b-banner { height:88px; background:linear-gradient(135deg,var(--brand-pale),var(--brand-mist)); border-radius:10px; margin-bottom:1.1rem; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .b-banner svg { width:80%; opacity:.3; }
+  .b-hl { height:10px; background:var(--deep); border-radius:4px; width:72%; margin-bottom:7px; }
+  .b-sub { height:7px; background:var(--brand-mist); border-radius:4px; margin-bottom:5px; }
+  .b-sub.s { width:55%; }
+  .b-cta-bar { height:28px; width:96px; background:var(--brand); border-radius:20px; margin-top:10px; opacity:.85; }
+  .b-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin-top:1.2rem; }
+  .b-card { background:var(--brand-pale); border-radius:8px; padding:8px; }
+  .b-ci { width:18px; height:18px; background:var(--brand-mist); border-radius:5px; margin-bottom:6px; }
+  .b-cl { height:5px; background:var(--brand-mist); border-radius:3px; margin-bottom:4px; }
+  .b-cl.s { width:60%; }
+  .ftag { position:absolute; background:var(--white); border-radius:12px; padding:.65rem 1.1rem; box-shadow:0 8px 32px rgba(42,61,74,.12); font-size:.78rem; font-weight:700; color:var(--deep); display:flex; align-items:center; gap:.55rem; white-space:nowrap; }
+  .fdot { width:8px; height:8px; border-radius:50%; background:var(--sage); flex-shrink:0; }
+  .ft1 { top:8%; right:-18px; animation:floatY 6s ease-in-out infinite 1.2s; }
+  .ft2 { bottom:14%; left:-18px; animation:floatY 6s ease-in-out infinite 2.5s; }
+
+  /* ── STATS ────────────────────────────────────────────────── */
+  .stats { background:var(--brand); padding:3rem 6%; }
+  .stats-in { max-width:860px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; text-align:center; }
+  .s-div { border-right:1px solid rgba(255,255,255,.2); }
+  .s-num { font-family:var(--serif); font-size:2.6rem; font-weight:700; color:var(--white); display:block; }
+  .s-lbl { font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.6); font-weight:600; }
+
+  /* ── PROBLEM ──────────────────────────────────────────────── */
+  #problem { background:var(--white); }
+  .prob-grid { max-width:1100px; margin:3.5rem auto 0; display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+  .prob-card { background:var(--brand-pale); border:1.5px solid var(--brand-mist); border-radius:18px; padding:2.2rem; transition:transform .3s,box-shadow .3s; }
+  .prob-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(127,168,190,.15); }
+  .pi { font-size:1.9rem; margin-bottom:1rem; display:block; }
+
+  /* ── SOLUTION ─────────────────────────────────────────────── */
+  #solution { background:var(--brand-pale); }
+  .feat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3.5rem; max-width:1100px; margin-left:auto; margin-right:auto; }
+  .feat-card { background:var(--white); border-radius:18px; padding:2rem; border:1.5px solid var(--brand-mist); transition:transform .3s,box-shadow .3s; }
+  .feat-card:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(127,168,190,.15); }
+  .fi { width:48px; height:48px; background:var(--brand-mist); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin-bottom:1.2rem; }
+
+  /* ── PROCESS ──────────────────────────────────────────────── */
+  #process { background:var(--white); }
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; max-width:1000px; margin:3.5rem auto 0; position:relative; }
+  .steps::before { content:''; position:absolute; top:40px; left:calc(16.67% + 18px); right:calc(16.67% + 18px); height:1.5px; background:linear-gradient(to right,var(--brand-mist),var(--brand),var(--brand-mist)); }
+  .step { text-align:center; padding:0 1.5rem; }
+  .sn { width:80px; height:80px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1.6rem; font-family:var(--serif); font-size:1.9rem; font-weight:700; position:relative; z-index:1; background:var(--brand); color:var(--white); box-shadow:0 8px 28px rgba(127,168,190,.35); }
+  .step:nth-child(2) .sn { background:var(--dusk); box-shadow:0 8px 28px rgba(77,110,128,.25); }
+  .step:nth-child(3) .sn { background:var(--sage); box-shadow:0 8px 28px rgba(107,191,158,.35); }
+
+  /* ── ABOUT JAY ────────────────────────────────────────────── */
+  #about { background:var(--brand-pale); }
+  .about-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1.6fr; gap:5rem; align-items:center; }
+  .about-avatar { position:relative; }
+  .about-avatar-circle { width:240px; height:240px; border-radius:50%; background:linear-gradient(135deg,var(--brand-mist),var(--brand-light)); display:flex; align-items:center; justify-content:center; font-size:5rem; border:4px solid var(--white); box-shadow:0 16px 60px rgba(127,168,190,.25); margin:0 auto; }
+  .about-badge { position:absolute; bottom:10px; right:20px; background:var(--white); border-radius:14px; padding:.7rem 1.1rem; box-shadow:0 6px 24px rgba(42,61,74,.12); text-align:center; }
+  .about-badge-num { font-family:var(--serif); font-size:1.6rem; font-weight:700; color:var(--deep); line-height:1; display:block; }
+  .about-badge-txt { font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--body); }
+  .about-text h2 { margin-bottom:1rem; }
+  .about-text p { margin-bottom:1.2rem; font-size:1.02rem; line-height:1.8; }
+  .about-location { display:inline-flex; align-items:center; gap:.5rem; background:var(--brand-mist); color:var(--dusk); padding:.4rem 1rem; border-radius:50px; font-size:.78rem; font-weight:700; margin-top:.5rem; }
+
+  /* ── PORTFOLIO — Option C: Editorial Minimal ─────────────── */
+  #portfolio { background:var(--white); }
+
+  .portfolio-wrap {
+    max-width:1100px; margin:3.5rem auto 0;
+    background:#fff; border-radius:22px;
+    border:1.5px solid var(--brand-mist);
+    overflow:hidden;
+  }
+
+  .port-card {
+    display:grid;
+    grid-template-columns:100px 1fr;
+    align-items:center;
+    gap:2rem;
+    padding:2rem 2.5rem;
+    border-bottom:1.5px solid var(--brand-mist);
+    transition:background .2s;
+    text-decoration:none;
+    color:inherit;
+    cursor:pointer;
+  }
+  .port-card:last-child { border-bottom:none; }
+  .port-card:hover { background:var(--brand-pale); }
+  .port-card::after {
+    content:'→';
+    font-size:1.1rem;
+    color:var(--brand);
+    opacity:0;
+    transform:translateX(-6px);
+    transition:opacity .2s, transform .2s;
+    position:absolute;
+    right:2.5rem;
+  }
+  .port-card { position:relative; }
+  .port-card:hover::after { opacity:1; transform:translateX(0); }
+
+  .port-num {
+    font-family:var(--serif); font-size:3.6rem; font-weight:700; line-height:1;
+    background:linear-gradient(135deg,var(--brand-mist),var(--brand));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    flex-shrink:0; text-align:center;
+  }
+
+  .port-body { display:flex; flex-direction:column; gap:.25rem; }
+  .port-tag { display:inline-block; color:var(--body); font-size:.62rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
+  .port-title { font-family:var(--serif); font-size:1.15rem; font-weight:700; color:var(--deep); }
+  .port-url-lbl { font-family:'Raleway',sans-serif; font-size:.7rem; font-weight:600; letter-spacing:.12em; color:var(--brand); }
+  .port-desc { font-size:.86rem; color:var(--body); font-weight:500; line-height:1.7; margin-top:.3rem; max-width:500px; }
+
+  .port-link {
+    display:inline-flex; align-items:center; gap:.5rem; flex-shrink:0;
+    color:var(--brand); font-size:.76rem; font-weight:700; text-decoration:none;
+    letter-spacing:.06em; border:1.5px solid var(--brand-mist);
+    padding:.55rem 1.2rem; border-radius:50px;
+    transition:background .2s,border-color .2s,color .2s,gap .2s;
+    white-space:nowrap;
+  }
+  .port-link:hover { background:var(--brand); color:#fff; border-color:var(--brand); gap:.75rem; }
+
+  /* ── AGENTIC BANNER ───────────────────────────────────────── */
+  .agentic-banner {
+    max-width:1100px; margin:2.5rem auto 0;
+    background:linear-gradient(135deg,var(--deep) 0%,var(--dusk) 100%);
+    border-radius:22px; padding:2.8rem 3.5rem;
+    display:flex; align-items:center; justify-content:space-between; gap:2rem;
+    position:relative; overflow:hidden;
+  }
+  .agentic-banner::before {
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg width='700' height='160' viewBox='0 0 700 160' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 80 C70 30,140 130,210 80 C280 30,350 130,420 80 C490 30,560 130,630 80 C662 60,680 66,700 62' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' opacity='0.09'/%3E%3Cpath d='M0 115 C80 55,160 165,240 110 C320 55,400 160,480 108 C540 68,600 88,700 80' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' opacity='0.06'/%3E%3C/svg%3E");
+    background-size:cover;
+  }
+  .agentic-left { position:relative; z-index:1; }
+  .agentic-eyebrow { display:inline-flex; align-items:center; gap:.5rem; background:rgba(255,255,255,.12); color:rgba(255,255,255,.8); font-size:.68rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; padding:.3rem .9rem; border-radius:50px; margin-bottom:1rem; }
+  .agentic-eyebrow-dot { width:6px; height:6px; background:var(--sage); border-radius:50%; animation:pulse 2.5s ease-in-out infinite; }
+  .agentic-banner h3 { font-family:var(--serif); font-size:clamp(1.4rem,2.5vw,1.9rem); font-weight:700; color:#fff; margin-bottom:.6rem; line-height:1.25; }
+  .agentic-banner p { color:rgba(255,255,255,.6); font-size:.95rem; font-weight:500; max-width:520px; line-height:1.7; }
+  .agentic-cta { display:inline-flex; align-items:center; gap:.6rem; background:var(--white); color:var(--deep); padding:.9rem 2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; white-space:nowrap; transition:background .25s,transform .25s,box-shadow .25s; box-shadow:0 6px 28px rgba(0,0,0,.2); flex-shrink:0; position:relative; z-index:1; }
+  .agentic-cta:hover { background:var(--brand-pale); transform:translateY(-2px); box-shadow:0 10px 36px rgba(0,0,0,.25); }
+  .agentic-cta-arrow { transition:transform .2s; }
+  .agentic-cta:hover .agentic-cta-arrow { transform:translateX(4px); }
+
+  /* ── PRICING ──────────────────────────────────────────────── */
+  #pricing { background:var(--brand-pale); }
+  .price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:1100px; margin:3.5rem auto 0; align-items:stretch; }
+  .pc { background:var(--white); border:2px solid var(--brand-mist); border-radius:22px; padding:2.5rem 2rem; transition:transform .3s,box-shadow .3s; position:relative; display:flex; flex-direction:column; }
+  .plist { list-style:none; margin-bottom:2rem; flex:1; }
+  .pc:hover { transform:translateY(-4px); box-shadow:0 20px 60px rgba(127,168,190,.18); }
+  .pc.feat { border-color:var(--brand); box-shadow:0 20px 60px rgba(127,168,190,.22); transform:scale(1.025); }
+  .pc.feat:hover { transform:scale(1.025) translateY(-4px); }
+  .pop-pill { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--brand); color:var(--white); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; padding:.3rem 1.4rem; border-radius:50px; white-space:nowrap; font-weight:700; }
+  .ptier { font-size:.68rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--brand); margin-bottom:.6rem; }
+  .pprice { font-family:var(--serif); font-size:3.2rem; font-weight:700; color:var(--deep); line-height:1; margin-bottom:.3rem; }
+  .pprice sup { font-size:1.3rem; vertical-align:top; margin-top:.65rem; display:inline-block; }
+  .ponce { font-size:.74rem; color:var(--body); margin-bottom:1.2rem; letter-spacing:.04em; font-weight:600; }
+  .pdesc { font-size:.9rem; color:var(--body); margin-bottom:1.6rem; font-weight:500; line-height:1.7; min-height:56px; }
+  .plist li { padding:.5rem 0; font-size:.87rem; color:var(--deep); font-weight:600; display:flex; align-items:flex-start; gap:.7rem; border-bottom:1px solid var(--brand-pale); }
+  .plist li:last-child { border:none; }
+  .plist li::before { content:'✓'; color:var(--sage); font-weight:800; flex-shrink:0; margin-top:.05rem; }
+  .pbtn { display:block; text-align:center; padding:.85rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; background:var(--deep); color:var(--white); }
+  .pbtn:hover { background:var(--brand); }
+  .feat .pbtn { background:var(--brand); }
+  .feat .pbtn:hover { background:var(--dusk); }
+
+  /* ── CARE PLANS ───────────────────────────────────────────── */
+  #care { background:var(--white); }
+  .care-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; max-width:860px; margin:3rem auto 0; }
+  .cc { background:var(--brand-pale); border-radius:18px; padding:2.2rem; border:2px solid var(--brand-mist); }
+  .cc.hi { background:var(--white); border-color:var(--brand); box-shadow:0 12px 40px rgba(127,168,190,.15); }
+  .ctier { font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--brand); margin-bottom:.5rem; font-weight:700; }
+  .cprice { font-family:var(--serif); font-size:2.2rem; font-weight:700; color:var(--deep); margin:.4rem 0 .3rem; }
+  .cprice small { font-family:var(--sans); font-size:.85rem; color:var(--body); font-weight:600; }
+  .cdesc { font-size:.88rem; color:var(--body); margin-bottom:1.4rem; font-weight:500; line-height:1.65; }
+  .clist { list-style:none; }
+  .clist li { font-size:.87rem; color:var(--body); padding:.38rem 0; display:flex; align-items:center; gap:.55rem; font-weight:600; }
+  .clist li::before { content:'→'; color:var(--brand); font-weight:700; }
+  .care-note { max-width:860px; margin:1.5rem auto 0; font-size:.8rem; color:var(--body); opacity:.7; font-weight:500; }
+
+  /* ── FAQ ──────────────────────────────────────────────────── */
+  #faq { background:var(--brand-pale); }
+  .faq-wrap { max-width:700px; margin:3rem auto 0; }
+  .faq-item { background:var(--white); border-radius:14px; margin-bottom:.9rem; border:1.5px solid var(--brand-mist); opacity:1 !important; transform:none !important; pointer-events:auto !important; }
+  .faq-btn { width:100%; background:none; border:none; text-align:left; padding:1.4rem 1.6rem; font-family:var(--serif); font-size:1.05rem; font-weight:700; color:var(--deep); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color .2s; opacity:1 !important; pointer-events:auto !important; }
+  .faq-btn:hover { color:var(--brand); }
+  .fa { font-size:1.4rem; flex-shrink:0; color:var(--body); line-height:1; font-family:var(--sans); font-weight:300; display:inline-block; transition:transform .3s; }
+  .faq-item.open .fa { transform:rotate(45deg); color:var(--brand); }
+  .faq-ans { display:none; padding:1rem 1.6rem 1.4rem; color:var(--body); font-size:.93rem; font-weight:500; line-height:1.8; border-top:1px solid var(--brand-mist); opacity:1 !important; }
+  .faq-item.open .faq-ans { display:block; }
+
+  /* ── CONTACT FORM ─────────────────────────────────────────── */
+  #contact { background:var(--white); }
+  .contact-inner { max-width:760px; margin:0 auto; }
+  .contact-form { background:var(--brand-pale); border-radius:24px; padding:3rem; border:1.5px solid var(--brand-mist); margin-top:3rem; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.2rem; }
+  .form-group { display:flex; flex-direction:column; gap:.4rem; margin-bottom:1.2rem; }
+  .form-group:last-child { margin-bottom:0; }
+  .form-label { font-size:.76rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--dusk); }
+  .form-input, .form-select, .form-textarea {
+    width:100%; padding:.85rem 1.1rem; border:1.5px solid var(--brand-mist); border-radius:12px;
+    font-family:var(--sans); font-size:.95rem; font-weight:500; color:var(--deep);
+    background:var(--white); transition:border-color .2s, box-shadow .2s; outline:none;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color:var(--brand); box-shadow:0 0 0 3px rgba(127,168,190,.15); }
+  .form-select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237fa8be' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 1rem center; cursor:pointer; }
+  .form-textarea { resize:vertical; min-height:120px; }
+  .other-input-wrap { display:none; margin-top:.6rem; }
+  .other-input-wrap.show { display:block; }
+  .form-submit { width:100%; background:var(--brand); color:var(--white); border:none; padding:1rem 2rem; border-radius:50px; font-family:var(--sans); font-size:.9rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; transition:background .25s,transform .25s,box-shadow .25s; box-shadow:0 6px 24px rgba(127,168,190,.35); margin-top:1.5rem; }
+  .form-submit:hover { background:var(--dusk); transform:translateY(-2px); box-shadow:0 10px 32px rgba(77,110,128,.25); }
+  .form-success { display:none; text-align:center; padding:2rem; }
+  .form-success .tick { font-size:3rem; display:block; margin-bottom:1rem; }
+  .form-success h3 { color:var(--deep); margin-bottom:.5rem; }
+  .form-success p { color:var(--body); }
+
+  /* Location strip */
+  .location-strip { display:flex; align-items:center; justify-content:center; gap:.6rem; background:var(--brand-mist); color:var(--dusk); padding:.6rem 1.4rem; border-radius:50px; font-size:.8rem; font-weight:700; width:fit-content; margin:1rem auto 0; }
+
+  /* ── IDEA BANNER ──────────────────────────────────────────── */
+  .idea-banner {
+    max-width:760px; margin:2rem auto 0;
+    background:linear-gradient(135deg,var(--brand-pale),var(--brand-mist));
+    border:1.5px solid var(--brand-light);
+    border-radius:20px; padding:2.2rem 2.5rem;
+    display:flex; align-items:center; justify-content:space-between; gap:2rem;
+    flex-wrap:wrap;
+  }
+  .idea-left { flex:1; min-width:200px; }
+  .idea-banner .lbl { color:var(--dusk); margin-bottom:.5rem; }
+  .idea-banner h3 { font-family:var(--serif); font-size:1.2rem; font-weight:700; color:var(--deep); margin-bottom:.4rem; line-height:1.3; }
+  .idea-banner p { font-size:.88rem; color:var(--body); font-weight:500; line-height:1.65; }
+  .idea-btn { display:inline-flex; align-items:center; gap:.5rem; background:var(--brand); color:#fff; padding:.8rem 1.8rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; transition:background .2s,transform .2s; white-space:nowrap; flex-shrink:0; }
+  .idea-btn:hover { background:var(--dusk); transform:translateY(-2px); }
+  #cta { background:var(--deep); text-align:center; padding:8rem 6%; position:relative; overflow:hidden; }
+  .cta-deco { position:absolute; inset:0; pointer-events:none; opacity:.06; overflow:hidden; }
+  .cta-deco svg { width:100%; height:100%; object-fit:cover; }
+  #cta .lbl { color:rgba(255,255,255,.4); }
+  #cta h2 { color:var(--white); font-weight:700; }
+  #cta p { color:rgba(255,255,255,.55); margin:1.2rem auto 2.8rem; max-width:500px; font-size:1.05rem; }
+  .cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+  /* ── FOOTER ───────────────────────────────────────────────── */
+  footer { background:#1c2e38; padding:2.2rem 6%; color:rgba(255,255,255,.35); font-size:.78rem; font-weight:600; letter-spacing:.04em; }
+  .foot-in { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+  .foot-links { display:flex; gap:1.8rem; flex-wrap:wrap; }
+  .foot-links a { color:rgba(255,255,255,.35); text-decoration:none; transition:color .2s; }
+  .foot-links a:hover { color:rgba(255,255,255,.7); }
+
+  /* ── THANK YOU MODAL ── */
+  .ty-modal-overlay { display:none; position:fixed; inset:0; background:rgba(42,61,74,.55); backdrop-filter:blur(4px); z-index:9999; align-items:center; justify-content:center; }
+  .ty-modal-overlay.show { display:flex; animation:fadeIn .3s ease; }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+  .ty-modal { background:var(--white); border-radius:24px; padding:3rem 2.5rem; max-width:420px; width:90%; text-align:center; box-shadow:0 32px 80px rgba(42,61,74,.25); position:relative; animation:slideUp .35s cubic-bezier(.22,1,.36,1); }
+  @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+  .ty-modal-icon { font-size:3rem; display:block; margin-bottom:1rem; }
+  .ty-modal h3 { font-family:var(--serif); font-size:1.4rem; font-weight:700; color:var(--deep); margin-bottom:.6rem; }
+  .ty-modal p { font-size:.92rem; color:var(--body); font-weight:500; line-height:1.75; margin-bottom:1.6rem; }
+  .ty-modal p strong { color:var(--deep); }
+  .ty-modal p a { color:var(--brand); text-decoration:none; }
+  .ty-modal-close { background:var(--brand); color:#fff; border:none; padding:.8rem 2.2rem; border-radius:50px; font-family:var(--sans); font-size:.8rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; transition:background .2s,transform .2s; box-shadow:0 6px 20px rgba(127,168,190,.35); }
+  .ty-modal-close:hover { background:var(--dusk); transform:translateY(-2px); }
+
+  .fu { opacity:1; transform:none; transition:opacity .7s ease,transform .7s ease; }
+  .fu.ready { opacity:0; transform:translateY(24px); }
+  .fu.ready.in { opacity:1; transform:none; }
+  .fug > * { opacity:1; transform:none; transition:opacity .55s ease,transform .55s ease; }
+  .fug.ready > * { opacity:0; transform:translateY(18px); }
+  .fug.ready.in > *:nth-child(1){opacity:1;transform:none;transition-delay:.04s}
+  .fug.ready.in > *:nth-child(2){opacity:1;transform:none;transition-delay:.13s}
+  .fug.ready.in > *:nth-child(3){opacity:1;transform:none;transition-delay:.22s}
+  .fug.ready.in > *:nth-child(4){opacity:1;transform:none;transition-delay:.31s}
+  .fug.ready.in > *:nth-child(5){opacity:1;transform:none;transition-delay:.40s}
+  .fug.ready.in > *:nth-child(6){opacity:1;transform:none;transition-delay:.49s}
+
+  /* ── AI SEARCH ───────────────────────────────────────────── */
+  #ai-search { background: var(--deep); overflow:hidden; position:relative; }
+  #ai-search::before {
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg width='1440' height='500' viewBox='0 0 1440 500' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 250 C180 100,360 400,540 250 C720 100,900 400,1080 250 C1260 100,1350 300,1440 220' stroke='%237fa8be' stroke-width='2' stroke-linecap='round' opacity='0.08'/%3E%3Cpath d='M0 320 C200 140,400 460,600 300 C800 140,1000 440,1200 280 C1320 180,1380 240,1440 210' stroke='%237fa8be' stroke-width='1.5' stroke-linecap='round' opacity='0.05'/%3E%3C/svg%3E");
+    background-size:cover;
+  }
+  .ai-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; position:relative; z-index:1; }
+  #ai-search .lbl { color:var(--sage); }
+  #ai-search h2 { color:var(--white); margin-bottom:1.2rem; }
+  #ai-search p { color:rgba(255,255,255,.6); font-size:1.02rem; line-height:1.8; margin-bottom:1rem; }
+  .ai-pills { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:2rem; }
+  .ai-pill {
+    display:inline-flex; align-items:center; gap:.5rem;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12);
+    color:rgba(255,255,255,.75); font-size:.8rem; font-weight:600;
+    padding:.5rem 1rem; border-radius:50px;
+    transition:background .2s, border-color .2s;
+  }
+  .ai-pill:hover { background:rgba(127,168,190,.2); border-color:rgba(127,168,190,.4); }
+  .ai-pill-icon { font-size:1rem; }
+
+  /* Chat mock */
+  .ai-vis { display:flex; flex-direction:column; gap:1.2rem; }
+  .ai-chat-mock {
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+    border-radius:20px; overflow:hidden;
+    box-shadow:0 24px 64px rgba(0,0,0,.3);
+  }
+  .ai-chat-header {
+    display:flex; align-items:center; gap:.6rem;
+    padding:.9rem 1.4rem; border-bottom:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.04);
+    font-family:'Raleway',sans-serif; font-size:.72rem; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.5);
+  }
+  .ai-chat-dot { width:8px; height:8px; border-radius:50%; background:var(--sage); animation:pulse 2.5s ease-in-out infinite; }
+  .ai-chat-body { padding:1.4rem; display:flex; flex-direction:column; gap:1rem; }
+  .ai-msg { font-size:.9rem; line-height:1.65; max-width:86%; padding:.8rem 1.1rem; border-radius:14px; font-weight:500; }
+  .ai-msg.user {
+    background:var(--brand); color:#fff; align-self:flex-end;
+    border-bottom-right-radius:4px;
+  }
+  .ai-msg.bot {
+    background:rgba(255,255,255,.09); color:rgba(255,255,255,.85);
+    align-self:flex-start; border-bottom-left-radius:4px;
+    min-height:52px; display:flex; align-items:center;
+  }
+  .ai-response strong { color:#fff; }
+
+  /* Typing dots */
+  .ai-typing-indicator { display:flex; gap:5px; align-items:center; padding:4px 2px; }
+  .ai-typing-indicator span {
+    width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.4);
+    animation:typingBounce 1.2s ease-in-out infinite;
+  }
+  .ai-typing-indicator span:nth-child(2) { animation-delay:.2s; }
+  .ai-typing-indicator span:nth-child(3) { animation-delay:.4s; }
+  @keyframes typingBounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
+
+  /* Source badges */
+  .ai-badge-row { display:flex; gap:.6rem; flex-wrap:wrap; }
+  .ai-source-badge {
+    font-family:'Raleway',sans-serif; font-size:.68rem; font-weight:700;
+    letter-spacing:.12em; text-transform:uppercase;
+    color:rgba(255,255,255,.35); border:1px solid rgba(255,255,255,.1);
+    padding:.35rem .9rem; border-radius:50px;
+  }
+
+  /* ── RESPONSIVE ───────────────────────────────────────────── */
+  @media (max-width:960px) {
+    .hero-inner,.about-inner,.ai-inner { grid-template-columns:1fr; gap:3rem; }
+    .hero-vis { display:none; }
+    .prob-grid,.feat-grid,.steps,.price-grid,.care-grid { grid-template-columns:1fr; }
+    .port-card { grid-template-columns:64px 1fr; gap:1rem; padding:1.4rem 1.5rem; }
+    .port-num { font-size:2.6rem; }
+    .port-desc { display:none; }
+    .steps::before { display:none; }
+    .pc.feat { transform:none; }
+    .stats-in { grid-template-columns:1fr; gap:1.5rem; }
+    .s-div { border-right:none; border-bottom:1px solid rgba(255,255,255,.2); padding-bottom:1.5rem; }
+    .nav-links li:not(:last-child) { display:none; }
+    .form-row { grid-template-columns:1fr; }
+    .contact-form { padding:2rem 1.5rem; }
+    .about-avatar-circle { width:180px; height:180px; font-size:3.5rem; }
+    .agentic-banner { flex-direction:column; align-items:flex-start; padding:2rem; }
+    .agentic-cta { width:100%; justify-content:center; }
+  }
+</style>
+
+<!-- Structured Data / Schema Markup -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "ProfessionalService"],
+    "@id": "https://wcloud.nz/#business",
+    "name": "White Cloud",
+    "url": "https://wcloud.nz",
+    "logo": "https://wcloud.nz/favicon.svg",
+    "image": "https://wcloud.nz/og-image.png",
+    "description": "White Cloud builds affordable, AI-optimised websites for New Zealand small businesses. Based in Christchurch, NZ. From NZ$299 with 7-day average delivery. No tech knowledge needed.",
+    "priceRange": "NZ$299–NZ$1,099",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Christchurch",
+      "addressRegion": "Canterbury",
+      "addressCountry": "NZ"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "New Zealand"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": "English",
+      "url": "https://wcloud.nz/#contact"
+    },
+    "founder": {
+      "@type": "Person",
+      "@id": "https://wcloud.nz/#jay",
+      "name": "Jay",
+      "jobTitle": "Web Designer & Founder",
+      "worksFor": {"@id": "https://wcloud.nz/#business"}
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Website Design Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Cloud One",
+          "description": "Perfect for sole traders and new businesses. Up to 3 pages, mobile-friendly design, contact form, Google Maps embed, basic SEO setup. Delivered in 5–7 days.",
+          "price": "299",
+          "priceCurrency": "NZD",
+          "url": "https://wcloud.nz/#pricing"
+        },
+        {
+          "@type": "Offer",
+          "name": "Cloud Plus",
+          "description": "A full website showcasing your services and building trust with customers. Up to 6 pages, full SEO setup, Google Business integration, testimonials section. Delivered in 7–10 days.",
+          "price": "699",
+          "priceCurrency": "NZD",
+          "url": "https://wcloud.nz/#pricing"
+        },
+        {
+          "@type": "Offer",
+          "name": "Cloud Pro",
+          "description": "A premium website presence. Up to 10 pages, blog/news section, gallery or portfolio, advanced booking forms, full SEO and sitemap. Priority delivery in 5–7 days.",
+          "price": "1099",
+          "priceCurrency": "NZD",
+          "url": "https://wcloud.nz/#pricing"
+        }
+      ]
+    },
+    "sameAs": [
+      "https://wcloud.nz"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do I need to know anything about websites?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not at all. You just tell us about your business and what you want customers to know. We handle all the technical stuff — you don't need to touch a thing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do you need from me to get started?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Just fill in our short form, share any photos you have (or we can source some), and let us know your brand colours if you have them. That's all we need to get going."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to build a website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most websites are ready for review within 5–10 business days depending on the package. Once you approve the design, we can have you live within 24 hours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will my website work on phones and tablets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — every website we build works perfectly on all devices. Phones, tablets, and computers. Included in every package, no exceptions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I want to make changes after my website is live?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Small changes are easy to arrange on a care plan, or we can quote you for one-off updates — usually very affordable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a domain name and hosting already?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. If you don't have one yet, we'll help you choose a good .co.nz domain name and point you to a reliable, affordable NZ hosting provider. We guide you through it step by step."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there anything ongoing I need to pay for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The packages are one-off payments. The only ongoing costs are your domain (usually NZ$20–40/year) and hosting (usually NZ$10–25/month). Our care plans are optional extras."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I'm not happy with how the website looks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All packages include revision rounds, and we won't publish anything until you're genuinely happy. We're here to get it right, not just rush it out."
+        }
+      }
+    ]
+  }
+]
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainnav">
+  <a href="#" class="logo-mark">
+    <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
+      <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#solution">How it works</a></li>
+    <li><a href="#portfolio">Our Work</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <svg class="hero-bg-svg right" viewBox="0 0 560 220" fill="none">
+    <path d="M0 110 C70 30,140 190,210 110 C280 30,350 190,420 110 C480 45,520 65,560 55" stroke="#7fa8be" stroke-width="4" stroke-linecap="round"/>
+    <path d="M0 150 C80 55,160 230,250 140 C330 60,410 220,490 140 C520 110,540 118,560 112" stroke="#c8dce6" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+  <svg class="hero-bg-svg left" viewBox="0 0 360 180" fill="none">
+    <path d="M0 90 C50 25,100 155,150 90 C200 25,250 155,300 90 C330 55,345 62,360 58" stroke="#7fa8be" stroke-width="3.5" stroke-linecap="round"/>
+  </svg>
+
+  <div class="hero-inner">
+    <div class="fu">
+      <div class="badge"><div class="badge-dot"></div>Christchurch, New Zealand</div>
+      <h1>Your business deserves<br>a <em>great website.</em><br>Leave it to us.</h1>
+      <p class="hero-sub">No tech knowledge needed. No confusing steps. Just a clean, professional website — done for you, at a price that makes sense.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-p">Get Started</a>
+        <a href="#process" class="btn-o">How It Works</a>
+      </div>
+      <p class="hero-note">✓ One-off payment <span>·</span> ✓ Ready in 5–10 days <span>·</span> ✓ No lock-in contracts</p>
+    </div>
+
+    <div class="hero-vis fu">
+      <div class="browser">
+        <div class="b-bar">
+          <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+          <div class="b-url">www.yourbusiness.co.nz</div>
+        </div>
+        <div class="b-body">
+          <div class="b-nav-row">
+            <div class="b-logo-pill">
+              <svg viewBox="0 0 76 44" fill="none"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,.5)" stroke-width="3.5" stroke-linecap="round"/></svg>
+              <div class="b-logo-text"><i></i><i></i></div>
+            </div>
+            <div class="b-nav-links"><div class="b-nl"></div><div class="b-nl"></div><div class="b-nl"></div></div>
+          </div>
+          <div class="b-banner">
+            <svg viewBox="0 0 300 80" fill="none"><path d="M10 50 C50 10,90 70,130 40 C170 10,210 70,250 40 C270 26,284 32,296 28" stroke="#7fa8be" stroke-width="5" stroke-linecap="round"/><path d="M10 65 C60 25,100 80,145 55 C185 32,220 75,260 52 C278 42,288 46,298 43" stroke="#c8dce6" stroke-width="3.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="b-hl"></div>
+          <div class="b-sub"></div><div class="b-sub s"></div>
+          <div class="b-cta-bar"></div>
+          <div class="b-cards">
+            <div class="b-card"><div class="b-ci"></div><div class="b-cl"></div><div class="b-cl s"></div></div>
+            <div class="b-card"><div class="b-ci"></div><div class="b-cl"></div><div class="b-cl s"></div></div>
+            <div class="b-card"><div class="b-ci"></div><div class="b-cl"></div><div class="b-cl s"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ftag ft1"><div class="fdot"></div>Live in 7 days</div>
+      <div class="ftag ft2"><div class="fdot"></div>Looks great on mobile ✓</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-in">
+    <div class="s-div"><span class="s-num">150+</span><span class="s-lbl">Small businesses helped</span></div>
+    <div class="s-div"><span class="s-num">7 days</span><span class="s-lbl">Average delivery</span></div>
+    <div><span class="s-num">NZ$299</span><span class="s-lbl">Starting price</span></div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="sec-hd fu">
+    <span class="lbl">You're not alone</span>
+    <h2>Building a website can feel like a full-time job</h2>
+    <p>Most small business owners don't have time to figure out complicated website builders — and you shouldn't have to.</p>
+  </div>
+  <div class="prob-grid fug">
+    <div class="prob-card"><span class="pi">😰</span><h3>Too many confusing choices</h3><p>Wix, Squarespace, WordPress… each one has a learning curve, and none of them feel straightforward when you're trying to run a business.</p></div>
+    <div class="prob-card"><span class="pi">⏰</span><h3>No time to do it yourself</h3><p>You're busy serving customers, not staring at a screen trying to figure out why your logo looks wrong on a phone.</p></div>
+    <div class="prob-card"><span class="pi">💸</span><h3>Worried about the cost</h3><p>Big web agencies charge thousands. You just need something clean, professional, and honest — not an overpriced project that drags on for months.</p></div>
+    <div class="prob-card"><span class="pi">🤷</span><h3>Not sure what you actually need</h3><p>You know you need a website. You're just not sure how many pages, what to write, or how to make it look good. It all feels a bit much.</p></div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution">
+  <div class="sec-hd fu">
+    <span class="lbl">The simple solution</span>
+    <h2>We take care of everything, so you don't have to</h2>
+    <p>Tell us about your business. We'll build you a clean, fast, professional website that looks great on every screen.</p>
+  </div>
+  <div class="feat-grid fug">
+    <div class="feat-card"><div class="fi">✍️</div><h3>We write the words</h3><p>Not sure what to say? We help put it into clear, simple language that connects with your customers.</p></div>
+    <div class="feat-card"><div class="fi">🎨</div><h3>We handle the design</h3><p>Your site will look modern and professional — clean layout, nice fonts, your colours — done properly.</p></div>
+    <div class="feat-card"><div class="fi">📱</div><h3>Works on every device</h3><p>Phones, tablets, laptops — your website will look and work perfectly no matter how customers find you.</p></div>
+    <div class="feat-card"><div class="fi">🔍</div><h3>Set up to be found</h3><p>We make sure your site is set up so Google can find it. More visibility without any extra effort from you.</p></div>
+    <div class="feat-card"><div class="fi">⚡</div><h3>Fast and reliable</h3><p>Nobody waits for a slow website. Yours will load quickly and give customers a smooth experience every time.</p></div>
+    <div class="feat-card"><div class="fi">🤝</div><h3>Real human support</h3><p>You'll always have someone to talk to. Plain English, no tech talk — just friendly help when you need it.</p></div>
+  </div>
+</section>
+
+<!-- AI SEARCH -->
+<section id="ai-search">
+  <div class="ai-inner fu">
+    <div class="ai-text">
+      <span class="lbl">Built for the future</span>
+      <h2>Your business, found by AI — not just Google</h2>
+      <p>The way people find businesses is changing fast. More and more customers are asking ChatGPT, asking Siri, or searching through AI tools to find recommendations. We make sure your website is ready for that.</p>
+      <p>Every website we build is structured so AI tools can read, understand, and recommend your business — so when someone asks "who's the best plumber in Christchurch?" your name has a real chance of coming up.</p>
+      <div class="ai-pills">
+        <div class="ai-pill"><span class="ai-pill-icon">🤖</span>AI-readable structure</div>
+        <div class="ai-pill"><span class="ai-pill-icon">💬</span>Optimised for ChatGPT & Siri</div>
+        <div class="ai-pill"><span class="ai-pill-icon">📡</span>Schema markup included</div>
+        <div class="ai-pill"><span class="ai-pill-icon">🔎</span>Google + AI search ready</div>
+      </div>
+    </div>
+    <div class="ai-vis">
+      <div class="ai-chat-mock">
+        <div class="ai-chat-header">
+          <div class="ai-chat-dot"></div>
+          <span>AI Assistant</span>
+        </div>
+        <div class="ai-chat-body">
+          <div class="ai-msg user">Who's a good web designer in Christchurch, NZ?</div>
+          <div class="ai-msg bot">
+            <div class="ai-typing-indicator" id="aiTyping">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="ai-response" id="aiResponse" style="display:none">
+              Based on their website, <strong>White Cloud</strong> is a Christchurch-based web design service helping small businesses get online affordably and fast — from NZ$299 with a 7-day turnaround. ✓
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ai-badge-row">
+        <div class="ai-source-badge">✦ ChatGPT</div>
+        <div class="ai-source-badge">✦ Gemini</div>
+        <div class="ai-source-badge">✦ Siri</div>
+        <div class="ai-source-badge">✦ Perplexity</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="sec-hd fu">
+    <span class="lbl">How it works</span>
+    <h2>Three simple steps to your new website</h2>
+    <p>We've made the process as easy as possible. Most clients are live within a week.</p>
+  </div>
+  <div class="steps fug">
+    <div class="step"><div class="sn">1</div><h3>Tell us about your business</h3><p>Fill in a short questionnaire — takes about 15 minutes. We'll ask about your services, customers, and what you'd like your site to feel like.</p></div>
+    <div class="step"><div class="sn">2</div><h3>We build your site</h3><p>Our team gets to work. Within 5–10 business days, you'll have a preview to review. We'll make any tweaks until you're genuinely happy.</p></div>
+    <div class="step"><div class="sn">3</div><h3>Go live and get found</h3><p>Once you're happy, we publish your site and handle all the technical bits — domain, hosting, everything in between. You just share the link.</p></div>
+  </div>
+</section>
+
+<!-- ABOUT JAY -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-avatar fu">
+      <div class="about-avatar-circle">👋</div>
+      <div class="about-badge">
+        <span class="about-badge-num">10+</span>
+        <span class="about-badge-txt">Years Experience</span>
+      </div>
+    </div>
+    <div class="about-text fu">
+      <span class="lbl">The person behind White Cloud</span>
+      <h2>Hi, I'm Jay.</h2>
+      <p>I've spent more than 10 years working in e-commerce businesses — here in New Zealand and across the world. I've seen first-hand how hard it is for small business owners to get online quickly, affordably, and without the headache.</p>
+      <p>That's why I started White Cloud. I believe SME owners already have a lot on their plate. You're running your business, serving your customers, and juggling everything in between. The last thing you need is to spend weeks trying to figure out a website.</p>
+      <p>My job is simple — help you get online fast, look great, and start finding customers as soon as possible.</p>
+      <a href="#contact" class="btn-o" style="margin-top:.5rem;display:inline-block">Work with Jay →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="sec-hd fu">
+    <span class="lbl">Our work</span>
+    <h2>Projects we've built</h2>
+    <p>From e-commerce stores to music platforms — here's a taste of what we can do.</p>
+  </div>
+
+  <!-- Editorial minimal list -->
+  <div class="portfolio-wrap fug">
+
+    <a href="https://groov.nz" target="_blank" class="port-card">
+      <div class="port-num">01</div>
+      <div class="port-body">
+        <div class="port-tag">Music Platform</div>
+        <div class="port-title">Groov NZ</div>
+        <div class="port-url-lbl">groov.nz</div>
+        <p class="port-desc">A New Zealand music discovery platform connecting local artists with their audience. Clean, modern, and built for growth.</p>
+      </div>
+    </a>
+
+    <a href="https://crypto.groov.nz" target="_blank" class="port-card">
+      <div class="port-num">02</div>
+      <div class="port-body">
+        <div class="port-tag">Crypto & Finance</div>
+        <div class="port-title">Crypto Groov</div>
+        <div class="port-url-lbl">crypto.groov.nz</div>
+        <p class="port-desc">A dedicated crypto resource under the Groov brand — bringing trusted news and insights to a New Zealand audience.</p>
+      </div>
+    </a>
+
+    <a href="https://groov.store" target="_blank" class="port-card">
+      <div class="port-num">03</div>
+      <div class="port-body">
+        <div class="port-tag">E-commerce</div>
+        <div class="port-title">Groov Store</div>
+        <div class="port-url-lbl">groov.store</div>
+        <p class="port-desc">An e-commerce store for the Groov brand — showcasing what a clean, conversion-focused online shop looks like.</p>
+      </div>
+    </a>
+
+    <a href="https://evx.life" target="_blank" class="port-card">
+      <div class="port-num">04</div>
+      <div class="port-body">
+        <div class="port-tag">EV & Equipment Rentals</div>
+        <div class="port-title">EVX</div>
+        <div class="port-url-lbl">evx.life</div>
+        <p class="port-desc">EV vehicles, Starlink, and equipment rentals — a modern rental platform built for the future of transport and connectivity in New Zealand.</p>
+      </div>
+    </a>
+
+    <a href="https://agenti.nz/design_system.html" target="_blank" class="port-card">
+      <div class="port-num">05</div>
+      <div class="port-body">
+        <div class="port-tag">Brand & Design</div>
+        <div class="port-title">Agenti Design System</div>
+        <div class="port-url-lbl">agenti.nz/design_system.html</div>
+        <p class="port-desc">A full brand and design system for Agenti NZ — colours, typography, components, and guidelines built for consistency across every touchpoint.</p>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="agentic-banner fu">
+    <div class="agentic-left">
+      <div class="agentic-eyebrow">
+        <div class="agentic-eyebrow-dot"></div>
+        Focus on growing
+      </div>
+      <h3>Need more than just a website?<br>We've got the tools to help.</h3>
+      <p>Agenti NZ helps small businesses harness AI and automation — saving you hours every week, handling repetitive tasks, and giving you more time to focus on what you do best.</p>
+    </div>
+    <a href="https://agenti.nz" target="_blank" class="agentic-cta">
+      Explore Agenti NZ <span class="agentic-cta-arrow">→</span>
+    </a>
+  </div>
+
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="sec-hd fu">
+    <span class="lbl">Straightforward pricing</span>
+    <h2>Pick the right package for your business</h2>
+    <p>One-off payment. No hidden fees. All prices in New Zealand Dollars.</p>
+  </div>
+  <div class="price-grid fug">
+
+    <div class="pc">
+      <div class="ptier">Cloud One</div>
+      <div class="pprice"><sup>NZ$</sup>299</div>
+      <div class="ponce">One-off payment</div>
+      <p class="pdesc">Perfect for sole traders and new businesses that need a clean, simple online presence fast.</p>
+      <ul class="plist">
+        <li>Up to 3 pages (Home, About, Contact)</li>
+        <li>Mobile-friendly design</li>
+        <li>Contact form</li>
+        <li>Google Maps embed</li>
+        <li>Basic SEO setup</li>
+        <li>Delivered in 5–7 days</li>
+        <li>2 rounds of revisions</li>
+      </ul>
+      <a href="#contact" class="pbtn" onclick="selectPackage('Cloud One — NZ$299')">Get Started</a>
+    </div>
+
+    <div class="pc feat">
+      <div class="pop-pill">Most Popular</div>
+      <div class="ptier">Cloud Plus</div>
+      <div class="pprice"><sup>NZ$</sup>699</div>
+      <div class="ponce">One-off payment</div>
+      <p class="pdesc">A full website that tells your whole story, showcases your services, and builds trust with new customers.</p>
+      <ul class="plist">
+        <li>Up to 6 pages</li>
+        <li>Mobile-friendly design</li>
+        <li>Services page with photos</li>
+        <li>Testimonials / reviews section</li>
+        <li>Contact form + click-to-call</li>
+        <li>Full SEO setup</li>
+        <li>Google Business integration</li>
+        <li>Delivered in 7–10 days</li>
+        <li>3 rounds of revisions</li>
+      </ul>
+      <a href="#contact" class="pbtn" onclick="selectPackage('Cloud Plus — NZ$699')">Get Started</a>
+    </div>
+
+    <div class="pc">
+      <div class="ptier">Cloud Pro</div>
+      <div class="pprice"><sup>NZ$</sup>1,099</div>
+      <div class="ponce">One-off payment</div>
+      <p class="pdesc">A premium presence with everything you need to stand out online and attract more customers.</p>
+      <ul class="plist">
+        <li>Up to 10 pages</li>
+        <li>Premium custom design</li>
+        <li>Blog or news section</li>
+        <li>Gallery or portfolio</li>
+        <li>Advanced contact & booking forms</li>
+        <li>Full SEO + sitemap</li>
+        <li>Social media links & feeds</li>
+        <li>Priority delivery (5–7 days)</li>
+        <li>Unlimited revisions (30 days)</li>
+      </ul>
+      <a href="#contact" class="pbtn" onclick="selectPackage('Cloud Pro — NZ$1,099')">Get Started</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CARE PLANS -->
+<section id="care">
+  <div class="sec-hd fu">
+    <span class="lbl">Optional add-on</span>
+    <h2>Keep your website in good shape with a monthly care plan</h2>
+    <p>Your website is built and ready to go. If you'd like someone to look after it — keeping it updated, backed up, and running smoothly — we offer optional monthly care plans. No pressure. No lock-in. Cancel any time.</p>
+  </div>
+  <div class="care-grid fug">
+    <div class="cc">
+      <div class="ctier">Basic Care</div>
+      <div class="cprice">NZ$49 <small>/ month</small></div>
+      <p class="cdesc">Great for keeping things running smoothly in the background.</p>
+      <ul class="clist">
+        <li>Monthly security updates</li>
+        <li>Regular backups</li>
+        <li>Uptime monitoring</li>
+        <li>1 small content change per month</li>
+        <li>Email support</li>
+      </ul>
+    </div>
+    <div class="cc hi">
+      <div class="ctier">Full Care</div>
+      <div class="cprice">NZ$99 <small>/ month</small></div>
+      <p class="cdesc">Everything in Basic, plus hands-on help whenever you need it.</p>
+      <ul class="clist">
+        <li>Everything in Basic Care</li>
+        <li>Up to 3 content updates per month</li>
+        <li>Priority support (phone + email)</li>
+        <li>Performance check & improvements</li>
+        <li>Annual design refresh consultation</li>
+      </ul>
+    </div>
+  </div>
+  <p class="care-note" style="text-align:center">* Care plans are month-to-month. Cancel any time — no fees. Hosting costs are separate and we'll help you find the best option.</p>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="sec-hd">
+    <span class="lbl">Common questions</span>
+    <h2>Good questions, straight answers</h2>
+  </div>
+  <div class="faq-wrap">
+    <div class="faq-item"><button class="faq-btn">Do I need to know anything about websites? <span class="fa">+</span></button><div class="faq-ans">Not at all. You just tell us about your business and what you want customers to know. We handle all the technical stuff — you don't need to touch a thing.</div></div>
+    <div class="faq-item"><button class="faq-btn">What do you need from me to get started? <span class="fa">+</span></button><div class="faq-ans">Just fill in our short form, share any photos you have (or we can source some), and let us know your brand colours if you have them. That's all we need to get going.</div></div>
+    <div class="faq-item"><button class="faq-btn">How long does it take? <span class="fa">+</span></button><div class="faq-ans">Most websites are ready for review within 5–10 business days depending on the package. Once you approve the design, we can have you live within 24 hours.</div></div>
+    <div class="faq-item"><button class="faq-btn">Will my website work on phones and tablets? <span class="fa">+</span></button><div class="faq-ans">Yes — every website we build works perfectly on all devices. Phones, tablets, and computers. Included in every package, no exceptions.</div></div>
+    <div class="faq-item"><button class="faq-btn">What if I want to make changes after it's live? <span class="fa">+</span></button><div class="faq-ans">Small changes are easy to arrange on a care plan, or we can quote you for one-off updates — usually very affordable.</div></div>
+    <div class="faq-item"><button class="faq-btn">Do I need a domain name and hosting already? <span class="fa">+</span></button><div class="faq-ans">No. If you don't have one yet, we'll help you choose a good .co.nz domain name and point you to a reliable, affordable NZ hosting provider. We guide you through it step by step.</div></div>
+    <div class="faq-item"><button class="faq-btn">Is there anything ongoing I need to pay for? <span class="fa">+</span></button><div class="faq-ans">The packages are one-off payments. The only ongoing costs are your domain (usually NZ$20–40/year) and hosting (usually NZ$10–25/month). Our care plans are optional extras.</div></div>
+    <div class="faq-item"><button class="faq-btn">What if I'm not happy with how it looks? <span class="fa">+</span></button><div class="faq-ans">All packages include revision rounds, and we won't publish anything until you're genuinely happy. We're here to get it right, not just rush it out.</div></div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="sec-hd fu">
+      <span class="lbl">Let's talk</span>
+      <h2>Ready to get started?</h2>
+      <p>Fill in the form below and Jay will get back to you within one business day. No pressure, no jargon — just a friendly conversation about your business.</p>
+    </div>
+
+    <div class="contact-form fu">
+      <form name="contact" netlify netlify-honeypot="bot-field" id="contactForm">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none"><input name="bot-field"></p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="fname">Your Name *</label>
+            <input class="form-input" type="text" id="fname" name="name" placeholder="e.g. Sarah Johnson" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="femail">Email Address *</label>
+            <input class="form-input" type="email" id="femail" name="email" placeholder="you@yourbusiness.co.nz" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="fphone">Phone Number</label>
+          <input class="form-input" type="tel" id="fphone" name="phone" placeholder="e.g. 021 123 4567">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="fbiz">What type of business are you? *</label>
+          <select class="form-select" id="fbiz" name="business_type" required>
+            <option value="" disabled selected>Select your business type…</option>
+            <option value="Freelancer / Sole Trader">Freelancer / Sole Trader</option>
+            <option value="Real Estate Agent">Real Estate Agent</option>
+            <option value="Restaurant">Restaurant</option>
+            <option value="Café">Café</option>
+            <option value="Builder / Tradesperson">Builder / Tradesperson</option>
+            <option value="Content Creator / Influencer">Content Creator / Influencer</option>
+            <option value="Hair & Beauty">Hair & Beauty Salon</option>
+            <option value="Health & Wellness">Health & Wellness (PT, Yoga, Physio etc.)</option>
+            <option value="Retail Shop">Retail Shop</option>
+            <option value="Photographer / Videographer">Photographer / Videographer</option>
+            <option value="Accountant / Bookkeeper">Accountant / Bookkeeper</option>
+            <option value="Cleaning Services">Cleaning Services</option>
+            <option value="Landscaping / Gardening">Landscaping / Gardening</option>
+            <option value="Other">Other — I'll describe below</option>
+          </select>
+          <div class="other-input-wrap" id="otherWrap">
+            <input class="form-input" type="text" id="fother" name="business_type_other" placeholder="Tell us what type of business you have…">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="fpackage">Which package are you interested in?</label>
+          <select class="form-select" id="fpackage" name="package">
+            <option value="" disabled selected>Select a package…</option>
+            <option value="Cloud One — NZ$299">Cloud One — NZ$299 (Up to 3 pages)</option>
+            <option value="Cloud Plus — NZ$699">Cloud Plus — NZ$699 (Up to 6 pages) ⭐ Most Popular</option>
+            <option value="Cloud Pro — NZ$1,099">Cloud Pro — NZ$1,099 (Up to 10 pages)</option>
+            <option value="Not sure — please recommend">Not sure yet — I'd love your recommendation</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="fmsg">Anything else you'd like us to know?</label>
+          <textarea class="form-textarea" id="fmsg" name="message" placeholder="e.g. I'm looking for something simple and clean. I already have a logo. I'd like to be live before Christmas…"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Send My Enquiry →</button>
+      </form>
+
+      <div class="form-success" id="formSuccess" style="display:none;">
+        <span class="tick">🎉</span>
+        <h3>Thanks! We'll be in touch soon.</h3>
+        <p>Jay will get back to you within one business day at <a data-cfasync="false" href="/cdn-cgi/l/email-protection#2c47454d435e4d6c5b4f40435948024256"><span class="__cf_email__" data-cfemail="244f4d454b5645645347484b51400a4a5e">[email&#160;protected]</span></a></p>
+      </div>
+    </div>
+
+    <!-- Not sure banner -->
+    <div class="idea-banner fu">
+      <div class="idea-left">
+        <span class="lbl">Not sure where to start?</span>
+        <h3>Send us your idea — we'll take it from there.</h3>
+        <p>No brief needed. Just tell us what you're thinking and Jay will come back with a recommendation that fits your business and budget.</p>
+      </div>
+      <a href="/cdn-cgi/l/email-protection#48232129273a29083f2b24273d2c662632" class="idea-btn">Share your idea →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-deco">
+    <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" fill="none">
+      <path d="M0 200 C120 80,240 320,400 200 C560 80,680 320,840 200 C1000 80,1120 320,1280 200 C1360 140,1400 160,1440 150" stroke="#7fa8be" stroke-width="6" stroke-linecap="round"/>
+      <path d="M0 280 C140 120,280 380,460 240 C620 110,760 360,960 230 C1100 140,1240 300,1440 200" stroke="#c8dce6" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <span class="lbl">Ready when you are</span>
+  <h2>Let's build something<br>you're proud of.</h2>
+  <p>Based in Christchurch — helping small businesses across New Zealand get online fast.</p>
+  <div class="cta-btns">
+    <a href="#contact" class="btn-w">Get in Touch</a>
+    <a href="#pricing" class="btn-g">View Packages</a>
+  </div>
+</section>
+
+<!-- THANK YOU MODAL -->
+<div class="ty-modal-overlay" id="tyModal">
+  <div class="ty-modal">
+    <span class="ty-modal-icon">🎉</span>
+    <h3>Thanks for reaching out!</h3>
+    <p>Jay will get back to you within <strong>1 business day</strong>. Keep an eye on your inbox — we'll reply to the email address you provided.</p>
+    <button class="ty-modal-close" onclick="document.getElementById('tyModal').classList.remove('show')">Close</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <a href="#" class="logo-mark">
+      <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
+        <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
+    </a>
+    <div class="foot-links">
+      <a href="privacy.html" target="_blank">Privacy Policy</a>
+      <a href="terms.html" target="_blank">Terms &amp; Conditions</a>
+      <a href="/intake">New Client Intake Form</a>
+      <a href="https://agenti.nz" target="_blank">Backend operations powered by Agenti NZ</a>
+    </div>
+    <div>© 2025 White Cloud. Christchurch, NZ. All prices NZD.</div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── Nav shadow on scroll
+  var mainnav = document.getElementById('mainnav');
+  window.addEventListener('scroll', function() {
+    mainnav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // ── FAQ accordion — simplest possible approach
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    item.querySelector('.faq-btn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // ── Package pre-fill when clicking pricing button
+  function selectPackage(value) {
+    var sel = document.getElementById('fpackage');
+    if (!sel) return;
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === value) {
+        sel.selectedIndex = i;
+        break;
+      }
+    }
+    // Small delay so scroll lands after value is set
+    setTimeout(function() {
+      var el = document.getElementById('contact');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 80);
+  }
+
+  // ── Show "Other" business type field
+  var bizSel = document.getElementById('fbiz');
+  if (bizSel) {
+    bizSel.addEventListener('change', function() {
+      var wrap = document.getElementById('otherWrap');
+      if (wrap) wrap.classList.toggle('show', this.value === 'Other');
+    });
+  }
+
+  // ── Contact form submit → Netlify Forms
+  var contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var form = this;
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+      .then(function() {
+        form.reset();
+        document.getElementById('tyModal').classList.add('show');
+      })
+      .catch(function() {
+        form.reset();
+        document.getElementById('tyModal').classList.add('show');
+      });
+    });
+  }
+
+  // ── Close modal on backdrop click
+  var tyModal = document.getElementById('tyModal');
+  if (tyModal) {
+    tyModal.addEventListener('click', function(e) {
+      if (e.target === this) this.classList.remove('show');
+    });
+  }
+
+  // ── AI chat mock typing animation
+  var aiTyping = document.getElementById('aiTyping');
+  var aiResponse = document.getElementById('aiResponse');
+  if (aiTyping && aiResponse) {
+    var aiObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          setTimeout(function() {
+            aiTyping.style.display = 'none';
+            aiResponse.style.display = 'block';
+          }, 2200);
+          aiObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    aiObserver.observe(aiTyping);
+  }
+  // ── Scroll-triggered fade animations — never touch FAQ elements
+  var animEls = document.querySelectorAll('.fu, .fug');
+  for (var k = 0; k < animEls.length; k++) {
+    animEls[k].classList.add('ready');
+  }
+  var fadeObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  for (var j = 0; j < animEls.length; j++) {
+    fadeObserver.observe(animEls[j]);
+  }
+</script>
+<script src="chat-widget.js"></script>
+</body>
+</html>

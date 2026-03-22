@@ -1,0 +1,35 @@
+# robots.txt — White Cloud (wcloud.nz)
+# Allow all search engines and AI crawlers
+
+User-agent: *
+Allow: /
+
+# Keep legal pages out of search indexes
+Disallow: /cdn-cgi/
+
+# AI crawler access — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://wcloud.nz/sitemap.xml

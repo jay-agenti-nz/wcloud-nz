@@ -278,8 +278,14 @@
   function addMessage(role, text) {
     var div = document.createElement('div');
     div.className = 'cai-msg ' + (role === 'user' ? 'cai-msg-user' : 'cai-msg-ai');
-    // Preserve line breaks from the AI response
-    div.innerHTML = text.replace(/\n{2,}/g, '<br><br>').replace(/\n/g, '<br>');
+    // Preserve line breaks from the AI response without using innerHTML on untrusted text
+    text.split(/\n{2,}/).forEach(function(para, pi) {
+      if (pi > 0) { div.appendChild(document.createElement('br')); div.appendChild(document.createElement('br')); }
+      para.split('\n').forEach(function(line, li) {
+        if (li > 0) div.appendChild(document.createElement('br'));
+        div.appendChild(document.createTextNode(line));
+      });
+    });
     messagesEl.appendChild(div);
     scrollToBottom();
     return div;

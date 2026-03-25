@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eaf3f7"/>
+      <stop offset="100%" stop-color="#d6e8f0"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7fa8be"/>
+      <stop offset="100%" stop-color="#4d6e80"/>
+    </linearGradient>
+    <linearGradient id="card2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f5f9fb"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="20" flood-color="#2a3d4a" flood-opacity="0.18"/>
+    </filter>
+    <filter id="shadow2" x="-10%" y="-10%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#2a3d4a" flood-opacity="0.12"/>
+    </filter>
+    <clipPath id="cardClip1">
+      <rect x="160" y="155" width="380" height="220" rx="18"/>
+    </clipPath>
+    <clipPath id="cardClip2">
+      <rect x="660" y="195" width="380" height="220" rx="18"/>
+    </clipPath>
+  </defs>
+
+  <!-- Page background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle circles decoration -->
+  <circle cx="980" cy="80" r="180" fill="#7fa8be" opacity="0.07"/>
+  <circle cx="100" cy="540" r="140" fill="#7fa8be" opacity="0.06"/>
+
+  <!-- ── FRONT CARD (left, slightly tilted) ───────────────── -->
+  <g transform="rotate(-4, 350, 265)" filter="url(#shadow)">
+    <rect x="160" y="155" width="380" height="220" rx="18" fill="url(#card)"/>
+    <!-- Decorative circles on card -->
+    <circle cx="490" cy="180" r="80" fill="white" opacity="0.05" clip-path="url(#cardClip1)"/>
+    <circle cx="180" cy="340" r="60" fill="white" opacity="0.04" clip-path="url(#cardClip1)"/>
+    <!-- Logo wave -->
+    <path d="M188 210 C202 193,214 227,226 210 C238 195,250 222,262 208" stroke="white" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <path d="M188 218 C204 200,218 235,232 218 C246 203,256 226,268 215" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+    <!-- Wordmark -->
+    <text x="278" y="211" font-family="Arial, sans-serif" font-weight="700" font-size="9" fill="white" letter-spacing="4" text-transform="uppercase">WHITE</text>
+    <text x="278" y="222" font-family="Arial, sans-serif" font-weight="600" font-size="9" fill="white" opacity="0.6" letter-spacing="4">CLOUD</text>
+    <!-- Name -->
+    <text x="188" y="292" font-family="Georgia, serif" font-weight="700" font-size="34" fill="white">Jay Vera</text>
+    <!-- Title -->
+    <text x="188" y="348" font-family="Arial, sans-serif" font-weight="600" font-size="13" fill="white" opacity="0.75">Web Design · Built for AI · NZ</text>
+    <!-- Tap hint -->
+    <text x="502" y="348" font-family="Arial, sans-serif" font-weight="600" font-size="10" fill="white" opacity="0.4" text-anchor="end">Tap ↻</text>
+  </g>
+
+  <!-- ── BACK CARD (right, slightly tilted opposite) ───────── -->
+  <g transform="rotate(3, 850, 305)" filter="url(#shadow2)">
+    <rect x="660" y="195" width="380" height="220" rx="18" fill="url(#card2)"/>
+    <!-- Left accent bar -->
+    <rect x="660" y="195" width="6" height="220" rx="3" fill="#7fa8be" opacity="0.5"/>
+    <!-- Name on back -->
+    <text x="690" y="238" font-family="Georgia, serif" font-weight="700" font-size="18" fill="#2a3d4a">Jay Vera</text>
+    <text x="690" y="255" font-family="Arial, sans-serif" font-weight="600" font-size="10" fill="#5a7080">Web Design · Built for AI · NZ</text>
+    <!-- Divider -->
+    <line x1="690" y1="268" x2="900" y2="268" stroke="#d6e8f0" stroke-width="1"/>
+    <!-- Email row -->
+    <rect x="690" y="279" width="20" height="20" rx="5" fill="#eaf3f7"/>
+    <text x="682" y="277" font-size="11" fill="#7fa8be">✉</text>
+    <text x="718" y="293" font-family="Arial, sans-serif" font-weight="600" font-size="12" fill="#2a3d4a">jay@wcloud.nz</text>
+    <!-- Phone row -->
+    <rect x="690" y="307" width="20" height="20" rx="5" fill="#eaf3f7"/>
+    <text x="683" y="305" font-size="11" fill="#7fa8be">📞</text>
+    <text x="718" y="321" font-family="Arial, sans-serif" font-weight="600" font-size="12" fill="#2a3d4a">+64 21 078 9895</text>
+    <!-- LinkedIn row -->
+    <rect x="690" y="335" width="20" height="20" rx="5" fill="#eaf3f7"/>
+    <text x="683" y="333" font-size="11" fill="#7fa8be">in</text>
+    <text x="718" y="349" font-family="Arial, sans-serif" font-weight="600" font-size="12" fill="#2a3d4a">linkedin.com/in/jay-vera</text>
+    <!-- Save btn -->
+    <rect x="690" y="368" width="110" height="28" rx="14" fill="#7fa8be"/>
+    <text x="745" y="386" font-family="Arial, sans-serif" font-weight="700" font-size="10" fill="white" text-anchor="middle" letter-spacing="1">SAVE CONTACT</text>
+    <!-- QR placeholder -->
+    <rect x="955" y="215" width="70" height="70" rx="8" fill="#eaf3f7"/>
+    <rect x="962" y="222" width="56" height="56" rx="4" fill="#2a3d4a" opacity="0.08"/>
+    <text x="990" y="262" font-family="Arial, sans-serif" font-size="9" fill="#7fa8be" text-anchor="middle" font-weight="700">QR</text>
+    <text x="990" y="300" font-family="Arial, sans-serif" font-size="8" fill="#7fa8be" text-anchor="middle" opacity="0.7">wcloud.nz</text>
+  </g>
+
+  <!-- ── Centre label ──────────────────────────────────────── -->
+  <text x="600" y="530" font-family="Arial, sans-serif" font-weight="700" font-size="13" fill="#5a7080" text-anchor="middle" letter-spacing="3" opacity="0.7">DIGITAL BUSINESS CARD · WCLOUD.NZ/CARD</text>
+</svg>

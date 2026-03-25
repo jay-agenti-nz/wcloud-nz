@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jay – White Cloud | Web Designer · Christchurch, NZ</title>
+<meta name="description" content="Jay's digital business card. Web designer based in Christchurch, NZ. Tap to see contact details.">
+<link rel="canonical" href="https://wcloud.nz/card">
+<meta name="robots" content="noindex, follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://wcloud.nz/card">
+<meta property="og:title" content="Jay – White Cloud | Web Designer · Christchurch, NZ">
+<meta property="og:description" content="Affordable, AI-optimised websites for NZ small businesses. From NZ$299.">
+<meta property="og:image" content="https://wcloud.nz/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Nunito:wght@400;500;600;700&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/qrcode/build/qrcode.min.js"></script>
+
+<style>
+  :root {
+    --brand:       #7fa8be;
+    --brand-dark:  #4d6e80;
+    --brand-pale:  #eaf3f7;
+    --deep:        #2a3d4a;
+    --body:        #5a7080;
+    --sage:        #6bbf9e;
+    --white:       #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #f5f9fb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+
+  .page-label {
+    font-family: 'Raleway', sans-serif;
+    font-size: .65rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--body);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── Card wrapper ───────────────────────────────────── */
+  .card-scene {
+    width: 340px;
+    height: 200px;
+    perspective: 1200px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(.4,0,.2,1);
+  }
+
+  .card-scene.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    box-shadow: 0 12px 40px rgba(42,61,74,.22), 0 2px 8px rgba(42,61,74,.10);
+    overflow: hidden;
+  }
+
+  /* ── FRONT ──────────────────────────────────────────── */
+  .card-front {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.4rem 1.6rem 1.2rem;
+  }
+
+  .card-front::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.06);
+    pointer-events: none;
+  }
+  .card-front::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: 60px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.04);
+    pointer-events: none;
+  }
+
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+  }
+  .logo-row svg { width: 32px; height: 18px; flex-shrink: 0; }
+  .wordmark { display: flex; flex-direction: column; line-height: 1.15; }
+  .wordmark span {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    font-size: .6rem;
+    color: #fff;
+    display: block;
+  }
+  .wordmark span:last-child { color: rgba(255,255,255,.6); }
+
+  .front-name {
+    font-family: 'Lora', serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -.01em;
+    line-height: 1;
+  }
+
+  .front-bottom {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .front-title {
+    font-size: .72rem;
+    font-weight: 600;
+    color: rgba(255,255,255,.7);
+    letter-spacing: .04em;
+  }
+
+  .tap-hint {
+    font-size: .6rem;
+    font-weight: 600;
+    color: rgba(255,255,255,.45);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+  }
+  .tap-hint::after {
+    content: '↻';
+    font-size: .75rem;
+    color: rgba(255,255,255,.45);
+  }
+
+  /* ── BACK ───────────────────────────────────────────── */
+  .card-back {
+    background: var(--white);
+    transform: rotateY(180deg);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto;
+    gap: .5rem;
+    padding: 1.2rem 1.4rem;
+    align-items: center;
+  }
+
+  .back-name-row {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+  .back-name {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--deep);
+    line-height: 1.1;
+  }
+  .back-title {
+    font-size: .65rem;
+    font-weight: 600;
+    color: var(--body);
+    margin-top: .15rem;
+    letter-spacing: .02em;
+  }
+
+  .qr-area {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+    padding-left: .8rem;
+    border-left: 1px solid #e8f1f5;
+  }
+  .qr-area canvas,
+  .qr-area img { width: 72px; height: 72px; border-radius: 4px; }
+  .qr-label {
+    font-size: .5rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--body);
+    opacity: .6;
+  }
+
+  .contact-links {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    text-decoration: none;
+    font-size: .7rem;
+    font-weight: 600;
+    color: var(--deep);
+    transition: color .15s;
+  }
+  .contact-link:hover { color: var(--brand); }
+  .contact-link .icon {
+    width: 18px; height: 18px;
+    background: var(--brand-pale);
+    border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-link .icon svg { width: 10px; height: 10px; }
+
+  .back-footer {
+    grid-column: 1;
+    grid-row: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .save-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    background: var(--brand);
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-size: .6rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 50px;
+    padding: .35rem .8rem;
+    cursor: pointer;
+    transition: background .15s, transform .1s;
+    text-decoration: none;
+  }
+  .save-btn:hover { background: var(--brand-dark); }
+  .save-btn:active { transform: scale(.97); }
+  .save-btn svg { width: 9px; height: 9px; }
+
+  .tap-back {
+    font-size: .55rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(90,112,128,.4);
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+  }
+  .tap-back::before { content: '↻'; font-size: .65rem; }
+
+  /* ── Below card ─────────────────────────────────────── */
+  .share-row {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: #fff;
+    color: var(--deep);
+    font-family: 'Nunito', sans-serif;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    border: 1.5px solid #d6e8f0;
+    border-radius: 50px;
+    padding: .45rem 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color .15s, color .15s;
+  }
+  .share-btn:hover { border-color: var(--brand); color: var(--brand); }
+  .share-btn svg { width: 13px; height: 13px; }
+
+  .site-link {
+    margin-top: 2rem;
+    font-size: .65rem;
+    font-weight: 600;
+    color: var(--body);
+    letter-spacing: .04em;
+  }
+  .site-link a { color: var(--brand); text-decoration: none; }
+  .site-link a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<p class="page-label">Digital Business Card</p>
+
+<div class="card-scene" id="card" role="button" aria-label="Tap to flip business card" tabindex="0">
+  <div class="card-inner">
+
+    <!-- FRONT -->
+    <div class="card-face card-front">
+      <div class="logo-row">
+        <svg viewBox="0 0 76 44" fill="none">
+          <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,.5)" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="wordmark">
+          <span>White</span>
+          <span>Cloud</span>
+        </div>
+      </div>
+
+      <div class="front-name">Jay Vera</div>
+
+      <div class="front-bottom">
+        <div class="front-title">Web Design &middot; Built for AI &middot; NZ</div>
+        <div class="tap-hint">Tap</div>
+      </div>
+    </div>
+
+    <!-- BACK -->
+    <div class="card-face card-back">
+
+      <div class="back-name-row">
+        <div class="back-name">Jay Vera</div>
+        <div class="back-title">Web Design &middot; Built for AI &middot; NZ</div>
+      </div>
+
+      <div class="contact-links">
+        <a href="mailto:kiaora@wcloud.nz" class="contact-link" onclick="event.stopPropagation()">
+          <span class="icon">
+            <svg viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="#7fa8be" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="#7fa8be" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </span>
+          kiaora@wcloud.nz
+        </a>
+        <a href="tel:+64210789895" class="contact-link" onclick="event.stopPropagation()">
+          <span class="icon">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M3 2h3l1.5 3.5-1.8 1.1a9 9 0 004.7 4.7l1.1-1.8L15 11v3a1 1 0 01-1 1C6.3 15 1 9.7 1 3a1 1 0 011-1z" stroke="#7fa8be" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          +64 21 078 9895
+        </a>
+        <a href="https://www.linkedin.com/in/jay-vera-6734453b8" target="_blank" rel="noopener" class="contact-link" onclick="event.stopPropagation()">
+          <span class="icon">
+            <svg viewBox="0 0 16 16" fill="#7fa8be"><path d="M3.5 2A1.5 1.5 0 102 3.5 1.5 1.5 0 003.5 2zM2 6h3v8H2zm5 0h2.8v1.1h.04A3.08 3.08 0 0112.6 5.8C15 5.8 15 7.8 15 9.5V14h-3v-4c0-1 0-2.2-1.4-2.2S9 11 9 11v3H6z"/></svg>
+          </span>
+          linkedin.com/in/jay-vera
+        </a>
+      </div>
+
+      <div class="qr-area">
+        <div id="qrcode"></div>
+        <div class="qr-label">wcloud.nz</div>
+      </div>
+
+      <div class="back-footer">
+        <button class="save-btn" id="saveBtn" onclick="event.stopPropagation(); saveContact()">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Save Contact
+        </button>
+        <div class="tap-back">Tap to flip</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="share-row">
+  <button class="share-btn" onclick="shareCard()">
+    <svg viewBox="0 0 16 16" fill="none"><circle cx="12" cy="3" r="2" stroke="currentColor" stroke-width="1.4"/><circle cx="4" cy="8" r="2" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="13" r="2" stroke="currentColor" stroke-width="1.4"/><path d="M6 7l4-3M6 9l4 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    Share Card
+  </button>
+  <a class="share-btn" href="https://wcloud.nz" target="_blank">
+    <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.4"/><path d="M8 2c-2 2-3 4-3 6s1 4 3 6M8 2c2 2 3 4 3 6s-1 4-3 6M2 8h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    wcloud.nz
+  </a>
+</div>
+
+<p class="site-link">Websites for NZ small businesses &mdash; <a href="https://wcloud.nz">wcloud.nz</a></p>
+
+<script>
+  // Flip card
+  const card = document.getElementById('card');
+  card.addEventListener('click', () => card.classList.toggle('flipped'));
+  card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') card.classList.toggle('flipped'); });
+
+  // Generate QR code
+  QRCode.toCanvas
+    ? QRCode.toCanvas(document.createElement('canvas'), 'https://wcloud.nz', { width: 72, margin: 1, color: { dark: '#2a3d4a', light: '#ffffff' } }, function(err, canvas) {
+        if (!err) document.getElementById('qrcode').appendChild(canvas);
+      })
+    : new QRCode(document.getElementById('qrcode'), {
+        text: 'https://wcloud.nz',
+        width: 72, height: 72,
+        colorDark: '#2a3d4a',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.M
+      });
+
+  // Save contact (.vcf)
+  function saveContact() {
+    const vcf = [
+      'BEGIN:VCARD',
+      'VERSION:3.0',
+      'FN:Jay Vera',
+      'ORG:White Cloud',
+      'TITLE:Web Designer',
+      'TEL;TYPE=CELL:+64210789895',
+      'EMAIL:kiaora@wcloud.nz',
+      'URL:https://wcloud.nz',
+      'ADR;TYPE=WORK:;;Christchurch;;Canterbury;;New Zealand',
+      'END:VCARD'
+    ].join('\r\n');
+    const blob = new Blob([vcf], { type: 'text/vcard' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'jay-white-cloud.vcf';
+    a.click();
+  }
+
+  // Share card
+  function shareCard() {
+    if (navigator.share) {
+      navigator.share({ title: 'Jay – White Cloud', text: 'Web Designer · Christchurch, NZ', url: 'https://wcloud.nz/card' });
+    } else {
+      navigator.clipboard.writeText('https://wcloud.nz/card').then(() => alert('Link copied to clipboard!'));
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -3,6 +3,26 @@
   command = ""
   functions = "netlify/functions"
 
+[[redirects]]
+  from = "/card"
+  to = "/card.html"
+  status = 200
+
+[[redirects]]
+  from = "/intake"
+  to = "/intake.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms.html"
+  status = 200
+
 [build.environment]
   NODE_VERSION = "20"
 

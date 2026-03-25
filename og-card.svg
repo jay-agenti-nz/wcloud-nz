@@ -21,35 +21,32 @@
   <circle cx="80"   cy="560" r="160" fill="#7fa8be" opacity="0.07"/>
   <circle cx="600"  cy="630" r="200" fill="#4d6e80" opacity="0.05"/>
 
-  <!-- Card — centred, standard biz card ratio, slight tilt -->
-  <g transform="rotate(-3, 600, 315)" filter="url(#shadow)">
-    <rect x="320" y="138" width="560" height="354" rx="22" fill="url(#card)"/>
+  <!-- Card — smaller, well-padded, centred -->
+  <g transform="rotate(-2, 600, 315)" filter="url(#shadow)">
+    <rect x="260" y="135" width="680" height="360" rx="24" fill="url(#card)"/>
 
     <!-- Decorative blobs on card -->
-    <circle cx="820" cy="165" r="110" fill="white" opacity="0.05"/>
-    <circle cx="340" cy="460" r="80"  fill="white" opacity="0.04"/>
+    <circle cx="880" cy="160" r="120" fill="white" opacity="0.05"/>
+    <circle cx="275" cy="470" r="90"  fill="white" opacity="0.04"/>
 
     <!-- Wave logo -->
-    <path d="M358 208 C376 186,394 228,412 206 C430 186,448 220,466 202" stroke="white" stroke-width="5"   stroke-linecap="round" fill="none"/>
-    <path d="M358 220 C378 197,398 240,418 218 C438 198,456 228,474 212" stroke="white" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.45"/>
+    <path d="M296 192 C314 172,332 210,350 190 C368 172,386 206,404 188" stroke="white" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+    <path d="M296 204 C316 183,336 222,356 202 C376 183,392 212,410 197" stroke="white" stroke-width="3"   stroke-linecap="round" fill="none" opacity="0.45"/>
 
     <!-- Wordmark -->
-    <text x="488" y="210" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="white" letter-spacing="5">WHITE</text>
-    <text x="488" y="226" font-family="Arial,sans-serif" font-weight="600" font-size="12" fill="white" opacity="0.55" letter-spacing="5">CLOUD</text>
+    <text x="422" y="194" font-family="Arial,sans-serif" font-weight="700" font-size="11" fill="white" letter-spacing="4">WHITE</text>
+    <text x="422" y="208" font-family="Arial,sans-serif" font-weight="600" font-size="11" fill="white" opacity="0.55" letter-spacing="4">CLOUD</text>
 
     <!-- Name -->
-    <text x="358" y="328" font-family="Georgia,serif" font-weight="700" font-size="52" fill="white">Jay Vera</text>
+    <text x="296" y="320" font-family="Georgia,serif" font-weight="700" font-size="58" fill="white">Jay Vera</text>
 
     <!-- Title -->
-    <text x="360" y="378" font-family="Arial,sans-serif" font-weight="600" font-size="18" fill="white" opacity="0.78" letter-spacing="0.5">Web Design · Built for AI · Christchurch, NZ</text>
+    <text x="298" y="368" font-family="Arial,sans-serif" font-weight="600" font-size="17" fill="white" opacity="0.80">Web Design · Built for AI · Christchurch, NZ</text>
 
     <!-- URL bottom right -->
-    <text x="862" y="465" font-family="Arial,sans-serif" font-weight="600" font-size="13" fill="white" opacity="0.45" text-anchor="end" letter-spacing="0.5">wcloud.nz</text>
-
-    <!-- Tap hint -->
-    <text x="862" y="446" font-family="Arial,sans-serif" font-weight="600" font-size="11" fill="white" opacity="0.35" text-anchor="end">Tap to flip ↻</text>
+    <text x="920" y="472" font-family="Arial,sans-serif" font-weight="600" font-size="13" fill="white" opacity="0.40" text-anchor="end">wcloud.nz</text>
   </g>
 
   <!-- Bottom label -->
-  <text x="600" y="600" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="#4d6e80" text-anchor="middle" letter-spacing="4" opacity="0.6">DIGITAL BUSINESS CARD · WCLOUD.NZ/CARD</text>
+  <text x="600" y="606" font-family="Arial,sans-serif" font-weight="700" font-size="11" fill="#4d6e80" text-anchor="middle" letter-spacing="4" opacity="0.55">DIGITAL BUSINESS CARD · WCLOUD.NZ/CARD</text>
 </svg>

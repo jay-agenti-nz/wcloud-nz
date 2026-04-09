@@ -6,23 +6,29 @@ Keep your tone warm, friendly, and approachable — a little NZ flavour is welco
 
 If someone is ready to move forward, point them to the intake form at wcloud.nz/intake.`;
 
-exports.handler = async (event) => {
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
+export default async (req) => {
+  if (req.method !== 'POST') {
+    return new Response('Method Not Allowed', { status: 405 });
   }
 
   let messages;
   try {
-    ({ messages } = JSON.parse(event.body));
+    ({ messages } = await req.json());
   } catch {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Invalid JSON' }) };
+    return new Response(JSON.stringify({ error: 'Invalid JSON' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
   if (!Array.isArray(messages) || messages.length === 0) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'No messages provided' }) };
+    return new Response(JSON.stringify({ error: 'No messages provided' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = Netlify.env.get('GEMINI_API_KEY');
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
   try {
@@ -39,25 +45,25 @@ exports.handler = async (event) => {
 
     if (!response.ok) {
       console.error('Gemini API error:', JSON.stringify(data));
-      return {
-        statusCode: 502,
-        body: JSON.stringify({ reply: 'Sorry, something went wrong on my end. Please try again.' }),
-      };
+      return new Response(
+        JSON.stringify({ reply: 'Sorry, something went wrong on my end. Please try again.' }),
+        { status: 502, headers: { 'Content-Type': 'application/json' } }
+      );
     }
 
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text
-      ?? 'Sorry, I couldn\'t generate a response. Please try again.';
+    const reply =
+      data.candidates?.[0]?.content?.parts?.[0]?.text ??
+      "Sorry, I couldn't generate a response. Please try again.";
 
-    return {
-      statusCode: 200,
+    return new Response(JSON.stringify({ reply }), {
+      status: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ reply }),
-    };
+    });
   } catch (err) {
     console.error('chat function error:', err);
-    return {
-      statusCode: 502,
-      body: JSON.stringify({ reply: 'Sorry, something went wrong. Please try again in a moment.' }),
-    };
+    return new Response(
+      JSON.stringify({ reply: 'Sorry, something went wrong. Please try again in a moment.' }),
+      { status: 502, headers: { 'Content-Type': 'application/json' } }
+    );
   }
 };

@@ -46,8 +46,8 @@ export default async (req) => {
     if (!response.ok) {
       console.error('Gemini API error:', JSON.stringify(data));
       return new Response(
-        JSON.stringify({ reply: 'Sorry, something went wrong on my end. Please try again.' }),
-        { status: 502, headers: { 'Content-Type': 'application/json' } }
+        JSON.stringify({ reply: `DEBUG ${response.status}: ${JSON.stringify(data).substring(0, 200)}` }),
+        { status: 200, headers: { 'Content-Type': 'application/json' } }
       );
     }
 

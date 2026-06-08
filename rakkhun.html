@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Redesign — Rakkhun Thai Restaurant</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #7fa8be;
+    --brand-light: #c8dce6;
+    --brand-pale: #eaf3f7;
+    --brand-mist: #d6e8f0;
+    --white: #ffffff;
+    --deep: #2a3d4a;
+    --body: #5a7080;
+    --dusk: #4d6e80;
+    --sage: #6bbf9e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Nunito', sans-serif; background: #f5f9fb; color: var(--deep); font-size: 16px; line-height: 1.75; }
+
+  /* NAV */
+  nav { background: var(--brand); padding: 1rem 6%; display: flex; align-items: center; }
+  .logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+  .logo svg { width: 36px; height: 20px; }
+  .logo-wm { display: flex; flex-direction: column; line-height: 1.15; }
+  .logo-wm span { font-family: 'Raleway', sans-serif; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; font-size: .68rem; color: #fff; display: block; }
+  .logo-wm span:last-child { color: rgba(255,255,255,.6); }
+
+  /* HERO */
+  .hero { background: var(--brand); padding: 2.5rem 6% 3.5rem; }
+  .hero-inner { max-width: 720px; }
+  .hero-tag { display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,255,255,.15); color: rgba(255,255,255,.9); font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: .35rem 1rem; border-radius: 50px; margin-bottom: 1.2rem; }
+  .hero h1 { font-family: 'Lora', serif; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; color: #fff; line-height: 1.2; }
+  .hero h1 em { font-style: italic; color: rgba(255,255,255,.7); }
+  .hero p { color: rgba(255,255,255,.65); margin-top: .8rem; font-size: .92rem; font-weight: 500; max-width: 540px; line-height: 1.8; }
+
+  /* PROGRESS */
+  .progress-wrap { background: var(--brand-pale); border-bottom: 1px solid var(--brand-mist); padding: 1rem 6%; position: sticky; top: 0; z-index: 50; }
+  .progress-inner { max-width: 720px; margin: 0 auto; display: flex; align-items: center; gap: 1.5rem; }
+  .progress-steps { display: flex; gap: .6rem; align-items: center; }
+  .prog-step { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--body); opacity: .45; transition: opacity .3s; }
+  .prog-step.active { color: var(--brand); opacity: 1; }
+  .prog-step.done { color: var(--sage); opacity: 1; }
+  .prog-divider { width: 24px; height: 1.5px; background: var(--brand-mist); }
+  .progress-bar-wrap { flex: 1; }
+  .progress-bar { height: 5px; background: var(--brand-mist); border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(to right, var(--brand), var(--sage)); border-radius: 3px; transition: width .5s ease; }
+
+  /* FORM WRAPPER */
+  .form-wrap { max-width: 720px; margin: 0 auto; padding: 3rem 6% 6rem; }
+
+  /* PAGE */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* SECTION HEADERS within page 1 */
+  .sec-head { margin: 2.5rem 0 1.5rem; padding-bottom: .8rem; border-bottom: 2px solid var(--brand-mist); }
+  .sec-head:first-child { margin-top: 0; }
+  .sec-head h2 { font-family: 'Lora', serif; font-size: 1.35rem; font-weight: 700; color: var(--deep); }
+  .sec-head p { color: var(--body); font-size: .88rem; font-weight: 500; margin-top: .25rem; }
+
+  /* FIELDS */
+  .field { margin-bottom: 1.4rem; }
+  .field label { display: block; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--dusk); margin-bottom: .45rem; }
+  .field label .opt { font-weight: 500; color: var(--body); text-transform: none; letter-spacing: 0; font-size: .72rem; }
+  .field input, .field select, .field textarea {
+    width: 100%; padding: .85rem 1.1rem;
+    border: 1.5px solid var(--brand-mist); border-radius: 12px;
+    font-family: 'Nunito', sans-serif; font-size: .95rem; font-weight: 500;
+    color: var(--deep); background: var(--white);
+    transition: border-color .2s, box-shadow .2s; outline: none;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    border-color: var(--brand); box-shadow: 0 0 0 3px rgba(127,168,190,.15);
+  }
+  .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237fa8be' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; cursor: pointer; }
+  .field textarea { resize: vertical; min-height: 110px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* CHECKBOX GROUP — multi-select options */
+  .check-group { display: flex; flex-direction: column; gap: .5rem; }
+  .check-item { display: flex; align-items: center; gap: .7rem; background: var(--white); border: 1.5px solid var(--brand-mist); border-radius: 10px; padding: .7rem 1rem; cursor: pointer; transition: border-color .2s, background .2s; }
+  .check-item:hover { border-color: var(--brand); background: var(--brand-pale); }
+  .check-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--brand); cursor: pointer; flex-shrink: 0; }
+  .check-item span { font-size: .88rem; font-weight: 600; color: var(--deep); }
+
+  /* HINT */
+  .hint { font-size: .78rem; color: var(--body); font-weight: 500; margin-top: .4rem; line-height: 1.6; }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1.5px solid var(--brand-mist); margin: 2rem 0; }
+
+  /* INFO BOX */
+  .info-box { background: var(--brand-pale); border: 1.5px solid var(--brand-mist); border-radius: 14px; padding: 1.2rem 1.4rem; margin-bottom: 1.4rem; }
+  .info-box p { font-size: .88rem; color: var(--body); font-weight: 500; line-height: 1.7; }
+  .info-box strong { color: var(--deep); }
+  .info-box a { color: var(--brand); font-weight: 700; }
+
+  /* HOW-TO STEPS */
+  .how-to { display: flex; flex-direction: column; gap: .9rem; margin-top: 1rem; }
+  .how-to-step { display: flex; gap: 1rem; align-items: flex-start; }
+  .how-to-num { width: 26px; height: 26px; background: var(--brand); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-top: .2rem; }
+  .how-to-body { font-size: .86rem; color: var(--body); font-weight: 500; line-height: 1.65; }
+  .how-to-body strong { color: var(--deep); }
+  .how-to-body a { color: var(--brand); font-weight: 700; }
+
+  /* PAYMENT CARD */
+  .payment-card { background: var(--white); border: 2px solid var(--brand); border-radius: 18px; padding: 2rem; margin-bottom: 1.5rem; }
+  .payment-card .ptier { font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--brand); margin-bottom: .5rem; }
+  .payment-card .amounts { display: flex; gap: 2rem; align-items: flex-end; margin-bottom: .3rem; flex-wrap: wrap; }
+  .payment-card .amt-block { display: flex; flex-direction: column; }
+  .payment-card .amt-label { font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--body); margin-bottom: .2rem; }
+  .payment-card .amt-num { font-family: 'Lora', serif; font-size: 2.6rem; font-weight: 700; color: var(--deep); line-height: 1; }
+  .payment-card .amt-num sup { font-size: 1rem; vertical-align: top; margin-top: .55rem; display: inline-block; }
+  .payment-card .amt-num.secondary { font-size: 1.8rem; color: var(--body); }
+  .payment-card .payment-note { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--brand-mist); font-size: .85rem; color: var(--body); font-weight: 500; line-height: 1.7; }
+  .payment-card .payment-note strong { color: var(--deep); }
+
+  /* T&Cs */
+  .tc-wrap { margin-bottom: 1.5rem; }
+  .tc-title { font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 700; color: var(--deep); margin-bottom: 1rem; }
+  .tc-item { display: flex; align-items: flex-start; gap: .9rem; background: var(--white); border: 1.5px solid var(--brand-mist); border-radius: 12px; padding: 1rem 1.1rem; margin-bottom: .7rem; cursor: pointer; transition: border-color .25s, background .25s; }
+  .tc-item:hover { border-color: var(--brand-light); background: var(--brand-pale); }
+  .tc-item.checked { border-color: var(--sage); background: #f0faf6; }
+  .tc-item input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--sage); cursor: pointer; flex-shrink: 0; margin-top: .18rem; }
+  .tc-item-body { flex: 1; }
+  .tc-item-title { font-size: .82rem; font-weight: 800; color: var(--deep); margin-bottom: .2rem; letter-spacing: .02em; }
+  .tc-item-desc { font-size: .82rem; color: var(--body); font-weight: 500; line-height: 1.65; }
+  .tc-counter { font-size: .76rem; font-weight: 700; color: var(--body); margin-bottom: .8rem; }
+  .tc-counter span { color: var(--sage); font-weight: 800; }
+
+  /* BUTTONS */
+  .btn-row { display: flex; gap: 1rem; margin-top: 2rem; align-items: center; flex-wrap: wrap; }
+  .btn-next { background: var(--brand); color: #fff; border: none; padding: .9rem 2.4rem; border-radius: 50px; font-family: 'Nunito', sans-serif; font-size: .85rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: background .25s, transform .2s, box-shadow .2s; box-shadow: 0 6px 24px rgba(127,168,190,.35); }
+  .btn-next:hover { background: var(--dusk); transform: translateY(-2px); }
+  .btn-back { background: none; border: 1.5px solid var(--brand-mist); color: var(--body); padding: .85rem 1.8rem; border-radius: 50px; font-family: 'Nunito', sans-serif; font-size: .85rem; font-weight: 700; letter-spacing: .08em; cursor: pointer; transition: all .2s; }
+  .btn-back:hover { border-color: var(--brand); color: var(--brand); }
+  .btn-submit { background: var(--sage); color: #fff; border: none; padding: .9rem 2.4rem; border-radius: 50px; font-family: 'Nunito', sans-serif; font-size: .85rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: all .25s; box-shadow: 0 6px 24px rgba(107,191,158,.35); opacity: .5; pointer-events: none; }
+  .btn-submit.ready { opacity: 1; pointer-events: auto; }
+  .btn-submit.ready:hover { background: #5aac8a; transform: translateY(-2px); }
+
+  /* SUCCESS */
+  .success-screen { display: none; text-align: center; padding: 3rem 1rem; }
+  .success-screen.show { display: block; }
+  .success-icon { font-size: 4rem; margin-bottom: 1.2rem; display: block; }
+  .success-screen h2 { font-family: 'Lora', serif; font-size: 2rem; font-weight: 700; color: var(--deep); margin-bottom: .8rem; }
+  .success-screen p { color: var(--body); font-size: 1rem; font-weight: 500; line-height: 1.8; max-width: 480px; margin: 0 auto 1rem; }
+  .success-drive { background: var(--brand-pale); border: 1.5px solid var(--brand-mist); border-radius: 16px; padding: 1.5rem; max-width: 480px; margin: 1.5rem auto 0; text-align: left; }
+  .success-drive h4 { font-family: 'Lora', serif; font-size: 1rem; font-weight: 700; color: var(--deep); margin-bottom: .8rem; }
+  .success-drive ol { padding-left: 1.3rem; }
+  .success-drive ol li { font-size: .88rem; color: var(--body); font-weight: 500; margin-bottom: .5rem; line-height: 1.6; }
+  .success-drive a { color: var(--brand); font-weight: 700; }
+
+  /* FOOTER */
+  footer { background: #1c2e38; padding: 1.8rem 6%; color: rgba(255,255,255,.35); font-size: .78rem; font-weight: 600; text-align: center; }
+  footer a { color: rgba(255,255,255,.4); text-decoration: none; }
+  footer a:hover { color: rgba(255,255,255,.7); }
+
+  @media (max-width: 600px) {
+    .field-row { grid-template-columns: 1fr; }
+    .form-wrap { padding: 2rem 5% 5rem; }
+    .progress-inner { flex-direction: column; align-items: flex-start; gap: .6rem; }
+    .payment-card .amounts { gap: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://wcloud.nz" class="logo">
+    <svg viewBox="0 0 76 44" fill="none">
+      <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,.5)" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <div class="logo-wm"><span>WHITE</span><span>CLOUD</span></div>
+  </a>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">🍜 Rakkhun Thai Restaurant</div>
+    <h1>Let's build your <em>new website.</em></h1>
+    <p>Fill in as much as you can — nothing here is make-or-break. Jay will follow up personally once you submit.</p>
+  </div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-steps">
+      <div class="prog-step active" id="prog1">Your Details</div>
+      <div class="prog-divider"></div>
+      <div class="prog-step" id="prog2">Payment &amp; T&amp;Cs</div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:50%"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="form-wrap">
+  <form id="intakeForm">
+    <input type="hidden" name="form-name" value="rakkhun-intake">
+    <p style="display:none"><input name="bot-field"></p>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- PAGE 1: All Questions                        -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="page active" id="page1">
+
+      <!-- About the Restaurant -->
+      <div class="sec-head">
+        <h2>🏮 About Rakkhun</h2>
+        <p>Tell us about your restaurant so we can capture what makes it special.</p>
+      </div>
+
+      <div class="field">
+        <label>Restaurant Name *</label>
+        <input type="text" name="restaurant_name" placeholder="e.g. Rakkhun Thai Restaurant" required>
+      </div>
+
+      <div class="field">
+        <label>Tagline or Motto <span class="opt">(optional)</span></label>
+        <input type="text" name="tagline" placeholder="e.g. Authentic Thai, made with heart">
+      </div>
+
+      <div class="field">
+        <label>Address *</label>
+        <input type="text" name="location" placeholder="e.g. 123 Colombo Street, Christchurch" required>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Opening Hours *</label>
+          <textarea name="hours" placeholder="e.g. Mon–Fri 11am–9pm&#10;Sat–Sun 12pm–10pm" style="min-height:80px" required></textarea>
+        </div>
+        <div class="field">
+          <label>How long have you been open? *</label>
+          <select name="years_open" required>
+            <option value="" disabled selected>Select…</option>
+            <option>Less than 1 year</option>
+            <option>1–2 years</option>
+            <option>3–5 years</option>
+            <option>6–10 years</option>
+            <option>10+ years</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Describe your restaurant in 2–3 sentences *</label>
+        <textarea name="description" placeholder="e.g. We serve traditional Thai dishes using recipes passed down through generations. Everything is made fresh daily…" required></textarea>
+        <p class="hint">Don't overthink it — just describe it as if you were telling a friend.</p>
+      </div>
+
+      <div class="field">
+        <label>What makes Rakkhun different? *</label>
+        <textarea name="difference" placeholder="e.g. Authentic regional recipes, a warm family atmosphere, dishes you won't find at chain restaurants…" required></textarea>
+      </div>
+
+      <!-- Menu & Dining -->
+      <div class="sec-head">
+        <h2>🍽️ Menu & Dining</h2>
+        <p>Help us show off your food and what customers can expect.</p>
+      </div>
+
+      <div class="field">
+        <label>Most popular dishes *</label>
+        <textarea name="popular_dishes" placeholder="e.g. Pad Thai, Green Curry, Tom Yum soup, Mango sticky rice…" required></textarea>
+        <p class="hint">These will be highlighted on your website — list as many as you like.</p>
+      </div>
+
+      <div class="field">
+        <label>Dining options you offer</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="dining[]" value="Dine in"> <span>🍽️ Dine in</span></label>
+          <label class="check-item"><input type="checkbox" name="dining[]" value="Takeaway"> <span>🥡 Takeaway</span></label>
+          <label class="check-item"><input type="checkbox" name="dining[]" value="Delivery"> <span>🛵 Delivery (e.g. Uber Eats, DoorDash)</span></label>
+          <label class="check-item"><input type="checkbox" name="dining[]" value="Catering"> <span>🎉 Catering for events</span></label>
+          <label class="check-item"><input type="checkbox" name="dining[]" value="Private dining / group bookings"> <span>👥 Private dining / group bookings</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Do you take reservations? *</label>
+        <select name="reservations" required>
+          <option value="" disabled selected>Select…</option>
+          <option>Yes — by phone</option>
+          <option>Yes — by phone and online</option>
+          <option>Walk-ins only</option>
+          <option>Both walk-ins and reservations</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Dietary options to highlight <span class="opt">(optional)</span></label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="dietary[]" value="Vegetarian"> <span>🌿 Vegetarian options</span></label>
+          <label class="check-item"><input type="checkbox" name="dietary[]" value="Vegan"> <span>🌱 Vegan options</span></label>
+          <label class="check-item"><input type="checkbox" name="dietary[]" value="Gluten-free"> <span>🌾 Gluten-free options</span></label>
+          <label class="check-item"><input type="checkbox" name="dietary[]" value="Halal"> <span>✅ Halal</span></label>
+          <label class="check-item"><input type="checkbox" name="dietary[]" value="Nut-free"> <span>🥜 Nut-free options available</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Online menu link <span class="opt">(optional)</span></label>
+        <input type="text" name="menu_link" placeholder="e.g. https://rakkhun.co.nz/menu — or leave blank">
+      </div>
+
+      <!-- Branding & Style -->
+      <div class="sec-head">
+        <h2>🎨 Branding & Style</h2>
+        <p>Help us nail the look and feel of your new site.</p>
+      </div>
+
+      <div class="field">
+        <label>Do you have a logo? *</label>
+        <select name="has_logo" required>
+          <option value="" disabled selected>Select…</option>
+          <option>Yes — I'll upload it</option>
+          <option>Yes — but it needs updating</option>
+          <option>No — I need one designed</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Brand colours <span class="opt">(optional)</span></label>
+        <input type="text" name="brand_colours" placeholder="e.g. Deep red, gold, and cream — or I'm not sure yet">
+      </div>
+
+      <div class="field">
+        <label>What vibe do you want the website to have?</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="vibe[]" value="Warm and welcoming"> <span>🤗 Warm and welcoming</span></label>
+          <label class="check-item"><input type="checkbox" name="vibe[]" value="Modern and sleek"> <span>✨ Modern and sleek</span></label>
+          <label class="check-item"><input type="checkbox" name="vibe[]" value="Traditional and authentic"> <span>🏮 Traditional and authentic Thai</span></label>
+          <label class="check-item"><input type="checkbox" name="vibe[]" value="Casual and fun"> <span>😄 Casual and fun</span></label>
+          <label class="check-item"><input type="checkbox" name="vibe[]" value="Upscale and refined"> <span>🍷 Upscale and refined</span></label>
+          <label class="check-item"><input type="checkbox" name="vibe[]" value="Family friendly"> <span>👨‍👩‍👧 Family friendly</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Any websites you love the look of? <span class="opt">(optional)</span></label>
+        <textarea name="inspo_sites" placeholder="e.g. https://example.co.nz — I love how clean it is" style="min-height:80px"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Do you have photos of your restaurant or food? *</label>
+        <select name="has_photos" required>
+          <option value="" disabled selected>Select…</option>
+          <option>Yes — lots of good ones</option>
+          <option>A few — could use more</option>
+          <option>No — I need help sourcing some</option>
+        </select>
+        <p class="hint">Great food photography makes a huge difference. If you don't have photos, we can source quality stock images — but note that AI-generated images are available at an additional cost if needed (see T&Cs on the next page).</p>
+      </div>
+
+      <div class="field">
+        <label>Testimonials or Google reviews to feature <span class="opt">(optional)</span></label>
+        <textarea name="reviews" placeholder="Paste 2–3 of your favourite customer reviews here…" style="min-height:80px"></textarea>
+      </div>
+
+      <!-- Contact & Social -->
+      <div class="sec-head">
+        <h2>📞 Contact & Social</h2>
+        <p>The details customers need to find you, book a table, or follow along.</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Your Name *</label>
+          <input type="text" name="contact_name" placeholder="e.g. Nook" required>
+        </div>
+        <div class="field">
+          <label>Your Email *</label>
+          <input type="email" name="email" placeholder="hello@rakkhun.co.nz" required>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Your Phone *</label>
+          <input type="tel" name="phone" placeholder="e.g. 021 123 4567" required>
+        </div>
+        <div class="field">
+          <label>Restaurant Phone <span class="opt">(if different)</span></label>
+          <input type="tel" name="restaurant_phone" placeholder="e.g. 03 123 4567">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Google Business Profile link <span class="opt">(optional)</span></label>
+        <input type="url" name="google_business" placeholder="e.g. https://g.page/rakkhun">
+        <p class="hint">Search your restaurant on Google Maps — the link in your browser is what we need.</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Facebook <span class="opt">(optional)</span></label>
+          <input type="url" name="facebook" placeholder="https://facebook.com/…">
+        </div>
+        <div class="field">
+          <label>Instagram <span class="opt">(optional)</span></label>
+          <input type="url" name="instagram" placeholder="https://instagram.com/…">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Delivery platform links <span class="opt">(optional)</span></label>
+        <input type="text" name="delivery_links" placeholder="e.g. Uber Eats: https://… / DoorDash: https://…">
+      </div>
+
+      <!-- Files -->
+      <div class="sec-head">
+        <h2>📁 Your Files</h2>
+        <p>Share your logo, photos, and any other assets using Google Drive.</p>
+      </div>
+
+      <div class="info-box">
+        <p><strong>How to share your files with Jay — 3 easy steps:</strong></p>
+        <div class="how-to">
+          <div class="how-to-step">
+            <div class="how-to-num">1</div>
+            <div class="how-to-body">
+              <strong>Open Google Drive</strong><br>
+              Go to <a href="https://drive.google.com" target="_blank">drive.google.com</a> and sign in. No Google account? Just email your files to <a href="mailto:kiaora@wcloud.nz">kiaora@wcloud.nz</a> instead.
+            </div>
+          </div>
+          <div class="how-to-step">
+            <div class="how-to-num">2</div>
+            <div class="how-to-body">
+              <strong>Upload your files</strong><br>
+              Click <strong>+ New → File upload</strong> and select your logo, food photos, or menu PDF. You can select multiple files at once.
+            </div>
+          </div>
+          <div class="how-to-step">
+            <div class="how-to-num">3</div>
+            <div class="how-to-body">
+              <strong>Set sharing to "Anyone with the link"</strong><br>
+              Right-click your folder → <strong>Share</strong> → under General access, tap <strong>"Anyone with the link"</strong> → tap the link icon to copy it → paste it below.
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:1rem; font-size:.82rem;">💡 <strong>No files yet?</strong> No problem — skip this for now and send them through later.</p>
+      </div>
+
+      <div class="field">
+        <label>Google Drive folder link <span class="opt">(optional)</span></label>
+        <input type="url" name="drive_link" placeholder="https://drive.google.com/drive/folders/…">
+        <p class="hint">⚠️ Make sure sharing is set to <strong>"Anyone with the link"</strong> — otherwise Jay won't be able to open it.</p>
+      </div>
+
+      <div class="field">
+        <label>Anything else you'd like us to know? <span class="opt">(optional)</span></label>
+        <textarea name="anything_else" placeholder="e.g. We're launching a new menu in August so timing matters…" style="min-height:90px"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-next" onclick="goToPage2()">Next — Payment & T&Cs →</button>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- PAGE 2: Payment & T&Cs                      -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="page" id="page2">
+
+      <div class="sec-head" style="margin-top:0">
+        <h2>💳 Payment Summary</h2>
+        <p>Here's what's due to get started.</p>
+      </div>
+
+      <div class="payment-card">
+        <div class="ptier">Full Website Redesign — Rakkhun Thai Restaurant</div>
+        <div class="amounts">
+          <div class="amt-block">
+            <div class="amt-label">Deposit due now</div>
+            <div class="amt-num"><sup>NZ$</sup>400</div>
+          </div>
+          <div class="amt-block">
+            <div class="amt-label">Balance on completion</div>
+            <div class="amt-num secondary"><sup>NZ$</sup>399</div>
+          </div>
+          <div class="amt-block">
+            <div class="amt-label">Total project</div>
+            <div class="amt-num secondary"><sup>NZ$</sup>799</div>
+          </div>
+        </div>
+        <div class="payment-note">
+          <strong>How to pay:</strong> Once you submit this form, Jay will email you bank transfer details within 1 business day. Work begins as soon as the deposit clears.<br><br>
+          <strong>Balance:</strong> The remaining NZ$399 is due when your new website is ready for your review — nothing goes live until it's paid.
+        </div>
+      </div>
+
+      <!-- T&Cs -->
+      <div class="tc-wrap">
+        <div class="tc-title">📋 Terms & Conditions</div>
+        <p style="font-size:.85rem; color:var(--body); font-weight:500; margin-bottom:1rem; line-height:1.7;">Please read and tick each item below. These protect both of us and make sure we're on the same page before we start.</p>
+
+        <div class="tc-counter">Agreed: <span id="tcCount">0</span> of 7</div>
+
+        <label class="tc-item" onclick="updateTC(this)">
+          <input type="checkbox" name="tc_revisions" value="agreed" required>
+          <div class="tc-item-body">
+            <div class="tc-item-title">✏️ 3 Revision Rounds Included</div>
+            <div class="tc-item-desc">Your package includes 3 rounds of revisions. A revision round is one consolidated set of changes sent at one time. Additional revision rounds beyond this are charged at NZ$75 per round.</div>
+          </div>
+        </label>
+
+        <label class="tc-item" onclick="updateTC(this)">
+          <input type="checkbox" name="tc_extra_edits" value="agreed" required>
+          <div class="tc-item-body">
+            <div class="tc-item-title">🔧 Extra Editing After Sign-Off</div>
+            <div class="tc-item-desc">Once you have approved the final website and it is live, any further changes or edits requested after the 30-day post-launch period will be quoted and charged separately. Consider a monthly care plan for ongoing updates.</div>
+          </div>
+        </label>
+
+        <label class="tc-item" onclick="updateTC(this)">
+          <input type="checkbox" name="tc_ai_content" value="agreed" required>
+          <div class="tc-item-body">
+            <div class="tc-item-title">🤖 AI-Generated Content & Images</div>
+            <div class="tc-item-desc">If you provide your own photos, copy, or content, there is no extra charge. If AI-generated images or written content are required, an additional fee will be discussed and agreed before any AI content is used.</div>
+          </div>
+        </label>
+
+        <label class="tc-item" onclick="updateTC(this)">
+          <input type="checkbox" name="tc_deposit" value="agreed" required>
+          <div class="tc-item-body">
+            <div class="tc-item-title">💳 Deposit is Non-Refundable</div>
+            <div class="tc-item-desc">The NZ$400 deposit is non-refundable once work has commenced. If you cancel before work begins, your deposit will be refunded in full. The remaining balance is due before the website goes live.</div>
+          </div>
+        </label>
+
+        <label class="tc-item" onclick="updateTC(this)">
+          <input type="checkbox" name="tc_timeline" value="agreed" required>
+          <div class="tc-item-body">
+            <div class="tc-item-title">⏱️ Timeline Depends on You Too</div>
+            <div class="tc-item-desc">We aim to deliver your preview within 7–10 business days. However, if content, photos, or feedback are delayed on your end, the delivery timeline will shift accordingly. We'll always keep you informed.</div>
+          </div>
+        </label>
+
+        <label class="tc-item" onclick="updateTC(this)">
+          <input type="checkbox" name="tc_content_rights" value="agreed" required>
+          <div class="tc-item-body">
+            <div class="tc-item-title">📸 You Own Your Content</div>
+            <div class="tc-item-desc">By submitting photos, logos, or written content, you confirm that you own them or have the right to use them. White Cloud is not responsible for any third-party copyright claims arising from content you supply.</div>
+          </div>
+        </label>
+
+        <label class="tc-item" onclick="updateTC(this)">
+          <input type="checkbox" name="tc_platform" value="agreed" required>
+          <div class="tc-item-body">
+            <div class="tc-item-title">🌐 Platform Limitations (Crazy Domains Builder)</div>
+            <div class="tc-item-desc">Your website will be built inside the Crazy Domains Website Builder as requested. Some design features may be limited by what their platform allows. We'll always work to get the best possible result within those constraints.</div>
+          </div>
+        </label>
+
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-back" onclick="goToPage1()">← Back</button>
+        <button type="submit" class="btn-submit" id="submitBtn">Submit & Get Started 🎉</button>
+      </div>
+
+    </div>
+  </form>
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="successScreen">
+    <span class="success-icon">🎉</span>
+    <h2>You're all set — thanks!</h2>
+    <p>Jay will be in touch within <strong>1 business day</strong> with payment details. Once your deposit clears, we get started on your new website straight away.</p>
+
+    <div class="success-drive">
+      <h4>📁 Share your files while you wait</h4>
+      <ol>
+        <li>Go to <a href="https://drive.google.com" target="_blank">drive.google.com</a> and upload your logo, food photos, and menu PDF.</li>
+        <li>Right-click your folder → <strong>Share</strong> → set to <strong>"Anyone with the link"</strong> → copy the link.</li>
+        <li>Reply to Jay's email with the link and you're done!</li>
+      </ol>
+      <p style="margin-top:.8rem; font-size:.82rem; color:var(--body);">No files ready yet? No worries — send them through whenever you do.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="https://wcloud.nz">White Cloud</a> · Simple websites for small businesses · Christchurch, NZ · All prices NZD incl. GST where applicable
+</footer>
+
+<script>
+  var TC_TOTAL = 7;
+
+  function goToPage2() {
+    // Validate required fields on page 1
+    var page1 = document.getElementById('page1');
+    var required = page1.querySelectorAll('[required]');
+    var valid = true;
+    required.forEach(function(el) {
+      if (!el.value.trim()) {
+        el.style.borderColor = '#e87070';
+        valid = false;
+        el.addEventListener('input', function() { el.style.borderColor = ''; }, { once: true });
+        el.addEventListener('change', function() { el.style.borderColor = ''; }, { once: true });
+      }
+    });
+    if (!valid) {
+      // Scroll to first error
+      var firstErr = page1.querySelector('[style*="e87070"]');
+      if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    document.getElementById('page1').classList.remove('active');
+    document.getElementById('page2').classList.add('active');
+    document.getElementById('prog1').classList.remove('active');
+    document.getElementById('prog1').classList.add('done');
+    document.getElementById('prog2').classList.add('active');
+    document.getElementById('progressFill').style.width = '100%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goToPage1() {
+    document.getElementById('page2').classList.remove('active');
+    document.getElementById('page1').classList.add('active');
+    document.getElementById('prog2').classList.remove('active');
+    document.getElementById('prog1').classList.remove('done');
+    document.getElementById('prog1').classList.add('active');
+    document.getElementById('progressFill').style.width = '50%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function updateTC(label) {
+    setTimeout(function() {
+      var cb = label.querySelector('input[type="checkbox"]');
+      if (cb.checked) {
+        label.classList.add('checked');
+      } else {
+        label.classList.remove('checked');
+      }
+      var checked = document.querySelectorAll('.tc-item input[type="checkbox"]:checked').length;
+      document.getElementById('tcCount').textContent = checked;
+      var submitBtn = document.getElementById('submitBtn');
+      if (checked === TC_TOTAL) {
+        submitBtn.classList.add('ready');
+      } else {
+        submitBtn.classList.remove('ready');
+      }
+    }, 0);
+  }
+
+  // Form submit
+  document.getElementById('intakeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var checked = document.querySelectorAll('.tc-item input[type="checkbox"]:checked').length;
+    if (checked < TC_TOTAL) return;
+    var form = this;
+    var data = new FormData(form);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data).toString()
+    }).then(function() {
+      document.querySelector('.form-wrap form').style.display = 'none';
+      document.getElementById('successScreen').classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }).catch(function() {
+      document.querySelector('.form-wrap form').style.display = 'none';
+      document.getElementById('successScreen').classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

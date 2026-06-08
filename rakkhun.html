@@ -138,8 +138,8 @@
   .btn-next:hover { background: var(--dusk); transform: translateY(-2px); }
   .btn-back { background: none; border: 1.5px solid var(--brand-mist); color: var(--body); padding: .85rem 1.8rem; border-radius: 50px; font-family: 'Nunito', sans-serif; font-size: .85rem; font-weight: 700; letter-spacing: .08em; cursor: pointer; transition: all .2s; }
   .btn-back:hover { border-color: var(--brand); color: var(--brand); }
-  .btn-submit { background: var(--sage); color: #fff; border: none; padding: .9rem 2.4rem; border-radius: 50px; font-family: 'Nunito', sans-serif; font-size: .85rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: all .25s; box-shadow: 0 6px 24px rgba(107,191,158,.35); opacity: .5; pointer-events: none; }
-  .btn-submit.ready { opacity: 1; pointer-events: auto; }
+  .btn-submit { background: var(--sage); color: #fff; border: none; padding: .9rem 2.4rem; border-radius: 50px; font-family: 'Nunito', sans-serif; font-size: .85rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: all .25s; box-shadow: 0 6px 24px rgba(107,191,158,.35); opacity: .5; }
+  .btn-submit.ready { opacity: 1; }
   .btn-submit.ready:hover { background: #5aac8a; transform: translateY(-2px); }
 
   /* SUCCESS */
@@ -655,10 +655,14 @@
   document.getElementById('intakeForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var checked = document.querySelectorAll('.tc-item input[type="checkbox"]:checked').length;
-    if (checked < TC_TOTAL) return;
+    if (checked < TC_TOTAL) {
+      var remaining = TC_TOTAL - checked;
+      alert('Please agree to all ' + TC_TOTAL + ' terms and conditions before submitting (' + remaining + ' remaining).');
+      return;
+    }
     var form = this;
     var data = new FormData(form);
-    fetch('/', {
+    fetch('/rakkhun', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(data).toString()

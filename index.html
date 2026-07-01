@@ -173,65 +173,67 @@
   .about-text p { margin-bottom:1.2rem; font-size:1.02rem; line-height:1.8; }
   .about-location { display:inline-flex; align-items:center; gap:.5rem; background:var(--brand-mist); color:var(--dusk); padding:.4rem 1rem; border-radius:50px; font-size:.78rem; font-weight:700; margin-top:.5rem; }
 
-  /* ── PORTFOLIO — Option C: Editorial Minimal ─────────────── */
+  /* ── PORTFOLIO ────────────────────────────────────────────── */
   #portfolio { background:var(--white); }
 
-  .portfolio-wrap {
+  /* Featured / latest project */
+  .port-featured {
+    display:grid; grid-template-columns:1.15fr 1fr;
     max-width:1100px; margin:3.5rem auto 0;
-    background:#fff; border-radius:22px;
-    border:1.5px solid var(--brand-mist);
-    overflow:hidden;
+    background:linear-gradient(155deg,var(--brand-pale) 0%,#fff 60%);
+    border:1.5px solid var(--brand-mist); border-radius:24px;
+    overflow:hidden; text-decoration:none; color:inherit;
+    box-shadow:0 20px 60px rgba(127,168,190,.18);
+    transition:transform .3s,box-shadow .3s;
   }
+  .port-featured:hover { transform:translateY(-4px); box-shadow:0 28px 76px rgba(127,168,190,.26); }
 
+  .port-featured-visual { padding:2.2rem 0 2.2rem 2.2rem; display:flex; align-items:center; }
+  .port-browser { width:100%; background:#fff; border-radius:14px; box-shadow:0 16px 40px rgba(42,61,74,.14); overflow:hidden; }
+  .port-browser-bar { display:flex; align-items:center; gap:6px; background:#f4f7f9; padding:.6rem .85rem; border-bottom:1px solid #e8ecef; }
+  .port-browser-url { margin-left:.5rem; background:#fff; border-radius:6px; padding:.22rem .7rem; font-size:.66rem; color:var(--body); font-weight:600; flex:1; }
+  .port-browser-frame { position:relative; overflow:hidden; aspect-ratio:16/10; background:#fff; }
+  .port-browser-frame img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+
+  .port-featured-content { padding:2.4rem 2.6rem 2.4rem 2rem; display:flex; flex-direction:column; justify-content:center; }
+  .port-featured-title { font-family:var(--serif); font-size:1.55rem; font-weight:700; color:var(--deep); margin:.6rem 0 .2rem; }
+  .port-featured-content .port-desc { margin:1rem 0 1.4rem; max-width:none; }
+  .port-cta { display:inline-flex; align-items:center; gap:.55rem; color:var(--brand); font-weight:700; font-size:.85rem; letter-spacing:.04em; }
+  .port-cta-arrow { transition:transform .2s; }
+  .port-featured:hover .port-cta-arrow { transform:translateX(4px); }
+
+  /* Grid of other projects */
+  .port-grid { max-width:1100px; margin:1.5rem auto 0; display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
   .port-card {
-    display:grid;
-    grid-template-columns:100px 1fr;
-    align-items:center;
-    gap:2rem;
-    padding:2rem 2.5rem;
-    border-bottom:1.5px solid var(--brand-mist);
-    transition:background .2s;
-    text-decoration:none;
-    color:inherit;
-    cursor:pointer;
+    display:flex; flex-direction:column;
+    background:#fff; border:1.5px solid var(--brand-mist); border-radius:18px;
+    overflow:hidden; text-decoration:none; color:inherit;
+    transition:transform .3s,box-shadow .3s;
   }
-  .port-card:last-child { border-bottom:none; }
-  .port-card:hover { background:var(--brand-pale); }
-  .port-card::after {
-    content:'→';
-    font-size:1.1rem;
-    color:var(--brand);
-    opacity:0;
-    transform:translateX(-6px);
-    transition:opacity .2s, transform .2s;
-    position:absolute;
-    right:2.5rem;
-  }
-  .port-card { position:relative; }
-  .port-card:hover::after { opacity:1; transform:translateX(0); }
+  .port-card:hover { transform:translateY(-4px); box-shadow:0 16px 44px rgba(127,168,190,.2); }
+  .port-thumb-bar { display:flex; align-items:center; gap:6px; background:#f4f7f9; padding:.55rem .8rem; border-bottom:1px solid #e8ecef; }
+  .port-thumb-banner { aspect-ratio:16/10; background:linear-gradient(135deg,var(--brand-pale),var(--brand-mist)); display:flex; align-items:center; justify-content:center; }
+  .port-thumb-banner svg { width:32%; color:var(--brand); opacity:.6; }
+  .port-card .port-body { padding:1.4rem 1.5rem 1.6rem; display:flex; flex-direction:column; gap:.25rem; }
 
-  .port-num {
-    font-family:var(--serif); font-size:3.6rem; font-weight:700; line-height:1;
-    background:linear-gradient(135deg,var(--brand-mist),var(--brand));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-    flex-shrink:0; text-align:center;
-  }
-
-  .port-body { display:flex; flex-direction:column; gap:.25rem; }
   .port-tag { display:inline-block; color:var(--body); font-size:.62rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
-  .port-title { font-family:var(--serif); font-size:1.15rem; font-weight:700; color:var(--deep); }
+  .port-title { font-family:var(--serif); font-size:1.1rem; font-weight:700; color:var(--deep); }
   .port-url-lbl { font-family:'Raleway',sans-serif; font-size:.7rem; font-weight:600; letter-spacing:.12em; color:var(--brand); }
-  .port-desc { font-size:.86rem; color:var(--body); font-weight:500; line-height:1.7; margin-top:.3rem; max-width:500px; }
+  .port-desc { font-size:.85rem; color:var(--body); font-weight:500; line-height:1.65; margin-top:.3rem; max-width:500px; }
 
-  .port-link {
-    display:inline-flex; align-items:center; gap:.5rem; flex-shrink:0;
-    color:var(--brand); font-size:.76rem; font-weight:700; text-decoration:none;
-    letter-spacing:.06em; border:1.5px solid var(--brand-mist);
-    padding:.55rem 1.2rem; border-radius:50px;
-    transition:background .2s,border-color .2s,color .2s,gap .2s;
-    white-space:nowrap;
+  .port-card-link { margin-top:.9rem; display:inline-flex; align-items:center; gap:.4rem; color:var(--brand); font-size:.78rem; font-weight:700; }
+  .port-card-link-arrow { transition:transform .2s; }
+  .port-card:hover .port-card-link-arrow { transform:translateX(4px); }
+
+  @media (max-width:900px) {
+    .port-featured { grid-template-columns:1fr; }
+    .port-featured-visual { padding:1.6rem 1.6rem 0; }
+    .port-featured-content { padding:1.8rem 1.6rem 2.2rem; }
+    .port-grid { grid-template-columns:1fr; }
   }
-  .port-link:hover { background:var(--brand); color:#fff; border-color:var(--brand); gap:.75rem; }
+  @media (min-width:901px) and (max-width:1100px) {
+    .port-grid { grid-template-columns:repeat(2,1fr); }
+  }
 
   /* ── AGENTIC BANNER ───────────────────────────────────────── */
   .agentic-banner {
@@ -819,59 +821,102 @@
   <div class="sec-hd fu">
     <span class="lbl">Our work</span>
     <h2>Projects we've built</h2>
-    <p>From e-commerce stores to music platforms — here's a taste of what we can do.</p>
+    <p>From e-commerce stores to full restaurant rebuilds — here's a taste of what we can do.</p>
   </div>
 
-  <!-- Editorial minimal list -->
-  <div class="portfolio-wrap fug">
+  <!-- Featured: latest project -->
+  <a href="https://rakkhun.co.nz/" target="_blank" rel="noopener" class="port-featured fu">
+    <div class="port-featured-visual">
+      <div class="port-browser">
+        <div class="port-browser-bar">
+          <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
+          <span class="port-browser-url">rakkhun.co.nz</span>
+        </div>
+        <div class="port-browser-frame">
+          <img src="assets/rakkhun-preview.jpg" alt="Rak Khun Thai Eatery & Bar — website preview" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <div class="port-featured-content">
+      <div class="badge"><div class="badge-dot"></div>Latest project</div>
+      <div class="port-tag">Restaurant &middot; Full Redesign</div>
+      <h3 class="port-featured-title">Rak Khun Thai Eatery &amp; Bar</h3>
+      <div class="port-url-lbl">rakkhun.co.nz</div>
+      <p class="port-desc">A ground-up, mobile-first rebuild for a Takanini Thai restaurant — bold food photography, tabbed menus, and one-tap calling, ordering and directions. Now live and turning searches into bookings.</p>
+      <span class="port-cta">Visit the live site <span class="port-cta-arrow">→</span></span>
+    </div>
+  </a>
+
+  <!-- Other projects -->
+  <div class="port-grid fug">
 
     <a href="https://groov.nz" target="_blank" class="port-card">
-      <div class="port-num">01</div>
+      <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
+      <div class="port-thumb-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+      </div>
       <div class="port-body">
         <div class="port-tag">Music Platform</div>
         <div class="port-title">Groov NZ</div>
         <div class="port-url-lbl">groov.nz</div>
         <p class="port-desc">A New Zealand music discovery platform connecting local artists with their audience. Clean, modern, and built for growth.</p>
+        <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
       </div>
     </a>
 
     <a href="https://crypto.groov.nz" target="_blank" class="port-card">
-      <div class="port-num">02</div>
+      <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
+      <div class="port-thumb-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.5v11M15 9a3 3 0 0 0-3-1.5c-1.7 0-3 1-3 2.3 0 3 6 1.4 6 4.3 0 1.3-1.3 2.4-3 2.4a3.3 3.3 0 0 1-3-1.7"/></svg>
+      </div>
       <div class="port-body">
         <div class="port-tag">Crypto & Finance</div>
         <div class="port-title">Crypto Groov</div>
         <div class="port-url-lbl">crypto.groov.nz</div>
         <p class="port-desc">A dedicated crypto resource under the Groov brand — bringing trusted news and insights to a New Zealand audience.</p>
+        <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
       </div>
     </a>
 
     <a href="https://groov.store" target="_blank" class="port-card">
-      <div class="port-num">03</div>
+      <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
+      <div class="port-thumb-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      </div>
       <div class="port-body">
         <div class="port-tag">E-commerce</div>
         <div class="port-title">Groov Store</div>
         <div class="port-url-lbl">groov.store</div>
         <p class="port-desc">An e-commerce store for the Groov brand — showcasing what a clean, conversion-focused online shop looks like.</p>
+        <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
       </div>
     </a>
 
     <a href="https://evx.life" target="_blank" class="port-card">
-      <div class="port-num">04</div>
+      <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
+      <div class="port-thumb-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>
+      </div>
       <div class="port-body">
         <div class="port-tag">EV & Equipment Rentals</div>
         <div class="port-title">EVX</div>
         <div class="port-url-lbl">evx.life</div>
         <p class="port-desc">EV vehicles, Starlink, and equipment rentals — a modern rental platform built for the future of transport and connectivity in New Zealand.</p>
+        <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
       </div>
     </a>
 
     <a href="https://agenti.nz/design_system.html" target="_blank" class="port-card">
-      <div class="port-num">05</div>
+      <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
+      <div class="port-thumb-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10c0-1.5-1-2.5-2.5-2.5H16a2 2 0 0 1-2-2V6c0-1.5-.8-4-2-4Z"/><circle cx="7.5" cy="10.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="10.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="15" r="1.2" fill="currentColor" stroke="none"/><circle cx="8.5" cy="15.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </div>
       <div class="port-body">
         <div class="port-tag">Brand & Design</div>
         <div class="port-title">Agenti Design System</div>
         <div class="port-url-lbl">agenti.nz/design_system.html</div>
         <p class="port-desc">A full brand and design system for Agenti NZ — colours, typography, components, and guidelines built for consistency across every touchpoint.</p>
+        <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
       </div>
     </a>
 

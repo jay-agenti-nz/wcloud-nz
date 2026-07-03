@@ -24,6 +24,11 @@
   status = 200
 
 [[redirects]]
+  from = "/restaurants"
+  to = "/restaurants.html"
+  status = 200
+
+[[redirects]]
   from = "/rakkhun"
   to = "/rakkhun.html"
   status = 200

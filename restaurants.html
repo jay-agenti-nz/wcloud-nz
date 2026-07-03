@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>White Cloud – Websites for Restaurants & Cafés | Christchurch, NZ</title>
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<!-- Open Graph / Social Share -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://wcloud.nz/restaurants">
+<meta property="og:title"       content="White Cloud – Websites for Restaurants & Cafés">
+<meta property="og:description" content="Affordable, professional websites for Christchurch restaurants and cafés. Menus, ordering, and Google + AI search visibility. From NZ$299.">
+<meta property="og:image"       content="https://wcloud.nz/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="White Cloud – Websites for Restaurants & Cafés">
+<meta name="twitter:description" content="Affordable, professional websites for Christchurch restaurants and cafés. Menus, ordering, and Google + AI search visibility. From NZ$299.">
+<meta name="twitter:image"       content="https://wcloud.nz/og-image.png">
+
+<!-- SEO -->
+<meta name="description" content="Affordable, professional websites for Christchurch restaurants and cafés. Menus, ordering, and Google + AI search visibility. From NZ$299.">
+<link rel="canonical" href="https://wcloud.nz/restaurants">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand:       #7fa8be;
+    --brand-light: #c8dce6;
+    --brand-pale:  #eaf3f7;
+    --brand-mist:  #d6e8f0;
+    --white:       #ffffff;
+    --deep:        #2a3d4a;
+    --body:        #5a7080;
+    --dusk:        #4d6e80;
+    --sage:        #6bbf9e;
+    --serif: 'Lora', Georgia, serif;
+    --sans:  'Nunito', sans-serif;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--white); color: var(--deep); font-size: 16px; line-height: 1.75; overflow-x: hidden; }
+
+  /* ── LOGO ─────────────────────────────────────────────────── */
+  .logo-mark { display:inline-flex; align-items:center; gap:.75rem; text-decoration:none; transition:opacity .2s; }
+  .logo-mark:hover { opacity:.8; }
+  .logo-wave-svg { width:38px; height:22px; flex-shrink:0; }
+  .logo-wordmark { display:flex; flex-direction:column; line-height:1.15; }
+  .logo-wordmark span { font-family:'Raleway',sans-serif; font-weight:600; letter-spacing:.28em; text-transform:uppercase; font-size:.72rem; color:var(--white); display:block; }
+  .logo-wordmark span:last-child { color:rgba(255,255,255,.65); }
+
+  /* ── NAV ──────────────────────────────────────────────────── */
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.1rem 6%; background:var(--brand); transition:box-shadow .3s; }
+  nav.scrolled { box-shadow:0 4px 28px rgba(77,110,128,.35); }
+  .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
+  .nav-links a { text-decoration:none; color:rgba(255,255,255,.7); font-size:.76rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; transition:color .2s; }
+  .nav-links a:hover { color:var(--white); }
+  .nav-cta { background:var(--white)!important; color:var(--brand)!important; padding:.5rem 1.5rem; border-radius:50px; letter-spacing:.1em!important; font-weight:700!important; transition:background .2s,color .2s!important; }
+  .nav-cta:hover { background:var(--brand-pale)!important; color:var(--dusk)!important; }
+
+  /* ── BUTTONS ──────────────────────────────────────────────── */
+  .btn-p { display:inline-block; background:var(--brand); color:var(--white); padding:.9rem 2.2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:background .25s,transform .25s,box-shadow .25s; box-shadow:0 6px 24px rgba(127,168,190,.35); }
+  .btn-p:hover { background:var(--dusk); transform:translateY(-2px); box-shadow:0 10px 32px rgba(77,110,128,.25); }
+  .btn-o { display:inline-block; border:2px solid var(--brand); color:var(--brand); padding:.85rem 2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; }
+  .btn-o:hover { background:var(--brand); color:var(--white); }
+  .btn-w { display:inline-block; background:var(--white); color:var(--deep); padding:.9rem 2.2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; }
+  .btn-w:hover { background:var(--brand-pale); }
+  .btn-g { display:inline-block; border:2px solid rgba(255,255,255,.35); color:var(--white); padding:.85rem 2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; }
+  .btn-g:hover { border-color:rgba(255,255,255,.7); background:rgba(255,255,255,.08); }
+
+  /* ── SHARED ───────────────────────────────────────────────── */
+  section { padding:6.5rem 6%; }
+  .lbl { display:inline-block; font-size:.7rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--brand); margin-bottom:1.1rem; }
+  h1 { font-family:var(--serif); font-size:clamp(2.4rem,5vw,3.9rem); font-weight:700; line-height:1.15; color:var(--deep); }
+  h2 { font-family:var(--serif); font-size:clamp(1.9rem,3.5vw,2.7rem); font-weight:700; line-height:1.2; color:var(--deep); }
+  h3 { font-family:var(--serif); font-size:1.2rem; font-weight:700; color:var(--deep); margin-bottom:.5rem; }
+  p { color:var(--body); font-weight:500; }
+  .sec-hd { text-align:center; max-width:640px; margin:0 auto; }
+  .sec-hd p { margin-top:1rem; font-size:1.05rem; }
+
+  /* ── PAGE BANNER (compact header, replaces full hero) ─────── */
+  #page-banner { position:relative; padding-top:64px; background:var(--brand); }
+  .banner-accent { height:8px; background:var(--brand); }
+  .banner-block { background:var(--brand-pale); padding:1.1rem 6%; }
+  .banner-inner { max-width:1100px; margin:0 auto; }
+  .banner-back { display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--dusk); text-decoration:none; transition:opacity .2s; }
+  .banner-back:hover { opacity:.7; }
+
+  /* ── FEATURE HOOK (floating badges) ───────────────────────── */
+  .hook-strip { background:linear-gradient(160deg,var(--brand-pale) 0%,var(--white) 100%); padding:3rem 6% 3.5rem; }
+  .hook-inner { max-width:960px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:center; gap:1rem 1.1rem; }
+  .hook-badge {
+    display:inline-flex; align-items:center; gap:.55rem;
+    background:var(--white); border:1.5px solid var(--brand-mist); color:var(--dusk);
+    font-size:.85rem; font-weight:700; padding:.7rem 1.3rem; border-radius:50px;
+    box-shadow:0 12px 30px rgba(127,168,190,.18);
+    animation:floatY 5s ease-in-out infinite;
+  }
+  .hook-badge-icon { font-size:1rem; }
+  @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
+
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.65)} }
+
+  /* Browser-chrome dots (shared with the work-card case study) */
+  .dot { width:10px; height:10px; border-radius:50%; }
+  .dr{background:#ff6058} .dy{background:#ffbc2e} .dg{background:#28c840}
+
+  /* ── SOLUTION / FEATURES (menu-style list) ────────────────── */
+  #solution { background:var(--brand-pale); }
+  .feat-list { max-width:820px; margin:3.5rem auto 0; background:var(--white); border:1.5px solid var(--brand-mist); border-radius:20px; padding:.4rem 2.2rem; }
+  .feat-row { padding:1.8rem 0; border-bottom:1px dashed var(--brand-mist); }
+  .feat-row:last-child { border-bottom:none; }
+  .feat-row-head { display:flex; align-items:baseline; justify-content:space-between; gap:1.5rem; margin-bottom:.6rem; }
+  .feat-row-head h3 { margin-bottom:0; }
+  .feat-num { font-family:var(--serif); font-weight:700; color:var(--brand); font-size:1rem; flex-shrink:0; }
+  .feat-row p { font-size:.92rem; margin:0; max-width:640px; }
+
+  /* ── OUR WORK (small, one project — not a centerpiece) ────── */
+  #portfolio { background:var(--white); }
+  .work-card { max-width:520px; margin:3rem auto 0; background:var(--white); border:1.5px solid var(--brand-mist); border-radius:20px; overflow:hidden; text-decoration:none; color:inherit; display:block; box-shadow:0 16px 48px rgba(127,168,190,.16); transition:transform .3s,box-shadow .3s; }
+  .work-card:hover { transform:translateY(-4px); box-shadow:0 22px 60px rgba(127,168,190,.24); }
+  .work-card-bar { display:flex; align-items:center; gap:6px; background:#f4f7f9; padding:.6rem .9rem; border-bottom:1px solid #e8ecef; }
+  .work-card-url { margin-left:.5rem; background:#fff; border-radius:6px; padding:.2rem .7rem; font-size:.68rem; color:var(--body); font-weight:600; }
+  .work-card-frame { position:relative; overflow:hidden; aspect-ratio:16/10; }
+  .work-card-frame img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+  .work-card-body { padding:1.6rem 1.8rem 1.8rem; }
+  .work-tag { display:inline-block; color:var(--body); font-size:.62rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; margin-bottom:.4rem; }
+  .work-title { font-family:var(--serif); font-size:1.2rem; font-weight:700; color:var(--deep); margin-bottom:.4rem; }
+  .work-desc { font-size:.85rem; color:var(--body); font-weight:500; line-height:1.65; }
+  .work-link { margin-top:.9rem; display:inline-flex; align-items:center; gap:.4rem; color:var(--brand); font-size:.8rem; font-weight:700; }
+  .work-link-arrow { transition:transform .2s; }
+  .work-card:hover .work-link-arrow { transform:translateX(4px); }
+
+  /* ── FAQ ──────────────────────────────────────────────────── */
+  #faq { background:var(--brand-pale); }
+  .faq-wrap { max-width:700px; margin:3rem auto 0; }
+  .faq-item { background:var(--white); border-radius:14px; margin-bottom:.9rem; border:1.5px solid var(--brand-mist); opacity:1 !important; transform:none !important; pointer-events:auto !important; }
+  .faq-btn { width:100%; background:none; border:none; text-align:left; padding:1.4rem 1.6rem; font-family:var(--serif); font-size:1.05rem; font-weight:700; color:var(--deep); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color .2s; opacity:1 !important; pointer-events:auto !important; }
+  .faq-btn:hover { color:var(--brand); }
+  .fa { font-size:1.4rem; flex-shrink:0; color:var(--body); line-height:1; font-family:var(--sans); font-weight:300; display:inline-block; transition:transform .3s; }
+  .faq-item.open .fa { transform:rotate(45deg); color:var(--brand); }
+  .faq-ans { display:none; padding:1rem 1.6rem 1.4rem; color:var(--body); font-size:.93rem; font-weight:500; line-height:1.8; border-top:1px solid var(--brand-mist); opacity:1 !important; }
+  .faq-item.open .faq-ans { display:block; }
+
+  /* ── FINAL CTA ────────────────────────────────────────────── */
+  #cta { background:var(--deep); text-align:center; padding:7rem 6%; position:relative; overflow:hidden; }
+  .cta-deco { position:absolute; inset:0; pointer-events:none; opacity:.06; overflow:hidden; }
+  .cta-deco svg { width:100%; height:100%; object-fit:cover; }
+  #cta h2 { color:var(--white); font-weight:700; position:relative; z-index:1; margin-bottom:2.4rem; }
+  .cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; position:relative; z-index:1; }
+
+  /* ── FOOTER ───────────────────────────────────────────────── */
+  footer { background:#1c2e38; padding:2.2rem 6%; color:rgba(255,255,255,.35); font-size:.78rem; font-weight:600; letter-spacing:.04em; }
+  .foot-in { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+  .foot-links { display:flex; gap:1.8rem; flex-wrap:wrap; }
+  .foot-links a { color:rgba(255,255,255,.35); text-decoration:none; transition:color .2s; }
+  .foot-links a:hover { color:rgba(255,255,255,.7); }
+
+  .fu { opacity:1; transform:none; transition:opacity .7s ease,transform .7s ease; }
+  .fu.ready { opacity:0; transform:translateY(24px); }
+  .fu.ready.in { opacity:1; transform:none; }
+  .fug > * { opacity:1; transform:none; transition:opacity .55s ease,transform .55s ease; }
+  .fug.ready > * { opacity:0; transform:translateY(18px); }
+  .fug.ready.in > *:nth-child(1){opacity:1;transform:none;transition-delay:.04s}
+  .fug.ready.in > *:nth-child(2){opacity:1;transform:none;transition-delay:.13s}
+  .fug.ready.in > *:nth-child(3){opacity:1;transform:none;transition-delay:.22s}
+  .fug.ready.in > *:nth-child(4){opacity:1;transform:none;transition-delay:.31s}
+  .fug.ready.in > *:nth-child(5){opacity:1;transform:none;transition-delay:.40s}
+  .fug.ready.in > *:nth-child(6){opacity:1;transform:none;transition-delay:.49s}
+
+  /* ── AI SEARCH ───────────────────────────────────────────── */
+  #ai-search { background: var(--deep); overflow:hidden; position:relative; }
+  #ai-search::before {
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg width='1440' height='500' viewBox='0 0 1440 500' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 250 C180 100,360 400,540 250 C720 100,900 400,1080 250 C1260 100,1350 300,1440 220' stroke='%237fa8be' stroke-width='2' stroke-linecap='round' opacity='0.08'/%3E%3Cpath d='M0 320 C200 140,400 460,600 300 C800 140,1000 440,1200 280 C1320 180,1380 240,1440 210' stroke='%237fa8be' stroke-width='1.5' stroke-linecap='round' opacity='0.05'/%3E%3C/svg%3E");
+    background-size:cover;
+  }
+  .ai-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; position:relative; z-index:1; }
+  #ai-search .lbl { color:var(--sage); }
+  #ai-search h2 { color:var(--white); margin-bottom:1.2rem; }
+  #ai-search p { color:rgba(255,255,255,.6); font-size:1.02rem; line-height:1.8; margin-bottom:1rem; }
+  .ai-pills { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:2rem; }
+  .ai-pill {
+    display:inline-flex; align-items:center; gap:.5rem;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12);
+    color:rgba(255,255,255,.75); font-size:.8rem; font-weight:600;
+    padding:.5rem 1rem; border-radius:50px;
+    transition:background .2s, border-color .2s;
+  }
+  .ai-pill:hover { background:rgba(127,168,190,.2); border-color:rgba(127,168,190,.4); }
+  .ai-pill-icon { font-size:1rem; }
+
+  /* Chat mock */
+  .ai-vis { display:flex; flex-direction:column; gap:1.2rem; }
+  .ai-chat-mock {
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+    border-radius:20px; overflow:hidden;
+    box-shadow:0 24px 64px rgba(0,0,0,.3);
+  }
+  .ai-chat-header {
+    display:flex; align-items:center; gap:.6rem;
+    padding:.9rem 1.4rem; border-bottom:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.04);
+    font-family:'Raleway',sans-serif; font-size:.72rem; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.5);
+  }
+  .ai-chat-dot { width:8px; height:8px; border-radius:50%; background:var(--sage); animation:pulse 2.5s ease-in-out infinite; }
+  .ai-chat-body { padding:1.4rem; display:flex; flex-direction:column; gap:1rem; }
+  .ai-msg { font-size:.9rem; line-height:1.65; max-width:86%; padding:.8rem 1.1rem; border-radius:14px; font-weight:500; }
+  .ai-msg.user {
+    background:var(--brand); color:#fff; align-self:flex-end;
+    border-bottom-right-radius:4px;
+  }
+  .ai-msg.bot {
+    background:rgba(255,255,255,.09); color:rgba(255,255,255,.85);
+    align-self:flex-start; border-bottom-left-radius:4px;
+    min-height:52px; display:flex; align-items:center;
+  }
+  .ai-response strong { color:#fff; }
+
+  /* Typing dots */
+  .ai-typing-indicator { display:flex; gap:5px; align-items:center; padding:4px 2px; }
+  .ai-typing-indicator span {
+    width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.4);
+    animation:typingBounce 1.2s ease-in-out infinite;
+  }
+  .ai-typing-indicator span:nth-child(2) { animation-delay:.2s; }
+  .ai-typing-indicator span:nth-child(3) { animation-delay:.4s; }
+  @keyframes typingBounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
+
+  /* Source badges */
+  .ai-badge-row { display:flex; gap:.6rem; flex-wrap:wrap; }
+  .ai-source-badge {
+    font-family:'Raleway',sans-serif; font-size:.68rem; font-weight:700;
+    letter-spacing:.12em; text-transform:uppercase;
+    color:rgba(255,255,255,.35); border:1px solid rgba(255,255,255,.1);
+    padding:.35rem .9rem; border-radius:50px;
+  }
+
+  /* ── RESPONSIVE ───────────────────────────────────────────── */
+  @media (max-width:960px) {
+    .ai-inner { grid-template-columns:1fr; gap:3rem; }
+    .nav-links li:not(:last-child) { display:none; }
+  }
+  @media (max-width:700px) {
+    .feat-list { padding:.2rem 1.4rem; }
+  }
+</style>
+
+<!-- Structured Data / Schema Markup -->
+<!--
+  This page belongs to White Cloud (the agency), not to a restaurant, so we
+  describe it with Organization + Service schema rather than Restaurant
+  schema — Restaurant markup would misrepresent who this business is.
+-->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "ProfessionalService"],
+    "@id": "https://wcloud.nz/#business",
+    "name": "White Cloud",
+    "url": "https://wcloud.nz",
+    "logo": "https://wcloud.nz/favicon.svg",
+    "image": "https://wcloud.nz/og-image.png",
+    "description": "White Cloud builds affordable, AI-optimised websites for New Zealand small businesses, including restaurants and cafés. Based in Christchurch, NZ. From NZ$299 with 7-day average delivery.",
+    "priceRange": "NZ$299–NZ$1,099",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Christchurch",
+      "addressRegion": "Canterbury",
+      "addressCountry": "NZ"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "New Zealand"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Restaurant and café website design",
+    "provider": { "@id": "https://wcloud.nz/#business" },
+    "areaServed": { "@type": "City", "name": "Christchurch" },
+    "audience": { "@type": "Audience", "audienceType": "Restaurants and cafés" },
+    "url": "https://wcloud.nz/restaurants",
+    "description": "Website design for restaurants and cafés of any cuisine — menu pages, one-tap call/order/directions, accurate opening hours, and visibility on Google and AI search tools."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I update the menu myself?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — you can send us changes anytime. If you'd rather not think about it, you can add a care plan and we'll keep it current for you — plans are flexible, and pricing can be tailored to how often you need updates." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you handle online ordering?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We link out to your existing ordering platform (or help you pick one) and make it one tap from your homepage." }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I already have a website but it's bad?",
+        "acceptedAnswer": { "@type": "Answer", "text": "That's most of who we hear from. We can rebuild it properly — same process, same timeline." }
+      }
+    ]
+  }
+]
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainnav">
+  <a href="/" class="logo-mark">
+    <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
+      <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#solution">How it works</a></li>
+    <li><a href="#portfolio">Our Work</a></li>
+    <li><a href="/restaurants">For Restaurants</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE BANNER -->
+<div id="page-banner">
+  <div class="banner-accent"></div>
+  <div class="banner-block">
+    <div class="banner-inner fu">
+      <a href="/" class="banner-back">← Back to White Cloud</a>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURE HOOK -->
+<div class="hook-strip">
+  <div class="hook-inner fug">
+    <div class="hook-badge" style="animation-delay:.1s"><span class="hook-badge-icon">🍜</span><span>Menu pages</span></div>
+    <div class="hook-badge" style="animation-delay:.5s"><span class="hook-badge-icon">📞</span><span>One-tap ordering</span></div>
+    <div class="hook-badge" style="animation-delay:.9s"><span class="hook-badge-icon">🕐</span><span>Live hours</span></div>
+    <div class="hook-badge" style="animation-delay:1.3s"><span class="hook-badge-icon">📸</span><span>Food photography</span></div>
+    <div class="hook-badge" style="animation-delay:1.7s"><span class="hook-badge-icon">📱</span><span>Mobile-first</span></div>
+    <div class="hook-badge" style="animation-delay:2.1s"><span class="hook-badge-icon">🔍</span><span>Google + AI search</span></div>
+  </div>
+</div>
+
+<!-- FEATURES: Built for restaurants & cafés -->
+<section id="solution">
+  <div class="sec-hd fu">
+    <span class="lbl">Built for restaurants &amp; cafés</span>
+    <h2>What a restaurant website actually needs</h2>
+    <p>Not a generic small-business template — a site built around how people actually decide where to eat, whatever's on your menu.</p>
+  </div>
+  <div class="feat-list fug">
+    <div class="feat-row">
+      <div class="feat-row-head">
+        <h3>A menu that's actually easy to keep current</h3>
+        <span class="feat-num">01</span>
+      </div>
+      <p>Prices change, dishes come and go, and specials shouldn't need a phone call to your web developer. We build menu pages you can update yourself — or hand to us on a care plan — so what's online always matches what's on the table.</p>
+    </div>
+    <div class="feat-row">
+      <div class="feat-row-head">
+        <h3>One-tap call, order &amp; directions</h3>
+        <span class="feat-num">02</span>
+      </div>
+      <p>The gap between "I'm hungry" and "I've got a booking" should be one tap, not five. Every site we build puts click-to-call, your ordering platform, and directions right where people expect them.</p>
+    </div>
+    <div class="feat-row">
+      <div class="feat-row-head">
+        <h3>Hours that stay accurate</h3>
+        <span class="feat-num">03</span>
+      </div>
+      <p>Nothing loses a customer faster than driving over to a locked door. We set your hours up correctly from day one, and help you keep your website and Google Business Profile lined up as they change.</p>
+    </div>
+    <div class="feat-row">
+      <div class="feat-row-head">
+        <h3>Photography that makes people hungry</h3>
+        <span class="feat-num">04</span>
+      </div>
+      <p>Your food is the best marketing you have. We make sure it's presented properly — bold, appetising, and built to be the first thing people notice.</p>
+    </div>
+    <div class="feat-row">
+      <div class="feat-row-head">
+        <h3>Built for the moment people decide</h3>
+        <span class="feat-num">05</span>
+      </div>
+      <p>Most people are deciding where to eat standing outside, or scrolling on their phone at home. Your site needs to work brilliantly on mobile, because that's where the decision actually happens.</p>
+    </div>
+    <div class="feat-row">
+      <div class="feat-row-head">
+        <h3>Found on Google — and now, on AI too</h3>
+        <span class="feat-num">06</span>
+      </div>
+      <p>More people are asking ChatGPT and Siri where to eat, not just Googling it. We structure every site so AI tools can read, understand, and recommend your restaurant or café.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AI SEARCH -->
+<section id="ai-search">
+  <div class="ai-inner fu">
+    <div class="ai-text">
+      <span class="lbl">Built for the future</span>
+      <h2>Your restaurant, found by AI — not just Google</h2>
+      <p>The way people find somewhere to eat is changing fast. More and more customers are asking ChatGPT, asking Siri, or searching through AI tools instead of just Google. We make sure your website is ready for that, whatever you serve.</p>
+      <p>Every website we build is structured so AI tools can read, understand, and recommend your restaurant or café — so when someone asks where's good to eat nearby, your name has a real chance of coming up.</p>
+      <div class="ai-pills">
+        <div class="ai-pill"><span class="ai-pill-icon">🤖</span>AI-readable structure</div>
+        <div class="ai-pill"><span class="ai-pill-icon">💬</span>Optimised for ChatGPT & Siri</div>
+        <div class="ai-pill"><span class="ai-pill-icon">📡</span>Schema markup included</div>
+        <div class="ai-pill"><span class="ai-pill-icon">🔎</span>Google + AI search ready</div>
+      </div>
+    </div>
+    <div class="ai-vis">
+      <div class="ai-chat-mock">
+        <div class="ai-chat-header">
+          <div class="ai-chat-dot"></div>
+          <span>AI Assistant</span>
+        </div>
+        <div class="ai-chat-body">
+          <div class="ai-msg user">Where's a good place to eat in Christchurch tonight?</div>
+          <div class="ai-msg bot">
+            <div class="ai-typing-indicator" id="aiTyping">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="ai-response" id="aiResponse" style="display:none">
+              AI tools like this read structured details on your website — menu, hours, location, reviews — to answer questions like this. Set up properly, that's a question your restaurant can actually win. ✓
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ai-badge-row">
+        <div class="ai-source-badge">✦ ChatGPT</div>
+        <div class="ai-source-badge">✦ Gemini</div>
+        <div class="ai-source-badge">✦ Siri</div>
+        <div class="ai-source-badge">✦ Perplexity</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ (restaurant-specific only — general FAQs live on the main site) -->
+<section id="faq">
+  <div class="sec-hd">
+    <span class="lbl">Common questions</span>
+    <h2>From restaurant &amp; café owners</h2>
+  </div>
+  <div class="faq-wrap">
+    <div class="faq-item"><button class="faq-btn">Can I update the menu myself? <span class="fa">+</span></button><div class="faq-ans">Yes — you can send us changes anytime. If you'd rather not think about it, you can add a care plan and we'll keep it current for you — plans are flexible, and we can tailor the price to how often you need updates.</div></div>
+    <div class="faq-item"><button class="faq-btn">Do you handle online ordering? <span class="fa">+</span></button><div class="faq-ans">We link out to your existing ordering platform (or help you pick one) and make it one tap from your homepage.</div></div>
+    <div class="faq-item"><button class="faq-btn">What if I already have a website but it's bad? <span class="fa">+</span></button><div class="faq-ans">That's most of who we hear from. We can rebuild it properly — same process, same timeline.</div></div>
+  </div>
+</section>
+
+<!-- OUR WORK (small mention, not the centrepiece) -->
+<section id="portfolio">
+  <div class="sec-hd fu">
+    <span class="lbl">Part of our work</span>
+    <h2>See it in action</h2>
+    <p>We don't just talk about it — here's a real restaurant website we built, live right now.</p>
+  </div>
+  <a href="https://rakkhun.co.nz/" target="_blank" rel="noopener" class="work-card fu">
+    <div class="work-card-bar">
+      <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
+      <span class="work-card-url">rakkhun.co.nz</span>
+    </div>
+    <div class="work-card-frame">
+      <img src="assets/rakkhun-preview.jpg" alt="Rak Khun Thai Eatery & Bar — website preview" loading="lazy">
+    </div>
+    <div class="work-card-body">
+      <div class="work-tag">Restaurant &middot; Full Rebuild</div>
+      <div class="work-title">Rak Khun Thai Eatery &amp; Bar</div>
+      <p class="work-desc">Mobile-first, tabbed menu, one-tap call, order &amp; directions. Live now, turning searches into bookings.</p>
+      <span class="work-link">Visit rakkhun.co.nz <span class="work-link-arrow">→</span></span>
+    </div>
+  </a>
+</section>
+
+<!-- FINAL CTA — sends people to the main site to get in touch -->
+<section id="cta">
+  <div class="cta-deco">
+    <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" fill="none">
+      <path d="M0 200 C120 80,240 320,400 200 C560 80,680 320,840 200 C1000 80,1120 320,1280 200 C1360 140,1400 160,1440 150" stroke="#7fa8be" stroke-width="6" stroke-linecap="round"/>
+      <path d="M0 280 C140 120,280 380,460 240 C620 110,760 360,960 230 C1100 140,1240 300,1440 200" stroke="#c8dce6" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <h2>Interested? Let's talk about your restaurant or café.</h2>
+  <div class="cta-btns">
+    <a href="/#contact" class="btn-w">Get in Touch</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <a href="/" class="logo-mark">
+      <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
+        <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
+    </a>
+    <div class="foot-links">
+      <a href="privacy.html" target="_blank">Privacy Policy</a>
+      <a href="terms.html" target="_blank">Terms &amp; Conditions</a>
+      <a href="/intake">New Client Intake Form</a>
+      <a href="https://agenti.nz" target="_blank">Backend operations powered by Agenti NZ</a>
+    </div>
+    <div>© 2025 White Cloud. Christchurch, NZ. All prices NZD.</div>
+  </div>
+</footer>
+
+<script>
+  // ── Nav shadow on scroll
+  var mainnav = document.getElementById('mainnav');
+  window.addEventListener('scroll', function() {
+    mainnav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // ── FAQ accordion — simplest possible approach
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    item.querySelector('.faq-btn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // ── AI chat mock typing animation
+  var aiTyping = document.getElementById('aiTyping');
+  var aiResponse = document.getElementById('aiResponse');
+  if (aiTyping && aiResponse) {
+    var aiObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          setTimeout(function() {
+            aiTyping.style.display = 'none';
+            aiResponse.style.display = 'block';
+          }, 2200);
+          aiObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    aiObserver.observe(aiTyping);
+  }
+  // ── Scroll-triggered fade animations — never touch FAQ elements
+  var animEls = document.querySelectorAll('.fu, .fug');
+  for (var k = 0; k < animEls.length; k++) {
+    animEls[k].classList.add('ready');
+  }
+  var fadeObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  for (var j = 0; j < animEls.length; j++) {
+    fadeObserver.observe(animEls[j]);
+  }
+</script>
+</body>
+</html>

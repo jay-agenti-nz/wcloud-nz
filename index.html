@@ -39,6 +39,15 @@
     --sage:        #6bbf9e;
     --serif: 'Lora', Georgia, serif;
     --sans:  'Nunito', sans-serif;
+
+    /* Liquid Glass tokens */
+    --glass-bg:          rgba(255,255,255,.55);
+    --glass-bg-strong:   rgba(255,255,255,.72);
+    --glass-border:      rgba(255,255,255,.6);
+    --glass-shadow:      0 8px 32px rgba(42,61,74,.14), inset 0 1px 0 rgba(255,255,255,.5);
+    --glass-blur:        blur(20px) saturate(180%);
+    --glass-bg-dark:     rgba(255,255,255,.08);
+    --glass-border-dark: rgba(255,255,255,.18);
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -54,8 +63,8 @@
   .logo-wordmark span:last-child { color:rgba(255,255,255,.65); }
 
   /* ── NAV ──────────────────────────────────────────────────── */
-  nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.1rem 6%; background:var(--brand); transition:box-shadow .3s; }
-  nav.scrolled { box-shadow:0 4px 28px rgba(77,110,128,.35); }
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.1rem 6%; background:rgba(127,168,190,.7); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border-bottom:1px solid rgba(255,255,255,.25); transition:box-shadow .3s,background .3s; }
+  nav.scrolled { background:rgba(127,168,190,.85); box-shadow:0 4px 28px rgba(77,110,128,.35); }
   .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
   .nav-links a { text-decoration:none; color:rgba(255,255,255,.7); font-size:.76rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; transition:color .2s; }
   .nav-links a:hover { color:var(--white); }
@@ -71,6 +80,31 @@
   .btn-w:hover { background:var(--brand-pale); }
   .btn-g { display:inline-block; border:2px solid rgba(255,255,255,.35); color:var(--white); padding:.85rem 2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; }
   .btn-g:hover { border-color:rgba(255,255,255,.7); background:rgba(255,255,255,.08); }
+
+  /* ── LIQUID GLASS SYSTEM ──────────────────────────────────── */
+  .glass {
+    background:var(--glass-bg); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur);
+    border:1px solid var(--glass-border); box-shadow:var(--glass-shadow);
+  }
+  .glass-strong {
+    background:var(--glass-bg-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur);
+    border:1px solid var(--glass-border); box-shadow:var(--glass-shadow);
+  }
+  .glass-dark {
+    background:var(--glass-bg-dark); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur);
+    border:1px solid var(--glass-border-dark);
+  }
+  .btn-o { background:rgba(255,255,255,.4); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
+  .btn-g { background:rgba(255,255,255,.06); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
+
+  /* Decorative blurred blobs — give glass panels something to refract */
+  .bg-blob { position:absolute; border-radius:50%; filter:blur(70px); pointer-events:none; z-index:-1; animation:blobDrift 16s ease-in-out infinite; }
+  @keyframes blobDrift { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-3%,4%) scale(1.06)} }
+  .hero-blob-1 { top:-60px; left:8%; width:420px; height:420px; background:var(--brand); opacity:.22; }
+  .hero-blob-2 { bottom:-100px; right:6%; width:360px; height:360px; background:var(--sage); opacity:.18; animation-delay:-6s; }
+  .pricing-blob { top:20%; left:50%; width:600px; height:600px; background:var(--brand); opacity:.35; transform:translateX(-50%); }
+  .cta-blob-1 { top:-80px; left:10%; width:380px; height:380px; background:var(--brand); opacity:.28; }
+  .cta-blob-2 { bottom:-120px; right:8%; width:420px; height:420px; background:var(--sage); opacity:.22; animation-delay:-8s; }
 
   /* ── SHARED ───────────────────────────────────────────────── */
   section { padding:6.5rem 6%; }
@@ -141,14 +175,14 @@
   /* ── PROBLEM ──────────────────────────────────────────────── */
   #problem { background:var(--white); }
   .prob-grid { max-width:1100px; margin:3.5rem auto 0; display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
-  .prob-card { background:var(--brand-pale); border:1.5px solid var(--brand-mist); border-radius:18px; padding:2.2rem; transition:transform .3s,box-shadow .3s; }
+  .prob-card { background:var(--glass-bg); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border:1px solid var(--glass-border); box-shadow:var(--glass-shadow); border-radius:18px; padding:2.2rem; transition:transform .3s,box-shadow .3s; }
   .prob-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(127,168,190,.15); }
   .pi { font-size:1.9rem; margin-bottom:1rem; display:block; }
 
   /* ── SOLUTION ─────────────────────────────────────────────── */
   #solution { background:var(--brand-pale); }
   .feat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3.5rem; max-width:1100px; margin-left:auto; margin-right:auto; }
-  .feat-card { background:var(--white); border-radius:18px; padding:2rem; border:1.5px solid var(--brand-mist); transition:transform .3s,box-shadow .3s; }
+  .feat-card { background:var(--glass-bg-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border-radius:18px; padding:2rem; border:1px solid var(--glass-border); box-shadow:var(--glass-shadow); transition:transform .3s,box-shadow .3s; }
   .feat-card:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(127,168,190,.15); }
   .fi { width:48px; height:48px; background:var(--brand-mist); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin-bottom:1.2rem; }
 
@@ -180,10 +214,11 @@
   .port-featured {
     display:grid; grid-template-columns:1.15fr 1fr;
     max-width:1100px; margin:3.5rem auto 0;
-    background:linear-gradient(155deg,var(--brand-pale) 0%,#fff 60%);
-    border:1.5px solid var(--brand-mist); border-radius:24px;
+    background:linear-gradient(155deg,rgba(234,243,247,.6) 0%,rgba(255,255,255,.6) 60%);
+    backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur);
+    border:1px solid var(--glass-border); border-radius:24px;
     overflow:hidden; text-decoration:none; color:inherit;
-    box-shadow:0 20px 60px rgba(127,168,190,.18);
+    box-shadow:var(--glass-shadow);
     transition:transform .3s,box-shadow .3s;
   }
   .port-featured:hover { transform:translateY(-4px); box-shadow:0 28px 76px rgba(127,168,190,.26); }
@@ -206,7 +241,8 @@
   .port-grid { max-width:1100px; margin:1.5rem auto 0; display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
   .port-card {
     display:flex; flex-direction:column;
-    background:#fff; border:1.5px solid var(--brand-mist); border-radius:18px;
+    background:var(--glass-bg-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur);
+    border:1px solid var(--glass-border); border-radius:18px;
     overflow:hidden; text-decoration:none; color:inherit;
     transition:transform .3s,box-shadow .3s;
   }
@@ -259,9 +295,9 @@
   .agentic-cta:hover .agentic-cta-arrow { transform:translateX(4px); }
 
   /* ── PRICING ──────────────────────────────────────────────── */
-  #pricing { background:var(--brand-pale); }
+  #pricing { background:var(--brand-pale); position:relative; overflow:hidden; }
   .price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:1100px; margin:3.5rem auto 0; align-items:stretch; }
-  .pc { background:var(--white); border:2px solid var(--brand-mist); border-radius:22px; padding:2.5rem 2rem; transition:transform .3s,box-shadow .3s; position:relative; display:flex; flex-direction:column; }
+  .pc { background:var(--glass-bg-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border:1px solid var(--glass-border); box-shadow:var(--glass-shadow); border-radius:22px; padding:2.5rem 2rem; transition:transform .3s,box-shadow .3s; position:relative; display:flex; flex-direction:column; }
   .plist { list-style:none; margin-bottom:2rem; flex:1; }
   .pc:hover { transform:translateY(-4px); box-shadow:0 20px 60px rgba(127,168,190,.18); }
   .pc.feat { border-color:var(--brand); box-shadow:0 20px 60px rgba(127,168,190,.22); transform:scale(1.025); }
@@ -282,9 +318,10 @@
 
   /* ── CARE PLANS ───────────────────────────────────────────── */
   #care { background:var(--white); }
+  #flex-work { background:var(--brand-pale); }
   .care-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; max-width:860px; margin:3rem auto 0; }
-  .cc { background:var(--brand-pale); border-radius:18px; padding:2.2rem; border:2px solid var(--brand-mist); }
-  .cc.hi { background:var(--white); border-color:var(--brand); box-shadow:0 12px 40px rgba(127,168,190,.15); }
+  .cc { background:var(--glass-bg); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border-radius:18px; padding:2.2rem; border:1px solid var(--glass-border); }
+  .cc.hi { background:var(--glass-bg-strong); border-color:var(--brand); box-shadow:var(--glass-shadow); }
   .ctier { font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--brand); margin-bottom:.5rem; font-weight:700; }
   .cprice { font-family:var(--serif); font-size:2.2rem; font-weight:700; color:var(--deep); margin:.4rem 0 .3rem; }
   .cprice small { font-family:var(--sans); font-size:.85rem; color:var(--body); font-weight:600; }
@@ -297,7 +334,7 @@
   /* ── FAQ ──────────────────────────────────────────────────── */
   #faq { background:var(--brand-pale); }
   .faq-wrap { max-width:700px; margin:3rem auto 0; }
-  .faq-item { background:var(--white); border-radius:14px; margin-bottom:.9rem; border:1.5px solid var(--brand-mist); opacity:1 !important; transform:none !important; pointer-events:auto !important; }
+  .faq-item { background:var(--glass-bg-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border-radius:14px; margin-bottom:.9rem; border:1px solid var(--glass-border); opacity:1 !important; transform:none !important; pointer-events:auto !important; }
   .faq-btn { width:100%; background:none; border:none; text-align:left; padding:1.4rem 1.6rem; font-family:var(--serif); font-size:1.05rem; font-weight:700; color:var(--deep); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color .2s; opacity:1 !important; pointer-events:auto !important; }
   .faq-btn:hover { color:var(--brand); }
   .fa { font-size:1.4rem; flex-shrink:0; color:var(--body); line-height:1; font-family:var(--sans); font-weight:300; display:inline-block; transition:transform .3s; }
@@ -414,7 +451,8 @@
   /* Chat mock */
   .ai-vis { display:flex; flex-direction:column; gap:1.2rem; }
   .ai-chat-mock {
-    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+    background:var(--glass-bg-dark); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur);
+    border:1px solid var(--glass-border-dark);
     border-radius:20px; overflow:hidden;
     box-shadow:0 24px 64px rgba(0,0,0,.3);
   }
@@ -645,6 +683,8 @@
 
 <!-- HERO -->
 <section id="hero">
+  <div class="bg-blob hero-blob-1"></div>
+  <div class="bg-blob hero-blob-2"></div>
   <svg class="hero-bg-svg right" viewBox="0 0 560 220" fill="none">
     <path d="M0 110 C70 30,140 190,210 110 C280 30,350 190,420 110 C480 45,520 65,560 55" stroke="#7fa8be" stroke-width="4" stroke-linecap="round"/>
     <path d="M0 150 C80 55,160 230,250 140 C330 60,410 220,490 140 C520 110,540 118,560 112" stroke="#c8dce6" stroke-width="3" stroke-linecap="round"/>
@@ -657,7 +697,7 @@
     <div class="fu">
       <div class="badge"><div class="badge-dot"></div>Christchurch, New Zealand</div>
       <h1>Your business deserves<br>a <em>great website.</em><br>Leave it to us.</h1>
-      <p class="hero-sub">No tech knowledge needed. No confusing steps. Just a clean, professional website — done for you, at a price that makes sense.</p>
+      <p class="hero-sub">Whether you're self-employed, running a small business, or selling online — no tech knowledge needed, no confusing steps. Just a clean, professional website, done for you, at a price that makes sense.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-p">Get Started</a>
         <a href="#process" class="btn-o">How It Works</a>
@@ -921,6 +961,20 @@
       </div>
     </a>
 
+    <a href="https://biblio.ink" target="_blank" class="port-card">
+      <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
+      <div class="port-thumb-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5Z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5Z"/></svg>
+      </div>
+      <div class="port-body">
+        <div class="port-tag">App &middot; Digital Library</div>
+        <div class="port-title">Biblio</div>
+        <div class="port-url-lbl">biblio.ink</div>
+        <p class="port-desc">A 3D bookshelf app for organising and reading your ePub and PDF library — a playful, spatial take on the digital bookshelf.</p>
+        <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
+      </div>
+    </a>
+
   </div>
 
   <div class="agentic-banner fu">
@@ -941,6 +995,7 @@
 
 <!-- PRICING -->
 <section id="pricing">
+  <div class="bg-blob pricing-blob"></div>
   <div class="sec-hd fu">
     <span class="lbl">Straightforward pricing</span>
     <h2>Pick the right package for your business</h2>
@@ -1043,6 +1098,27 @@
   <p class="care-note" style="text-align:center">* Care plans are month-to-month. Cancel any time — no fees. Hosting costs are separate and we'll help you find the best option.</p>
 </section>
 
+<!-- FLEXIBLE / CASUAL WORK -->
+<section id="flex-work">
+  <div class="sec-hd fu">
+    <span class="lbl">Flexible options</span>
+    <h2>Not every job needs a full package</h2>
+    <p>Sometimes you just need a hand, not a full rebuild. Here's how else I can help.</p>
+  </div>
+  <div class="care-grid fug">
+    <div class="cc">
+      <div class="ctier">Already have a website?</div>
+      <p class="cdesc">Not everything needs a full rebuild — sometimes you just need a fix, an update, or someone to take it off your plate. Happy to help casually, pay-as-you-go, no fixed package required.</p>
+      <a href="#contact" class="btn-o" style="display:inline-block">Ask About Casual Help →</a>
+    </div>
+    <div class="cc">
+      <div class="ctier">Running a team or agency?</div>
+      <p class="cdesc">Need an extra pair of hands for a project? I'm also open to contract and casual development work with other agencies and businesses — under your name or mine.</p>
+      <a href="#contact" class="btn-o" style="display:inline-block">Get In Touch →</a>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section id="faq">
   <div class="sec-hd">
@@ -1096,6 +1172,7 @@
           <select class="form-select" id="fbiz" name="business_type" required>
             <option value="" disabled selected>Select your business type…</option>
             <option value="Freelancer / Sole Trader">Freelancer / Sole Trader</option>
+            <option value="Online Store / E-commerce">Online Store / E-commerce</option>
             <option value="Real Estate Agent">Real Estate Agent</option>
             <option value="Restaurant">Restaurant</option>
             <option value="Café">Café</option>
@@ -1156,6 +1233,8 @@
 
 <!-- CTA -->
 <section id="cta">
+  <div class="bg-blob cta-blob-1"></div>
+  <div class="bg-blob cta-blob-2"></div>
   <div class="cta-deco">
     <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" fill="none">
       <path d="M0 200 C120 80,240 320,400 200 C560 80,680 320,840 200 C1000 80,1120 320,1280 200 C1360 140,1400 160,1440 150" stroke="#7fa8be" stroke-width="6" stroke-linecap="round"/>

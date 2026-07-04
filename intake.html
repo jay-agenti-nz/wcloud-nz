@@ -46,6 +46,12 @@
       --r-pill: 50px;
       --shadow-sm: 0 4px 16px rgba(42,61,74,.06);
       --shadow-md: 0 12px 40px rgba(127,168,190,.15);
+
+      /* Liquid Glass tokens */
+      --glass-bg:        rgba(255,255,255,.6);
+      --glass-bg-strong: rgba(255,255,255,.75);
+      --glass-border:    rgba(255,255,255,.7);
+      --glass-blur:      blur(20px) saturate(180%);
     }
 
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -62,7 +68,9 @@
 
     /* ── NAV ── */
     .nav {
-      background: var(--white);
+      background: var(--glass-bg-strong);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       border-bottom: 1.5px solid var(--brand-mist);
       padding: 0 2.5rem;
       height: 64px;
@@ -208,8 +216,10 @@
 
     /* ── SECTION CARDS ── */
     .form-section {
-      background: var(--white);
-      border: 1.5px solid var(--brand-mist);
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
       border-radius: var(--r-xl);
       margin-bottom: 1.5rem;
       box-shadow: var(--shadow-sm);

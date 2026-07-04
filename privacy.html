@@ -13,7 +13,7 @@
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Nunito',sans-serif; background:#f5f9fb; color:var(--deep); font-size:16px; line-height:1.75; }
 
-  nav { background:var(--brand); padding:1rem 6%; display:flex; align-items:center; justify-content:space-between; }
+  nav { position:sticky; top:0; z-index:50; background:rgba(127,168,190,.7); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border-bottom:1px solid rgba(255,255,255,.25); padding:1rem 6%; display:flex; align-items:center; justify-content:space-between; }
   .logo { display:flex; align-items:center; gap:.75rem; text-decoration:none; }
   .logo svg { width:36px; height:20px; }
   .logo-wm { display:flex; flex-direction:column; line-height:1.15; }

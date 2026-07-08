@@ -68,16 +68,16 @@
   .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
   .nav-links a { text-decoration:none; color:rgba(255,255,255,.7); font-size:.76rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; transition:color .2s; }
   .nav-links a:hover { color:var(--white); }
-  .nav-cta { background:var(--white)!important; color:var(--brand)!important; padding:.5rem 1.5rem; border-radius:50px; letter-spacing:.1em!important; font-weight:700!important; transition:background .2s,color .2s!important; }
-  .nav-cta:hover { background:var(--brand-pale)!important; color:var(--dusk)!important; }
+  .nav-cta { background:rgba(255,255,255,.85)!important; color:var(--brand)!important; padding:.5rem 1.5rem; border-radius:50px; letter-spacing:.1em!important; font-weight:700!important; border:1px solid rgba(255,255,255,.6); backdrop-filter:blur(10px) saturate(180%); -webkit-backdrop-filter:blur(10px) saturate(180%); box-shadow:inset 0 1px 0 rgba(255,255,255,.7); transition:background .2s,color .2s!important; }
+  .nav-cta:hover { background:rgba(255,255,255,.95)!important; color:var(--dusk)!important; }
 
   /* ── BUTTONS ──────────────────────────────────────────────── */
-  .btn-p { display:inline-block; background:var(--brand); color:var(--white); padding:.9rem 2.2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:background .25s,transform .25s,box-shadow .25s; box-shadow:0 6px 24px rgba(127,168,190,.35); }
-  .btn-p:hover { background:var(--dusk); transform:translateY(-2px); box-shadow:0 10px 32px rgba(77,110,128,.25); }
-  .btn-o { display:inline-block; border:2px solid var(--brand); color:var(--brand); padding:.85rem 2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; }
-  .btn-o:hover { background:var(--brand); color:var(--white); }
-  .btn-w { display:inline-block; background:var(--white); color:var(--deep); padding:.9rem 2.2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; }
-  .btn-w:hover { background:var(--brand-pale); }
+  .btn-p { display:inline-block; background:linear-gradient(135deg,rgba(127,168,190,.9),rgba(77,110,128,.92)); color:var(--white); padding:.9rem 2.2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; border:1px solid rgba(255,255,255,.35); backdrop-filter:blur(12px) saturate(160%); -webkit-backdrop-filter:blur(12px) saturate(160%); transition:background .25s,transform .25s,box-shadow .25s; box-shadow:0 6px 24px rgba(127,168,190,.35),inset 0 1px 0 rgba(255,255,255,.45); }
+  .btn-p:hover { background:linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.97)); transform:translateY(-2px); box-shadow:0 10px 32px rgba(77,110,128,.3),inset 0 1px 0 rgba(255,255,255,.45); }
+  .btn-o { display:inline-block; border:1.5px solid rgba(127,168,190,.55); color:var(--brand); padding:.85rem 2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; box-shadow:inset 0 1px 0 rgba(255,255,255,.5); }
+  .btn-o:hover { background:rgba(127,168,190,.9); color:var(--white); border-color:transparent; }
+  .btn-w { display:inline-block; background:rgba(255,255,255,.62); color:var(--deep); padding:.9rem 2.2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; border:1px solid rgba(255,255,255,.6); backdrop-filter:blur(16px) saturate(180%); -webkit-backdrop-filter:blur(16px) saturate(180%); box-shadow:0 6px 24px rgba(42,61,74,.12),inset 0 1px 0 rgba(255,255,255,.6); transition:all .25s; }
+  .btn-w:hover { background:rgba(255,255,255,.8); transform:translateY(-2px); }
   .btn-g { display:inline-block; border:2px solid rgba(255,255,255,.35); color:var(--white); padding:.85rem 2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; }
   .btn-g:hover { border-color:rgba(255,255,255,.7); background:rgba(255,255,255,.08); }
 
@@ -103,6 +103,11 @@
   .hero-blob-1 { top:-60px; left:8%; width:420px; height:420px; background:var(--brand); opacity:.22; }
   .hero-blob-2 { bottom:-100px; right:6%; width:360px; height:360px; background:var(--sage); opacity:.18; animation-delay:-6s; }
   .pricing-blob { top:20%; left:50%; width:600px; height:600px; background:var(--brand); opacity:.35; transform:translateX(-50%); }
+  .problem-blob { top:-60px; right:-90px; width:440px; height:440px; background:var(--brand); opacity:.12; }
+  .problem-blob-2 { bottom:-80px; left:-90px; width:380px; height:380px; background:var(--sage); opacity:.10; animation-delay:-7s; }
+  .portfolio-blob { top:4%; right:-100px; width:440px; height:440px; background:var(--brand); opacity:.11; }
+  .portfolio-blob-2 { bottom:6%; left:-110px; width:480px; height:480px; background:var(--sage); opacity:.10; animation-delay:-9s; }
+  .contact-blob { top:8%; left:-80px; width:440px; height:440px; background:var(--brand); opacity:.12; }
   .cta-blob-1 { top:-80px; left:10%; width:380px; height:380px; background:var(--brand); opacity:.28; }
   .cta-blob-2 { bottom:-120px; right:8%; width:420px; height:420px; background:var(--sage); opacity:.22; animation-delay:-8s; }
 
@@ -117,53 +122,33 @@
   .sec-hd p { margin-top:1rem; font-size:1.05rem; }
 
   /* ── HERO ─────────────────────────────────────────────────── */
-  #hero { min-height:100vh; display:flex; align-items:center; padding-top:7rem; background:linear-gradient(155deg,var(--brand-pale) 0%,var(--white) 52%,#f2eff9 100%); position:relative; overflow:hidden; }
-  .hero-bg-svg { position:absolute; pointer-events:none; }
-  .hero-bg-svg.right { bottom:-30px; right:-60px; width:560px; opacity:.07; }
-  .hero-bg-svg.left { top:100px; left:-40px; width:360px; opacity:.05; transform:rotate(180deg) scaleX(-1); }
-  .hero-inner { max-width:1140px; margin:0 auto; display:grid; grid-template-columns:1.1fr 1fr; gap:5rem; align-items:center; width:100%; }
+  #hero { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:9rem 6% 5rem; background:linear-gradient(180deg,var(--brand-pale) 0%,var(--white) 58%,#f4f1fb 100%); position:relative; overflow:hidden; }
+  /* Animated aurora mesh — gives the glass something soft to refract */
+  .hero-aurora { position:absolute; inset:-25% -12%; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(42% 42% at 20% 24%, rgba(127,168,190,.50), transparent 62%),
+      radial-gradient(38% 40% at 82% 18%, rgba(107,191,158,.34), transparent 62%),
+      radial-gradient(48% 48% at 72% 82%, rgba(160,140,214,.30), transparent 62%),
+      radial-gradient(46% 46% at 24% 86%, rgba(200,220,230,.55), transparent 62%);
+    filter:blur(36px); animation:auroraDrift 22s ease-in-out infinite; }
+  @keyframes auroraDrift {
+    0%,100% { transform:translate(0,0) scale(1); }
+    33%     { transform:translate(2.5%,-2%) scale(1.06); }
+    66%     { transform:translate(-2%,2.5%) scale(1.03); }
+  }
+  .hero-center { position:relative; z-index:2; max-width:800px; margin:0 auto; }
+  .hero-center .badge { margin:0 auto 1.8rem; background:rgba(255,255,255,.5); color:var(--dusk); border:1px solid rgba(255,255,255,.6); backdrop-filter:blur(16px) saturate(180%); -webkit-backdrop-filter:blur(16px) saturate(180%); box-shadow:0 4px 18px rgba(42,61,74,.07); }
   .badge { display:inline-flex; align-items:center; gap:.55rem; background:var(--brand-mist); color:var(--dusk); padding:.4rem 1.1rem; border-radius:50px; font-size:.73rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:1.8rem; }
   .badge-dot { width:6px; height:6px; background:var(--brand); border-radius:50%; animation:pulse 2.5s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.65)} }
   h1 em { font-style:italic; color:var(--brand); }
-  .hero-sub { font-size:1.1rem; color:var(--body); margin:1.6rem 0 2.6rem; font-weight:500; max-width:500px; line-height:1.8; }
-  .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
-  .hero-note { margin-top:1.4rem; font-size:.78rem; color:var(--body); font-weight:600; opacity:.75; letter-spacing:.03em; }
-  .hero-note span { margin:0 .4rem; opacity:.4; }
+  #hero h1 { font-size:clamp(2.7rem,6vw,4.4rem); letter-spacing:-.01em; }
+  .hero-sub { font-size:1.15rem; color:var(--body); margin:1.7rem auto 2.4rem; font-weight:500; max-width:580px; line-height:1.8; }
+  .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; justify-content:center; }
+  .hero-chips { display:flex; gap:.6rem; flex-wrap:wrap; justify-content:center; margin-top:2rem; }
+  .hero-chip { display:inline-flex; align-items:center; gap:.45rem; font-size:.78rem; font-weight:700; color:var(--dusk); letter-spacing:.02em; padding:.42rem 1rem; border-radius:50px; background:rgba(255,255,255,.55); border:1px solid rgba(255,255,255,.6); backdrop-filter:blur(14px) saturate(180%); -webkit-backdrop-filter:blur(14px) saturate(180%); box-shadow:0 4px 16px rgba(42,61,74,.06); }
+  .hero-chip svg { width:14px; height:14px; color:var(--sage); flex-shrink:0; }
 
-  /* Browser mock */
-  .hero-vis { position:relative; }
-  .browser { background:var(--white); border-radius:18px; box-shadow:0 30px 90px rgba(127,168,190,.22),0 4px 16px rgba(42,61,74,.06); overflow:hidden; width:100%; max-width:460px; margin-left:auto; animation:floatY 7s ease-in-out infinite; }
-  @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
-  .b-bar { background:#f4f7f9; padding:.75rem 1.1rem; display:flex; align-items:center; gap:.5rem; border-bottom:1px solid #e8ecef; }
-  .dot { width:10px; height:10px; border-radius:50%; }
-  .dr{background:#ff6058} .dy{background:#ffbc2e} .dg{background:#28c840}
-  .b-url { margin-left:.6rem; background:var(--white); border-radius:6px; padding:.28rem .9rem; font-size:.72rem; color:var(--body); flex:1; font-weight:500; }
-  .b-body { padding:1.4rem 1.6rem 1.8rem; }
-  .b-nav-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem; }
-  .b-logo-pill { display:flex; align-items:center; gap:5px; background:var(--brand); padding:4px 10px 4px 7px; border-radius:50px; }
-  .b-logo-pill svg { width:22px; height:13px; }
-  .b-logo-text { display:flex; flex-direction:column; line-height:1.1; }
-  .b-logo-text i { display:block; height:4px; border-radius:2px; background:var(--white); }
-  .b-logo-text i:first-child { width:26px; margin-bottom:3px; }
-  .b-logo-text i:last-child { width:20px; opacity:.55; }
-  .b-nav-links { display:flex; gap:7px; }
-  .b-nl { height:6px; background:var(--brand-mist); border-radius:3px; width:24px; }
-  .b-banner { height:88px; background:linear-gradient(135deg,var(--brand-pale),var(--brand-mist)); border-radius:10px; margin-bottom:1.1rem; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-  .b-banner svg { width:80%; opacity:.3; }
-  .b-hl { height:10px; background:var(--deep); border-radius:4px; width:72%; margin-bottom:7px; }
-  .b-sub { height:7px; background:var(--brand-mist); border-radius:4px; margin-bottom:5px; }
-  .b-sub.s { width:55%; }
-  .b-cta-bar { height:28px; width:96px; background:var(--brand); border-radius:20px; margin-top:10px; opacity:.85; }
-  .b-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin-top:1.2rem; }
-  .b-card { background:var(--brand-pale); border-radius:8px; padding:8px; }
-  .b-ci { width:18px; height:18px; background:var(--brand-mist); border-radius:5px; margin-bottom:6px; }
-  .b-cl { height:5px; background:var(--brand-mist); border-radius:3px; margin-bottom:4px; }
-  .b-cl.s { width:60%; }
-  .ftag { position:absolute; background:var(--white); border-radius:12px; padding:.65rem 1.1rem; box-shadow:0 8px 32px rgba(42,61,74,.12); font-size:.78rem; font-weight:700; color:var(--deep); display:flex; align-items:center; gap:.55rem; white-space:nowrap; }
-  .fdot { width:8px; height:8px; border-radius:50%; background:var(--sage); flex-shrink:0; }
-  .ft1 { top:8%; right:-18px; animation:floatY 6s ease-in-out infinite 1.2s; }
-  .ft2 { bottom:14%; left:-18px; animation:floatY 6s ease-in-out infinite 2.5s; }
 
   /* ── STATS ────────────────────────────────────────────────── */
   .stats { background:var(--brand); padding:3rem 6%; }
@@ -173,18 +158,20 @@
   .s-lbl { font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.6); font-weight:600; }
 
   /* ── PROBLEM ──────────────────────────────────────────────── */
-  #problem { background:var(--white); }
+  #problem { background:var(--white); position:relative; overflow:hidden; }
   .prob-grid { max-width:1100px; margin:3.5rem auto 0; display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
   .prob-card { background:var(--glass-bg); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border:1px solid var(--glass-border); box-shadow:var(--glass-shadow); border-radius:18px; padding:2.2rem; transition:transform .3s,box-shadow .3s; }
   .prob-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(127,168,190,.15); }
-  .pi { font-size:1.9rem; margin-bottom:1rem; display:block; }
+  .pi { width:52px; height:52px; border-radius:15px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:1.3rem; color:var(--brand); background:rgba(127,168,190,.12); border:1px solid rgba(255,255,255,.5); box-shadow:inset 0 1px 0 rgba(255,255,255,.6); }
+  .pi svg { width:26px; height:26px; }
 
   /* ── SOLUTION ─────────────────────────────────────────────── */
   #solution { background:var(--brand-pale); }
   .feat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3.5rem; max-width:1100px; margin-left:auto; margin-right:auto; }
   .feat-card { background:var(--glass-bg-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border-radius:18px; padding:2rem; border:1px solid var(--glass-border); box-shadow:var(--glass-shadow); transition:transform .3s,box-shadow .3s; }
   .feat-card:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(127,168,190,.15); }
-  .fi { width:48px; height:48px; background:var(--brand-mist); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin-bottom:1.2rem; }
+  .fi { width:52px; height:52px; background:rgba(127,168,190,.14); border:1px solid rgba(255,255,255,.55); box-shadow:inset 0 1px 0 rgba(255,255,255,.6); border-radius:15px; display:flex; align-items:center; justify-content:center; color:var(--dusk); margin-bottom:1.3rem; }
+  .fi svg { width:25px; height:25px; }
 
   /* ── PROCESS ──────────────────────────────────────────────── */
   #process { background:var(--white); }
@@ -199,8 +186,8 @@
   #about { background:var(--brand-pale); }
   .about-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1.6fr; gap:5rem; align-items:center; }
   .about-avatar { position:relative; }
-  .about-avatar-circle { width:240px; height:240px; border-radius:50%; background:linear-gradient(135deg,var(--brand-mist),var(--brand-light)); display:flex; align-items:center; justify-content:center; font-size:5rem; border:4px solid var(--white); box-shadow:0 16px 60px rgba(127,168,190,.25); margin:0 auto; }
-  .about-badge { position:absolute; bottom:10px; right:20px; background:var(--white); border-radius:14px; padding:.7rem 1.1rem; box-shadow:0 6px 24px rgba(42,61,74,.12); text-align:center; }
+  .about-avatar-circle { width:240px; height:240px; border-radius:50%; background:linear-gradient(135deg,var(--brand),var(--dusk)); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:6rem; color:var(--white); border:4px solid var(--white); box-shadow:0 16px 60px rgba(127,168,190,.3),inset 0 2px 0 rgba(255,255,255,.25); margin:0 auto; }
+  .about-badge { position:absolute; bottom:10px; right:20px; background:rgba(255,255,255,.62); backdrop-filter:blur(18px) saturate(180%); -webkit-backdrop-filter:blur(18px) saturate(180%); border:1px solid rgba(255,255,255,.6); border-radius:16px; padding:.7rem 1.1rem; box-shadow:0 8px 28px rgba(42,61,74,.14),inset 0 1px 0 rgba(255,255,255,.6); text-align:center; }
   .about-badge-num { font-family:var(--serif); font-size:1.6rem; font-weight:700; color:var(--deep); line-height:1; display:block; }
   .about-badge-txt { font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--body); }
   .about-text h2 { margin-bottom:1rem; }
@@ -208,7 +195,7 @@
   .about-location { display:inline-flex; align-items:center; gap:.5rem; background:var(--brand-mist); color:var(--dusk); padding:.4rem 1rem; border-radius:50px; font-size:.78rem; font-weight:700; margin-top:.5rem; }
 
   /* ── PORTFOLIO ────────────────────────────────────────────── */
-  #portfolio { background:var(--white); }
+  #portfolio { background:var(--white); position:relative; overflow:hidden; }
 
   /* Featured / latest project */
   .port-featured {
@@ -222,6 +209,9 @@
     transition:transform .3s,box-shadow .3s;
   }
   .port-featured:hover { transform:translateY(-4px); box-shadow:0 28px 76px rgba(127,168,190,.26); }
+  .port-platforms { display:flex; gap:.5rem; flex-wrap:wrap; margin:.3rem 0 .1rem; }
+  .port-platform { display:inline-flex; align-items:center; gap:.4rem; font-size:.72rem; font-weight:700; letter-spacing:.02em; color:var(--dusk); background:rgba(127,168,190,.12); border:1px solid rgba(127,168,190,.22); padding:.32rem .8rem; border-radius:50px; }
+  .port-platform svg { width:15px; height:15px; }
 
   .port-featured-visual { padding:2.2rem 0 2.2rem 2.2rem; display:flex; align-items:center; }
   .port-browser { width:100%; background:#fff; border-radius:14px; box-shadow:0 16px 40px rgba(42,61,74,.14); overflow:hidden; }
@@ -244,12 +234,23 @@
     background:var(--glass-bg-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur);
     border:1px solid var(--glass-border); border-radius:18px;
     overflow:hidden; text-decoration:none; color:inherit;
+    box-shadow:var(--glass-shadow);
     transition:transform .3s,box-shadow .3s;
   }
-  .port-card:hover { transform:translateY(-4px); box-shadow:0 16px 44px rgba(127,168,190,.2); }
-  .port-thumb-bar { display:flex; align-items:center; gap:6px; background:#f4f7f9; padding:.55rem .8rem; border-bottom:1px solid #e8ecef; }
-  .port-thumb-banner { aspect-ratio:16/10; background:linear-gradient(135deg,var(--brand-pale),var(--brand-mist)); display:flex; align-items:center; justify-content:center; }
+  .port-card:hover { transform:translateY(-4px); box-shadow:0 16px 44px rgba(127,168,190,.2),inset 0 1px 0 rgba(255,255,255,.5); }
+  .port-thumb-bar { display:flex; align-items:center; gap:6px; background:rgba(244,247,249,.55); padding:.55rem .8rem; border-bottom:1px solid rgba(232,236,239,.7); }
+  .port-thumb-banner { position:relative; aspect-ratio:16/10; background:linear-gradient(135deg,var(--brand-pale),var(--brand-mist)); display:flex; align-items:center; justify-content:center; overflow:hidden; }
   .port-thumb-banner svg { width:32%; color:var(--brand); opacity:.6; }
+  .port-thumb-banner.photo { background:#fff; }
+  .port-thumb-banner.photo img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+
+  /* Colour-veil reveal — theme tint clears on hover / tap */
+  .port-reveal { position:absolute; inset:0; z-index:2; display:flex; align-items:flex-end; justify-content:center; padding-bottom:.95rem; pointer-events:none;
+    background:linear-gradient(160deg,rgba(127,168,190,.92),rgba(200,220,230,.88) 55%,rgba(234,243,247,.9));
+    transition:opacity .5s ease; }
+  .port-reveal-pill { display:inline-flex; align-items:center; gap:.4rem; background:rgba(255,255,255,.72); border:1px solid rgba(255,255,255,.7); color:var(--dusk); font-size:.66rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; padding:.4rem .9rem; border-radius:50px; box-shadow:0 4px 16px rgba(42,61,74,.12); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); transition:opacity .35s ease; }
+  .port-reveal-pill svg { width:13px; height:13px; color:var(--brand); opacity:1; }
+  .port-card:hover .port-reveal, .port-card:focus-within .port-reveal, .port-card.revealed .port-reveal { opacity:0; }
   .port-card .port-body { padding:1.4rem 1.5rem 1.6rem; display:flex; flex-direction:column; gap:.25rem; }
 
   .port-tag { display:inline-block; color:var(--body); font-size:.62rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
@@ -289,8 +290,8 @@
   .agentic-eyebrow-dot { width:6px; height:6px; background:var(--sage); border-radius:50%; animation:pulse 2.5s ease-in-out infinite; }
   .agentic-banner h3 { font-family:var(--serif); font-size:clamp(1.4rem,2.5vw,1.9rem); font-weight:700; color:#fff; margin-bottom:.6rem; line-height:1.25; }
   .agentic-banner p { color:rgba(255,255,255,.6); font-size:.95rem; font-weight:500; max-width:520px; line-height:1.7; }
-  .agentic-cta { display:inline-flex; align-items:center; gap:.6rem; background:var(--white); color:var(--deep); padding:.9rem 2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; white-space:nowrap; transition:background .25s,transform .25s,box-shadow .25s; box-shadow:0 6px 28px rgba(0,0,0,.2); flex-shrink:0; position:relative; z-index:1; }
-  .agentic-cta:hover { background:var(--brand-pale); transform:translateY(-2px); box-shadow:0 10px 36px rgba(0,0,0,.25); }
+  .agentic-cta { display:inline-flex; align-items:center; gap:.6rem; background:rgba(255,255,255,.9); color:var(--deep); padding:.9rem 2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; white-space:nowrap; border:1px solid rgba(255,255,255,.6); backdrop-filter:blur(14px) saturate(180%); -webkit-backdrop-filter:blur(14px) saturate(180%); transition:background .25s,transform .25s,box-shadow .25s; box-shadow:0 6px 28px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.7); flex-shrink:0; position:relative; z-index:1; }
+  .agentic-cta:hover { background:rgba(255,255,255,.98); transform:translateY(-2px); box-shadow:0 10px 36px rgba(0,0,0,.25); }
   .agentic-cta-arrow { transition:transform .2s; }
   .agentic-cta:hover .agentic-cta-arrow { transform:translateX(4px); }
 
@@ -310,11 +311,11 @@
   .pdesc { font-size:.9rem; color:var(--body); margin-bottom:1.6rem; font-weight:500; line-height:1.7; min-height:56px; }
   .plist li { padding:.5rem 0; font-size:.87rem; color:var(--deep); font-weight:600; display:flex; align-items:flex-start; gap:.7rem; border-bottom:1px solid var(--brand-pale); }
   .plist li:last-child { border:none; }
-  .plist li::before { content:'✓'; color:var(--sage); font-weight:800; flex-shrink:0; margin-top:.05rem; }
-  .pbtn { display:block; text-align:center; padding:.85rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; background:var(--deep); color:var(--white); }
-  .pbtn:hover { background:var(--brand); }
-  .feat .pbtn { background:var(--brand); }
-  .feat .pbtn:hover { background:var(--dusk); }
+  .plist li::before { content:''; width:16px; height:16px; flex-shrink:0; margin-top:.2rem; background:no-repeat center/13px url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%236bbf9e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 6.5"/></svg>'); }
+  .pbtn { display:block; text-align:center; padding:.85rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; background:linear-gradient(135deg,rgba(42,61,74,.92),rgba(77,110,128,.92)); color:var(--white); border:1px solid rgba(255,255,255,.28); box-shadow:inset 0 1px 0 rgba(255,255,255,.35); }
+  .pbtn:hover { background:linear-gradient(135deg,rgba(127,168,190,.95),rgba(77,110,128,.95)); transform:translateY(-1px); }
+  .feat .pbtn { background:linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94)); }
+  .feat .pbtn:hover { background:linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.96)); }
 
   /* ── CARE PLANS ───────────────────────────────────────────── */
   #care { background:var(--white); }
@@ -343,9 +344,9 @@
   .faq-item.open .faq-ans { display:block; }
 
   /* ── CONTACT FORM ─────────────────────────────────────────── */
-  #contact { background:var(--white); }
+  #contact { background:var(--white); position:relative; overflow:hidden; }
   .contact-inner { max-width:760px; margin:0 auto; }
-  .contact-form { background:var(--brand-pale); border-radius:24px; padding:3rem; border:1.5px solid var(--brand-mist); margin-top:3rem; }
+  .contact-form { background:var(--glass-bg-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border-radius:24px; padding:3rem; border:1px solid var(--glass-border); box-shadow:var(--glass-shadow); margin-top:3rem; }
   .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.2rem; }
   .form-group { display:flex; flex-direction:column; gap:.4rem; margin-bottom:1.2rem; }
   .form-group:last-child { margin-bottom:0; }
@@ -360,10 +361,11 @@
   .form-textarea { resize:vertical; min-height:120px; }
   .other-input-wrap { display:none; margin-top:.6rem; }
   .other-input-wrap.show { display:block; }
-  .form-submit { width:100%; background:var(--brand); color:var(--white); border:none; padding:1rem 2rem; border-radius:50px; font-family:var(--sans); font-size:.9rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; transition:background .25s,transform .25s,box-shadow .25s; box-shadow:0 6px 24px rgba(127,168,190,.35); margin-top:1.5rem; }
-  .form-submit:hover { background:var(--dusk); transform:translateY(-2px); box-shadow:0 10px 32px rgba(77,110,128,.25); }
+  .form-submit { width:100%; background:linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94)); color:var(--white); border:1px solid rgba(255,255,255,.35); padding:1rem 2rem; border-radius:50px; font-family:var(--sans); font-size:.9rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; backdrop-filter:blur(12px) saturate(160%); -webkit-backdrop-filter:blur(12px) saturate(160%); transition:background .25s,transform .25s,box-shadow .25s; box-shadow:0 6px 24px rgba(127,168,190,.35),inset 0 1px 0 rgba(255,255,255,.45); margin-top:1.5rem; }
+  .form-submit:hover { background:linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.97)); transform:translateY(-2px); box-shadow:0 10px 32px rgba(77,110,128,.3),inset 0 1px 0 rgba(255,255,255,.45); }
   .form-success { display:none; text-align:center; padding:2rem; }
-  .form-success .tick { font-size:3rem; display:block; margin-bottom:1rem; }
+  .form-success .tick { display:inline-flex; margin-bottom:1rem; color:var(--sage); }
+  .form-success .tick svg { width:56px; height:56px; }
   .form-success h3 { color:var(--deep); margin-bottom:.5rem; }
   .form-success p { color:var(--body); }
 
@@ -383,8 +385,8 @@
   .idea-banner .lbl { color:var(--dusk); margin-bottom:.5rem; }
   .idea-banner h3 { font-family:var(--serif); font-size:1.2rem; font-weight:700; color:var(--deep); margin-bottom:.4rem; line-height:1.3; }
   .idea-banner p { font-size:.88rem; color:var(--body); font-weight:500; line-height:1.65; }
-  .idea-btn { display:inline-flex; align-items:center; gap:.5rem; background:var(--brand); color:#fff; padding:.8rem 1.8rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; transition:background .2s,transform .2s; white-space:nowrap; flex-shrink:0; }
-  .idea-btn:hover { background:var(--dusk); transform:translateY(-2px); }
+  .idea-btn { display:inline-flex; align-items:center; gap:.5rem; background:linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94)); color:#fff; padding:.8rem 1.8rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; border:1px solid rgba(255,255,255,.35); box-shadow:inset 0 1px 0 rgba(255,255,255,.4); transition:background .2s,transform .2s; white-space:nowrap; flex-shrink:0; }
+  .idea-btn:hover { background:linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.96)); transform:translateY(-2px); }
   #cta { background:var(--deep); text-align:center; padding:8rem 6%; position:relative; overflow:hidden; }
   .cta-deco { position:absolute; inset:0; pointer-events:none; opacity:.06; overflow:hidden; }
   .cta-deco svg { width:100%; height:100%; object-fit:cover; }
@@ -404,15 +406,16 @@
   .ty-modal-overlay { display:none; position:fixed; inset:0; background:rgba(42,61,74,.55); backdrop-filter:blur(4px); z-index:9999; align-items:center; justify-content:center; }
   .ty-modal-overlay.show { display:flex; animation:fadeIn .3s ease; }
   @keyframes fadeIn { from{opacity:0} to{opacity:1} }
-  .ty-modal { background:var(--white); border-radius:24px; padding:3rem 2.5rem; max-width:420px; width:90%; text-align:center; box-shadow:0 32px 80px rgba(42,61,74,.25); position:relative; animation:slideUp .35s cubic-bezier(.22,1,.36,1); }
+  .ty-modal { background:rgba(255,255,255,.82); backdrop-filter:blur(30px) saturate(180%); -webkit-backdrop-filter:blur(30px) saturate(180%); border:1px solid rgba(255,255,255,.6); border-radius:24px; padding:3rem 2.5rem; max-width:420px; width:90%; text-align:center; box-shadow:0 32px 80px rgba(42,61,74,.25),inset 0 1px 0 rgba(255,255,255,.6); position:relative; animation:slideUp .35s cubic-bezier(.22,1,.36,1); }
   @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
-  .ty-modal-icon { font-size:3rem; display:block; margin-bottom:1rem; }
+  .ty-modal-icon { display:inline-flex; margin-bottom:1rem; color:var(--sage); }
+  .ty-modal-icon svg { width:56px; height:56px; }
   .ty-modal h3 { font-family:var(--serif); font-size:1.4rem; font-weight:700; color:var(--deep); margin-bottom:.6rem; }
   .ty-modal p { font-size:.92rem; color:var(--body); font-weight:500; line-height:1.75; margin-bottom:1.6rem; }
   .ty-modal p strong { color:var(--deep); }
   .ty-modal p a { color:var(--brand); text-decoration:none; }
-  .ty-modal-close { background:var(--brand); color:#fff; border:none; padding:.8rem 2.2rem; border-radius:50px; font-family:var(--sans); font-size:.8rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; transition:background .2s,transform .2s; box-shadow:0 6px 20px rgba(127,168,190,.35); }
-  .ty-modal-close:hover { background:var(--dusk); transform:translateY(-2px); }
+  .ty-modal-close { background:linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94)); color:#fff; border:1px solid rgba(255,255,255,.35); padding:.8rem 2.2rem; border-radius:50px; font-family:var(--sans); font-size:.8rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; transition:background .2s,transform .2s; box-shadow:0 6px 20px rgba(127,168,190,.35),inset 0 1px 0 rgba(255,255,255,.4); }
+  .ty-modal-close:hover { background:linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.96)); transform:translateY(-2px); }
 
   .fu { opacity:1; transform:none; transition:opacity .7s ease,transform .7s ease; }
   .fu.ready { opacity:0; transform:translateY(24px); }
@@ -446,7 +449,8 @@
     transition:background .2s, border-color .2s;
   }
   .ai-pill:hover { background:rgba(127,168,190,.2); border-color:rgba(127,168,190,.4); }
-  .ai-pill-icon { font-size:1rem; }
+  .ai-pill-icon { display:inline-flex; align-items:center; }
+  .ai-pill-icon svg { width:16px; height:16px; }
 
   /* Chat mock */
   .ai-vis { display:flex; flex-direction:column; gap:1.2rem; }
@@ -490,16 +494,17 @@
   /* Source badges */
   .ai-badge-row { display:flex; gap:.6rem; flex-wrap:wrap; }
   .ai-source-badge {
+    display:inline-flex; align-items:center; gap:.4rem;
     font-family:'Raleway',sans-serif; font-size:.68rem; font-weight:700;
     letter-spacing:.12em; text-transform:uppercase;
     color:rgba(255,255,255,.35); border:1px solid rgba(255,255,255,.1);
     padding:.35rem .9rem; border-radius:50px;
   }
+  .ai-source-badge svg { width:12px; height:12px; }
 
   /* ── RESPONSIVE ───────────────────────────────────────────── */
   @media (max-width:960px) {
-    .hero-inner,.about-inner,.ai-inner { grid-template-columns:1fr; gap:3rem; }
-    .hero-vis { display:none; }
+    .about-inner,.ai-inner { grid-template-columns:1fr; gap:3rem; }
     .prob-grid,.feat-grid,.steps,.price-grid,.care-grid { grid-template-columns:1fr; }
     .port-card { grid-template-columns:64px 1fr; gap:1rem; padding:1.4rem 1.5rem; }
     .port-num { font-size:2.6rem; }
@@ -511,7 +516,7 @@
     .nav-links li:not(:last-child) { display:none; }
     .form-row { grid-template-columns:1fr; }
     .contact-form { padding:2rem 1.5rem; }
-    .about-avatar-circle { width:180px; height:180px; font-size:3.5rem; }
+    .about-avatar-circle { width:180px; height:180px; font-size:4.5rem; }
     .agentic-banner { flex-direction:column; align-items:flex-start; padding:2rem; }
     .agentic-cta { width:100%; justify-content:center; }
   }
@@ -683,59 +688,25 @@
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hero-aurora"></div>
   <div class="bg-blob hero-blob-1"></div>
   <div class="bg-blob hero-blob-2"></div>
-  <svg class="hero-bg-svg right" viewBox="0 0 560 220" fill="none">
-    <path d="M0 110 C70 30,140 190,210 110 C280 30,350 190,420 110 C480 45,520 65,560 55" stroke="#7fa8be" stroke-width="4" stroke-linecap="round"/>
-    <path d="M0 150 C80 55,160 230,250 140 C330 60,410 220,490 140 C520 110,540 118,560 112" stroke="#c8dce6" stroke-width="3" stroke-linecap="round"/>
-  </svg>
-  <svg class="hero-bg-svg left" viewBox="0 0 360 180" fill="none">
-    <path d="M0 90 C50 25,100 155,150 90 C200 25,250 155,300 90 C330 55,345 62,360 58" stroke="#7fa8be" stroke-width="3.5" stroke-linecap="round"/>
-  </svg>
 
-  <div class="hero-inner">
-    <div class="fu">
-      <div class="badge"><div class="badge-dot"></div>Christchurch, New Zealand</div>
-      <h1>Your business deserves<br>a <em>great website.</em><br>Leave it to us.</h1>
-      <p class="hero-sub">Whether you're self-employed, running a small business, or selling online — no tech knowledge needed, no confusing steps. Just a clean, professional website, done for you, at a price that makes sense.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-p">Get Started</a>
-        <a href="#process" class="btn-o">How It Works</a>
-      </div>
-      <p class="hero-note">✓ One-off payment <span>·</span> ✓ Ready in 5–10 days <span>·</span> ✓ No lock-in contracts</p>
+  <div class="hero-center fu">
+    <div class="badge"><div class="badge-dot"></div>Christchurch, New Zealand</div>
+    <h1>Your business deserves<br>a <em>great website.</em></h1>
+    <p class="hero-sub">Whether you're self-employed, running a small business, or selling online — no tech knowledge needed, no confusing steps. Just a clean, professional website, done for you, at a price that makes sense.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-p">Get Started</a>
+      <a href="#process" class="btn-o">How It Works</a>
     </div>
-
-    <div class="hero-vis fu">
-      <div class="browser">
-        <div class="b-bar">
-          <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
-          <div class="b-url">www.yourbusiness.co.nz</div>
-        </div>
-        <div class="b-body">
-          <div class="b-nav-row">
-            <div class="b-logo-pill">
-              <svg viewBox="0 0 76 44" fill="none"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,.5)" stroke-width="3.5" stroke-linecap="round"/></svg>
-              <div class="b-logo-text"><i></i><i></i></div>
-            </div>
-            <div class="b-nav-links"><div class="b-nl"></div><div class="b-nl"></div><div class="b-nl"></div></div>
-          </div>
-          <div class="b-banner">
-            <svg viewBox="0 0 300 80" fill="none"><path d="M10 50 C50 10,90 70,130 40 C170 10,210 70,250 40 C270 26,284 32,296 28" stroke="#7fa8be" stroke-width="5" stroke-linecap="round"/><path d="M10 65 C60 25,100 80,145 55 C185 32,220 75,260 52 C278 42,288 46,298 43" stroke="#c8dce6" stroke-width="3.5" stroke-linecap="round"/></svg>
-          </div>
-          <div class="b-hl"></div>
-          <div class="b-sub"></div><div class="b-sub s"></div>
-          <div class="b-cta-bar"></div>
-          <div class="b-cards">
-            <div class="b-card"><div class="b-ci"></div><div class="b-cl"></div><div class="b-cl s"></div></div>
-            <div class="b-card"><div class="b-ci"></div><div class="b-cl"></div><div class="b-cl s"></div></div>
-            <div class="b-card"><div class="b-ci"></div><div class="b-cl"></div><div class="b-cl s"></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="ftag ft1"><div class="fdot"></div>Live in 7 days</div>
-      <div class="ftag ft2"><div class="fdot"></div>Looks great on mobile ✓</div>
+    <div class="hero-chips">
+      <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 6.5"/></svg>One-off payment</span>
+      <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 6.5"/></svg>Ready in 5–10 days</span>
+      <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 6.5"/></svg>No lock-in contracts</span>
     </div>
   </div>
+
 </section>
 
 <!-- STATS -->
@@ -749,16 +720,18 @@
 
 <!-- PROBLEM -->
 <section id="problem">
+  <div class="bg-blob problem-blob"></div>
+  <div class="bg-blob problem-blob-2"></div>
   <div class="sec-hd fu">
     <span class="lbl">You're not alone</span>
     <h2>Building a website can feel like a full-time job</h2>
     <p>Most small business owners and self-employed Kiwis don't have time to figure out complicated website builders — and you shouldn't have to.</p>
   </div>
   <div class="prob-grid fug">
-    <div class="prob-card"><span class="pi">😰</span><h3>Too many confusing choices</h3><p>Wix, Squarespace, WordPress… each one has a learning curve, and none of them feel straightforward when you're trying to run a business.</p></div>
-    <div class="prob-card"><span class="pi">⏰</span><h3>No time to do it yourself</h3><p>You're busy serving customers, not staring at a screen trying to figure out why your logo looks wrong on a phone.</p></div>
-    <div class="prob-card"><span class="pi">💸</span><h3>Worried about the cost</h3><p>Big web agencies charge thousands. You just need something clean, professional, and honest — not an overpriced project that drags on for months.</p></div>
-    <div class="prob-card"><span class="pi">🤷</span><h3>Not sure what you actually need</h3><p>You know you need a website. You're just not sure how many pages, what to write, or how to make it look good. It all feels a bit much.</p></div>
+    <div class="prob-card"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 13l9 5 9-5"/></svg></span><h3>Too many confusing choices</h3><p>Wix, Squarespace, WordPress… each one has a learning curve, and none of them feel straightforward when you're trying to run a business.</p></div>
+    <div class="prob-card"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg></span><h3>No time to do it yourself</h3><p>You're busy serving customers, not staring at a screen trying to figure out why your logo looks wrong on a phone.</p></div>
+    <div class="prob-card"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M14.6 9.3A2.7 2.7 0 0 0 12 8c-1.5 0-2.7.9-2.7 2s1.2 2 2.7 2 2.7.9 2.7 2-1.2 2-2.7 2a2.7 2.7 0 0 1-2.6-1.3"/></svg></span><h3>Worried about the cost</h3><p>Big web agencies charge thousands. You just need something clean, professional, and honest — not an overpriced project that drags on for months.</p></div>
+    <div class="prob-card"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.3 9.2a2.8 2.8 0 0 1 5.4.9c0 1.9-2.7 2.1-2.7 4"/><circle cx="12" cy="17.3" r=".7" fill="currentColor" stroke="none"/></svg></span><h3>Not sure what you actually need</h3><p>You know you need a website. You're just not sure how many pages, what to write, or how to make it look good. It all feels a bit much.</p></div>
   </div>
 </section>
 
@@ -770,12 +743,12 @@
     <p>Tell us about your business. We'll build you a clean, fast, professional website that looks great on every screen.</p>
   </div>
   <div class="feat-grid fug">
-    <div class="feat-card"><div class="fi">✍️</div><h3>We write the words</h3><p>Not sure what to say? We help put it into clear, simple language that connects with your customers.</p></div>
-    <div class="feat-card"><div class="fi">🎨</div><h3>We handle the design</h3><p>Your site will look modern and professional — clean layout, nice fonts, your colours — done properly.</p></div>
-    <div class="feat-card"><div class="fi">📱</div><h3>Works on every device</h3><p>Phones, tablets, laptops — your website will look and work perfectly no matter how customers find you.</p></div>
-    <div class="feat-card"><div class="fi">🔍</div><h3>Set up to be found</h3><p>We make sure your site is set up so Google can find it. More visibility without any extra effort from you.</p></div>
-    <div class="feat-card"><div class="fi">⚡</div><h3>Fast and reliable</h3><p>Nobody waits for a slow website. Yours will load quickly and give customers a smooth experience every time.</p></div>
-    <div class="feat-card"><div class="fi">🤝</div><h3>Real human support</h3><p>You'll always have someone to talk to. Plain English, no tech talk — just friendly help when you need it.</p></div>
+    <div class="feat-card"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1Z"/><path d="M14 7l3 3"/></svg></div><h3>We write the words</h3><p>Not sure what to say? We help put it into clear, simple language that connects with your customers.</p></div>
+    <div class="feat-card"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4V2M19 6h2M15 9V7M9 8H7"/><path d="M6.5 21 16 11.5 12.5 8 3 17.5 6.5 21Z"/></svg></div><h3>We handle the design</h3><p>Your site will look modern and professional — clean layout, nice fonts, your colours — done properly.</p></div>
+    <div class="feat-card"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="10" rx="1.6"/><path d="M2 17h14"/><rect x="16.5" y="9" width="5.5" height="11" rx="1.4"/></svg></div><h3>Works on every device</h3><p>Phones, tablets, laptops — your website will look and work perfectly no matter how customers find you.</p></div>
+    <div class="feat-card"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><h3>Set up to be found</h3><p>We make sure your site is set up so Google can find it. More visibility without any extra effort from you.</p></div>
+    <div class="feat-card"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div><h3>Fast and reliable</h3><p>Nobody waits for a slow website. Yours will load quickly and give customers a smooth experience every time.</p></div>
+    <div class="feat-card"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2Z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></svg></div><h3>Real human support</h3><p>You'll always have someone to talk to. Plain English, no tech talk — just friendly help when you need it.</p></div>
   </div>
 </section>
 
@@ -788,10 +761,10 @@
       <p>The way people find businesses is changing fast. More and more customers are asking ChatGPT, asking Siri, or searching through AI tools to find recommendations. We make sure your website is ready for that.</p>
       <p>Every website we build is structured so AI tools can read, understand, and recommend your business — so when someone asks "who's the best plumber in Christchurch?" your name has a real chance of coming up.</p>
       <div class="ai-pills">
-        <div class="ai-pill"><span class="ai-pill-icon">🤖</span>AI-readable structure</div>
-        <div class="ai-pill"><span class="ai-pill-icon">💬</span>Optimised for ChatGPT & Siri</div>
-        <div class="ai-pill"><span class="ai-pill-icon">📡</span>Schema markup included</div>
-        <div class="ai-pill"><span class="ai-pill-icon">🔎</span>Google + AI search ready</div>
+        <div class="ai-pill"><span class="ai-pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2.5"/><path d="M9 3v2.5M15 3v2.5M9 18.5V21M15 18.5V21M3 9h2.5M3 15h2.5M18.5 9H21M18.5 15H21"/><circle cx="12" cy="12" r="2.2"/></svg></span>AI-readable structure</div>
+        <div class="ai-pill"><span class="ai-pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2Z"/></svg></span>Optimised for ChatGPT &amp; Siri</div>
+        <div class="ai-pill"><span class="ai-pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.2"/><circle cx="5.5" cy="19" r="2.2"/><circle cx="18.5" cy="19" r="2.2"/><path d="M12 7.2v3.3M12 10.5H5.5v6.3M12 10.5h6.5v6.3"/></svg></span>Schema markup included</div>
+        <div class="ai-pill"><span class="ai-pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>Google + AI search ready</div>
       </div>
     </div>
     <div class="ai-vis">
@@ -807,16 +780,16 @@
               <span></span><span></span><span></span>
             </div>
             <div class="ai-response" id="aiResponse" style="display:none">
-              Based on their website, <strong>White Cloud</strong> is a Christchurch-based web design service helping small businesses get online affordably and fast — from NZ$299 with a 7-day turnaround. ✓
+              Based on their website, <strong>White Cloud</strong> is a Christchurch-based web design service helping small businesses get online affordably and fast — from NZ$299 with a 7-day turnaround.
             </div>
           </div>
         </div>
       </div>
       <div class="ai-badge-row">
-        <div class="ai-source-badge">✦ ChatGPT</div>
-        <div class="ai-source-badge">✦ Gemini</div>
-        <div class="ai-source-badge">✦ Siri</div>
-        <div class="ai-source-badge">✦ Perplexity</div>
+        <div class="ai-source-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.4 3.6 1.4 4.6 5 5-3.6.4-4.6 1.4-5 5-.4-3.6-1.4-4.6-5-5 3.6-.4 4.6-1.4 5-5Z"/></svg>ChatGPT</div>
+        <div class="ai-source-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.4 3.6 1.4 4.6 5 5-3.6.4-4.6 1.4-5 5-.4-3.6-1.4-4.6-5-5 3.6-.4 4.6-1.4 5-5Z"/></svg>Gemini</div>
+        <div class="ai-source-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.4 3.6 1.4 4.6 5 5-3.6.4-4.6 1.4-5 5-.4-3.6-1.4-4.6-5-5 3.6-.4 4.6-1.4 5-5Z"/></svg>Siri</div>
+        <div class="ai-source-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.4 3.6 1.4 4.6 5 5-3.6.4-4.6 1.4-5 5-.4-3.6-1.4-4.6-5-5 3.6-.4 4.6-1.4 5-5Z"/></svg>Perplexity</div>
       </div>
     </div>
   </div>
@@ -840,7 +813,7 @@
 <section id="about">
   <div class="about-inner">
     <div class="about-avatar fu">
-      <div class="about-avatar-circle">👋</div>
+      <div class="about-avatar-circle">J</div>
       <div class="about-badge">
         <span class="about-badge-num">10+</span>
         <span class="about-badge-txt">Years Experience</span>
@@ -859,6 +832,8 @@
 
 <!-- PORTFOLIO -->
 <section id="portfolio">
+  <div class="bg-blob portfolio-blob"></div>
+  <div class="bg-blob portfolio-blob-2"></div>
   <div class="sec-hd fu">
     <span class="lbl">Our work</span>
     <h2>Projects we've built</h2>
@@ -866,55 +841,75 @@
   </div>
 
   <!-- Featured: latest project -->
-  <a href="https://rakkhun.co.nz/" target="_blank" rel="noopener" class="port-featured fu">
+  <a href="https://biblio.ink" target="_blank" rel="noopener" class="port-featured fu">
     <div class="port-featured-visual">
       <div class="port-browser">
         <div class="port-browser-bar">
           <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
-          <span class="port-browser-url">rakkhun.co.nz</span>
+          <span class="port-browser-url">biblio.ink</span>
         </div>
         <div class="port-browser-frame">
-          <img src="assets/rakkhun-preview.jpg" alt="Rak Khun Thai Eatery & Bar — website preview" loading="lazy">
+          <img src="assets/biblio-preview.jpg" alt="Biblio — 3D bookshelf reading app" loading="lazy">
         </div>
       </div>
     </div>
     <div class="port-featured-content">
       <div class="badge"><div class="badge-dot"></div>Latest project</div>
-      <div class="port-tag">Restaurant &middot; Full Redesign</div>
-      <h3 class="port-featured-title">Rak Khun Thai Eatery &amp; Bar</h3>
-      <div class="port-url-lbl">rakkhun.co.nz</div>
-      <p class="port-desc">A ground-up, mobile-first rebuild for a Takanini Thai restaurant — bold food photography, tabbed menus, and one-tap calling, ordering and directions. Now live and turning searches into bookings.</p>
-      <span class="port-cta">Visit the live site <span class="port-cta-arrow">→</span></span>
+      <div class="port-platforms">
+        <span class="port-platform"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="1.6"/><path d="M8 21h8M12 17v4"/></svg>Web App</span>
+        <span class="port-platform"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.4"/><path d="M11 18.5h2"/></svg>Native iOS App</span>
+      </div>
+      <h3 class="port-featured-title">Biblio</h3>
+      <div class="port-url-lbl">biblio.ink</div>
+      <p class="port-desc">A full product build — both a web app and a full native iOS app. Biblio turns your ePub and PDF collection into a playful 3D bookshelf you can organise, browse and read, with the same experience carried across the browser and a polished native iPhone app.</p>
+      <span class="port-cta">See the live app <span class="port-cta-arrow">→</span></span>
     </div>
   </a>
 
   <!-- Other projects -->
   <div class="port-grid fug">
 
-    <a href="https://groov.nz" target="_blank" class="port-card">
+    <a href="https://rakkhun.co.nz/" target="_blank" rel="noopener" class="port-card">
       <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
-      <div class="port-thumb-banner">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+      <div class="port-thumb-banner photo reveal">
+        <img src="assets/rakkhun-preview.jpg" alt="Rak Khun Thai Eatery & Bar — website preview" loading="lazy">
+        <div class="port-reveal"><span class="port-reveal-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>Hover to preview</span></div>
       </div>
       <div class="port-body">
-        <div class="port-tag">Music Platform</div>
-        <div class="port-title">Groov NZ</div>
-        <div class="port-url-lbl">groov.nz</div>
-        <p class="port-desc">A New Zealand music discovery platform connecting local artists with their audience. Clean, modern, and built for growth.</p>
+        <div class="port-tag">Restaurant &middot; Full Redesign</div>
+        <div class="port-title">Rak Khun Thai Eatery &amp; Bar</div>
+        <div class="port-url-lbl">rakkhun.co.nz</div>
+        <p class="port-desc">A ground-up, mobile-first rebuild for a Takanini Thai restaurant — bold food photography, tabbed menus, and one-tap calling, ordering and directions. Now live and turning searches into bookings.</p>
         <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
       </div>
     </a>
 
-    <a href="https://crypto.groov.nz" target="_blank" class="port-card">
+    <a href="https://groov.nz" target="_blank" class="port-card">
       <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
-      <div class="port-thumb-banner">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.5v11M15 9a3 3 0 0 0-3-1.5c-1.7 0-3 1-3 2.3 0 3 6 1.4 6 4.3 0 1.3-1.3 2.4-3 2.4a3.3 3.3 0 0 1-3-1.7"/></svg>
+      <div class="port-thumb-banner photo reveal">
+        <img src="assets/groovnz-preview.jpg" alt="Groov NZ — online store preview" loading="lazy">
+        <div class="port-reveal"><span class="port-reveal-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>Hover to preview</span></div>
       </div>
       <div class="port-body">
-        <div class="port-tag">Crypto & Finance</div>
-        <div class="port-title">Crypto Groov</div>
-        <div class="port-url-lbl">crypto.groov.nz</div>
-        <p class="port-desc">A dedicated crypto resource under the Groov brand — bringing trusted news and insights to a New Zealand audience.</p>
+        <div class="port-tag">E-commerce</div>
+        <div class="port-title">Groov NZ</div>
+        <div class="port-url-lbl">groov.nz</div>
+        <p class="port-desc">A complete online store with the whole system set up end-to-end — products, secure checkout, payments, shipping and inventory. Everything a small business needs to start selling online from day one, without the technical headache.</p>
+        <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
+      </div>
+    </a>
+
+    <a href="https://agenti.nz/design_system.html" target="_blank" class="port-card">
+      <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
+      <div class="port-thumb-banner photo reveal">
+        <img src="assets/agenti-preview.jpg" alt="Agenti NZ design system preview" loading="lazy">
+        <div class="port-reveal"><span class="port-reveal-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>Hover to preview</span></div>
+      </div>
+      <div class="port-body">
+        <div class="port-tag">Brand & Design</div>
+        <div class="port-title">Agenti Design System</div>
+        <div class="port-url-lbl">agenti.nz/design_system.html</div>
+        <p class="port-desc">A full brand and design system for Agenti NZ — colours, typography, components, and guidelines built for consistency across every touchpoint.</p>
         <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
       </div>
     </a>
@@ -943,34 +938,6 @@
         <div class="port-title">EVX</div>
         <div class="port-url-lbl">evx.life</div>
         <p class="port-desc">EV vehicles, Starlink, and equipment rentals — a modern rental platform built for the future of transport and connectivity in New Zealand.</p>
-        <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
-      </div>
-    </a>
-
-    <a href="https://agenti.nz/design_system.html" target="_blank" class="port-card">
-      <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
-      <div class="port-thumb-banner">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10c0-1.5-1-2.5-2.5-2.5H16a2 2 0 0 1-2-2V6c0-1.5-.8-4-2-4Z"/><circle cx="7.5" cy="10.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="10.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="15" r="1.2" fill="currentColor" stroke="none"/><circle cx="8.5" cy="15.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-      </div>
-      <div class="port-body">
-        <div class="port-tag">Brand & Design</div>
-        <div class="port-title">Agenti Design System</div>
-        <div class="port-url-lbl">agenti.nz/design_system.html</div>
-        <p class="port-desc">A full brand and design system for Agenti NZ — colours, typography, components, and guidelines built for consistency across every touchpoint.</p>
-        <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
-      </div>
-    </a>
-
-    <a href="https://biblio.ink" target="_blank" class="port-card">
-      <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
-      <div class="port-thumb-banner">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5Z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5Z"/></svg>
-      </div>
-      <div class="port-body">
-        <div class="port-tag">App &middot; Digital Library</div>
-        <div class="port-title">Biblio</div>
-        <div class="port-url-lbl">biblio.ink</div>
-        <p class="port-desc">A 3D bookshelf app for organising and reading your ePub and PDF library — a playful, spatial take on the digital bookshelf.</p>
         <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
       </div>
     </a>
@@ -1139,6 +1106,7 @@
 
 <!-- CONTACT FORM -->
 <section id="contact">
+  <div class="bg-blob contact-blob"></div>
   <div class="contact-inner">
     <div class="sec-hd fu">
       <span class="lbl">Let's talk</span>
@@ -1197,7 +1165,7 @@
           <select class="form-select" id="fpackage" name="package">
             <option value="" disabled selected>Select a package…</option>
             <option value="Cloud One — NZ$299">Cloud One — NZ$299 (Up to 3 pages)</option>
-            <option value="Cloud Plus — NZ$699">Cloud Plus — NZ$699 (Up to 6 pages) ⭐ Most Popular</option>
+            <option value="Cloud Plus — NZ$699">Cloud Plus — NZ$699 (Up to 6 pages) — Most Popular</option>
             <option value="Cloud Pro — NZ$1,099">Cloud Pro — NZ$1,099 (Up to 10 pages)</option>
             <option value="Not sure — please recommend">Not sure yet — I'd love your recommendation</option>
           </select>
@@ -1212,7 +1180,7 @@
       </form>
 
       <div class="form-success" id="formSuccess" style="display:none;">
-        <span class="tick">🎉</span>
+        <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg></span>
         <h3>Thanks! We'll be in touch soon.</h3>
         <p>Jay will get back to you within one business day at <a data-cfasync="false" href="/cdn-cgi/l/email-protection#2c47454d435e4d6c5b4f40435948024256"><span class="__cf_email__" data-cfemail="244f4d454b5645645347484b51400a4a5e">[email&#160;protected]</span></a></p>
       </div>
@@ -1253,7 +1221,7 @@
 <!-- THANK YOU MODAL -->
 <div class="ty-modal-overlay" id="tyModal">
   <div class="ty-modal">
-    <span class="ty-modal-icon">🎉</span>
+    <span class="ty-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg></span>
     <h3>Thanks for reaching out!</h3>
     <p>Jay will get back to you within <strong>1 business day</strong>. Keep an eye on your inbox — we'll reply to the email address you provided.</p>
     <button class="ty-modal-close" onclick="document.getElementById('tyModal').classList.remove('show')">Close</button>
@@ -1286,6 +1254,20 @@
   window.addEventListener('scroll', function() {
     mainnav.classList.toggle('scrolled', window.scrollY > 20);
   });
+
+  // ── Portfolio preview reveal on touch (pointer devices use CSS :hover)
+  if (window.matchMedia && window.matchMedia('(hover: none)').matches) {
+    document.querySelectorAll('.port-card').forEach(function(card) {
+      if (!card.querySelector('.port-thumb-banner.reveal')) return;
+      card.addEventListener('click', function(e) {
+        if (!card.classList.contains('revealed')) {
+          e.preventDefault();
+          document.querySelectorAll('.port-card.revealed').forEach(function(c) { c.classList.remove('revealed'); });
+          card.classList.add('revealed');
+        }
+      });
+    });
+  }
 
   // ── FAQ accordion — simplest possible approach
   document.querySelectorAll('.faq-item').forEach(function(item) {

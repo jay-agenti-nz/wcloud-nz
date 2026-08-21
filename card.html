@@ -23,15 +23,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Nunito:wght@400;500;600;700&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/qrcode/build/qrcode.min.js"></script>
 
+<link rel="stylesheet" href="/assets/wc.css">
 <style>
   :root {
-    --brand:       #7fa8be;
+    /* Page-specific only — shared tokens live in /assets/wc.css */
     --brand-dark:  #4d6e80;
-    --brand-pale:  #eaf3f7;
-    --deep:        #2a3d4a;
-    --body:        #5a7080;
-    --sage:        #6bbf9e;
-    --white:       #ffffff;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,6 +35,10 @@
 
   body {
     font-family: 'Nunito', sans-serif;
+    /* The card is a fixed-size layout — it sets its own metrics rather
+       than inheriting the site's 1.75 body leading from wc.css. */
+    line-height: normal;
+    color: #000;
     background: #f5f9fb;
     display: flex;
     flex-direction: column;

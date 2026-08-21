@@ -1,0 +1,346 @@
+/* ══════════════════════════════════════════════════════════════
+   White Cloud — shared design system
+   Single source of truth for tokens, type, buttons, glass, nav,
+   footer and motion. Page-specific layout stays in each page.
+
+   Loaded by: index, restaurants, intake, card
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── TOKENS ─────────────────────────────────────────────────── */
+:root {
+  /* Brand */
+  --brand:       #7fa8be;
+  --brand-light: #c8dce6;
+  --brand-pale:  #eaf3f7;
+  --brand-mist:  #d6e8f0;
+  --white:       #ffffff;
+  --deep:        #2a3d4a;
+  --body:        #5a7080;
+  --dusk:        #4d6e80;
+  --sage:        #6bbf9e;
+
+  /* Typefaces */
+  --serif: 'Lora', Georgia, serif;
+  --sans:  'Nunito', sans-serif;
+  --mark:  'Raleway', sans-serif;   /* wordmark and small caps labels only */
+
+  /* Type scale. --fs-h1 is the existing site scale, kept so extracting
+     this file changed nothing. --fs-display is the redesign's larger
+     step, opt-in via .wc-display — Lora shouts through size and tight
+     tracking rather than through a different typeface. */
+  --fs-display: clamp(2.9rem, 6.4vw, 5.1rem);
+  --fs-h1:      clamp(2.4rem, 5vw, 3.9rem);
+  --fs-h2:      clamp(1.9rem, 3.5vw, 2.7rem);
+  --fs-h3:      1.2rem;
+  --fs-lead:    1.15rem;
+  --fs-body:    1rem;
+  --fs-small:   .85rem;
+  --fs-label:   .7rem;
+
+  --lh-tight:  1.08;
+  --lh-head:   1.15;
+  --lh-body:   1.75;
+  --tr-display: -.022em;   /* negative tracking is what makes Lora shout */
+  --tr-label:   .2em;
+
+  /* Spacing rhythm */
+  --sp-1: .5rem;
+  --sp-2: 1rem;
+  --sp-3: 1.5rem;
+  --sp-4: 2.2rem;
+  --sp-5: 3.5rem;
+  --sp-6: 5rem;
+  --sp-7: 6.5rem;
+  --gutter: 6%;
+  --measure: 66ch;
+
+  /* Liquid Glass */
+  --glass-bg:          rgba(255,255,255,.55);
+  --glass-bg-strong:   rgba(255,255,255,.72);
+  --glass-border:      rgba(255,255,255,.6);
+  --glass-shadow:      0 8px 32px rgba(42,61,74,.14), inset 0 1px 0 rgba(255,255,255,.5);
+  --glass-blur:        blur(20px) saturate(180%);
+  --glass-bg-dark:     rgba(255,255,255,.08);
+  --glass-border-dark: rgba(255,255,255,.18);
+
+  /* Framed canvas — the page sits on this as an object */
+  --ground:        #8fadbd;
+  --ground-deep:   #7b9cae;
+  --canvas-radius: 28px;
+  --canvas-inset:  14px;
+
+  --radius-sm: 12px;
+  --radius:    18px;
+  --radius-lg: 24px;
+  --pill:      50px;
+
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+/* ── BASE ───────────────────────────────────────────────────── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--white);
+  color: var(--deep);
+  font-size: 16px;
+  line-height: var(--lh-body);
+  overflow-x: hidden;
+}
+
+/* Keyboard users must always see where they are. */
+:focus-visible {
+  outline: 2px solid var(--dusk);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── TYPE ───────────────────────────────────────────────────── */
+h1, h2, h3 { font-family: var(--serif); font-weight: 700; color: var(--deep); text-wrap: balance; }
+h1 { font-size: var(--fs-h1); line-height: var(--lh-head); }
+
+/* Redesign display type — the hero headline, and nothing else. */
+.wc-display {
+  font-family: var(--serif); font-weight: 700; color: var(--deep);
+  font-size: var(--fs-display); line-height: var(--lh-tight);
+  letter-spacing: var(--tr-display); text-wrap: balance;
+}
+h2 { font-size: var(--fs-h2); line-height: 1.2; }
+h3 { font-size: var(--fs-h3); margin-bottom: var(--sp-1); }
+h1 em, h2 em { font-style: italic; color: var(--brand); }
+
+p { color: var(--body); font-weight: 500; }
+
+.lbl {
+  display: inline-block;
+  font-size: var(--fs-label); font-weight: 700;
+  letter-spacing: var(--tr-label); text-transform: uppercase;
+  color: var(--brand); margin-bottom: 1.1rem;
+}
+
+.sec-hd { text-align: center; max-width: 640px; margin: 0 auto; }
+.sec-hd p { margin-top: var(--sp-2); font-size: 1.05rem; }
+
+section { padding: var(--sp-7) var(--gutter); }
+
+/* ── LOGO ───────────────────────────────────────────────────── */
+.logo-mark { display: inline-flex; align-items: center; gap: .75rem; text-decoration: none; transition: opacity .2s; }
+.logo-mark:hover { opacity: .8; }
+.logo-wave-svg { width: 38px; height: 22px; flex-shrink: 0; }
+.logo-wordmark { display: flex; flex-direction: column; line-height: 1.15; }
+.logo-wordmark span {
+  font-family: var(--mark); font-weight: 600; letter-spacing: .28em;
+  text-transform: uppercase; font-size: .72rem; color: var(--white); display: block;
+}
+.logo-wordmark span:last-child { color: rgba(255,255,255,.65); }
+
+/* ── NAV (current pages) ────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem var(--gutter);
+  background: rgba(127,168,190,.7);
+  backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  transition: box-shadow .3s, background .3s;
+}
+nav.scrolled { background: rgba(127,168,190,.85); box-shadow: 0 4px 28px rgba(77,110,128,.35); }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a {
+  text-decoration: none; color: rgba(255,255,255,.7);
+  font-size: .76rem; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; transition: color .2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: rgba(255,255,255,.85) !important; color: var(--brand) !important;
+  padding: .5rem 1.5rem; border-radius: var(--pill);
+  letter-spacing: .1em !important; font-weight: 700 !important;
+  border: 1px solid rgba(255,255,255,.6);
+  backdrop-filter: blur(10px) saturate(180%); -webkit-backdrop-filter: blur(10px) saturate(180%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
+  transition: background .2s, color .2s !important;
+}
+.nav-cta:hover { background: rgba(255,255,255,.95) !important; color: var(--dusk) !important; }
+
+/* ── NAV (redesign — floating pill) ─────────────────────────── */
+.wc-nav {
+  position: fixed; z-index: 100;
+  top: calc(var(--canvas-inset) + .7rem);
+  left: 50%; transform: translateX(-50%);
+  width: min(1180px, calc(100% - (var(--canvas-inset) * 2) - 1.6rem));
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3);
+  padding: .55rem .6rem .55rem 1.3rem;
+  border-radius: var(--pill);
+  background: rgba(255,255,255,.62);
+  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255,255,255,.7);
+  box-shadow: 0 6px 30px rgba(42,61,74,.13), inset 0 1px 0 rgba(255,255,255,.75);
+  transition: background .3s var(--ease), box-shadow .3s var(--ease);
+}
+.wc-nav.scrolled { background: rgba(255,255,255,.82); box-shadow: 0 10px 38px rgba(42,61,74,.18), inset 0 1px 0 rgba(255,255,255,.8); }
+
+/* Dark wordmark, because the pill is light */
+.wc-nav .logo-wordmark span { color: var(--deep); }
+.wc-nav .logo-wordmark span:last-child { color: var(--body); }
+.wc-nav .logo-wave-svg path:first-child { stroke: var(--brand); }
+.wc-nav .logo-wave-svg path:last-child { stroke: rgba(127,168,190,.45); }
+
+.wc-nav-links { display: flex; align-items: center; gap: .35rem; list-style: none; }
+.wc-nav-links a {
+  display: inline-block; text-decoration: none;
+  padding: .5rem .95rem; border-radius: var(--pill);
+  color: var(--dusk); font-size: .78rem; font-weight: 700;
+  letter-spacing: .01em; white-space: nowrap;
+  transition: background .2s, color .2s;
+}
+.wc-nav-links a:hover { background: rgba(127,168,190,.14); color: var(--deep); }
+.wc-nav-links .wc-nav-cta {
+  background: linear-gradient(135deg, var(--brand), var(--dusk));
+  color: var(--white); padding: .6rem 1.3rem;
+  box-shadow: 0 4px 16px rgba(77,110,128,.32), inset 0 1px 0 rgba(255,255,255,.3);
+}
+.wc-nav-links .wc-nav-cta:hover { background: linear-gradient(135deg, #6d97ae, #3f5f70); color: var(--white); }
+
+/* ── FRAMED CANVAS ──────────────────────────────────────────── */
+/* Applied to <body class="wc-canvas"> — the page becomes a card
+   floating on a steel-blue ground, like the reference. */
+body.wc-canvas {
+  background: linear-gradient(170deg, var(--ground) 0%, var(--ground-deep) 100%);
+  background-attachment: fixed;
+  padding: var(--canvas-inset);
+}
+body.wc-canvas > .wc-sheet {
+  border-radius: var(--canvas-radius);
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 24px 70px rgba(28,46,56,.28);
+  isolation: isolate;
+}
+@media (max-width: 700px) {
+  :root { --canvas-inset: 7px; --canvas-radius: 20px; }
+}
+
+/* ── BUTTONS ────────────────────────────────────────────────── */
+.btn-p, .btn-o, .btn-w, .btn-g {
+  display: inline-block; border-radius: var(--pill); text-decoration: none;
+  font-weight: 700; font-size: .82rem; letter-spacing: .1em; text-transform: uppercase;
+}
+.btn-p {
+  background: linear-gradient(135deg, rgba(127,168,190,.9), rgba(77,110,128,.92));
+  color: var(--white); padding: .9rem 2.2rem;
+  border: 1px solid rgba(255,255,255,.35);
+  backdrop-filter: blur(12px) saturate(160%); -webkit-backdrop-filter: blur(12px) saturate(160%);
+  box-shadow: 0 6px 24px rgba(127,168,190,.35), inset 0 1px 0 rgba(255,255,255,.45);
+  transition: background .25s, transform .25s, box-shadow .25s;
+}
+.btn-p:hover {
+  background: linear-gradient(135deg, rgba(107,148,170,.96), rgba(61,92,110,.97));
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(77,110,128,.3), inset 0 1px 0 rgba(255,255,255,.45);
+}
+.btn-o {
+  border: 1.5px solid rgba(127,168,190,.55); color: var(--brand); padding: .85rem 2rem;
+  background: rgba(255,255,255,.4);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
+  transition: background .25s, color .25s, border-color .25s;
+}
+.btn-o:hover { background: rgba(127,168,190,.9); color: var(--white); border-color: transparent; }
+.btn-w {
+  background: rgba(255,255,255,.62); color: var(--deep); padding: .9rem 2.2rem;
+  border: 1px solid rgba(255,255,255,.6);
+  backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 6px 24px rgba(42,61,74,.12), inset 0 1px 0 rgba(255,255,255,.6);
+  transition: background .25s, transform .25s;
+}
+.btn-w:hover { background: rgba(255,255,255,.8); transform: translateY(-2px); }
+.btn-g {
+  border: 2px solid rgba(255,255,255,.35); color: var(--white); padding: .85rem 2rem;
+  background: rgba(255,255,255,.06);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  transition: border-color .25s, background .25s;
+}
+.btn-g:hover { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.08); }
+
+/* ── GLASS ──────────────────────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
+}
+.glass-strong {
+  background: var(--glass-bg-strong);
+  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
+}
+.glass-dark {
+  background: var(--glass-bg-dark);
+  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border-dark);
+}
+
+/* Decorative blurred blobs — give glass panels something to refract.
+   Retired from the hero in the redesign; still used lower down. */
+.bg-blob {
+  position: absolute; border-radius: 50%; filter: blur(70px);
+  pointer-events: none; z-index: -1;
+  animation: blobDrift 16s ease-in-out infinite;
+}
+@keyframes blobDrift {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50%      { transform: translate(-3%,4%) scale(1.06); }
+}
+
+/* ── BADGES & CHIPS ─────────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: .55rem;
+  background: var(--brand-mist); color: var(--dusk);
+  padding: .4rem 1.1rem; border-radius: var(--pill);
+  font-size: .73rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; margin-bottom: 1.8rem;
+}
+.badge-dot { width: 6px; height: 6px; background: var(--brand); border-radius: 50%; animation: pulse 2.5s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.4; transform:scale(.65); } }
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+footer {
+  background: #1c2e38; padding: 2.2rem var(--gutter);
+  color: rgba(255,255,255,.35); font-size: .78rem;
+  font-weight: 600; letter-spacing: .04em;
+}
+
+/* ── SCROLL REVEAL ──────────────────────────────────────────── */
+/* Elements are visible by default; JS adds .ready only when it can
+   also observe them, so no-JS never leaves content hidden. */
+.fu { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s ease; }
+.fu.ready { opacity: 0; transform: translateY(24px); }
+.fu.ready.in { opacity: 1; transform: none; }
+.fug > * { opacity: 1; transform: none; transition: opacity .55s ease, transform .55s ease; }
+.fug.ready > * { opacity: 0; transform: translateY(18px); }
+.fug.ready.in > *:nth-child(1) { opacity:1; transform:none; transition-delay:.04s; }
+.fug.ready.in > *:nth-child(2) { opacity:1; transform:none; transition-delay:.13s; }
+.fug.ready.in > *:nth-child(3) { opacity:1; transform:none; transition-delay:.22s; }
+.fug.ready.in > *:nth-child(4) { opacity:1; transform:none; transition-delay:.31s; }
+.fug.ready.in > *:nth-child(5) { opacity:1; transform:none; transition-delay:.40s; }
+.fug.ready.in > *:nth-child(6) { opacity:1; transform:none; transition-delay:.49s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .fu.ready, .fug.ready > * { opacity: 1; transform: none; }
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .nav-links li:not(:last-child) { display: none; }
+  .wc-nav { padding: .5rem .5rem .5rem 1rem; }
+  .wc-nav-links li:not(:last-child) { display: none; }
+}

@@ -24,20 +24,11 @@
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' ry='22' fill='%237fa8be'/%3E%3Cpath d='M12 52 C22 32,38 72,50 46 C62 20,78 60,88 36' stroke='white' stroke-width='7.5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M12 66 C24 44,42 82,56 58 C68 36,82 70,90 52' stroke='rgba(255,255,255,0.5)' stroke-width='5.5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E"/>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-  <style>
+  <link rel="stylesheet" href="/assets/wc.css">
+<style>
     :root {
-      --brand:       #7fa8be;
-      --brand-light: #c8dce6;
-      --brand-pale:  #eaf3f7;
-      --brand-mist:  #d6e8f0;
-      --white:       #ffffff;
-      --deep:        #2a3d4a;
-      --body:        #5a7080;
-      --dusk:        #4d6e80;
-      --sage:        #6bbf9e;
+      /* Page-specific only — shared tokens live in /assets/wc.css */
       --bg:          #f5f9fb;
-      --serif:       'Lora', Georgia, serif;
-      --sans:        'Nunito', sans-serif;
       --display:     'Raleway', sans-serif;
       --r-sm:   8px;
       --r-md:   12px;
@@ -46,12 +37,6 @@
       --r-pill: 50px;
       --shadow-sm: 0 4px 16px rgba(42,61,74,.06);
       --shadow-md: 0 12px 40px rgba(127,168,190,.15);
-
-      /* Liquid Glass tokens */
-      --glass-bg:        rgba(255,255,255,.6);
-      --glass-bg-strong: rgba(255,255,255,.75);
-      --glass-border:    rgba(255,255,255,.7);
-      --glass-blur:      blur(20px) saturate(180%);
     }
 
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -106,10 +91,6 @@
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
-    }
-    @keyframes pulse {
-      0%,100% { opacity:1; transform:scale(1); }
-      50%      { opacity:.35; transform:scale(.6); }
     }
 
     /* ── HERO ── */

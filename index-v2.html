@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>White Cloud – Redesign (work in progress)</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/wc.css">
+<style>
+  /* ── PHASE 1 SHELL ──────────────────────────────────────────
+     Foundations only: framed canvas, pill nav, display type and
+     the 54/46 split frame. The cloud canvas and the floating
+     project card land here in phase 2. */
+
+  .v2-hero {
+    display: grid; grid-template-columns: 54fr 46fr;
+    min-height: min(760px, 92vh);
+    padding: 0;   /* overrides the shared section padding */
+  }
+
+  .v2-hero-copy {
+    display: flex; flex-direction: column; align-items: flex-start;
+    justify-content: center; gap: var(--sp-3);
+    padding: 8rem 4.5rem 5rem;
+    background: var(--white);
+  }
+  .v2-hero-copy h1 { max-width: 16ch; }
+  .v2-hero-sub { font-size: var(--fs-lead); max-width: 46ch; line-height: 1.75; }
+  .v2-actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: var(--sp-1); }
+
+  .v2-chips { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: var(--sp-2); }
+  .v2-chip {
+    display: inline-flex; align-items: center; gap: .4rem;
+    font-size: .76rem; font-weight: 700; color: var(--dusk);
+    padding: .35rem .85rem; border-radius: var(--pill);
+    background: rgba(127,168,190,.1); border: 1px solid rgba(127,168,190,.2);
+  }
+
+  /* Right panel — phase 2 replaces this fill with the cloud canvas. */
+  .v2-hero-stage {
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(60% 55% at 30% 25%, rgba(255,255,255,.75), transparent 60%),
+      radial-gradient(55% 50% at 78% 70%, rgba(107,191,158,.28), transparent 62%),
+      linear-gradient(160deg, var(--brand-mist) 0%, var(--brand) 55%, var(--dusk) 100%);
+    display: flex; align-items: center; justify-content: center;
+    padding: var(--sp-4);
+  }
+  .v2-placeholder {
+    text-align: center; color: rgba(255,255,255,.9);
+    display: flex; flex-direction: column; gap: .4rem;
+    padding: 1.4rem 1.8rem; border-radius: var(--radius);
+    background: rgba(255,255,255,.14);
+    backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border: 1px solid rgba(255,255,255,.28);
+  }
+  .v2-placeholder strong { font-family: var(--mark); font-size: .72rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+  .v2-placeholder span { font-size: .85rem; color: rgba(255,255,255,.72); font-weight: 500; }
+
+  /* Foundations proof sheet — deleted once phase 2 lands. */
+  .v2-notes { padding: var(--sp-6) 4.5rem; background: var(--brand-pale); display: flex; flex-direction: column; gap: var(--sp-3); }
+  .v2-notes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--sp-2); }
+  .v2-note { background: var(--glass-bg-strong); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
+  .v2-note p { font-size: .88rem; margin-top: .25rem; }
+
+  @media (max-width: 900px) {
+    .v2-hero { grid-template-columns: 1fr; min-height: 0; }
+    .v2-hero-copy { padding: 7rem 1.6rem 3rem; align-items: center; text-align: center; }
+    .v2-hero-copy h1 { max-width: none; }
+    .v2-actions, .v2-chips { justify-content: center; }
+    /* On phones the stage becomes a band, not a half-screen panel. */
+    .v2-hero-stage { min-height: 260px; }
+    .v2-notes { padding: var(--sp-5) 1.6rem; }
+  }
+</style>
+</head>
+<body class="wc-canvas">
+
+<nav class="wc-nav" id="v2nav">
+  <a href="/" class="logo-mark">
+    <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
+      <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
+  </a>
+  <ul class="wc-nav-links">
+    <li><a href="#work">Our work</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="/restaurants">Restaurants</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="wc-nav-cta">Get started</a></li>
+  </ul>
+</nav>
+
+<div class="wc-sheet">
+
+  <section class="v2-hero">
+    <div class="v2-hero-copy">
+      <span class="badge"><span class="badge-dot"></span>Christchurch, New Zealand</span>
+      <h1 class="wc-display">A proper website. Done for you.</h1>
+      <p class="v2-hero-sub">Self-employed, running a small business, or selling online — no tech knowledge needed and no confusing steps. From NZ$299, live in about a week.</p>
+      <div class="v2-actions">
+        <a href="#contact" class="btn-p">Get started</a>
+        <a href="#work" class="btn-o">See our work</a>
+      </div>
+      <div class="v2-chips">
+        <span class="v2-chip">One-off payment</span>
+        <span class="v2-chip">Ready in 5–10 days</span>
+        <span class="v2-chip">No lock-in contracts</span>
+      </div>
+    </div>
+
+    <div class="v2-hero-stage">
+      <div class="v2-placeholder">
+        <strong>Phase 2</strong>
+        <span>Cloud canvas and floating project card land here</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="v2-notes">
+    <div class="sec-hd" style="text-align:left;margin:0;max-width:60ch">
+      <span class="lbl">Phase 1 · foundations</span>
+      <h2>What this shell is proving</h2>
+    </div>
+    <div class="v2-notes-grid">
+      <div class="v2-note">
+        <h3>Shared stylesheet</h3>
+        <p>Tokens, type, buttons, glass and motion now live in one file. All four pages load it; none of them carry their own copy any more.</p>
+      </div>
+      <div class="v2-note">
+        <h3>Framed canvas</h3>
+        <p>The page is a rounded sheet floating on a steel-blue ground, so it reads as an object rather than a document.</p>
+      </div>
+      <div class="v2-note">
+        <h3>Floating pill nav</h3>
+        <p>Glass pill over the content instead of a solid blue bar pinned to the top edge.</p>
+      </div>
+      <div class="v2-note">
+        <h3>Display type</h3>
+        <p>Lora at the larger step with tight tracking. The emphasis comes from scale and restraint, not a new typeface.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  (function () {
+    var nav = document.getElementById('v2nav');
+    var onScroll = function () {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>

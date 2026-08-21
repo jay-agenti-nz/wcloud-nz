@@ -11,25 +11,40 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/wc.css">
 <style>
-  /* ── PHASE 1 SHELL ──────────────────────────────────────────
-     Foundations only: framed canvas, pill nav, display type and
-     the 54/46 split frame. The cloud canvas and the floating
-     project card land here in phase 2. */
+  /* ── PHASE 2 HERO ───────────────────────────────────────────
+     One environment, not two panels: the tinted sky and the cloud
+     canvas run edge to edge, and the 54/46 split only governs
+     where the content sits. */
 
   .v2-hero {
+    position: relative;
     display: grid; grid-template-columns: 54fr 46fr;
-    min-height: min(760px, 92vh);
-    padding: 0;   /* overrides the shared section padding */
+    min-height: min(780px, 94vh);
+    padding: 0;                    /* overrides the shared section padding */
+    isolation: isolate;
+    /* The sky. Also the fallback: with no WebGL this is the hero. */
+    background:
+      radial-gradient(58% 46% at 74% 24%, rgba(255,255,255,.85), transparent 62%),
+      radial-gradient(52% 52% at 14% 84%, rgba(255,255,255,.42), transparent 64%),
+      linear-gradient(168deg, #e3eff6 0%, #cee2ee 46%, #bed7e7 100%);
   }
+
+  /* Cloud field sits above the sky, below everything readable. */
+  #cloudCanvas {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    display: block; z-index: 0; pointer-events: none;
+  }
+
+  .v2-hero-copy,
+  .v2-hero-stage { position: relative; z-index: 1; }
 
   .v2-hero-copy {
     display: flex; flex-direction: column; align-items: flex-start;
     justify-content: center; gap: var(--sp-3);
     padding: 8rem 4.5rem 5rem;
-    background: var(--white);
   }
   .v2-hero-copy h1 { max-width: 16ch; }
-  .v2-hero-sub { font-size: var(--fs-lead); max-width: 46ch; line-height: 1.75; }
+  .v2-hero-sub { font-size: var(--fs-lead); max-width: 44ch; line-height: 1.75; color: var(--dusk); }
   .v2-actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: var(--sp-1); }
 
   .v2-chips { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: var(--sp-2); }
@@ -37,44 +52,92 @@
     display: inline-flex; align-items: center; gap: .4rem;
     font-size: .76rem; font-weight: 700; color: var(--dusk);
     padding: .35rem .85rem; border-radius: var(--pill);
-    background: rgba(127,168,190,.1); border: 1px solid rgba(127,168,190,.2);
+    background: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.7);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   }
 
-  /* Right panel — phase 2 replaces this fill with the cloud canvas. */
+  /* ── Floating project card ──────────────────────────────────
+     The right half proves the work rather than holding weather. */
   .v2-hero-stage {
-    position: relative; overflow: hidden;
-    background:
-      radial-gradient(60% 55% at 30% 25%, rgba(255,255,255,.75), transparent 60%),
-      radial-gradient(55% 50% at 78% 70%, rgba(107,191,158,.28), transparent 62%),
-      linear-gradient(160deg, var(--brand-mist) 0%, var(--brand) 55%, var(--dusk) 100%);
     display: flex; align-items: center; justify-content: center;
-    padding: var(--sp-4);
+    padding: 7rem 3.5rem 4rem 1rem;
+    perspective: 1400px;
   }
-  .v2-placeholder {
-    text-align: center; color: rgba(255,255,255,.9);
-    display: flex; flex-direction: column; gap: .4rem;
-    padding: 1.4rem 1.8rem; border-radius: var(--radius);
-    background: rgba(255,255,255,.14);
-    backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%);
-    border: 1px solid rgba(255,255,255,.28);
-  }
-  .v2-placeholder strong { font-family: var(--mark); font-size: .72rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
-  .v2-placeholder span { font-size: .85rem; color: rgba(255,255,255,.72); font-weight: 500; }
 
-  /* Foundations proof sheet — deleted once phase 2 lands. */
-  .v2-notes { padding: var(--sp-6) 4.5rem; background: var(--brand-pale); display: flex; flex-direction: column; gap: var(--sp-3); }
+  .v2-card {
+    width: 100%; max-width: 440px;
+    border-radius: var(--radius-lg);
+    background: rgba(255,255,255,.62);
+    backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border: 1px solid rgba(255,255,255,.75);
+    box-shadow: 0 30px 70px rgba(42,61,74,.22), inset 0 1px 0 rgba(255,255,255,.8);
+    padding: .7rem .7rem .95rem;
+    display: flex; flex-direction: column; gap: .7rem;
+    transform-style: preserve-3d;
+    transition: transform .5s var(--ease);
+    will-change: transform;
+  }
+
+  .v2-card-frame {
+    position: relative; aspect-ratio: 16 / 10;
+    border-radius: 14px; overflow: hidden; background: #fff;
+    box-shadow: 0 10px 26px rgba(42,61,74,.16);
+  }
+  .v2-card-bar {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 2;
+    display: flex; align-items: center; gap: 5px;
+    background: rgba(246,249,251,.92);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    padding: .5rem .7rem; border-bottom: 1px solid rgba(232,236,239,.9);
+  }
+  .v2-dot { width: 7px; height: 7px; border-radius: 50%; background: #d9e2e8; }
+  .v2-card-url {
+    margin-left: .45rem; background: #fff; border-radius: 5px;
+    padding: .16rem .6rem; font-size: .62rem; font-weight: 700;
+    letter-spacing: .04em; color: var(--body); flex: 1;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .v2-shot {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: top;
+    opacity: 0; transition: opacity .42s ease;
+    z-index: 0;
+  }
+  .v2-shot.on { opacity: 1; }
+
+  .v2-card-meta {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 1rem; padding: 0 .35rem;
+  }
+
+  .v2-card-name { font-family: var(--serif); font-size: 1.02rem; font-weight: 700; color: var(--deep); }
+  .v2-card-tag { font-family: var(--mark); font-size: .64rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--brand); }
+
+  .v2-card-dots { display: flex; gap: .35rem; padding: 0 .35rem; }
+  .v2-card-dots button {
+    width: 22px; height: 4px; border-radius: 2px; border: 0; padding: 0;
+    background: rgba(77,110,128,.22); cursor: pointer;
+    transition: background .25s;
+  }
+  .v2-card-dots button[aria-current="true"] { background: var(--brand); }
+
+  /* ── Foundations notes — deleted before ship ─────────────── */
+  .v2-notes { padding: var(--sp-6) 4.5rem; background: var(--white); display: flex; flex-direction: column; gap: var(--sp-3); }
   .v2-notes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--sp-2); }
-  .v2-note { background: var(--glass-bg-strong); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
+  .v2-note { background: var(--brand-pale); border: 1px solid rgba(127,168,190,.18); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
   .v2-note p { font-size: .88rem; margin-top: .25rem; }
 
   @media (max-width: 900px) {
     .v2-hero { grid-template-columns: 1fr; min-height: 0; }
-    .v2-hero-copy { padding: 7rem 1.6rem 3rem; align-items: center; text-align: center; }
+    .v2-hero-copy { padding: 7rem 1.6rem 2.5rem; align-items: center; text-align: center; }
     .v2-hero-copy h1 { max-width: none; }
     .v2-actions, .v2-chips { justify-content: center; }
-    /* On phones the stage becomes a band, not a half-screen panel. */
-    .v2-hero-stage { min-height: 260px; }
+    .v2-hero-stage { padding: 0 1.6rem 3.5rem; }
     .v2-notes { padding: var(--sp-5) 1.6rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .v2-card { transition: none; }
   }
 </style>
 </head>
@@ -100,9 +163,11 @@
 <div class="wc-sheet">
 
   <section class="v2-hero">
+    <canvas id="cloudCanvas" aria-hidden="true"></canvas>
+
     <div class="v2-hero-copy">
       <span class="badge"><span class="badge-dot"></span>Christchurch, New Zealand</span>
-      <h1 class="wc-display">A proper website. Done for you.</h1>
+      <h1 class="wc-display" id="heroHeadline">A proper website. Done for you.</h1>
       <p class="v2-hero-sub">Self-employed, running a small business, or selling online — no tech knowledge needed and no confusing steps. From NZ$299, live in about a week.</p>
       <div class="v2-actions">
         <a href="#contact" class="btn-p">Get started</a>
@@ -116,34 +181,47 @@
     </div>
 
     <div class="v2-hero-stage">
-      <div class="v2-placeholder">
-        <strong>Phase 2</strong>
-        <span>Cloud canvas and floating project card land here</span>
+      <div class="v2-card" id="projectCard">
+        <div class="v2-card-frame">
+          <div class="v2-card-bar">
+            <span class="v2-dot"></span><span class="v2-dot"></span><span class="v2-dot"></span>
+            <span class="v2-card-url" id="cardUrl">rakkhun.co.nz</span>
+          </div>
+          <img class="v2-shot on" src="/assets/rakkhun-preview.jpg" alt="Rak Khun website" width="960" height="600">
+          <img class="v2-shot" src="/assets/agenti-preview.jpg" alt="Agenti website" width="1600" height="1040" decoding="async">
+          <img class="v2-shot" src="/assets/biblio-preview.jpg" alt="Biblio website" width="1600" height="1040" decoding="async">
+          <img class="v2-shot" src="/assets/groovnz-preview.jpg" alt="Groov website" width="1600" height="1040" decoding="async">
+        </div>
+        <div class="v2-card-meta">
+          <span class="v2-card-name" id="cardName">Rak Khun</span>
+          <span class="v2-card-tag" id="cardTag">Thai restaurant</span>
+        </div>
+        <div class="v2-card-dots" id="cardDots" role="tablist" aria-label="Recent projects"></div>
       </div>
     </div>
   </section>
 
   <section class="v2-notes">
-    <div class="sec-hd" style="text-align:left;margin:0;max-width:60ch">
-      <span class="lbl">Phase 1 · foundations</span>
-      <h2>What this shell is proving</h2>
+    <div class="sec-hd" style="text-align:left;margin:0;max-width:62ch">
+      <span class="lbl">Phase 2 · the hero</span>
+      <h2>One sky, not two panels</h2>
     </div>
     <div class="v2-notes-grid">
       <div class="v2-note">
-        <h3>Shared stylesheet</h3>
-        <p>Tokens, type, buttons, glass and motion now live in one file. All four pages load it; none of them carry their own copy any more.</p>
+        <h3>Cloud field</h3>
+        <p>Lit billboards at three depths, drifting across the whole hero. Textures are generated in the browser, so nothing is downloaded and no 3D library is loaded.</p>
       </div>
       <div class="v2-note">
-        <h3>Framed canvas</h3>
-        <p>The page is a rounded sheet floating on a steel-blue ground, so it reads as an object rather than a document.</p>
+        <h3>Wind</h3>
+        <p>Your cursor pushes the clouds aside and they ease back. Nearer clouds move further than distant ones.</p>
       </div>
       <div class="v2-note">
-        <h3>Floating pill nav</h3>
-        <p>Glass pill over the content instead of a solid blue bar pinned to the top edge.</p>
+        <h3>The clearing</h3>
+        <p>Clouds fade as they drift behind the headline, so type is never read against a moving edge.</p>
       </div>
       <div class="v2-note">
-        <h3>Display type</h3>
-        <p>Lora at the larger step with tight tracking. The emphasis comes from scale and restraint, not a new typeface.</p>
+        <h3>Quiet when it should be</h3>
+        <p>One still frame if you prefer reduced motion. No frames at all when scrolled past or in a background tab.</p>
       </div>
     </div>
   </section>
@@ -153,12 +231,122 @@
 <script>
   (function () {
     var nav = document.getElementById('v2nav');
-    var onScroll = function () {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    };
+    var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 20); };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   })();
+
+  /* ── Project card ───────────────────────────────────────────
+     Cycles through real client sites. Pauses on hover or focus so it
+     never moves out from under someone looking at it.
+
+     The incoming screenshot fades in ON TOP of the one before it, and
+     the caption changes in the same breath. Crossfading both at once
+     double-exposes them (a dark site over a light one reads as the
+     wrong project); fading out first leaves an empty white card. All
+     the state lives in `i` — no step depends on a timer firing before
+     another one, so bunched-up callbacks cannot desynchronise it. */
+  (function () {
+    var projects = [
+      { name: 'Rak Khun', tag: 'Thai restaurant', url: 'rakkhun.co.nz' },
+      { name: 'Agenti',   tag: 'AI consultancy',  url: 'agenti.nz' },
+      { name: 'Biblio',   tag: 'Reading app',     url: 'biblio.ink' },
+      { name: 'Groov',    tag: 'Wellbeing',       url: 'groov.nz' }
+    ];
+    var shots  = Array.prototype.slice.call(document.querySelectorAll('.v2-shot'));
+    var card   = document.getElementById('projectCard');
+    var dots   = document.getElementById('cardDots');
+    var nameEl = document.getElementById('cardName');
+    var tagEl  = document.getElementById('cardTag');
+    var urlEl  = document.getElementById('cardUrl');
+    var metaEl = document.querySelector('.v2-card-meta');
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var i = 0, z = 1, timer = 0, cleanup = 0, paused = false;
+
+    projects.forEach(function (p, idx) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', p.name);
+      b.setAttribute('aria-current', idx === 0 ? 'true' : 'false');
+      b.addEventListener('click', function () { show(idx); restart(); });
+      dots.appendChild(b);
+    });
+
+    function show(n) {
+      i = ((n % projects.length) + projects.length) % projects.length;
+
+      // Reveal: the new shot goes on top and fades up over the old.
+      shots[i].style.zIndex = ++z;
+      shots[i].classList.add('on');
+
+      // Caption follows the same index in the same tick.
+      nameEl.textContent = projects[i].name;
+      tagEl.textContent  = projects[i].tag;
+      urlEl.textContent  = projects[i].url;
+      Array.prototype.forEach.call(dots.children, function (b, idx) {
+        b.setAttribute('aria-current', idx === i ? 'true' : 'false');
+      });
+
+      // Drop whatever is underneath once the fade has covered it.
+      clearTimeout(cleanup);
+      cleanup = setTimeout(function () {
+        shots.forEach(function (s, idx) {
+          if (idx !== i) { s.classList.remove('on'); s.style.zIndex = 0; }
+        });
+      }, 520);
+    }
+
+    function restart() {
+      clearInterval(timer);
+      if (!reduced.matches) {
+        timer = setInterval(function () { if (!paused) show(i + 1); }, 4600);
+      }
+    }
+
+    card.addEventListener('mouseenter', function () { paused = true; });
+    card.addEventListener('mouseleave', function () { paused = false; });
+    card.addEventListener('focusin',  function () { paused = true; });
+    card.addEventListener('focusout', function () { paused = false; });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) clearInterval(timer); else restart();
+    });
+    restart();
+
+    /* A little parallax tilt — enough to sit in the scene, not a toy. */
+    if (!reduced.matches && window.matchMedia('(pointer: fine)').matches) {
+      var stage = card.parentElement;
+      stage.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = 'rotateY(' + (px * 7).toFixed(2) + 'deg) rotateX(' + (-py * 6).toFixed(2) + 'deg) translateZ(0)';
+      }, { passive: true });
+      stage.addEventListener('pointerleave', function () { card.style.transform = ''; });
+    }
+  })();
+</script>
+
+<script type="module">
+  import { initHeroCloud } from '/assets/hero-cloud.js';
+
+  var canvas = document.getElementById('cloudCanvas');
+  var headline = document.getElementById('heroHeadline');
+
+  window.__heroCloud = initHeroCloud(canvas, {
+    // The headline's box, in canvas space — clouds fade inside it.
+    clearing: function () {
+      var c = canvas.getBoundingClientRect();
+      var h = headline.getBoundingClientRect();
+      if (window.innerWidth <= 900) return null;
+      return {
+        left:   h.left   - c.left - 40,
+        right:  h.right  - c.left + 40,
+        top:    h.top    - c.top  - 30,
+        bottom: h.bottom - c.top  + 30
+      };
+    }
+  });
 </script>
 
 </body>

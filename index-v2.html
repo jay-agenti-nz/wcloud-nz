@@ -100,7 +100,10 @@
   .v2-shot {
     position: absolute; inset: 0; width: 100%; height: 100%;
     object-fit: cover; object-position: top;
-    opacity: 0; transition: opacity .42s ease;
+    /* Kept short on purpose: the caption changes the instant the new
+       shot starts fading in, so a long fade would leave the old
+       screenshot on screen under the new project's name. */
+    opacity: 0; transition: opacity .2s ease;
     z-index: 0;
   }
   .v2-shot.on { opacity: 1; }
@@ -294,7 +297,7 @@
         shots.forEach(function (s, idx) {
           if (idx !== i) { s.classList.remove('on'); s.style.zIndex = 0; }
         });
-      }, 520);
+      }, 320);
     }
 
     function restart() {

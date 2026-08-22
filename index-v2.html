@@ -75,7 +75,6 @@
     display: flex; flex-direction: column; gap: .7rem;
     transform-style: preserve-3d;
     transition: transform .5s var(--ease);
-    will-change: transform;
   }
 
   .v2-card-frame {
@@ -123,6 +122,94 @@
     transition: background .25s;
   }
   .v2-card-dots button[aria-current="true"] { background: var(--brand); }
+
+
+  /* ── WORK ───────────────────────────────────────────────────
+     Deliberately not the hero's interaction: the hero cycles one
+     screenshot, this shows the whole shelf at once. Cards lean
+     toward the cursor rather than swapping. */
+  .v2-work {
+    background: var(--white);
+    padding: var(--sp-7) 4.5rem;
+    display: flex; flex-direction: column; gap: var(--sp-3);
+  }
+  .v2-work-head { max-width: 58ch; display: flex; flex-direction: column; gap: .3rem; margin-bottom: var(--sp-2); }
+  .v2-work-head p { font-size: 1.02rem; margin-top: .4rem; }
+
+  .v2-proj {
+    display: block; text-decoration: none; color: inherit;
+    background: var(--brand-pale);
+    border: 1px solid rgba(127,168,190,.2);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .3s;
+    box-shadow: 0 2px 8px rgba(42,61,74,.05);
+  }
+  .v2-proj:hover, .v2-proj:focus-visible {
+    box-shadow: 0 26px 60px rgba(42,61,74,.2);
+    border-color: rgba(127,168,190,.45);
+  }
+
+  .v2-proj-feature { display: grid; grid-template-columns: 1.1fr .9fr; align-items: stretch; }
+  .v2-proj-feature .v2-proj-shot { border-radius: 0; }
+  .v2-proj-feature .v2-proj-body { padding: 2.4rem 2.6rem; justify-content: center; }
+  .v2-proj-feature h3 { font-size: 1.55rem; }
+
+  .v2-proj-shot { position: relative; overflow: hidden; aspect-ratio: 16 / 10; background: #fff; }
+  .v2-proj-shot img {
+    width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
+    transition: transform .6s var(--ease);
+  }
+  .v2-proj:hover .v2-proj-shot img { transform: scale(1.035); }
+
+  .v2-proj-body { padding: 1.5rem 1.6rem 1.7rem; display: flex; flex-direction: column; gap: .3rem; }
+  .v2-proj-body h3 { margin: 0; }
+  .v2-proj-body p { font-size: .89rem; line-height: 1.7; margin-top: .5rem; }
+  .v2-proj-tag {
+    font-family: var(--mark); font-size: .63rem; font-weight: 600;
+    letter-spacing: .17em; text-transform: uppercase; color: var(--body);
+  }
+  .v2-proj-url { font-family: var(--mark); font-size: .7rem; font-weight: 600; letter-spacing: .11em; color: var(--brand); }
+
+  .v2-proj-pills { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .7rem; }
+  .v2-proj-pills span {
+    font-size: .7rem; font-weight: 700; color: var(--dusk);
+    background: rgba(127,168,190,.14); border: 1px solid rgba(127,168,190,.24);
+    padding: .28rem .75rem; border-radius: var(--pill);
+  }
+
+  .v2-proj-go {
+    display: inline-flex; align-items: center; gap: .45rem; margin-top: 1rem;
+    color: var(--brand); font-size: .8rem; font-weight: 700;
+  }
+  .v2-proj-go svg { width: 15px; height: 15px; transition: transform .25s var(--ease); }
+  .v2-proj:hover .v2-proj-go svg { transform: translateX(4px); }
+
+  .v2-proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); }
+
+  .v2-proj-more { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-2); }
+  .v2-proj-lite {
+    display: flex; flex-direction: column; gap: .3rem;
+    text-decoration: none; color: inherit;
+    padding: 1.5rem 1.7rem; border-radius: var(--radius);
+    background: var(--white); border: 1px solid rgba(127,168,190,.24);
+    transition: background .25s, border-color .25s, transform .25s var(--ease);
+  }
+  .v2-proj-lite:hover, .v2-proj-lite:focus-visible {
+    background: var(--brand-pale); border-color: rgba(127,168,190,.5);
+    transform: translateY(-2px);
+  }
+  .v2-proj-lite p { font-size: .87rem; margin: .35rem 0 .6rem; }
+
+  @media (max-width: 1050px) {
+    .v2-proj-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .v2-work { padding: var(--sp-5) 1.6rem; }
+    .v2-proj-feature { grid-template-columns: 1fr; }
+    .v2-proj-feature .v2-proj-body { padding: 1.6rem 1.5rem 1.8rem; }
+    .v2-proj-grid, .v2-proj-more { grid-template-columns: 1fr; }
+  }
 
   /* ── Foundations notes — deleted before ship ─────────────── */
   .v2-notes { padding: var(--sp-6) 4.5rem; background: var(--white); display: flex; flex-direction: column; gap: var(--sp-3); }
@@ -201,6 +288,87 @@
         </div>
         <div class="v2-card-dots" id="cardDots" role="tablist" aria-label="Recent projects"></div>
       </div>
+    </div>
+  </section>
+
+
+  <section id="work" class="v2-work">
+    <div class="v2-work-head">
+      <span class="lbl">Our work</span>
+      <h2>Projects we&rsquo;ve built</h2>
+      <p>From e-commerce stores to full restaurant rebuilds &mdash; here&rsquo;s a taste of what we can do.</p>
+    </div>
+
+    <a class="v2-proj v2-proj-feature" href="https://biblio.ink" target="_blank" rel="noopener">
+      <div class="v2-proj-shot">
+        <img src="/assets/biblio-preview.jpg" alt="The Biblio web app" width="1600" height="1040" loading="lazy" decoding="async">
+      </div>
+      <div class="v2-proj-body">
+        <span class="v2-proj-tag">Latest project</span>
+        <h3>Biblio</h3>
+        <span class="v2-proj-url">biblio.ink</span>
+        <p>A full product build &mdash; a web app and a native iOS app. Biblio turns your ePub and PDF collection into a playful 3D bookshelf you can organise, browse and read, with the same experience in the browser and on iPhone.</p>
+        <div class="v2-proj-pills"><span>Web app</span><span>Native iOS app</span></div>
+        <span class="v2-proj-go">See the live app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <div class="v2-proj-grid">
+      <a class="v2-proj" href="https://rakkhun.co.nz" target="_blank" rel="noopener">
+        <div class="v2-proj-shot">
+          <img src="/assets/rakkhun-preview.jpg" alt="The Rak Khun website" width="960" height="600" loading="lazy" decoding="async">
+        </div>
+        <div class="v2-proj-body">
+          <span class="v2-proj-tag">Restaurant &middot; full redesign</span>
+          <h3>Rak Khun Thai Eatery &amp; Bar</h3>
+          <span class="v2-proj-url">rakkhun.co.nz</span>
+          <p>A ground-up, mobile-first rebuild for a Takanini Thai restaurant &mdash; bold food photography, tabbed menus, and one-tap calling, ordering and directions.</p>
+          <span class="v2-proj-go">Visit site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="v2-proj" href="https://groov.nz" target="_blank" rel="noopener">
+        <div class="v2-proj-shot">
+          <img src="/assets/groovnz-preview.jpg" alt="The Groov NZ store" width="1600" height="1040" loading="lazy" decoding="async">
+        </div>
+        <div class="v2-proj-body">
+          <span class="v2-proj-tag">E-commerce</span>
+          <h3>Groov NZ</h3>
+          <span class="v2-proj-url">groov.nz</span>
+          <p>A complete online store set up end-to-end &mdash; products, secure checkout, payments, shipping and inventory. Everything needed to start selling from day one.</p>
+          <span class="v2-proj-go">Visit site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="v2-proj" href="https://agenti.nz/design_system.html" target="_blank" rel="noopener">
+        <div class="v2-proj-shot">
+          <img src="/assets/agenti-preview.jpg" alt="The Agenti design system" width="1600" height="1040" loading="lazy" decoding="async">
+        </div>
+        <div class="v2-proj-body">
+          <span class="v2-proj-tag">Brand &amp; design</span>
+          <h3>Agenti Design System</h3>
+          <span class="v2-proj-url">agenti.nz</span>
+          <p>A full brand and design system &mdash; colours, typography, components and guidelines built for consistency across every touchpoint.</p>
+          <span class="v2-proj-go">Visit site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+    </div>
+
+    <!-- No screenshot for these two, so they are set as type rather
+         than given a placeholder pretending to be one. -->
+    <div class="v2-proj-more">
+      <a class="v2-proj-lite" href="https://groov.store" target="_blank" rel="noopener">
+        <span class="v2-proj-tag">E-commerce</span>
+        <h3>Groov Store</h3>
+        <p>A clean, conversion-focused shop for the Groov brand.</p>
+        <span class="v2-proj-url">groov.store</span>
+      </a>
+      <a class="v2-proj-lite" href="https://evx.life" target="_blank" rel="noopener">
+        <span class="v2-proj-tag">EV &amp; equipment rentals</span>
+        <h3>EVX</h3>
+        <p>EV vehicles, Starlink and equipment rentals &mdash; a modern rental platform for New Zealand.</p>
+        <span class="v2-proj-url">evx.life</span>
+      </a>
     </div>
   </section>
 
@@ -316,22 +484,20 @@
     });
     restart();
 
-    /* A little parallax tilt — enough to sit in the scene, not a toy. */
-    if (!reduced.matches && window.matchMedia('(pointer: fine)').matches) {
-      var stage = card.parentElement;
-      stage.addEventListener('pointermove', function (e) {
-        var r = card.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width - 0.5;
-        var py = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform = 'rotateY(' + (px * 7).toFixed(2) + 'deg) rotateX(' + (-py * 6).toFixed(2) + 'deg) translateZ(0)';
-      }, { passive: true });
-      stage.addEventListener('pointerleave', function () { card.style.transform = ''; });
-    }
   })();
 </script>
 
 <script type="module">
   import { initHeroCloud } from '/assets/hero-cloud.js';
+
+  import { initTilt } from '/assets/tilt.js';
+
+  // A little lean toward the cursor — enough to sit in the scene, not a toy.
+  var heroCard = document.getElementById('projectCard');
+  initTilt(heroCard, { zone: heroCard.parentElement, maxX: 6, maxY: 7 });
+  document.querySelectorAll('.v2-proj').forEach(function (card) {
+    initTilt(card, { maxX: 3.5, maxY: 4.5, lift: 4 });
+  });
 
   var canvas = document.getElementById('cloudCanvas');
   var headline = document.getElementById('heroHeadline');

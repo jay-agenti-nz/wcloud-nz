@@ -12,184 +12,446 @@
 <meta property="og:url"         content="https://wcloud.nz/">
 <meta property="og:title"       content="White Cloud – Websites for Small Business & Self-Employed">
 <meta property="og:description" content="Affordable, professional websites for NZ small businesses, self-employed Kiwis, and online sellers. From NZ$299. No tech knowledge needed. Based in Christchurch.">
-<meta property="og:image"       content="https://wcloud.nz/og-image.png">
+<meta property="og:image"       content="https://wcloud.nz/og-image.jpg">
+<meta property="og:image:type"  content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:title"       content="White Cloud – Websites for Small Business & Self-Employed">
 <meta name="twitter:description" content="Affordable, professional websites for NZ small businesses, self-employed Kiwis, and online sellers. From NZ$299. No tech knowledge needed.">
-<meta name="twitter:image"       content="https://wcloud.nz/og-image.png">
+<meta name="twitter:image"       content="https://wcloud.nz/og-image.jpg">
 
 <!-- SEO -->
 <meta name="description" content="White Cloud builds affordable, AI-optimised websites for NZ small businesses, self-employed Kiwis, and small online stores. Based in Christchurch. From NZ$299 with 7-day turnaround. No tech knowledge needed.">
 <link rel="canonical" href="https://wcloud.nz/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/wc.css">
 <style>
+  /* ── PHASE 2 HERO ───────────────────────────────────────────
+     One environment, not two panels: the tinted sky and the cloud
+     canvas run edge to edge, and the 54/46 split only governs
+     where the content sits. */
 
-  /* Decorative blurred blobs — give glass panels something to refract */
-  .hero-blob-1 { top:-60px; left:8%; width:420px; height:420px; background:var(--brand); opacity:.22; }
-  .hero-blob-2 { bottom:-100px; right:6%; width:360px; height:360px; background:var(--sage); opacity:.18; animation-delay:-6s; }
-  .pricing-blob { top:20%; left:50%; width:600px; height:600px; background:var(--brand); opacity:.35; transform:translateX(-50%); }
-  .problem-blob { top:-60px; right:-90px; width:440px; height:440px; background:var(--brand); opacity:.12; }
-  .problem-blob-2 { bottom:-80px; left:-90px; width:380px; height:380px; background:var(--sage); opacity:.10; animation-delay:-7s; }
-  .portfolio-blob { top:4%; right:-100px; width:440px; height:440px; background:var(--brand); opacity:.11; }
-  .portfolio-blob-2 { bottom:6%; left:-110px; width:480px; height:480px; background:var(--sage); opacity:.10; animation-delay:-9s; }
-  .contact-blob { top:8%; left:-80px; width:440px; height:440px; background:var(--brand); opacity:.12; }
-  .cta-blob-1 { top:-80px; left:10%; width:380px; height:380px; background:var(--brand); opacity:.28; }
-  .cta-blob-2 { bottom:-120px; right:8%; width:420px; height:420px; background:var(--sage); opacity:.22; animation-delay:-8s; }
-
-  /* ── SHARED ───────────────────────────────────────────────── */
-
-  /* ── HERO ─────────────────────────────────────────────────── */
-  #hero { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:9rem 6% 5rem; background:linear-gradient(180deg,var(--brand-pale) 0%,var(--white) 58%,#f4f1fb 100%); position:relative; overflow:hidden; }
-  /* Animated aurora mesh — gives the glass something soft to refract */
-  .hero-aurora { position:absolute; inset:-25% -12%; z-index:0; pointer-events:none;
+  .v2-hero {
+    position: relative;
+    display: grid; grid-template-columns: 54fr 46fr;
+    min-height: min(780px, 94vh);
+    padding: 0;                    /* overrides the shared section padding */
+    isolation: isolate;
+    /* The sky. Also the fallback: with no WebGL this is the hero. */
     background:
-      radial-gradient(42% 42% at 20% 24%, rgba(127,168,190,.50), transparent 62%),
-      radial-gradient(38% 40% at 82% 18%, rgba(107,191,158,.34), transparent 62%),
-      radial-gradient(48% 48% at 72% 82%, rgba(160,140,214,.30), transparent 62%),
-      radial-gradient(46% 46% at 24% 86%, rgba(200,220,230,.55), transparent 62%);
-    filter:blur(36px); animation:auroraDrift 22s ease-in-out infinite; }
-  @keyframes auroraDrift {
-    0%,100% { transform:translate(0,0) scale(1); }
-    33%     { transform:translate(2.5%,-2%) scale(1.06); }
-    66%     { transform:translate(-2%,2.5%) scale(1.03); }
-  }
-  .hero-center { position:relative; z-index:2; max-width:800px; margin:0 auto; }
-  .hero-center .badge { margin:0 auto 1.8rem; background:rgba(255,255,255,.5); color:var(--dusk); border:1px solid rgba(255,255,255,.6); backdrop-filter:blur(16px) saturate(180%); -webkit-backdrop-filter:blur(16px) saturate(180%); box-shadow:0 4px 18px rgba(42,61,74,.07); }
-  #hero h1 { font-size:clamp(2.7rem,6vw,4.4rem); letter-spacing:-.01em; }
-  .hero-sub { font-size:1.15rem; color:var(--body); margin:1.7rem auto 2.4rem; font-weight:500; max-width:580px; line-height:1.8; }
-  .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; justify-content:center; }
-  .hero-chips { display:flex; gap:.6rem; flex-wrap:wrap; justify-content:center; margin-top:2rem; }
-  .hero-chip { display:inline-flex; align-items:center; gap:.45rem; font-size:.78rem; font-weight:700; color:var(--dusk); letter-spacing:.02em; padding:.42rem 1rem; border-radius:50px; background:rgba(255,255,255,.55); border:1px solid rgba(255,255,255,.6); backdrop-filter:blur(14px) saturate(180%); -webkit-backdrop-filter:blur(14px) saturate(180%); box-shadow:0 4px 16px rgba(42,61,74,.06); }
-  .hero-chip svg { width:14px; height:14px; color:var(--sage); flex-shrink:0; }
-
-  /* ── STATS ────────────────────────────────────────────────── */
-  .stats { background:var(--brand); padding:3rem 6%; }
-  .stats-in { max-width:860px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; text-align:center; }
-  .s-div { border-right:1px solid rgba(255,255,255,.2); }
-  .s-num { font-family:var(--serif); font-size:2.6rem; font-weight:700; color:var(--white); display:block; }
-  .s-lbl { font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.6); font-weight:600; }
-
-  /* ── PROBLEM ──────────────────────────────────────────────── */
-  #problem { background:var(--white); position:relative; overflow:hidden; }
-  .prob-grid { max-width:1100px; margin:3.5rem auto 0; display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
-  .prob-card { background:var(--glass-bg); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border:1px solid var(--glass-border); box-shadow:var(--glass-shadow); border-radius:18px; padding:2.2rem; transition:transform .3s,box-shadow .3s; }
-  .prob-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(127,168,190,.15); }
-  .pi { width:52px; height:52px; border-radius:15px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:1.3rem; color:var(--brand); background:rgba(127,168,190,.12); border:1px solid rgba(255,255,255,.5); box-shadow:inset 0 1px 0 rgba(255,255,255,.6); }
-  .pi svg { width:26px; height:26px; }
-
-  /* ── SOLUTION ─────────────────────────────────────────────── */
-  #solution { background:var(--brand-pale); }
-  .feat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3.5rem; max-width:1100px; margin-left:auto; margin-right:auto; }
-  .feat-card { background:var(--glass-bg-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border-radius:18px; padding:2rem; border:1px solid var(--glass-border); box-shadow:var(--glass-shadow); transition:transform .3s,box-shadow .3s; }
-  .feat-card:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(127,168,190,.15); }
-  .fi { width:52px; height:52px; background:rgba(127,168,190,.14); border:1px solid rgba(255,255,255,.55); box-shadow:inset 0 1px 0 rgba(255,255,255,.6); border-radius:15px; display:flex; align-items:center; justify-content:center; color:var(--dusk); margin-bottom:1.3rem; }
-  .fi svg { width:25px; height:25px; }
-
-  /* ── PROCESS ──────────────────────────────────────────────── */
-  #process { background:var(--white); }
-  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; max-width:1000px; margin:3.5rem auto 0; position:relative; }
-  .steps::before { content:''; position:absolute; top:40px; left:calc(16.67% + 18px); right:calc(16.67% + 18px); height:1.5px; background:linear-gradient(to right,var(--brand-mist),var(--brand),var(--brand-mist)); }
-  .step { text-align:center; padding:0 1.5rem; }
-  .sn { width:80px; height:80px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1.6rem; font-family:var(--serif); font-size:1.9rem; font-weight:700; position:relative; z-index:1; background:var(--brand); color:var(--white); box-shadow:0 8px 28px rgba(127,168,190,.35); }
-  .step:nth-child(2) .sn { background:var(--dusk); box-shadow:0 8px 28px rgba(77,110,128,.25); }
-  .step:nth-child(3) .sn { background:var(--sage); box-shadow:0 8px 28px rgba(107,191,158,.35); }
-
-  /* ── ABOUT JAY ────────────────────────────────────────────── */
-  #about { background:var(--brand-pale); }
-  .about-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1.6fr; gap:5rem; align-items:center; }
-  .about-avatar { position:relative; }
-  .about-avatar-circle { width:240px; height:240px; border-radius:50%; background:linear-gradient(135deg,var(--brand),var(--dusk)); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:6rem; color:var(--white); border:4px solid var(--white); box-shadow:0 16px 60px rgba(127,168,190,.3),inset 0 2px 0 rgba(255,255,255,.25); margin:0 auto; }
-  .about-badge { position:absolute; bottom:10px; right:20px; background:rgba(255,255,255,.62); backdrop-filter:blur(18px) saturate(180%); -webkit-backdrop-filter:blur(18px) saturate(180%); border:1px solid rgba(255,255,255,.6); border-radius:16px; padding:.7rem 1.1rem; box-shadow:0 8px 28px rgba(42,61,74,.14),inset 0 1px 0 rgba(255,255,255,.6); text-align:center; }
-  .about-badge-num { font-family:var(--serif); font-size:1.6rem; font-weight:700; color:var(--deep); line-height:1; display:block; }
-  .about-badge-txt { font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--body); }
-  .about-text h2 { margin-bottom:1rem; }
-  .about-text p { margin-bottom:1.2rem; font-size:1.02rem; line-height:1.8; }
-  .about-location { display:inline-flex; align-items:center; gap:.5rem; background:var(--brand-mist); color:var(--dusk); padding:.4rem 1rem; border-radius:50px; font-size:.78rem; font-weight:700; margin-top:.5rem; }
-
-  /* ── PORTFOLIO ────────────────────────────────────────────── */
-  #portfolio { background:var(--white); position:relative; overflow:hidden; }
-
-  /* Featured / latest project */
-  .port-featured {
-    display:grid; grid-template-columns:1.15fr 1fr;
-    max-width:1100px; margin:3.5rem auto 0;
-    background:linear-gradient(155deg,rgba(234,243,247,.6) 0%,rgba(255,255,255,.6) 60%);
-    backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur);
-    border:1px solid var(--glass-border); border-radius:24px;
-    overflow:hidden; text-decoration:none; color:inherit;
-    box-shadow:var(--glass-shadow);
-    transition:transform .3s,box-shadow .3s;
-  }
-  .port-featured:hover { transform:translateY(-4px); box-shadow:0 28px 76px rgba(127,168,190,.26); }
-  .port-platforms { display:flex; gap:.5rem; flex-wrap:wrap; margin:.3rem 0 .1rem; }
-  .port-platform { display:inline-flex; align-items:center; gap:.4rem; font-size:.72rem; font-weight:700; letter-spacing:.02em; color:var(--dusk); background:rgba(127,168,190,.12); border:1px solid rgba(127,168,190,.22); padding:.32rem .8rem; border-radius:50px; }
-  .port-platform svg { width:15px; height:15px; }
-
-  .port-featured-visual { padding:2.2rem 0 2.2rem 2.2rem; display:flex; align-items:center; }
-  .port-browser { width:100%; background:#fff; border-radius:14px; box-shadow:0 16px 40px rgba(42,61,74,.14); overflow:hidden; }
-  .port-browser-bar { display:flex; align-items:center; gap:6px; background:#f4f7f9; padding:.6rem .85rem; border-bottom:1px solid #e8ecef; }
-  .port-browser-url { margin-left:.5rem; background:#fff; border-radius:6px; padding:.22rem .7rem; font-size:.66rem; color:var(--body); font-weight:600; flex:1; }
-  .port-browser-frame { position:relative; overflow:hidden; aspect-ratio:16/10; background:#fff; }
-  .port-browser-frame img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
-
-  .port-featured-content { padding:2.4rem 2.6rem 2.4rem 2rem; display:flex; flex-direction:column; justify-content:center; }
-  .port-featured-title { font-family:var(--serif); font-size:1.55rem; font-weight:700; color:var(--deep); margin:.6rem 0 .2rem; }
-  .port-featured-content .port-desc { margin:1rem 0 1.4rem; max-width:none; }
-  .port-cta { display:inline-flex; align-items:center; gap:.55rem; color:var(--brand); font-weight:700; font-size:.85rem; letter-spacing:.04em; }
-  .port-cta-arrow { transition:transform .2s; }
-  .port-featured:hover .port-cta-arrow { transform:translateX(4px); }
-
-  /* Grid of other projects */
-  .port-grid { max-width:1100px; margin:1.5rem auto 0; display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
-  .port-card {
-    display:flex; flex-direction:column;
-    background:var(--glass-bg-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur);
-    border:1px solid var(--glass-border); border-radius:18px;
-    overflow:hidden; text-decoration:none; color:inherit;
-    box-shadow:var(--glass-shadow);
-    transition:transform .3s,box-shadow .3s;
-  }
-  .port-card:hover { transform:translateY(-4px); box-shadow:0 16px 44px rgba(127,168,190,.2),inset 0 1px 0 rgba(255,255,255,.5); }
-  .port-thumb-bar { display:flex; align-items:center; gap:6px; background:rgba(244,247,249,.55); padding:.55rem .8rem; border-bottom:1px solid rgba(232,236,239,.7); }
-  .port-thumb-banner { position:relative; aspect-ratio:16/10; background:linear-gradient(135deg,var(--brand-pale),var(--brand-mist)); display:flex; align-items:center; justify-content:center; overflow:hidden; }
-  .port-thumb-banner svg { width:32%; color:var(--brand); opacity:.6; }
-  .port-thumb-banner.photo { background:#fff; }
-  .port-thumb-banner.photo img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
-
-  /* Colour-veil reveal — theme tint clears on hover / tap */
-  .port-reveal { position:absolute; inset:0; z-index:2; display:flex; align-items:flex-end; justify-content:center; padding-bottom:.95rem; pointer-events:none;
-    background:linear-gradient(160deg,rgba(127,168,190,.92),rgba(200,220,230,.88) 55%,rgba(234,243,247,.9));
-    transition:opacity .5s ease; }
-  .port-reveal-pill { display:inline-flex; align-items:center; gap:.4rem; background:rgba(255,255,255,.72); border:1px solid rgba(255,255,255,.7); color:var(--dusk); font-size:.66rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; padding:.4rem .9rem; border-radius:50px; box-shadow:0 4px 16px rgba(42,61,74,.12); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); transition:opacity .35s ease; }
-  .port-reveal-pill svg { width:13px; height:13px; color:var(--brand); opacity:1; }
-  .port-card:hover .port-reveal, .port-card:focus-within .port-reveal, .port-card.revealed .port-reveal { opacity:0; }
-  .port-card .port-body { padding:1.4rem 1.5rem 1.6rem; display:flex; flex-direction:column; gap:.25rem; }
-
-  .port-tag { display:inline-block; color:var(--body); font-size:.62rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
-  .port-title { font-family:var(--serif); font-size:1.1rem; font-weight:700; color:var(--deep); }
-  .port-url-lbl { font-family:'Raleway',sans-serif; font-size:.7rem; font-weight:600; letter-spacing:.12em; color:var(--brand); }
-  .port-desc { font-size:.85rem; color:var(--body); font-weight:500; line-height:1.65; margin-top:.3rem; max-width:500px; }
-
-  .port-card-link { margin-top:.9rem; display:inline-flex; align-items:center; gap:.4rem; color:var(--brand); font-size:.78rem; font-weight:700; }
-  .port-card-link-arrow { transition:transform .2s; }
-  .port-card:hover .port-card-link-arrow { transform:translateX(4px); }
-
-  @media (max-width:900px) {
-    .port-featured { grid-template-columns:1fr; }
-    .port-featured-visual { padding:1.6rem 1.6rem 0; }
-    .port-featured-content { padding:1.8rem 1.6rem 2.2rem; }
-    .port-grid { grid-template-columns:1fr; }
-  }
-  @media (min-width:901px) and (max-width:1100px) {
-    .port-grid { grid-template-columns:repeat(2,1fr); }
+      radial-gradient(58% 46% at 74% 24%, rgba(255,255,255,.85), transparent 62%),
+      radial-gradient(52% 52% at 14% 84%, rgba(255,255,255,.42), transparent 64%),
+      linear-gradient(168deg, #e3eff6 0%, #cee2ee 46%, #bed7e7 100%);
   }
 
-  /* ── AGENTIC BANNER ───────────────────────────────────────── */
+  /* Cloud field sits above the sky, below everything readable. */
+  #cloudCanvas {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    display: block; z-index: 0; pointer-events: none;
+  }
+
+  .v2-hero-copy,
+  .v2-hero-stage { position: relative; z-index: 1; }
+
+  .v2-hero-copy {
+    display: flex; flex-direction: column; align-items: flex-start;
+    justify-content: center; gap: var(--sp-3);
+    padding: 8rem 4.5rem 5rem;
+  }
+  .v2-hero-copy h1 { max-width: 16ch; }
+  .v2-hero-sub { font-size: var(--fs-lead); max-width: 44ch; line-height: 1.75; color: var(--dusk); }
+  .v2-actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: var(--sp-1); }
+
+  .v2-chips { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: var(--sp-2); }
+
+  /* ── Floating project card ──────────────────────────────────
+     The right half proves the work rather than holding weather. */
+  .v2-hero-stage {
+    display: flex; align-items: center; justify-content: center;
+    padding: 7rem 3.5rem 4rem 1rem;
+    perspective: 1400px;
+  }
+
+  .v2-card {
+    width: 100%; max-width: 440px;
+    border-radius: var(--radius-lg);
+    background: rgba(255,255,255,.62);
+    backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border: 1px solid rgba(255,255,255,.75);
+    box-shadow: 0 30px 70px rgba(42,61,74,.22), inset 0 1px 0 rgba(255,255,255,.8);
+    padding: .7rem .7rem .95rem;
+    display: flex; flex-direction: column; gap: .7rem;
+    transform-style: preserve-3d;
+    transition: transform .5s var(--ease);
+  }
+
+  .v2-card-frame {
+    position: relative; aspect-ratio: 16 / 10;
+    border-radius: 14px; overflow: hidden; background: #fff;
+    box-shadow: 0 10px 26px rgba(42,61,74,.16);
+  }
+  .v2-card-bar {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 2;
+    display: flex; align-items: center; gap: 5px;
+    background: rgba(246,249,251,.92);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    padding: .5rem .7rem; border-bottom: 1px solid rgba(232,236,239,.9);
+  }
+  .v2-dot { width: 7px; height: 7px; border-radius: 50%; background: #d9e2e8; }
+  .v2-card-url {
+    margin-left: .45rem; background: #fff; border-radius: 5px;
+    padding: .16rem .6rem; font-size: .62rem; font-weight: 700;
+    letter-spacing: .04em; color: var(--body); flex: 1;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .v2-shot {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: top;
+    /* Kept short on purpose: the caption changes the instant the new
+       shot starts fading in, so a long fade would leave the old
+       screenshot on screen under the new project's name. */
+    opacity: 0; transition: opacity .2s ease;
+    z-index: 0;
+  }
+  .v2-shot.on { opacity: 1; }
+
+  .v2-card-meta {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 1rem; padding: 0 .35rem;
+  }
+
+  .v2-card-name { font-family: var(--serif); font-size: 1.02rem; font-weight: 700; color: var(--deep); }
+  .v2-card-tag { font-family: var(--mark); font-size: .64rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--brand-ink); }
+
+  .v2-card-dots { display: flex; gap: .35rem; padding: 0 .35rem; }
+  .v2-card-dots button {
+    width: 22px; height: 4px; border-radius: 2px; border: 0; padding: 0;
+    background: rgba(77,110,128,.22); cursor: pointer;
+    transition: background .25s;
+  }
+  .v2-card-dots button[aria-current="true"] { background: var(--brand-ink); }
+
+
+  /* ── WORK ───────────────────────────────────────────────────
+     Deliberately not the hero's interaction: the hero cycles one
+     screenshot, this shows the whole shelf at once. Cards lean
+     toward the cursor rather than swapping. */
+  .v2-work {
+    background: var(--white);
+    padding: var(--sp-7) 4.5rem;
+    display: flex; flex-direction: column; gap: var(--sp-3);
+  }
+  .v2-work-head { max-width: 58ch; display: flex; flex-direction: column; gap: .3rem; margin-bottom: var(--sp-2); }
+  .v2-work-head p { font-size: 1.02rem; margin-top: .4rem; }
+
+  .v2-proj {
+    display: block; text-decoration: none; color: inherit;
+    background: var(--brand-pale);
+    border: 1px solid rgba(127,168,190,.2);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .3s;
+    box-shadow: 0 2px 8px rgba(42,61,74,.05);
+  }
+  .v2-proj:hover, .v2-proj:focus-visible {
+    box-shadow: 0 26px 60px rgba(42,61,74,.2);
+    border-color: rgba(127,168,190,.45);
+  }
+
+  .v2-proj-feature { display: grid; grid-template-columns: 1.1fr .9fr; align-items: stretch; }
+  .v2-proj-feature .v2-proj-shot { border-radius: 0; }
+  .v2-proj-feature .v2-proj-body { padding: 2.4rem 2.6rem; justify-content: center; }
+  .v2-proj-feature h3 { font-size: 1.55rem; }
+
+  .v2-proj-shot { position: relative; overflow: hidden; aspect-ratio: 16 / 10; background: #fff; }
+  .v2-proj-shot img {
+    width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
+    transition: transform .6s var(--ease);
+  }
+  .v2-proj:hover .v2-proj-shot img { transform: scale(1.035); }
+
+  .v2-proj-body { padding: 1.5rem 1.6rem 1.7rem; display: flex; flex-direction: column; gap: .3rem; }
+  .v2-proj-body h3 { margin: 0; }
+  .v2-proj-body p { font-size: .89rem; line-height: 1.7; margin-top: .5rem; }
+  .v2-proj-tag {
+    font-family: var(--mark); font-size: .63rem; font-weight: 600;
+    letter-spacing: .17em; text-transform: uppercase; color: var(--body);
+  }
+  .v2-proj-url { font-family: var(--mark); font-size: .7rem; font-weight: 600; letter-spacing: .11em; color: var(--brand-ink); }
+
+  .v2-proj-pills { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .7rem; }
+  .v2-proj-pills span {
+    font-size: .7rem; font-weight: 700; color: var(--dusk);
+    background: rgba(127,168,190,.14); border: 1px solid rgba(127,168,190,.24);
+    padding: .28rem .75rem; border-radius: var(--pill);
+  }
+
+  .v2-proj-go {
+    display: inline-flex; align-items: center; gap: .45rem; margin-top: 1rem;
+    color: var(--brand-ink); font-size: .8rem; font-weight: 700;
+  }
+  .v2-proj-go svg { width: 15px; height: 15px; transition: transform .25s var(--ease); }
+  .v2-proj:hover .v2-proj-go svg { transform: translateX(4px); }
+
+  .v2-proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); }
+
+  .v2-proj-more { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-2); }
+  .v2-proj-lite {
+    display: flex; flex-direction: column; gap: .3rem;
+    text-decoration: none; color: inherit;
+    padding: 1.5rem 1.7rem; border-radius: var(--radius);
+    background: var(--white); border: 1px solid rgba(127,168,190,.24);
+    transition: background .25s, border-color .25s, transform .25s var(--ease);
+  }
+  .v2-proj-lite:hover, .v2-proj-lite:focus-visible {
+    background: var(--brand-pale); border-color: rgba(127,168,190,.5);
+    transform: translateY(-2px);
+  }
+  .v2-proj-lite p { font-size: .87rem; margin: .35rem 0 .6rem; }
+
+  @media (max-width: 1050px) {
+    .v2-proj-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .v2-work { padding: var(--sp-5) 1.6rem; }
+    .v2-proj-feature { grid-template-columns: 1fr; }
+    .v2-proj-feature .v2-proj-body { padding: 1.6rem 1.5rem 1.8rem; }
+    .v2-proj-grid, .v2-proj-more { grid-template-columns: 1fr; }
+  }
+
+  /* ── Foundations notes — deleted before ship ─────────────── */
+  .v2-notes { padding: var(--sp-6) 4.5rem; background: var(--white); display: flex; flex-direction: column; gap: var(--sp-3); }
+  .v2-notes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--sp-2); }
+  .v2-note { background: var(--brand-pale); border: 1px solid rgba(127,168,190,.18); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
+  .v2-note p { font-size: .88rem; margin-top: .25rem; }
+
+  @media (max-width: 900px) {
+    .v2-hero { grid-template-columns: 1fr; min-height: 0; }
+    .v2-hero-copy { padding: 7rem 1.6rem 2.5rem; align-items: center; text-align: center; }
+    .v2-hero-copy h1 { max-width: none; }
+    .v2-actions, .v2-chips { justify-content: center; }
+    .v2-hero-stage { padding: 0 1.6rem 3.5rem; }
+    .v2-notes { padding: var(--sp-5) 1.6rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .v2-card { transition: none; }
+  }
+
+  /* ── PHASE 4: everything below the work ─────────────────────
+     Sections alternate white and pale so the page has a rhythm
+     without every block shouting. */
+
+  .v2-band { padding: var(--sp-7) 4.5rem; display: flex; flex-direction: column; gap: var(--sp-4); }
+  .v2-band.alt { background: var(--brand-pale); }
+  .v2-head { max-width: 60ch; display: flex; flex-direction: column; gap: .25rem; }
+  .v2-head p { font-size: 1.02rem; margin-top: .5rem; }
+
+  /* Trust strip — a quiet band, not three big numbers. */
+  .v2-trust {
+    display: flex; flex-wrap: wrap; gap: var(--sp-3) var(--sp-6);
+    padding: 1.4rem 4.5rem; background: var(--deep);
+    align-items: baseline;
+  }
+  .v2-trust div { display: flex; align-items: baseline; gap: .6rem; }
+  .v2-trust strong { font-family: var(--serif); font-size: 1.25rem; color: var(--white); font-weight: 700; }
+  .v2-trust span { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.55); font-weight: 600; }
+
+  .v2-three { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); }
+  .v2-four  { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-2); }
+  .v2-tile { display: flex; flex-direction: column; gap: .2rem; }
+  .v2-tile p { font-size: .92rem; }
+  .v2-tile.glass-tile {
+    background: var(--glass-bg-strong);
+    backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
+    border-radius: var(--radius); padding: 1.5rem 1.6rem 1.7rem;
+  }
+  .v2-problem .v2-tile {
+    border-left: 2px solid rgba(127,168,190,.35);
+    padding: .1rem 0 .1rem 1.2rem;
+  }
+
+  /* Process — numbered because the order is real information. */
+  .v2-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-3); counter-reset: step; }
+  .v2-steps li { display: flex; flex-direction: column; gap: .3rem; padding-top: 1.1rem; border-top: 2px solid var(--brand-mist); }
+  .v2-step-n {
+    font-family: var(--serif); font-size: .85rem; font-weight: 700; color: var(--brand);
+    letter-spacing: .1em;
+  }
+  .v2-steps p { font-size: .92rem; }
+
+  /* AI search — the one dark panel on the page, so it reads as a
+     different kind of claim from the rest. */
+  .v2-ai { background: var(--deep); color: var(--white); }
+  .v2-ai .v2-head h2, .v2-ai h3 { color: var(--white); }
+  .v2-ai .v2-head p, .v2-ai p { color: rgba(255,255,255,.62); }
+  .v2-ai .lbl { color: var(--brand-light); }
+  .v2-ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-5); align-items: center; }
+  .v2-ai-points { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: var(--sp-2); }
+  .v2-ai-points span {
+    font-size: .72rem; font-weight: 700; color: rgba(255,255,255,.75);
+    border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06);
+    padding: .32rem .85rem; border-radius: var(--pill);
+  }
+  .v2-chat {
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
+    border-radius: var(--radius-lg); padding: 1.4rem 1.5rem;
+    display: flex; flex-direction: column; gap: .9rem;
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  }
+  .v2-chat-who { font-family: var(--mark); font-size: .66rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+  .v2-chat-q { background: rgba(255,255,255,.1); border-radius: 14px; padding: .8rem 1rem; font-size: .92rem; color: #fff; font-weight: 600; }
+  .v2-chat-a { background: rgba(127,168,190,.22); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: .9rem 1.05rem; min-height: 52px; display: flex; align-items: center; }
+  .v2-chat-a p { color: rgba(255,255,255,.9); font-size: .9rem; line-height: 1.7; }
+  .v2-typing { display: flex; gap: 5px; align-items: center; }
+  .v2-typing span { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.45); animation: typingBounce 1.2s ease-in-out infinite; }
+  .v2-typing span:nth-child(2) { animation-delay: .2s; }
+  .v2-typing span:nth-child(3) { animation-delay: .4s; }
+  @keyframes typingBounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+  .v2-ai-sources { display: flex; gap: .5rem; flex-wrap: wrap; }
+  .v2-ai-sources span { font-family: var(--mark); font-size: .64rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); border: 1px solid rgba(255,255,255,.1); padding: .3rem .8rem; border-radius: var(--pill); }
+
+  /* Pricing */
+  .v2-price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); align-items: start; }
+  .v2-price {
+    background: var(--white); border: 1px solid rgba(127,168,190,.28);
+    border-radius: var(--radius-lg); padding: 2rem 1.9rem 2.1rem;
+    display: flex; flex-direction: column; gap: .3rem;
+  }
+  .v2-price-feat { border-color: var(--brand); box-shadow: 0 20px 50px rgba(127,168,190,.25); position: relative; }
+  .v2-price-flag {
+    position: absolute; top: -.7rem; left: 1.9rem;
+    background: var(--brand); color: var(--white);
+    font-size: .64rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    padding: .28rem .8rem; border-radius: var(--pill);
+  }
+  .v2-price-amt { font-family: var(--serif); font-size: 1.05rem; color: var(--deep); margin-top: .4rem; }
+  .v2-price-amt strong { font-size: 2.5rem; font-weight: 700; letter-spacing: -.02em; }
+  .v2-price-note { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--body); }
+  .v2-price-desc { font-size: .9rem; margin: .9rem 0 .3rem; }
+  .v2-price ul { list-style: none; margin: .8rem 0 1.4rem; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
+  .v2-price li { position: relative; padding-left: 1.5rem; font-size: .88rem; color: var(--body); font-weight: 500; }
+  .v2-price li::before {
+    content: ''; position: absolute; left: 0; top: .42em;
+    width: 9px; height: 5px; border-left: 2px solid var(--sage); border-bottom: 2px solid var(--sage);
+    transform: rotate(-45deg);
+  }
+  .v2-price button { margin-top: auto; align-self: flex-start; cursor: pointer; font-family: var(--sans); }
+
+  /* Working with us */
+  .v2-about { display: grid; grid-template-columns: auto 1fr; gap: var(--sp-4); align-items: start; }
+  .v2-about-mark { display: flex; flex-direction: column; align-items: center; gap: .7rem; }
+  .v2-about-mark span {
+    width: 132px; height: 132px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand), var(--dusk));
+    color: var(--white); font-family: var(--serif); font-weight: 700; font-size: 3.4rem;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 14px 40px rgba(127,168,190,.35);
+  }
+  .v2-about-mark em { font-style: normal; font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--body); }
+  .v2-about-copy { display: flex; flex-direction: column; gap: .9rem; max-width: 62ch; }
+  .v2-about-copy p { font-size: .98rem; }
+
+  .v2-extras { display: grid; grid-template-columns: 1.25fr 1fr; gap: var(--sp-2); }
+  .v2-extra {
+    background: var(--white); border: 1px solid rgba(127,168,190,.24);
+    border-radius: var(--radius-lg); padding: 1.8rem 1.9rem 2rem;
+    display: flex; flex-direction: column; gap: .45rem;
+  }
+  .v2-extra-lbl { font-family: var(--mark); font-size: .63rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--brand-ink); }
+  .v2-extra > p { font-size: .92rem; }
+  .v2-care { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-2); margin-top: .9rem; }
+  .v2-care > div { background: var(--brand-pale); border-radius: var(--radius); padding: 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .2rem; }
+  .v2-care strong { font-family: var(--serif); font-size: 1rem; color: var(--deep); }
+  .v2-care-amt { font-size: .76rem; font-weight: 700; letter-spacing: .06em; color: var(--brand-ink); }
+  .v2-care p { font-size: .84rem; margin-top: .3rem; }
+  .v2-fineprint { font-size: .78rem; color: var(--body); margin-top: 1rem; }
+
+  /* FAQ — a real disclosure list, not divs pretending to be buttons. */
+  .v2-faq-list { display: flex; flex-direction: column; max-width: 78ch; }
+  .v2-faq-item { border-bottom: 1px solid rgba(127,168,190,.28); }
+  .v2-faq-item h3 { margin: 0; font-size: 1rem; }
+  .v2-faq-btn {
+    width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+    background: none; border: 0; padding: 1.15rem 0; cursor: pointer; text-align: left;
+    font-family: var(--serif); font-size: 1.02rem; font-weight: 700; color: var(--deep);
+  }
+  .v2-faq-btn:hover { color: var(--brand); }
+  .v2-faq-mark { position: relative; width: 14px; height: 14px; flex-shrink: 0; }
+  .v2-faq-mark::before, .v2-faq-mark::after {
+    content: ''; position: absolute; background: var(--brand);
+    left: 50%; top: 50%; transform: translate(-50%,-50%);
+    transition: opacity .2s, transform .2s;
+  }
+  .v2-faq-mark::before { width: 14px; height: 2px; }
+  .v2-faq-mark::after  { width: 2px; height: 14px; }
+  .v2-faq-btn[aria-expanded="true"] .v2-faq-mark::after { opacity: 0; transform: translate(-50%,-50%) rotate(90deg); }
+  .v2-faq-a p { font-size: .93rem; padding: 0 0 1.2rem; max-width: 68ch; }
+
+  /* Contact + closing CTA */
+  #contact { background: var(--brand-pale); padding: var(--sp-7) 4.5rem; }
+  .v2-cta {
+    background: linear-gradient(150deg, var(--dusk), var(--deep));
+    padding: var(--sp-6) 4.5rem; text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  }
+  .v2-cta h2 { color: var(--white); max-width: 20ch; }
+  .v2-cta p { color: rgba(255,255,255,.6); max-width: 52ch; }
+  .v2-cta-btns { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; margin-top: .6rem; }
+
+  @media (max-width: 1050px) {
+    .v2-four { grid-template-columns: 1fr 1fr; }
+    .v2-price-grid { grid-template-columns: 1fr; max-width: 520px; }
+    .v2-extras { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 900px) {
+    .v2-band, #contact { padding: var(--sp-5) 1.6rem; }
+    .v2-trust { padding: 1.2rem 1.6rem; gap: .8rem 2rem; }
+    .v2-three, .v2-four, .v2-steps, .v2-ai-grid, .v2-care { grid-template-columns: 1fr; }
+    .v2-about { grid-template-columns: 1fr; }
+    .v2-cta { padding: var(--sp-5) 1.6rem; }
+    .contact-form { padding: 1.8rem 1.4rem; }
+  }
+
+  /* ── Carried from the current site: form and thank-you modal ── */
+  .contact-inner { max-width:760px; margin:0 auto; }
+  .contact-form { background:var(--glass-bg-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border-radius:24px; padding:3rem; border:1px solid var(--glass-border); box-shadow:var(--glass-shadow); margin-top:3rem; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.2rem; }
+  .form-group { display:flex; flex-direction:column; gap:.4rem; margin-bottom:1.2rem; }
+  .form-group:last-child { margin-bottom:0; }
+  .form-label { font-size:.76rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--dusk); }
+  .form-input, .form-select, .form-textarea {
+    width:100%; padding:.85rem 1.1rem; border:1.5px solid var(--brand-mist); border-radius:12px;
+    font-family:var(--sans); font-size:.95rem; font-weight:500; color:var(--deep);
+    background:var(--white); transition:border-color .2s, box-shadow .2s; outline:none;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color:var(--brand); box-shadow:0 0 0 3px rgba(127,168,190,.15); }
+  .form-select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237fa8be' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 1rem center; cursor:pointer; }
+  .form-textarea { resize:vertical; min-height:120px; }
+  .other-input-wrap { display:none; margin-top:.6rem; }
+  .other-input-wrap.show { display:block; }
+  .form-submit { width:100%; background:linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94)); color:var(--white); border:1px solid rgba(255,255,255,.35); padding:1rem 2rem; border-radius:50px; font-family:var(--sans); font-size:.9rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; backdrop-filter:blur(12px) saturate(160%); -webkit-backdrop-filter:blur(12px) saturate(160%); transition:background .25s,transform .25s,box-shadow .25s; box-shadow:0 6px 24px rgba(127,168,190,.35),inset 0 1px 0 rgba(255,255,255,.45); margin-top:1.5rem; }
+  .form-submit:hover { background:linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.97)); transform:translateY(-2px); box-shadow:0 10px 32px rgba(77,110,128,.3),inset 0 1px 0 rgba(255,255,255,.45); }
+  .ty-modal-overlay { display:none; position:fixed; inset:0; background:rgba(42,61,74,.55); backdrop-filter:blur(4px); z-index:9999; align-items:center; justify-content:center; }
+  .ty-modal-overlay.show { display:flex; animation:fadeIn .3s ease; }
+  .ty-modal { background:rgba(255,255,255,.82); backdrop-filter:blur(30px) saturate(180%); -webkit-backdrop-filter:blur(30px) saturate(180%); border:1px solid rgba(255,255,255,.6); border-radius:24px; padding:3rem 2.5rem; max-width:420px; width:90%; text-align:center; box-shadow:0 32px 80px rgba(42,61,74,.25),inset 0 1px 0 rgba(255,255,255,.6); position:relative; animation:slideUp .35s cubic-bezier(.22,1,.36,1); }
+  .ty-modal-icon { display:inline-flex; margin-bottom:1rem; color:var(--sage); }
+  .ty-modal-icon svg { width:56px; height:56px; }
+  .ty-modal h3 { font-family:var(--serif); font-size:1.4rem; font-weight:700; color:var(--deep); margin-bottom:.6rem; }
+  .ty-modal p { font-size:.92rem; color:var(--body); font-weight:500; line-height:1.75; margin-bottom:1.6rem; }
+  .ty-modal p strong { color:var(--deep); }
+  .ty-modal p a { color:var(--brand); text-decoration:none; }
+  .ty-modal-close { background:linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94)); color:#fff; border:1px solid rgba(255,255,255,.35); padding:.8rem 2.2rem; border-radius:50px; font-family:var(--sans); font-size:.8rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; transition:background .2s,transform .2s; box-shadow:0 6px 20px rgba(127,168,190,.35),inset 0 1px 0 rgba(255,255,255,.4); }
+  .ty-modal-close:hover { background:linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.96)); transform:translateY(-2px); }
+    .form-row { grid-template-columns:1fr; }
+    .contact-form { padding:2rem 1.5rem; }
+
+  /* ── Carried: footer and the idea banner ── */
   .agentic-banner {
     max-width:1100px; margin:2.5rem auto 0;
     background:linear-gradient(135deg,var(--deep) 0%,var(--dusk) 100%);
@@ -211,85 +473,6 @@
   .agentic-cta:hover { background:rgba(255,255,255,.98); transform:translateY(-2px); box-shadow:0 10px 36px rgba(0,0,0,.25); }
   .agentic-cta-arrow { transition:transform .2s; }
   .agentic-cta:hover .agentic-cta-arrow { transform:translateX(4px); }
-
-  /* ── PRICING ──────────────────────────────────────────────── */
-  #pricing { background:var(--brand-pale); position:relative; overflow:hidden; }
-  .price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:1100px; margin:3.5rem auto 0; align-items:stretch; }
-  .pc { background:var(--glass-bg-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border:1px solid var(--glass-border); box-shadow:var(--glass-shadow); border-radius:22px; padding:2.5rem 2rem; transition:transform .3s,box-shadow .3s; position:relative; display:flex; flex-direction:column; }
-  .plist { list-style:none; margin-bottom:2rem; flex:1; }
-  .pc:hover { transform:translateY(-4px); box-shadow:0 20px 60px rgba(127,168,190,.18); }
-  .pc.feat { border-color:var(--brand); box-shadow:0 20px 60px rgba(127,168,190,.22); transform:scale(1.025); }
-  .pc.feat:hover { transform:scale(1.025) translateY(-4px); }
-  .pop-pill { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--brand); color:var(--white); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; padding:.3rem 1.4rem; border-radius:50px; white-space:nowrap; font-weight:700; }
-  .ptier { font-size:.68rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--brand); margin-bottom:.6rem; }
-  .pprice { font-family:var(--serif); font-size:3.2rem; font-weight:700; color:var(--deep); line-height:1; margin-bottom:.3rem; }
-  .pprice sup { font-size:1.3rem; vertical-align:top; margin-top:.65rem; display:inline-block; }
-  .ponce { font-size:.74rem; color:var(--body); margin-bottom:1.2rem; letter-spacing:.04em; font-weight:600; }
-  .pdesc { font-size:.9rem; color:var(--body); margin-bottom:1.6rem; font-weight:500; line-height:1.7; min-height:56px; }
-  .plist li { padding:.5rem 0; font-size:.87rem; color:var(--deep); font-weight:600; display:flex; align-items:flex-start; gap:.7rem; border-bottom:1px solid var(--brand-pale); }
-  .plist li:last-child { border:none; }
-  .plist li::before { content:''; width:16px; height:16px; flex-shrink:0; margin-top:.2rem; background:no-repeat center/13px url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%236bbf9e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 6.5"/></svg>'); }
-  .pbtn { display:block; text-align:center; padding:.85rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; background:linear-gradient(135deg,rgba(42,61,74,.92),rgba(77,110,128,.92)); color:var(--white); border:1px solid rgba(255,255,255,.28); box-shadow:inset 0 1px 0 rgba(255,255,255,.35); }
-  .pbtn:hover { background:linear-gradient(135deg,rgba(127,168,190,.95),rgba(77,110,128,.95)); transform:translateY(-1px); }
-  .feat .pbtn { background:linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94)); }
-  .feat .pbtn:hover { background:linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.96)); }
-
-  /* ── CARE PLANS ───────────────────────────────────────────── */
-  #care { background:var(--white); }
-  #flex-work { background:var(--brand-pale); }
-  .care-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; max-width:860px; margin:3rem auto 0; }
-  .cc { background:var(--glass-bg); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border-radius:18px; padding:2.2rem; border:1px solid var(--glass-border); }
-  .cc.hi { background:var(--glass-bg-strong); border-color:var(--brand); box-shadow:var(--glass-shadow); }
-  .ctier { font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--brand); margin-bottom:.5rem; font-weight:700; }
-  .cprice { font-family:var(--serif); font-size:2.2rem; font-weight:700; color:var(--deep); margin:.4rem 0 .3rem; }
-  .cprice small { font-family:var(--sans); font-size:.85rem; color:var(--body); font-weight:600; }
-  .cdesc { font-size:.88rem; color:var(--body); margin-bottom:1.4rem; font-weight:500; line-height:1.65; }
-  .clist { list-style:none; }
-  .clist li { font-size:.87rem; color:var(--body); padding:.38rem 0; display:flex; align-items:center; gap:.55rem; font-weight:600; }
-  .clist li::before { content:'→'; color:var(--brand); font-weight:700; }
-  .care-note { max-width:860px; margin:1.5rem auto 0; font-size:.8rem; color:var(--body); opacity:.7; font-weight:500; }
-
-  /* ── FAQ ──────────────────────────────────────────────────── */
-  #faq { background:var(--brand-pale); }
-  .faq-wrap { max-width:700px; margin:3rem auto 0; }
-  .faq-item { background:var(--glass-bg-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border-radius:14px; margin-bottom:.9rem; border:1px solid var(--glass-border); opacity:1 !important; transform:none !important; pointer-events:auto !important; }
-  .faq-btn { width:100%; background:none; border:none; text-align:left; padding:1.4rem 1.6rem; font-family:var(--serif); font-size:1.05rem; font-weight:700; color:var(--deep); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color .2s; opacity:1 !important; pointer-events:auto !important; }
-  .faq-btn:hover { color:var(--brand); }
-  .fa { font-size:1.4rem; flex-shrink:0; color:var(--body); line-height:1; font-family:var(--sans); font-weight:300; display:inline-block; transition:transform .3s; }
-  .faq-item.open .fa { transform:rotate(45deg); color:var(--brand); }
-  .faq-ans { display:none; padding:1rem 1.6rem 1.4rem; color:var(--body); font-size:.93rem; font-weight:500; line-height:1.8; border-top:1px solid var(--brand-mist); opacity:1 !important; }
-  .faq-item.open .faq-ans { display:block; }
-
-  /* ── CONTACT FORM ─────────────────────────────────────────── */
-  #contact { background:var(--white); position:relative; overflow:hidden; }
-  .contact-inner { max-width:760px; margin:0 auto; }
-  .contact-form { background:var(--glass-bg-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border-radius:24px; padding:3rem; border:1px solid var(--glass-border); box-shadow:var(--glass-shadow); margin-top:3rem; }
-  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.2rem; }
-  .form-group { display:flex; flex-direction:column; gap:.4rem; margin-bottom:1.2rem; }
-  .form-group:last-child { margin-bottom:0; }
-  .form-label { font-size:.76rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--dusk); }
-  .form-input, .form-select, .form-textarea {
-    width:100%; padding:.85rem 1.1rem; border:1.5px solid var(--brand-mist); border-radius:12px;
-    font-family:var(--sans); font-size:.95rem; font-weight:500; color:var(--deep);
-    background:var(--white); transition:border-color .2s, box-shadow .2s; outline:none;
-  }
-  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color:var(--brand); box-shadow:0 0 0 3px rgba(127,168,190,.15); }
-  .form-select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237fa8be' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 1rem center; cursor:pointer; }
-  .form-textarea { resize:vertical; min-height:120px; }
-  .other-input-wrap { display:none; margin-top:.6rem; }
-  .other-input-wrap.show { display:block; }
-  .form-submit { width:100%; background:linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94)); color:var(--white); border:1px solid rgba(255,255,255,.35); padding:1rem 2rem; border-radius:50px; font-family:var(--sans); font-size:.9rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; backdrop-filter:blur(12px) saturate(160%); -webkit-backdrop-filter:blur(12px) saturate(160%); transition:background .25s,transform .25s,box-shadow .25s; box-shadow:0 6px 24px rgba(127,168,190,.35),inset 0 1px 0 rgba(255,255,255,.45); margin-top:1.5rem; }
-  .form-submit:hover { background:linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.97)); transform:translateY(-2px); box-shadow:0 10px 32px rgba(77,110,128,.3),inset 0 1px 0 rgba(255,255,255,.45); }
-  .form-success { display:none; text-align:center; padding:2rem; }
-  .form-success .tick { display:inline-flex; margin-bottom:1rem; color:var(--sage); }
-  .form-success .tick svg { width:56px; height:56px; }
-  .form-success h3 { color:var(--deep); margin-bottom:.5rem; }
-  .form-success p { color:var(--body); }
-
-  /* Location strip */
-  .location-strip { display:flex; align-items:center; justify-content:center; gap:.6rem; background:var(--brand-mist); color:var(--dusk); padding:.6rem 1.4rem; border-radius:50px; font-size:.8rem; font-weight:700; width:fit-content; margin:1rem auto 0; }
-
-  /* ── IDEA BANNER ──────────────────────────────────────────── */
   .idea-banner {
     max-width:760px; margin:2rem auto 0;
     background:linear-gradient(135deg,var(--brand-pale),var(--brand-mist));
@@ -304,129 +487,13 @@
   .idea-banner p { font-size:.88rem; color:var(--body); font-weight:500; line-height:1.65; }
   .idea-btn { display:inline-flex; align-items:center; gap:.5rem; background:linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94)); color:#fff; padding:.8rem 1.8rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; border:1px solid rgba(255,255,255,.35); box-shadow:inset 0 1px 0 rgba(255,255,255,.4); transition:background .2s,transform .2s; white-space:nowrap; flex-shrink:0; }
   .idea-btn:hover { background:linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.96)); transform:translateY(-2px); }
-  #cta { background:var(--deep); text-align:center; padding:8rem 6%; position:relative; overflow:hidden; }
-  .cta-deco { position:absolute; inset:0; pointer-events:none; opacity:.06; overflow:hidden; }
-  .cta-deco svg { width:100%; height:100%; object-fit:cover; }
-  #cta .lbl { color:rgba(255,255,255,.4); }
-  #cta h2 { color:var(--white); font-weight:700; }
-  #cta p { color:rgba(255,255,255,.55); margin:1.2rem auto 2.8rem; max-width:500px; font-size:1.05rem; }
-  .cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
-
-  /* ── FOOTER ───────────────────────────────────────────────── */
   .foot-in { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
   .foot-links { display:flex; gap:1.8rem; flex-wrap:wrap; }
   .foot-links a { color:rgba(255,255,255,.35); text-decoration:none; transition:color .2s; }
   .foot-links a:hover { color:rgba(255,255,255,.7); }
-
-  /* ── THANK YOU MODAL ── */
-  .ty-modal-overlay { display:none; position:fixed; inset:0; background:rgba(42,61,74,.55); backdrop-filter:blur(4px); z-index:9999; align-items:center; justify-content:center; }
-  .ty-modal-overlay.show { display:flex; animation:fadeIn .3s ease; }
-  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
-  .ty-modal { background:rgba(255,255,255,.82); backdrop-filter:blur(30px) saturate(180%); -webkit-backdrop-filter:blur(30px) saturate(180%); border:1px solid rgba(255,255,255,.6); border-radius:24px; padding:3rem 2.5rem; max-width:420px; width:90%; text-align:center; box-shadow:0 32px 80px rgba(42,61,74,.25),inset 0 1px 0 rgba(255,255,255,.6); position:relative; animation:slideUp .35s cubic-bezier(.22,1,.36,1); }
-  @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
-  .ty-modal-icon { display:inline-flex; margin-bottom:1rem; color:var(--sage); }
-  .ty-modal-icon svg { width:56px; height:56px; }
-  .ty-modal h3 { font-family:var(--serif); font-size:1.4rem; font-weight:700; color:var(--deep); margin-bottom:.6rem; }
-  .ty-modal p { font-size:.92rem; color:var(--body); font-weight:500; line-height:1.75; margin-bottom:1.6rem; }
-  .ty-modal p strong { color:var(--deep); }
-  .ty-modal p a { color:var(--brand); text-decoration:none; }
-  .ty-modal-close { background:linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94)); color:#fff; border:1px solid rgba(255,255,255,.35); padding:.8rem 2.2rem; border-radius:50px; font-family:var(--sans); font-size:.8rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; transition:background .2s,transform .2s; box-shadow:0 6px 20px rgba(127,168,190,.35),inset 0 1px 0 rgba(255,255,255,.4); }
-  .ty-modal-close:hover { background:linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.96)); transform:translateY(-2px); }
-
-  /* ── AI SEARCH ───────────────────────────────────────────── */
-  #ai-search { background: var(--deep); overflow:hidden; position:relative; }
-  #ai-search::before {
-    content:''; position:absolute; inset:0; pointer-events:none;
-    background-image:url("data:image/svg+xml,%3Csvg width='1440' height='500' viewBox='0 0 1440 500' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 250 C180 100,360 400,540 250 C720 100,900 400,1080 250 C1260 100,1350 300,1440 220' stroke='%237fa8be' stroke-width='2' stroke-linecap='round' opacity='0.08'/%3E%3Cpath d='M0 320 C200 140,400 460,600 300 C800 140,1000 440,1200 280 C1320 180,1380 240,1440 210' stroke='%237fa8be' stroke-width='1.5' stroke-linecap='round' opacity='0.05'/%3E%3C/svg%3E");
-    background-size:cover;
-  }
-  .ai-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; position:relative; z-index:1; }
-  #ai-search .lbl { color:var(--sage); }
-  #ai-search h2 { color:var(--white); margin-bottom:1.2rem; }
-  #ai-search p { color:rgba(255,255,255,.6); font-size:1.02rem; line-height:1.8; margin-bottom:1rem; }
-  .ai-pills { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:2rem; }
-  .ai-pill {
-    display:inline-flex; align-items:center; gap:.5rem;
-    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12);
-    color:rgba(255,255,255,.75); font-size:.8rem; font-weight:600;
-    padding:.5rem 1rem; border-radius:50px;
-    transition:background .2s, border-color .2s;
-  }
-  .ai-pill:hover { background:rgba(127,168,190,.2); border-color:rgba(127,168,190,.4); }
-  .ai-pill-icon { display:inline-flex; align-items:center; }
-  .ai-pill-icon svg { width:16px; height:16px; }
-
-  /* Chat mock */
-  .ai-vis { display:flex; flex-direction:column; gap:1.2rem; }
-  .ai-chat-mock {
-    background:var(--glass-bg-dark); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur);
-    border:1px solid var(--glass-border-dark);
-    border-radius:20px; overflow:hidden;
-    box-shadow:0 24px 64px rgba(0,0,0,.3);
-  }
-  .ai-chat-header {
-    display:flex; align-items:center; gap:.6rem;
-    padding:.9rem 1.4rem; border-bottom:1px solid rgba(255,255,255,.08);
-    background:rgba(255,255,255,.04);
-    font-family:'Raleway',sans-serif; font-size:.72rem; font-weight:700;
-    letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.5);
-  }
-  .ai-chat-dot { width:8px; height:8px; border-radius:50%; background:var(--sage); animation:pulse 2.5s ease-in-out infinite; }
-  .ai-chat-body { padding:1.4rem; display:flex; flex-direction:column; gap:1rem; }
-  .ai-msg { font-size:.9rem; line-height:1.65; max-width:86%; padding:.8rem 1.1rem; border-radius:14px; font-weight:500; }
-  .ai-msg.user {
-    background:var(--brand); color:#fff; align-self:flex-end;
-    border-bottom-right-radius:4px;
-  }
-  .ai-msg.bot {
-    background:rgba(255,255,255,.09); color:rgba(255,255,255,.85);
-    align-self:flex-start; border-bottom-left-radius:4px;
-    min-height:52px; display:flex; align-items:center;
-  }
-  .ai-response strong { color:#fff; }
-
-  /* Typing dots */
-  .ai-typing-indicator { display:flex; gap:5px; align-items:center; padding:4px 2px; }
-  .ai-typing-indicator span {
-    width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.4);
-    animation:typingBounce 1.2s ease-in-out infinite;
-  }
-  .ai-typing-indicator span:nth-child(2) { animation-delay:.2s; }
-  .ai-typing-indicator span:nth-child(3) { animation-delay:.4s; }
-  @keyframes typingBounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
-
-  /* Source badges */
-  .ai-badge-row { display:flex; gap:.6rem; flex-wrap:wrap; }
-  .ai-source-badge {
-    display:inline-flex; align-items:center; gap:.4rem;
-    font-family:'Raleway',sans-serif; font-size:.68rem; font-weight:700;
-    letter-spacing:.12em; text-transform:uppercase;
-    color:rgba(255,255,255,.35); border:1px solid rgba(255,255,255,.1);
-    padding:.35rem .9rem; border-radius:50px;
-  }
-  .ai-source-badge svg { width:12px; height:12px; }
-
-  /* ── RESPONSIVE ───────────────────────────────────────────── */
-  @media (max-width:960px) {
-    .about-inner,.ai-inner { grid-template-columns:1fr; gap:3rem; }
-    .prob-grid,.feat-grid,.steps,.price-grid,.care-grid { grid-template-columns:1fr; }
-    .port-card { grid-template-columns:64px 1fr; gap:1rem; padding:1.4rem 1.5rem; }
-    .port-num { font-size:2.6rem; }
-    .port-desc { display:none; }
-    .steps::before { display:none; }
-    .pc.feat { transform:none; }
-    .stats-in { grid-template-columns:1fr; gap:1.5rem; }
-    .s-div { border-right:none; border-bottom:1px solid rgba(255,255,255,.2); padding-bottom:1.5rem; }
-    .nav-links li:not(:last-child) { display:none; }
-    .form-row { grid-template-columns:1fr; }
-    .contact-form { padding:2rem 1.5rem; }
-    .about-avatar-circle { width:180px; height:180px; font-size:4.5rem; }
     .agentic-banner { flex-direction:column; align-items:flex-start; padding:2rem; }
     .agentic-cta { width:100%; justify-content:center; }
-  }
 </style>
-
-<!-- Structured Data / Schema Markup -->
 <script type="application/ld+json">
 [
   {
@@ -436,7 +503,7 @@
     "name": "White Cloud",
     "url": "https://wcloud.nz",
     "logo": "https://wcloud.nz/favicon.svg",
-    "image": "https://wcloud.nz/og-image.png",
+    "image": "https://wcloud.nz/og-image.jpg",
     "description": "White Cloud builds affordable, AI-optimised websites for New Zealand small businesses, self-employed Kiwis, and small online stores. Based in Christchurch, NZ. From NZ$299 with 7-day average delivery. No tech knowledge needed.",
     "priceRange": "NZ$299–NZ$1,099",
     "address": {
@@ -569,456 +636,421 @@
 ]
 </script>
 </head>
-<body>
+<body class="wc-canvas">
 
-<!-- NAV -->
-<nav id="mainnav">
-  <a href="#" class="logo-mark">
+<nav class="wc-nav" id="v2nav">
+  <a href="/" class="logo-mark">
     <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
       <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
       <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
     </svg>
     <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
   </a>
-  <ul class="nav-links">
-    <li><a href="#solution">How it works</a></li>
-    <li><a href="#portfolio">Our Work</a></li>
-    <li><a href="/restaurants">For Restaurants</a></li>
+  <ul class="wc-nav-links">
+    <li><a href="#work">Our work</a></li>
     <li><a href="#pricing">Pricing</a></li>
+    <li><a href="/restaurants">Restaurants</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    <li><a href="#contact" class="wc-nav-cta">Get started</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-aurora"></div>
-  <div class="bg-blob hero-blob-1"></div>
-  <div class="bg-blob hero-blob-2"></div>
+<div class="wc-sheet">
 
-  <div class="hero-center fu">
-    <div class="badge"><div class="badge-dot"></div>Christchurch, New Zealand</div>
-    <h1>Your business deserves<br>a <em>great website.</em></h1>
-    <p class="hero-sub">Whether you're self-employed, running a small business, or selling online — no tech knowledge needed, no confusing steps. Just a clean, professional website, done for you, at a price that makes sense.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-p">Get Started</a>
-      <a href="#process" class="btn-o">How It Works</a>
-    </div>
-    <div class="hero-chips">
-      <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 6.5"/></svg>One-off payment</span>
-      <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 6.5"/></svg>Ready in 5–10 days</span>
-      <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 6.5"/></svg>No lock-in contracts</span>
-    </div>
-  </div>
+  <section class="v2-hero">
+    <canvas id="cloudCanvas" aria-hidden="true"></canvas>
 
-</section>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stats-in">
-    <div class="s-div"><span class="s-num">150+</span><span class="s-lbl">Businesses &amp; self-employed helped</span></div>
-    <div class="s-div"><span class="s-num">7 days</span><span class="s-lbl">Average delivery</span></div>
-    <div><span class="s-num">NZ$299</span><span class="s-lbl">Starting price</span></div>
-  </div>
-</div>
-
-<!-- PROBLEM -->
-<section id="problem">
-  <div class="bg-blob problem-blob"></div>
-  <div class="bg-blob problem-blob-2"></div>
-  <div class="sec-hd fu">
-    <span class="lbl">You're not alone</span>
-    <h2>Building a website can feel like a full-time job</h2>
-    <p>Most small business owners and self-employed Kiwis don't have time to figure out complicated website builders — and you shouldn't have to.</p>
-  </div>
-  <div class="prob-grid fug">
-    <div class="prob-card"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 13l9 5 9-5"/></svg></span><h3>Too many confusing choices</h3><p>Wix, Squarespace, WordPress… each one has a learning curve, and none of them feel straightforward when you're trying to run a business.</p></div>
-    <div class="prob-card"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg></span><h3>No time to do it yourself</h3><p>You're busy serving customers, not staring at a screen trying to figure out why your logo looks wrong on a phone.</p></div>
-    <div class="prob-card"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M14.6 9.3A2.7 2.7 0 0 0 12 8c-1.5 0-2.7.9-2.7 2s1.2 2 2.7 2 2.7.9 2.7 2-1.2 2-2.7 2a2.7 2.7 0 0 1-2.6-1.3"/></svg></span><h3>Worried about the cost</h3><p>Big web agencies charge thousands. You just need something clean, professional, and honest — not an overpriced project that drags on for months.</p></div>
-    <div class="prob-card"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.3 9.2a2.8 2.8 0 0 1 5.4.9c0 1.9-2.7 2.1-2.7 4"/><circle cx="12" cy="17.3" r=".7" fill="currentColor" stroke="none"/></svg></span><h3>Not sure what you actually need</h3><p>You know you need a website. You're just not sure how many pages, what to write, or how to make it look good. It all feels a bit much.</p></div>
-  </div>
-</section>
-
-<!-- SOLUTION -->
-<section id="solution">
-  <div class="sec-hd fu">
-    <span class="lbl">The simple solution</span>
-    <h2>We take care of everything, so you don't have to</h2>
-    <p>Tell us about your business. We'll build you a clean, fast, professional website that looks great on every screen.</p>
-  </div>
-  <div class="feat-grid fug">
-    <div class="feat-card"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1Z"/><path d="M14 7l3 3"/></svg></div><h3>We write the words</h3><p>Not sure what to say? We help put it into clear, simple language that connects with your customers.</p></div>
-    <div class="feat-card"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4V2M19 6h2M15 9V7M9 8H7"/><path d="M6.5 21 16 11.5 12.5 8 3 17.5 6.5 21Z"/></svg></div><h3>We handle the design</h3><p>Your site will look modern and professional — clean layout, nice fonts, your colours — done properly.</p></div>
-    <div class="feat-card"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="10" rx="1.6"/><path d="M2 17h14"/><rect x="16.5" y="9" width="5.5" height="11" rx="1.4"/></svg></div><h3>Works on every device</h3><p>Phones, tablets, laptops — your website will look and work perfectly no matter how customers find you.</p></div>
-    <div class="feat-card"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><h3>Set up to be found</h3><p>We make sure your site is set up so Google can find it. More visibility without any extra effort from you.</p></div>
-    <div class="feat-card"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div><h3>Fast and reliable</h3><p>Nobody waits for a slow website. Yours will load quickly and give customers a smooth experience every time.</p></div>
-    <div class="feat-card"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2Z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></svg></div><h3>Real human support</h3><p>You'll always have someone to talk to. Plain English, no tech talk — just friendly help when you need it.</p></div>
-  </div>
-</section>
-
-<!-- AI SEARCH -->
-<section id="ai-search">
-  <div class="ai-inner fu">
-    <div class="ai-text">
-      <span class="lbl">Built for the future</span>
-      <h2>Your business, found by AI — not just Google</h2>
-      <p>The way people find businesses is changing fast. More and more customers are asking ChatGPT, asking Siri, or searching through AI tools to find recommendations. We make sure your website is ready for that.</p>
-      <p>Every website we build is structured so AI tools can read, understand, and recommend your business — so when someone asks "who's the best plumber in Christchurch?" your name has a real chance of coming up.</p>
-      <div class="ai-pills">
-        <div class="ai-pill"><span class="ai-pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2.5"/><path d="M9 3v2.5M15 3v2.5M9 18.5V21M15 18.5V21M3 9h2.5M3 15h2.5M18.5 9H21M18.5 15H21"/><circle cx="12" cy="12" r="2.2"/></svg></span>AI-readable structure</div>
-        <div class="ai-pill"><span class="ai-pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2Z"/></svg></span>Optimised for ChatGPT &amp; Siri</div>
-        <div class="ai-pill"><span class="ai-pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.2"/><circle cx="5.5" cy="19" r="2.2"/><circle cx="18.5" cy="19" r="2.2"/><path d="M12 7.2v3.3M12 10.5H5.5v6.3M12 10.5h6.5v6.3"/></svg></span>Schema markup included</div>
-        <div class="ai-pill"><span class="ai-pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>Google + AI search ready</div>
+    <div class="v2-hero-copy">
+      <span class="badge"><span class="badge-dot"></span>Christchurch, New Zealand</span>
+      <h1 class="wc-display" id="heroHeadline">A proper website. Done for you.</h1>
+      <p class="v2-hero-sub">Self-employed, running a small business, or selling online — no tech knowledge needed and no confusing steps. From NZ$299, live in about a week.</p>
+      <div class="v2-actions">
+        <a href="#contact" class="btn-p">Get started</a>
+        <a href="#work" class="btn-o">See our work</a>
+      </div>
+      <div class="v2-chips">
+        <span class="wc-chip">One-off payment</span>
+        <span class="wc-chip">Ready in 5–10 days</span>
+        <span class="wc-chip">No lock-in contracts</span>
       </div>
     </div>
-    <div class="ai-vis">
-      <div class="ai-chat-mock">
-        <div class="ai-chat-header">
-          <div class="ai-chat-dot"></div>
-          <span>AI Assistant</span>
+
+    <div class="v2-hero-stage">
+      <div class="v2-card" id="projectCard">
+        <div class="v2-card-frame">
+          <div class="v2-card-bar">
+            <span class="v2-dot"></span><span class="v2-dot"></span><span class="v2-dot"></span>
+            <span class="v2-card-url" id="cardUrl">rakkhun.co.nz</span>
+          </div>
+          <img class="v2-shot on" src="/assets/rakkhun-preview-900.jpg" srcset="/assets/rakkhun-preview-900.jpg 900w, /assets/rakkhun-preview.jpg 960w" sizes="(max-width: 900px) 92vw, 440px" alt="Rak Khun website" width="960" height="600">
+          <img class="v2-shot" src="/assets/agenti-preview-900.jpg" srcset="/assets/agenti-preview-900.jpg 900w, /assets/agenti-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, 440px" alt="Agenti website" width="1600" height="1040" decoding="async">
+          <img class="v2-shot" src="/assets/biblio-preview-900.jpg" srcset="/assets/biblio-preview-900.jpg 900w, /assets/biblio-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, 440px" alt="Biblio website" width="1600" height="1040" decoding="async">
+          <img class="v2-shot" src="/assets/groovnz-preview-900.jpg" srcset="/assets/groovnz-preview-900.jpg 900w, /assets/groovnz-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, 440px" alt="Groov website" width="1600" height="1040" decoding="async">
         </div>
-        <div class="ai-chat-body">
-          <div class="ai-msg user">Who's a good web designer in Christchurch, NZ?</div>
-          <div class="ai-msg bot">
-            <div class="ai-typing-indicator" id="aiTyping">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="ai-response" id="aiResponse" style="display:none">
-              Based on their website, <strong>White Cloud</strong> is a Christchurch-based web design service helping small businesses get online affordably and fast — from NZ$299 with a 7-day turnaround.
-            </div>
+        <div class="v2-card-meta">
+          <span class="v2-card-name" id="cardName">Rak Khun</span>
+          <span class="v2-card-tag" id="cardTag">Thai restaurant</span>
+        </div>
+        <div class="v2-card-dots" id="cardDots" role="tablist" aria-label="Recent projects"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="work" class="v2-work">
+    <div class="v2-work-head">
+      <span class="lbl">Our work</span>
+      <h2>Projects we&rsquo;ve built</h2>
+      <p>From e-commerce stores to full restaurant rebuilds &mdash; here&rsquo;s a taste of what we can do.</p>
+    </div>
+
+    <a class="v2-proj v2-proj-feature" href="https://biblio.ink" target="_blank" rel="noopener">
+      <div class="v2-proj-shot">
+        <img src="/assets/biblio-preview-900.jpg" srcset="/assets/biblio-preview-900.jpg 900w, /assets/biblio-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, 48vw" alt="The Biblio web app" width="1600" height="1040" loading="lazy" decoding="async">
+      </div>
+      <div class="v2-proj-body">
+        <span class="v2-proj-tag">Latest project</span>
+        <h3>Biblio</h3>
+        <span class="v2-proj-url">biblio.ink</span>
+        <p>A full product build &mdash; a web app and a native iOS app. Biblio turns your ePub and PDF collection into a playful 3D bookshelf you can organise, browse and read, with the same experience in the browser and on iPhone.</p>
+        <div class="v2-proj-pills"><span>Web app</span><span>Native iOS app</span></div>
+        <span class="v2-proj-go">See the live app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <div class="v2-proj-grid">
+      <a class="v2-proj" href="https://rakkhun.co.nz" target="_blank" rel="noopener">
+        <div class="v2-proj-shot">
+          <img src="/assets/rakkhun-preview-900.jpg" srcset="/assets/rakkhun-preview-900.jpg 900w, /assets/rakkhun-preview.jpg 960w" sizes="(max-width: 900px) 92vw, (max-width: 1050px) 45vw, 30vw" alt="The Rak Khun website" width="960" height="600" loading="lazy" decoding="async">
+        </div>
+        <div class="v2-proj-body">
+          <span class="v2-proj-tag">Restaurant &middot; full redesign</span>
+          <h3>Rak Khun Thai Eatery &amp; Bar</h3>
+          <span class="v2-proj-url">rakkhun.co.nz</span>
+          <p>A ground-up, mobile-first rebuild for a Takanini Thai restaurant &mdash; bold food photography, tabbed menus, and one-tap calling, ordering and directions.</p>
+          <span class="v2-proj-go">Visit site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="v2-proj" href="https://groov.nz" target="_blank" rel="noopener">
+        <div class="v2-proj-shot">
+          <img src="/assets/groovnz-preview-900.jpg" srcset="/assets/groovnz-preview-900.jpg 900w, /assets/groovnz-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, (max-width: 1050px) 45vw, 30vw" alt="The Groov NZ store" width="1600" height="1040" loading="lazy" decoding="async">
+        </div>
+        <div class="v2-proj-body">
+          <span class="v2-proj-tag">E-commerce</span>
+          <h3>Groov NZ</h3>
+          <span class="v2-proj-url">groov.nz</span>
+          <p>A complete online store set up end-to-end &mdash; products, secure checkout, payments, shipping and inventory. Everything needed to start selling from day one.</p>
+          <span class="v2-proj-go">Visit site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="v2-proj" href="https://agenti.nz/design_system.html" target="_blank" rel="noopener">
+        <div class="v2-proj-shot">
+          <img src="/assets/agenti-preview-900.jpg" srcset="/assets/agenti-preview-900.jpg 900w, /assets/agenti-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, (max-width: 1050px) 45vw, 30vw" alt="The Agenti design system" width="1600" height="1040" loading="lazy" decoding="async">
+        </div>
+        <div class="v2-proj-body">
+          <span class="v2-proj-tag">Brand &amp; design</span>
+          <h3>Agenti Design System</h3>
+          <span class="v2-proj-url">agenti.nz</span>
+          <p>A full brand and design system &mdash; colours, typography, components and guidelines built for consistency across every touchpoint.</p>
+          <span class="v2-proj-go">Visit site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+    </div>
+
+    <!-- No screenshot for these two, so they are set as type rather
+         than given a placeholder pretending to be one. -->
+    <div class="v2-proj-more">
+      <a class="v2-proj-lite" href="https://groov.store" target="_blank" rel="noopener">
+        <span class="v2-proj-tag">E-commerce</span>
+        <h3>Groov Store</h3>
+        <p>A clean, conversion-focused shop for the Groov brand.</p>
+        <span class="v2-proj-url">groov.store</span>
+      </a>
+      <a class="v2-proj-lite" href="https://evx.life" target="_blank" rel="noopener">
+        <span class="v2-proj-tag">EV &amp; equipment rentals</span>
+        <h3>EVX</h3>
+        <p>EV vehicles, Starlink and equipment rentals &mdash; a modern rental platform for New Zealand.</p>
+        <span class="v2-proj-url">evx.life</span>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- TRUST STRIP -->
+  <div class="v2-trust">
+    <div><strong>150+</strong><span>Businesses &amp; self-employed helped</span></div>
+    <div><strong>7 days</strong><span>Average delivery</span></div>
+    <div><strong>NZ$299</strong><span>Starting price</span></div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="v2-band v2-problem">
+    <div class="v2-head">
+      <span class="lbl">You&rsquo;re not alone</span>
+      <h2>Building a website can feel like a full-time job</h2>
+      <p>Most small business owners and self-employed Kiwis don&rsquo;t have time to figure out website builders &mdash; and shouldn&rsquo;t have to.</p>
+    </div>
+    <div class="v2-three">
+      <div class="v2-tile">
+        <h3>Too many confusing choices</h3>
+        <p>Wix, Squarespace, WordPress &mdash; each has a learning curve, and none feel straightforward when you&rsquo;re trying to run a business.</p>
+      </div>
+      <div class="v2-tile">
+        <h3>No time to do it yourself</h3>
+        <p>You&rsquo;re serving customers, not working out why your logo looks wrong on a phone.</p>
+      </div>
+      <div class="v2-tile">
+        <h3>Worried about the cost</h3>
+        <p>Agencies charge thousands. You need something clean, professional and honest &mdash; not a project that drags on for months.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section id="how" class="v2-band alt v2-solution">
+    <div class="v2-head">
+      <span class="lbl">The simple solution</span>
+      <h2>We take care of everything, so you don&rsquo;t have to</h2>
+      <p>Tell us about your business. We&rsquo;ll build you a clean, fast, professional website that looks great on every screen.</p>
+    </div>
+    <div class="v2-four">
+      <div class="v2-tile glass-tile">
+        <h3>We write the words</h3>
+        <p>Not sure what to say? We put it into clear, simple language that connects with your customers.</p>
+      </div>
+      <div class="v2-tile glass-tile">
+        <h3>We handle the design</h3>
+        <p>Modern and professional &mdash; clean layout, good type, your colours, done properly.</p>
+      </div>
+      <div class="v2-tile glass-tile">
+        <h3>Works on every device</h3>
+        <p>Phones, tablets, laptops. Your site looks and works right however customers find you.</p>
+      </div>
+      <div class="v2-tile glass-tile">
+        <h3>Real human support</h3>
+        <p>Someone to talk to, in plain English. No tech talk &mdash; just friendly help when you need it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI SEARCH -->
+  <section id="ai-search" class="v2-band v2-ai">
+    <div class="v2-ai-grid">
+      <div>
+        <div class="v2-head">
+          <span class="lbl">Built for the future</span>
+          <h2>Your business, found by AI &mdash; not just Google</h2>
+          <p>More and more customers ask ChatGPT or Siri for recommendations instead of searching. Every site we build is structured so AI tools can read, understand and recommend your business.</p>
+        </div>
+        <div class="v2-ai-points">
+          <span>AI-readable structure</span>
+          <span>Schema markup included</span>
+          <span>Google + AI search ready</span>
+        </div>
+      </div>
+      <div class="v2-chat">
+        <span class="v2-chat-who">AI assistant</span>
+        <div class="v2-chat-q">Who&rsquo;s a good web designer in Christchurch, NZ?</div>
+        <div class="v2-chat-a">
+          <div class="v2-typing" id="aiTyping"><span></span><span></span><span></span></div>
+          <p id="aiResponse" hidden>Based on their website, White Cloud is a Christchurch-based web design service helping small businesses get online affordably and fast &mdash; from NZ$299 with a 7-day turnaround.</p>
+        </div>
+        <div class="v2-ai-sources"><span>ChatGPT</span><span>Gemini</span><span>Siri</span><span>Perplexity</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="v2-band v2-process">
+    <div class="v2-head">
+      <span class="lbl">How it works</span>
+      <h2>Three simple steps to your new website</h2>
+      <p>Most clients are live within a week.</p>
+    </div>
+    <ol class="v2-steps">
+      <li>
+        <span class="v2-step-n">1</span>
+        <h3>Tell us about your business</h3>
+        <p>A short questionnaire, about 15 minutes. Your services, your customers, and how you&rsquo;d like the site to feel.</p>
+      </li>
+      <li>
+        <span class="v2-step-n">2</span>
+        <h3>We build your site</h3>
+        <p>Within 5&ndash;10 business days you&rsquo;ll have a preview to review. We tweak until you&rsquo;re genuinely happy.</p>
+      </li>
+      <li>
+        <span class="v2-step-n">3</span>
+        <h3>Go live and get found</h3>
+        <p>We publish and handle the technical bits &mdash; domain, hosting, everything between. You just share the link.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="v2-band alt v2-pricing">
+    <div class="v2-head">
+      <span class="lbl">Straightforward pricing</span>
+      <h2>Pick the right package for your business</h2>
+      <p>One-off payment. No hidden fees. All prices in New Zealand Dollars.</p>
+    </div>
+    <div class="v2-price-grid">
+      <div class="v2-price">
+        <h3>Cloud One</h3>
+        <p class="v2-price-amt">NZ$<strong>299</strong></p>
+        <span class="v2-price-note">One-off payment</span>
+        <p class="v2-price-desc">Perfect for sole traders and new businesses that need a clean, simple online presence fast.</p>
+        <ul>
+          <li>Up to 3 pages (Home, About, Contact)</li>
+          <li>Mobile-friendly design</li>
+          <li>Contact form</li>
+          <li>Google Maps embed</li>
+          <li>Basic SEO setup</li>
+          <li>Delivered in 5&ndash;7 days</li>
+          <li>2 rounds of revisions</li>
+        </ul>
+        <button type="button" class="btn-o" onclick="selectPackage('Cloud One — NZ$299')">Get started</button>
+      </div>
+
+      <div class="v2-price v2-price-feat">
+        <span class="v2-price-flag">Most popular</span>
+        <h3>Cloud Plus</h3>
+        <p class="v2-price-amt">NZ$<strong>699</strong></p>
+        <span class="v2-price-note">One-off payment</span>
+        <p class="v2-price-desc">A full website that tells your whole story, showcases your services, and builds trust with new customers.</p>
+        <ul>
+          <li>Up to 6 pages</li>
+          <li>Mobile-friendly design</li>
+          <li>Services page with photos</li>
+          <li>Testimonials / reviews section</li>
+          <li>Contact form + click-to-call</li>
+          <li>Full SEO setup</li>
+          <li>Google Business integration</li>
+          <li>Delivered in 7&ndash;10 days</li>
+          <li>3 rounds of revisions</li>
+        </ul>
+        <button type="button" class="btn-p" onclick="selectPackage('Cloud Plus — NZ$699')">Get started</button>
+      </div>
+
+      <div class="v2-price">
+        <h3>Cloud Pro</h3>
+        <p class="v2-price-amt">NZ$<strong>1,099</strong></p>
+        <span class="v2-price-note">One-off payment</span>
+        <p class="v2-price-desc">A premium presence with everything you need to stand out online and attract more customers.</p>
+        <ul>
+          <li>Up to 10 pages</li>
+          <li>Premium custom design</li>
+          <li>Blog or news section</li>
+          <li>Gallery or portfolio</li>
+          <li>Advanced contact &amp; booking forms</li>
+          <li>Full SEO + sitemap</li>
+          <li>Social media links &amp; feeds</li>
+          <li>Priority delivery (5&ndash;7 days)</li>
+          <li>Unlimited revisions (30 days)</li>
+        </ul>
+        <button type="button" class="btn-o" onclick="selectPackage('Cloud Pro — NZ$1,099')">Get started</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKING WITH US — About, care plans and casual help, merged -->
+  <section id="about" class="v2-band v2-working">
+    <div class="v2-head">
+      <span class="lbl">Working with us</span>
+      <h2>The person behind White Cloud</h2>
+    </div>
+
+    <div class="v2-about">
+      <div class="v2-about-mark"><span>J</span><em>10+ years</em></div>
+      <div class="v2-about-copy">
+        <h3>Hi, I&rsquo;m Jay.</h3>
+        <p>I&rsquo;ve spent more than 10 years working in e-commerce businesses &mdash; here in New Zealand and across the world. I&rsquo;ve seen first-hand how hard it is for small business owners, self-employed Kiwis and online sellers to get online quickly, affordably and without the headache.</p>
+        <p>That&rsquo;s why I started White Cloud. You&rsquo;re running your business and serving your customers. The last thing you need is to spend weeks working out a website.</p>
+        <p>My job is simple &mdash; help you get online fast, look great, and start finding customers as soon as possible.</p>
+      </div>
+    </div>
+
+    <div class="v2-extras">
+      <div class="v2-extra">
+        <span class="v2-extra-lbl">Optional add-on</span>
+        <h3>Monthly care plans</h3>
+        <p>Your site is built and ready. If you&rsquo;d like someone to look after it &mdash; updated, backed up and running smoothly &mdash; we offer optional care plans. No lock-in, cancel any time.</p>
+        <div class="v2-care">
+          <div>
+            <strong>Basic Care</strong><span class="v2-care-amt">NZ$49 / month</span>
+            <p>Security updates, regular backups, uptime monitoring, one small content change a month, email support.</p>
+          </div>
+          <div>
+            <strong>Full Care</strong><span class="v2-care-amt">NZ$99 / month</span>
+            <p>Everything in Basic, plus up to three content updates a month, priority phone and email support, performance checks and an annual design refresh consultation.</p>
           </div>
         </div>
+        <p class="v2-fineprint">Care plans are month-to-month. Cancel any time, no fees. Hosting is separate and we&rsquo;ll help you find the best option.</p>
       </div>
-      <div class="ai-badge-row">
-        <div class="ai-source-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.4 3.6 1.4 4.6 5 5-3.6.4-4.6 1.4-5 5-.4-3.6-1.4-4.6-5-5 3.6-.4 4.6-1.4 5-5Z"/></svg>ChatGPT</div>
-        <div class="ai-source-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.4 3.6 1.4 4.6 5 5-3.6.4-4.6 1.4-5 5-.4-3.6-1.4-4.6-5-5 3.6-.4 4.6-1.4 5-5Z"/></svg>Gemini</div>
-        <div class="ai-source-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.4 3.6 1.4 4.6 5 5-3.6.4-4.6 1.4-5 5-.4-3.6-1.4-4.6-5-5 3.6-.4 4.6-1.4 5-5Z"/></svg>Siri</div>
-        <div class="ai-source-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.4 3.6 1.4 4.6 5 5-3.6.4-4.6 1.4-5 5-.4-3.6-1.4-4.6-5-5 3.6-.4 4.6-1.4 5-5Z"/></svg>Perplexity</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- PROCESS -->
-<section id="process">
-  <div class="sec-hd fu">
-    <span class="lbl">How it works</span>
-    <h2>Three simple steps to your new website</h2>
-    <p>We've made the process as easy as possible. Most clients are live within a week.</p>
-  </div>
-  <div class="steps fug">
-    <div class="step"><div class="sn">1</div><h3>Tell us about your business</h3><p>Fill in a short questionnaire — takes about 15 minutes. We'll ask about your services, customers, and what you'd like your site to feel like.</p></div>
-    <div class="step"><div class="sn">2</div><h3>We build your site</h3><p>Our team gets to work. Within 5–10 business days, you'll have a preview to review. We'll make any tweaks until you're genuinely happy.</p></div>
-    <div class="step"><div class="sn">3</div><h3>Go live and get found</h3><p>Once you're happy, we publish your site and handle all the technical bits — domain, hosting, everything in between. You just share the link.</p></div>
-  </div>
-</section>
-
-<!-- ABOUT JAY -->
-<section id="about">
-  <div class="about-inner">
-    <div class="about-avatar fu">
-      <div class="about-avatar-circle">J</div>
-      <div class="about-badge">
-        <span class="about-badge-num">10+</span>
-        <span class="about-badge-txt">Years Experience</span>
+      <div class="v2-extra">
+        <span class="v2-extra-lbl">Flexible options</span>
+        <h3>Already have a website?</h3>
+        <p>Not everything needs a full rebuild &mdash; sometimes you just need a fix, an update, or someone to take it off your plate. Happy to help casually, pay-as-you-go, no fixed package required.</p>
+        <a href="#contact" class="v2-proj-go">Ask about casual help
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
     </div>
-    <div class="about-text fu">
-      <span class="lbl">The person behind White Cloud</span>
-      <h2>Hi, I'm Jay.</h2>
-      <p>I've spent more than 10 years working in e-commerce businesses — here in New Zealand and across the world. I've seen first-hand how hard it is for small business owners, self-employed Kiwis, and online sellers to get online quickly, affordably, and without the headache.</p>
-      <p>That's why I started White Cloud. I believe small business owners and self-employed Kiwis already have a lot on their plate. You're running your business, serving your customers, and juggling everything in between. The last thing you need is to spend weeks trying to figure out a website.</p>
-      <p>My job is simple — help you get online fast, look great, and start finding customers as soon as possible.</p>
-      <a href="#contact" class="btn-o" style="margin-top:.5rem;display:inline-block">Work with Jay →</a>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="v2-band alt v2-faq">
+    <div class="v2-head">
+      <span class="lbl">Common questions</span>
+      <h2>Good questions, straight answers</h2>
     </div>
-  </div>
-</section>
-
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="bg-blob portfolio-blob"></div>
-  <div class="bg-blob portfolio-blob-2"></div>
-  <div class="sec-hd fu">
-    <span class="lbl">Our work</span>
-    <h2>Projects we've built</h2>
-    <p>From e-commerce stores to full restaurant rebuilds — here's a taste of what we can do.</p>
-  </div>
-
-  <!-- Featured: latest project -->
-  <a href="https://biblio.ink" target="_blank" rel="noopener" class="port-featured fu">
-    <div class="port-featured-visual">
-      <div class="port-browser">
-        <div class="port-browser-bar">
-          <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
-          <span class="port-browser-url">biblio.ink</span>
-        </div>
-        <div class="port-browser-frame">
-          <img src="assets/biblio-preview.jpg" alt="Biblio — 3D bookshelf reading app" loading="lazy">
-        </div>
+    <div class="v2-faq-list">
+      <div class="v2-faq-item">
+        <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="faq0">Do I need to know anything about websites?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>
+        <div class="v2-faq-a" id="faq0" hidden><p>Not at all. You tell us about your business and what you want customers to know. We handle all the technical work &mdash; you don&rsquo;t need to touch a thing.</p></div>
+      </div>
+      <div class="v2-faq-item">
+        <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="faq1">What do you need from me to get started?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>
+        <div class="v2-faq-a" id="faq1" hidden><p>Fill in our short form, share any photos you have (or we can source some), and let us know your brand colours if you have them. That&rsquo;s all we need.</p></div>
+      </div>
+      <div class="v2-faq-item">
+        <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="faq2">How long does it take?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>
+        <div class="v2-faq-a" id="faq2" hidden><p>Most websites are ready for review within 5&ndash;10 business days depending on the package. Once you approve the design, we can have you live within 24 hours.</p></div>
+      </div>
+      <div class="v2-faq-item">
+        <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="faq3">Will my website work on phones and tablets?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>
+        <div class="v2-faq-a" id="faq3" hidden><p>Yes &mdash; every website we build works on all devices. Phones, tablets and computers, included in every package.</p></div>
+      </div>
+      <div class="v2-faq-item">
+        <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="faq4">What if I want to make changes after it&rsquo;s live?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>
+        <div class="v2-faq-a" id="faq4" hidden><p>Small changes are easy to arrange on a care plan, or we can quote you for one-off updates &mdash; usually very affordable.</p></div>
+      </div>
+      <div class="v2-faq-item">
+        <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="faq5">Do I need a domain name and hosting already?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>
+        <div class="v2-faq-a" id="faq5" hidden><p>No. If you don&rsquo;t have one yet, we&rsquo;ll help you choose a good .co.nz domain and point you to a reliable, affordable NZ host. We guide you through it step by step.</p></div>
+      </div>
+      <div class="v2-faq-item">
+        <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="faq6">Is there anything ongoing I need to pay for?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>
+        <div class="v2-faq-a" id="faq6" hidden><p>The packages are one-off payments. The only ongoing costs are your domain (usually NZ$20&ndash;40/year) and hosting (usually NZ$10&ndash;25/month). Care plans are optional extras.</p></div>
+      </div>
+      <div class="v2-faq-item">
+        <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="faq7">What if I&rsquo;m not happy with how it looks?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>
+        <div class="v2-faq-a" id="faq7" hidden><p>All packages include revision rounds, and we won&rsquo;t publish anything until you&rsquo;re genuinely happy. We&rsquo;re here to get it right, not to rush it out.</p></div>
       </div>
     </div>
-    <div class="port-featured-content">
-      <div class="badge"><div class="badge-dot"></div>Latest project</div>
-      <div class="port-platforms">
-        <span class="port-platform"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="1.6"/><path d="M8 21h8M12 17v4"/></svg>Web App</span>
-        <span class="port-platform"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.4"/><path d="M11 18.5h2"/></svg>Native iOS App</span>
-      </div>
-      <h3 class="port-featured-title">Biblio</h3>
-      <div class="port-url-lbl">biblio.ink</div>
-      <p class="port-desc">A full product build — both a web app and a full native iOS app. Biblio turns your ePub and PDF collection into a playful 3D bookshelf you can organise, browse and read, with the same experience carried across the browser and a polished native iPhone app.</p>
-      <span class="port-cta">See the live app <span class="port-cta-arrow">→</span></span>
-    </div>
-  </a>
+  </section>
 
-  <!-- Other projects -->
-  <div class="port-grid fug">
-
-    <a href="https://rakkhun.co.nz/" target="_blank" rel="noopener" class="port-card">
-      <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
-      <div class="port-thumb-banner photo reveal">
-        <img src="assets/rakkhun-preview.jpg" alt="Rak Khun Thai Eatery & Bar — website preview" loading="lazy">
-        <div class="port-reveal"><span class="port-reveal-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>Hover to preview</span></div>
-      </div>
-      <div class="port-body">
-        <div class="port-tag">Restaurant &middot; Full Redesign</div>
-        <div class="port-title">Rak Khun Thai Eatery &amp; Bar</div>
-        <div class="port-url-lbl">rakkhun.co.nz</div>
-        <p class="port-desc">A ground-up, mobile-first rebuild for a Takanini Thai restaurant — bold food photography, tabbed menus, and one-tap calling, ordering and directions. Now live and turning searches into bookings.</p>
-        <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
-      </div>
-    </a>
-
-    <a href="https://groov.nz" target="_blank" class="port-card">
-      <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
-      <div class="port-thumb-banner photo reveal">
-        <img src="assets/groovnz-preview.jpg" alt="Groov NZ — online store preview" loading="lazy">
-        <div class="port-reveal"><span class="port-reveal-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>Hover to preview</span></div>
-      </div>
-      <div class="port-body">
-        <div class="port-tag">E-commerce</div>
-        <div class="port-title">Groov NZ</div>
-        <div class="port-url-lbl">groov.nz</div>
-        <p class="port-desc">A complete online store with the whole system set up end-to-end — products, secure checkout, payments, shipping and inventory. Everything a small business needs to start selling online from day one, without the technical headache.</p>
-        <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
-      </div>
-    </a>
-
-    <a href="https://agenti.nz/design_system.html" target="_blank" class="port-card">
-      <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
-      <div class="port-thumb-banner photo reveal">
-        <img src="assets/agenti-preview.jpg" alt="Agenti NZ design system preview" loading="lazy">
-        <div class="port-reveal"><span class="port-reveal-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>Hover to preview</span></div>
-      </div>
-      <div class="port-body">
-        <div class="port-tag">Brand & Design</div>
-        <div class="port-title">Agenti Design System</div>
-        <div class="port-url-lbl">agenti.nz/design_system.html</div>
-        <p class="port-desc">A full brand and design system for Agenti NZ — colours, typography, components, and guidelines built for consistency across every touchpoint.</p>
-        <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
-      </div>
-    </a>
-
-    <a href="https://groov.store" target="_blank" class="port-card">
-      <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
-      <div class="port-thumb-banner">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
-      </div>
-      <div class="port-body">
-        <div class="port-tag">E-commerce</div>
-        <div class="port-title">Groov Store</div>
-        <div class="port-url-lbl">groov.store</div>
-        <p class="port-desc">An e-commerce store for the Groov brand — showcasing what a clean, conversion-focused online shop looks like.</p>
-        <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
-      </div>
-    </a>
-
-    <a href="https://evx.life" target="_blank" class="port-card">
-      <div class="port-thumb-bar"><span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span></div>
-      <div class="port-thumb-banner">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>
-      </div>
-      <div class="port-body">
-        <div class="port-tag">EV & Equipment Rentals</div>
-        <div class="port-title">EVX</div>
-        <div class="port-url-lbl">evx.life</div>
-        <p class="port-desc">EV vehicles, Starlink, and equipment rentals — a modern rental platform built for the future of transport and connectivity in New Zealand.</p>
-        <span class="port-card-link">Visit site <span class="port-card-link-arrow">→</span></span>
-      </div>
-    </a>
-
-  </div>
-
-  <div class="agentic-banner fu">
-    <div class="agentic-left">
-      <div class="agentic-eyebrow">
-        <div class="agentic-eyebrow-dot"></div>
-        Focus on growing
-      </div>
-      <h3>Need more than just a website?<br>We've got the tools to help.</h3>
-      <p>Agenti NZ helps small businesses and self-employed Kiwis harness AI and automation — saving you hours every week, handling repetitive tasks, and giving you more time to focus on what you do best.</p>
-    </div>
-    <a href="https://agenti.nz" target="_blank" class="agentic-cta">
-      Explore Agenti NZ <span class="agentic-cta-arrow">→</span>
-    </a>
-  </div>
-
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-  <div class="bg-blob pricing-blob"></div>
-  <div class="sec-hd fu">
-    <span class="lbl">Straightforward pricing</span>
-    <h2>Pick the right package for your business</h2>
-    <p>One-off payment. No hidden fees. All prices in New Zealand Dollars.</p>
-  </div>
-  <div class="price-grid fug">
-
-    <div class="pc">
-      <div class="ptier">Cloud One</div>
-      <div class="pprice"><sup>NZ$</sup>299</div>
-      <div class="ponce">One-off payment</div>
-      <p class="pdesc">Perfect for sole traders and new businesses that need a clean, simple online presence fast.</p>
-      <ul class="plist">
-        <li>Up to 3 pages (Home, About, Contact)</li>
-        <li>Mobile-friendly design</li>
-        <li>Contact form</li>
-        <li>Google Maps embed</li>
-        <li>Basic SEO setup</li>
-        <li>Delivered in 5–7 days</li>
-        <li>2 rounds of revisions</li>
-      </ul>
-      <a href="#contact" class="pbtn" onclick="selectPackage('Cloud One — NZ$299')">Get Started</a>
-    </div>
-
-    <div class="pc feat">
-      <div class="pop-pill">Most Popular</div>
-      <div class="ptier">Cloud Plus</div>
-      <div class="pprice"><sup>NZ$</sup>699</div>
-      <div class="ponce">One-off payment</div>
-      <p class="pdesc">A full website that tells your whole story, showcases your services, and builds trust with new customers.</p>
-      <ul class="plist">
-        <li>Up to 6 pages</li>
-        <li>Mobile-friendly design</li>
-        <li>Services page with photos</li>
-        <li>Testimonials / reviews section</li>
-        <li>Contact form + click-to-call</li>
-        <li>Full SEO setup</li>
-        <li>Google Business integration</li>
-        <li>Delivered in 7–10 days</li>
-        <li>3 rounds of revisions</li>
-      </ul>
-      <a href="#contact" class="pbtn" onclick="selectPackage('Cloud Plus — NZ$699')">Get Started</a>
-    </div>
-
-    <div class="pc">
-      <div class="ptier">Cloud Pro</div>
-      <div class="pprice"><sup>NZ$</sup>1,099</div>
-      <div class="ponce">One-off payment</div>
-      <p class="pdesc">A premium presence with everything you need to stand out online and attract more customers.</p>
-      <ul class="plist">
-        <li>Up to 10 pages</li>
-        <li>Premium custom design</li>
-        <li>Blog or news section</li>
-        <li>Gallery or portfolio</li>
-        <li>Advanced contact & booking forms</li>
-        <li>Full SEO + sitemap</li>
-        <li>Social media links & feeds</li>
-        <li>Priority delivery (5–7 days)</li>
-        <li>Unlimited revisions (30 days)</li>
-      </ul>
-      <a href="#contact" class="pbtn" onclick="selectPackage('Cloud Pro — NZ$1,099')">Get Started</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- CARE PLANS -->
-<section id="care">
-  <div class="sec-hd fu">
-    <span class="lbl">Optional add-on</span>
-    <h2>Keep your website in good shape with a monthly care plan</h2>
-    <p>Your website is built and ready to go. If you'd like someone to look after it — keeping it updated, backed up, and running smoothly — we offer optional monthly care plans. No pressure. No lock-in. Cancel any time.</p>
-  </div>
-  <div class="care-grid fug">
-    <div class="cc">
-      <div class="ctier">Basic Care</div>
-      <div class="cprice">NZ$49 <small>/ month</small></div>
-      <p class="cdesc">Great for keeping things running smoothly in the background.</p>
-      <ul class="clist">
-        <li>Monthly security updates</li>
-        <li>Regular backups</li>
-        <li>Uptime monitoring</li>
-        <li>1 small content change per month</li>
-        <li>Email support</li>
-      </ul>
-    </div>
-    <div class="cc hi">
-      <div class="ctier">Full Care</div>
-      <div class="cprice">NZ$99 <small>/ month</small></div>
-      <p class="cdesc">Everything in Basic, plus hands-on help whenever you need it.</p>
-      <ul class="clist">
-        <li>Everything in Basic Care</li>
-        <li>Up to 3 content updates per month</li>
-        <li>Priority support (phone + email)</li>
-        <li>Performance check & improvements</li>
-        <li>Annual design refresh consultation</li>
-      </ul>
-    </div>
-  </div>
-  <p class="care-note" style="text-align:center">* Care plans are month-to-month. Cancel any time — no fees. Hosting costs are separate and we'll help you find the best option.</p>
-</section>
-
-<!-- FLEXIBLE / CASUAL WORK -->
-<section id="flex-work">
-  <div class="sec-hd fu">
-    <span class="lbl">Flexible options</span>
-    <h2>Not every job needs a full package</h2>
-    <p>Sometimes you just need a hand, not a full rebuild. Here's how else I can help.</p>
-  </div>
-  <div class="care-grid fug">
-    <div class="cc">
-      <div class="ctier">Already have a website?</div>
-      <p class="cdesc">Not everything needs a full rebuild — sometimes you just need a fix, an update, or someone to take it off your plate. Happy to help casually, pay-as-you-go, no fixed package required.</p>
-      <a href="#contact" class="btn-o" style="display:inline-block">Ask About Casual Help →</a>
-    </div>
-    <div class="cc">
-      <div class="ctier">Running a team or agency?</div>
-      <p class="cdesc">Need an extra pair of hands for a project? I'm also open to contract and casual development work with other agencies and businesses — under your name or mine.</p>
-      <a href="#contact" class="btn-o" style="display:inline-block">Get In Touch →</a>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="sec-hd">
-    <span class="lbl">Common questions</span>
-    <h2>Good questions, straight answers</h2>
-  </div>
-  <div class="faq-wrap">
-    <div class="faq-item"><button class="faq-btn">Do I need to know anything about websites? <span class="fa">+</span></button><div class="faq-ans">Not at all. You just tell us about your business and what you want customers to know. We handle all the technical stuff — you don't need to touch a thing.</div></div>
-    <div class="faq-item"><button class="faq-btn">What do you need from me to get started? <span class="fa">+</span></button><div class="faq-ans">Just fill in our short form, share any photos you have (or we can source some), and let us know your brand colours if you have them. That's all we need to get going.</div></div>
-    <div class="faq-item"><button class="faq-btn">How long does it take? <span class="fa">+</span></button><div class="faq-ans">Most websites are ready for review within 5–10 business days depending on the package. Once you approve the design, we can have you live within 24 hours.</div></div>
-    <div class="faq-item"><button class="faq-btn">Will my website work on phones and tablets? <span class="fa">+</span></button><div class="faq-ans">Yes — every website we build works perfectly on all devices. Phones, tablets, and computers. Included in every package, no exceptions.</div></div>
-    <div class="faq-item"><button class="faq-btn">What if I want to make changes after it's live? <span class="fa">+</span></button><div class="faq-ans">Small changes are easy to arrange on a care plan, or we can quote you for one-off updates — usually very affordable.</div></div>
-    <div class="faq-item"><button class="faq-btn">Do I need a domain name and hosting already? <span class="fa">+</span></button><div class="faq-ans">No. If you don't have one yet, we'll help you choose a good .co.nz domain name and point you to a reliable, affordable NZ hosting provider. We guide you through it step by step.</div></div>
-    <div class="faq-item"><button class="faq-btn">Is there anything ongoing I need to pay for? <span class="fa">+</span></button><div class="faq-ans">The packages are one-off payments. The only ongoing costs are your domain (usually NZ$20–40/year) and hosting (usually NZ$10–25/month). Our care plans are optional extras.</div></div>
-    <div class="faq-item"><button class="faq-btn">What if I'm not happy with how it looks? <span class="fa">+</span></button><div class="faq-ans">All packages include revision rounds, and we won't publish anything until you're genuinely happy. We're here to get it right, not just rush it out.</div></div>
-  </div>
-</section>
-
-<!-- CONTACT FORM -->
 <section id="contact">
-  <div class="bg-blob contact-blob"></div>
   <div class="contact-inner">
-    <div class="sec-hd fu">
+    <div class="sec-hd">
       <span class="lbl">Let's talk</span>
       <h2>Ready to get started?</h2>
       <p>Fill in the form below and Jay will get back to you within one business day. No pressure, no jargon — just a friendly conversation about your business.</p>
     </div>
 
-    <div class="contact-form fu">
+    <div class="contact-form">
       <form name="contact" netlify netlify-honeypot="bot-field" id="contactForm">
         <input type="hidden" name="form-name" value="contact">
         <p style="display:none"><input name="bot-field"></p>
@@ -1091,7 +1123,7 @@
     </div>
 
     <!-- Not sure banner -->
-    <div class="idea-banner fu">
+    <div class="idea-banner">
       <div class="idea-left">
         <span class="lbl">Not sure where to start?</span>
         <h3>Send us your idea — we'll take it from there.</h3>
@@ -1103,36 +1135,17 @@
   </div>
 </section>
 
-<!-- CTA -->
-<section id="cta">
-  <div class="bg-blob cta-blob-1"></div>
-  <div class="bg-blob cta-blob-2"></div>
-  <div class="cta-deco">
-    <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" fill="none">
-      <path d="M0 200 C120 80,240 320,400 200 C560 80,680 320,840 200 C1000 80,1120 320,1280 200 C1360 140,1400 160,1440 150" stroke="#7fa8be" stroke-width="6" stroke-linecap="round"/>
-      <path d="M0 280 C140 120,280 380,460 240 C620 110,760 360,960 230 C1100 140,1240 300,1440 200" stroke="#c8dce6" stroke-width="4" stroke-linecap="round"/>
-    </svg>
-  </div>
-  <span class="lbl">Ready when you are</span>
-  <h2>Let's build something<br>you're proud of.</h2>
-  <p>Based in Christchurch — helping small businesses, self-employed Kiwis, and online sellers across New Zealand get online fast.</p>
-  <div class="cta-btns">
-    <a href="#contact" class="btn-w">Get in Touch</a>
-    <a href="#pricing" class="btn-g">View Packages</a>
-  </div>
-</section>
+  <!-- CTA -->
+  <section class="v2-cta">
+    <h2>Let&rsquo;s build something you&rsquo;re proud of.</h2>
+    <p>Based in Christchurch &mdash; helping small businesses, self-employed Kiwis and online sellers across New Zealand get online fast.</p>
+    <div class="v2-cta-btns">
+      <a href="#contact" class="btn-w">Get in touch</a>
+      <a href="#pricing" class="btn-g">View packages</a>
+    </div>
+  </section>
 
-<!-- THANK YOU MODAL -->
-<div class="ty-modal-overlay" id="tyModal">
-  <div class="ty-modal">
-    <span class="ty-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg></span>
-    <h3>Thanks for reaching out!</h3>
-    <p>Jay will get back to you within <strong>1 business day</strong>. Keep an eye on your inbox — we'll reply to the email address you provided.</p>
-    <button class="ty-modal-close" onclick="document.getElementById('tyModal').classList.remove('show')">Close</button>
-  </div>
-</div>
 
-<!-- FOOTER -->
 <footer>
   <div class="foot-in">
     <a href="#" class="logo-mark">
@@ -1152,126 +1165,233 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ── Nav shadow on scroll
-  var mainnav = document.getElementById('mainnav');
-  window.addEventListener('scroll', function() {
-    mainnav.classList.toggle('scrolled', window.scrollY > 20);
-  });
+</div>
 
-  // ── Portfolio preview reveal on touch (pointer devices use CSS :hover)
-  if (window.matchMedia && window.matchMedia('(hover: none)').matches) {
-    document.querySelectorAll('.port-card').forEach(function(card) {
-      if (!card.querySelector('.port-thumb-banner.reveal')) return;
-      card.addEventListener('click', function(e) {
-        if (!card.classList.contains('revealed')) {
-          e.preventDefault();
-          document.querySelectorAll('.port-card.revealed').forEach(function(c) { c.classList.remove('revealed'); });
-          card.classList.add('revealed');
-        }
+
+<div class="ty-modal-overlay" id="tyModal">
+  <div class="ty-modal">
+    <span class="ty-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg></span>
+    <h3>Thanks for reaching out!</h3>
+    <p>Jay will get back to you within <strong>1 business day</strong>. Keep an eye on your inbox — we'll reply to the email address you provided.</p>
+    <button class="ty-modal-close" onclick="document.getElementById('tyModal').classList.remove('show')">Close</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+
+<script>
+
+  /* ── FAQ ──────────────────────────────────────────────────────
+     Real buttons with aria-expanded and a hidden panel, so screen
+     readers and keyboards get the same behaviour as a mouse. */
+  (function () {
+    var items = document.querySelectorAll('.v2-faq-item');
+    items.forEach(function (item) {
+      var btn = item.querySelector('.v2-faq-btn');
+      var panel = item.querySelector('.v2-faq-a');
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        items.forEach(function (other) {
+          other.querySelector('.v2-faq-btn').setAttribute('aria-expanded', 'false');
+          other.querySelector('.v2-faq-a').hidden = true;
+        });
+        if (!open) { btn.setAttribute('aria-expanded', 'true'); panel.hidden = false; }
       });
     });
-  }
+  })();
 
-  // ── FAQ accordion — simplest possible approach
-  document.querySelectorAll('.faq-item').forEach(function(item) {
-    item.querySelector('.faq-btn').addEventListener('click', function(e) {
-      e.stopPropagation();
-      var isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
-      if (!isOpen) item.classList.add('open');
-    });
-  });
-
-  // ── Package pre-fill when clicking pricing button
+  /* ── Pricing buttons pre-fill the package field ─────────────── */
   function selectPackage(value) {
     var sel = document.getElementById('fpackage');
-    if (!sel) return;
-    for (var i = 0; i < sel.options.length; i++) {
-      if (sel.options[i].value === value) {
-        sel.selectedIndex = i;
-        break;
+    if (sel) {
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === value) { sel.selectedIndex = i; break; }
       }
     }
-    // Small delay so scroll lands after value is set
-    setTimeout(function() {
-      var el = document.getElementById('contact');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 80);
+    var el = document.getElementById('contact');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   }
 
-  // ── Show "Other" business type field
-  var bizSel = document.getElementById('fbiz');
-  if (bizSel) {
-    bizSel.addEventListener('change', function() {
-      var wrap = document.getElementById('otherWrap');
-      if (wrap) wrap.classList.toggle('show', this.value === 'Other');
-    });
-  }
-
-  // ── Contact form submit → Netlify Forms
-  var contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var form = this;
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString()
-      })
-      .then(function() {
-        form.reset();
-        document.getElementById('tyModal').classList.add('show');
-      })
-      .catch(function() {
-        form.reset();
-        document.getElementById('tyModal').classList.add('show');
+  /* ── Contact form ─────────────────────────────────────────────
+     Unchanged behaviour: posts to Netlify Forms, then shows the
+     thank-you modal either way so nobody is left staring at a form
+     wondering whether it sent. */
+  (function () {
+    var bizSel = document.getElementById('fbiz');
+    if (bizSel) {
+      bizSel.addEventListener('change', function () {
+        var wrap = document.getElementById('otherWrap');
+        if (wrap) wrap.classList.toggle('show', this.value === 'Other');
       });
-    });
-  }
+    }
 
-  // ── Close modal on backdrop click
-  var tyModal = document.getElementById('tyModal');
-  if (tyModal) {
-    tyModal.addEventListener('click', function(e) {
-      if (e.target === this) this.classList.remove('show');
-    });
-  }
+    var form = document.getElementById('contactForm');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var done = function () {
+          form.reset();
+          document.getElementById('tyModal').classList.add('show');
+        };
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form)).toString()
+        }).then(done).catch(done);
+      });
+    }
 
-  // ── AI chat mock typing animation
-  var aiTyping = document.getElementById('aiTyping');
-  var aiResponse = document.getElementById('aiResponse');
-  if (aiTyping && aiResponse) {
-    var aiObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          setTimeout(function() {
-            aiTyping.style.display = 'none';
-            aiResponse.style.display = 'block';
-          }, 2200);
-          aiObserver.unobserve(e.target);
-        }
+    var modal = document.getElementById('tyModal');
+    if (modal) {
+      modal.addEventListener('click', function (e) {
+        if (e.target === this) this.classList.remove('show');
+      });
+      var close = modal.querySelector('.ty-modal-close');
+      if (close) close.addEventListener('click', function () { modal.classList.remove('show'); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') modal.classList.remove('show');
+      });
+    }
+  })();
+
+  /* ── The AI answer types itself in, once, when you reach it ─── */
+  (function () {
+    var typing = document.getElementById('aiTyping');
+    var answer = document.getElementById('aiResponse');
+    if (!typing || !answer) return;
+    var reveal = function () { typing.hidden = true; answer.hidden = false; };
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { reveal(); return; }
+    if (!('IntersectionObserver' in window)) { reveal(); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        setTimeout(reveal, 2000);
+        io.unobserve(entry.target);
       });
     }, { threshold: 0.5 });
-    aiObserver.observe(aiTyping);
-  }
-  // ── Scroll-triggered fade animations — never touch FAQ elements
-  var animEls = document.querySelectorAll('.fu, .fug');
-  for (var k = 0; k < animEls.length; k++) {
-    animEls[k].classList.add('ready');
-  }
-  var fadeObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        fadeObserver.unobserve(entry.target);
-      }
+    io.observe(typing);
+  })();
+
+  (function () {
+    var nav = document.getElementById('v2nav');
+    var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 20); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  /* ── Project card ───────────────────────────────────────────
+     Cycles through real client sites. Pauses on hover or focus so it
+     never moves out from under someone looking at it.
+
+     The incoming screenshot fades in ON TOP of the one before it, and
+     the caption changes in the same breath. Crossfading both at once
+     double-exposes them (a dark site over a light one reads as the
+     wrong project); fading out first leaves an empty white card. All
+     the state lives in `i` — no step depends on a timer firing before
+     another one, so bunched-up callbacks cannot desynchronise it. */
+  (function () {
+    var projects = [
+      { name: 'Rak Khun', tag: 'Thai restaurant', url: 'rakkhun.co.nz' },
+      { name: 'Agenti',   tag: 'AI consultancy',  url: 'agenti.nz' },
+      { name: 'Biblio',   tag: 'Reading app',     url: 'biblio.ink' },
+      { name: 'Groov',    tag: 'Wellbeing',       url: 'groov.nz' }
+    ];
+    var shots  = Array.prototype.slice.call(document.querySelectorAll('.v2-shot'));
+    var card   = document.getElementById('projectCard');
+    var dots   = document.getElementById('cardDots');
+    var nameEl = document.getElementById('cardName');
+    var tagEl  = document.getElementById('cardTag');
+    var urlEl  = document.getElementById('cardUrl');
+    var metaEl = document.querySelector('.v2-card-meta');
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var i = 0, z = 1, timer = 0, cleanup = 0, paused = false;
+
+    projects.forEach(function (p, idx) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', p.name);
+      b.setAttribute('aria-current', idx === 0 ? 'true' : 'false');
+      b.addEventListener('click', function () { show(idx); restart(); });
+      dots.appendChild(b);
     });
-  }, { threshold: 0.12 });
-  for (var j = 0; j < animEls.length; j++) {
-    fadeObserver.observe(animEls[j]);
-  }
+
+    function show(n) {
+      i = ((n % projects.length) + projects.length) % projects.length;
+
+      // Reveal: the new shot goes on top and fades up over the old.
+      shots[i].style.zIndex = ++z;
+      shots[i].classList.add('on');
+
+      // Caption follows the same index in the same tick.
+      nameEl.textContent = projects[i].name;
+      tagEl.textContent  = projects[i].tag;
+      urlEl.textContent  = projects[i].url;
+      Array.prototype.forEach.call(dots.children, function (b, idx) {
+        b.setAttribute('aria-current', idx === i ? 'true' : 'false');
+      });
+
+      // Drop whatever is underneath once the fade has covered it.
+      clearTimeout(cleanup);
+      cleanup = setTimeout(function () {
+        shots.forEach(function (s, idx) {
+          if (idx !== i) { s.classList.remove('on'); s.style.zIndex = 0; }
+        });
+      }, 320);
+    }
+
+    function restart() {
+      clearInterval(timer);
+      if (!reduced.matches) {
+        timer = setInterval(function () { if (!paused) show(i + 1); }, 4600);
+      }
+    }
+
+    card.addEventListener('mouseenter', function () { paused = true; });
+    card.addEventListener('mouseleave', function () { paused = false; });
+    card.addEventListener('focusin',  function () { paused = true; });
+    card.addEventListener('focusout', function () { paused = false; });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) clearInterval(timer); else restart();
+    });
+    restart();
+
+  })();
 </script>
+
+<script type="module">
+  import { initHeroCloud } from '/assets/hero-cloud.js';
+
+  import { initTilt } from '/assets/tilt.js';
+  import { initNav } from '/assets/nav.js';
+
+  // A little lean toward the cursor — enough to sit in the scene, not a toy.
+  initNav(document.getElementById('v2nav'));
+
+  var heroCard = document.getElementById('projectCard');
+  initTilt(heroCard, { zone: heroCard.parentElement, maxX: 6, maxY: 7 });
+  document.querySelectorAll('.v2-proj').forEach(function (card) {
+    initTilt(card, { maxX: 3.5, maxY: 4.5, lift: 4 });
+  });
+
+  var canvas = document.getElementById('cloudCanvas');
+  var headline = document.getElementById('heroHeadline');
+
+  window.__heroCloud = initHeroCloud(canvas, {
+    // The headline's box, in canvas space — clouds fade inside it.
+    clearing: function () {
+      var c = canvas.getBoundingClientRect();
+      var h = headline.getBoundingClientRect();
+      if (window.innerWidth <= 900) return null;
+      return {
+        left:   h.left   - c.left - 40,
+        right:  h.right  - c.left + 40,
+        top:    h.top    - c.top  - 30,
+        bottom: h.bottom - c.top  + 30
+      };
+    }
+  });
+</script>
+
 </body>
 </html>

@@ -561,6 +561,7 @@
   import { initHeroCloud } from '/assets/hero-cloud.js';
   import { initTilt } from '/assets/tilt.js';
   import { initReveal } from '/assets/reveal.js';
+  import { initNav } from '/assets/nav.js';
 
   var canvas = document.getElementById('cloudCanvas');
   var headline = document.getElementById('heroHeadline');
@@ -576,6 +577,7 @@
     }
   });
 
+  initNav(document.getElementById('mainnav'));
   initReveal();
 
   var card = document.getElementById('searchCard');

@@ -106,7 +106,7 @@
   }
 
   .v2-card-name { font-family: var(--serif); font-size: 1.02rem; font-weight: 700; color: var(--deep); }
-  .v2-card-tag { font-family: var(--mark); font-size: .64rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--brand); }
+  .v2-card-tag { font-family: var(--mark); font-size: .64rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--brand-ink); }
 
   .v2-card-dots { display: flex; gap: .35rem; padding: 0 .35rem; }
   .v2-card-dots button {
@@ -114,7 +114,7 @@
     background: rgba(77,110,128,.22); cursor: pointer;
     transition: background .25s;
   }
-  .v2-card-dots button[aria-current="true"] { background: var(--brand); }
+  .v2-card-dots button[aria-current="true"] { background: var(--brand-ink); }
 
 
   /* ── WORK ───────────────────────────────────────────────────
@@ -162,7 +162,7 @@
     font-family: var(--mark); font-size: .63rem; font-weight: 600;
     letter-spacing: .17em; text-transform: uppercase; color: var(--body);
   }
-  .v2-proj-url { font-family: var(--mark); font-size: .7rem; font-weight: 600; letter-spacing: .11em; color: var(--brand); }
+  .v2-proj-url { font-family: var(--mark); font-size: .7rem; font-weight: 600; letter-spacing: .11em; color: var(--brand-ink); }
 
   .v2-proj-pills { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .7rem; }
   .v2-proj-pills span {
@@ -173,7 +173,7 @@
 
   .v2-proj-go {
     display: inline-flex; align-items: center; gap: .45rem; margin-top: 1rem;
-    color: var(--brand); font-size: .8rem; font-weight: 700;
+    color: var(--brand-ink); font-size: .8rem; font-weight: 700;
   }
   .v2-proj-go svg { width: 15px; height: 15px; transition: transform .25s var(--ease); }
   .v2-proj:hover .v2-proj-go svg { transform: translateX(4px); }
@@ -344,12 +344,12 @@
     border-radius: var(--radius-lg); padding: 1.8rem 1.9rem 2rem;
     display: flex; flex-direction: column; gap: .45rem;
   }
-  .v2-extra-lbl { font-family: var(--mark); font-size: .63rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--brand); }
+  .v2-extra-lbl { font-family: var(--mark); font-size: .63rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--brand-ink); }
   .v2-extra > p { font-size: .92rem; }
   .v2-care { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-2); margin-top: .9rem; }
   .v2-care > div { background: var(--brand-pale); border-radius: var(--radius); padding: 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .2rem; }
   .v2-care strong { font-family: var(--serif); font-size: 1rem; color: var(--deep); }
-  .v2-care-amt { font-size: .76rem; font-weight: 700; letter-spacing: .06em; color: var(--brand); }
+  .v2-care-amt { font-size: .76rem; font-weight: 700; letter-spacing: .06em; color: var(--brand-ink); }
   .v2-care p { font-size: .84rem; margin-top: .3rem; }
   .v2-fineprint { font-size: .78rem; color: var(--body); margin-top: 1rem; }
 
@@ -522,10 +522,10 @@
             <span class="v2-dot"></span><span class="v2-dot"></span><span class="v2-dot"></span>
             <span class="v2-card-url" id="cardUrl">rakkhun.co.nz</span>
           </div>
-          <img class="v2-shot on" src="/assets/rakkhun-preview.jpg" alt="Rak Khun website" width="960" height="600">
-          <img class="v2-shot" src="/assets/agenti-preview.jpg" alt="Agenti website" width="1600" height="1040" decoding="async">
-          <img class="v2-shot" src="/assets/biblio-preview.jpg" alt="Biblio website" width="1600" height="1040" decoding="async">
-          <img class="v2-shot" src="/assets/groovnz-preview.jpg" alt="Groov website" width="1600" height="1040" decoding="async">
+          <img class="v2-shot on" src="/assets/rakkhun-preview-900.jpg" srcset="/assets/rakkhun-preview-900.jpg 900w, /assets/rakkhun-preview.jpg 960w" sizes="(max-width: 900px) 92vw, 440px" alt="Rak Khun website" width="960" height="600">
+          <img class="v2-shot" src="/assets/agenti-preview-900.jpg" srcset="/assets/agenti-preview-900.jpg 900w, /assets/agenti-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, 440px" alt="Agenti website" width="1600" height="1040" decoding="async">
+          <img class="v2-shot" src="/assets/biblio-preview-900.jpg" srcset="/assets/biblio-preview-900.jpg 900w, /assets/biblio-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, 440px" alt="Biblio website" width="1600" height="1040" decoding="async">
+          <img class="v2-shot" src="/assets/groovnz-preview-900.jpg" srcset="/assets/groovnz-preview-900.jpg 900w, /assets/groovnz-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, 440px" alt="Groov website" width="1600" height="1040" decoding="async">
         </div>
         <div class="v2-card-meta">
           <span class="v2-card-name" id="cardName">Rak Khun</span>
@@ -546,7 +546,7 @@
 
     <a class="v2-proj v2-proj-feature" href="https://biblio.ink" target="_blank" rel="noopener">
       <div class="v2-proj-shot">
-        <img src="/assets/biblio-preview.jpg" alt="The Biblio web app" width="1600" height="1040" loading="lazy" decoding="async">
+        <img src="/assets/biblio-preview-900.jpg" srcset="/assets/biblio-preview-900.jpg 900w, /assets/biblio-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, 48vw" alt="The Biblio web app" width="1600" height="1040" loading="lazy" decoding="async">
       </div>
       <div class="v2-proj-body">
         <span class="v2-proj-tag">Latest project</span>
@@ -561,7 +561,7 @@
     <div class="v2-proj-grid">
       <a class="v2-proj" href="https://rakkhun.co.nz" target="_blank" rel="noopener">
         <div class="v2-proj-shot">
-          <img src="/assets/rakkhun-preview.jpg" alt="The Rak Khun website" width="960" height="600" loading="lazy" decoding="async">
+          <img src="/assets/rakkhun-preview-900.jpg" srcset="/assets/rakkhun-preview-900.jpg 900w, /assets/rakkhun-preview.jpg 960w" sizes="(max-width: 900px) 92vw, (max-width: 1050px) 45vw, 30vw" alt="The Rak Khun website" width="960" height="600" loading="lazy" decoding="async">
         </div>
         <div class="v2-proj-body">
           <span class="v2-proj-tag">Restaurant &middot; full redesign</span>
@@ -574,7 +574,7 @@
 
       <a class="v2-proj" href="https://groov.nz" target="_blank" rel="noopener">
         <div class="v2-proj-shot">
-          <img src="/assets/groovnz-preview.jpg" alt="The Groov NZ store" width="1600" height="1040" loading="lazy" decoding="async">
+          <img src="/assets/groovnz-preview-900.jpg" srcset="/assets/groovnz-preview-900.jpg 900w, /assets/groovnz-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, (max-width: 1050px) 45vw, 30vw" alt="The Groov NZ store" width="1600" height="1040" loading="lazy" decoding="async">
         </div>
         <div class="v2-proj-body">
           <span class="v2-proj-tag">E-commerce</span>
@@ -587,7 +587,7 @@
 
       <a class="v2-proj" href="https://agenti.nz/design_system.html" target="_blank" rel="noopener">
         <div class="v2-proj-shot">
-          <img src="/assets/agenti-preview.jpg" alt="The Agenti design system" width="1600" height="1040" loading="lazy" decoding="async">
+          <img src="/assets/agenti-preview-900.jpg" srcset="/assets/agenti-preview-900.jpg 900w, /assets/agenti-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, (max-width: 1050px) 45vw, 30vw" alt="The Agenti design system" width="1600" height="1040" loading="lazy" decoding="async">
         </div>
         <div class="v2-proj-body">
           <span class="v2-proj-tag">Brand &amp; design</span>
@@ -1203,8 +1203,11 @@
   import { initHeroCloud } from '/assets/hero-cloud.js';
 
   import { initTilt } from '/assets/tilt.js';
+  import { initNav } from '/assets/nav.js';
 
   // A little lean toward the cursor — enough to sit in the scene, not a toy.
+  initNav(document.getElementById('v2nav'));
+
   var heroCard = document.getElementById('projectCard');
   initTilt(heroCard, { zone: heroCard.parentElement, maxX: 6, maxY: 7 });
   document.querySelectorAll('.v2-proj').forEach(function (card) {

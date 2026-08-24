@@ -17,6 +17,10 @@
   --deep:        #2a3d4a;
   --body:        #5a7080;
   --dusk:        #4d6e80;
+  /* --brand is a surface colour. As small text on white it measures
+     about 2.5:1, well under AA, so brand-coloured labels and links
+     use this darker tone instead. */
+  --brand-ink:   #446d85;
   --sage:        #6bbf9e;
 
   /* Typefaces */
@@ -102,6 +106,18 @@ body {
   border-radius: 4px;
 }
 
+/* Form controls commonly clear the default outline for looks. These
+   element+pseudo selectors outrank a plain class, so the ring comes
+   back for keyboard users wherever that has happened. */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--dusk);
+  outline-offset: 2px;
+}
+
 /* ── TYPE ───────────────────────────────────────────────────── */
 h1, h2, h3 { font-family: var(--serif); font-weight: 700; color: var(--deep); text-wrap: balance; }
 h1 { font-size: var(--fs-h1); line-height: var(--lh-head); }
@@ -122,7 +138,7 @@ p { color: var(--body); font-weight: 500; }
   display: inline-block;
   font-size: var(--fs-label); font-weight: 700;
   letter-spacing: var(--tr-label); text-transform: uppercase;
-  color: var(--brand); margin-bottom: 1.1rem;
+  color: var(--brand-ink); margin-bottom: 1.1rem;
 }
 
 .sec-hd { text-align: center; max-width: 640px; margin: 0 auto; }
@@ -208,6 +224,49 @@ nav.scrolled { background: rgba(127,168,190,.85); box-shadow: 0 4px 28px rgba(77
   box-shadow: 0 4px 16px rgba(77,110,128,.32), inset 0 1px 0 rgba(255,255,255,.3);
 }
 .wc-nav-links .wc-nav-cta:hover { background: linear-gradient(135deg, #6d97ae, #3f5f70); color: var(--white); }
+
+/* ── MOBILE MENU ────────────────────────────────────────────── */
+/* The toggle only exists below the breakpoint; above it the links
+   sit in the pill as normal and the button is hidden. */
+.wc-nav-toggle {
+  display: none;
+  width: 40px; height: 40px; flex-shrink: 0;
+  align-items: center; justify-content: center;
+  flex-direction: column; gap: 5px;
+  background: rgba(127,168,190,.12); border: 1px solid rgba(127,168,190,.22);
+  border-radius: 50%; cursor: pointer; padding: 0;
+}
+.wc-nav-toggle span {
+  display: block; width: 16px; height: 2px; border-radius: 2px;
+  background: var(--dusk);
+  transition: transform .25s var(--ease), opacity .2s;
+}
+.wc-nav.open .wc-nav-toggle span:first-child { transform: translateY(3.5px) rotate(45deg); }
+.wc-nav.open .wc-nav-toggle span:last-child  { transform: translateY(-3.5px) rotate(-45deg); }
+
+@media (max-width: 960px) {
+  .wc-nav-toggle { display: flex; }
+
+  /* Collapsed: the links become a panel dropping out of the pill. */
+  .wc-nav { flex-wrap: wrap; }
+  /* The pill's resting padding is asymmetric (room for the logo on
+     one side, the CTA on the other). Even it up once it becomes a
+     panel, so the list is not visually off-centre. */
+  .wc-nav.open { padding: .55rem .7rem .8rem; }
+  .wc-nav .wc-nav-links {
+    display: none;
+    order: 3; width: 100%;
+    flex-direction: column; align-items: stretch; gap: .15rem;
+    padding: .55rem .25rem 0;
+    border-top: 1px solid rgba(127,168,190,.22);
+    margin-top: .55rem;
+  }
+  .wc-nav.open .wc-nav-links { display: flex; }
+  /* Undo the desktop rule that hides everything but the CTA. */
+  .wc-nav.open .wc-nav-links li:not(:last-child) { display: block; }
+  .wc-nav .wc-nav-links a { display: block; padding: .7rem 1rem; font-size: .9rem; }
+  .wc-nav .wc-nav-links .wc-nav-cta { text-align: center; margin-top: .5rem; padding: .8rem 1.3rem; }
+}
 
 /* ── FRAMED CANVAS ──────────────────────────────────────────── */
 /* Applied to <body class="wc-canvas"> — the page becomes a card
@@ -302,7 +361,7 @@ body.wc-canvas > .wc-sheet {
 /* ── BADGES & CHIPS ─────────────────────────────────────────── */
 .badge {
   display: inline-flex; align-items: center; gap: .55rem;
-  background: var(--brand-mist); color: var(--dusk);
+  background: var(--brand-mist); color: var(--deep);
   padding: .4rem 1.1rem; border-radius: var(--pill);
   font-size: .73rem; font-weight: 700; letter-spacing: .1em;
   text-transform: uppercase; margin-bottom: 1.8rem;

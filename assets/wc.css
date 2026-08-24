@@ -88,7 +88,11 @@ body {
   color: var(--deep);
   font-size: 16px;
   line-height: var(--lh-body);
-  overflow-x: hidden;
+  /* clip, not hidden: overflow-x:hidden makes the body a scroll
+     container, which silently breaks position:sticky for everything
+     inside it. clip contains the same sideways overflow without
+     creating one. */
+  overflow-x: clip;
 }
 
 /* Keyboard users must always see where they are. */

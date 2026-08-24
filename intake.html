@@ -150,13 +150,25 @@
     }
 
     /* ── PROGRESS ── */
+    /* Sticks under the nav. A progress bar that scrolls away tells
+       you nothing for the rest of a long form, which is exactly when
+       you want to know how much is left. */
     .progress-bar-wrap {
-      background: var(--white);
+      background: rgba(255,255,255,.88);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       border-bottom: 1.5px solid var(--brand-mist);
       padding: .9rem 2.5rem;
       display: flex;
       align-items: center;
       gap: 1.2rem;
+      position: sticky;
+      top: 64px;          /* height of the sticky nav above it */
+      z-index: 40;
+    }
+    @media (max-width: 640px) {
+      .progress-bar-wrap { padding: .7rem 1.2rem; gap: .8rem; }
+      .progress-label { min-width: 0; }
     }
     .progress-label {
       font-size: .68rem;
@@ -1214,6 +1226,7 @@
       document.getElementById('progressLabel').textContent = 'Section ' + current + ' of ' + sections.length;
     }
     window.addEventListener('scroll', updateSectionLabel, { passive: true });
+    updateSectionLabel();
 
     /* ── Input listeners ── */
     document.querySelectorAll('#intakeForm input, #intakeForm textarea, #intakeForm select').forEach(function(el) {

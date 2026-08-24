@@ -318,6 +318,15 @@
       box-shadow: 0 0 0 3px rgba(127,168,190,.15);
     }
     textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+
+    /* iOS Safari zooms the viewport whenever a focused field is
+       under 16px, and never zooms back out. On phones the floor
+       matters more than the slightly tighter type. */
+    @media (max-width: 900px) {
+      input[type="text"], input[type="email"], input[type="tel"],
+      input[type="url"], textarea, select { font-size: 16px; }
+    }
+
     select {
       background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237fa8be' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
@@ -791,7 +800,7 @@
         <div class="field-row">
           <div class="field-group">
             <label class="field-label" for="business_name">Business Name <span class="req">*</span></label>
-            <input type="text" id="business_name" name="business_name" placeholder="e.g. Jay's Plumbing, Bloom Florist, Pacific Legal" required/>
+            <input type="text" id="business_name" autocomplete="organization" name="business_name" placeholder="e.g. Jay's Plumbing, Bloom Florist, Pacific Legal" required/>
           </div>
           <div class="field-group">
             <label class="field-label" for="tagline">Tagline or Motto <span class="field-optional">Optional</span></label>
@@ -845,27 +854,27 @@
         <div class="field-row">
           <div class="field-group">
             <label class="field-label" for="contact_name">Your Full Name <span class="req">*</span></label>
-            <input type="text" id="contact_name" name="contact_name" placeholder="e.g. Sam Wilson" required/>
+            <input type="text" id="contact_name" autocomplete="name" name="contact_name" placeholder="e.g. Sam Wilson" required/>
           </div>
           <div class="field-group">
             <label class="field-label" for="contact_email">Business Email <span class="req">*</span></label>
-            <input type="email" id="contact_email" name="contact_email" placeholder="e.g. sam@yourbusiness.co.nz" required/>
+            <input type="email" id="contact_email" autocomplete="email" inputmode="email" spellcheck="false" name="contact_email" placeholder="e.g. sam@yourbusiness.co.nz" required/>
           </div>
         </div>
         <div class="field-row">
           <div class="field-group">
             <label class="field-label" for="phone">Phone Number <span class="req">*</span></label>
-            <input type="tel" id="phone" name="phone" placeholder="e.g. 021 123 4567" required/>
+            <input type="tel" id="phone" autocomplete="tel" inputmode="tel" name="phone" placeholder="e.g. 021 123 4567" required/>
           </div>
           <div class="field-group">
             <label class="field-label" for="address">Physical / Postal Address <span class="field-optional">Optional</span></label>
-            <input type="text" id="address" name="address" placeholder="Only if you want it shown on the site"/>
+            <input type="text" id="address" autocomplete="street-address" name="address" placeholder="Only if you want it shown on the site"/>
           </div>
         </div>
         <div class="field-row">
           <div class="field-group">
             <label class="field-label" for="gst_number">GST / Business Reg. Number <span class="field-optional">Optional</span></label>
-            <input type="text" id="gst_number" name="gst_number" placeholder="e.g. 123-456-789"/>
+            <input type="text" id="gst_number" inputmode="numeric" name="gst_number" placeholder="e.g. 123-456-789"/>
           </div>
           <div class="field-group">
             <label class="field-label" for="licences">Licences or Trade Memberships <span class="field-optional">Optional</span></label>
@@ -941,7 +950,7 @@
         <!-- Asset link field + instructions -->
         <div class="field-group">
           <label class="field-label" for="assets_link">Already Have a Shared Folder? <span class="field-optional">Optional</span></label>
-          <input type="url" id="assets_link" name="assets_link" placeholder="Paste your Google Drive, Dropbox or WeTransfer link here"/>
+          <input type="url" id="assets_link" inputmode="url" spellcheck="false" name="assets_link" placeholder="Paste your Google Drive, Dropbox or WeTransfer link here"/>
           <div class="field-hint">If your files are already in a shared folder online, just drop the link here and we'll grab what we need.</div>
         </div>
 
@@ -1038,17 +1047,17 @@
         <div class="field-row">
           <div class="field-group">
             <label class="field-label" for="facebook">Facebook <span class="field-optional">Optional</span></label>
-            <input type="url" id="facebook" name="facebook" placeholder="https://facebook.com/yourbusiness"/>
+            <input type="url" id="facebook" inputmode="url" spellcheck="false" name="facebook" placeholder="https://facebook.com/yourbusiness"/>
           </div>
           <div class="field-group">
             <label class="field-label" for="instagram">Instagram <span class="field-optional">Optional</span></label>
-            <input type="url" id="instagram" name="instagram" placeholder="https://instagram.com/yourbusiness"/>
+            <input type="url" id="instagram" inputmode="url" spellcheck="false" name="instagram" placeholder="https://instagram.com/yourbusiness"/>
           </div>
         </div>
         <div class="field-row">
           <div class="field-group">
             <label class="field-label" for="google_business">Google Business Profile <span class="field-optional">Optional</span></label>
-            <input type="url" id="google_business" name="google_business" placeholder="Paste your Google Business link"/>
+            <input type="url" id="google_business" inputmode="url" spellcheck="false" name="google_business" placeholder="Paste your Google Business link"/>
           </div>
           <div class="field-group">
             <label class="field-label" for="other_social">Other <span class="field-optional">Optional</span></label>
@@ -1085,7 +1094,7 @@
 
         <div class="field-group">
           <label class="field-label" for="domain_name">Domain Name + Registrar <span class="field-optional">If yes</span></label>
-          <input type="text" id="domain_name" name="domain_name" placeholder="e.g. yourbusiness.co.nz — registered with Domains.co.nz"/>
+          <input type="text" id="domain_name" inputmode="url" spellcheck="false" name="domain_name" placeholder="e.g. yourbusiness.co.nz — registered with Domains.co.nz"/>
         </div>
 
         <div class="field-group">
@@ -1099,7 +1108,7 @@
 
         <div class="field-group">
           <label class="field-label" for="hosting_provider">Hosting Provider <span class="field-optional">If yes</span></label>
-          <input type="text" id="hosting_provider" name="hosting_provider" placeholder="e.g. Netlify, SiteGround, GoDaddy"/>
+          <input type="text" id="hosting_provider" autocomplete="off" name="hosting_provider" placeholder="e.g. Netlify, SiteGround, GoDaddy"/>
         </div>
 
 

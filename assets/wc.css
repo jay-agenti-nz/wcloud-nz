@@ -306,6 +306,15 @@ body.wc-canvas > .wc-sheet {
 .badge-dot { width: 6px; height: 6px; background: var(--brand); border-radius: 50%; animation: pulse 2.5s ease-in-out infinite; }
 @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.4; transform:scale(.65); } }
 
+/* Reassurance chips — used under hero copy across pages. */
+.wc-chip {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .76rem; font-weight: 700; color: var(--dusk);
+  padding: .35rem .85rem; border-radius: var(--pill);
+  background: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.7);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+
 /* ── FOOTER ─────────────────────────────────────────────────── */
 footer {
   background: #1c2e38; padding: 2.2rem var(--gutter);

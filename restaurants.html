@@ -192,6 +192,51 @@
   @media (max-width:700px) {
     .feat-list { padding:.2rem 1.4rem; }
   }
+  /* ── REDESIGN: hero over the cloud field ────────────────────
+     Same sky as the homepage so the two pages read as one site,
+     with a warmer bloom because this page is about food. */
+  .r-hero {
+    position: relative;
+    display: grid; grid-template-columns: 54fr 46fr;
+    min-height: min(720px, 92vh);
+    padding: 0;
+    isolation: isolate;
+    background:
+      radial-gradient(56% 44% at 76% 22%, rgba(255,247,235,.9), transparent 62%),
+      radial-gradient(52% 52% at 12% 86%, rgba(255,255,255,.4), transparent 64%),
+      linear-gradient(168deg, #e6f0f6 0%, #cfe3ee 46%, #bfd8e7 100%);
+  }
+  #cloudCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; pointer-events: none; }
+  .r-hero-copy, .r-hero-stage { position: relative; z-index: 1; }
+  .r-hero-copy {
+    display: flex; flex-direction: column; align-items: flex-start;
+    justify-content: center; gap: 1.4rem; padding: 8rem 4.5rem 5rem;
+  }
+  /* This headline is a full sentence, not three words like the
+     homepage — the display step has to come down or it eats the fold. */
+  .r-hero-copy h1 { max-width: 19ch; font-size: clamp(2.1rem, 3.6vw, 3.2rem); }
+  .r-hero-sub { font-size: 1.12rem; color: var(--dusk); max-width: 46ch; line-height: 1.75; }
+  .r-chips { display: flex; gap: .5rem; flex-wrap: wrap; }
+  .r-hero-stage { display: flex; align-items: center; justify-content: center; padding: 7rem 3.5rem 4rem 1rem; }
+  .r-hero-stage .search-card {
+    width: 100%; max-width: 420px;
+    background: rgba(255,255,255,.72);
+    backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border: 1px solid rgba(255,255,255,.8);
+    box-shadow: 0 30px 70px rgba(42,61,74,.22), inset 0 1px 0 rgba(255,255,255,.85);
+    border-radius: var(--radius-lg); padding: 1.3rem 1.4rem;
+    display: flex; flex-direction: column; gap: .8rem;
+    transition: transform .5s var(--ease);
+  }
+
+  @media (max-width: 900px) {
+    .r-hero { grid-template-columns: 1fr; min-height: 0; }
+    .r-hero-copy { padding: 7rem 1.6rem 2.5rem; align-items: center; text-align: center; }
+    .r-hero-copy h1 { max-width: none; }
+    .hero-actions, .r-chips { justify-content: center; }
+    .r-hero-stage { padding: 0 1.6rem 3.5rem; }
+  }
+
 </style>
 
 <!-- Structured Data / Schema Markup -->
@@ -257,10 +302,10 @@
 ]
 </script>
 </head>
-<body>
+<body class="wc-canvas">
 
 <!-- NAV -->
-<nav id="mainnav">
+<nav class="wc-nav" id="mainnav">
   <a href="/" class="logo-mark">
     <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
       <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
@@ -268,53 +313,40 @@
     </svg>
     <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
   </a>
-  <ul class="nav-links">
+  <ul class="wc-nav-links">
     <li><a href="#solution">How it works</a></li>
-    <li><a href="#portfolio">Our Work</a></li>
-    <li><a href="/restaurants">For Restaurants</a></li>
+    <li><a href="#portfolio">Our work</a></li>
     <li><a href="/#pricing">Pricing</a></li>
-    <li><a href="/#about">About</a></li>
-    <li><a href="/#contact" class="nav-cta">Get Started</a></li>
+    <li><a href="/">Main site</a></li>
+    <li><a href="/#contact" class="wc-nav-cta">Get started</a></li>
   </ul>
 </nav>
 
-<!-- PAGE BANNER -->
-<div id="page-banner">
-  <div class="banner-accent"></div>
-  <div class="banner-block">
-    <div class="banner-inner fu">
-      <a href="/" class="banner-back">← Back to White Cloud</a>
-    </div>
-  </div>
-</div>
+<div class="wc-sheet">
 
 <!-- HERO -->
-<section id="hero">
-  <svg class="hero-bg-svg right" viewBox="0 0 560 220" fill="none">
-    <path d="M0 110 C70 30,140 190,210 110 C280 30,350 190,420 110 C480 45,520 65,560 55" stroke="#7fa8be" stroke-width="4" stroke-linecap="round"/>
-    <path d="M0 150 C80 55,160 230,250 140 C330 60,410 220,490 140 C520 110,540 118,560 112" stroke="#c8dce6" stroke-width="3" stroke-linecap="round"/>
-  </svg>
-  <svg class="hero-bg-svg left" viewBox="0 0 360 180" fill="none">
-    <path d="M0 90 C50 25,100 155,150 90 C200 25,250 155,300 90 C330 55,345 62,360 58" stroke="#7fa8be" stroke-width="3.5" stroke-linecap="round"/>
-  </svg>
+<section id="hero" class="r-hero">
+  <canvas id="cloudCanvas" aria-hidden="true"></canvas>
 
-  <div class="hero-inner">
-    <div class="fu">
-      <div class="badge"><div class="badge-dot"></div>Restaurants, cafés &amp; food trucks</div>
-      <h1>Someone just searched for a place like yours.<br><em>Did you show up?</em></h1>
-      <p class="hero-sub">Websites built for restaurants, cafés and food trucks — found on Google and AI search alike. No tech headaches, no wasted menu.</p>
-      <div class="hero-actions">
-        <a href="/#contact" class="btn-p">Get Started</a>
-        <a href="#solution" class="btn-o">How It Works</a>
-      </div>
-      <p class="hero-note">✓ Live in 7 days <span>·</span> ✓ One-off payment <span>·</span> ✓ Built for restaurants, cafés &amp; food trucks</p>
+  <div class="r-hero-copy">
+    <span class="badge"><span class="badge-dot"></span>Restaurants, cafés &amp; food trucks</span>
+    <h1 class="wc-display" id="heroHeadline">Someone just searched for a place like yours.</h1>
+    <p class="r-hero-sub">Did you show up? Websites built for restaurants, cafés and food trucks — found on Google and AI search alike. No tech headaches, no wasted menu.</p>
+    <div class="hero-actions">
+      <a href="/#contact" class="btn-p">Get started</a>
+      <a href="#solution" class="btn-o">How it works</a>
     </div>
+    <div class="r-chips">
+      <span class="wc-chip">Live in 7 days</span>
+      <span class="wc-chip">One-off payment</span>
+      <span class="wc-chip">Built for hospitality</span>
+    </div>
+  </div>
 
-    <div class="hero-vis fu">
-      <div class="search-card">
-        <div class="search-query"><span class="search-icon">🔍</span><span>"food trucks near me open now"</span></div>
-        <div class="search-result"><span class="result-dot"></span><span>3 results nearby, open now, top rated.</span></div>
-      </div>
+  <div class="r-hero-stage">
+    <div class="search-card" id="searchCard">
+      <div class="search-query"><span class="search-icon">🔍</span><span>&ldquo;food trucks near me open now&rdquo;</span></div>
+      <div class="search-result"><span class="result-dot"></span><span>3 results nearby, open now, top rated.</span></div>
     </div>
   </div>
 </section>
@@ -485,6 +517,7 @@
     <div>© 2025 White Cloud. Christchurch, NZ. All prices NZD.</div>
   </div>
 </footer>
+</div>
 
 <script>
   // ── Nav shadow on scroll
@@ -521,21 +554,33 @@
     aiObserver.observe(aiTyping);
   }
   // ── Scroll-triggered fade animations — never touch FAQ elements
-  var animEls = document.querySelectorAll('.fu, .fug');
-  for (var k = 0; k < animEls.length; k++) {
-    animEls[k].classList.add('ready');
-  }
-  var fadeObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        fadeObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  for (var j = 0; j < animEls.length; j++) {
-    fadeObserver.observe(animEls[j]);
-  }
+  /* Scroll reveal now lives in /assets/reveal.js */
 </script>
+
+<script type="module">
+  import { initHeroCloud } from '/assets/hero-cloud.js';
+  import { initTilt } from '/assets/tilt.js';
+  import { initReveal } from '/assets/reveal.js';
+
+  var canvas = document.getElementById('cloudCanvas');
+  var headline = document.getElementById('heroHeadline');
+  initHeroCloud(canvas, {
+    clearing: function () {
+      if (window.innerWidth <= 900) return null;
+      var c = canvas.getBoundingClientRect();
+      var h = headline.getBoundingClientRect();
+      return {
+        left: h.left - c.left - 40, right: h.right - c.left + 40,
+        top: h.top - c.top - 30, bottom: h.bottom - c.top + 30
+      };
+    }
+  });
+
+  initReveal();
+
+  var card = document.getElementById('searchCard');
+  if (card) initTilt(card, { zone: card.parentElement, maxX: 6, maxY: 7 });
+</script>
+
 </body>
 </html>

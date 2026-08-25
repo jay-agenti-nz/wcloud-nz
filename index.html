@@ -120,7 +120,20 @@
   }
 
   .v2-proj-feature { display: grid; grid-template-columns: 1.1fr .9fr; align-items: stretch; }
-  .v2-proj-feature .v2-proj-shot { border-radius: 0; }
+  /* Grid items default to min-width:auto, so the screenshot's own
+     width stops the column shrinking and it runs over the text.
+     Below about 1150px that overlap reached 236px. */
+  .v2-proj-feature > * { min-width: 0; }
+  /* The shot is stretched to the row height by the grid. With an
+     aspect-ratio still set, its width gets derived from that height
+     and spills out of its column — 625px inside a 470px column, right
+     over the text. Fill the grid area instead and let object-fit do
+     the cropping. */
+  .v2-proj-feature .v2-proj-shot {
+    border-radius: 0;
+    aspect-ratio: auto;
+    width: 100%; height: 100%; min-height: 320px;
+  }
   .v2-proj-feature .v2-proj-body { padding: 2.4rem 2.6rem; justify-content: center; }
   .v2-proj-feature h3 { font-size: 1.55rem; }
 
@@ -133,25 +146,21 @@
      from the top leaves it looking off-balance. */
   .v2-proj-feature .v2-proj-shot img { object-position: center; }
 
-  /* Six client sites in six unrelated palettes — hot pink beside navy
-     beside black — pull the page apart. Held back at rest so the grid
-     reads as one thing, and returned to full colour on hover, where
-     you are looking at one project rather than all of them.
-     Only where there is a pointer: on touch there is no hover, so
-     those screenshots stay true. */
+  /* The featured project is the one that should stand out, so it
+     keeps its true colours. The three below it sit under a brand veil
+     that clears on hover — the same device the previous site used,
+     without a label telling you to hover. Moving the cursor over a
+     card explains itself.
+     Pointer devices only: with no hover, a veil on touch would just
+     be a screenshot you can never see. */
   @media (hover: hover) {
-    .v2-proj-shot img { filter: saturate(.3) contrast(.96) brightness(1.03); }
-    .v2-proj:hover .v2-proj-shot img,
-    .v2-proj:focus-visible .v2-proj-shot img { filter: none; }
-    /* A whisper of brand over the top ties the muted state together. */
-    .v2-proj-shot::after {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(160deg, rgba(127,168,190,.28), rgba(200,220,230,.16));
-      mix-blend-mode: multiply;
+    .v2-proj-grid .v2-proj-shot::after {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(160deg, rgba(127,168,190,.92), rgba(200,220,230,.88) 55%, rgba(234,243,247,.9));
       opacity: 1; transition: opacity .5s var(--ease);
     }
-    .v2-proj:hover .v2-proj-shot::after,
-    .v2-proj:focus-visible .v2-proj-shot::after { opacity: 0; }
+    .v2-proj-grid .v2-proj:hover .v2-proj-shot::after,
+    .v2-proj-grid .v2-proj:focus-visible .v2-proj-shot::after { opacity: 0; }
   }
   .v2-proj:hover .v2-proj-shot img { transform: scale(1.035); }
 

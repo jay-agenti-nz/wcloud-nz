@@ -349,11 +349,11 @@
   /* Working with us */
   .v2-about { display: grid; grid-template-columns: auto 1fr; gap: var(--sp-4); align-items: start; }
   .v2-about-mark { display: flex; flex-direction: column; align-items: center; gap: .7rem; }
-  .v2-about-mark span {
-    width: 132px; height: 132px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--brand), var(--dusk));
-    color: var(--white); font-family: var(--serif); font-weight: 700; font-size: 3.4rem;
-    display: flex; align-items: center; justify-content: center;
+  .v2-about-mark img {
+    width: 150px; height: 150px; border-radius: 50%;
+    object-fit: cover; object-position: center;
+    display: block;
+    border: 3px solid var(--white);
     box-shadow: 0 14px 40px rgba(127,168,190,.35);
   }
   .v2-about-mark em { font-style: normal; font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--body); }
@@ -1083,7 +1083,10 @@
     </div>
 
     <div class="v2-about">
-      <div class="v2-about-mark"><span>J</span><em>10+ years</em></div>
+      <div class="v2-about-mark">
+        <img src="/assets/jay.jpg" alt="Jay, who runs White Cloud" width="480" height="480" loading="lazy" decoding="async">
+        <em>10+ years</em>
+      </div>
       <div class="v2-about-copy">
         <h3>Hi, I&rsquo;m Jay.</h3>
         <p>I&rsquo;ve spent more than 10 years working in e-commerce businesses &mdash; here in New Zealand and across the world. I&rsquo;ve seen first-hand how hard it is for small business owners, self-employed Kiwis and online sellers to get online quickly, affordably and without the headache.</p>

@@ -2,3 +2,8 @@
 *.log
 node_modules/
 .netlify/
+
+# Source images kept locally for re-cropping — the derived assets are
+# what ship (jay.jpg, biblio-preview.jpg and their 900px variants).
+assets/IMG_*.JPG
+assets/Screenshot*.png

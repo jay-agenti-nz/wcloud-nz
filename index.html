@@ -76,64 +76,21 @@
     perspective: 1400px;
   }
 
-  .v2-card {
-    width: 100%; max-width: 440px;
-    border-radius: var(--radius-lg);
-    background: rgba(255,255,255,.62);
-    backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
-    border: 1px solid rgba(255,255,255,.75);
-    box-shadow: 0 30px 70px rgba(42,61,74,.22), inset 0 1px 0 rgba(255,255,255,.8);
-    padding: .7rem .7rem .95rem;
-    display: flex; flex-direction: column; gap: .7rem;
-    transform-style: preserve-3d;
-    transition: transform .5s var(--ease);
-  }
+  
 
-  .v2-card-frame {
-    position: relative; aspect-ratio: 16 / 10;
-    border-radius: 14px; overflow: hidden; background: #fff;
-    box-shadow: 0 10px 26px rgba(42,61,74,.16);
-  }
-  .v2-card-bar {
-    position: absolute; top: 0; left: 0; right: 0; z-index: 2;
-    display: flex; align-items: center; gap: 5px;
-    background: rgba(246,249,251,.92);
-    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    padding: .5rem .7rem; border-bottom: 1px solid rgba(232,236,239,.9);
-  }
+  
+  
   .v2-dot { width: 7px; height: 7px; border-radius: 50%; background: #d9e2e8; }
-  .v2-card-url {
-    margin-left: .45rem; background: #fff; border-radius: 5px;
-    padding: .16rem .6rem; font-size: .62rem; font-weight: 700;
-    letter-spacing: .04em; color: var(--body); flex: 1;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  .v2-shot {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; object-position: top;
-    /* Kept short on purpose: the caption changes the instant the new
-       shot starts fading in, so a long fade would leave the old
-       screenshot on screen under the new project's name. */
-    opacity: 0; transition: opacity .2s ease;
-    z-index: 0;
-  }
-  .v2-shot.on { opacity: 1; }
+  
+  
 
-  .v2-card-meta {
-    display: flex; align-items: baseline; justify-content: space-between;
-    gap: 1rem; padding: 0 .35rem;
-  }
+  
 
-  .v2-card-name { font-family: var(--serif); font-size: 1.02rem; font-weight: 700; color: var(--deep); }
-  .v2-card-tag { font-family: var(--mark); font-size: .64rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--brand-ink); }
+  
+  
 
-  .v2-card-dots { display: flex; gap: .35rem; padding: 0 .35rem; }
-  .v2-card-dots button {
-    width: 22px; height: 4px; border-radius: 2px; border: 0; padding: 0;
-    background: rgba(77,110,128,.22); cursor: pointer;
-    transition: background .25s;
-  }
-  .v2-card-dots button[aria-current="true"] { background: var(--brand-ink); }
+  
+  
 
 
   /* ── WORK ───────────────────────────────────────────────────
@@ -170,7 +127,31 @@
   .v2-proj-shot { position: relative; overflow: hidden; aspect-ratio: 16 / 10; background: #fff; }
   .v2-proj-shot img {
     width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
-    transition: transform .6s var(--ease);
+    transition: transform .6s var(--ease), filter .5s var(--ease);
+  }
+  /* Biblio's composition sits in the middle of its frame, so cropping
+     from the top leaves it looking off-balance. */
+  .v2-proj-feature .v2-proj-shot img { object-position: center; }
+
+  /* Six client sites in six unrelated palettes — hot pink beside navy
+     beside black — pull the page apart. Held back at rest so the grid
+     reads as one thing, and returned to full colour on hover, where
+     you are looking at one project rather than all of them.
+     Only where there is a pointer: on touch there is no hover, so
+     those screenshots stay true. */
+  @media (hover: hover) {
+    .v2-proj-shot img { filter: saturate(.3) contrast(.96) brightness(1.03); }
+    .v2-proj:hover .v2-proj-shot img,
+    .v2-proj:focus-visible .v2-proj-shot img { filter: none; }
+    /* A whisper of brand over the top ties the muted state together. */
+    .v2-proj-shot::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(160deg, rgba(127,168,190,.28), rgba(200,220,230,.16));
+      mix-blend-mode: multiply;
+      opacity: 1; transition: opacity .5s var(--ease);
+    }
+    .v2-proj:hover .v2-proj-shot::after,
+    .v2-proj:focus-visible .v2-proj-shot::after { opacity: 0; }
   }
   .v2-proj:hover .v2-proj-shot img { transform: scale(1.035); }
 
@@ -238,9 +219,6 @@
     .v2-notes { padding: var(--sp-5) 1.6rem; }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .v2-card { transition: none; }
-  }
 
   /* ── PHASE 4: everything below the work ─────────────────────
      Sections alternate white and pale so the page has a rhythm
@@ -493,6 +471,100 @@
   .foot-links a:hover { color:rgba(255,255,255,.7); }
     .agentic-banner { flex-direction:column; align-items:flex-start; padding:2rem; }
     .agentic-cta { width:100%; justify-content:center; }
+  /* ── HERO GRAPHIC ───────────────────────────────────────────
+     A schematic of the site being built, in our colours. It says
+     what we do without borrowing a client's palette, and it cannot
+     fall out of sync with a caption the way a screenshot carousel
+     could. */
+  .v2-build {
+    width: 100%; max-width: 460px;
+    border-radius: var(--radius-lg);
+    background: rgba(255,255,255,.62);
+    backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border: 1px solid rgba(255,255,255,.75);
+    box-shadow: 0 30px 70px rgba(42,61,74,.22), inset 0 1px 0 rgba(255,255,255,.8);
+    padding: .7rem .7rem 1rem;
+    display: flex; flex-direction: column; gap: .75rem;
+    transition: transform .5s var(--ease);
+  }
+  .v2-build-frame {
+    position: relative; overflow: hidden;
+    aspect-ratio: 16 / 11; border-radius: 14px; background: #fff;
+    box-shadow: 0 10px 26px rgba(42,61,74,.16);
+  }
+  .v2-build-bar {
+    display: flex; align-items: center; gap: 5px;
+    background: #f6f9fb; padding: .5rem .7rem;
+    border-bottom: 1px solid #e8ecef;
+  }
+  .v2-build-url {
+    margin-left: .45rem; background: #fff; border-radius: 5px;
+    padding: .16rem .6rem; font-size: .62rem; font-weight: 700;
+    letter-spacing: .04em; color: var(--body);
+  }
+  .v2-build-svg { display: block; width: 100%; height: calc(100% - 33px); }
+  .v2-build-svg rect {
+    fill: #dfe9ef;
+    transition: fill .45s var(--ease), opacity .45s var(--ease);
+  }
+  /* The active capability tints the parts it is responsible for. */
+  .v2-build[data-active="words"]  .p-words  { fill: var(--brand); }
+  .v2-build[data-active="design"] .p-design { fill: var(--brand); }
+
+  .v2-build-phone, .v2-build-answer {
+    position: absolute; opacity: 0; pointer-events: none;
+    transition: opacity .45s var(--ease), transform .45s var(--ease);
+  }
+  .v2-build-phone {
+    right: 16px; bottom: 12px; width: 76px; height: 132px;
+    border-radius: 12px; background: #fff; border: 2px solid var(--dusk);
+    box-shadow: 0 12px 30px rgba(42,61,74,.28);
+    transform: translateY(14px);
+    display: flex; flex-direction: column; gap: 7px; padding: 14px 10px;
+  }
+  .v2-build-phone span { display: block; height: 8px; border-radius: 3px; background: var(--brand-mist); }
+  .v2-build-phone span:first-child { height: 22px; background: var(--brand); }
+  .v2-build[data-active="mobile"] .v2-build-phone { opacity: 1; transform: translateY(0); }
+
+  .v2-build-answer {
+    left: 14px; right: 14px; bottom: 12px;
+    background: var(--deep); border-radius: 12px; padding: .7rem .85rem;
+    box-shadow: 0 14px 34px rgba(42,61,74,.3);
+    transform: translateY(14px);
+  }
+  .v2-build-answer strong { display: block; color: rgba(255,255,255,.55); font-size: .64rem; font-weight: 700; letter-spacing: .04em; }
+  .v2-build-answer p { color: #fff; font-size: .76rem; margin-top: .25rem; line-height: 1.5; }
+  .v2-build[data-active="search"] .v2-build-answer { opacity: 1; transform: translateY(0); }
+
+  /* Two by two rather than a ragged wrap with one tab stranded. */
+  .v2-build-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem; padding: 0 .2rem; }
+  .v2-build-tabs button {
+    font-family: var(--sans); font-size: .73rem; font-weight: 700;
+    color: var(--dusk); cursor: pointer;
+    background: rgba(255,255,255,.55); border: 1px solid rgba(255,255,255,.7);
+    padding: .45rem .8rem; border-radius: var(--pill);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    transition: background .25s, color .25s, border-color .25s;
+  }
+  .v2-build-tabs button:hover { background: #fff; }
+  .v2-build-tabs button[aria-selected="true"] {
+    background: var(--brand-ink); color: #fff; border-color: transparent;
+  }
+  .v2-build-note {
+    font-size: .8rem; color: var(--dusk); padding: 0 .3rem; min-height: 2.4em;
+  }
+
+  /* Comfortable thumb targets — these are the interactive part of
+     the hero, and 32px is under the guideline. */
+  @media (max-width: 900px) {
+    .v2-build-tabs button { padding: .7rem .8rem; font-size: .78rem; min-height: 46px; }
+    .v2-build-note { font-size: .85rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .v2-build-svg rect, .v2-build-phone, .v2-build-answer { transition: none; }
+  }
+
 </style>
 <script type="application/ld+json">
 [
@@ -676,24 +748,48 @@
     </div>
 
     <div class="v2-hero-stage">
-      <div class="v2-card" id="projectCard">
-        <div class="v2-card-frame">
-          <div class="v2-card-bar">
+      <div class="v2-build" id="buildCard">
+        <div class="v2-build-frame">
+          <div class="v2-build-bar">
             <span class="v2-dot"></span><span class="v2-dot"></span><span class="v2-dot"></span>
-            <span class="v2-card-url" id="cardUrl">rakkhun.co.nz</span>
+            <span class="v2-build-url">yourbusiness.co.nz</span>
           </div>
-          <img class="v2-shot on" src="/assets/rakkhun-preview-900.jpg" srcset="/assets/rakkhun-preview-900.jpg 900w, /assets/rakkhun-preview.jpg 960w" sizes="(max-width: 900px) 92vw, 440px" alt="Rak Khun website" width="960" height="600">
-          <img class="v2-shot" src="/assets/agenti-preview-900.jpg" srcset="/assets/agenti-preview-900.jpg 900w, /assets/agenti-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, 440px" alt="Agenti website" width="1600" height="1040" decoding="async">
-          <img class="v2-shot" src="/assets/biblio-preview-900.jpg" srcset="/assets/biblio-preview-900.jpg 900w, /assets/biblio-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, 440px" alt="Biblio website" width="1600" height="1040" decoding="async">
-          <img class="v2-shot" src="/assets/groovnz-preview-900.jpg" srcset="/assets/groovnz-preview-900.jpg 900w, /assets/groovnz-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, 440px" alt="Groov website" width="1600" height="1040" decoding="async">
+
+          <!-- A schematic of the site being built, in our own colours
+               rather than a client's. Each part lights up with the
+               capability it belongs to. -->
+          <svg class="v2-build-svg" viewBox="0 0 320 200" role="img" aria-label="A website being assembled: words, design, mobile and search">
+            <rect class="p-design" x="16" y="14" width="288" height="18" rx="5"/>
+            <rect class="p-words"  x="16" y="44" width="150" height="11" rx="4"/>
+            <rect class="p-words"  x="16" y="62" width="120" height="11" rx="4"/>
+            <rect class="p-words"  x="16" y="80" width="86"  height="9"  rx="4" opacity=".7"/>
+            <rect class="p-design" x="16" y="102" width="62" height="16" rx="8"/>
+            <rect class="p-design" x="184" y="44" width="120" height="74" rx="8"/>
+            <rect class="p-design" x="16"  y="132" width="88" height="52" rx="8"/>
+            <rect class="p-design" x="116" y="132" width="88" height="52" rx="8"/>
+            <rect class="p-design" x="216" y="132" width="88" height="52" rx="8"/>
+          </svg>
+
+          <!-- Mobile: slides in when that capability is active -->
+          <div class="v2-build-phone" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+
+          <!-- Search: an AI answer, same idea -->
+          <div class="v2-build-answer" aria-hidden="true">
+            <strong>Who&rsquo;s a good web designer in Christchurch?</strong>
+            <p>White Cloud &mdash; small business sites from NZ$299.</p>
+          </div>
         </div>
-        <div class="v2-card-meta">
-          <span class="v2-card-name" id="cardName">Rak Khun</span>
-          <span class="v2-card-tag" id="cardTag">Thai restaurant</span>
+
+        <div class="v2-build-tabs" role="tablist" aria-label="What we do">
+          <button type="button" role="tab" data-part="words"  aria-selected="true">We write the words</button>
+          <button type="button" role="tab" data-part="design" aria-selected="false">We design it</button>
+          <button type="button" role="tab" data-part="mobile" aria-selected="false">Works on mobile</button>
+          <button type="button" role="tab" data-part="search" aria-selected="false">Found by AI</button>
         </div>
-        <div class="v2-card-dots" id="cardDots" role="tablist" aria-label="Recent projects"></div>
+        <p class="v2-build-note" id="buildNote">Not sure what to say? We put it into clear, simple language.</p>
       </div>
-    </div>
   </section>
 
 
@@ -1279,83 +1375,57 @@
     onScroll();
   })();
 
-  /* ── Project card ───────────────────────────────────────────
-     Cycles through real client sites. Pauses on hover or focus so it
-     never moves out from under someone looking at it.
-
-     The incoming screenshot fades in ON TOP of the one before it, and
-     the caption changes in the same breath. Crossfading both at once
-     double-exposes them (a dark site over a light one reads as the
-     wrong project); fading out first leaves an empty white card. All
-     the state lives in `i` — no step depends on a timer firing before
-     another one, so bunched-up callbacks cannot desynchronise it. */
+  /* ── Hero graphic ─────────────────────────────────────────────
+     Four capabilities, one schematic. Hovering or focusing a tab
+     shows that capability; otherwise it cycles slowly on its own.
+     There is no image to keep in sync with a caption, so the class
+     of bug that plagued the screenshot carousel cannot occur here. */
   (function () {
-    var projects = [
-      { name: 'Rak Khun', tag: 'Thai restaurant', url: 'rakkhun.co.nz' },
-      { name: 'Agenti',   tag: 'AI consultancy',  url: 'agenti.nz' },
-      { name: 'Biblio',   tag: 'Reading app',     url: 'biblio.ink' },
-      { name: 'Groov',    tag: 'Wellbeing',       url: 'groov.nz' }
-    ];
-    var shots  = Array.prototype.slice.call(document.querySelectorAll('.v2-shot'));
-    var card   = document.getElementById('projectCard');
-    var dots   = document.getElementById('cardDots');
-    var nameEl = document.getElementById('cardName');
-    var tagEl  = document.getElementById('cardTag');
-    var urlEl  = document.getElementById('cardUrl');
-    var metaEl = document.querySelector('.v2-card-meta');
+    var card = document.getElementById('buildCard');
+    if (!card) return;
+    var note = document.getElementById('buildNote');
+    var tabs = Array.prototype.slice.call(card.querySelectorAll('[role="tab"]'));
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var i = 0, z = 1, timer = 0, cleanup = 0, paused = false;
 
-    projects.forEach(function (p, idx) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.setAttribute('role', 'tab');
-      b.setAttribute('aria-label', p.name);
-      b.setAttribute('aria-current', idx === 0 ? 'true' : 'false');
-      b.addEventListener('click', function () { show(idx); restart(); });
-      dots.appendChild(b);
-    });
+    var COPY = {
+      words:  'Not sure what to say? We put it into clear, simple language.',
+      design: 'Clean layout, good type, your colours \u2014 done properly.',
+      mobile: 'Phones, tablets, laptops. It works however customers find you.',
+      search: 'Structured so Google and AI tools can read and recommend you.'
+    };
+
+    var i = 0, timer = 0, held = false;
 
     function show(n) {
-      i = ((n % projects.length) + projects.length) % projects.length;
-
-      // Reveal: the new shot goes on top and fades up over the old.
-      shots[i].style.zIndex = ++z;
-      shots[i].classList.add('on');
-
-      // Caption follows the same index in the same tick.
-      nameEl.textContent = projects[i].name;
-      tagEl.textContent  = projects[i].tag;
-      urlEl.textContent  = projects[i].url;
-      Array.prototype.forEach.call(dots.children, function (b, idx) {
-        b.setAttribute('aria-current', idx === i ? 'true' : 'false');
+      i = ((n % tabs.length) + tabs.length) % tabs.length;
+      var part = tabs[i].dataset.part;
+      card.setAttribute('data-active', part);
+      note.textContent = COPY[part];
+      tabs.forEach(function (t, idx) {
+        t.setAttribute('aria-selected', idx === i ? 'true' : 'false');
       });
-
-      // Drop whatever is underneath once the fade has covered it.
-      clearTimeout(cleanup);
-      cleanup = setTimeout(function () {
-        shots.forEach(function (s, idx) {
-          if (idx !== i) { s.classList.remove('on'); s.style.zIndex = 0; }
-        });
-      }, 320);
     }
 
-    function restart() {
+    function play() {
       clearInterval(timer);
-      if (!reduced.matches) {
-        timer = setInterval(function () { if (!paused) show(i + 1); }, 4600);
-      }
+      if (reduced.matches) return;
+      timer = setInterval(function () { if (!held) show(i + 1); }, 3200);
     }
 
-    card.addEventListener('mouseenter', function () { paused = true; });
-    card.addEventListener('mouseleave', function () { paused = false; });
-    card.addEventListener('focusin',  function () { paused = true; });
-    card.addEventListener('focusout', function () { paused = false; });
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) clearInterval(timer); else restart();
+    tabs.forEach(function (t, idx) {
+      t.addEventListener('mouseenter', function () { held = true; show(idx); });
+      t.addEventListener('focus',      function () { held = true; show(idx); });
+      t.addEventListener('click',      function () { show(idx); play(); });
+      t.addEventListener('mouseleave', function () { held = false; });
+      t.addEventListener('blur',       function () { held = false; });
     });
-    restart();
 
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) clearInterval(timer); else play();
+    });
+
+    show(0);
+    play();
   })();
 </script>
 
@@ -1368,8 +1438,8 @@
   // A little lean toward the cursor — enough to sit in the scene, not a toy.
   initNav(document.getElementById('v2nav'));
 
-  var heroCard = document.getElementById('projectCard');
-  initTilt(heroCard, { zone: heroCard.parentElement, maxX: 6, maxY: 7 });
+  var heroCard = document.getElementById('buildCard');
+  if (heroCard) initTilt(heroCard, { zone: heroCard.parentElement, maxX: 5, maxY: 6 });
   document.querySelectorAll('.v2-proj').forEach(function (card) {
     initTilt(card, { maxX: 3.5, maxY: 4.5, lift: 4 });
   });

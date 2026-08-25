@@ -129,12 +129,19 @@
      and spills out of its column — 625px inside a 470px column, right
      over the text. Fill the grid area instead and let object-fit do
      the cropping. */
+  /* Sized by its column, with its own aspect ratio deciding the
+     height. Stretching it to the row height was what drove the width
+     out of the column and over the text; letting it size from the
+     width fixes that and stops the screenshot being cropped to a
+     shape it was never composed for. */
   .v2-proj-feature .v2-proj-shot {
     border-radius: 0;
+    align-self: stretch;
+    width: 100%; height: 100%;
     aspect-ratio: auto;
-    width: 100%; height: 100%; min-height: 320px;
   }
-  .v2-proj-feature .v2-proj-body { padding: 2.4rem 2.6rem; justify-content: center; }
+  .v2-proj-feature .v2-proj-shot img { object-position: center top; }
+  .v2-proj-feature .v2-proj-body { padding: 2rem 2.4rem; justify-content: center; }
   .v2-proj-feature h3 { font-size: 1.55rem; }
 
   .v2-proj-shot { position: relative; overflow: hidden; aspect-ratio: 16 / 10; background: #fff; }
@@ -203,6 +210,15 @@
   }
   .v2-proj-lite p { font-size: .87rem; margin: .35rem 0 .6rem; }
 
+  /* Side by side, the row height comes from the text column, and
+     below about 1150px that squeezes the screenshot into a shape it
+     was not composed for — a third of it cropped away at 940px.
+     Stack before that happens. */
+  @media (max-width: 1150px) {
+    .v2-proj-feature { grid-template-columns: 1fr; }
+    .v2-proj-feature .v2-proj-shot { aspect-ratio: 16 / 10; height: auto; }
+    .v2-proj-feature .v2-proj-body { padding: 1.6rem 1.7rem 1.9rem; }
+  }
   @media (max-width: 1050px) {
     .v2-proj-grid { grid-template-columns: 1fr 1fr; }
   }
@@ -811,7 +827,7 @@
 
     <a class="v2-proj v2-proj-feature" href="https://biblio.ink" target="_blank" rel="noopener">
       <div class="v2-proj-shot">
-        <img src="/assets/biblio-preview-900.jpg" srcset="/assets/biblio-preview-900.jpg 900w, /assets/biblio-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, 48vw" alt="The Biblio web app" width="1600" height="1040" loading="lazy" decoding="async">
+        <img src="/assets/biblio-preview-900.jpg" srcset="/assets/biblio-preview-900.jpg 900w, /assets/biblio-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, 48vw" alt="The Biblio web app, showing a 3D bookshelf of covers" width="1600" height="1004" loading="lazy" decoding="async">
       </div>
       <div class="v2-proj-body">
         <span class="v2-proj-tag">Latest project</span>

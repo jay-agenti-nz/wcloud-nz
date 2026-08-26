@@ -351,7 +351,15 @@
   .v2-price button { margin-top: auto; align-self: flex-start; cursor: pointer; font-family: var(--sans); }
 
   /* Working with us */
-  .v2-about { display: grid; grid-template-columns: auto 1fr; gap: var(--sp-4); align-items: start; }
+  /* Centred as a block, with the bio kept left-aligned inside its own
+     column so it stays readable. Left-aligning the whole thing in a
+     wide band left a third of the row empty. */
+  .v2-working .v2-head { text-align: center; align-items: center; margin: 0 auto; }
+  .v2-about {
+    display: grid; grid-template-columns: auto minmax(0, 58ch);
+    gap: var(--sp-4); align-items: start;
+    justify-content: center; margin: 0 auto;
+  }
   .v2-about-mark { display: flex; flex-direction: column; align-items: center; gap: .7rem; }
   /* Wider crop than a headshot — the framing people recognise from
      Instagram — so the circle is bigger to keep the face readable. */
@@ -367,7 +375,7 @@
     letter-spacing: .13em; text-transform: uppercase; color: var(--body);
     text-align: center; max-width: 210px; line-height: 1.7;
   }
-  .v2-about-copy { display: flex; flex-direction: column; gap: .9rem; max-width: 62ch; }
+  .v2-about-copy { display: flex; flex-direction: column; gap: .9rem; }
   .v2-about-copy p { font-size: .98rem; }
   .v2-extra-lbl { font-family: var(--mark); font-size: .63rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--brand-ink); }
   .v2-extra > p { font-size: .92rem; }
@@ -1195,7 +1203,7 @@
     <div class="v2-about">
       <div class="v2-about-mark">
         <img src="/assets/jay.jpg" alt="Jay, who runs White Cloud, out running above Lyttelton Harbour" width="560" height="560" loading="lazy" decoding="async">
-        <em>Designer &middot; Photographer &middot; Writer &middot; Runner</em>
+        <em>Jay D Vera</em>
       </div>
       <div class="v2-about-copy">
         <h3>Hi, I&rsquo;m Jay.</h3>

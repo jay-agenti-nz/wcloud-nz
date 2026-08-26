@@ -385,6 +385,14 @@ footer {
   font-weight: 600; letter-spacing: .04em;
 }
 
+
+/* Footer layout — shared by every page that has a footer. It lived
+   only in the homepage's inline CSS, so the same markup rendered
+   with default blue links everywhere else. */
+.foot-in { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+.foot-links { display:flex; gap:1.8rem; flex-wrap:wrap; }
+.foot-links a { color:rgba(255,255,255,.35); text-decoration:none; transition:color .2s; }
+
 /* ── SCROLL REVEAL ──────────────────────────────────────────── */
 /* Elements are visible by default; JS adds .ready only when it can
    also observe them, so no-JS never leaves content hidden. */

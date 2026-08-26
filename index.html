@@ -490,9 +490,6 @@
   .idea-banner p { font-size:.88rem; color:var(--body); font-weight:500; line-height:1.65; }
   .idea-btn { display:inline-flex; align-items:center; gap:.5rem; background:linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94)); color:#fff; padding:.8rem 1.8rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; border:1px solid rgba(255,255,255,.35); box-shadow:inset 0 1px 0 rgba(255,255,255,.4); transition:background .2s,transform .2s; white-space:nowrap; flex-shrink:0; }
   .idea-btn:hover { background:linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.96)); transform:translateY(-2px); }
-  .foot-in { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
-  .foot-links { display:flex; gap:1.8rem; flex-wrap:wrap; }
-  .foot-links a { color:rgba(255,255,255,.35); text-decoration:none; transition:color .2s; }
   .foot-links a:hover { color:rgba(255,255,255,.7); }
     .agentic-banner { flex-direction:column; align-items:flex-start; padding:2rem; }
     .agentic-cta { width:100%; justify-content:center; }
@@ -589,6 +586,16 @@
   @media (prefers-reduced-motion: reduce) {
     .v2-build-svg rect, .v2-build-phone, .v2-build-answer { transition: none; }
   }
+
+  /* Marketing teaser */
+  .v2-marketing-teaser { background: var(--brand-pale); }
+  .v2-teaser {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: var(--sp-4); flex-wrap: wrap;
+  }
+  .v2-teaser > div { max-width: 60ch; display: flex; flex-direction: column; gap: .25rem; }
+  .v2-teaser p { margin-top: .5rem; font-size: 1rem; }
+  .v2-teaser .btn-p { flex-shrink: 0; }
 
 </style>
 <script type="application/ld+json">
@@ -745,7 +752,8 @@
   </a>
   <ul class="wc-nav-links">
     <li><a href="#work">Our work</a></li>
-    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#pricing">Websites</a></li>
+    <li><a href="/marketing">Marketing</a></li>
     <li><a href="/restaurants">Restaurants</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact" class="wc-nav-cta">Get started</a></li>
@@ -1072,6 +1080,20 @@
         </ul>
         <button type="button" class="btn-o" onclick="selectPackage('Cloud Pro — NZ$1,099')">Get started</button>
       </div>
+    </div>
+  </section>
+
+
+  <!-- Pointer to the marketing page, so it is not only reachable
+       from the nav. -->
+  <section class="v2-band v2-marketing-teaser">
+    <div class="v2-teaser">
+      <div>
+        <span class="lbl">More than a website</span>
+        <h2>Need people to actually find it?</h2>
+        <p>We also run Google and Meta ads and email marketing &mdash; the two things that turn a finished website into a steady stream of enquiries.</p>
+      </div>
+      <a href="/marketing" class="btn-p">See marketing services</a>
     </div>
   </section>
 

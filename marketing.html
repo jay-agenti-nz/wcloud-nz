@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Services – Google &amp; Meta Ads and Email Marketing | White Cloud</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://wcloud.nz/marketing">
+<meta property="og:title"       content="Marketing Services – White Cloud">
+<meta property="og:description" content="Google and Meta ads plus email marketing for NZ small businesses. Ads from NZ$550/month + GST, email from NZ$300/month + GST. No lock-in after the first three months.">
+<meta property="og:image"       content="https://wcloud.nz/og-image.jpg">
+<meta property="og:image:type"  content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Marketing Services – White Cloud">
+<meta name="twitter:description" content="Google and Meta ads plus email marketing for NZ small businesses. Run properly, reported in plain English.">
+<meta name="twitter:image"       content="https://wcloud.nz/og-image.jpg">
+
+<meta name="description" content="White Cloud runs Google and Meta ads and email marketing for NZ small businesses. Ads setup NZ$650, management from NZ$550/month + GST. Email setup NZ$350, from NZ$300/month + GST. Christchurch based.">
+<link rel="canonical" href="https://wcloud.nz/marketing">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/wc.css">
+<style>
+  /* ── MARKETING PAGE ─────────────────────────────────────────
+     Same shell as the homepage: framed canvas, pill nav, cloud
+     hero. Everything below is specific to this page. */
+
+  .mk-hero {
+    position: relative;
+    display: grid; grid-template-columns: 54fr 46fr;
+    min-height: min(700px, 90vh);
+    padding: 0;
+    isolation: isolate;
+    background:
+      radial-gradient(58% 46% at 74% 24%, rgba(255,255,255,.85), transparent 62%),
+      radial-gradient(52% 52% at 14% 84%, rgba(255,255,255,.42), transparent 64%),
+      linear-gradient(168deg, #e3eff6 0%, #cee2ee 46%, #bed7e7 100%);
+  }
+  #cloudCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; pointer-events: none; }
+  .mk-hero-copy, .mk-hero-stage { position: relative; z-index: 1; }
+  .mk-hero-copy {
+    display: flex; flex-direction: column; align-items: flex-start;
+    justify-content: center; gap: 1.4rem; padding: 8rem 4.5rem 5rem;
+  }
+  .mk-hero-copy h1 { max-width: 17ch; font-size: clamp(2.2rem, 3.9vw, 3.5rem); }
+  .mk-hero-sub { font-size: 1.12rem; color: var(--dusk); max-width: 46ch; line-height: 1.75; }
+  .mk-actions { display: flex; gap: .8rem; flex-wrap: wrap; }
+  .mk-chips { display: flex; gap: .5rem; flex-wrap: wrap; }
+
+  /* ── Hero graphic: the two things this page sells ──────────── */
+  .mk-hero-stage { display: flex; align-items: center; justify-content: center; padding: 7rem 3.5rem 4rem 1rem; }
+  .mk-demo {
+    width: 100%; max-width: 440px;
+    border-radius: var(--radius-lg);
+    background: rgba(255,255,255,.62);
+    backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border: 1px solid rgba(255,255,255,.75);
+    box-shadow: 0 30px 70px rgba(42,61,74,.22), inset 0 1px 0 rgba(255,255,255,.8);
+    padding: .7rem .7rem 1rem;
+    display: flex; flex-direction: column; gap: .75rem;
+    transition: transform .5s var(--ease);
+  }
+  .mk-demo-frame {
+    position: relative; overflow: hidden; min-height: 250px;
+    border-radius: 14px; background: #fff;
+    box-shadow: 0 10px 26px rgba(42,61,74,.16);
+    padding: .9rem 1rem 1.1rem;
+  }
+  .mk-panel { opacity: 0; position: absolute; inset: 0; padding: .9rem 1rem 1.1rem; transition: opacity .35s var(--ease); pointer-events: none; }
+  .mk-demo[data-active="found"] .mk-panel-found { opacity: 1; }
+  .mk-demo[data-active="remembered"] .mk-panel-remembered { opacity: 1; }
+
+  .mk-search {
+    display: flex; align-items: center; gap: .5rem;
+    border: 1.5px solid var(--brand-mist); border-radius: var(--pill);
+    padding: .45rem .9rem; font-size: .8rem; color: var(--body); font-weight: 600;
+  }
+  .mk-search svg { width: 14px; height: 14px; color: var(--brand-ink); flex-shrink: 0; }
+  .mk-result { margin-top: .9rem; border-radius: 12px; padding: .75rem .85rem; background: var(--brand-pale); border: 1px solid rgba(127,168,190,.28); }
+  .mk-result .mk-tag { font-family: var(--mark); font-size: .58rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--brand-ink); }
+  .mk-result strong { display: block; font-family: var(--serif); font-size: .98rem; color: var(--deep); margin-top: .2rem; }
+  .mk-result span { display: block; font-size: .72rem; color: var(--brand-ink); font-weight: 700; margin-top: .1rem; }
+  .mk-result p { font-size: .78rem; margin-top: .35rem; line-height: 1.55; }
+  .mk-ghost { margin-top: .7rem; height: 9px; border-radius: 4px; background: #eef3f6; }
+  .mk-ghost.short { width: 62%; }
+
+  .mk-inbox-row {
+    display: flex; align-items: flex-start; gap: .6rem;
+    padding: .6rem .2rem; border-bottom: 1px solid #eef3f6;
+  }
+  .mk-avatar {
+    width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--brand), var(--dusk));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-family: var(--mark); font-size: .6rem; font-weight: 700;
+  }
+  .mk-inbox-row.new { background: var(--brand-pale); border-radius: 10px; padding: .6rem .55rem; border-bottom: 0; }
+  .mk-inbox-row strong { font-size: .8rem; color: var(--deep); }
+  .mk-inbox-row p { font-size: .74rem; margin-top: .1rem; line-height: 1.5; }
+  .mk-inbox-row em { font-style: normal; font-size: .64rem; color: var(--muted, var(--body)); margin-left: auto; white-space: nowrap; }
+
+  .mk-demo-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem; padding: 0 .2rem; }
+  .mk-demo-tabs button {
+    font-family: var(--sans); font-size: .76rem; font-weight: 700;
+    color: var(--dusk); cursor: pointer; min-height: 40px;
+    background: rgba(255,255,255,.55); border: 1px solid rgba(255,255,255,.7);
+    padding: .45rem .8rem; border-radius: var(--pill);
+    display: flex; align-items: center; justify-content: center;
+    transition: background .25s, color .25s, border-color .25s;
+  }
+  .mk-demo-tabs button:hover { background: #fff; }
+  .mk-demo-tabs button[aria-selected="true"] { background: var(--brand-ink); color: #fff; border-color: transparent; }
+  .mk-demo-note { font-size: .8rem; color: var(--dusk); padding: 0 .3rem; min-height: 2.4em; }
+
+  /* ── Bands ──────────────────────────────────────────────────── */
+  .mk-band { padding: var(--sp-7) 4.5rem; display: flex; flex-direction: column; gap: var(--sp-4); background: var(--white); }
+  .mk-band.alt { background: var(--brand-pale); }
+  .mk-head { max-width: 62ch; display: flex; flex-direction: column; gap: .25rem; }
+  .mk-head p { font-size: 1.02rem; margin-top: .5rem; }
+
+  .mk-three { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-3); }
+  .mk-tile { display: flex; flex-direction: column; gap: .2rem; border-left: 2px solid rgba(127,168,190,.35); padding: .1rem 0 .1rem 1.2rem; }
+  .mk-tile p { font-size: .92rem; }
+
+  /* Numbered because it is a sequence: audience, then tracking,
+     then tuning, then reporting. */
+  .mk-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-3) var(--sp-4); }
+  .mk-steps li { display: grid; grid-template-columns: 2.4rem 1fr; gap: 0 .9rem; }
+  .mk-step-n { font-family: var(--mark); font-size: .72rem; font-weight: 700; letter-spacing: .1em; color: var(--brand-ink); padding-top: .2rem; }
+  .mk-steps h3 { margin-bottom: .25rem; }
+  .mk-steps p { font-size: .92rem; }
+
+  /* ── Pricing ────────────────────────────────────────────────── */
+  .mk-price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); align-items: start; }
+  .mk-price {
+    background: var(--white); border: 1px solid rgba(127,168,190,.28);
+    border-radius: var(--radius-lg); padding: 2rem 1.9rem 2.1rem;
+    display: flex; flex-direction: column; gap: .25rem; height: 100%;
+  }
+  .mk-price-feat { border-color: var(--brand); box-shadow: 0 20px 50px rgba(127,168,190,.25); position: relative; }
+  .mk-price-flag {
+    position: absolute; top: -.7rem; left: 1.9rem;
+    background: var(--brand); color: var(--white);
+    font-size: .64rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    padding: .28rem .8rem; border-radius: var(--pill);
+  }
+  .mk-price-kind { font-family: var(--mark); font-size: .63rem; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; color: var(--brand-ink); }
+  .mk-price-amt { font-family: var(--serif); font-size: 1.05rem; color: var(--deep); margin-top: .5rem; }
+  .mk-price-amt strong { font-size: 2.4rem; font-weight: 700; letter-spacing: -.02em; }
+  .mk-price-amt .per { font-family: var(--sans); font-size: .9rem; font-weight: 700; color: var(--body); }
+  /* Ex GST leads, because that is how a GST-registered business reads
+     a quote — but the real number is right underneath it. */
+  .mk-price-gst { font-size: .78rem; color: var(--body); font-weight: 600; }
+  .mk-price-desc { font-size: .9rem; margin: .8rem 0 .2rem; }
+  .mk-price ul { list-style: none; margin: .7rem 0 1.3rem; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
+  .mk-price li { position: relative; padding-left: 1.5rem; font-size: .88rem; color: var(--body); font-weight: 500; }
+  .mk-price li::before {
+    content: ''; position: absolute; left: 0; top: .42em;
+    width: 9px; height: 5px; border-left: 2px solid var(--sage); border-bottom: 2px solid var(--sage);
+    transform: rotate(-45deg);
+  }
+  .mk-price .btn-p, .mk-price .btn-o { margin-top: auto; align-self: flex-start; }
+
+  /* What is not included — said loudly, not in small print. */
+  .mk-separate {
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: #fff8ec; border: 1px solid #f0dcb8;
+    border-radius: var(--radius); padding: 1.2rem 1.4rem;
+  }
+  .mk-separate svg { width: 20px; height: 20px; color: #b07d952; color: #a8762a; flex-shrink: 0; margin-top: .15rem; }
+  .mk-separate h3 { font-size: .98rem; margin-bottom: .3rem; }
+  .mk-separate p { font-size: .9rem; max-width: 74ch; }
+
+  /* ── Launch offer ───────────────────────────────────────────── */
+  .mk-offer {
+    background: linear-gradient(150deg, var(--dusk), var(--deep));
+    border-radius: var(--radius-lg); padding: 2.4rem 2.6rem;
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--sp-4); align-items: center;
+  }
+  .mk-offer h2, .mk-offer h3 { color: var(--white); }
+  .mk-offer p { color: rgba(255,255,255,.68); }
+  .mk-offer .lbl { color: var(--brand-light); }
+  .mk-offer ul { list-style: none; margin: 1rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
+  .mk-offer li { position: relative; padding-left: 1.5rem; color: rgba(255,255,255,.82); font-size: .92rem; font-weight: 500; }
+  .mk-offer li::before {
+    content: ''; position: absolute; left: 0; top: .42em;
+    width: 9px; height: 5px; border-left: 2px solid var(--sage); border-bottom: 2px solid var(--sage);
+    transform: rotate(-45deg);
+  }
+  .mk-offer-figure { text-align: center; }
+  .mk-offer-was { font-family: var(--serif); font-size: 1.4rem; color: rgba(255,255,255,.45); text-decoration: line-through; }
+  .mk-offer-now { font-family: var(--serif); font-size: 4rem; font-weight: 700; color: var(--white); line-height: 1; display: block; margin: .2rem 0 .3rem; }
+  .mk-offer-cap { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--brand-light); }
+
+  /* ── Pull quote ─────────────────────────────────────────────── */
+  .mk-quote { padding: var(--sp-6) 4.5rem; background: var(--white); }
+  .mk-quote blockquote {
+    max-width: 30ch; margin: 0 auto; text-align: center;
+    font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700; color: var(--deep); line-height: 1.3; text-wrap: balance;
+  }
+  .mk-quote p { text-align: center; margin-top: 1rem; font-size: .95rem; }
+
+  /* ── Investment table ───────────────────────────────────────── */
+  .mk-tablewrap { overflow-x: auto; border: 1px solid rgba(127,168,190,.28); border-radius: var(--radius); background: var(--white); }
+  .mk-table { border-collapse: collapse; width: 100%; font-size: .92rem; min-width: 560px; }
+  .mk-table th, .mk-table td { text-align: left; padding: .85rem 1.1rem; border-bottom: 1px solid rgba(127,168,190,.18); }
+  .mk-table th { font-family: var(--mark); font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--brand-ink); font-weight: 700; }
+  .mk-table tr:last-child td { border-bottom: 0; }
+  .mk-table td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--deep); font-weight: 700; }
+  .mk-table td.num small { display: block; font-weight: 600; color: var(--body); font-size: .8em; }
+  .mk-table td strong { display: block; color: var(--deep); }
+  .mk-table td span { font-size: .84rem; }
+
+  /* ── Next steps ─────────────────────────────────────────────── */
+  .mk-next { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-3); }
+  .mk-next li { display: flex; flex-direction: column; gap: .3rem; padding-top: 1.1rem; border-top: 2px solid var(--brand-mist); }
+  .mk-next p { font-size: .9rem; }
+
+  .mk-cta {
+    background: linear-gradient(150deg, var(--dusk), var(--deep));
+    padding: var(--sp-6) 4.5rem; text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  }
+  .mk-cta h2 { color: var(--white); max-width: 22ch; }
+  .mk-cta p { color: rgba(255,255,255,.62); max-width: 54ch; }
+  .mk-cta a.mail { color: #fff; font-weight: 700; }
+  .mk-cta-btns { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; margin-top: .6rem; }
+
+  @media (max-width: 1050px) {
+    .mk-three, .mk-next { grid-template-columns: 1fr 1fr; }
+    .mk-price-grid { grid-template-columns: 1fr; max-width: 520px; }
+    .mk-offer { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 900px) {
+    .mk-hero { grid-template-columns: 1fr; min-height: 0; }
+    .mk-hero-copy { padding: 7rem 1.6rem 2.5rem; align-items: center; text-align: center; }
+    .mk-hero-copy h1 { max-width: none; }
+    .mk-actions, .mk-chips { justify-content: center; }
+    .mk-hero-stage { padding: 0 1.6rem 3.5rem; }
+    .mk-band, .mk-quote, .mk-cta { padding: var(--sp-5) 1.6rem; }
+    .mk-three, .mk-steps, .mk-next { grid-template-columns: 1fr; }
+    .mk-offer { padding: 1.8rem 1.6rem; }
+    .mk-demo-tabs button { min-height: 46px; }
+  }
+</style>
+</head>
+<body class="wc-canvas">
+
+<nav class="wc-nav" id="mainnav">
+  <a href="/" class="logo-mark">
+    <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
+      <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
+  </a>
+  <ul class="wc-nav-links">
+    <li><a href="/#work">Our work</a></li>
+    <li><a href="/#pricing">Websites</a></li>
+    <li><a href="/marketing" aria-current="page">Marketing</a></li>
+    <li><a href="/restaurants">Restaurants</a></li>
+    <li><a href="/#contact" class="wc-nav-cta">Get started</a></li>
+  </ul>
+</nav>
+
+<div class="wc-sheet">
+
+  <section class="mk-hero">
+    <canvas id="cloudCanvas" aria-hidden="true"></canvas>
+
+    <div class="mk-hero-copy">
+      <span class="badge"><span class="badge-dot"></span>Marketing services</span>
+      <h1 class="wc-display" id="heroHeadline">We build the site. We can bring the customers too.</h1>
+      <p class="mk-hero-sub">Paid ads put you in front of people at the moment they&rsquo;re looking. Email keeps you there after they&rsquo;ve gone. Both run properly, every month &mdash; not in bursts when there&rsquo;s spare time.</p>
+      <div class="mk-actions">
+        <a href="/#contact" class="btn-p">Talk it through</a>
+        <a href="#pricing" class="btn-o">See pricing</a>
+      </div>
+      <div class="mk-chips">
+        <span class="wc-chip">Google &amp; Meta ads</span>
+        <span class="wc-chip">Email marketing</span>
+        <span class="wc-chip">No lock-in</span>
+      </div>
+    </div>
+
+    <div class="mk-hero-stage">
+      <div class="mk-demo" id="mkDemo" data-active="found">
+        <div class="mk-demo-frame">
+          <div class="mk-panel mk-panel-found">
+            <div class="mk-search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              <span>web designer christchurch</span>
+            </div>
+            <div class="mk-result">
+              <span class="mk-tag">Sponsored</span>
+              <strong>White Cloud &mdash; Websites for small business</strong>
+              <span>wcloud.nz</span>
+              <p>Clean, professional websites from NZ$299. Live in about a week.</p>
+            </div>
+            <div class="mk-ghost"></div>
+            <div class="mk-ghost short"></div>
+            <div class="mk-ghost"></div>
+          </div>
+
+          <div class="mk-panel mk-panel-remembered">
+            <div class="mk-inbox-row new">
+              <span class="mk-avatar">WC</span>
+              <div>
+                <strong>White Cloud</strong>
+                <p>Three small changes that get more enquiries</p>
+              </div>
+              <em>now</em>
+            </div>
+            <div class="mk-inbox-row">
+              <span class="mk-avatar" style="background:#dbe6ec;color:var(--body)">&nbsp;</span>
+              <div><strong>&nbsp;</strong><p>&nbsp;</p></div>
+            </div>
+            <div class="mk-inbox-row">
+              <span class="mk-avatar" style="background:#dbe6ec;color:var(--body)">&nbsp;</span>
+              <div><strong>&nbsp;</strong><p>&nbsp;</p></div>
+            </div>
+            <div class="mk-inbox-row">
+              <span class="mk-avatar" style="background:#dbe6ec;color:var(--body)">&nbsp;</span>
+              <div><strong>&nbsp;</strong><p>&nbsp;</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mk-demo-tabs" role="tablist" aria-label="What marketing does">
+          <button type="button" role="tab" data-panel="found" aria-selected="true">Get found</button>
+          <button type="button" role="tab" data-panel="remembered" aria-selected="false">Get remembered</button>
+        </div>
+        <p class="mk-demo-note" id="mkNote">Ads put you in front of customers at the exact moment they&rsquo;re searching.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE THINGS STAND -->
+  <section class="mk-band">
+    <div class="mk-head">
+      <span class="lbl">Where things stand</span>
+      <h2>A great website is the start, not the finish line</h2>
+      <p>A site only works when people actually find it &mdash; and come back to it.</p>
+    </div>
+    <div class="mk-three">
+      <div class="mk-tile">
+        <h3>Being found</h3>
+        <p>Customers search before they buy. Paid ads put you in front of them at the exact moment they&rsquo;re looking, rather than waiting to be discovered.</p>
+      </div>
+      <div class="mk-tile">
+        <h3>Being remembered</h3>
+        <p>Most people don&rsquo;t buy the first time they visit. Email keeps you in front of them without paying for the same click twice.</p>
+      </div>
+      <div class="mk-tile">
+        <h3>Being consistent</h3>
+        <p>Both only work when someone runs them properly, every month &mdash; not in bursts when there&rsquo;s spare time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INVOLVED -->
+  <section class="mk-band alt">
+    <div class="mk-head">
+      <span class="lbl">What&rsquo;s involved</span>
+      <h2>Paid ads, run properly</h2>
+      <p>Not just switching ads on &mdash; it&rsquo;s the strategy, targeting and ongoing tuning that decides whether the budget works.</p>
+    </div>
+    <ol class="mk-steps">
+      <li>
+        <span class="mk-step-n">01</span>
+        <div>
+          <h3>The right audience</h3>
+          <p>Keyword and audience research so your budget reaches people actually looking for what you offer &mdash; not everyone with a phone.</p>
+        </div>
+      </li>
+      <li>
+        <span class="mk-step-n">02</span>
+        <div>
+          <h3>Tracking that works</h3>
+          <p>Conversion tracking set up from day one, so we know which ads bring enquiries and which ones only bring clicks.</p>
+        </div>
+      </li>
+      <li>
+        <span class="mk-step-n">03</span>
+        <div>
+          <h3>Ongoing optimisation</h3>
+          <p>Budgets shifted toward what&rsquo;s working and away from what isn&rsquo;t, month after month.</p>
+        </div>
+      </li>
+      <li>
+        <span class="mk-step-n">04</span>
+        <div>
+          <h3>Plain-English reporting</h3>
+          <p>A monthly summary of what you spent, what came back, and what we&rsquo;re changing next &mdash; no jargon.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ADS PRICING -->
+  <section id="pricing" class="mk-band">
+    <div class="mk-head">
+      <span class="lbl">Paid ads management</span>
+      <h2>Straightforward pricing</h2>
+      <p>Prices are shown without GST first, with the GST-inclusive figure underneath. All prices in New Zealand dollars.</p>
+    </div>
+
+    <div class="mk-price-grid">
+      <div class="mk-price">
+        <span class="mk-price-kind">Setup</span>
+        <p class="mk-price-amt">$<strong>650</strong> <span class="per">one-off</span></p>
+        <span class="mk-price-gst">$747.50 including GST</span>
+        <p class="mk-price-desc">A one-off setup to get your campaigns ready to launch.</p>
+        <ul>
+          <li>Google &amp; Meta account setup</li>
+          <li>Conversion tracking</li>
+          <li>Audience &amp; keyword research</li>
+          <li>Campaign structure</li>
+          <li>Initial ad copy</li>
+        </ul>
+        <a href="/#contact" class="btn-o">Get started</a>
+      </div>
+
+      <div class="mk-price mk-price-feat">
+        <span class="mk-price-flag">Most popular</span>
+        <span class="mk-price-kind">2 platforms</span>
+        <p class="mk-price-amt">$<strong>850</strong> <span class="per">/ month</span></p>
+        <span class="mk-price-gst">$977.50 / month including GST</span>
+        <p class="mk-price-desc">Google + Meta together, managed as one strategy.</p>
+        <ul>
+          <li>Everything in 1 platform</li>
+          <li>Cross-platform strategy</li>
+          <li>Combined monthly report</li>
+          <li>Ad spend billed separately</li>
+        </ul>
+        <a href="/#contact" class="btn-p">Get started</a>
+      </div>
+
+      <div class="mk-price">
+        <span class="mk-price-kind">1 platform</span>
+        <p class="mk-price-amt">$<strong>550</strong> <span class="per">/ month</span></p>
+        <span class="mk-price-gst">$632.50 / month including GST</span>
+        <p class="mk-price-desc">Ongoing management for Google or Meta.</p>
+        <ul>
+          <li>Campaign management</li>
+          <li>Budget &amp; bid optimisation</li>
+          <li>Monthly performance report</li>
+          <li>Ad spend billed separately</li>
+        </ul>
+        <a href="/#contact" class="btn-o">Get started</a>
+      </div>
+    </div>
+
+    <div class="mk-separate">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 8.2v.01M12 11.5v4.3"/></svg>
+      <div>
+        <h3>Your ad budget is separate from these fees</h3>
+        <p>What you spend on ads is paid directly to Google and Meta by you, and it is never part of the management fee. Same with email: the platform (Mailchimp or similar) bills you directly based on list size &mdash; usually free up to around $50 a month for a small list.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAUNCH OFFER -->
+  <section class="mk-band alt">
+    <div class="mk-offer">
+      <div>
+        <span class="lbl">Special offer</span>
+        <h2>3-month launch offer</h2>
+        <p>Start with a three-month commitment to Google + Meta management and the setup fee is waived entirely.</p>
+        <ul>
+          <li>Three-month minimum to start</li>
+          <li>Setup fee fully waived &mdash; save $747.50 including GST</li>
+          <li>Month-to-month after that &mdash; cancel any time</li>
+        </ul>
+      </div>
+      <div class="mk-offer-figure">
+        <span class="mk-offer-was">$747.50</span>
+        <span class="mk-offer-now">$0</span>
+        <span class="mk-offer-cap">Setup fee &mdash; waived</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="mk-quote">
+    <blockquote>&ldquo;Ads bring people to your door. Email is how you keep them coming back.&rdquo;</blockquote>
+    <p>The two work best together &mdash; one finds new customers, the other makes them repeat ones.</p>
+  </section>
+
+  <!-- EMAIL -->
+  <section class="mk-band alt">
+    <div class="mk-head">
+      <span class="lbl">Email marketing</span>
+      <h2>Keep customers coming back</h2>
+      <p>Your email list is the one audience you own outright &mdash; no algorithm, no ad spend, no platform deciding who sees you.</p>
+    </div>
+    <div class="mk-price-grid" style="grid-template-columns:repeat(2,1fr);max-width:760px">
+      <div class="mk-price">
+        <span class="mk-price-kind">Setup</span>
+        <p class="mk-price-amt">$<strong>350</strong> <span class="per">one-off</span></p>
+        <span class="mk-price-gst">$402.50 including GST</span>
+        <p class="mk-price-desc">A one-off setup to get your email marketing ready to go.</p>
+        <ul>
+          <li>Email platform account setup</li>
+          <li>Branded email template</li>
+          <li>Welcome sequence (2&ndash;3 emails)</li>
+          <li>Contact list import</li>
+        </ul>
+        <a href="/#contact" class="btn-o">Get started</a>
+      </div>
+      <div class="mk-price">
+        <span class="mk-price-kind">Monthly management</span>
+        <p class="mk-price-amt">$<strong>300</strong> <span class="per">/ month</span></p>
+        <span class="mk-price-gst">$345.00 / month including GST</span>
+        <p class="mk-price-desc">Ongoing campaigns so your list keeps hearing from you.</p>
+        <ul>
+          <li>Two campaigns per month</li>
+          <li>Copywriting included</li>
+          <li>Basic list segmentation</li>
+          <li>Monthly performance summary</li>
+        </ul>
+        <a href="/#contact" class="btn-p">Get started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTMENT -->
+  <section class="mk-band">
+    <div class="mk-head">
+      <span class="lbl">Investment</span>
+      <h2>Everything at a glance</h2>
+    </div>
+    <div class="mk-tablewrap">
+      <table class="mk-table">
+        <thead>
+          <tr><th scope="col">Service</th><th scope="col" style="text-align:right">Price</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Ads &mdash; Setup</strong><span>One-off account, tracking and campaign build</span></td>
+            <td class="num">$650<small>$747.50 inc GST</small></td>
+          </tr>
+          <tr>
+            <td><strong>Ads &mdash; 1 platform</strong><span>Google or Meta, managed monthly</span></td>
+            <td class="num">$550 /mo<small>$632.50 inc GST</small></td>
+          </tr>
+          <tr>
+            <td><strong>Ads &mdash; 2 platforms</strong><span>Google + Meta, managed as one strategy</span></td>
+            <td class="num">$850 /mo<small>$977.50 inc GST</small></td>
+          </tr>
+          <tr>
+            <td><strong>Email &mdash; Setup</strong><span>Platform, template and welcome sequence</span></td>
+            <td class="num">$350<small>$402.50 inc GST</small></td>
+          </tr>
+          <tr>
+            <td><strong>Email &mdash; Monthly</strong><span>Two campaigns a month, copywriting included</span></td>
+            <td class="num">$300 /mo<small>$345.00 inc GST</small></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.85rem">All prices in NZD. Ad spend and email platform fees are billed separately by those providers.</p>
+  </section>
+
+  <!-- NEXT STEPS -->
+  <section class="mk-band alt">
+    <div class="mk-head">
+      <span class="lbl">From here</span>
+      <h2>Next steps</h2>
+    </div>
+    <ol class="mk-next">
+      <li>
+        <span class="mk-step-n">01</span>
+        <h3>Pick a starting point</h3>
+        <p>Ads, email, or both &mdash; start with one and add the other later.</p>
+      </li>
+      <li>
+        <span class="mk-step-n">02</span>
+        <h3>Setup</h3>
+        <p>Accounts, tracking and templates built and ready to launch.</p>
+      </li>
+      <li>
+        <span class="mk-step-n">03</span>
+        <h3>Go live</h3>
+        <p>Campaigns launch and we monitor closely through the first month.</p>
+      </li>
+      <li>
+        <span class="mk-step-n">04</span>
+        <h3>Review monthly</h3>
+        <p>A plain-English report each month, with changes made as we learn.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- CTA -->
+  <section class="mk-cta">
+    <h2>Let&rsquo;s get you found.</h2>
+    <p>Tell us about your business and we&rsquo;ll say honestly whether ads, email or neither is the right next step.</p>
+    <div class="mk-cta-btns">
+      <a href="/#contact" class="btn-w">Get in touch</a>
+      <a href="/#pricing" class="btn-g">Website packages</a>
+    </div>
+    <p style="margin-top:.6rem">Questions? Jay &mdash; <a class="mail" href="mailto:kiaora@wcloud.nz">kiaora@wcloud.nz</a></p>
+  </section>
+
+  <footer>
+    <div class="foot-in">
+      <a href="/" class="logo-mark">
+        <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
+          <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
+      </a>
+      <div class="foot-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+        <a href="/intake">New Client Intake Form</a>
+      </div>
+      <div>&copy; 2026 White Cloud. Christchurch, NZ. All prices NZD.</div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var nav = document.getElementById('mainnav');
+    var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 20); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  /* Two panels, two tabs. Same pattern as the homepage graphic. */
+  (function () {
+    var demo = document.getElementById('mkDemo');
+    if (!demo) return;
+    var note = document.getElementById('mkNote');
+    var tabs = Array.prototype.slice.call(demo.querySelectorAll('[role="tab"]'));
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var COPY = {
+      found: 'Ads put you in front of customers at the exact moment they’re searching.',
+      remembered: 'Email lands with people who already know you — no second click to pay for.'
+    };
+    var i = 0, timer = 0, held = false;
+
+    function show(n) {
+      i = ((n % tabs.length) + tabs.length) % tabs.length;
+      var panel = tabs[i].dataset.panel;
+      demo.setAttribute('data-active', panel);
+      note.textContent = COPY[panel];
+      tabs.forEach(function (t, idx) { t.setAttribute('aria-selected', idx === i ? 'true' : 'false'); });
+    }
+    function play() {
+      clearInterval(timer);
+      if (reduced.matches) return;
+      timer = setInterval(function () { if (!held) show(i + 1); }, 4000);
+    }
+    tabs.forEach(function (t, idx) {
+      t.addEventListener('mouseenter', function () { held = true; show(idx); });
+      t.addEventListener('focus',      function () { held = true; show(idx); });
+      t.addEventListener('click',      function () { show(idx); play(); });
+      t.addEventListener('mouseleave', function () { held = false; });
+      t.addEventListener('blur',       function () { held = false; });
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) clearInterval(timer); else play();
+    });
+    show(0); play();
+  })();
+</script>
+
+<script type="module">
+  import { initHeroCloud } from '/assets/hero-cloud.js';
+  import { initTilt } from '/assets/tilt.js';
+  import { initNav } from '/assets/nav.js';
+
+  initNav(document.getElementById('mainnav'));
+
+  var canvas = document.getElementById('cloudCanvas');
+  var headline = document.getElementById('heroHeadline');
+  initHeroCloud(canvas, {
+    clearing: function () {
+      if (window.innerWidth <= 900) return null;
+      var c = canvas.getBoundingClientRect();
+      var h = headline.getBoundingClientRect();
+      return {
+        left: h.left - c.left - 40, right: h.right - c.left + 40,
+        top: h.top - c.top - 30, bottom: h.bottom - c.top + 30
+      };
+    }
+  });
+
+  var demo = document.getElementById('mkDemo');
+  if (demo) initTilt(demo, { zone: demo.parentElement, maxX: 5, maxY: 6 });
+</script>
+
+</body>
+</html>

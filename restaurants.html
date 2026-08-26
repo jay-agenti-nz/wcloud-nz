@@ -12,13 +12,14 @@
 <meta property="og:url"         content="https://wcloud.nz/restaurants">
 <meta property="og:title"       content="White Cloud – Websites for Restaurants, Cafés & Food Trucks">
 <meta property="og:description" content="Affordable, professional websites for Christchurch restaurants, cafés and food trucks. Menus, ordering, and Google + AI search visibility. From NZ$299.">
-<meta property="og:image"       content="https://wcloud.nz/og-image.png">
+<meta property="og:image"       content="https://wcloud.nz/og-image.jpg">
+<meta property="og:image:type"  content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:title"       content="White Cloud – Websites for Restaurants, Cafés & Food Trucks">
 <meta name="twitter:description" content="Affordable, professional websites for Christchurch restaurants, cafés and food trucks. Menus, ordering, and Google + AI search visibility. From NZ$299.">
-<meta name="twitter:image"       content="https://wcloud.nz/og-image.png">
+<meta name="twitter:image"       content="https://wcloud.nz/og-image.jpg">
 
 <!-- SEO -->
 <meta name="description" content="Affordable, professional websites for Christchurch restaurants, cafés and food trucks. Menus, ordering, and Google + AI search visibility. From NZ$299.">
@@ -26,72 +27,10 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/wc.css">
 <style>
-  :root {
-    --brand:       #7fa8be;
-    --brand-light: #c8dce6;
-    --brand-pale:  #eaf3f7;
-    --brand-mist:  #d6e8f0;
-    --white:       #ffffff;
-    --deep:        #2a3d4a;
-    --body:        #5a7080;
-    --dusk:        #4d6e80;
-    --sage:        #6bbf9e;
-    --serif: 'Lora', Georgia, serif;
-    --sans:  'Nunito', sans-serif;
-
-    /* Liquid Glass tokens */
-    --glass-bg:          rgba(255,255,255,.55);
-    --glass-bg-strong:   rgba(255,255,255,.72);
-    --glass-border:      rgba(255,255,255,.6);
-    --glass-shadow:      0 8px 32px rgba(42,61,74,.14), inset 0 1px 0 rgba(255,255,255,.5);
-    --glass-blur:        blur(20px) saturate(180%);
-    --glass-bg-dark:     rgba(255,255,255,.08);
-    --glass-border-dark: rgba(255,255,255,.18);
-  }
-
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: var(--sans); background: var(--white); color: var(--deep); font-size: 16px; line-height: 1.75; overflow-x: hidden; }
-
-  /* ── LOGO ─────────────────────────────────────────────────── */
-  .logo-mark { display:inline-flex; align-items:center; gap:.75rem; text-decoration:none; transition:opacity .2s; }
-  .logo-mark:hover { opacity:.8; }
-  .logo-wave-svg { width:38px; height:22px; flex-shrink:0; }
-  .logo-wordmark { display:flex; flex-direction:column; line-height:1.15; }
-  .logo-wordmark span { font-family:'Raleway',sans-serif; font-weight:600; letter-spacing:.28em; text-transform:uppercase; font-size:.72rem; color:var(--white); display:block; }
-  .logo-wordmark span:last-child { color:rgba(255,255,255,.65); }
-
-  /* ── NAV ──────────────────────────────────────────────────── */
-  nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.1rem 6%; background:rgba(127,168,190,.7); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border-bottom:1px solid rgba(255,255,255,.25); transition:box-shadow .3s,background .3s; }
-  nav.scrolled { background:rgba(127,168,190,.85); box-shadow:0 4px 28px rgba(77,110,128,.35); }
-  .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
-  .nav-links a { text-decoration:none; color:rgba(255,255,255,.7); font-size:.76rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; transition:color .2s; }
-  .nav-links a:hover { color:var(--white); }
-  .nav-cta { background:var(--white)!important; color:var(--brand)!important; padding:.5rem 1.5rem; border-radius:50px; letter-spacing:.1em!important; font-weight:700!important; transition:background .2s,color .2s!important; }
-  .nav-cta:hover { background:var(--brand-pale)!important; color:var(--dusk)!important; }
-
-  /* ── BUTTONS ──────────────────────────────────────────────── */
-  .btn-p { display:inline-block; background:var(--brand); color:var(--white); padding:.9rem 2.2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:background .25s,transform .25s,box-shadow .25s; box-shadow:0 6px 24px rgba(127,168,190,.35); }
-  .btn-p:hover { background:var(--dusk); transform:translateY(-2px); box-shadow:0 10px 32px rgba(77,110,128,.25); }
-  .btn-o { display:inline-block; border:2px solid var(--brand); color:var(--brand); padding:.85rem 2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; }
-  .btn-o:hover { background:var(--brand); color:var(--white); }
-  .btn-w { display:inline-block; background:var(--white); color:var(--deep); padding:.9rem 2.2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; }
-  .btn-w:hover { background:var(--brand-pale); }
-  .btn-g { display:inline-block; border:2px solid rgba(255,255,255,.35); color:var(--white); padding:.85rem 2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:all .25s; }
-  .btn-g:hover { border-color:rgba(255,255,255,.7); background:rgba(255,255,255,.08); }
-  .btn-o { background:rgba(255,255,255,.4); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
-  .btn-g { background:rgba(255,255,255,.06); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
 
   /* ── SHARED ───────────────────────────────────────────────── */
-  section { padding:6.5rem 6%; }
-  .lbl { display:inline-block; font-size:.7rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--brand); margin-bottom:1.1rem; }
-  h1 { font-family:var(--serif); font-size:clamp(2.4rem,5vw,3.9rem); font-weight:700; line-height:1.15; color:var(--deep); }
-  h2 { font-family:var(--serif); font-size:clamp(1.9rem,3.5vw,2.7rem); font-weight:700; line-height:1.2; color:var(--deep); }
-  h3 { font-family:var(--serif); font-size:1.2rem; font-weight:700; color:var(--deep); margin-bottom:.5rem; }
-  p { color:var(--body); font-weight:500; }
-  .sec-hd { text-align:center; max-width:640px; margin:0 auto; }
-  .sec-hd p { margin-top:1rem; font-size:1.05rem; }
 
   /* ── PAGE BANNER (compact header, replaces full hero) ─────── */
   #page-banner { position:relative; padding-top:64px; background:var(--brand); }
@@ -107,10 +46,6 @@
   .hero-bg-svg.right { bottom:-30px; right:-60px; width:560px; opacity:.07; }
   .hero-bg-svg.left { top:100px; left:-40px; width:360px; opacity:.05; transform:rotate(180deg) scaleX(-1); }
   .hero-inner { max-width:1140px; margin:0 auto; display:grid; grid-template-columns:1.1fr 1fr; gap:5rem; align-items:center; width:100%; }
-  .badge { display:inline-flex; align-items:center; gap:.55rem; background:var(--brand-mist); color:var(--dusk); padding:.4rem 1.1rem; border-radius:50px; font-size:.73rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:1.8rem; }
-  .badge-dot { width:6px; height:6px; background:var(--brand); border-radius:50%; animation:pulse 2.5s ease-in-out infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.65)} }
-  h1 em { font-style:italic; color:var(--brand); }
   .hero-sub { font-size:1.1rem; color:var(--body); margin:1.6rem 0 2.6rem; font-weight:500; max-width:500px; line-height:1.8; }
   .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
   .hero-note { margin-top:1.4rem; font-size:.78rem; color:var(--body); font-weight:600; opacity:.75; letter-spacing:.03em; }
@@ -174,23 +109,7 @@
   .cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; position:relative; z-index:1; }
 
   /* ── FOOTER ───────────────────────────────────────────────── */
-  footer { background:#1c2e38; padding:2.2rem 6%; color:rgba(255,255,255,.35); font-size:.78rem; font-weight:600; letter-spacing:.04em; }
-  .foot-in { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
-  .foot-links { display:flex; gap:1.8rem; flex-wrap:wrap; }
-  .foot-links a { color:rgba(255,255,255,.35); text-decoration:none; transition:color .2s; }
   .foot-links a:hover { color:rgba(255,255,255,.7); }
-
-  .fu { opacity:1; transform:none; transition:opacity .7s ease,transform .7s ease; }
-  .fu.ready { opacity:0; transform:translateY(24px); }
-  .fu.ready.in { opacity:1; transform:none; }
-  .fug > * { opacity:1; transform:none; transition:opacity .55s ease,transform .55s ease; }
-  .fug.ready > * { opacity:0; transform:translateY(18px); }
-  .fug.ready.in > *:nth-child(1){opacity:1;transform:none;transition-delay:.04s}
-  .fug.ready.in > *:nth-child(2){opacity:1;transform:none;transition-delay:.13s}
-  .fug.ready.in > *:nth-child(3){opacity:1;transform:none;transition-delay:.22s}
-  .fug.ready.in > *:nth-child(4){opacity:1;transform:none;transition-delay:.31s}
-  .fug.ready.in > *:nth-child(5){opacity:1;transform:none;transition-delay:.40s}
-  .fug.ready.in > *:nth-child(6){opacity:1;transform:none;transition-delay:.49s}
 
   /* ── AI SEARCH ───────────────────────────────────────────── */
   #ai-search { background: var(--deep); overflow:hidden; position:relative; }
@@ -271,6 +190,51 @@
   @media (max-width:700px) {
     .feat-list { padding:.2rem 1.4rem; }
   }
+  /* ── REDESIGN: hero over the cloud field ────────────────────
+     Same sky as the homepage so the two pages read as one site,
+     with a warmer bloom because this page is about food. */
+  .r-hero {
+    position: relative;
+    display: grid; grid-template-columns: 54fr 46fr;
+    min-height: min(720px, 92vh);
+    padding: 0;
+    isolation: isolate;
+    background:
+      radial-gradient(56% 44% at 76% 22%, rgba(255,247,235,.9), transparent 62%),
+      radial-gradient(52% 52% at 12% 86%, rgba(255,255,255,.4), transparent 64%),
+      linear-gradient(168deg, #e6f0f6 0%, #cfe3ee 46%, #bfd8e7 100%);
+  }
+  #cloudCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; pointer-events: none; }
+  .r-hero-copy, .r-hero-stage { position: relative; z-index: 1; }
+  .r-hero-copy {
+    display: flex; flex-direction: column; align-items: flex-start;
+    justify-content: center; gap: 1.4rem; padding: 8rem 4.5rem 5rem;
+  }
+  /* This headline is a full sentence, not three words like the
+     homepage — the display step has to come down or it eats the fold. */
+  .r-hero-copy h1 { max-width: 19ch; font-size: clamp(2.1rem, 3.6vw, 3.2rem); }
+  .r-hero-sub { font-size: 1.12rem; color: var(--dusk); max-width: 46ch; line-height: 1.75; }
+  .r-chips { display: flex; gap: .5rem; flex-wrap: wrap; }
+  .r-hero-stage { display: flex; align-items: center; justify-content: center; padding: 7rem 3.5rem 4rem 1rem; }
+  .r-hero-stage .search-card {
+    width: 100%; max-width: 420px;
+    background: rgba(255,255,255,.72);
+    backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border: 1px solid rgba(255,255,255,.8);
+    box-shadow: 0 30px 70px rgba(42,61,74,.22), inset 0 1px 0 rgba(255,255,255,.85);
+    border-radius: var(--radius-lg); padding: 1.3rem 1.4rem;
+    display: flex; flex-direction: column; gap: .8rem;
+    transition: transform .5s var(--ease);
+  }
+
+  @media (max-width: 900px) {
+    .r-hero { grid-template-columns: 1fr; min-height: 0; }
+    .r-hero-copy { padding: 7rem 1.6rem 2.5rem; align-items: center; text-align: center; }
+    .r-hero-copy h1 { max-width: none; }
+    .hero-actions, .r-chips { justify-content: center; }
+    .r-hero-stage { padding: 0 1.6rem 3.5rem; }
+  }
+
 </style>
 
 <!-- Structured Data / Schema Markup -->
@@ -288,7 +252,7 @@
     "name": "White Cloud",
     "url": "https://wcloud.nz",
     "logo": "https://wcloud.nz/favicon.svg",
-    "image": "https://wcloud.nz/og-image.png",
+    "image": "https://wcloud.nz/og-image.jpg",
     "description": "White Cloud builds affordable, AI-optimised websites for New Zealand small businesses, including restaurants, cafés and food trucks. Based in Christchurch, NZ. From NZ$299 with 7-day average delivery.",
     "priceRange": "NZ$299–NZ$1,099",
     "address": {
@@ -336,10 +300,10 @@
 ]
 </script>
 </head>
-<body>
+<body class="wc-canvas">
 
 <!-- NAV -->
-<nav id="mainnav">
+<nav class="wc-nav" id="mainnav">
   <a href="/" class="logo-mark">
     <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
       <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
@@ -347,53 +311,41 @@
     </svg>
     <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
   </a>
-  <ul class="nav-links">
+  <ul class="wc-nav-links">
     <li><a href="#solution">How it works</a></li>
-    <li><a href="#portfolio">Our Work</a></li>
-    <li><a href="/restaurants">For Restaurants</a></li>
-    <li><a href="/#pricing">Pricing</a></li>
-    <li><a href="/#about">About</a></li>
-    <li><a href="/#contact" class="nav-cta">Get Started</a></li>
+    <li><a href="#portfolio">Our work</a></li>
+    <li><a href="/#pricing">Websites</a></li>
+    <li><a href="/marketing">Marketing</a></li>
+    <li><a href="/">Main site</a></li>
+    <li><a href="/#contact" class="wc-nav-cta">Get started</a></li>
   </ul>
 </nav>
 
-<!-- PAGE BANNER -->
-<div id="page-banner">
-  <div class="banner-accent"></div>
-  <div class="banner-block">
-    <div class="banner-inner fu">
-      <a href="/" class="banner-back">← Back to White Cloud</a>
-    </div>
-  </div>
-</div>
+<div class="wc-sheet">
 
 <!-- HERO -->
-<section id="hero">
-  <svg class="hero-bg-svg right" viewBox="0 0 560 220" fill="none">
-    <path d="M0 110 C70 30,140 190,210 110 C280 30,350 190,420 110 C480 45,520 65,560 55" stroke="#7fa8be" stroke-width="4" stroke-linecap="round"/>
-    <path d="M0 150 C80 55,160 230,250 140 C330 60,410 220,490 140 C520 110,540 118,560 112" stroke="#c8dce6" stroke-width="3" stroke-linecap="round"/>
-  </svg>
-  <svg class="hero-bg-svg left" viewBox="0 0 360 180" fill="none">
-    <path d="M0 90 C50 25,100 155,150 90 C200 25,250 155,300 90 C330 55,345 62,360 58" stroke="#7fa8be" stroke-width="3.5" stroke-linecap="round"/>
-  </svg>
+<section id="hero" class="r-hero">
+  <canvas id="cloudCanvas" aria-hidden="true"></canvas>
 
-  <div class="hero-inner">
-    <div class="fu">
-      <div class="badge"><div class="badge-dot"></div>Restaurants, cafés &amp; food trucks</div>
-      <h1>Someone just searched for a place like yours.<br><em>Did you show up?</em></h1>
-      <p class="hero-sub">Websites built for restaurants, cafés and food trucks — found on Google and AI search alike. No tech headaches, no wasted menu.</p>
-      <div class="hero-actions">
-        <a href="/#contact" class="btn-p">Get Started</a>
-        <a href="#solution" class="btn-o">How It Works</a>
-      </div>
-      <p class="hero-note">✓ Live in 7 days <span>·</span> ✓ One-off payment <span>·</span> ✓ Built for restaurants, cafés &amp; food trucks</p>
+  <div class="r-hero-copy">
+    <span class="badge"><span class="badge-dot"></span>Restaurants, cafés &amp; food trucks</span>
+    <h1 class="wc-display" id="heroHeadline">Someone just searched for a place like yours.</h1>
+    <p class="r-hero-sub">Did you show up? Websites built for restaurants, cafés and food trucks — found on Google and AI search alike. No tech headaches, no wasted menu.</p>
+    <div class="hero-actions">
+      <a href="/#contact" class="btn-p">Get started</a>
+      <a href="#solution" class="btn-o">How it works</a>
     </div>
+    <div class="r-chips">
+      <span class="wc-chip">Live in 7 days</span>
+      <span class="wc-chip">One-off payment</span>
+      <span class="wc-chip">Built for hospitality</span>
+    </div>
+  </div>
 
-    <div class="hero-vis fu">
-      <div class="search-card">
-        <div class="search-query"><span class="search-icon">🔍</span><span>"food trucks near me open now"</span></div>
-        <div class="search-result"><span class="result-dot"></span><span>3 results nearby, open now, top rated.</span></div>
-      </div>
+  <div class="r-hero-stage">
+    <div class="search-card" id="searchCard">
+      <div class="search-query"><span class="search-icon">🔍</span><span>&ldquo;food trucks near me open now&rdquo;</span></div>
+      <div class="search-result"><span class="result-dot"></span><span>3 results nearby, open now, top rated.</span></div>
     </div>
   </div>
 </section>
@@ -564,6 +516,7 @@
     <div>© 2025 White Cloud. Christchurch, NZ. All prices NZD.</div>
   </div>
 </footer>
+</div>
 
 <script>
   // ── Nav shadow on scroll
@@ -600,21 +553,35 @@
     aiObserver.observe(aiTyping);
   }
   // ── Scroll-triggered fade animations — never touch FAQ elements
-  var animEls = document.querySelectorAll('.fu, .fug');
-  for (var k = 0; k < animEls.length; k++) {
-    animEls[k].classList.add('ready');
-  }
-  var fadeObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        fadeObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  for (var j = 0; j < animEls.length; j++) {
-    fadeObserver.observe(animEls[j]);
-  }
+  /* Scroll reveal now lives in /assets/reveal.js */
 </script>
+
+<script type="module">
+  import { initHeroCloud } from '/assets/hero-cloud.js';
+  import { initTilt } from '/assets/tilt.js';
+  import { initReveal } from '/assets/reveal.js';
+  import { initNav } from '/assets/nav.js';
+
+  var canvas = document.getElementById('cloudCanvas');
+  var headline = document.getElementById('heroHeadline');
+  initHeroCloud(canvas, {
+    clearing: function () {
+      if (window.innerWidth <= 900) return null;
+      var c = canvas.getBoundingClientRect();
+      var h = headline.getBoundingClientRect();
+      return {
+        left: h.left - c.left - 40, right: h.right - c.left + 40,
+        top: h.top - c.top - 30, bottom: h.bottom - c.top + 30
+      };
+    }
+  });
+
+  initNav(document.getElementById('mainnav'));
+  initReveal();
+
+  var card = document.getElementById('searchCard');
+  if (card) initTilt(card, { zone: card.parentElement, maxX: 6, maxY: 7 });
+</script>
+
 </body>
 </html>

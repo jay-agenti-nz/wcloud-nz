@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "white-cloud",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [".claude/preview-server.py", "8899"],
+      "port": 8899
+    }
+  ]
+}

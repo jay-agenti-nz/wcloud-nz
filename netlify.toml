@@ -24,18 +24,13 @@
   status = 200
 
 [[redirects]]
+  from = "/marketing"
+  to = "/marketing.html"
+  status = 200
+
+[[redirects]]
   from = "/restaurants"
   to = "/restaurants.html"
-  status = 200
-
-[[redirects]]
-  from = "/rakkhun"
-  to = "/rakkhun.html"
-  status = 200
-
-[[redirects]]
-  from = "/rakkhun/reveal"
-  to = "/rakkhun-reveal.html"
   status = 200
 
 [build.environment]
@@ -48,6 +43,11 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/og-*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
 
 [[headers]]
   for = "/og-*.png"

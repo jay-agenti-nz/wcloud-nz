@@ -320,11 +320,15 @@
   .v2-ai-sources span { font-family: var(--mark); font-size: .64rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); border: 1px solid rgba(255,255,255,.1); padding: .3rem .8rem; border-radius: var(--pill); }
 
   /* Pricing */
-  .v2-price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); align-items: start; }
+  /* stretch, not start: Cloud One has fewer lines than the others, so
+     aligning to the top left its card visibly short. Equal heights
+     also line the three Get started buttons up with each other. */
+  .v2-price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); align-items: stretch; }
   .v2-price {
     background: var(--white); border: 1px solid rgba(127,168,190,.28);
     border-radius: var(--radius-lg); padding: 2rem 1.9rem 2.1rem;
     display: flex; flex-direction: column; gap: .3rem;
+    height: 100%;
   }
   .v2-price-feat { border-color: var(--brand); box-shadow: 0 20px 50px rgba(127,168,190,.25); position: relative; }
   .v2-price-flag {
@@ -349,8 +353,10 @@
   /* Working with us */
   .v2-about { display: grid; grid-template-columns: auto 1fr; gap: var(--sp-4); align-items: start; }
   .v2-about-mark { display: flex; flex-direction: column; align-items: center; gap: .7rem; }
+  /* Wider crop than a headshot — the framing people recognise from
+     Instagram — so the circle is bigger to keep the face readable. */
   .v2-about-mark img {
-    width: 150px; height: 150px; border-radius: 50%;
+    width: 190px; height: 190px; border-radius: 50%;
     object-fit: cover; object-position: center;
     display: block;
     border: 3px solid var(--white);
@@ -361,6 +367,7 @@
   .v2-about-copy p { font-size: .98rem; }
 
   .v2-extras { display: grid; grid-template-columns: 1.25fr 1fr; gap: var(--sp-2); }
+  .v2-care-band .v2-extra { background: var(--white); }
   .v2-extra {
     background: var(--white); border: 1px solid rgba(127,168,190,.24);
     border-radius: var(--radius-lg); padding: 1.8rem 1.9rem 2rem;
@@ -1084,6 +1091,7 @@
   </section>
 
 
+
   <!-- Pointer to the marketing page, so it is not only reachable
        from the nav. -->
   <section class="v2-band v2-marketing-teaser">
@@ -1106,7 +1114,7 @@
 
     <div class="v2-about">
       <div class="v2-about-mark">
-        <img src="/assets/jay.jpg" alt="Jay, who runs White Cloud" width="480" height="480" loading="lazy" decoding="async">
+        <img src="/assets/jay.jpg" alt="Jay, who runs White Cloud, out running above Lyttelton Harbour" width="560" height="560" loading="lazy" decoding="async">
         <em>10+ years</em>
       </div>
       <div class="v2-about-copy">
@@ -1117,6 +1125,16 @@
       </div>
     </div>
 
+  </section>
+
+  <!-- Care plans and casual help — their own section, not a tail
+       on the piece about Jay. -->
+  <section id="care" class="v2-band alt v2-care-band">
+    <div class="v2-head">
+      <span class="lbl">After you&rsquo;re live</span>
+      <h2>Two ways we can keep helping</h2>
+      <p>Neither is required. Your website is yours once it&rsquo;s built.</p>
+    </div>
     <div class="v2-extras">
       <div class="v2-extra">
         <span class="v2-extra-lbl">Optional add-on</span>

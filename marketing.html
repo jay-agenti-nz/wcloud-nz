@@ -34,7 +34,7 @@
   .mk-hero {
     position: relative;
     display: grid; grid-template-columns: 54fr 46fr;
-    min-height: min(700px, 90vh);
+    min-height: min(780px, 94vh);
     padding: 0;
     isolation: isolate;
     background:
@@ -46,17 +46,18 @@
   .mk-hero-copy, .mk-hero-stage { position: relative; z-index: 1; }
   .mk-hero-copy {
     display: flex; flex-direction: column; align-items: flex-start;
-    justify-content: center; gap: 1.4rem; padding: 8rem 4.5rem 5rem;
+    justify-content: center; gap: var(--sp-3); padding: 8rem 4.5rem 5rem;
   }
-  .mk-hero-copy h1 { max-width: 17ch; font-size: clamp(2.2rem, 3.9vw, 3.5rem); }
-  .mk-hero-sub { font-size: 1.12rem; color: var(--dusk); max-width: 46ch; line-height: 1.75; }
+  /* Same display step as the homepage hero. */
+  .mk-hero-copy h1 { max-width: 16ch; }
+  .mk-hero-sub { font-size: var(--fs-lead); color: var(--dusk); max-width: 46ch; line-height: 1.75; }
   .mk-actions { display: flex; gap: .8rem; flex-wrap: wrap; }
   .mk-chips { display: flex; gap: .5rem; flex-wrap: wrap; }
 
   /* ── Hero graphic: the two things this page sells ──────────── */
   .mk-hero-stage { display: flex; align-items: center; justify-content: center; padding: 7rem 3.5rem 4rem 1rem; }
   .mk-demo {
-    width: 100%; max-width: 440px;
+    width: 100%; max-width: 460px;
     border-radius: var(--radius-lg);
     background: rgba(255,255,255,.62);
     backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
@@ -244,6 +245,11 @@
     .mk-offer { grid-template-columns: 1fr; }
   }
   @media (max-width: 900px) {
+    /* Desktop matches the homepage exactly, as asked. On a phone this
+       headline is 48 characters against the homepage's 31, so at the
+       same size it runs to five lines and pushes the buttons off the
+       screen. Slightly smaller here only. */
+    .mk-hero-copy h1 { font-size: clamp(2.2rem, 8.5vw, 2.9rem); }
     .mk-hero { grid-template-columns: 1fr; min-height: 0; }
     .mk-hero-copy { padding: 7rem 1.6rem 2.5rem; align-items: center; text-align: center; }
     .mk-hero-copy h1 { max-width: none; }

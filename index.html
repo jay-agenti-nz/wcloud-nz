@@ -351,10 +351,18 @@
   .v2-price button { margin-top: auto; align-self: flex-start; cursor: pointer; font-family: var(--sans); }
 
   /* Working with us */
-  .v2-about { display: grid; grid-template-columns: auto 1fr; gap: var(--sp-4); align-items: start; }
+  /* Stacked and centred: label, heading, photo, then the bio. The
+     paragraphs stay ranged left inside a centred column — centring
+     four paragraphs of body copy makes every line start in a
+     different place and is markedly harder to read. */
+  .v2-working .v2-head { text-align: center; align-items: center; margin: 0 auto; }
+  .v2-about {
+    display: flex; flex-direction: column; align-items: center;
+    gap: var(--sp-3); text-align: center;
+  }
   /* Dropped below the "Hi, I'm Jay" line so the photo sits against the
      bio rather than crowding the heading. */
-  .v2-about-mark { margin-top: 3.2rem; }
+  .v2-about-mark { margin-top: 0; }
   .v2-about-mark { display: flex; flex-direction: column; align-items: center; gap: .7rem; }
   /* Wider crop than a headshot — the framing people recognise from
      Instagram — so the circle is bigger to keep the face readable. */
@@ -370,7 +378,8 @@
     letter-spacing: .13em; text-transform: uppercase; color: var(--body);
     text-align: center; max-width: 210px; line-height: 1.7;
   }
-  .v2-about-copy { display: flex; flex-direction: column; gap: .9rem; max-width: 62ch; }
+  .v2-about-copy { display: flex; flex-direction: column; gap: .9rem; max-width: 66ch; text-align: left; }
+  .v2-about-copy h3 { text-align: center; font-size: 1.3rem; }
   .v2-about-copy p { font-size: .98rem; }
   .v2-extra-lbl { font-family: var(--mark); font-size: .63rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--brand-ink); }
   .v2-extra > p { font-size: .92rem; }
@@ -1208,7 +1217,6 @@
         <p>My job is simple: get you online fast, make it look great, and help you start finding customers as soon as possible.</p>
       </div>
     </div>
-
   </section>
 
 

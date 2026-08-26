@@ -365,20 +365,10 @@
   .v2-about-mark em { font-style: normal; font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--body); }
   .v2-about-copy { display: flex; flex-direction: column; gap: .9rem; max-width: 62ch; }
   .v2-about-copy p { font-size: .98rem; }
-
-  .v2-extras { display: grid; grid-template-columns: 1.25fr 1fr; gap: var(--sp-2); }
-  .v2-care-band .v2-extra { background: var(--brand-pale); border-color: rgba(127,168,190,.22); }
-  .v2-extra {
-    background: var(--white); border: 1px solid rgba(127,168,190,.24);
-    border-radius: var(--radius-lg); padding: 1.8rem 1.9rem 2rem;
-    display: flex; flex-direction: column; gap: .45rem;
-  }
   .v2-extra-lbl { font-family: var(--mark); font-size: .63rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--brand-ink); }
   .v2-extra > p { font-size: .92rem; }
-  .v2-care { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-2); margin-top: .9rem; }
   .v2-care > div { background: var(--brand-pale); border-radius: var(--radius); padding: 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .2rem; }
   .v2-care strong { font-family: var(--serif); font-size: 1rem; color: var(--deep); }
-  .v2-care-amt { font-size: .76rem; font-weight: 700; letter-spacing: .06em; color: var(--brand-ink); }
   .v2-care p { font-size: .84rem; margin-top: .3rem; }
   .v2-fineprint { font-size: .78rem; color: var(--body); margin-top: 1rem; }
 
@@ -420,12 +410,11 @@
   @media (max-width: 1050px) {
     .v2-four { grid-template-columns: 1fr 1fr; }
     .v2-price-grid { grid-template-columns: 1fr; max-width: 520px; }
-    .v2-extras { grid-template-columns: 1fr; }
   }
   @media (max-width: 900px) {
     .v2-band, #contact { padding: var(--sp-5) 1.6rem; }
     .v2-trust { padding: 1.2rem 1.6rem; gap: .8rem 2rem; }
-    .v2-three, .v2-four, .v2-steps, .v2-ai-grid, .v2-care { grid-template-columns: 1fr; }
+    .v2-three, .v2-four, .v2-steps, .v2-ai-grid { grid-template-columns: 1fr; }
     .v2-about { grid-template-columns: 1fr; }
     .v2-cta { padding: var(--sp-5) 1.6rem; }
     .contact-form { padding: 1.8rem 1.4rem; }
@@ -612,13 +601,28 @@
 
   /* Care plans get the full width; casual help sits underneath as a
      note rather than a second card competing for the same attention. */
-  .v2-extra-wide { width: 100%; }
   .v2-casual {
     display: flex; flex-direction: column; gap: .3rem;
     max-width: 62ch; margin-top: var(--sp-2);
   }
   .v2-casual p { font-size: .95rem; }
   .v2-casual .v2-proj-go { margin-top: .7rem; }
+
+  /* Care plans use the same card as the website packages, so the two
+     kinds of pricing on this page look like one system. Two columns,
+     not three, so the cards do not stretch thin. */
+  /* Spans the band like the package row above, rather than a narrow
+     pair hugging the left edge. */
+  .v2-care-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-2); align-items: stretch;
+  }
+  .v2-care-lead { max-width: 66ch; font-size: 1rem; }
+  .v2-care-band .v2-price { background: var(--brand-pale); border-color: rgba(127,168,190,.28); }
+  .v2-care-band .v2-price .btn-o { margin-top: auto; align-self: flex-start; }
+  @media (max-width: 700px) {
+    .v2-care-grid { grid-template-columns: 1fr; max-width: 440px; }
+  }
 
 </style>
 <script type="application/ld+json">
@@ -1129,22 +1133,41 @@
       <h2>Two ways we can keep helping</h2>
       <p>Neither is required. Your website is yours once it&rsquo;s built.</p>
     </div>
-    <div class="v2-extra v2-extra-wide">
-      <span class="v2-extra-lbl">Optional add-on</span>
-      <h3>Monthly care plans</h3>
-      <p>Your site is built and ready. If you&rsquo;d like someone to look after it &mdash; updated, backed up and running smoothly &mdash; we offer optional care plans. No lock-in, cancel any time.</p>
-      <div class="v2-care">
-        <div>
-          <strong>Basic Care</strong><span class="v2-care-amt">NZ$49 / month</span>
-          <p>Security updates, regular backups, uptime monitoring, one small content change a month, email support.</p>
-        </div>
-        <div>
-          <strong>Full Care</strong><span class="v2-care-amt">NZ$99 / month</span>
-          <p>Everything in Basic, plus up to three content updates a month, priority phone and email support, performance checks and an annual design refresh consultation.</p>
-        </div>
+    <p class="v2-care-lead">Your site is built and ready. If you&rsquo;d like someone to look after it &mdash; updated, backed up and running smoothly &mdash; we offer optional care plans. No lock-in, cancel any time.</p>
+
+    <div class="v2-care-grid">
+      <div class="v2-price">
+        <h3>Basic Care</h3>
+        <p class="v2-price-amt">NZ$<strong>49</strong></p>
+        <span class="v2-price-note">Per month</span>
+        <p class="v2-price-desc">Great for keeping things running smoothly in the background.</p>
+        <ul>
+          <li>Monthly security updates</li>
+          <li>Regular backups</li>
+          <li>Uptime monitoring</li>
+          <li>1 small content change per month</li>
+          <li>Email support</li>
+        </ul>
+        <a href="#contact" class="btn-o">Ask about Basic</a>
       </div>
-      <p class="v2-fineprint">Care plans are month-to-month. Cancel any time, no fees. Hosting is separate and we&rsquo;ll help you find the best option.</p>
+
+      <div class="v2-price">
+        <h3>Full Care</h3>
+        <p class="v2-price-amt">NZ$<strong>99</strong></p>
+        <span class="v2-price-note">Per month</span>
+        <p class="v2-price-desc">Everything in Basic, plus hands-on help whenever you need it.</p>
+        <ul>
+          <li>Everything in Basic Care</li>
+          <li>Up to 3 content updates per month</li>
+          <li>Priority support (phone + email)</li>
+          <li>Performance check &amp; improvements</li>
+          <li>Annual design refresh consultation</li>
+        </ul>
+        <a href="#contact" class="btn-o">Ask about Full Care</a>
+      </div>
     </div>
+
+    <p class="v2-fineprint">Care plans are month-to-month. Cancel any time, no fees. Hosting is separate and we&rsquo;ll help you find the best option.</p>
 
     <!-- Not a card: it is a footnote to the care plans above, not a
          second option competing with them. -->

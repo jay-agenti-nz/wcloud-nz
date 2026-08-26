@@ -367,7 +367,7 @@
   .v2-about-copy p { font-size: .98rem; }
 
   .v2-extras { display: grid; grid-template-columns: 1.25fr 1fr; gap: var(--sp-2); }
-  .v2-care-band .v2-extra { background: var(--white); }
+  .v2-care-band .v2-extra { background: var(--brand-pale); border-color: rgba(127,168,190,.22); }
   .v2-extra {
     background: var(--white); border: 1px solid rgba(127,168,190,.24);
     border-radius: var(--radius-lg); padding: 1.8rem 1.9rem 2rem;
@@ -383,7 +383,10 @@
   .v2-fineprint { font-size: .78rem; color: var(--body); margin-top: 1rem; }
 
   /* FAQ — a real disclosure list, not divs pretending to be buttons. */
-  .v2-faq-list { display: flex; flex-direction: column; max-width: 78ch; }
+  /* Centred: a single narrow column of questions hugging the left
+     edge of a wide band read as misaligned. */
+  .v2-faq .v2-head { text-align: center; align-items: center; margin: 0 auto; }
+  .v2-faq-list { display: flex; flex-direction: column; max-width: 78ch; margin: 0 auto; width: 100%; }
   .v2-faq-item { border-bottom: 1px solid rgba(127,168,190,.28); }
   .v2-faq-item h3 { margin: 0; font-size: 1rem; }
   .v2-faq-btn {
@@ -595,7 +598,10 @@
   }
 
   /* Marketing teaser */
-  .v2-marketing-teaser { background: var(--brand-pale); }
+  /* Sits directly under the pricing cards, so it does not need a
+     full band's worth of air above it. */
+  .v2-marketing-teaser { background: var(--brand-pale); padding-top: var(--sp-4); }
+  #pricing { padding-bottom: var(--sp-5); }
   .v2-teaser {
     display: flex; align-items: center; justify-content: space-between;
     gap: var(--sp-4); flex-wrap: wrap;
@@ -603,6 +609,16 @@
   .v2-teaser > div { max-width: 60ch; display: flex; flex-direction: column; gap: .25rem; }
   .v2-teaser p { margin-top: .5rem; font-size: 1rem; }
   .v2-teaser .btn-p { flex-shrink: 0; }
+
+  /* Care plans get the full width; casual help sits underneath as a
+     note rather than a second card competing for the same attention. */
+  .v2-extra-wide { width: 100%; }
+  .v2-casual {
+    display: flex; flex-direction: column; gap: .3rem;
+    max-width: 62ch; margin-top: var(--sp-2);
+  }
+  .v2-casual p { font-size: .95rem; }
+  .v2-casual .v2-proj-go { margin-top: .7rem; }
 
 </style>
 <script type="application/ld+json">
@@ -1105,8 +1121,45 @@
     </div>
   </section>
 
+  <!-- Care plans and casual help — their own section, not a tail
+       on the piece about Jay. -->
+  <section id="care" class="v2-band v2-care-band">
+    <div class="v2-head">
+      <span class="lbl">After you&rsquo;re live</span>
+      <h2>Two ways we can keep helping</h2>
+      <p>Neither is required. Your website is yours once it&rsquo;s built.</p>
+    </div>
+    <div class="v2-extra v2-extra-wide">
+      <span class="v2-extra-lbl">Optional add-on</span>
+      <h3>Monthly care plans</h3>
+      <p>Your site is built and ready. If you&rsquo;d like someone to look after it &mdash; updated, backed up and running smoothly &mdash; we offer optional care plans. No lock-in, cancel any time.</p>
+      <div class="v2-care">
+        <div>
+          <strong>Basic Care</strong><span class="v2-care-amt">NZ$49 / month</span>
+          <p>Security updates, regular backups, uptime monitoring, one small content change a month, email support.</p>
+        </div>
+        <div>
+          <strong>Full Care</strong><span class="v2-care-amt">NZ$99 / month</span>
+          <p>Everything in Basic, plus up to three content updates a month, priority phone and email support, performance checks and an annual design refresh consultation.</p>
+        </div>
+      </div>
+      <p class="v2-fineprint">Care plans are month-to-month. Cancel any time, no fees. Hosting is separate and we&rsquo;ll help you find the best option.</p>
+    </div>
+
+    <!-- Not a card: it is a footnote to the care plans above, not a
+         second option competing with them. -->
+    <div class="v2-casual">
+      <span class="v2-extra-lbl">Flexible options</span>
+      <h3>Already have a website?</h3>
+      <p>Not everything needs a full rebuild &mdash; sometimes you just need a fix, an update, or someone to take it off your plate. Happy to help casually, pay-as-you-go, no fixed package required.</p>
+      <a href="#contact" class="v2-proj-go">Ask about casual help
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
   <!-- WORKING WITH US — About, care plans and casual help, merged -->
-  <section id="about" class="v2-band v2-working">
+  <section id="about" class="v2-band alt v2-working">
     <div class="v2-head">
       <span class="lbl">Working with us</span>
       <h2>The person behind White Cloud</h2>
@@ -1127,45 +1180,9 @@
 
   </section>
 
-  <!-- Care plans and casual help — their own section, not a tail
-       on the piece about Jay. -->
-  <section id="care" class="v2-band alt v2-care-band">
-    <div class="v2-head">
-      <span class="lbl">After you&rsquo;re live</span>
-      <h2>Two ways we can keep helping</h2>
-      <p>Neither is required. Your website is yours once it&rsquo;s built.</p>
-    </div>
-    <div class="v2-extras">
-      <div class="v2-extra">
-        <span class="v2-extra-lbl">Optional add-on</span>
-        <h3>Monthly care plans</h3>
-        <p>Your site is built and ready. If you&rsquo;d like someone to look after it &mdash; updated, backed up and running smoothly &mdash; we offer optional care plans. No lock-in, cancel any time.</p>
-        <div class="v2-care">
-          <div>
-            <strong>Basic Care</strong><span class="v2-care-amt">NZ$49 / month</span>
-            <p>Security updates, regular backups, uptime monitoring, one small content change a month, email support.</p>
-          </div>
-          <div>
-            <strong>Full Care</strong><span class="v2-care-amt">NZ$99 / month</span>
-            <p>Everything in Basic, plus up to three content updates a month, priority phone and email support, performance checks and an annual design refresh consultation.</p>
-          </div>
-        </div>
-        <p class="v2-fineprint">Care plans are month-to-month. Cancel any time, no fees. Hosting is separate and we&rsquo;ll help you find the best option.</p>
-      </div>
-
-      <div class="v2-extra">
-        <span class="v2-extra-lbl">Flexible options</span>
-        <h3>Already have a website?</h3>
-        <p>Not everything needs a full rebuild &mdash; sometimes you just need a fix, an update, or someone to take it off your plate. Happy to help casually, pay-as-you-go, no fixed package required.</p>
-        <a href="#contact" class="v2-proj-go">Ask about casual help
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
 
   <!-- FAQ -->
-  <section id="faq" class="v2-band alt v2-faq">
+  <section id="faq" class="v2-band v2-faq">
     <div class="v2-head">
       <span class="lbl">Common questions</span>
       <h2>Good questions, straight answers</h2>

@@ -233,8 +233,13 @@
   .mk-cta a.mail { color: #fff; font-weight: 700; }
   .mk-cta-btns { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; margin-top: .6rem; }
 
+  /* Two cards, full width of the band — the same rhythm as the
+     three-card ads row, rather than a narrow pair hugging the left. */
+  .mk-price-pair { grid-template-columns: 1fr 1fr; }
+
   @media (max-width: 1050px) {
     .mk-three, .mk-next { grid-template-columns: 1fr 1fr; }
+    .mk-price-pair { grid-template-columns: 1fr; max-width: 520px; }
     .mk-price-grid { grid-template-columns: 1fr; max-width: 520px; }
     .mk-offer { grid-template-columns: 1fr; }
   }
@@ -501,7 +506,7 @@
       <h2>Keep customers coming back</h2>
       <p>Your email list is the one audience you own outright &mdash; no algorithm, no ad spend, no platform deciding who sees you.</p>
     </div>
-    <div class="mk-price-grid" style="grid-template-columns:repeat(2,1fr);max-width:760px">
+    <div class="mk-price-grid mk-price-pair">
       <div class="mk-price">
         <span class="mk-price-kind">Setup</span>
         <p class="mk-price-amt">$<strong>350</strong> <span class="per">one-off</span></p>
@@ -607,7 +612,6 @@
       <a href="/#contact" class="btn-w">Get in touch</a>
       <a href="/#pricing" class="btn-g">Website packages</a>
     </div>
-    <p style="margin-top:.6rem">Questions? Jay &mdash; <a class="mail" href="mailto:kiaora@wcloud.nz">kiaora@wcloud.nz</a></p>
   </section>
 
   <footer>
@@ -623,6 +627,7 @@
         <a href="/privacy">Privacy Policy</a>
         <a href="/terms">Terms &amp; Conditions</a>
         <a href="/intake">New Client Intake Form</a>
+        <a href="mailto:kiaora@wcloud.nz">kiaora@wcloud.nz</a>
       </div>
       <div>&copy; 2026 White Cloud. Christchurch, NZ. All prices NZD.</div>
     </div>

@@ -351,15 +351,10 @@
   .v2-price button { margin-top: auto; align-self: flex-start; cursor: pointer; font-family: var(--sans); }
 
   /* Working with us */
-  /* Centred as a block, with the bio kept left-aligned inside its own
-     column so it stays readable. Left-aligning the whole thing in a
-     wide band left a third of the row empty. */
-  .v2-working .v2-head { text-align: center; align-items: center; margin: 0 auto; }
-  .v2-about {
-    display: grid; grid-template-columns: auto minmax(0, 58ch);
-    gap: var(--sp-4); align-items: start;
-    justify-content: center; margin: 0 auto;
-  }
+  .v2-about { display: grid; grid-template-columns: auto 1fr; gap: var(--sp-4); align-items: start; }
+  /* Dropped below the "Hi, I'm Jay" line so the photo sits against the
+     bio rather than crowding the heading. */
+  .v2-about-mark { margin-top: 3.2rem; }
   .v2-about-mark { display: flex; flex-direction: column; align-items: center; gap: .7rem; }
   /* Wider crop than a headshot — the framing people recognise from
      Instagram — so the circle is bigger to keep the face readable. */
@@ -375,7 +370,7 @@
     letter-spacing: .13em; text-transform: uppercase; color: var(--body);
     text-align: center; max-width: 210px; line-height: 1.7;
   }
-  .v2-about-copy { display: flex; flex-direction: column; gap: .9rem; }
+  .v2-about-copy { display: flex; flex-direction: column; gap: .9rem; max-width: 62ch; }
   .v2-about-copy p { font-size: .98rem; }
   .v2-extra-lbl { font-family: var(--mark); font-size: .63rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--brand-ink); }
   .v2-extra > p { font-size: .92rem; }
@@ -1196,7 +1191,7 @@
   <!-- WORKING WITH US — About, care plans and casual help, merged -->
   <section id="about" class="v2-band alt v2-working">
     <div class="v2-head">
-      <span class="lbl">Working with us</span>
+      <span class="lbl">Who you&rsquo;ll work with</span>
       <h2>The person behind White Cloud</h2>
     </div>
 

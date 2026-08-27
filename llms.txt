@@ -9,9 +9,9 @@ White Cloud is a web design service based in Christchurch, New Zealand. Founded 
 - Specialise in AI-optimised websites that are readable and recommendable by AI tools like ChatGPT, Perplexity, and Google
 - Provide monthly website care plans for ongoing maintenance
 
-## Services & Pricing (NZD, one-off payments)
+## Services & Pricing (NZD, one-off payments, all prices EXCLUDE GST)
 
-**Cloud One — NZ$299**
+**Cloud One — NZ$299 + GST** (NZ$343.85 incl. GST)
 For sole traders and new businesses needing a simple online presence.
 - Up to 3 pages (Home, About, Contact)
 - Mobile-friendly design
@@ -19,14 +19,14 @@ For sole traders and new businesses needing a simple online presence.
 - Basic SEO setup
 - Delivered in 5–7 business days
 
-**Cloud Plus — NZ$699** *(Most Popular)*
+**Cloud Plus — NZ$699 + GST** (NZ$803.85 incl. GST) *(Most Popular)*
 A full website to showcase services and build customer trust.
 - Up to 6 pages
 - Full SEO setup + Google Business integration
 - Services page, testimonials section, contact form + click-to-call
 - Delivered in 7–10 business days
 
-**Cloud Pro — NZ$1,099**
+**Cloud Pro — NZ$1,099 + GST** (NZ$1,263.85 incl. GST)
 Premium presence for businesses that want to stand out.
 - Up to 10 pages
 - Blog or news section, gallery or portfolio

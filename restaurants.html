@@ -247,7 +247,10 @@
 [
   {
     "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "ProfessionalService"],
+    "@type": [
+      "LocalBusiness",
+      "ProfessionalService"
+    ],
     "@id": "https://wcloud.nz/#business",
     "name": "White Cloud",
     "url": "https://wcloud.nz",
@@ -264,15 +267,28 @@
     "areaServed": {
       "@type": "Country",
       "name": "New Zealand"
-    }
+    },
+    "telephone": "+6421854847",
+    "sameAs": [
+      "https://www.instagram.com/wcloud.nz",
+      "https://www.facebook.com/people/White-Cloud/61588630418801/"
+    ]
   },
   {
     "@context": "https://schema.org",
     "@type": "Service",
     "serviceType": "Restaurant, café and food truck website design",
-    "provider": { "@id": "https://wcloud.nz/#business" },
-    "areaServed": { "@type": "City", "name": "Christchurch" },
-    "audience": { "@type": "Audience", "audienceType": "Restaurants, cafés and food trucks" },
+    "provider": {
+      "@id": "https://wcloud.nz/#business"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Christchurch"
+    },
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Restaurants, cafés and food trucks"
+    },
     "url": "https://wcloud.nz/restaurants",
     "description": "Website design for restaurants, cafés and food trucks of any cuisine — menu pages, one-tap call/order/directions, accurate opening hours, and visibility on Google and AI search tools."
   },
@@ -283,21 +299,50 @@
       {
         "@type": "Question",
         "name": "Can I update the menu myself?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes — you can send us changes anytime. If you'd rather not think about it, you can add a care plan and we'll keep it current for you — plans are flexible, and pricing can be tailored to how often you need updates." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — you can send us changes anytime. If you'd rather not think about it, you can add a care plan and we'll keep it current for you — plans are flexible, and pricing can be tailored to how often you need updates."
+        }
       },
       {
         "@type": "Question",
         "name": "Do you handle online ordering?",
-        "acceptedAnswer": { "@type": "Answer", "text": "We link out to your existing ordering platform (or help you pick one) and make it one tap from your homepage." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We link out to your existing ordering platform (or help you pick one) and make it one tap from your homepage."
+        }
       },
       {
         "@type": "Question",
         "name": "What if I already have a website but it's bad?",
-        "acceptedAnswer": { "@type": "Answer", "text": "That's most of who we hear from. We can rebuild it properly — same process, same timeline." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "That's most of who we hear from. We can rebuild it properly — same process, same timeline."
+        }
       }
     ]
   }
 ]
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://wcloud.nz/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Restaurants",
+      "item": "https://wcloud.nz/restaurants"
+    }
+  ]
+}
 </script>
 </head>
 <body class="wc-canvas">
@@ -315,6 +360,7 @@
     <li><a href="#solution">How it works</a></li>
     <li><a href="#portfolio">Our work</a></li>
     <li><a href="/#pricing">Websites</a></li>
+    <li><a href="/blog">Guides</a></li>
     <li><a href="/marketing">Marketing</a></li>
     <li><a href="/">Main site</a></li>
     <li><a href="/#contact" class="wc-nav-cta">Get started</a></li>
@@ -507,13 +553,19 @@
       </svg>
       <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
     </a>
+    <div class="foot-nap">
+    <strong>White Cloud</strong>
+    <span>Christchurch, Canterbury, New Zealand</span>
+    <a href="tel:+6421854847">021 854 847</a>
+    </div>
     <div class="foot-links">
-      <a href="privacy.html" target="_blank">Privacy Policy</a>
-      <a href="terms.html" target="_blank">Terms &amp; Conditions</a>
+      <a href="/blog">Guides</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms &amp; Conditions</a>
       <a href="/intake">New Client Intake Form</a>
       <a href="https://agenti.nz" target="_blank">Backend operations powered by Agenti NZ</a>
     </div>
-    <div>© 2025 White Cloud. Christchurch, NZ. All prices NZD.</div>
+    <div>&copy; 2026 White Cloud. Christchurch, NZ. All prices NZD.</div>
   </div>
 </footer>
 </div>

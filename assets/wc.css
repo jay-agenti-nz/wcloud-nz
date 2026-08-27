@@ -378,6 +378,67 @@ body.wc-canvas > .wc-sheet {
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
 }
 
+
+/* ── BLOG ───────────────────────────────────────────────────────
+   One centred column at a readable measure. Articles are read
+   top-to-bottom, so the job here is typography and rhythm, not
+   layout. */
+.wc-article { background: var(--white); padding: 9rem var(--gutter) var(--sp-7); }
+.wc-article-inner { max-width: 68ch; margin: 0 auto; }
+.wc-article-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem; align-items: baseline;
+  font-family: var(--mark); font-size: .68rem; font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--brand-ink);
+  margin-bottom: 1.1rem;
+}
+.wc-article h1 { font-size: clamp(2.1rem, 4.2vw, 3.1rem); letter-spacing: -.015em; margin-bottom: 1rem; }
+.wc-article-lead { font-size: 1.14rem; line-height: 1.8; color: var(--dusk); margin-bottom: var(--sp-4); }
+.wc-article h2 {
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin: var(--sp-4) 0 .7rem;
+  padding-top: var(--sp-2); border-top: 1px solid rgba(127,168,190,.24);
+}
+.wc-article h3 { font-size: 1.1rem; margin: var(--sp-3) 0 .4rem; }
+.wc-article p { font-size: 1.02rem; line-height: 1.85; margin-bottom: 1.1rem; }
+.wc-article ul { margin: 0 0 1.4rem; padding: 0; list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+.wc-article li { position: relative; padding-left: 1.3rem; color: var(--body); font-weight: 500; line-height: 1.75; }
+.wc-article li::before {
+  content: ''; position: absolute; left: 0; top: .66em;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--brand);
+}
+.wc-article strong { color: var(--deep); font-weight: 700; }
+.wc-article a { color: var(--brand-ink); font-weight: 700; }
+
+/* Closing note that turns a reader into an enquiry */
+.wc-article-cta {
+  margin-top: var(--sp-5); padding: 1.8rem 2rem;
+  background: var(--brand-pale); border: 1px solid rgba(127,168,190,.24);
+  border-radius: var(--radius-lg);
+}
+.wc-article-cta h2 { border-top: 0; padding-top: 0; margin-top: 0; font-size: 1.25rem; }
+.wc-article-cta p { margin-bottom: 1.1rem; }
+
+/* Index */
+.wc-posts { display: flex; flex-direction: column; gap: var(--sp-2); }
+.wc-post {
+  display: block; text-decoration: none; color: inherit;
+  padding: 1.8rem 2rem; border-radius: var(--radius-lg);
+  background: var(--white); border: 1px solid rgba(127,168,190,.24);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
+}
+.wc-post:hover, .wc-post:focus-visible {
+  transform: translateY(-2px); border-color: rgba(127,168,190,.5);
+  box-shadow: 0 18px 44px rgba(42,61,74,.14);
+}
+/* Cards are not article sections — no divider rule above the title. */
+.wc-post h2 { font-size: 1.35rem; margin: .3rem 0 .4rem; border-top: 0; padding-top: 0; }
+.wc-article-cta h2 { border-top: 0; padding-top: 0; }
+.wc-post p { font-size: .95rem; }
+.wc-post-go { display: inline-flex; align-items: center; gap: .4rem; margin-top: .9rem; color: var(--brand-ink); font-size: .82rem; font-weight: 700; }
+
+@media (max-width: 900px) {
+  .wc-article { padding: 7rem 1.6rem var(--sp-5); }
+}
+
 /* ── FOOTER ─────────────────────────────────────────────────── */
 footer {
   background: #1c2e38; padding: 2.2rem var(--gutter);
@@ -392,6 +453,13 @@ footer {
 .foot-in { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
 .foot-links { display:flex; gap:1.8rem; flex-wrap:wrap; }
 .foot-links a { color:rgba(255,255,255,.35); text-decoration:none; transition:color .2s; }
+
+/* Visible NAP. Worded to match the address in the JSON-LD and the
+   Google Business Profile exactly — a consistent name and address
+   across the web is what local search actually checks for. */
+.foot-nap { display: flex; flex-direction: column; line-height: 1.5; }
+.foot-nap strong { color: rgba(255,255,255,.62); font-weight: 700; }
+.foot-nap span { color: rgba(255,255,255,.35); }
 
 /* ── SCROLL REVEAL ──────────────────────────────────────────── */
 /* Elements are visible by default; JS adds .ready only when it can

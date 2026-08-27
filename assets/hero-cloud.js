@@ -16,7 +16,7 @@
    ══════════════════════════════════════════════════════════════ */
 
 /* Seeded RNG so the cloud arrangement is the same on every visit. */
-function makeRandom(seed) {
+export function makeRandom(seed) {
   let s = seed >>> 0;
   return function () {
     s = (s * 1664525 + 1013904223) >>> 0;
@@ -29,7 +29,7 @@ function makeRandom(seed) {
    shape is built first, then a top-to-bottom gradient is painted
    inside it. That gradient is what makes a flat sprite read as a
    volume — bright crown, cool shaded underside. */
-function makeCloudTexture(rand, blurPx) {
+export function makeCloudTexture(rand, blurPx) {
   const S = 256;
   const c = document.createElement('canvas');
   c.width = c.height = S;

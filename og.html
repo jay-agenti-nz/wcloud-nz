@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>White Cloud — social card source</title>
+<meta name="robots" content="noindex, nofollow">
+<!--
+  Source for og-image.jpg. Rendered at exactly 1200x630 and captured
+  with .claude/make-og.js, so the card uses the site's real fonts, the
+  real logo and the same cloud textures the hero draws — rather than a
+  hand-drawn approximation that drifts away from the site over time.
+
+  To regenerate:  node .claude/make-og.js
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/wc.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #8fadbd; }
+  #card {
+    position: relative; width: 1200px; height: 630px; overflow: hidden;
+    background: linear-gradient(170deg, var(--ground) 0%, var(--ground-deep) 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* Same framed sheet as the site */
+  #sheet {
+    position: relative; width: 1148px; height: 578px;
+    border-radius: 28px; overflow: hidden;
+    box-shadow: 0 24px 70px rgba(28,46,56,.28);
+    background:
+      radial-gradient(58% 46% at 74% 24%, rgba(255,255,255,.85), transparent 62%),
+      radial-gradient(52% 52% at 14% 84%, rgba(255,255,255,.42), transparent 64%),
+      linear-gradient(168deg, #e3eff6 0%, #cee2ee 46%, #bed7e7 100%);
+  }
+  #clouds { position: absolute; inset: 0; width: 1148px; height: 578px; }
+  #content {
+    position: absolute; inset: 0; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
+    gap: 1.4rem; padding: 0 4rem;
+  }
+  .og-mark { display: flex; align-items: center; gap: .75rem; position: absolute; top: 3rem; left: 4rem; }
+  .og-mark .logo-wordmark span { color: var(--deep); }
+  .og-mark .logo-wordmark span:last-child { color: var(--body); }
+  h1 { font-size: 76px; line-height: 1.08; letter-spacing: -.022em; max-width: 15ch; margin: 0; }
+  .og-sub { font-size: 25px; color: var(--dusk); font-weight: 500; max-width: 46ch; margin: 0; }
+  .og-chips { display: flex; gap: .6rem; margin-top: .4rem; }
+  .og-chips .wc-chip { font-size: 17px; padding: .5rem 1.1rem; }
+</style>
+</head>
+<body>
+<div id="card">
+  <div id="sheet">
+    <canvas id="clouds" width="1148" height="578"></canvas>
+
+    <div class="og-mark">
+      <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none" style="width:52px;height:30px">
+        <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#4d6e80" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(127,168,190,.55)" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <div class="logo-wordmark" style="font-size:.86rem">
+        <span>WHITE</span><span>CLOUD</span>
+      </div>
+    </div>
+
+    <div id="content">
+      <h1 class="wc-display">A proper website. Done for you.</h1>
+      <p class="og-sub">Websites for small business and self-employed Kiwis.</p>
+      <div class="og-chips">
+        <span class="wc-chip">From NZ$299</span>
+        <span class="wc-chip">Ready in 5&ndash;10 days</span>
+        <span class="wc-chip">Christchurch, NZ</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import { makeCloudTexture, makeRandom } from '/assets/hero-cloud.js';
+
+  /* The same puffs the hero draws, composited onto a 2D canvas at
+     fixed positions so the card is identical every time it is made. */
+  const c = document.getElementById('clouds');
+  const ctx = c.getContext('2d');
+  const rand = makeRandom(20260821);            // same seed as the hero
+  const tex = [0, 1.5, 4].map(b => makeCloudTexture(rand, b));
+
+  const W = 1148, H = 578;
+  /* Smaller and pushed right, clear of the headline — the hero keeps
+     a clearing behind its type and this card should too. */
+  const clouds = [
+    { x: 0.72, y: 0.14, s: 0.17, layer: 2, a: 0.9 },
+    { x: 0.90, y: 0.30, s: 0.13, layer: 1, a: 0.8 },
+    { x: 0.80, y: 0.52, s: 0.19, layer: 2, a: 0.88 },
+    { x: 0.96, y: 0.66, s: 0.14, layer: 1, a: 0.72 },
+    { x: 0.66, y: 0.84, s: 0.15, layer: 0, a: 0.6 },
+    { x: 0.88, y: 0.92, s: 0.17, layer: 2, a: 0.66 },
+    { x: 0.58, y: 0.34, s: 0.10, layer: 0, a: 0.42 }
+  ];
+
+  for (const cl of clouds) {
+    const size = W * cl.s;
+    ctx.globalAlpha = cl.a;
+    ctx.drawImage(tex[cl.layer], cl.x * W - size / 2, cl.y * H - size / 2, size, size);
+  }
+  ctx.globalAlpha = 1;
+  document.body.dataset.ready = 'true';
+</script>
+</body>
+</html>

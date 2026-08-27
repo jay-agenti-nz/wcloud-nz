@@ -647,6 +647,16 @@
     .v2-care-grid { grid-template-columns: 1fr; max-width: 440px; }
   }
 
+  .form-call {
+    text-align: center; margin-top: 1.1rem;
+    font-size: .9rem; color: var(--body);
+  }
+  .form-call a {
+    color: var(--brand-ink); font-weight: 700; text-decoration: none;
+    border-bottom: 1px solid rgba(68,109,133,.35); padding-bottom: 1px;
+  }
+  .form-call a:hover { border-bottom-color: var(--brand-ink); }
+
 </style>
 <script type="application/ld+json">
 [
@@ -1348,6 +1358,12 @@
         </div>
 
         <button type="submit" class="form-submit">Send My Enquiry →</button>
+
+        <!-- Secondary on purpose: the form is still the main path, but
+             plenty of small business owners would rather just ring. -->
+        <p class="form-call">Prefer to talk? Call
+          <a href="tel:+6421854847">021 854 847</a>
+        </p>
       </form>
 
       <div class="form-success" id="formSuccess" style="display:none;">
@@ -1397,7 +1413,7 @@
       <a href="/intake">New Client Intake Form</a>
       <a href="https://agenti.nz" target="_blank">Backend operations powered by Agenti NZ</a>
     </div>
-    <div class="foot-legal">&copy; 2026 <strong>White Cloud</strong> &middot; Christchurch, Canterbury, New Zealand &middot; <a href="tel:+6421854847">021 854 847</a> &middot; All prices NZD.</div>
+    <div class="foot-legal">&copy; 2026 White Cloud &middot; Christchurch, Canterbury, New Zealand &middot; <a href="tel:+6421854847">021 854 847</a> &middot; All prices NZD.</div>
   </div>
 </footer>
 

@@ -458,7 +458,6 @@ footer {
    block of their own. Google needs them as crawlable text that matches
    the JSON-LD exactly; it does not need them to be prominent. */
 .foot-legal { line-height: 1.7; }
-.foot-legal strong { color: rgba(255,255,255,.55); font-weight: 700; }
 .foot-legal a { color: rgba(255,255,255,.45); text-decoration: none; }
 .foot-legal a:hover { color: rgba(255,255,255,.75); }
 

@@ -693,6 +693,23 @@
       .nav, .progress-bar-wrap, .submit-wrap, .footer { display:none; }
       .form-section { box-shadow:none; border:1px solid #ddd; break-inside:avoid; }
     }
+
+    /* Said before the first field, not buried at the end: under the
+       Privacy Act people should know why you want their details at the
+       point you ask for them. */
+    .intake-privacy {
+      max-width: 780px; margin: 0 auto 2rem; padding: 1.5rem 1.7rem;
+      background: var(--brand-pale); border: 1px solid rgba(127,168,190,.28);
+      border-radius: var(--r-lg, 18px);
+    }
+    .intake-privacy h2 {
+      font-family: var(--serif); font-size: 1.05rem; font-weight: 700;
+      color: var(--deep); margin-bottom: .6rem;
+    }
+    .intake-privacy p { font-size: .9rem; line-height: 1.7; margin-bottom: .6rem; }
+    .intake-privacy p:last-child { margin-bottom: 0; }
+    .intake-privacy a { color: var(--brand-ink, #446d85); font-weight: 700; }
+    .submit-note a { color: var(--brand-ink, #446d85); font-weight: 700; }
   </style>
 </head>
 <body>
@@ -794,6 +811,14 @@
   </div>
 
   <!-- FORM -->
+
+  <div class="intake-privacy">
+    <h2>Before you start &mdash; what happens to this</h2>
+    <p>Everything you enter here goes to Jay at White Cloud and nowhere else. It is submitted through Netlify Forms, which stores it on servers in the United States, and a copy is emailed to us. We use it only to build and deliver your website.</p>
+    <p>Only your name, business name, email and a few basics are required &mdash; every other field is optional. Skip anything you would rather not share, or tell us in person instead.</p>
+    <p>You can ask us to correct or delete what you send at any time. The full detail is in our <a href="/privacy">Privacy Policy</a>.</p>
+  </div>
+
   <form name="white-cloud-intake" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="intakeForm" novalidate>
     <input type="hidden" name="form-name" value="white-cloud-intake"/>
     <p style="display:none;"><label>Don't fill this out: <input name="bot-field"/></label></p>
@@ -885,8 +910,8 @@
         </div>
         <div class="field-row">
           <div class="field-group">
-            <label class="field-label" for="gst_number">GST / Business Reg. Number <span class="field-optional">Optional</span></label>
-            <input type="text" id="gst_number" inputmode="numeric" name="gst_number" placeholder="e.g. 123-456-789"/>
+            <label class="field-label" for="gst_number">GST number or NZBN <span class="field-optional">Optional</span></label>
+            <input type="text" id="gst_number" inputmode="numeric" name="gst_number" placeholder="Only if you want it shown on your site"/>
           </div>
           <div class="field-group">
             <label class="field-label" for="licences">Licences or Trade Memberships <span class="field-optional">Optional</span></label>
@@ -1140,7 +1165,8 @@
           <path d="M1 6h12M8 1l5 5-5 5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <p class="submit-note">Jay will be in touch within one business day · All prices NZD · No lock-in contracts</p>
+      <p class="submit-note">By sending this you agree we can use these details to prepare and build your website, as described in our <a href="/privacy">Privacy Policy</a>.</p>
+      <p class="submit-note">Jay will be in touch within one business day &middot; All prices exclude GST &middot; No lock-in contracts</p>
     </div>
 
   </form>

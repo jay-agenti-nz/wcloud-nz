@@ -454,12 +454,13 @@ footer {
 .foot-links { display:flex; gap:1.8rem; flex-wrap:wrap; }
 .foot-links a { color:rgba(255,255,255,.35); text-decoration:none; transition:color .2s; }
 
-/* Visible NAP. Worded to match the address in the JSON-LD and the
-   Google Business Profile exactly — a consistent name and address
-   across the web is what local search actually checks for. */
-.foot-nap { display: flex; flex-direction: column; line-height: 1.5; }
-.foot-nap strong { color: rgba(255,255,255,.62); font-weight: 700; }
-.foot-nap span { color: rgba(255,255,255,.35); }
+/* Name, location and phone live in the small print rather than a
+   block of their own. Google needs them as crawlable text that matches
+   the JSON-LD exactly; it does not need them to be prominent. */
+.foot-legal { line-height: 1.7; }
+.foot-legal strong { color: rgba(255,255,255,.55); font-weight: 700; }
+.foot-legal a { color: rgba(255,255,255,.45); text-decoration: none; }
+.foot-legal a:hover { color: rgba(255,255,255,.75); }
 
 /* ── SCROLL REVEAL ──────────────────────────────────────────── */
 /* Elements are visible by default; JS adds .ready only when it can

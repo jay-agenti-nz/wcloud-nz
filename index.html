@@ -255,13 +255,17 @@
   .v2-head p { font-size: 1.02rem; margin-top: .5rem; }
 
   /* Trust strip — a quiet band, not three big numbers. */
+  /* Spread across the full width — left, middle, right — rather than
+     three facts bunched at the left of a wide stripe. */
   .v2-trust {
-    display: flex; flex-wrap: wrap; gap: var(--sp-3) var(--sp-6);
-    padding: 1.4rem 4.5rem; background: var(--deep);
-    align-items: baseline;
+    display: flex; flex-wrap: wrap; gap: var(--sp-3) var(--sp-4);
+    justify-content: space-between; align-items: baseline;
+    padding: 2.2rem 4.5rem; background: var(--deep);
   }
+  .v2-trust div:nth-child(2) { justify-content: center; }
+  .v2-trust div:last-child { justify-content: flex-end; }
   .v2-trust div { display: flex; align-items: baseline; gap: .6rem; }
-  .v2-trust strong { font-family: var(--serif); font-size: 1.25rem; color: var(--white); font-weight: 700; }
+  .v2-trust strong { font-family: var(--serif); font-size: 1.45rem; color: var(--white); font-weight: 700; }
   .v2-trust span { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.55); font-weight: 600; }
 
   .v2-three { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); }
@@ -514,7 +518,7 @@
      fall out of sync with a caption the way a screenshot carousel
      could. */
   .v2-build {
-    width: 100%; max-width: 460px;
+    width: 100%; max-width: 560px;
     border-radius: var(--radius-lg);
     background: rgba(255,255,255,.62);
     backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
@@ -607,9 +611,12 @@
      full band's worth of air above it. */
   .v2-marketing-teaser { background: var(--brand-pale); padding-top: var(--sp-4); }
   #pricing { padding-bottom: var(--sp-5); }
+  /* Capped so the button sits a readable distance from the copy
+     instead of pinned to the far edge of a wide band. */
   .v2-teaser {
     display: flex; align-items: center; justify-content: space-between;
-    gap: var(--sp-4); flex-wrap: wrap;
+    gap: var(--sp-5); flex-wrap: wrap;
+    max-width: 940px;
   }
   .v2-teaser > div { max-width: 60ch; display: flex; flex-direction: column; gap: .25rem; }
   .v2-teaser p { margin-top: .5rem; font-size: 1rem; }

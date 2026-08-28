@@ -69,6 +69,14 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Real icon file, so the fallback request browsers and crawlers make
+# for /favicon.ico stops 404ing.
+[[headers]]
+  for = "/favicon.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "image/x-icon"
+
 [[headers]]
   for = "/*.svg"
   [headers.values]

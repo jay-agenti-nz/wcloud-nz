@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shoot &amp; Create – Photography &amp; Short-Form Video | Christchurch, NZ</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<!-- Open Graph / Social Share -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://wcloud.nz/shoot-and-create">
+<meta property="og:title"       content="Shoot &amp; Create – Photography &amp; Short-Form Video, Christchurch">
+<meta property="og:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, running events and kids' parties. From NZ$180. Every enquiry answered personally in 3–6 hours.">
+<meta property="og:image"       content="https://wcloud.nz/og-image.jpg">
+<meta property="og:image:type"  content="image/jpeg">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Shoot &amp; Create – Photography &amp; Short-Form Video, Christchurch">
+<meta name="twitter:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, running events and kids' parties. From NZ$180.">
+<meta name="twitter:image"       content="https://wcloud.nz/og-image.jpg">
+
+<!-- SEO -->
+<meta name="description" content="Photography and short-form video for Christchurch events, cafés and restaurants, running events and kids' parties. Stills and reels from NZ$180, delivered in days, not weeks.">
+<link rel="canonical" href="https://wcloud.nz/shoot-and-create">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/wc.css">
+<style>
+  /* ══════════════════════════════════════════════════════════════
+     Shoot & Create — page-local layout.
+
+     Tokens, type, buttons, nav, footer and motion all come from
+     wc.css. What lives here is only what this page adds: the hero,
+     the four service pillars, the sample-work frames, and the
+     booking form. The band / head / price / FAQ patterns mirror the
+     homepage so the two pages read as one site.
+     ══════════════════════════════════════════════════════════════ */
+
+  /* ── Shared band scaffolding (same rhythm as the homepage) ──── */
+  .sc-band { padding: var(--sp-7) 4.5rem; display: flex; flex-direction: column; gap: var(--sp-4); }
+  .sc-band.alt { background: var(--brand-pale); }
+  .sc-band.dark { background: var(--deep); }
+  .sc-head { max-width: 62ch; display: flex; flex-direction: column; gap: .25rem; }
+  .sc-head p { font-size: 1.02rem; margin-top: .5rem; }
+  .sc-head.centred { margin: 0 auto; text-align: center; align-items: center; }
+
+  /* ── HERO ───────────────────────────────────────────────────
+     The homepage sky, warmed slightly. This page is about light,
+     so the bloom sits behind the viewfinder rather than the copy. */
+  .sc-hero {
+    position: relative; isolation: isolate;
+    display: grid; grid-template-columns: 54fr 46fr;
+    min-height: min(700px, 92vh); padding: 0;
+    background:
+      radial-gradient(58% 46% at 78% 26%, rgba(255,243,228,.92), transparent 62%),
+      radial-gradient(52% 52% at 10% 88%, rgba(255,255,255,.42), transparent 64%),
+      linear-gradient(168deg, #e6f0f6 0%, #cfe3ee 46%, #bfd8e7 100%);
+  }
+  #cloudCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; pointer-events: none; }
+  .sc-hero-copy, .sc-hero-stage { position: relative; z-index: 1; }
+  .sc-hero-copy {
+    display: flex; flex-direction: column; align-items: flex-start;
+    justify-content: center; gap: 1.3rem; padding: 8rem 4.5rem 5rem;
+  }
+  .sc-hero-copy h1 { max-width: 15ch; font-size: clamp(2.4rem, 4.6vw, 4rem); }
+  .sc-hero-sub { font-size: 1.1rem; color: var(--dusk); max-width: 48ch; line-height: 1.75; }
+  .sc-chips { display: flex; gap: .5rem; flex-wrap: wrap; }
+  .sc-hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .sc-hero-stage { display: flex; align-items: center; justify-content: center; padding: 7rem 3.5rem 4rem 1rem; }
+
+  /* Viewfinder — a camera's framing, not a stock photo. It stands in
+     for the sample work above the fold without pretending to be it. */
+  .sc-finder {
+    width: 100%; max-width: 400px; aspect-ratio: 4 / 3; position: relative;
+    border-radius: var(--radius-lg); padding: 1.1rem 1.2rem;
+    display: flex; flex-direction: column; justify-content: space-between;
+    background: rgba(255,255,255,.42);
+    backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border: 1px solid rgba(255,255,255,.8);
+    box-shadow: 0 30px 70px rgba(42,61,74,.22), inset 0 1px 0 rgba(255,255,255,.85);
+    transition: transform .5s var(--ease);
+  }
+  .sc-finder-top, .sc-finder-btm { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  /* No text-transform here: a photographer writes f/1.8, not F/1.8.
+     The labels that should read as caps are written that way. */
+  .sc-finder-meta {
+    font-family: var(--mark); font-size: .6rem; font-weight: 700;
+    letter-spacing: .16em; color: var(--dusk);
+  }
+  .sc-finder-rec { display: inline-flex; align-items: center; gap: .4rem; }
+  .sc-finder-rec i { width: 7px; height: 7px; border-radius: 50%; background: #d4694f; animation: pulse 2.5s ease-in-out infinite; }
+  /* Four framing corners. Two come from the card, two from the middle
+     block, so the whole bracket set needs no extra markup. */
+  .sc-finder::before, .sc-finder::after,
+  .sc-finder-mid::before, .sc-finder-mid::after {
+    content: ''; position: absolute; width: 26px; height: 26px; pointer-events: none;
+    border: 2px solid rgba(42,61,74,.28);
+  }
+  .sc-finder::before { top: 2.9rem; left: 1.5rem;  border-right: 0; border-bottom: 0; border-radius: 5px 0 0 0; }
+  .sc-finder::after  { top: 2.9rem; right: 1.5rem; border-left: 0;  border-bottom: 0; border-radius: 0 5px 0 0; }
+  .sc-finder-mid::before { bottom: 2.9rem; left: 1.5rem;  border-right: 0; border-top: 0; border-radius: 0 0 0 5px; }
+  .sc-finder-mid::after  { bottom: 2.9rem; right: 1.5rem; border-left: 0;  border-top: 0; border-radius: 0 0 5px 0; }
+  /* static, so the two bottom brackets can position against the card */
+  .sc-finder-mid { position: static; display: flex; flex-direction: column; align-items: center; gap: .5rem; text-align: center; }
+  .sc-reticle { width: 46px; height: 46px; border: 1.5px solid rgba(42,61,74,.3); border-radius: 50%; position: relative; }
+  .sc-reticle::before, .sc-reticle::after { content: ''; position: absolute; background: rgba(42,61,74,.3); left: 50%; top: 50%; }
+  .sc-reticle::before { width: 1.5px; height: 14px; transform: translate(-50%,-50%); }
+  .sc-reticle::after  { width: 14px; height: 1.5px; transform: translate(-50%,-50%); }
+  .sc-finder-cats { font-size: .82rem; font-weight: 700; color: var(--dusk); }
+
+  /* ── FOUR PILLARS ───────────────────────────────────────────── */
+  .sc-pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-2); }
+  .sc-pillar {
+    background: var(--white); border: 1px solid rgba(127,168,190,.28);
+    border-radius: var(--radius-lg); padding: 2rem 1.9rem 2.1rem;
+    display: flex; flex-direction: column; gap: .5rem;
+    scroll-margin-top: 6rem;   /* the pill nav is fixed — ad links land below it */
+  }
+  .sc-pillar-top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+  .sc-pillar-top h3 { margin: 0; font-size: 1.25rem; }
+  .sc-pillar-n { font-family: var(--serif); font-size: .9rem; font-weight: 700; color: var(--brand-ink); }
+  .sc-pillar p { font-size: .93rem; }
+  .sc-pillar ul { list-style: none; margin: .5rem 0 1.1rem; padding: 0; display: flex; flex-direction: column; gap: .45rem; }
+  .sc-pillar li { position: relative; padding-left: 1.5rem; font-size: .88rem; color: var(--body); font-weight: 500; }
+  .sc-pillar li::before {
+    content: ''; position: absolute; left: 0; top: .42em;
+    width: 9px; height: 5px; border-left: 2px solid var(--sage); border-bottom: 2px solid var(--sage);
+    transform: rotate(-45deg);
+  }
+  /* Facts, not sales copy — hours and turnaround are the two things
+     everyone asks first, so they sit on the card. */
+  .sc-pillar-facts {
+    margin-top: auto; display: flex; flex-wrap: wrap; gap: .4rem .5rem;
+    padding-top: 1rem; border-top: 1px solid var(--brand-mist);
+  }
+  .sc-fact {
+    font-size: .72rem; font-weight: 700; letter-spacing: .04em; color: var(--dusk);
+    background: var(--brand-pale); border-radius: var(--pill); padding: .3rem .8rem;
+  }
+
+  /* ── SAMPLE WORK ────────────────────────────────────────────
+     Frames are placeholders until the real gallery is shot. Swap the
+     .sc-frame div for <img src="..." alt="..." loading="lazy"> and
+     the grid keeps its shape. */
+  .sc-gallery {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2);
+    /* A fixed row height rather than per-tile aspect ratios: a wide tile
+       and a single tile side by side never resolve to the same height. */
+    grid-auto-rows: clamp(190px, 21vw, 300px);
+  }
+  .sc-shot {
+    border-radius: var(--radius); overflow: hidden; position: relative;
+    border: 1px solid rgba(127,168,190,.3); background: var(--white);
+  }
+  .sc-shot.wide { grid-column: span 2; }
+  .sc-shot, .sc-frame { height: 100%; }
+  .sc-frame {
+    display: flex; align-items: flex-end; padding: 1.1rem 1.2rem;
+    background: linear-gradient(150deg, #e8f1f6 0%, #d6e6ef 55%, #cbdfea 100%);
+  }
+  /* Real photos drop straight in where the placeholder frame is. */
+  .sc-shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .sc-frame span {
+    font-family: var(--mark); font-size: .64rem; font-weight: 700;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--dusk);
+  }
+  .sc-gallery-note { font-size: .88rem; color: var(--body); font-weight: 600; }
+
+  /* ── PRICING ────────────────────────────────────────────────── */
+  .sc-price-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-2); align-items: stretch; }
+  .sc-price {
+    background: var(--white); border: 1px solid rgba(127,168,190,.28);
+    border-radius: var(--radius-lg); padding: 1.8rem 1.6rem 1.9rem;
+    display: flex; flex-direction: column; gap: .25rem; height: 100%;
+  }
+  .sc-price h3 { font-size: 1.1rem; margin-bottom: .1rem; }
+  .sc-price-amt { font-family: var(--serif); font-size: .95rem; color: var(--deep); margin-top: .3rem; }
+  .sc-price-amt strong { font-size: 2.2rem; font-weight: 700; letter-spacing: -.02em; }
+  .sc-price-from { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--body); }
+  .sc-price p { font-size: .88rem; margin: .7rem 0 1.2rem; }
+  .sc-price a { margin-top: auto; align-self: flex-start; }
+  .sc-addons { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); }
+  .sc-addon { background: var(--white); border-radius: var(--radius); padding: 1.2rem 1.3rem; border: 1px solid rgba(127,168,190,.22); }
+  .sc-addon strong { font-family: var(--serif); font-size: 1rem; color: var(--deep); display: block; }
+  .sc-addon p { font-size: .85rem; margin-top: .2rem; }
+  .sc-price-foot { font-size: .88rem; color: var(--body); font-weight: 600; max-width: 70ch; }
+
+  /* ── HOW BOOKING WORKS ──────────────────────────────────────── */
+  .sc-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-3); }
+  .sc-steps li { display: flex; flex-direction: column; gap: .3rem; padding-top: 1.1rem; border-top: 2px solid var(--brand-mist); }
+  .sc-step-n { font-family: var(--serif); font-size: .85rem; font-weight: 700; color: var(--brand-ink); letter-spacing: .1em; }
+  .sc-steps p { font-size: .92rem; }
+
+  /* ── ABOUT ──────────────────────────────────────────────────── */
+  .sc-about { display: grid; grid-template-columns: 240px 1fr; gap: var(--sp-4); align-items: start; }
+  .sc-about-mark { display: flex; flex-direction: column; align-items: center; gap: .7rem; }
+  .sc-about-mark img {
+    width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
+    display: block; border: 3px solid var(--white); box-shadow: 0 14px 40px rgba(127,168,190,.35);
+  }
+  .sc-about-mark em {
+    font-style: normal; font-size: .64rem; font-weight: 700; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--body); text-align: center; max-width: 210px; line-height: 1.7;
+  }
+  .sc-about-copy { display: flex; flex-direction: column; gap: .9rem; max-width: 66ch; }
+  .sc-about-copy p { font-size: .98rem; }
+
+  /* ── BOOKING FORM (same controls as the main contact form) ──── */
+  #book { padding: var(--sp-7) 4.5rem; background: var(--brand-pale); }
+  .sc-form-inner { max-width: 760px; margin: 0 auto; }
+  .sc-form {
+    background: var(--glass-bg-strong);
+    backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+    border-radius: 24px; padding: 3rem; border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow); margin-top: 3rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1.2rem; }
+  .form-group:last-of-type { margin-bottom: 0; }
+  .form-label { font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--dusk); }
+  .form-input, .form-select, .form-textarea {
+    width: 100%; padding: .85rem 1.1rem; border: 1.5px solid var(--brand-mist); border-radius: 12px;
+    font-family: var(--sans); font-size: .95rem; font-weight: 500; color: var(--deep);
+    background: var(--white); transition: border-color .2s, box-shadow .2s; outline: none;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(127,168,190,.15); }
+  .form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237fa8be' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; cursor: pointer; }
+  .form-textarea { resize: vertical; min-height: 120px; }
+  .other-input-wrap { display: none; margin-top: .6rem; }
+  .other-input-wrap.show { display: block; }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94));
+    color: var(--white); border: 1px solid rgba(255,255,255,.35); padding: 1rem 2rem; border-radius: 50px;
+    font-family: var(--sans); font-size: .9rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    cursor: pointer; backdrop-filter: blur(12px) saturate(160%); -webkit-backdrop-filter: blur(12px) saturate(160%);
+    transition: background .25s, transform .25s, box-shadow .25s;
+    box-shadow: 0 6px 24px rgba(127,168,190,.35), inset 0 1px 0 rgba(255,255,255,.45); margin-top: .5rem;
+  }
+  .form-submit:hover { background: linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.97)); transform: translateY(-2px); }
+  /* The reply promise sits with the button, where the decision is. */
+  .sc-promise {
+    display: flex; align-items: center; gap: .6rem; margin-top: 1.6rem;
+    background: rgba(107,191,158,.12); border: 1px solid rgba(107,191,158,.35);
+    border-radius: var(--radius-sm); padding: .85rem 1.1rem;
+    font-size: .88rem; font-weight: 600; color: var(--dusk);
+  }
+  .sc-promise i { width: 8px; height: 8px; border-radius: 50%; background: var(--sage); flex-shrink: 0; animation: pulse 2.5s ease-in-out infinite; }
+
+  /* Thank-you modal — carried from the main site so a submission
+     from either form ends the same way. */
+  .ty-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(42,61,74,.55); backdrop-filter: blur(4px); z-index: 9999; align-items: center; justify-content: center; }
+  .ty-modal-overlay.show { display: flex; }
+  .ty-modal {
+    background: rgba(255,255,255,.9); backdrop-filter: blur(30px) saturate(180%); -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(255,255,255,.6); border-radius: 24px; padding: 3rem 2.5rem;
+    max-width: 440px; width: 90%; text-align: center;
+    box-shadow: 0 32px 80px rgba(42,61,74,.25), inset 0 1px 0 rgba(255,255,255,.6);
+  }
+  .ty-modal-icon { display: inline-flex; margin-bottom: 1rem; color: var(--sage); }
+  .ty-modal-icon svg { width: 56px; height: 56px; }
+  .ty-modal h3 { font-size: 1.4rem; margin-bottom: .6rem; }
+  .ty-modal p { font-size: .92rem; line-height: 1.75; margin-bottom: 1.6rem; }
+  .ty-modal p strong { color: var(--deep); }
+  .ty-modal-close {
+    background: linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94)); color: #fff;
+    border: 1px solid rgba(255,255,255,.35); padding: .8rem 2.2rem; border-radius: 50px;
+    font-family: var(--sans); font-size: .8rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; cursor: pointer;
+  }
+
+  /* ── FAQ ────────────────────────────────────────────────────── */
+  .sc-faq-list { display: flex; flex-direction: column; max-width: 78ch; margin: 0 auto; width: 100%; }
+  .sc-faq-item { border-bottom: 1px solid rgba(127,168,190,.28); }
+  .sc-faq-item h3 { margin: 0; font-size: 1rem; }
+  .sc-faq-btn {
+    width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+    background: none; border: 0; padding: 1.15rem 0; cursor: pointer; text-align: left;
+    font-family: var(--serif); font-size: 1.02rem; font-weight: 700; color: var(--deep);
+  }
+  .sc-faq-btn:hover { color: var(--brand); }
+  .sc-faq-mark { position: relative; width: 14px; height: 14px; flex-shrink: 0; }
+  .sc-faq-mark::before, .sc-faq-mark::after {
+    content: ''; position: absolute; background: var(--brand);
+    left: 50%; top: 50%; transform: translate(-50%,-50%); transition: opacity .2s, transform .2s;
+  }
+  .sc-faq-mark::before { width: 14px; height: 2px; }
+  .sc-faq-mark::after  { width: 2px; height: 14px; }
+  .sc-faq-btn[aria-expanded="true"] .sc-faq-mark::after { opacity: 0; transform: translate(-50%,-50%) rotate(90deg); }
+  .sc-faq-a p { font-size: .93rem; padding: 0 0 1.2rem; max-width: 68ch; }
+
+  /* ── CLOSING BAND — back to the web design side ─────────────── */
+  .sc-cross { text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--sp-2); }
+  .sc-cross h2 { color: var(--white); }
+  .sc-cross p { color: rgba(255,255,255,.65); max-width: 58ch; }
+  .sc-cross .lbl { color: var(--brand-light); }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────────── */
+  @media (max-width: 1020px) {
+    .sc-price-grid { grid-template-columns: repeat(2, 1fr); }
+    .sc-addons { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 900px) {
+    .sc-hero { grid-template-columns: 1fr; min-height: 0; }
+    .sc-hero-copy { padding: 7rem 1.6rem 2.5rem; align-items: center; text-align: center; }
+    .sc-hero-copy h1 { max-width: none; }
+    .sc-hero-actions, .sc-chips { justify-content: center; }
+    .sc-hero-stage { padding: 0 1.6rem 3.5rem; }
+    .sc-pillars, .sc-steps { grid-template-columns: 1fr; }
+    .sc-gallery { grid-template-columns: repeat(2, 1fr); }
+    .sc-about { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+    .sc-about-copy { text-align: left; }
+  }
+  @media (max-width: 700px) {
+    .sc-band, #book { padding: var(--sp-5) 1.6rem; }
+    .sc-price-grid { grid-template-columns: 1fr; max-width: 460px; }
+    .sc-gallery { grid-template-columns: 1fr; }
+    .sc-shot.wide { grid-column: auto; }
+    .form-row { grid-template-columns: 1fr; }
+    .sc-form { padding: 2rem 1.5rem; }
+  }
+</style>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "ProfessionalService"],
+    "@id": "https://wcloud.nz/#business",
+    "name": "White Cloud",
+    "url": "https://wcloud.nz",
+    "logo": "https://wcloud.nz/favicon.svg",
+    "image": "https://wcloud.nz/og-image.jpg",
+    "description": "White Cloud builds affordable, AI-optimised websites for New Zealand small businesses, and shoots photography and short-form video for events, cafés, running events and kids' parties. Based in Christchurch, NZ.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Christchurch",
+      "addressRegion": "Canterbury",
+      "addressCountry": "NZ"
+    },
+    "areaServed": { "@type": "Country", "name": "New Zealand" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Shoot & Create — photography and short-form video",
+    "serviceType": "Event, hospitality, sports and kids' event photography and video",
+    "provider": { "@id": "https://wcloud.nz/#business" },
+    "areaServed": { "@type": "City", "name": "Christchurch" },
+    "url": "https://wcloud.nz/shoot-and-create",
+    "description": "Photography and short-form video for events, cafés and restaurants, sports and running events, and kids' parties in Christchurch. Stills and reels, delivered in days.",
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "NZD",
+      "lowPrice": "180",
+      "highPrice": "600"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How quickly do I get the photos back?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It depends on the shoot. Running and sports events come back fastest — usually 24 to 72 hours, because the photos are worth the most while the race is still being talked about. Kids' events are 2 to 3 business days, cafés and restaurants 2 to 4, and larger events 3 to 5. If you need something sooner for a specific post, say so when you enquire and I'll tell you honestly whether I can hit it." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you travel outside Christchurch?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Anywhere in Christchurch and Banks Peninsula is included in the prices on this page. Further afield in Canterbury I add a small travel cost, quoted up front before you commit — never added afterwards." }
+      },
+      {
+        "@type": "Question",
+        "name": "Who owns the photos, and where can I use them?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You get full rights to use the edited photos and video for your own business or your own family — website, social media, printed menus, posters, ads, all of it, with no expiry and no extra licence fee. I keep the copyright and I'd like to be able to show a few frames in my own portfolio, but if a shoot is private, just tell me and it stays private." }
+      },
+      {
+        "@type": "Question",
+        "name": "You say you reply in 3 to 6 hours — really?",
+        "acceptedAnswer": { "@type": "Answer", "text": "During the day, yes: I read every enquiry myself and reply within 3 to 6 hours. If you send one at 2am you'll hear from me in the morning, not at 8am on the dot minus six hours. And if I'm mid-shoot when your message lands, the reply comes as soon as I put the camera down." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I get both photos and video from one booking?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — that's the normal way I work. Every category on this page can be stills, short-form video, or both from the same session. Both means slightly fewer stills than a photo-only booking, because some of the time goes on filming, and I'll be upfront about that trade-off when we talk." }
+      },
+      {
+        "@type": "Question",
+        "name": "What if the weather turns on the day?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For outdoor shoots we agree a backup plan when you book — either a rain date or an indoor alternative. Races run rain or shine and so do I. There's no rescheduling fee if the weather is the reason." }
+      }
+    ]
+  }
+]
+</script>
+</head>
+<body class="wc-canvas">
+
+<!-- NAV -->
+<nav class="wc-nav" id="mainnav">
+  <a href="/" class="logo-mark">
+    <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
+      <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
+  </a>
+  <ul class="wc-nav-links">
+    <li><a href="#services">What I shoot</a></li>
+    <li><a href="#work">Sample work</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="/">Websites</a></li>
+    <li><a href="#book" class="wc-nav-cta">Book a shoot</a></li>
+  </ul>
+</nav>
+
+<div class="wc-sheet">
+
+<!-- HERO -->
+<section class="sc-hero">
+  <canvas id="cloudCanvas" aria-hidden="true"></canvas>
+
+  <div class="sc-hero-copy">
+    <span class="badge"><span class="badge-dot"></span>Shoot &amp; Create &middot; Christchurch</span>
+    <h1 class="wc-display" id="heroHeadline">Shot the way you&rsquo;d remember it.</h1>
+    <p class="sc-hero-sub">Photography and short-form video for events, caf&eacute;s and restaurants, running events and kids&rsquo; parties. I&rsquo;m out on the Port Hills with a camera most weekends anyway &mdash; this is the same eye, pointed at your thing.</p>
+    <div class="sc-hero-actions">
+      <a href="#book" class="btn-p">Book a shoot</a>
+      <a href="#services" class="btn-o">What I shoot</a>
+    </div>
+    <div class="sc-chips">
+      <span class="wc-chip">Stills + short-form video</span>
+      <span class="wc-chip">From $180</span>
+      <span class="wc-chip">Reply in 3&ndash;6 hours</span>
+    </div>
+  </div>
+
+  <div class="sc-hero-stage">
+    <div class="sc-finder" id="finderCard">
+      <div class="sc-finder-top">
+        <span class="sc-finder-meta">f/1.8 &middot; 1/250 &middot; ISO 400</span>
+        <span class="sc-finder-meta sc-finder-rec"><i></i>REC</span>
+      </div>
+      <div class="sc-finder-mid">
+        <span class="sc-reticle" aria-hidden="true"></span>
+        <span class="sc-finder-cats">Events &middot; Caf&eacute;s &middot; Running &middot; Kids</span>
+      </div>
+      <div class="sc-finder-btm">
+        <span class="sc-finder-meta">CHRISTCHURCH, NZ</span>
+        <span class="sc-finder-meta">PHOTO + VIDEO</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / WHY I SHOOT -->
+<section id="about" class="sc-band">
+  <div class="sc-head">
+    <span class="lbl">Why I shoot</span>
+    <h2>I&rsquo;d be out there with a camera anyway.</h2>
+  </div>
+  <div class="sc-about fu">
+    <div class="sc-about-mark">
+      <img src="/assets/jay.jpg" alt="Jay, who shoots for White Cloud, out running above Lyttelton Harbour" width="560" height="560" loading="lazy" decoding="async">
+      <em>Jay D Vera</em>
+    </div>
+    <div class="sc-about-copy">
+      <p>Most weekends you&rsquo;ll find me somewhere on the Port Hills &mdash; Godley Head, Taylors Mistake, Scarborough Bluffs &mdash; running the trails and filming them for my <em>Join me&hellip;</em> series. Nobody asked me to make those. I make them because the light on that coast at 7am deserves better than a phone in someone&rsquo;s pocket.</p>
+      <p>That&rsquo;s the whole reason this page exists. I got good at catching the moment where someone&rsquo;s legs are burning and they&rsquo;re grinning anyway, and it turns out that&rsquo;s the same moment that matters at a race finish line, at a kid&rsquo;s birthday, and across a caf&eacute; table on a Sunday morning.</p>
+      <p>I&rsquo;m also a dad of two, so I know exactly how a kids&rsquo; party actually goes &mdash; loud, fast, and never once in the order anybody planned. And I&rsquo;ve spent more than ten years running creative and e-commerce brands, so when a caf&eacute; owner says &ldquo;I need something for Instagram this week,&rdquo; I know what that really means: shots you can post on a Tuesday without redesigning your whole feed.</p>
+      <p>Photo and video sit alongside the websites I build at White Cloud. Same person, same standard, same phone number.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES: THE FOUR PILLARS -->
+<section id="services" class="sc-band alt">
+  <div class="sc-head">
+    <span class="lbl">What I shoot</span>
+    <h2>Four things I do properly, rather than everything badly</h2>
+    <p>Stills and short-form video are available on all four &mdash; photos only, video only, or both from the same booking.</p>
+  </div>
+  <div class="sc-pillars fug">
+
+    <article class="sc-pillar" id="events">
+      <div class="sc-pillar-top"><h3>Events</h3><span class="sc-pillar-n">01</span></div>
+      <p>Launches, community events, functions and celebrations. Candid coverage of the room as it actually is, plus the posed shots you&rsquo;ll be asked for afterwards.</p>
+      <ul>
+        <li>Candid and posed coverage through the event</li>
+        <li>Edited gallery, ready to share</li>
+        <li>30&ndash;60 second recap edit for social</li>
+        <li>Speakers, sponsors and signage covered on request</li>
+      </ul>
+      <div class="sc-pillar-facts">
+        <span class="sc-fact">Typically 2&ndash;4 hours</span>
+        <span class="sc-fact">Delivered in 3&ndash;5 business days</span>
+        <span class="sc-fact">From $300</span>
+      </div>
+    </article>
+
+    <article class="sc-pillar" id="cafes">
+      <div class="sc-pillar-top"><h3>Caf&eacute;s &amp; restaurants</h3><span class="sc-pillar-n">02</span></div>
+      <p>Food, drinks and the feel of the room &mdash; shot so you have a month of content instead of one hero image. Built for Instagram and Facebook, not for a brochure nobody reads.</p>
+      <ul>
+        <li>Food and drink stills, styled on the day</li>
+        <li>Interior and ambience shots</li>
+        <li>2&ndash;3 vertical reels cut for social</li>
+        <li>Shot around service, not through it</li>
+      </ul>
+      <div class="sc-pillar-facts">
+        <span class="sc-fact">Typically 1.5&ndash;3 hours</span>
+        <span class="sc-fact">Delivered in 2&ndash;4 business days</span>
+        <span class="sc-fact">From $280</span>
+      </div>
+    </article>
+
+    <article class="sc-pillar" id="sports">
+      <div class="sc-pillar-top"><h3>Sports &amp; running events</h3><span class="sc-pillar-n">03</span></div>
+      <p>For organisers, clubs and sponsors. I run these events myself, so I know where the good light is at 7am and which corner everyone is hurting on.</p>
+      <ul>
+        <li>Start line, on course and finish line</li>
+        <li>Sponsor banners and branding captured deliberately</li>
+        <li>Fast turnaround while the race is still being talked about</li>
+        <li>Vertical clips ready for the club&rsquo;s socials</li>
+      </ul>
+      <div class="sc-pillar-facts">
+        <span class="sc-fact">Race morning, 3&ndash;5 hours</span>
+        <span class="sc-fact">Delivered in 24&ndash;72 hours</span>
+        <span class="sc-fact">From $250</span>
+      </div>
+    </article>
+
+    <article class="sc-pillar" id="kids">
+      <div class="sc-pillar-top"><h3>Kids&rsquo; events</h3><span class="sc-pillar-n">04</span></div>
+      <p>Birthday parties, school events and kids&rsquo; sport days. I&rsquo;m a parent of two &mdash; I stay out of the way, I don&rsquo;t make anyone pose for twenty minutes, and I know the good bit is never the cake.</p>
+      <ul>
+        <li>Natural, unstaged coverage</li>
+        <li>Group shot done quickly and painlessly</li>
+        <li>Edited gallery you can share with other parents</li>
+        <li>Short highlight clip on request</li>
+      </ul>
+      <div class="sc-pillar-facts">
+        <span class="sc-fact">Typically 1&ndash;2 hours</span>
+        <span class="sc-fact">Delivered in 2&ndash;3 business days</span>
+        <span class="sc-fact">From $180</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- SAMPLE WORK
+     ────────────────────────────────────────────────────────────
+     PLACEHOLDER GALLERY. The frames below are empty on purpose —
+     swap each <div class="sc-frame"><span>…</span></div> for a real
+     image before this page goes live:
+
+       <img src="/assets/shoot-running-1.jpg" alt="…" loading="lazy"
+            decoding="async" width="1200" height="900">
+
+     Grid shape (one wide tile, then five 4:3 tiles) survives the
+     swap. Aim for 8–12 frames across the four categories.
+     ──────────────────────────────────────────────────────────── -->
+<section id="work" class="sc-band">
+  <div class="sc-head">
+    <span class="lbl">Sample work</span>
+    <h2>A look at what comes back</h2>
+    <p>A selection across the four categories &mdash; the kind of frames you&rsquo;d actually post, not the ones that only look good on a photographer&rsquo;s website.</p>
+  </div>
+  <div class="sc-gallery fug">
+    <!-- Row 1: wide + single -->
+    <div class="sc-shot wide"><div class="sc-frame"><span>Running &middot; Port Hills</span></div></div>
+    <div class="sc-shot"><div class="sc-frame"><span>Caf&eacute; &middot; Morning service</span></div></div>
+    <!-- Row 2: single + wide -->
+    <div class="sc-shot"><div class="sc-frame"><span>Event &middot; Launch night</span></div></div>
+    <div class="sc-shot wide"><div class="sc-frame"><span>Race morning &middot; Finish line</span></div></div>
+    <!-- Row 3: three singles -->
+    <div class="sc-shot"><div class="sc-frame"><span>Kids &middot; Birthday</span></div></div>
+    <div class="sc-shot"><div class="sc-frame"><span>Caf&eacute; &middot; On the pass</span></div></div>
+    <div class="sc-shot"><div class="sc-frame"><span>Event &middot; The room</span></div></div>
+  </div>
+  <p class="sc-gallery-note">Want to see more from a specific category before you book? Ask in the form below and I&rsquo;ll send a full gallery through.</p>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="sc-band alt">
+  <div class="sc-head">
+    <span class="lbl">Starting from</span>
+    <h2>Honest prices, and what they actually cover</h2>
+    <p>Every price here is a starting point. The final quote depends on how many hours you need, travel, and how many edited photos and clips you want back &mdash; and you get that number before you commit to anything. All prices NZD.</p>
+  </div>
+
+  <div class="sc-price-grid fug">
+    <div class="sc-price">
+      <h3>Kids&rsquo; events</h3>
+      <p class="sc-price-amt">from NZ$<strong>180</strong></p>
+      <span class="sc-price-from">Up to 1.5 hours</span>
+      <p>Birthday parties, school events and kids&rsquo; sport days. Edited gallery back within 2&ndash;3 business days.</p>
+      <a href="#book" class="btn-o" data-shoot="Kids' Event">Book this</a>
+    </div>
+
+    <div class="sc-price">
+      <h3>Sports &amp; running</h3>
+      <p class="sc-price-amt">from NZ$<strong>250</strong></p>
+      <span class="sc-price-from">Race-morning coverage</span>
+      <p>Start, course and finish for organisers, clubs and sponsors. Back in your hands within 24&ndash;72 hours.</p>
+      <a href="#book" class="btn-o" data-shoot="Sports / Running Event">Book this</a>
+    </div>
+
+    <div class="sc-price">
+      <h3>Caf&eacute;s &amp; restaurants</h3>
+      <p class="sc-price-amt">from NZ$<strong>280</strong></p>
+      <span class="sc-price-from">Half day, stills + 2&ndash;3 reels</span>
+      <p>Food, drink and ambience, plus vertical video cut for Instagram and Facebook.</p>
+      <a href="#book" class="btn-o" data-shoot="Caf&eacute; / Restaurant">Book this</a>
+    </div>
+
+    <div class="sc-price">
+      <h3>Events</h3>
+      <p class="sc-price-amt">from NZ$<strong>300</strong></p>
+      <span class="sc-price-from">Up to 2 hours</span>
+      <p>Launches, functions and celebrations. Edited gallery plus a 30&ndash;60 second recap video.</p>
+      <a href="#book" class="btn-o" data-shoot="Event">Book this</a>
+    </div>
+  </div>
+
+  <div class="sc-addons fug">
+    <div class="sc-addon">
+      <strong>Extra reel or video &mdash; from $120</strong>
+      <p>Each additional short-form edit, cut vertical and ready to post.</p>
+    </div>
+    <div class="sc-addon">
+      <strong>Full day &mdash; from $600</strong>
+      <p>Up to 6 hours, any category. The sensible option for a festival, a whole-day event or a big race.</p>
+    </div>
+    <div class="sc-addon">
+      <strong>Travel outside Christchurch</strong>
+      <p>Christchurch and Banks Peninsula included. Further into Canterbury, quoted up front &mdash; never added afterwards.</p>
+    </div>
+  </div>
+
+  <p class="sc-price-foot">Running a caf&eacute; or restaurant and want a steady flow of content rather than one shoot? Ask about a monthly content plan &mdash; I&rsquo;ll put a price together around how often you need new material.</p>
+</section>
+
+<!-- HOW BOOKING WORKS -->
+<section id="how" class="sc-band">
+  <div class="sc-head">
+    <span class="lbl">How booking works</span>
+    <h2>Three steps, no back-and-forth marathon</h2>
+  </div>
+  <ol class="sc-steps fug">
+    <li>
+      <span class="sc-step-n">01</span>
+      <h3>You enquire</h3>
+      <p>Fill in the form below with the date, the place and roughly what you&rsquo;re after. If you&rsquo;re not sure yet, say that &mdash; &ldquo;not sure&rdquo; is a perfectly good answer to every question on it.</p>
+    </li>
+    <li>
+      <span class="sc-step-n">02</span>
+      <h3>I reply in 3&ndash;6 hours</h3>
+      <p>Personally, not through an assistant or an auto-responder. You get a straight answer on availability, a fixed price for what you&rsquo;ve described, and a question or two if I need them.</p>
+    </li>
+    <li>
+      <span class="sc-step-n">03</span>
+      <h3>We confirm and I shoot</h3>
+      <p>We lock the date, agree a backup if it&rsquo;s outdoors, and I turn up. Your edited photos and clips land within the turnaround listed for your category.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- BOOKING FORM -->
+<section id="book">
+  <div class="sc-form-inner">
+    <div class="sc-head centred">
+      <span class="lbl">Book a shoot</span>
+      <h2>Tell me about it</h2>
+      <p>No brief needed and nothing locked in by sending this &mdash; it just starts the conversation.</p>
+    </div>
+
+    <div class="sc-form">
+      <form name="shoot-booking" netlify netlify-honeypot="bot-field" id="shootForm">
+        <input type="hidden" name="form-name" value="shoot-booking">
+        <p style="display:none"><label>Don't fill this in: <input name="bot-field"></label></p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="sname">Your name *</label>
+            <input class="form-input" type="text" id="sname" name="name" placeholder="e.g. Sarah Johnson" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="semail">Email address *</label>
+            <input class="form-input" type="email" id="semail" name="email" placeholder="you@example.co.nz" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="sphone">Phone number</label>
+          <input class="form-input" type="tel" id="sphone" name="phone" placeholder="e.g. 021 123 4567">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="stype">What kind of shoot? *</label>
+          <select class="form-select" id="stype" name="shoot_type" required>
+            <option value="" disabled selected>Select a shoot type&hellip;</option>
+            <option value="Event">Event &mdash; launch, function or celebration</option>
+            <option value="Caf&eacute; / Restaurant">Caf&eacute; or restaurant &mdash; food, drink &amp; ambience</option>
+            <option value="Sports / Running Event">Sports or running event</option>
+            <option value="Kids' Event">Kids&rsquo; event &mdash; birthday, school or sport day</option>
+            <option value="Other">Other &mdash; I&rsquo;ll describe below</option>
+          </select>
+          <div class="other-input-wrap" id="otherWrap">
+            <input class="form-input" type="text" id="sother" name="shoot_type_other" placeholder="Tell me what you&rsquo;ve got in mind&hellip;">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="sdate">Date &amp; location</label>
+          <input class="form-input" type="text" id="sdate" name="date_location" placeholder="e.g. Sat 14 March, Hagley Park &mdash; or &ldquo;not sure yet&rdquo;">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="scoverage">What do you need? *</label>
+          <select class="form-select" id="scoverage" name="coverage" required>
+            <option value="" disabled selected>Select coverage&hellip;</option>
+            <option value="Photos only">Photos only</option>
+            <option value="Video only">Video only</option>
+            <option value="Both photos and video">Both photos and video</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="slength">Roughly how long?</label>
+          <select class="form-select" id="slength" name="length">
+            <option value="" disabled selected>Select a rough length&hellip;</option>
+            <option value="Under 2 hours">Under 2 hours</option>
+            <option value="Half day">Half day</option>
+            <option value="Full day">Full day</option>
+            <option value="Not sure">Not sure &mdash; help me work it out</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="smsg">Tell me about it</label>
+          <textarea class="form-textarea" id="smsg" name="message" placeholder="e.g. Our caf&eacute; is relaunching the winter menu and I need photos plus a couple of reels. About 12 dishes. Quiet between 2 and 4pm&hellip;"></textarea>
+        </div>
+
+        <div class="sc-promise"><i></i>I read every enquiry personally and reply within 3&ndash;6 hours.</div>
+
+        <button type="submit" class="form-submit">Send my enquiry &rarr;</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sc-band alt">
+  <div class="sc-head centred">
+    <span class="lbl">Common questions</span>
+    <h2>Before you book</h2>
+  </div>
+  <div class="sc-faq-list">
+
+    <div class="sc-faq-item">
+      <h3><button type="button" class="sc-faq-btn" aria-expanded="false" aria-controls="sfaq1">How quickly do I get the photos back?<span class="sc-faq-mark" aria-hidden="true"></span></button></h3>
+      <div class="sc-faq-a" id="sfaq1" hidden><p>It depends on the shoot. Running and sports events come back fastest &mdash; usually 24 to 72 hours, because those photos are worth the most while the race is still being talked about. Kids&rsquo; events are 2 to 3 business days, caf&eacute;s and restaurants 2 to 4, and larger events 3 to 5. If you need something sooner for a specific post, say so when you enquire and I&rsquo;ll tell you honestly whether I can hit it.</p></div>
+    </div>
+
+    <div class="sc-faq-item">
+      <h3><button type="button" class="sc-faq-btn" aria-expanded="false" aria-controls="sfaq2">Do you travel outside Christchurch?<span class="sc-faq-mark" aria-hidden="true"></span></button></h3>
+      <div class="sc-faq-a" id="sfaq2" hidden><p>Yes. Anywhere in Christchurch and Banks Peninsula is included in the prices on this page. Further afield in Canterbury I add a small travel cost, quoted up front before you commit &mdash; never added afterwards.</p></div>
+    </div>
+
+    <div class="sc-faq-item">
+      <h3><button type="button" class="sc-faq-btn" aria-expanded="false" aria-controls="sfaq3">Who owns the photos, and where can I use them?<span class="sc-faq-mark" aria-hidden="true"></span></button></h3>
+      <div class="sc-faq-a" id="sfaq3" hidden><p>You get full rights to use the edited photos and video for your own business or your own family &mdash; website, social media, printed menus, posters, ads, all of it, with no expiry and no extra licence fee. I keep the copyright, and I&rsquo;d like to be able to show a few frames in my own portfolio. If a shoot is private, just tell me and it stays private.</p></div>
+    </div>
+
+    <div class="sc-faq-item">
+      <h3><button type="button" class="sc-faq-btn" aria-expanded="false" aria-controls="sfaq4">You say you reply in 3&ndash;6 hours &mdash; really?<span class="sc-faq-mark" aria-hidden="true"></span></button></h3>
+      <div class="sc-faq-a" id="sfaq4" hidden><p>During the day, yes: I read every enquiry myself and reply within 3 to 6 hours. If you send one at 2am you&rsquo;ll hear from me in the morning, not at 8am on the dot minus six hours. And if I&rsquo;m mid-shoot when your message lands, the reply comes as soon as I put the camera down.</p></div>
+    </div>
+
+    <div class="sc-faq-item">
+      <h3><button type="button" class="sc-faq-btn" aria-expanded="false" aria-controls="sfaq5">Can I get both photos and video from one booking?<span class="sc-faq-mark" aria-hidden="true"></span></button></h3>
+      <div class="sc-faq-a" id="sfaq5" hidden><p>Yes &mdash; that&rsquo;s the normal way I work. Every category on this page can be stills, short-form video, or both from the same session. Both does mean slightly fewer stills than a photo-only booking, because some of the time goes on filming, and I&rsquo;ll be upfront about that trade-off when we talk.</p></div>
+    </div>
+
+    <div class="sc-faq-item">
+      <h3><button type="button" class="sc-faq-btn" aria-expanded="false" aria-controls="sfaq6">What if the weather turns on the day?<span class="sc-faq-mark" aria-hidden="true"></span></button></h3>
+      <div class="sc-faq-a" id="sfaq6" hidden><p>For outdoor shoots we agree a backup plan when you book &mdash; either a rain date or an indoor alternative. Races run rain or shine and so do I. There&rsquo;s no rescheduling fee if the weather is the reason.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CROSS-SELL BACK TO THE WEB DESIGN SIDE -->
+<section class="sc-band dark">
+  <div class="sc-cross fu">
+    <span class="lbl">Also from White Cloud</span>
+    <h2>Somewhere to put all this.</h2>
+    <p>Great photos deserve better than a Facebook page. White Cloud builds websites for Christchurch small businesses &mdash; same person, same standard, from NZ$299.</p>
+    <a href="/" class="btn-w">See the websites &rarr;</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <a href="/" class="logo-mark">
+      <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
+        <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
+    </a>
+    <div class="foot-links">
+      <a href="/">Websites</a>
+      <a href="/privacy" target="_blank">Privacy Policy</a>
+      <a href="/terms" target="_blank">Terms &amp; Conditions</a>
+      <a href="/intake">New Client Intake Form</a>
+      <a href="https://agenti.nz" target="_blank">Backend operations powered by Agenti NZ</a>
+    </div>
+    <div>&copy; 2025 White Cloud. Christchurch, NZ. All prices NZD.</div>
+  </div>
+</footer>
+</div>
+
+<!-- THANK YOU MODAL -->
+<div class="ty-modal-overlay" id="tyModal" role="dialog" aria-modal="true" aria-labelledby="tyTitle">
+  <div class="ty-modal">
+    <span class="ty-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg></span>
+    <h3 id="tyTitle">Got it &mdash; thanks!</h3>
+    <p>I read every enquiry personally and reply within <strong>3&ndash;6 hours</strong>. If you sent this late at night, you&rsquo;ll hear from me in the morning. Keep an eye on the inbox you gave me.</p>
+    <button class="ty-modal-close" type="button">Close</button>
+  </div>
+</div>
+
+<script>
+  /* ── The "Other" shoot type reveals its own field ───────────── */
+  (function () {
+    var sel = document.getElementById('stype');
+    var wrap = document.getElementById('otherWrap');
+    if (!sel || !wrap) return;
+    sel.addEventListener('change', function () {
+      wrap.classList.toggle('show', this.value === 'Other');
+    });
+  })();
+
+  /* ── Pricing "Book this" buttons pre-select the shoot type ──── */
+  (function () {
+    var sel = document.getElementById('stype');
+    if (!sel) return;
+    document.querySelectorAll('[data-shoot]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        sel.value = link.getAttribute('data-shoot');
+        sel.dispatchEvent(new Event('change'));
+      });
+    });
+  })();
+
+  /* ── Booking form ────────────────────────────────────────────
+     Posts to Netlify Forms, then shows the thank-you either way so
+     nobody is left staring at a form wondering whether it sent. */
+  (function () {
+    var form = document.getElementById('shootForm');
+    var modal = document.getElementById('tyModal');
+    if (form && modal) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var done = function () { form.reset(); modal.classList.add('show'); };
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form)).toString()
+        }).then(done).catch(done);
+      });
+    }
+    if (!modal) return;
+    var close = function () { modal.classList.remove('show'); };
+    modal.addEventListener('click', function (e) { if (e.target === this) close(); });
+    var btn = modal.querySelector('.ty-modal-close');
+    if (btn) btn.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  })();
+
+  /* ── FAQ accordion ───────────────────────────────────────────
+     One open at a time; hidden panels use the hidden attribute so
+     they are out of the accessibility tree, not just invisible. */
+  (function () {
+    var items = document.querySelectorAll('.sc-faq-item');
+    items.forEach(function (item) {
+      var btn = item.querySelector('.sc-faq-btn');
+      var panel = item.querySelector('.sc-faq-a');
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        items.forEach(function (other) {
+          other.querySelector('.sc-faq-btn').setAttribute('aria-expanded', 'false');
+          other.querySelector('.sc-faq-a').hidden = true;
+        });
+        if (!open) { btn.setAttribute('aria-expanded', 'true'); panel.hidden = false; }
+      });
+    });
+  })();
+</script>
+
+<script type="module">
+  import { initHeroCloud } from '/assets/hero-cloud.js';
+  import { initTilt } from '/assets/tilt.js';
+  import { initReveal } from '/assets/reveal.js';
+  import { initNav } from '/assets/nav.js';
+
+  var canvas = document.getElementById('cloudCanvas');
+  var headline = document.getElementById('heroHeadline');
+  initHeroCloud(canvas, {
+    clearing: function () {
+      if (window.innerWidth <= 900) return null;
+      var c = canvas.getBoundingClientRect();
+      var h = headline.getBoundingClientRect();
+      return {
+        left: h.left - c.left - 40, right: h.right - c.left + 40,
+        top: h.top - c.top - 30, bottom: h.bottom - c.top + 30
+      };
+    }
+  });
+
+  initNav(document.getElementById('mainnav'));
+  initReveal();
+
+  var finder = document.getElementById('finderCard');
+  if (finder) initTilt(finder, { zone: finder.parentElement, maxX: 6, maxY: 7 });
+</script>
+
+</body>
+</html>

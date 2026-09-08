@@ -10,18 +10,18 @@
 <meta property="og:type"        content="website">
 <meta property="og:url"         content="https://wcloud.nz/shoot-and-create">
 <meta property="og:title"       content="Shoot &amp; Create – Photography &amp; Short-Form Video, Christchurch">
-<meta property="og:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Packages from NZ$250. Every enquiry answered personally in 3–6 hours.">
+<meta property="og:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Most shoots land between NZ$350 and NZ$700, quoted per job. Every enquiry answered personally in 3–6 hours.">
 <meta property="og:image"       content="https://wcloud.nz/og-image.jpg">
 <meta property="og:image:type"  content="image/jpeg">
 <meta property="og:image:width" content="2400">
 <meta property="og:image:height" content="1260">
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:title"       content="Shoot &amp; Create – Photography &amp; Short-Form Video, Christchurch">
-<meta name="twitter:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Packages from NZ$250.">
+<meta name="twitter:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Most shoots land between NZ$350 and NZ$700.">
 <meta name="twitter:image"       content="https://wcloud.nz/og-image.jpg">
 
 <!-- SEO -->
-<meta name="description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Edited galleries and vertical reels from NZ$250, delivered in days, not weeks.">
+<meta name="description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Edited galleries and vertical reels, most shoots NZ$350–$700, delivered in days, not weeks.">
 <link rel="canonical" href="https://wcloud.nz/shoot-and-create">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -180,32 +180,103 @@
   }
   .sc-gallery-note { font-size: .88rem; color: var(--body); font-weight: 600; }
 
+  /* ── REELS ──────────────────────────────────────────────────
+     Each tile is a link to the reel on Instagram, not a player. A clip
+     played here is a view Instagram never counts, and sending traffic
+     to the account is the point of showing them. It also keeps the
+     page light: no embed script, no Meta cookies. */
+  .sc-reels { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); width: 100%; max-width: 760px; margin: 0 auto; }
+  .sc-reel {
+    position: relative; display: block; aspect-ratio: 9 / 16; overflow: hidden;
+    border-radius: var(--radius); border: 1px solid rgba(127,168,190,.3);
+    background: linear-gradient(155deg, #e8f1f6 0%, #d6e6ef 55%, #cbdfea 100%);
+    text-decoration: none; color: inherit;
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .sc-reel:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(42,61,74,.2); }
+  .sc-reel > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .sc-reel-label {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 1.8rem .9rem .8rem;
+    font-family: var(--mark); font-size: .62rem; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--deep);
+    background: linear-gradient(to top, rgba(255,255,255,.88), transparent);
+  }
+  /* Decorative: the whole tile is the link, so this is not a button. */
+  .sc-reel-play {
+    position: absolute; inset: 0; margin: auto;
+    width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(255,255,255,.78); border: 1px solid rgba(255,255,255,.9);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(42,61,74,.18);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform .25s var(--ease), background .25s;
+  }
+  .sc-reel:hover .sc-reel-play { transform: scale(1.1); background: rgba(255,255,255,.95); }
+  .sc-reel-play::before {
+    content: ''; width: 0; height: 0; margin-left: 3px;
+    border-left: 14px solid var(--dusk);
+    border-top: 9px solid transparent; border-bottom: 9px solid transparent;
+  }
+  /* Signposts the jump, so nobody is surprised to land on Instagram. */
+  .sc-reel-ig {
+    position: absolute; top: .7rem; right: .7rem;
+    display: inline-flex; align-items: center; gap: .3rem;
+    font-family: var(--mark); font-size: .58rem; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--deep);
+    background: rgba(255,255,255,.8); border-radius: var(--pill);
+    padding: .25rem .6rem .25rem .45rem;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  }
+  .sc-reel-ig svg { width: 12px; height: 12px; flex-shrink: 0; }
+  .sc-reels-more { text-align: center; margin-top: var(--sp-3); font-size: .9rem; font-weight: 600; }
+  .sc-reels-more a { color: var(--brand-ink); }
+
   /* ── PRICING ────────────────────────────────────────────────
-     One number. A grid of cards would imply tiers to choose between,
-     and there is only one starting point to state. */
+     A range, not a "from" figure. Every shoot is quoted, so a single
+     number would be read as a promise the quote then breaks. The two
+     ends are annotated because the span is the information: it tells
+     you which end your job sits at before you ever send the form. */
   .sc-price-panel {
-    max-width: 620px; margin: 0 auto; text-align: center;
+    width: 100%; max-width: 720px; margin: 0 auto;
     background: var(--white); border: 1px solid rgba(127,168,190,.3);
-    border-radius: var(--radius-lg); padding: 2.8rem 2.4rem 2.6rem;
-    display: flex; flex-direction: column; align-items: center; gap: .3rem;
+    border-radius: var(--radius-lg); padding: 2.6rem 2.4rem 2.4rem;
     box-shadow: 0 20px 50px rgba(127,168,190,.18);
   }
-  /* line-height 1: the body default leaves a gutter under a 4rem number */
-  .sc-price-amt { font-family: var(--serif); font-size: 1.1rem; color: var(--deep); line-height: 1; margin-bottom: .7rem; }
-  .sc-price-amt strong { font-size: clamp(3rem, 6vw, 4rem); font-weight: 700; letter-spacing: -.025em; }
-  .sc-price-note { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--body); }
-  .sc-price-covers {
-    list-style: none; margin: 1.6rem 0 1.8rem; padding: 1.5rem 0 0;
-    border-top: 1px solid var(--brand-mist); width: 100%;
-    display: flex; flex-direction: column; gap: .6rem; text-align: left;
+  .sc-range {
+    display: flex; align-items: baseline; justify-content: center;
+    gap: .6rem; font-family: var(--serif); color: var(--deep);
+    line-height: 1; flex-wrap: wrap;
   }
-  .sc-price-covers li { position: relative; padding-left: 1.6rem; font-size: .93rem; color: var(--body); font-weight: 500; }
-  .sc-price-covers li::before {
-    content: ''; position: absolute; left: 0; top: .48em;
-    width: 10px; height: 6px; border-left: 2px solid var(--sage); border-bottom: 2px solid var(--sage);
+  .sc-range b { font-size: clamp(2.4rem, 5.4vw, 3.4rem); font-weight: 700; letter-spacing: -.025em; }
+  .sc-range i { font-style: normal; font-size: 1.6rem; color: var(--brand); }
+  .sc-range-cur { font-size: 1rem; font-weight: 600; }
+  .sc-range-cap {
+    display: block; text-align: center; margin-top: .9rem;
+    font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--body);
+  }
+  /* The two ends, described. A range with unexplained ends is just a
+     shrug; these say what puts a job at each end. */
+  .sc-ends {
+    display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3);
+    margin-top: 2rem; padding-top: 1.8rem; border-top: 1px solid var(--brand-mist);
+  }
+  .sc-end h3 { font-size: 1rem; margin-bottom: .5rem; }
+  .sc-end-tag {
+    display: inline-block; font-size: .66rem; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--brand-ink);
+    margin-bottom: .45rem;
+  }
+  .sc-end ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .4rem; }
+  .sc-end li { position: relative; padding-left: 1.4rem; font-size: .88rem; color: var(--body); font-weight: 500; }
+  .sc-end li::before {
+    content: ''; position: absolute; left: 0; top: .45em;
+    width: 9px; height: 5px; border-left: 2px solid var(--sage); border-bottom: 2px solid var(--sage);
     transform: rotate(-45deg);
   }
+  .sc-price-cta { text-align: center; margin-top: 2rem; }
   .sc-price-foot { font-size: .92rem; color: var(--body); font-weight: 500; max-width: 62ch; margin: 0 auto; text-align: center; }
+  .sc-price-foot strong { color: var(--deep); font-weight: 700; }
 
   /* ── HOW BOOKING WORKS ──────────────────────────────────────── */
   .sc-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-3); }
@@ -325,12 +396,20 @@
     .sc-hero-stage { padding: 0 1.6rem 3.5rem; }
     .sc-delivs, .sc-steps { grid-template-columns: 1fr; }
     .sc-gallery { grid-template-columns: repeat(2, 1fr); }
+    .sc-ends { grid-template-columns: 1fr; gap: var(--sp-2); }
     .sc-about { grid-template-columns: 1fr; justify-items: center; text-align: center; }
     .sc-about-copy { text-align: left; }
   }
   @media (max-width: 700px) {
     .sc-band, #book { padding: var(--sp-5) 1.6rem; }
     .sc-gallery { grid-template-columns: 1fr; }
+    /* A 9:16 tile at full phone width is taller than the screen, so the
+       reels become a swipeable strip rather than a stack. */
+    .sc-reels {
+      display: flex; gap: .8rem; overflow-x: auto; padding-bottom: .5rem;
+      scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    }
+    .sc-reel { flex: 0 0 62%; scroll-snap-align: center; }
     .sc-shot.wide { grid-column: auto; }
     .form-row { grid-template-columns: 1fr; }
     .sc-form { padding: 2rem 1.5rem; }
@@ -367,15 +446,11 @@
     "url": "https://wcloud.nz/shoot-and-create",
     "description": "Photography and short-form video for events, cafés and restaurants, and sports and running events in Christchurch. Edited photo galleries and vertical reels, delivered in days.",
     "offers": {
-      "@type": "Offer",
+      "@type": "AggregateOffer",
       "priceCurrency": "NZD",
-      "price": "250",
-      "priceSpecification": {
-        "@type": "PriceSpecification",
-        "priceCurrency": "NZD",
-        "minPrice": "250",
-        "description": "Packages start from NZ$250 — around 1.5 to 2 hours on site, an edited photo gallery, and one short-form vertical video. Longer or larger jobs are quoted individually."
-      }
+      "lowPrice": "350",
+      "highPrice": "700",
+      "description": "Every shoot is quoted individually. Most land between NZ$350 — around two hours on site, an edited photo gallery and one captioned vertical video — and NZ$700 for a half or full day with a larger gallery and several clips."
     }
   },
   {
@@ -454,7 +529,7 @@
     </div>
     <div class="sc-chips">
       <span class="wc-chip">Stills + short-form video</span>
-      <span class="wc-chip">From $250</span>
+      <span class="wc-chip">Most shoots $350&ndash;$700</span>
       <span class="wc-chip">Reply in 3&ndash;6 hours</span>
     </div>
   </div>
@@ -564,8 +639,42 @@
   <div class="sc-head">
     <span class="lbl">Sample work</span>
     <h2>A look at what comes back</h2>
-    <p>Photos and stills pulled from the video, across every kind of shoot &mdash; the frames you&rsquo;d actually post, not the ones that only look good on a photographer&rsquo;s website.</p>
+    <p>Start with the reels &mdash; they&rsquo;re the clearest sense of how I see a place. Then the stills: the frames you&rsquo;d actually post, not the ones that only look good on a photographer&rsquo;s website.</p>
   </div>
+  <!-- REELS — outbound to Instagram
+       ────────────────────────────────────────────────────────────
+       Each tile links to the reel on Instagram so the view is counted
+       there. Before launch, two things per tile: the real permalink in
+       href, and a poster frame in place of the empty gradient.
+       ──────────────────────────────────────────────────────────── -->
+  <div class="sc-reels fug">
+    <!-- REEL 1: set href to the reel's permalink, and swap the frame
+         for a poster grab: <img src="/assets/reel-1.jpg" alt="…"
+         loading="lazy" decoding="async" width="720" height="1280"> -->
+    <a class="sc-reel" href="{IG_PROFILE}" target="_blank" rel="noopener">
+      <span class="sc-reel-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>Reel</span>
+      <span class="sc-reel-play" aria-hidden="true"></span>
+      <span class="sc-reel-label">Godley Head</span>
+    </a>
+    <!-- REEL 2: set href to the reel's permalink, and swap the frame
+         for a poster grab: <img src="/assets/reel-2.jpg" alt="…"
+         loading="lazy" decoding="async" width="720" height="1280"> -->
+    <a class="sc-reel" href="{IG_PROFILE}" target="_blank" rel="noopener">
+      <span class="sc-reel-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>Reel</span>
+      <span class="sc-reel-play" aria-hidden="true"></span>
+      <span class="sc-reel-label">Taylors Mistake</span>
+    </a>
+    <!-- REEL 3: set href to the reel's permalink, and swap the frame
+         for a poster grab: <img src="/assets/reel-3.jpg" alt="…"
+         loading="lazy" decoding="async" width="720" height="1280"> -->
+    <a class="sc-reel" href="{IG_PROFILE}" target="_blank" rel="noopener">
+      <span class="sc-reel-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>Reel</span>
+      <span class="sc-reel-play" aria-hidden="true"></span>
+      <span class="sc-reel-label">Scarborough Bluffs</span>
+    </a>
+  </div>
+  <p class="sc-reels-more">These are mine, not a client&rsquo;s &mdash; the <em>Join me&hellip;</em> series I shoot on the Christchurch trails most weekends. <a href="{IG_PROFILE}" target="_blank" rel="noopener">See the rest on Instagram &rarr;</a></p>
+
   <div class="sc-gallery fug">
     <!-- Row 1: wide + single -->
     <div class="sc-shot wide"><div class="sc-frame"><span>Running &middot; Port Hills</span></div></div>
@@ -585,21 +694,40 @@
 <section id="pricing" class="sc-band alt">
   <div class="sc-head centred">
     <span class="lbl">Pricing</span>
-    <h2>One starting price, and no surprises after it</h2>
+    <h2>What it costs, and how you&rsquo;ll know</h2>
   </div>
 
   <div class="sc-price-panel fu">
-    <p class="sc-price-amt">from NZ$<strong>250</strong></p>
-    <span class="sc-price-note">Packages start here</span>
-    <ul class="sc-price-covers">
-      <li>Around 1.5&ndash;2 hours on site</li>
-      <li>An edited photo gallery, delivered privately</li>
-      <li>One short-form vertical video, captioned and ready to post</li>
-    </ul>
-    <a href="#book" class="btn-p">Book a shoot</a>
+    <p class="sc-range">
+      <span class="sc-range-cur">NZ$</span><b>350</b><i>&ndash;</i><span class="sc-range-cur">NZ$</span><b>700</b>
+    </p>
+    <span class="sc-range-cap">Where most shoots land</span>
+
+    <div class="sc-ends">
+      <div class="sc-end">
+        <span class="sc-end-tag">Nearer $350</span>
+        <h3>A single session</h3>
+        <ul>
+          <li>Around 2 hours on site</li>
+          <li>An edited photo gallery</li>
+          <li>One vertical video, captioned</li>
+        </ul>
+      </div>
+      <div class="sc-end">
+        <span class="sc-end-tag">Nearer $700</span>
+        <h3>A half or full day</h3>
+        <ul>
+          <li>Four to six hours, or a whole race morning</li>
+          <li>A bigger gallery, more of the day covered</li>
+          <li>Several clips rather than one</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sc-price-cta"><a href="#book" class="btn-p">Get your number</a></div>
   </div>
 
-  <p class="sc-price-foot">Longer days, bigger jobs and extra video are quoted individually &mdash; tell me what you&rsquo;ve got in mind and you&rsquo;ll have a fixed number back the same day, before you commit to anything. All prices NZD.</p>
+  <p class="sc-price-foot">I quote every shoot properly rather than pretending they&rsquo;re all the same, so the range is there to tell you roughly where you&rsquo;d sit before you get in touch. Tell me what you&rsquo;ve got in mind and I&rsquo;ll come back with <strong>one fixed number</strong> &mdash; same day, in writing, and it doesn&rsquo;t move afterwards. All prices NZD.</p>
 </section>
 
 <!-- HOW BOOKING WORKS -->

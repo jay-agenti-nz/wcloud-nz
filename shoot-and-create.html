@@ -10,18 +10,18 @@
 <meta property="og:type"        content="website">
 <meta property="og:url"         content="https://wcloud.nz/shoot-and-create">
 <meta property="og:title"       content="Shoot &amp; Create – Photography &amp; Short-Form Video, Christchurch">
-<meta property="og:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, running events and kids' parties. From NZ$180. Every enquiry answered personally in 3–6 hours.">
+<meta property="og:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Packages from NZ$250. Every enquiry answered personally in 3–6 hours.">
 <meta property="og:image"       content="https://wcloud.nz/og-image.jpg">
 <meta property="og:image:type"  content="image/jpeg">
 <meta property="og:image:width" content="2400">
 <meta property="og:image:height" content="1260">
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:title"       content="Shoot &amp; Create – Photography &amp; Short-Form Video, Christchurch">
-<meta name="twitter:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, running events and kids' parties. From NZ$180.">
+<meta name="twitter:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Packages from NZ$250.">
 <meta name="twitter:image"       content="https://wcloud.nz/og-image.jpg">
 
 <!-- SEO -->
-<meta name="description" content="Photography and short-form video for Christchurch events, cafés and restaurants, running events and kids' parties. Stills and reels from NZ$180, delivered in days, not weeks.">
+<meta name="description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Edited galleries and vertical reels from NZ$250, delivered in days, not weeks.">
 <link rel="canonical" href="https://wcloud.nz/shoot-and-create">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -110,34 +110,46 @@
   .sc-reticle::after  { width: 14px; height: 1.5px; transform: translate(-50%,-50%); }
   .sc-finder-cats { font-size: .82rem; font-weight: 700; color: var(--dusk); }
 
-  /* ── FOUR PILLARS ───────────────────────────────────────────── */
-  .sc-pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-2); }
-  .sc-pillar {
+  /* ── WHAT YOU GET ───────────────────────────────────────────
+     Two deliverables, not a ranked list — so no 01/02 numbering. */
+  .sc-delivs { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-2); }
+  .sc-deliv {
     background: var(--white); border: 1px solid rgba(127,168,190,.28);
-    border-radius: var(--radius-lg); padding: 2rem 1.9rem 2.1rem;
+    border-radius: var(--radius-lg); padding: 2.1rem 2rem 2.2rem;
     display: flex; flex-direction: column; gap: .5rem;
-    scroll-margin-top: 6rem;   /* the pill nav is fixed — ad links land below it */
   }
-  .sc-pillar-top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
-  .sc-pillar-top h3 { margin: 0; font-size: 1.25rem; }
-  .sc-pillar-n { font-family: var(--serif); font-size: .9rem; font-weight: 700; color: var(--brand-ink); }
-  .sc-pillar p { font-size: .93rem; }
-  .sc-pillar ul { list-style: none; margin: .5rem 0 1.1rem; padding: 0; display: flex; flex-direction: column; gap: .45rem; }
-  .sc-pillar li { position: relative; padding-left: 1.5rem; font-size: .88rem; color: var(--body); font-weight: 500; }
-  .sc-pillar li::before {
+  .sc-deliv h3 { margin: 0 0 .2rem; font-size: 1.35rem; }
+  .sc-deliv p { font-size: .95rem; }
+  .sc-deliv ul { list-style: none; margin: .6rem 0 1.2rem; padding: 0; display: flex; flex-direction: column; gap: .45rem; }
+  .sc-deliv li { position: relative; padding-left: 1.5rem; font-size: .89rem; color: var(--body); font-weight: 500; }
+  .sc-deliv li::before {
     content: ''; position: absolute; left: 0; top: .42em;
     width: 9px; height: 5px; border-left: 2px solid var(--sage); border-bottom: 2px solid var(--sage);
     transform: rotate(-45deg);
   }
-  /* Facts, not sales copy — hours and turnaround are the two things
-     everyone asks first, so they sit on the card. */
-  .sc-pillar-facts {
+  /* Format facts, not sales copy — what actually lands in your hands. */
+  .sc-deliv-facts {
     margin-top: auto; display: flex; flex-wrap: wrap; gap: .4rem .5rem;
     padding-top: 1rem; border-top: 1px solid var(--brand-mist);
   }
   .sc-fact {
     font-size: .72rem; font-weight: 700; letter-spacing: .04em; color: var(--dusk);
     background: var(--brand-pale); border-radius: var(--pill); padding: .3rem .8rem;
+  }
+  /* Where it happens — context under the deliverables, deliberately
+     quieter than them, because the page no longer sells by industry. */
+  .sc-occasions {
+    display: flex; align-items: center; justify-content: center;
+    flex-wrap: wrap; gap: .5rem .9rem; margin-top: var(--sp-2);
+  }
+  .sc-occasions span:first-child {
+    font-family: var(--mark); font-size: .66rem; font-weight: 700;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--body);
+  }
+  .sc-occasion {
+    font-size: .84rem; font-weight: 700; color: var(--dusk);
+    padding: .35rem .95rem; border-radius: var(--pill);
+    background: var(--white); border: 1px solid rgba(127,168,190,.3);
   }
 
   /* ── SAMPLE WORK ────────────────────────────────────────────
@@ -168,24 +180,32 @@
   }
   .sc-gallery-note { font-size: .88rem; color: var(--body); font-weight: 600; }
 
-  /* ── PRICING ────────────────────────────────────────────────── */
-  .sc-price-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-2); align-items: stretch; }
-  .sc-price {
-    background: var(--white); border: 1px solid rgba(127,168,190,.28);
-    border-radius: var(--radius-lg); padding: 1.8rem 1.6rem 1.9rem;
-    display: flex; flex-direction: column; gap: .25rem; height: 100%;
+  /* ── PRICING ────────────────────────────────────────────────
+     One number. A grid of cards would imply tiers to choose between,
+     and there is only one starting point to state. */
+  .sc-price-panel {
+    max-width: 620px; margin: 0 auto; text-align: center;
+    background: var(--white); border: 1px solid rgba(127,168,190,.3);
+    border-radius: var(--radius-lg); padding: 2.8rem 2.4rem 2.6rem;
+    display: flex; flex-direction: column; align-items: center; gap: .3rem;
+    box-shadow: 0 20px 50px rgba(127,168,190,.18);
   }
-  .sc-price h3 { font-size: 1.1rem; margin-bottom: .1rem; }
-  .sc-price-amt { font-family: var(--serif); font-size: .95rem; color: var(--deep); margin-top: .3rem; }
-  .sc-price-amt strong { font-size: 2.2rem; font-weight: 700; letter-spacing: -.02em; }
-  .sc-price-from { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--body); }
-  .sc-price p { font-size: .88rem; margin: .7rem 0 1.2rem; }
-  .sc-price a { margin-top: auto; align-self: flex-start; }
-  .sc-addons { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); }
-  .sc-addon { background: var(--white); border-radius: var(--radius); padding: 1.2rem 1.3rem; border: 1px solid rgba(127,168,190,.22); }
-  .sc-addon strong { font-family: var(--serif); font-size: 1rem; color: var(--deep); display: block; }
-  .sc-addon p { font-size: .85rem; margin-top: .2rem; }
-  .sc-price-foot { font-size: .88rem; color: var(--body); font-weight: 600; max-width: 70ch; }
+  /* line-height 1: the body default leaves a gutter under a 4rem number */
+  .sc-price-amt { font-family: var(--serif); font-size: 1.1rem; color: var(--deep); line-height: 1; margin-bottom: .7rem; }
+  .sc-price-amt strong { font-size: clamp(3rem, 6vw, 4rem); font-weight: 700; letter-spacing: -.025em; }
+  .sc-price-note { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--body); }
+  .sc-price-covers {
+    list-style: none; margin: 1.6rem 0 1.8rem; padding: 1.5rem 0 0;
+    border-top: 1px solid var(--brand-mist); width: 100%;
+    display: flex; flex-direction: column; gap: .6rem; text-align: left;
+  }
+  .sc-price-covers li { position: relative; padding-left: 1.6rem; font-size: .93rem; color: var(--body); font-weight: 500; }
+  .sc-price-covers li::before {
+    content: ''; position: absolute; left: 0; top: .48em;
+    width: 10px; height: 6px; border-left: 2px solid var(--sage); border-bottom: 2px solid var(--sage);
+    transform: rotate(-45deg);
+  }
+  .sc-price-foot { font-size: .92rem; color: var(--body); font-weight: 500; max-width: 62ch; margin: 0 auto; text-align: center; }
 
   /* ── HOW BOOKING WORKS ──────────────────────────────────────── */
   .sc-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-3); }
@@ -297,24 +317,19 @@
   .sc-cross .lbl { color: var(--brand-light); }
 
   /* ── RESPONSIVE ─────────────────────────────────────────────── */
-  @media (max-width: 1020px) {
-    .sc-price-grid { grid-template-columns: repeat(2, 1fr); }
-    .sc-addons { grid-template-columns: 1fr; }
-  }
   @media (max-width: 900px) {
     .sc-hero { grid-template-columns: 1fr; min-height: 0; }
     .sc-hero-copy { padding: 7rem 1.6rem 2.5rem; align-items: center; text-align: center; }
     .sc-hero-copy h1 { max-width: none; }
     .sc-hero-actions, .sc-chips { justify-content: center; }
     .sc-hero-stage { padding: 0 1.6rem 3.5rem; }
-    .sc-pillars, .sc-steps { grid-template-columns: 1fr; }
+    .sc-delivs, .sc-steps { grid-template-columns: 1fr; }
     .sc-gallery { grid-template-columns: repeat(2, 1fr); }
     .sc-about { grid-template-columns: 1fr; justify-items: center; text-align: center; }
     .sc-about-copy { text-align: left; }
   }
   @media (max-width: 700px) {
     .sc-band, #book { padding: var(--sp-5) 1.6rem; }
-    .sc-price-grid { grid-template-columns: 1fr; max-width: 460px; }
     .sc-gallery { grid-template-columns: 1fr; }
     .sc-shot.wide { grid-column: auto; }
     .form-row { grid-template-columns: 1fr; }
@@ -333,7 +348,7 @@
     "url": "https://wcloud.nz",
     "logo": "https://wcloud.nz/favicon.svg",
     "image": "https://wcloud.nz/og-image.jpg",
-    "description": "White Cloud builds affordable, AI-optimised websites for New Zealand small businesses, and shoots photography and short-form video for events, cafés, running events and kids' parties. Based in Christchurch, NZ.",
+    "description": "White Cloud builds affordable, AI-optimised websites for New Zealand small businesses, and shoots photography and short-form video for events, cafés and restaurants, and running events. Based in Christchurch, NZ.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Christchurch",
@@ -346,16 +361,21 @@
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Shoot & Create — photography and short-form video",
-    "serviceType": "Event, hospitality, sports and kids' event photography and video",
+    "serviceType": "Event, hospitality and sports photography and short-form video",
     "provider": { "@id": "https://wcloud.nz/#business" },
     "areaServed": { "@type": "City", "name": "Christchurch" },
     "url": "https://wcloud.nz/shoot-and-create",
-    "description": "Photography and short-form video for events, cafés and restaurants, sports and running events, and kids' parties in Christchurch. Stills and reels, delivered in days.",
+    "description": "Photography and short-form video for events, cafés and restaurants, and sports and running events in Christchurch. Edited photo galleries and vertical reels, delivered in days.",
     "offers": {
-      "@type": "AggregateOffer",
+      "@type": "Offer",
       "priceCurrency": "NZD",
-      "lowPrice": "180",
-      "highPrice": "600"
+      "price": "250",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "NZD",
+        "minPrice": "250",
+        "description": "Packages start from NZ$250 — around 1.5 to 2 hours on site, an edited photo gallery, and one short-form vertical video. Longer or larger jobs are quoted individually."
+      }
     }
   },
   {
@@ -365,12 +385,12 @@
       {
         "@type": "Question",
         "name": "How quickly do I get the photos back?",
-        "acceptedAnswer": { "@type": "Answer", "text": "It depends on the shoot. Running and sports events come back fastest — usually 24 to 72 hours, because the photos are worth the most while the race is still being talked about. Kids' events are 2 to 3 business days, cafés and restaurants 2 to 4, and larger events 3 to 5. If you need something sooner for a specific post, say so when you enquire and I'll tell you honestly whether I can hit it." }
+        "acceptedAnswer": { "@type": "Answer", "text": "It depends on the shoot. Running and sports events come back fastest — usually 24 to 72 hours, because the photos are worth the most while the race is still being talked about. Cafés and restaurants are 2 to 4 business days, and larger events 3 to 5. If you need something sooner for a specific post, say so when you enquire and I'll tell you honestly whether I can hit it." }
       },
       {
         "@type": "Question",
         "name": "Do you travel outside Christchurch?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Anywhere in Christchurch and Banks Peninsula is included in the prices on this page. Further afield in Canterbury I add a small travel cost, quoted up front before you commit — never added afterwards." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Anywhere in Christchurch and Banks Peninsula is included in the starting price. Further afield in Canterbury I add a small travel cost, quoted up front before you commit — never added afterwards." }
       },
       {
         "@type": "Question",
@@ -385,7 +405,7 @@
       {
         "@type": "Question",
         "name": "Can I get both photos and video from one booking?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes — that's the normal way I work. Every category on this page can be stills, short-form video, or both from the same session. Both means slightly fewer stills than a photo-only booking, because some of the time goes on filming, and I'll be upfront about that trade-off when we talk." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — that's the normal way I work, and the starting package includes both. Taking both does mean slightly fewer stills than a photo-only booking, because some of the time on site goes on filming, and I'll be upfront about that trade-off when we talk." }
       },
       {
         "@type": "Question",
@@ -409,7 +429,7 @@
     <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
   </a>
   <ul class="wc-nav-links">
-    <li><a href="#services">What I shoot</a></li>
+    <li><a href="#services">What you get</a></li>
     <li><a href="#work">Sample work</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#faq">FAQ</a></li>
@@ -427,14 +447,14 @@
   <div class="sc-hero-copy">
     <span class="badge"><span class="badge-dot"></span>Shoot &amp; Create &middot; Christchurch</span>
     <h1 class="wc-display" id="heroHeadline">Shot the way you&rsquo;d remember it.</h1>
-    <p class="sc-hero-sub">Photography and short-form video for events, caf&eacute;s and restaurants, running events and kids&rsquo; parties. I&rsquo;m out on the Port Hills with a camera most weekends anyway &mdash; this is the same eye, pointed at your thing.</p>
+    <p class="sc-hero-sub">Photography and short-form video for events, caf&eacute;s and restaurants, and running events. I&rsquo;m out on the Port Hills with a camera most weekends anyway &mdash; this is the same eye, pointed at your thing.</p>
     <div class="sc-hero-actions">
       <a href="#book" class="btn-p">Book a shoot</a>
-      <a href="#services" class="btn-o">What I shoot</a>
+      <a href="#services" class="btn-o">What you get</a>
     </div>
     <div class="sc-chips">
       <span class="wc-chip">Stills + short-form video</span>
-      <span class="wc-chip">From $180</span>
+      <span class="wc-chip">From $250</span>
       <span class="wc-chip">Reply in 3&ndash;6 hours</span>
     </div>
   </div>
@@ -447,7 +467,7 @@
       </div>
       <div class="sc-finder-mid">
         <span class="sc-reticle" aria-hidden="true"></span>
-        <span class="sc-finder-cats">Events &middot; Caf&eacute;s &middot; Running &middot; Kids</span>
+        <span class="sc-finder-cats">Events &middot; Caf&eacute;s &middot; Running</span>
       </div>
       <div class="sc-finder-btm">
         <span class="sc-finder-meta">CHRISTCHURCH, NZ</span>
@@ -470,86 +490,60 @@
     </div>
     <div class="sc-about-copy">
       <p>Most weekends you&rsquo;ll find me somewhere on the Port Hills &mdash; Godley Head, Taylors Mistake, Scarborough Bluffs &mdash; running the trails and filming them for my <em>Join me&hellip;</em> series. Nobody asked me to make those. I make them because the light on that coast at 7am deserves better than a phone in someone&rsquo;s pocket.</p>
-      <p>That&rsquo;s the whole reason this page exists. I got good at catching the moment where someone&rsquo;s legs are burning and they&rsquo;re grinning anyway, and it turns out that&rsquo;s the same moment that matters at a race finish line, at a kid&rsquo;s birthday, and across a caf&eacute; table on a Sunday morning.</p>
-      <p>I&rsquo;m also a dad of two, so I know exactly how a kids&rsquo; party actually goes &mdash; loud, fast, and never once in the order anybody planned. And I&rsquo;ve spent more than ten years running creative and e-commerce brands, so when a caf&eacute; owner says &ldquo;I need something for Instagram this week,&rdquo; I know what that really means: shots you can post on a Tuesday without redesigning your whole feed.</p>
+      <p>That&rsquo;s the whole reason this page exists. I got good at catching the moment where someone&rsquo;s legs are burning and they&rsquo;re grinning anyway, and it turns out that&rsquo;s the same moment that matters at a race finish line, across a caf&eacute; table on a Sunday morning, and in a room full of people who turned up to your launch.</p>
+      <p>The other half of this is ten-odd years running creative and e-commerce brands. That&rsquo;s the part that taught me the difference between a photo that looks good and a photo that gets used. When a caf&eacute; owner says &ldquo;I need something for Instagram this week,&rdquo; I know what that actually means: frames you can post on a Tuesday without redesigning your whole feed, and a clip that holds a thumb for three seconds. Pretty is not the goal. Posted is the goal.</p>
       <p>Photo and video sit alongside the websites I build at White Cloud. Same person, same standard, same phone number.</p>
     </div>
   </div>
 </section>
 
-<!-- SERVICES: THE FOUR PILLARS -->
+<!-- WHAT YOU GET -->
 <section id="services" class="sc-band alt">
   <div class="sc-head">
-    <span class="lbl">What I shoot</span>
-    <h2>Four things I do properly, rather than everything badly</h2>
-    <p>Stills and short-form video are available on all four &mdash; photos only, video only, or both from the same booking.</p>
+    <span class="lbl">What you get</span>
+    <h2>Two things, both of them yours to use</h2>
+    <p>Take one or take both. Most people take both, because the same afternoon that fills a gallery also fills a month of reels.</p>
   </div>
-  <div class="sc-pillars fug">
 
-    <article class="sc-pillar" id="events">
-      <div class="sc-pillar-top"><h3>Events</h3><span class="sc-pillar-n">01</span></div>
-      <p>Launches, community events, functions and celebrations. Candid coverage of the room as it actually is, plus the posed shots you&rsquo;ll be asked for afterwards.</p>
+  <div class="sc-delivs fug">
+    <article class="sc-deliv">
+      <h3>Photos</h3>
+      <p>High-resolution, colour-graded stills &mdash; the kind that work just as well at the top of your website as they do in the feed.</p>
       <ul>
-        <li>Candid and posed coverage through the event</li>
-        <li>Edited gallery, ready to share</li>
-        <li>30&ndash;60 second recap edit for social</li>
-        <li>Speakers, sponsors and signage covered on request</li>
+        <li>Every keeper edited, not just a highlight dozen</li>
+        <li>Colour graded to one consistent look</li>
+        <li>Delivered as a private online gallery you can share</li>
+        <li>Sized for web, social and print from the same shoot</li>
       </ul>
-      <div class="sc-pillar-facts">
-        <span class="sc-fact">Typically 2&ndash;4 hours</span>
-        <span class="sc-fact">Delivered in 3&ndash;5 business days</span>
-        <span class="sc-fact">From $300</span>
+      <div class="sc-deliv-facts">
+        <span class="sc-fact">Full-resolution JPEG</span>
+        <span class="sc-fact">Private gallery link</span>
+        <span class="sc-fact">Yours to use anywhere</span>
       </div>
     </article>
 
-    <article class="sc-pillar" id="cafes">
-      <div class="sc-pillar-top"><h3>Caf&eacute;s &amp; restaurants</h3><span class="sc-pillar-n">02</span></div>
-      <p>Food, drinks and the feel of the room &mdash; shot so you have a month of content instead of one hero image. Built for Instagram and Facebook, not for a brochure nobody reads.</p>
+    <article class="sc-deliv">
+      <h3>Short-form video</h3>
+      <p>Edited vertical clips cut for Reels, TikTok and Facebook &mdash; paced for the platform rather than trimmed down from a long edit.</p>
       <ul>
-        <li>Food and drink stills, styled on the day</li>
-        <li>Interior and ambience shots</li>
-        <li>2&ndash;3 vertical reels cut for social</li>
-        <li>Shot around service, not through it</li>
+        <li>Shot and cut vertical, not cropped from landscape</li>
+        <li>Captioned, so it works with the sound off</li>
+        <li>Paced for the first three seconds, where it&rsquo;s won or lost</li>
+        <li>Ready to upload &mdash; no re-exporting, no black bars</li>
       </ul>
-      <div class="sc-pillar-facts">
-        <span class="sc-fact">Typically 1.5&ndash;3 hours</span>
-        <span class="sc-fact">Delivered in 2&ndash;4 business days</span>
-        <span class="sc-fact">From $280</span>
+      <div class="sc-deliv-facts">
+        <span class="sc-fact">9:16 vertical</span>
+        <span class="sc-fact">Captioned</span>
+        <span class="sc-fact">Reels &middot; TikTok &middot; Facebook</span>
       </div>
     </article>
+  </div>
 
-    <article class="sc-pillar" id="sports">
-      <div class="sc-pillar-top"><h3>Sports &amp; running events</h3><span class="sc-pillar-n">03</span></div>
-      <p>For organisers, clubs and sponsors. I run these events myself, so I know where the good light is at 7am and which corner everyone is hurting on.</p>
-      <ul>
-        <li>Start line, on course and finish line</li>
-        <li>Sponsor banners and branding captured deliberately</li>
-        <li>Fast turnaround while the race is still being talked about</li>
-        <li>Vertical clips ready for the club&rsquo;s socials</li>
-      </ul>
-      <div class="sc-pillar-facts">
-        <span class="sc-fact">Race morning, 3&ndash;5 hours</span>
-        <span class="sc-fact">Delivered in 24&ndash;72 hours</span>
-        <span class="sc-fact">From $250</span>
-      </div>
-    </article>
-
-    <article class="sc-pillar" id="kids">
-      <div class="sc-pillar-top"><h3>Kids&rsquo; events</h3><span class="sc-pillar-n">04</span></div>
-      <p>Birthday parties, school events and kids&rsquo; sport days. I&rsquo;m a parent of two &mdash; I stay out of the way, I don&rsquo;t make anyone pose for twenty minutes, and I know the good bit is never the cake.</p>
-      <ul>
-        <li>Natural, unstaged coverage</li>
-        <li>Group shot done quickly and painlessly</li>
-        <li>Edited gallery you can share with other parents</li>
-        <li>Short highlight clip on request</li>
-      </ul>
-      <div class="sc-pillar-facts">
-        <span class="sc-fact">Typically 1&ndash;2 hours</span>
-        <span class="sc-fact">Delivered in 2&ndash;3 business days</span>
-        <span class="sc-fact">From $180</span>
-      </div>
-    </article>
-
+  <div class="sc-occasions fu">
+    <span>Where I shoot it</span>
+    <span class="sc-occasion">Events</span>
+    <span class="sc-occasion">Caf&eacute;s &amp; restaurants</span>
+    <span class="sc-occasion">Sports &amp; running events</span>
   </div>
 </section>
 
@@ -562,14 +556,15 @@
        <img src="/assets/shoot-running-1.jpg" alt="…" loading="lazy"
             decoding="async" width="1200" height="900">
 
-     Grid shape (one wide tile, then five 4:3 tiles) survives the
-     swap. Aim for 8–12 frames across the four categories.
+     One mixed gallery, not sorted by occasion — the grid shape
+     (wide + single, single + wide, then three across) survives the
+     swap. Aim for 8–12 frames across events, cafés and running.
      ──────────────────────────────────────────────────────────── -->
 <section id="work" class="sc-band">
   <div class="sc-head">
     <span class="lbl">Sample work</span>
     <h2>A look at what comes back</h2>
-    <p>A selection across the four categories &mdash; the kind of frames you&rsquo;d actually post, not the ones that only look good on a photographer&rsquo;s website.</p>
+    <p>Photos and stills pulled from the video, across every kind of shoot &mdash; the frames you&rsquo;d actually post, not the ones that only look good on a photographer&rsquo;s website.</p>
   </div>
   <div class="sc-gallery fug">
     <!-- Row 1: wide + single -->
@@ -579,71 +574,32 @@
     <div class="sc-shot"><div class="sc-frame"><span>Event &middot; Launch night</span></div></div>
     <div class="sc-shot wide"><div class="sc-frame"><span>Race morning &middot; Finish line</span></div></div>
     <!-- Row 3: three singles -->
-    <div class="sc-shot"><div class="sc-frame"><span>Kids &middot; Birthday</span></div></div>
     <div class="sc-shot"><div class="sc-frame"><span>Caf&eacute; &middot; On the pass</span></div></div>
     <div class="sc-shot"><div class="sc-frame"><span>Event &middot; The room</span></div></div>
+    <div class="sc-shot"><div class="sc-frame"><span>Running &middot; Godley Head</span></div></div>
   </div>
-  <p class="sc-gallery-note">Want to see more from a specific category before you book? Ask in the form below and I&rsquo;ll send a full gallery through.</p>
+  <p class="sc-gallery-note">Want to see a full gallery from a shoot like yours before you book? Ask in the form below and I&rsquo;ll send one through.</p>
 </section>
 
 <!-- PRICING -->
 <section id="pricing" class="sc-band alt">
-  <div class="sc-head">
-    <span class="lbl">Starting from</span>
-    <h2>Honest prices, and what they actually cover</h2>
-    <p>Every price here is a starting point. The final quote depends on how many hours you need, travel, and how many edited photos and clips you want back &mdash; and you get that number before you commit to anything. All prices NZD.</p>
+  <div class="sc-head centred">
+    <span class="lbl">Pricing</span>
+    <h2>One starting price, and no surprises after it</h2>
   </div>
 
-  <div class="sc-price-grid fug">
-    <div class="sc-price">
-      <h3>Kids&rsquo; events</h3>
-      <p class="sc-price-amt">from NZ$<strong>180</strong></p>
-      <span class="sc-price-from">Up to 1.5 hours</span>
-      <p>Birthday parties, school events and kids&rsquo; sport days. Edited gallery back within 2&ndash;3 business days.</p>
-      <a href="#book" class="btn-o" data-shoot="Kids' Event">Book this</a>
-    </div>
-
-    <div class="sc-price">
-      <h3>Sports &amp; running</h3>
-      <p class="sc-price-amt">from NZ$<strong>250</strong></p>
-      <span class="sc-price-from">Race-morning coverage</span>
-      <p>Start, course and finish for organisers, clubs and sponsors. Back in your hands within 24&ndash;72 hours.</p>
-      <a href="#book" class="btn-o" data-shoot="Sports / Running Event">Book this</a>
-    </div>
-
-    <div class="sc-price">
-      <h3>Caf&eacute;s &amp; restaurants</h3>
-      <p class="sc-price-amt">from NZ$<strong>280</strong></p>
-      <span class="sc-price-from">Half day, stills + 2&ndash;3 reels</span>
-      <p>Food, drink and ambience, plus vertical video cut for Instagram and Facebook.</p>
-      <a href="#book" class="btn-o" data-shoot="Caf&eacute; / Restaurant">Book this</a>
-    </div>
-
-    <div class="sc-price">
-      <h3>Events</h3>
-      <p class="sc-price-amt">from NZ$<strong>300</strong></p>
-      <span class="sc-price-from">Up to 2 hours</span>
-      <p>Launches, functions and celebrations. Edited gallery plus a 30&ndash;60 second recap video.</p>
-      <a href="#book" class="btn-o" data-shoot="Event">Book this</a>
-    </div>
+  <div class="sc-price-panel fu">
+    <p class="sc-price-amt">from NZ$<strong>250</strong></p>
+    <span class="sc-price-note">Packages start here</span>
+    <ul class="sc-price-covers">
+      <li>Around 1.5&ndash;2 hours on site</li>
+      <li>An edited photo gallery, delivered privately</li>
+      <li>One short-form vertical video, captioned and ready to post</li>
+    </ul>
+    <a href="#book" class="btn-p">Book a shoot</a>
   </div>
 
-  <div class="sc-addons fug">
-    <div class="sc-addon">
-      <strong>Extra reel or video &mdash; from $120</strong>
-      <p>Each additional short-form edit, cut vertical and ready to post.</p>
-    </div>
-    <div class="sc-addon">
-      <strong>Full day &mdash; from $600</strong>
-      <p>Up to 6 hours, any category. The sensible option for a festival, a whole-day event or a big race.</p>
-    </div>
-    <div class="sc-addon">
-      <strong>Travel outside Christchurch</strong>
-      <p>Christchurch and Banks Peninsula included. Further into Canterbury, quoted up front &mdash; never added afterwards.</p>
-    </div>
-  </div>
-
-  <p class="sc-price-foot">Running a caf&eacute; or restaurant and want a steady flow of content rather than one shoot? Ask about a monthly content plan &mdash; I&rsquo;ll put a price together around how often you need new material.</p>
+  <p class="sc-price-foot">Longer days, bigger jobs and extra video are quoted individually &mdash; tell me what you&rsquo;ve got in mind and you&rsquo;ll have a fixed number back the same day, before you commit to anything. All prices NZD.</p>
 </section>
 
 <!-- HOW BOOKING WORKS -->
@@ -702,13 +658,12 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="stype">What kind of shoot? *</label>
+          <label class="form-label" for="stype">What&rsquo;s the occasion? *</label>
           <select class="form-select" id="stype" name="shoot_type" required>
-            <option value="" disabled selected>Select a shoot type&hellip;</option>
+            <option value="" disabled selected>Select an occasion&hellip;</option>
             <option value="Event">Event &mdash; launch, function or celebration</option>
             <option value="Caf&eacute; / Restaurant">Caf&eacute; or restaurant &mdash; food, drink &amp; ambience</option>
             <option value="Sports / Running Event">Sports or running event</option>
-            <option value="Kids' Event">Kids&rsquo; event &mdash; birthday, school or sport day</option>
             <option value="Other">Other &mdash; I&rsquo;ll describe below</option>
           </select>
           <div class="other-input-wrap" id="otherWrap">
@@ -765,12 +720,12 @@
 
     <div class="sc-faq-item">
       <h3><button type="button" class="sc-faq-btn" aria-expanded="false" aria-controls="sfaq1">How quickly do I get the photos back?<span class="sc-faq-mark" aria-hidden="true"></span></button></h3>
-      <div class="sc-faq-a" id="sfaq1" hidden><p>It depends on the shoot. Running and sports events come back fastest &mdash; usually 24 to 72 hours, because those photos are worth the most while the race is still being talked about. Kids&rsquo; events are 2 to 3 business days, caf&eacute;s and restaurants 2 to 4, and larger events 3 to 5. If you need something sooner for a specific post, say so when you enquire and I&rsquo;ll tell you honestly whether I can hit it.</p></div>
+      <div class="sc-faq-a" id="sfaq1" hidden><p>It depends on the shoot. Running and sports events come back fastest &mdash; usually 24 to 72 hours, because those photos are worth the most while the race is still being talked about. Caf&eacute;s and restaurants are 2 to 4 business days, and larger events 3 to 5. If you need something sooner for a specific post, say so when you enquire and I&rsquo;ll tell you honestly whether I can hit it.</p></div>
     </div>
 
     <div class="sc-faq-item">
       <h3><button type="button" class="sc-faq-btn" aria-expanded="false" aria-controls="sfaq2">Do you travel outside Christchurch?<span class="sc-faq-mark" aria-hidden="true"></span></button></h3>
-      <div class="sc-faq-a" id="sfaq2" hidden><p>Yes. Anywhere in Christchurch and Banks Peninsula is included in the prices on this page. Further afield in Canterbury I add a small travel cost, quoted up front before you commit &mdash; never added afterwards.</p></div>
+      <div class="sc-faq-a" id="sfaq2" hidden><p>Yes. Anywhere in Christchurch and Banks Peninsula is included in the starting price. Further afield in Canterbury I add a small travel cost, quoted up front before you commit &mdash; never added afterwards.</p></div>
     </div>
 
     <div class="sc-faq-item">
@@ -785,7 +740,7 @@
 
     <div class="sc-faq-item">
       <h3><button type="button" class="sc-faq-btn" aria-expanded="false" aria-controls="sfaq5">Can I get both photos and video from one booking?<span class="sc-faq-mark" aria-hidden="true"></span></button></h3>
-      <div class="sc-faq-a" id="sfaq5" hidden><p>Yes &mdash; that&rsquo;s the normal way I work. Every category on this page can be stills, short-form video, or both from the same session. Both does mean slightly fewer stills than a photo-only booking, because some of the time goes on filming, and I&rsquo;ll be upfront about that trade-off when we talk.</p></div>
+      <div class="sc-faq-a" id="sfaq5" hidden><p>Yes &mdash; that&rsquo;s the normal way I work, and the starting package includes both. Taking both does mean slightly fewer stills than a photo-only booking, because some of the time on site goes on filming, and I&rsquo;ll be upfront about that trade-off when we talk.</p></div>
     </div>
 
     <div class="sc-faq-item">
@@ -846,18 +801,6 @@
     if (!sel || !wrap) return;
     sel.addEventListener('change', function () {
       wrap.classList.toggle('show', this.value === 'Other');
-    });
-  })();
-
-  /* ── Pricing "Book this" buttons pre-select the shoot type ──── */
-  (function () {
-    var sel = document.getElementById('stype');
-    if (!sel) return;
-    document.querySelectorAll('[data-shoot]').forEach(function (link) {
-      link.addEventListener('click', function () {
-        sel.value = link.getAttribute('data-shoot');
-        sel.dispatchEvent(new Event('change'));
-      });
     });
   })();
 

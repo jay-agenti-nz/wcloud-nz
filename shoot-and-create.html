@@ -185,7 +185,7 @@
      played here is a view Instagram never counts, and sending traffic
      to the account is the point of showing them. It also keeps the
      page light: no embed script, no Meta cookies. */
-  .sc-reels { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); width: 100%; max-width: 760px; margin: 0 auto; }
+  .sc-reels { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); width: 100%; max-width: 780px; margin: 0 auto; }
   .sc-reel {
     position: relative; display: block; aspect-ratio: 9 / 16; overflow: hidden;
     border-radius: var(--radius); border: 1px solid rgba(127,168,190,.3);
@@ -195,12 +195,6 @@
   }
   .sc-reel:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(42,61,74,.2); }
   .sc-reel > img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .sc-reel-label {
-    position: absolute; left: 0; right: 0; bottom: 0; padding: 1.8rem .9rem .8rem;
-    font-family: var(--mark); font-size: .62rem; font-weight: 700;
-    letter-spacing: .14em; text-transform: uppercase; color: var(--deep);
-    background: linear-gradient(to top, rgba(255,255,255,.88), transparent);
-  }
   /* Decorative: the whole tile is the link, so this is not a button. */
   .sc-reel-play {
     position: absolute; inset: 0; margin: auto;
@@ -644,36 +638,58 @@
   <!-- REELS — outbound to Instagram
        ────────────────────────────────────────────────────────────
        Each tile links to the reel on Instagram so the view is counted
-       there. Before launch, two things per tile: the real permalink in
-       href, and a poster frame in place of the empty gradient.
+       there rather than here.
+
+       COVER IMAGES: drop six files into /assets named reel-1.jpg …
+       reel-6.jpg, in the order below, and they appear automatically.
+       Until a file exists the <img> removes itself and the tile falls
+       back to the gradient — so a missing cover degrades to a plain
+       tile rather than a broken-image icon. Portrait, 720×1280 or
+       larger, same 9:16 crop as the reel itself.
+
+         reel-1  DYJElyyzM1g      reel-4  DaTuPs7SDSg
+         reel-2  DYbcWq0yCx6      reel-5  DbKhlLHzE39
+         reel-3  DaPTPC0yfR6      reel-6  DYk3ZM1zVk0
        ──────────────────────────────────────────────────────────── -->
   <div class="sc-reels fug">
-    <!-- REEL 1: set href to the reel's permalink, and swap the frame
-         for a poster grab: <img src="/assets/reel-1.jpg" alt="…"
-         loading="lazy" decoding="async" width="720" height="1280"> -->
-    <a class="sc-reel" href="{IG_PROFILE}" target="_blank" rel="noopener">
+    <a class="sc-reel" href="https://www.instagram.com/reel/DYJElyyzM1g/" target="_blank" rel="noopener"
+       aria-label="Watch this reel on Instagram (opens Instagram in a new tab)">
+      <img src="/assets/reel-1.jpg" alt="" loading="lazy" decoding="async" width="720" height="1280" onerror="this.remove()">
       <span class="sc-reel-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>Reel</span>
       <span class="sc-reel-play" aria-hidden="true"></span>
-      <span class="sc-reel-label">Godley Head</span>
     </a>
-    <!-- REEL 2: set href to the reel's permalink, and swap the frame
-         for a poster grab: <img src="/assets/reel-2.jpg" alt="…"
-         loading="lazy" decoding="async" width="720" height="1280"> -->
-    <a class="sc-reel" href="{IG_PROFILE}" target="_blank" rel="noopener">
+    <a class="sc-reel" href="https://www.instagram.com/reel/DYbcWq0yCx6/" target="_blank" rel="noopener"
+       aria-label="Watch this reel on Instagram (opens Instagram in a new tab)">
+      <img src="/assets/reel-2.jpg" alt="" loading="lazy" decoding="async" width="720" height="1280" onerror="this.remove()">
       <span class="sc-reel-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>Reel</span>
       <span class="sc-reel-play" aria-hidden="true"></span>
-      <span class="sc-reel-label">Taylors Mistake</span>
     </a>
-    <!-- REEL 3: set href to the reel's permalink, and swap the frame
-         for a poster grab: <img src="/assets/reel-3.jpg" alt="…"
-         loading="lazy" decoding="async" width="720" height="1280"> -->
-    <a class="sc-reel" href="{IG_PROFILE}" target="_blank" rel="noopener">
+    <a class="sc-reel" href="https://www.instagram.com/reel/DaPTPC0yfR6/" target="_blank" rel="noopener"
+       aria-label="Watch this reel on Instagram (opens Instagram in a new tab)">
+      <img src="/assets/reel-3.jpg" alt="" loading="lazy" decoding="async" width="720" height="1280" onerror="this.remove()">
       <span class="sc-reel-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>Reel</span>
       <span class="sc-reel-play" aria-hidden="true"></span>
-      <span class="sc-reel-label">Scarborough Bluffs</span>
+    </a>
+    <a class="sc-reel" href="https://www.instagram.com/reel/DaTuPs7SDSg/" target="_blank" rel="noopener"
+       aria-label="Watch this reel on Instagram (opens Instagram in a new tab)">
+      <img src="/assets/reel-4.jpg" alt="" loading="lazy" decoding="async" width="720" height="1280" onerror="this.remove()">
+      <span class="sc-reel-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>Reel</span>
+      <span class="sc-reel-play" aria-hidden="true"></span>
+    </a>
+    <a class="sc-reel" href="https://www.instagram.com/reel/DbKhlLHzE39/" target="_blank" rel="noopener"
+       aria-label="Watch this reel on Instagram (opens Instagram in a new tab)">
+      <img src="/assets/reel-5.jpg" alt="" loading="lazy" decoding="async" width="720" height="1280" onerror="this.remove()">
+      <span class="sc-reel-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>Reel</span>
+      <span class="sc-reel-play" aria-hidden="true"></span>
+    </a>
+    <a class="sc-reel" href="https://www.instagram.com/reel/DYk3ZM1zVk0/" target="_blank" rel="noopener"
+       aria-label="Watch this reel on Instagram (opens Instagram in a new tab)">
+      <img src="/assets/reel-6.jpg" alt="" loading="lazy" decoding="async" width="720" height="1280" onerror="this.remove()">
+      <span class="sc-reel-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>Reel</span>
+      <span class="sc-reel-play" aria-hidden="true"></span>
     </a>
   </div>
-  <p class="sc-reels-more">These are mine, not a client&rsquo;s &mdash; the <em>Join me&hellip;</em> series I shoot on the Christchurch trails most weekends. <a href="{IG_PROFILE}" target="_blank" rel="noopener">See the rest on Instagram &rarr;</a></p>
+  <p class="sc-reels-more">A mix of running, hospitality and everyday Christchurch &mdash; all shot, cut and posted by me. <a href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener">See the rest at @jay.d.vera &rarr;</a></p>
 
   <div class="sc-gallery fug">
     <!-- Row 1: wide + single -->
@@ -904,7 +920,7 @@
       <a href="/privacy" target="_blank">Privacy Policy</a>
       <a href="/terms" target="_blank">Terms &amp; Conditions</a>
       <a href="/intake">New Client Intake Form</a>
-      <a href="https://agenti.nz" target="_blank">Backend operations powered by Agenti NZ</a>
+      <a href="https://agenti.nz" target="_blank" rel="noopener">Backend operations powered by Agenti NZ</a>
     </div>
     <div>&copy; 2025 White Cloud. Christchurch, NZ. All prices NZD.</div>
   </div>

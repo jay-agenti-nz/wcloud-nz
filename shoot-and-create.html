@@ -152,33 +152,90 @@
     background: var(--white); border: 1px solid rgba(127,168,190,.3);
   }
 
-  /* ── SAMPLE WORK ────────────────────────────────────────────
-     Frames are placeholders until the real gallery is shot. Swap the
-     .sc-frame div for <img src="..." alt="..." loading="lazy"> and
-     the grid keeps its shape. */
-  .sc-gallery {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2);
-    /* A fixed row height rather than per-tile aspect ratios: a wide tile
-       and a single tile side by side never resolve to the same height. */
-    grid-auto-rows: clamp(190px, 21vw, 300px);
+  /* ── CAROUSEL POSTS ─────────────────────────────────────────
+     Her Instagram timeline, rebuilt: two posts side by side on a
+     desktop, one at a time on a phone, each swipeable through its ten
+     frames. The swiping is native scroll-snap rather than a library —
+     a phone already knows how to do this, and a carousel script is a
+     lot of weight for behaviour the browser ships with. JS only keeps
+     the dots and counter in step and moves the desktop arrows, so a
+     script that fails costs the arrows, never the swipe. */
+  .sc-posts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-3); width: 100%; max-width: 900px; margin: 0 auto; }
+  .sc-post {
+    background: var(--white); border: 1px solid rgba(127,168,190,.28);
+    border-radius: var(--radius-lg); overflow: hidden;
+    display: flex; flex-direction: column;
   }
-  .sc-shot {
-    border-radius: var(--radius); overflow: hidden; position: relative;
-    border: 1px solid rgba(127,168,190,.3); background: var(--white);
+
+  /* Post header — the handle, so it reads as a post and not a widget */
+  .sc-post-head { display: flex; align-items: center; gap: .7rem; padding: .9rem 1.1rem; }
+  .sc-post-avatar {
+    width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--brand), var(--dusk));
+    display: flex; align-items: center; justify-content: center;
   }
-  .sc-shot.wide { grid-column: span 2; }
-  .sc-shot, .sc-frame { height: 100%; }
-  .sc-frame {
-    display: flex; align-items: flex-end; padding: 1.1rem 1.2rem;
+  .sc-post-avatar svg { width: 18px; height: 11px; }
+  .sc-post-who { display: flex; flex-direction: column; line-height: 1.3; min-width: 0; }
+  .sc-post-who b { font-size: .85rem; font-weight: 800; color: var(--deep); }
+  .sc-post-who span { font-size: .72rem; color: var(--body); font-weight: 600; }
+  .sc-post-count {
+    margin-left: auto; flex-shrink: 0;
+    font-family: var(--mark); font-size: .66rem; font-weight: 700; letter-spacing: .1em;
+    color: var(--white); background: rgba(42,61,74,.75);
+    padding: .2rem .6rem; border-radius: var(--pill);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* The swipeable track */
+  .sc-post-frame { position: relative; }
+  .sc-post-track {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .sc-post-track::-webkit-scrollbar { display: none; }
+  .sc-slide {
+    flex: 0 0 100%; scroll-snap-align: center; scroll-snap-stop: always;
+    aspect-ratio: 4 / 5; display: block; position: relative;
     background: linear-gradient(150deg, #e8f1f6 0%, #d6e6ef 55%, #cbdfea 100%);
   }
-  /* Real photos drop straight in where the placeholder frame is. */
-  .sc-shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .sc-frame span {
-    font-family: var(--mark); font-size: .64rem; font-weight: 700;
-    letter-spacing: .16em; text-transform: uppercase; color: var(--dusk);
+  .sc-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* Desktop arrows. Hidden where there is no hover — a touch device
+     swipes, and the arrows would only cover the photo. */
+  .sc-post-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 32px; height: 32px; border-radius: 50%; z-index: 2;
+    background: rgba(255,255,255,.86); border: 1px solid rgba(255,255,255,.9);
+    box-shadow: 0 4px 14px rgba(42,61,74,.22);
+    display: none; align-items: center; justify-content: center;
+    cursor: pointer; padding: 0; color: var(--deep);
+    transition: background .2s, opacity .2s;
   }
-  .sc-gallery-note { font-size: .88rem; color: var(--body); font-weight: 600; }
+  .sc-post-arrow:hover { background: #fff; }
+  .sc-post-arrow[disabled] { opacity: 0; pointer-events: none; }
+  .sc-post-arrow.prev { left: .7rem; }
+  .sc-post-arrow.next { right: .7rem; }
+  .sc-post-arrow svg { width: 13px; height: 13px; }
+  @media (hover: hover) and (pointer: fine) {
+    .sc-post-arrow { display: flex; }
+  }
+
+  /* Dots */
+  .sc-post-dots { display: flex; justify-content: center; gap: .35rem; padding: .9rem 1rem .2rem; }
+  .sc-post-dots button {
+    width: 6px; height: 6px; border-radius: 50%; padding: 0; cursor: pointer;
+    background: var(--brand-mist); border: 0; transition: background .2s, transform .2s;
+  }
+  .sc-post-dots button[aria-current="true"] { background: var(--brand-ink); transform: scale(1.25); }
+
+  /* Caption */
+  .sc-post-cap { padding: .7rem 1.1rem 1.2rem; }
+  .sc-post-cap p { font-size: .88rem; line-height: 1.6; }
+  .sc-post-cap p b { color: var(--deep); font-weight: 800; }
+  .sc-post-cap a { display: inline-block; margin-top: .5rem; font-size: .82rem; font-weight: 700; color: var(--brand-ink); text-decoration: none; }
+  .sc-post-cap a:hover { text-decoration: underline; }
+
+  .sc-gallery-note { font-size: .88rem; color: var(--body); font-weight: 600; text-align: center; }
 
   /* ── REELS ──────────────────────────────────────────────────
      Each tile is a link to the reel on Instagram, not a player. A clip
@@ -426,7 +483,6 @@
     .sc-hero-actions, .sc-chips { justify-content: center; }
     .sc-hero-stage { padding: 0 1.6rem 3.5rem; }
     .sc-delivs, .sc-steps { grid-template-columns: 1fr; }
-    .sc-gallery { grid-template-columns: repeat(2, 1fr); }
     .sc-monthly { flex-direction: column; align-items: flex-start; padding: 2rem; }
     .sc-monthly-cta { width: 100%; justify-content: center; }
     .sc-about { grid-template-columns: 1fr; justify-items: center; text-align: center; }
@@ -434,7 +490,8 @@
   }
   @media (max-width: 700px) {
     .sc-band, #book { padding: var(--sp-5) 1.6rem; }
-    .sc-gallery { grid-template-columns: 1fr; }
+    /* One post at a time, full width — the phone reading of a timeline */
+    .sc-posts { grid-template-columns: 1fr; max-width: 460px; }
     /* A 9:16 tile at full phone width is taller than the screen, so the
        reels become a swipeable strip rather than a stack. */
     .sc-reels {
@@ -442,7 +499,6 @@
       scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
     }
     .sc-reel { flex: 0 0 62%; scroll-snap-align: center; }
-    .sc-shot.wide { grid-column: auto; }
     .form-row { grid-template-columns: 1fr; }
     .sc-form { padding: 2rem 1.5rem; }
   }
@@ -730,19 +786,104 @@
   </div>
   <p class="sc-reels-more">A mix of running, hospitality and everyday Christchurch &mdash; all shot, cut and posted by me. <a href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener">See the rest at @jay.d.vera &rarr;</a></p>
 
-  <div class="sc-gallery fug">
-    <!-- Row 1: wide + single -->
-    <div class="sc-shot wide"><div class="sc-frame"><span>Running &middot; Port Hills</span></div></div>
-    <div class="sc-shot"><div class="sc-frame"><span>Caf&eacute; &middot; Morning service</span></div></div>
-    <!-- Row 2: single + wide -->
-    <div class="sc-shot"><div class="sc-frame"><span>Event &middot; Launch night</span></div></div>
-    <div class="sc-shot wide"><div class="sc-frame"><span>Race morning &middot; Finish line</span></div></div>
-    <!-- Row 3: three singles -->
-    <div class="sc-shot"><div class="sc-frame"><span>Caf&eacute; &middot; On the pass</span></div></div>
-    <div class="sc-shot"><div class="sc-frame"><span>Event &middot; The room</span></div></div>
-    <div class="sc-shot"><div class="sc-frame"><span>Running &middot; Godley Head</span></div></div>
+  <!-- CAROUSEL POSTS
+       ────────────────────────────────────────────────────────────
+       Two swipeable posts, ten frames each, built from:
+         assets/gallery-1.jpg … gallery-10.jpg                (hospitality)
+         assets/gallery-airbnb-1.jpg … gallery-airbnb-10.jpg  (stays)
+       A frame whose file is missing removes its own <img> and falls
+       back to the gradient, so the carousel still works while the
+       photos are being added.
+       ──────────────────────────────────────────────────────────── -->
+  <div class="sc-posts fug">
+    <article class="sc-post" id="post-hospitality">
+      <header class="sc-post-head">
+        <span class="sc-post-avatar"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/></svg></span>
+        <span class="sc-post-who"><b>jay.d.vera</b><span>Christchurch, NZ</span></span>
+        <span class="sc-post-count" data-count>1/10</span>
+      </header>
+
+      <div class="sc-post-frame">
+        <div class="sc-post-track" data-track tabindex="0" role="region" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; 10 frames, swipe or use the arrow keys">
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 1 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-1.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 2 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-2.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 3 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-3.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 4 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-4.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 5 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-5.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 6 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-6.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 7 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-7.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 8 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-8.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 9 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-9.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 10 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-10.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        </div>
+        <button type="button" class="sc-post-arrow prev" data-prev aria-label="Previous frame" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="sc-post-arrow next" data-next aria-label="Next frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+
+      <div class="sc-post-dots" data-dots>
+        <button type="button" data-go="0" aria-current="true" aria-label="Go to frame 1"></button>
+        <button type="button" data-go="1" aria-label="Go to frame 2"></button>
+        <button type="button" data-go="2" aria-label="Go to frame 3"></button>
+        <button type="button" data-go="3" aria-label="Go to frame 4"></button>
+        <button type="button" data-go="4" aria-label="Go to frame 5"></button>
+        <button type="button" data-go="5" aria-label="Go to frame 6"></button>
+        <button type="button" data-go="6" aria-label="Go to frame 7"></button>
+        <button type="button" data-go="7" aria-label="Go to frame 8"></button>
+        <button type="button" data-go="8" aria-label="Go to frame 9"></button>
+        <button type="button" data-go="9" aria-label="Go to frame 10"></button>
+      </div>
+
+      <div class="sc-post-cap">
+        <p><b>jay.d.vera</b> Rooms, plates and the light that makes someone stop scrolling. Shot across a morning, cut for a month of posts.</p>
+        <a href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener">View on Instagram &rarr;</a>
+      </div>
+    </article>
+
+    <article class="sc-post" id="post-stays">
+      <header class="sc-post-head">
+        <span class="sc-post-avatar"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/></svg></span>
+        <span class="sc-post-who"><b>jay.d.vera</b><span>Canterbury, NZ</span></span>
+        <span class="sc-post-count" data-count>1/10</span>
+      </header>
+
+      <div class="sc-post-frame">
+        <div class="sc-post-track" data-track tabindex="0" role="region" aria-label="Airbnb and hotel interiors in Canterbury &mdash; 10 frames, swipe or use the arrow keys">
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 1 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-1.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 2 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-2.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 3 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-3.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 4 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-4.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 5 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-5.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 6 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-6.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 7 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-7.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 8 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-8.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 9 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-9.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 10 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-10.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        </div>
+        <button type="button" class="sc-post-arrow prev" data-prev aria-label="Previous frame" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="sc-post-arrow next" data-next aria-label="Next frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+
+      <div class="sc-post-dots" data-dots>
+        <button type="button" data-go="0" aria-current="true" aria-label="Go to frame 1"></button>
+        <button type="button" data-go="1" aria-label="Go to frame 2"></button>
+        <button type="button" data-go="2" aria-label="Go to frame 3"></button>
+        <button type="button" data-go="3" aria-label="Go to frame 4"></button>
+        <button type="button" data-go="4" aria-label="Go to frame 5"></button>
+        <button type="button" data-go="5" aria-label="Go to frame 6"></button>
+        <button type="button" data-go="6" aria-label="Go to frame 7"></button>
+        <button type="button" data-go="7" aria-label="Go to frame 8"></button>
+        <button type="button" data-go="8" aria-label="Go to frame 9"></button>
+        <button type="button" data-go="9" aria-label="Go to frame 10"></button>
+      </div>
+
+      <div class="sc-post-cap">
+        <p><b>jay.d.vera</b> Airbnb and hotel spaces, shot so the listing does the selling. Every room, in its best hour of the day.</p>
+        <a href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener">View on Instagram &rarr;</a>
+      </div>
+    </article>
   </div>
-  <p class="sc-gallery-note">Want to see a full gallery from a shoot like yours before you book? Ask in the form below and I&rsquo;ll send one through.</p>
+
+  <p class="sc-gallery-note">Swipe through either one. Want a full gallery from a shoot like yours before you book? Ask in the form below and I&rsquo;ll send one over.</p>
 </section>
 
 <!-- PRICING -->
@@ -1004,6 +1145,67 @@
     var btn = modal.querySelector('.ty-modal-close');
     if (btn) btn.addEventListener('click', close);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  })();
+
+  /* ── Carousel posts ──────────────────────────────────────────
+     The swiping is the browser's: scroll-snap on an overflow-x track.
+     This only reflects where the track already is (dots, counter,
+     arrow disabled states) and drives the arrows and dots. If it never
+     runs, the carousel is still fully swipeable — it just loses the
+     arrows, and the dots stop tracking. */
+  (function () {
+    document.querySelectorAll('.sc-post').forEach(function (post) {
+      var track = post.querySelector('[data-track]');
+      var dots  = Array.prototype.slice.call(post.querySelectorAll('[data-dots] button'));
+      var count = post.querySelector('[data-count]');
+      var prev  = post.querySelector('[data-prev]');
+      var next  = post.querySelector('[data-next]');
+      var slides = post.querySelectorAll('.sc-slide');
+      if (!track || !slides.length) return;
+
+      var index = 0;
+
+      var step = function () { return track.clientWidth; };
+
+      var goTo = function (i) {
+        i = Math.max(0, Math.min(slides.length - 1, i));
+        track.scrollTo({ left: i * step(), behavior: 'smooth' });
+      };
+
+      // Derived from scroll position, not from the click, so a swipe
+      // and an arrow press end up reporting the same thing.
+      var sync = function () {
+        var i = Math.round(track.scrollLeft / step());
+        if (i === index) return;
+        index = i;
+        if (count) count.textContent = (i + 1) + '/' + slides.length;
+        dots.forEach(function (d, di) {
+          if (di === i) d.setAttribute('aria-current', 'true');
+          else d.removeAttribute('aria-current');
+        });
+        if (prev) prev.disabled = i === 0;
+        if (next) next.disabled = i === slides.length - 1;
+      };
+
+      var ticking = false;
+      track.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () { ticking = false; sync(); });
+      }, { passive: true });
+
+      if (prev) prev.addEventListener('click', function () { goTo(index - 1); });
+      if (next) next.addEventListener('click', function () { goTo(index + 1); });
+      dots.forEach(function (d) {
+        d.addEventListener('click', function () { goTo(parseInt(d.getAttribute('data-go'), 10)); });
+      });
+
+      // The track is focusable, so give it the arrow keys too.
+      track.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1); }
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(index - 1); }
+      });
+    });
   })();
 
   /* ── FAQ accordion ───────────────────────────────────────────

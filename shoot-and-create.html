@@ -10,18 +10,18 @@
 <meta property="og:type"        content="website">
 <meta property="og:url"         content="https://wcloud.nz/shoot-and-create">
 <meta property="og:title"       content="Shoot &amp; Create – Photography &amp; Short-Form Video, Christchurch">
-<meta property="og:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Most shoots land between NZ$500 and NZ$700, quoted per job. Every enquiry answered personally in 3–6 hours.">
+<meta property="og:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Standard package NZ$399 — 15 edited photos and 3 vertical clips. Every enquiry answered personally in 3–6 hours.">
 <meta property="og:image"       content="https://wcloud.nz/og-image.jpg">
 <meta property="og:image:type"  content="image/jpeg">
 <meta property="og:image:width" content="2400">
 <meta property="og:image:height" content="1260">
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:title"       content="Shoot &amp; Create – Photography &amp; Short-Form Video, Christchurch">
-<meta name="twitter:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Most shoots land between NZ$500 and NZ$700.">
+<meta name="twitter:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Standard package NZ$399 — 15 edited photos and 3 vertical clips.">
 <meta name="twitter:image"       content="https://wcloud.nz/og-image.jpg">
 
 <!-- SEO -->
-<meta name="description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Edited galleries and vertical reels, most shoots NZ$500–$700, delivered in days, not weeks.">
+<meta name="description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Standard package NZ$399 — 15 edited photos and 3 captioned vertical clips, delivered in days, not weeks.">
 <link rel="canonical" href="https://wcloud.nz/shoot-and-create">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -226,50 +226,87 @@
   .sc-reels-more a { color: var(--brand-ink); }
 
   /* ── PRICING ────────────────────────────────────────────────
-     A range, not a "from" figure. Every shoot is quoted, so a single
-     number would be read as a promise the quote then breaks. The two
-     ends are annotated because the span is the information: it tells
-     you which end your job sits at before you ever send the form. */
+     One price with the package spelled out underneath. The figure
+     alone means nothing — "15 photos and 3 clips" is what tells
+     someone whether $399 is dear or cheap, so the two are never
+     separated. */
   .sc-price-panel {
     width: 100%; max-width: 720px; margin: 0 auto;
     background: var(--white); border: 1px solid rgba(127,168,190,.3);
     border-radius: var(--radius-lg); padding: 2.6rem 2.4rem 2.4rem;
     box-shadow: 0 20px 50px rgba(127,168,190,.18);
   }
-  .sc-range {
+  .sc-amount {
     display: flex; align-items: baseline; justify-content: center;
-    gap: .6rem; font-family: var(--serif); color: var(--deep);
+    gap: .5rem; font-family: var(--serif); color: var(--deep);
     line-height: 1; flex-wrap: wrap;
   }
-  .sc-range b { font-size: clamp(2.4rem, 5.4vw, 3.4rem); font-weight: 700; letter-spacing: -.025em; }
-  .sc-range i { font-style: normal; font-size: 1.6rem; color: var(--brand); }
-  .sc-range-cur { font-size: 1rem; font-weight: 600; }
-  .sc-range-cap {
+  .sc-amount b { font-size: clamp(2.8rem, 6vw, 3.9rem); font-weight: 700; letter-spacing: -.025em; }
+  .sc-amount span { font-size: 1.05rem; font-weight: 600; }
+  .sc-amount-cap {
     display: block; text-align: center; margin-top: .9rem;
     font-size: .72rem; font-weight: 700; letter-spacing: .12em;
     text-transform: uppercase; color: var(--body);
   }
-  /* The two ends, described. A range with unexplained ends is just a
-     shrug; these say what puts a job at each end. */
-  .sc-ends {
-    display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3);
-    margin-top: 2rem; padding-top: 1.8rem; border-top: 1px solid var(--brand-mist);
+  /* What lands in your hands. Counts sit in the serif so the numbers
+     that matter after the price still read as numbers. */
+  .sc-includes {
+    list-style: none; margin: 2rem 0 0; padding: 1.8rem 0 0;
+    border-top: 1px solid var(--brand-mist);
+    display: flex; flex-direction: column; gap: 1.1rem; text-align: left;
   }
-  .sc-end h3 { font-size: 1rem; margin-bottom: .5rem; }
-  .sc-end-tag {
-    display: inline-block; font-size: .66rem; font-weight: 700;
-    letter-spacing: .14em; text-transform: uppercase; color: var(--brand-ink);
-    margin-bottom: .45rem;
+  .sc-includes li { display: flex; align-items: baseline; gap: 1rem; }
+  .sc-includes b {
+    font-family: var(--serif); font-size: 1.5rem; font-weight: 700;
+    color: var(--brand-ink); line-height: 1; flex-shrink: 0;
+    min-width: 2.2ch; text-align: right;
   }
-  .sc-end ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .4rem; }
-  .sc-end li { position: relative; padding-left: 1.4rem; font-size: .88rem; color: var(--body); font-weight: 500; }
-  .sc-end li::before {
-    content: ''; position: absolute; left: 0; top: .45em;
-    width: 9px; height: 5px; border-left: 2px solid var(--sage); border-bottom: 2px solid var(--sage);
-    transform: rotate(-45deg);
-  }
-  .sc-price-cta { text-align: center; margin-top: 2rem; }
+  .sc-includes span { font-size: .95rem; color: var(--body); font-weight: 500; }
+  .sc-includes strong { color: var(--deep); font-weight: 700; }
+  .sc-price-cta { text-align: center; margin-top: 2.2rem; }
   .sc-price-foot { font-size: .92rem; color: var(--body); font-weight: 500; max-width: 62ch; margin: 0 auto; text-align: center; }
+  .sc-price-foot strong { color: var(--deep); font-weight: 700; }
+
+  /* ── MONTHLY BANNER ─────────────────────────────────────────
+     Sits under the one-off price because it is the other shape of
+     the same service, not a tier of it. Dark, so it reads as a
+     different kind of offer rather than a second price card. */
+  .sc-monthly {
+    width: 100%; max-width: 900px; margin: var(--sp-4) auto 0;
+    background: linear-gradient(135deg, var(--deep) 0%, var(--dusk) 100%);
+    border-radius: 22px; padding: 2.6rem 3.2rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    position: relative; overflow: hidden; flex-wrap: wrap;
+  }
+  .sc-monthly::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='700' height='160' viewBox='0 0 700 160' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 80 C70 30,140 130,210 80 C280 30,350 130,420 80 C490 30,560 130,630 80 C662 60,680 66,700 62' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' opacity='0.09'/%3E%3Cpath d='M0 115 C80 55,160 165,240 110 C320 55,400 160,480 108 C540 68,600 88,700 80' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' opacity='0.06'/%3E%3C/svg%3E");
+    background-size: cover;
+  }
+  .sc-monthly-left { position: relative; z-index: 1; flex: 1; min-width: 260px; }
+  .sc-monthly-eyebrow {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: rgba(255,255,255,.12); color: rgba(255,255,255,.8);
+    font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    padding: .3rem .9rem; border-radius: var(--pill); margin-bottom: 1rem;
+  }
+  .sc-monthly-eyebrow i { width: 6px; height: 6px; background: var(--sage); border-radius: 50%; animation: pulse 2.5s ease-in-out infinite; }
+  .sc-monthly h3 { font-size: clamp(1.3rem, 2.4vw, 1.8rem); color: #fff; margin-bottom: .6rem; line-height: 1.25; }
+  .sc-monthly p { color: rgba(255,255,255,.62); font-size: .95rem; font-weight: 500; max-width: 500px; line-height: 1.7; }
+  .sc-monthly-cta {
+    display: inline-flex; align-items: center; gap: .6rem;
+    background: rgba(255,255,255,.9); color: var(--deep);
+    padding: .9rem 2rem; border-radius: var(--pill); text-decoration: none;
+    font-weight: 700; font-size: .82rem; letter-spacing: .1em; text-transform: uppercase;
+    white-space: nowrap; border: 1px solid rgba(255,255,255,.6);
+    backdrop-filter: blur(14px) saturate(180%); -webkit-backdrop-filter: blur(14px) saturate(180%);
+    box-shadow: 0 6px 28px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.7);
+    transition: background .25s, transform .25s, box-shadow .25s;
+    flex-shrink: 0; position: relative; z-index: 1;
+  }
+  .sc-monthly-cta:hover { background: rgba(255,255,255,.98); transform: translateY(-2px); box-shadow: 0 10px 36px rgba(0,0,0,.25); }
+  .sc-monthly-cta em { font-style: normal; transition: transform .2s; }
+  .sc-monthly-cta:hover em { transform: translateX(4px); }
   .sc-price-foot strong { color: var(--deep); font-weight: 700; }
 
   /* ── HOW BOOKING WORKS ──────────────────────────────────────── */
@@ -390,7 +427,8 @@
     .sc-hero-stage { padding: 0 1.6rem 3.5rem; }
     .sc-delivs, .sc-steps { grid-template-columns: 1fr; }
     .sc-gallery { grid-template-columns: repeat(2, 1fr); }
-    .sc-ends { grid-template-columns: 1fr; gap: var(--sp-2); }
+    .sc-monthly { flex-direction: column; align-items: flex-start; padding: 2rem; }
+    .sc-monthly-cta { width: 100%; justify-content: center; }
     .sc-about { grid-template-columns: 1fr; justify-items: center; text-align: center; }
     .sc-about-copy { text-align: left; }
   }
@@ -440,11 +478,12 @@
     "url": "https://wcloud.nz/shoot-and-create",
     "description": "Photography and short-form video for events, cafés and restaurants, and sports and running events in Christchurch. Edited photo galleries and vertical reels, delivered in days.",
     "offers": {
-      "@type": "AggregateOffer",
+      "@type": "Offer",
+      "name": "Standard package",
       "priceCurrency": "NZD",
-      "lowPrice": "500",
-      "highPrice": "700",
-      "description": "Every shoot is quoted individually. Most land between NZ$500 — around two hours on site, an edited photo gallery and one captioned vertical video — and NZ$700 for a longer morning with a bigger gallery and two or three clips. Full days and larger events are quoted above that range."
+      "price": "399",
+      "availability": "https://schema.org/InStock",
+      "description": "NZ$399 for 15 edited, ready-to-post photos and 3 short-form vertical clips cut and captioned for Reels, TikTok and Facebook — enough content to post two to three times a week for one to two months. Bigger events, longer days and extra clips are quoted on top, and monthly content plans are available."
     }
   },
   {
@@ -459,7 +498,7 @@
       {
         "@type": "Question",
         "name": "Do you travel outside Christchurch?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Anywhere in Christchurch and Banks Peninsula is included in the starting price. Further afield in Canterbury I add a small travel cost, quoted up front before you commit — never added afterwards." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Anywhere in Christchurch and Banks Peninsula is included in the package price. Further afield in Canterbury I add a small travel cost, quoted up front before you commit — never added afterwards." }
       },
       {
         "@type": "Question",
@@ -523,7 +562,7 @@
     </div>
     <div class="sc-chips">
       <span class="wc-chip">Stills + short-form video</span>
-      <span class="wc-chip">Most shoots $500&ndash;$700</span>
+      <span class="wc-chip">15 photos + 3 clips, $399</span>
       <span class="wc-chip">Reply in 3&ndash;6 hours</span>
     </div>
   </div>
@@ -714,36 +753,30 @@
   </div>
 
   <div class="sc-price-panel fu">
-    <p class="sc-range">
-      <span class="sc-range-cur">NZ$</span><b>500</b><i>&ndash;</i><span class="sc-range-cur">NZ$</span><b>700</b>
-    </p>
-    <span class="sc-range-cap">Where most shoots land</span>
+    <p class="sc-amount"><span>NZ$</span><b>399</b></p>
+    <span class="sc-amount-cap">Standard package &middot; starting price</span>
 
-    <div class="sc-ends">
-      <div class="sc-end">
-        <span class="sc-end-tag">Nearer $500</span>
-        <h3>A single session</h3>
-        <ul>
-          <li>Around 2 hours on site</li>
-          <li>An edited photo gallery</li>
-          <li>One vertical video, captioned</li>
-        </ul>
-      </div>
-      <div class="sc-end">
-        <span class="sc-end-tag">Nearer $700</span>
-        <h3>A longer morning</h3>
-        <ul>
-          <li>Three to four hours, or a whole race start-to-finish</li>
-          <li>A bigger gallery, more of the day covered</li>
-          <li>Two or three clips rather than one</li>
-        </ul>
-      </div>
-    </div>
+    <ul class="sc-includes">
+      <li><b>15</b><span><strong>Edited photos</strong>, ready to post &mdash; not proofs, not a contact sheet to pick from</span></li>
+      <li><b>3</b><span><strong>Short-form vertical clips</strong>, cut and captioned for Reels, TikTok and Facebook</span></li>
+      <li><b>2&ndash;3</b><span><strong>Posts a week for one to two months</strong> &mdash; that&rsquo;s what this much content actually covers</span></li>
+    </ul>
 
-    <div class="sc-price-cta"><a href="#book" class="btn-p">Get your number</a></div>
+    <div class="sc-price-cta"><a href="#book" class="btn-p">Book a shoot</a></div>
   </div>
 
-  <p class="sc-price-foot">I quote every shoot properly rather than pretending they&rsquo;re all the same, so the range is there to tell you roughly where you&rsquo;d sit before you get in touch. Full days and larger events sit above it and are quoted on their own. Either way, tell me what you&rsquo;ve got in mind and I&rsquo;ll come back with <strong>one fixed number</strong> &mdash; same day, in writing, and it doesn&rsquo;t move afterwards. All prices NZD.</p>
+  <p class="sc-price-foot">That&rsquo;s the standard package and where most shoots start. Bigger events, longer days and extra clips are quoted on top &mdash; tell me what you&rsquo;ve got in mind and I&rsquo;ll come back with <strong>one fixed number</strong>, same day, in writing, and it doesn&rsquo;t move afterwards. All prices NZD.</p>
+
+  <!-- MONTHLY — the other shape of the same service, so it sits with
+       the price rather than in a section of its own. -->
+  <aside class="sc-monthly fu">
+    <div class="sc-monthly-left">
+      <span class="sc-monthly-eyebrow"><i></i>Ongoing</span>
+      <h3>Or keep the content coming, every month.</h3>
+      <p>If posting once and going quiet isn&rsquo;t the plan, I can shoot for you on a monthly basis instead &mdash; a regular session, a steady run of photos and clips, and no scramble for something to post. Tell me how often you need new material and I&rsquo;ll put a plan together around it.</p>
+    </div>
+    <a href="#book" class="sc-monthly-cta">Contact Jay <em>&rarr;</em></a>
+  </aside>
 </section>
 
 <!-- HOW BOOKING WORKS -->
@@ -869,7 +902,7 @@
 
     <div class="sc-faq-item">
       <h3><button type="button" class="sc-faq-btn" aria-expanded="false" aria-controls="sfaq2">Do you travel outside Christchurch?<span class="sc-faq-mark" aria-hidden="true"></span></button></h3>
-      <div class="sc-faq-a" id="sfaq2" hidden><p>Yes. Anywhere in Christchurch and Banks Peninsula is included in the starting price. Further afield in Canterbury I add a small travel cost, quoted up front before you commit &mdash; never added afterwards.</p></div>
+      <div class="sc-faq-a" id="sfaq2" hidden><p>Yes. Anywhere in Christchurch and Banks Peninsula is included in the package price. Further afield in Canterbury I add a small travel cost, quoted up front before you commit &mdash; never added afterwards.</p></div>
     </div>
 
     <div class="sc-faq-item">

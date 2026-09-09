@@ -3,64 +3,71 @@
 Lives in `.claude/` so it is never published, same reason the preview
 server and OG renderer do. Nothing here appears on the site.
 
-Last updated: 2026-09-08 · supersedes the plan v2 scaling notes.
+Last updated: 2026-09-09 · supersedes the $500–$700 range and the
+plan v2 $250/$280–300/$600 scaling notes.
 
 ## What the public page says
 
-`/shoot-and-create` shows a range, not a "from" figure:
+`/shoot-and-create` shows one price and the package under it:
 
-> **NZ$500 – NZ$700** — where most shoots land
+> **NZ$399** — standard package, starting price
+> - **15** edited photos, ready to post
+> - **3** short-form vertical clips, cut and captioned
+> - **2–3** posts a week for one to two months
 
-with both ends described, and a line saying full days and larger events
-sit above the range and are quoted separately. Every job still gets one
-fixed number by reply, same day, in writing.
-
-## Why a range and not a single number
-
-Every shoot is quoted individually, so a lone "from $X" gets read as a
-promise the quote then breaks — the client sees $250 on the page and a
-$450 number in the reply. A range with annotated ends tells someone
-where they sit before they enquire, so the quote lands inside a number
-they have already seen.
+Plus a line that bigger events, longer days and extra clips are quoted
+on top, and a banner offering monthly content on request. Every job
+still gets one fixed number by reply, same day, in writing.
 
 ## Quoting reference
 
 | Job | Quote |
 |---|---|
-| Single session — ~2 hrs, edited gallery, one vertical video | **$500** |
-| Longer morning — 3–4 hrs, or a race start-to-finish, bigger gallery, 2–3 clips | **$700** |
-| Full day — up to 6 hrs | **quoted above the range**, see note below |
-| Extra edited video beyond those included | **+$120** each |
+| Standard package — 15 edited photos, 3 vertical clips | **$399** |
+| Extra edited clip beyond the three | **+$120** each |
+| Extra edited photos beyond the fifteen | quote per batch |
+| Longer day / larger event (race morning, full-day event) | quoted on top, see below |
 | Travel: Christchurch + Banks Peninsula | included |
 | Travel: further into Canterbury | quoted up front, never added afterwards |
-| Café/restaurant monthly content plan | from ~$450/month, once first clients are live |
+| Monthly content plan | quoted per client, see below |
 
-### Full days need their own number
+### Longer days need their own number
 
-A full day is roughly three times the work of a single session. Pricing
-it at the $700 top of the range would mean 3× the work for 1.4× the
-money, so it does not belong inside the band. Quote it on its own —
-around **$1,000–$1,200** keeps the effective rate in line with the
-$500 session. The page says full days sit above the range precisely so
-that number is not a surprise.
+The $399 package assumes roughly a single session. A full day is
+several times that work, so quote it separately rather than stretching
+the package — around **$1,000–$1,200** keeps the effective rate in
+line. The page says bigger jobs are quoted on top precisely so that
+number is not a surprise when it lands.
 
-## Where these numbers came from
+### Monthly
 
-Plan v2 changed the buyer: kids' events were dropped, so the audience is
-now cafés, restaurants, event organisers and race organisers spending a
-marketing budget — not parents paying personally. That moves the relevant
-benchmark off Airtasker's $150–300 consumer band and onto the content
-creator rows ($250–$1,200 per session; $100–$1,000 per social post).
+No public figure — the banner invites an enquiry instead, which is the
+right call while the shape of these is still being worked out. Prior
+working figure was **from ~$450/month**. Set it against how often the
+client needs new material and how many clips per visit, and quote per
+client until there are enough of them to standardise.
 
-Sanity check on the low end: a single session is ~2.5 hrs on site with
-travel, 2–3 hrs culling and editing the gallery, 1.5–2.5 hrs on the video,
-half an hour of admin — call it 7–8 hours. At $500 that is roughly $65/hr
-gross, before gear, insurance, software and tax. An established NZ pro
-charges $135/hr or $750/day, so this stays clearly the affordable option
-without being the cheap one.
+## Watch the effective rate on $399
 
-## Anything else priced off the old numbers
+Worth tracking against real jobs rather than taking on faith. Estimated
+time for the standard package: ~2.5 hrs on site with travel, 1–1.5 hrs
+editing fifteen photos, 3–4.5 hrs on three captioned clips, half an
+hour of admin — call it 8–9 hours, so roughly **$45/hr gross** before
+gear, insurance, software and tax.
 
-The lead list (café/restaurant prospects, race organisers) was priced off
-the plan v2 $250/$280–300/$600 scaling. Those figures are superseded —
-re-check any quote already sent against the table above.
+For comparison, the $500 single-session figure this replaced included
+only one clip and worked out nearer $65/hr. Three clips is the item
+that moves: video editing is the most time-expensive thing in the
+package, so if any job is running long it will be that. Time a couple
+of real ones before deciding whether $399 holds or the clip count
+should.
+
+An established NZ pro charges $135/hr or $750/day, so there is still
+plenty of room above this.
+
+## Anything else priced off older numbers
+
+The lead list (café/restaurant prospects, race organisers) was priced
+off the plan v2 $250/$280–300/$600 scaling, and anything quoted during
+the $500–$700 window is also out of date. Re-check any quote already
+sent against the table above.

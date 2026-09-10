@@ -70,45 +70,42 @@
   .sc-hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
   .sc-hero-stage { display: flex; align-items: center; justify-content: center; padding: 7rem 3.5rem 4rem 1rem; }
 
-  /* Viewfinder — a camera's framing, not a stock photo. It stands in
-     for the sample work above the fold without pretending to be it. */
-  .sc-finder {
-    width: 100%; max-width: 400px; aspect-ratio: 4 / 3; position: relative;
-    border-radius: var(--radius-lg); padding: 1.1rem 1.2rem;
-    display: flex; flex-direction: column; justify-content: space-between;
-    background: rgba(255,255,255,.42);
-    backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
-    border: 1px solid rgba(255,255,255,.8);
-    box-shadow: 0 30px 70px rgba(42,61,74,.22), inset 0 1px 0 rgba(255,255,255,.85);
-    transition: transform .5s var(--ease);
+  /* Three prints on a table. The hero used to hold an empty
+     viewfinder graphic: an outline with a crosshair in it, which read
+     as "image goes here" because structurally that is what it was.
+     Glass over pale sky has nothing to refract either, so it came out
+     milky rather than clear. Real frames fix both, and put the work
+     itself above the fold. */
+  .sc-stack { position: relative; width: 100%; max-width: 440px; aspect-ratio: 1 / 1.06; }
+  .sc-print {
+    position: absolute; display: block; overflow: hidden;
+    border-radius: 16px; background: var(--brand-mist);
+    box-shadow: 0 26px 60px rgba(42,61,74,.3), 0 0 0 1px rgba(255,255,255,.6);
+    transition: transform .5s var(--ease), box-shadow .5s var(--ease);
   }
-  .sc-finder-top, .sc-finder-btm { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-  /* No text-transform here: a photographer writes f/1.8, not F/1.8.
-     The labels that should read as caps are written that way. */
-  .sc-finder-meta {
+  .sc-print img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* Laid out so all three actually read. The front print sits left of
+     the reel rather than over it, so nothing is reduced to a sliver. */
+  /* Back left — the wide view, furthest away */
+  .sc-print.p1 { width: 46%; aspect-ratio: 3 / 4;  top: 0;    left: 2%;  transform: rotate(-7deg); z-index: 1; }
+  /* Right — a reel, standing tall, clear of the front print */
+  .sc-print.p2 { width: 30%; aspect-ratio: 9 / 16; top: 2%;   right: 0;  transform: rotate(7deg);  z-index: 2; }
+  /* Front — the one that carries the page: Christchurch hospitality */
+  .sc-print.p3 { width: 56%; aspect-ratio: 4 / 5;  bottom: 0; left: 5%;  transform: rotate(-2deg); z-index: 3;
+                 box-shadow: 0 32px 70px rgba(42,61,74,.36), 0 0 0 1px rgba(255,255,255,.7); }
+  /* The one piece of glass left, and it sits over photos, so it works */
+  .sc-stack-chip {
+    position: absolute; right: 0; bottom: 5%; z-index: 4;
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: rgba(255,255,255,.5);
+    backdrop-filter: blur(20px) saturate(200%); -webkit-backdrop-filter: blur(20px) saturate(200%);
+    border: 1px solid rgba(255,255,255,.85);
+    box-shadow: 0 10px 30px rgba(42,61,74,.22), inset 0 1px 0 rgba(255,255,255,.95);
+    border-radius: var(--pill); padding: .5rem 1rem; white-space: nowrap;
     font-family: var(--mark); font-size: .6rem; font-weight: 700;
-    letter-spacing: .16em; color: var(--dusk);
+    letter-spacing: .16em; text-transform: uppercase; color: var(--deep);
   }
-  .sc-finder-rec { display: inline-flex; align-items: center; gap: .4rem; }
-  .sc-finder-rec i { width: 7px; height: 7px; border-radius: 50%; background: #d4694f; animation: pulse 2.5s ease-in-out infinite; }
-  /* Four framing corners. Two come from the card, two from the middle
-     block, so the whole bracket set needs no extra markup. */
-  .sc-finder::before, .sc-finder::after,
-  .sc-finder-mid::before, .sc-finder-mid::after {
-    content: ''; position: absolute; width: 26px; height: 26px; pointer-events: none;
-    border: 2px solid rgba(42,61,74,.28);
-  }
-  .sc-finder::before { top: 2.9rem; left: 1.5rem;  border-right: 0; border-bottom: 0; border-radius: 5px 0 0 0; }
-  .sc-finder::after  { top: 2.9rem; right: 1.5rem; border-left: 0;  border-bottom: 0; border-radius: 0 5px 0 0; }
-  .sc-finder-mid::before { bottom: 2.9rem; left: 1.5rem;  border-right: 0; border-top: 0; border-radius: 0 0 0 5px; }
-  .sc-finder-mid::after  { bottom: 2.9rem; right: 1.5rem; border-left: 0;  border-top: 0; border-radius: 0 0 5px 0; }
-  /* static, so the two bottom brackets can position against the card */
-  .sc-finder-mid { position: static; display: flex; flex-direction: column; align-items: center; gap: .5rem; text-align: center; }
-  .sc-reticle { width: 46px; height: 46px; border: 1.5px solid rgba(42,61,74,.3); border-radius: 50%; position: relative; }
-  .sc-reticle::before, .sc-reticle::after { content: ''; position: absolute; background: rgba(42,61,74,.3); left: 50%; top: 50%; }
-  .sc-reticle::before { width: 1.5px; height: 14px; transform: translate(-50%,-50%); }
-  .sc-reticle::after  { width: 14px; height: 1.5px; transform: translate(-50%,-50%); }
-  .sc-finder-cats { font-size: .82rem; font-weight: 700; color: var(--dusk); }
+  .sc-stack-chip i { width: 6px; height: 6px; border-radius: 50%; background: var(--sage); animation: pulse 2.5s ease-in-out infinite; }
 
   /* ── WHAT YOU GET ───────────────────────────────────────────
      Two deliverables, not a ranked list — so no 01/02 numbering. */
@@ -475,6 +472,9 @@
     .sc-hero-copy { padding: 7rem 1.6rem 2.5rem; align-items: center; text-align: center; }
     .sc-hero-copy h1 { max-width: none; }
     .sc-hero-actions, .sc-chips { justify-content: center; }
+    /* The chip is a fixed size against a stack that shrinks with the
+       viewport, so on a phone it swallows the front print. */
+    .sc-stack-chip { font-size: .55rem; padding: .42rem .8rem; letter-spacing: .12em; bottom: 1%; }
     .sc-hero-stage { padding: 0 1.6rem 3.5rem; }
     .sc-delivs, .sc-steps { grid-template-columns: 1fr; }
     .sc-monthly { flex-direction: column; align-items: flex-start; padding: 2rem; }
@@ -617,19 +617,11 @@
   </div>
 
   <div class="sc-hero-stage">
-    <div class="sc-finder" id="finderCard">
-      <div class="sc-finder-top">
-        <span class="sc-finder-meta">f/1.8 &middot; 1/250 &middot; ISO 400</span>
-        <span class="sc-finder-meta sc-finder-rec"><i></i>REC</span>
-      </div>
-      <div class="sc-finder-mid">
-        <span class="sc-reticle" aria-hidden="true"></span>
-        <span class="sc-finder-cats">Events &middot; Caf&eacute;s &middot; Running</span>
-      </div>
-      <div class="sc-finder-btm">
-        <span class="sc-finder-meta">CHRISTCHURCH, NZ</span>
-        <span class="sc-finder-meta">PHOTO + VIDEO</span>
-      </div>
+    <div class="sc-stack" id="heroStack">
+      <span class="sc-print p1"><img src="/assets/gallery-airbnb-1.jpeg" alt="A deck looking out over pines, a lake and the Canterbury foothills at golden hour" width="1200" height="1600" decoding="async"></span>
+      <span class="sc-print p2"><img src="/assets/reel-1.jpg" alt="A reel frame: sunrise over the sea from a boardwalk on a Christchurch trail run" width="360" height="640" decoding="async"></span>
+      <span class="sc-print p3"><img src="/assets/hero-cafe.jpg" alt="A Christchurch wine room: lit oak shelves of bottles, a woven pendant light and a flower arrangement on the table" width="1000" height="1250" fetchpriority="high" decoding="async"></span>
+      <span class="sc-stack-chip"><i></i>Events &middot; Caf&eacute;s &middot; Running</span>
     </div>
   </div>
 </section>
@@ -1238,8 +1230,8 @@
   initNav(document.getElementById('mainnav'));
   initReveal();
 
-  var finder = document.getElementById('finderCard');
-  if (finder) initTilt(finder, { zone: finder.parentElement, maxX: 6, maxY: 7 });
+  var stack = document.getElementById('heroStack');
+  if (stack) initTilt(stack, { zone: stack.parentElement, maxX: 5, maxY: 6 });
 </script>
 
 </body>

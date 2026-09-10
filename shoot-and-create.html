@@ -76,7 +76,7 @@
      Glass over pale sky has nothing to refract either, so it came out
      milky rather than clear. Real frames fix both, and put the work
      itself above the fold. */
-  .sc-stack { position: relative; width: 100%; max-width: 440px; aspect-ratio: 1 / 1.06; }
+  .sc-stack { position: relative; width: 100%; max-width: 510px; aspect-ratio: 1 / 0.82; }
   .sc-print {
     position: absolute; display: block; overflow: hidden;
     border-radius: 16px; background: var(--brand-mist);
@@ -84,18 +84,29 @@
     transition: transform .5s var(--ease), box-shadow .5s var(--ease);
   }
   .sc-print img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  /* Laid out so all three actually read. The front print sits left of
-     the reel rather than over it, so nothing is reduced to a sliver. */
-  /* Back left — the wide view, furthest away */
-  .sc-print.p1 { width: 46%; aspect-ratio: 3 / 4;  top: 0;    left: 2%;  transform: rotate(-7deg); z-index: 1; }
-  /* Right — a reel, standing tall, clear of the front print */
-  .sc-print.p2 { width: 30%; aspect-ratio: 9 / 16; top: 2%;   right: 0;  transform: rotate(7deg);  z-index: 2; }
-  /* Front — the one that carries the page: Christchurch hospitality */
-  .sc-print.p3 { width: 56%; aspect-ratio: 4 / 5;  bottom: 0; left: 5%;  transform: rotate(-2deg); z-index: 3;
-                 box-shadow: 0 32px 70px rgba(42,61,74,.36), 0 0 0 1px rgba(255,255,255,.7); }
+  /* A fan: the reel stands in the middle, the two stills spread out
+     behind it left and right. Widths overlap on purpose — 42 + 33 + 42
+     is more than 100 — so the three interleave instead of sitting in a
+     row. The vertical offsets are deliberately unequal, because three
+     frames landing at exactly the same height reads as a diagram. */
+  .sc-print { top: 50%; }
+  /* Behind left — the wide Canterbury view */
+  .sc-print.p1 { width: 40%; aspect-ratio: 3 / 4;  left: 2%;
+                 transform: translateY(-56%) rotate(-10deg); z-index: 1; }
+  /* Behind right — the wine room */
+  .sc-print.p3 { width: 40%; aspect-ratio: 4 / 5;  right: 2%;
+                 transform: translateY(-43%) rotate(9.5deg); z-index: 2; }
+  /* Front and centre — the reel, upright and closest */
+  .sc-print.p2 { width: 30%; aspect-ratio: 9 / 16; left: 50%;
+                 transform: translate(-50%, -50%) rotate(-1.5deg); z-index: 3;
+                 box-shadow: 0 34px 74px rgba(42,61,74,.38), 0 0 0 1px rgba(255,255,255,.75); }
+  /* Hover fans them apart a touch, the way a hand of cards opens */
+  .sc-stack:hover .sc-print.p1 { transform: translateY(-58%) translateX(-3%) rotate(-13deg); }
+  .sc-stack:hover .sc-print.p3 { transform: translateY(-41%) translateX(3%)  rotate(12.5deg); }
+  .sc-stack:hover .sc-print.p2 { transform: translate(-50%, -52%) rotate(-1.5deg); }
   /* The one piece of glass left, and it sits over photos, so it works */
   .sc-stack-chip {
-    position: absolute; right: 0; bottom: 5%; z-index: 4;
+    position: absolute; left: 50%; transform: translateX(-50%); bottom: 1%; z-index: 4;
     display: inline-flex; align-items: center; gap: .5rem;
     background: rgba(255,255,255,.5);
     backdrop-filter: blur(20px) saturate(200%); -webkit-backdrop-filter: blur(20px) saturate(200%);

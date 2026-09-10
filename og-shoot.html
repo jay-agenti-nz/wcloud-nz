@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shoot &amp; Create — social card source</title>
+<meta name="robots" content="noindex, nofollow">
+<!--
+  Source for og-shoot.jpg — the thumbnail for /shoot-and-create when the
+  page is shared. Rendered at exactly 1200x630 and captured with
+  .claude/make-og.js, same as og.html, so the card uses the site's real
+  fonts, the real cloud textures and the real hero photographs rather
+  than an approximation that drifts as the page changes.
+
+  To regenerate:  OG_URL=http://localhost:8899/og-shoot.html \
+                  OG_OUT=og-shoot.jpg node .claude/make-og.js
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/wc.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #8fadbd; }
+  #card {
+    position: relative; width: 1200px; height: 630px; overflow: hidden;
+    background: linear-gradient(170deg, var(--ground) 0%, var(--ground-deep) 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* Same framed sheet as the site, and the hero's warmer bloom */
+  #sheet {
+    position: relative; width: 1148px; height: 578px;
+    border-radius: 28px; overflow: hidden;
+    box-shadow: 0 24px 70px rgba(28,46,56,.28);
+    background:
+      radial-gradient(58% 46% at 78% 26%, rgba(255,243,228,.92), transparent 62%),
+      radial-gradient(52% 52% at 10% 88%, rgba(255,255,255,.42), transparent 64%),
+      linear-gradient(168deg, #e6f0f6 0%, #cfe3ee 46%, #bfd8e7 100%);
+  }
+  #clouds { position: absolute; inset: 0; width: 1148px; height: 578px; }
+  #content {
+    position: absolute; inset: 0; z-index: 2;
+    display: grid; grid-template-columns: 55fr 45fr; align-items: center;
+    padding-top: 5.5rem;
+  }
+  .og-copy { display: flex; flex-direction: column; gap: 1.1rem; padding: 0 0 0 4rem; }
+  .og-mark { display: flex; align-items: center; gap: .75rem; position: absolute; top: 2.6rem; left: 4rem; z-index: 3; }
+  .og-mark .logo-wordmark span { color: var(--deep); }
+  .og-mark .logo-wordmark span:last-child { color: var(--body); }
+  h1 { font-size: 56px; line-height: 1.06; letter-spacing: -.022em; max-width: 13ch; margin: 0; }
+  .og-sub { font-size: 21px; color: var(--dusk); font-weight: 500; max-width: 34ch; margin: 0; line-height: 1.55; }
+  .og-chips { display: flex; gap: .5rem; margin-top: .3rem; flex-wrap: wrap; max-width: 30ch; }
+  .og-chips .wc-chip { font-size: 15px; padding: .42rem 1rem; }
+
+  /* The hero's fan, at card scale */
+  .og-stage { display: flex; align-items: center; justify-content: center; padding-right: 2.2rem; }
+  .og-fan { position: relative; width: 430px; height: 360px; }
+  .og-print { position: absolute; top: 50%; overflow: hidden; border-radius: 16px;
+              box-shadow: 0 26px 60px rgba(42,61,74,.3), 0 0 0 1px rgba(255,255,255,.6); }
+  .og-print img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .og-p1 { width: 40%; aspect-ratio: 3/4;  left: 2%;  transform: translateY(-56%) rotate(-10deg); z-index: 1; }
+  .og-p3 { width: 40%; aspect-ratio: 4/5;  right: 2%; transform: translateY(-43%) rotate(9.5deg); z-index: 2; }
+  .og-p2 { width: 30%; aspect-ratio: 9/16; left: 50%; transform: translate(-50%,-50%) rotate(-1.5deg); z-index: 3;
+           box-shadow: 0 34px 74px rgba(42,61,74,.38), 0 0 0 1px rgba(255,255,255,.75); }
+</style>
+</head>
+<body>
+<div id="card">
+  <div id="sheet">
+    <canvas id="clouds" width="1148" height="578"></canvas>
+
+    <div class="og-mark">
+      <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none" style="width:52px;height:30px">
+        <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#4d6e80" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(127,168,190,.55)" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <div class="logo-wordmark" style="font-size:.86rem"><span>WHITE</span><span>CLOUD</span></div>
+    </div>
+
+    <div id="content">
+      <div class="og-copy">
+        <h1 class="wc-display">Shot the way you&rsquo;d remember it.</h1>
+        <p class="og-sub">Photography and short-form video for Christchurch events, caf&eacute;s and running events.</p>
+        <div class="og-chips">
+          <span class="wc-chip">15 photos + 3 clips</span>
+          <span class="wc-chip">From $399 incl. GST</span>
+        </div>
+      </div>
+      <div class="og-stage">
+        <div class="og-fan">
+          <span class="og-print og-p1"><img src="/assets/gallery-airbnb-1.jpeg" alt=""></span>
+          <span class="og-print og-p3"><img src="/assets/hero-cafe.jpg" alt=""></span>
+          <span class="og-print og-p2"><img src="/assets/reel-1.jpg" alt=""></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import { makeCloudTexture, makeRandom } from '/assets/hero-cloud.js';
+
+  /* Same puffs the hero draws, composited at fixed positions so the
+     card is identical every time it is made. Kept low and left, clear
+     of both the headline and the photographs. */
+  const c = document.getElementById('clouds');
+  const ctx = c.getContext('2d');
+  const rand = makeRandom(20260821);            // same seed as the hero
+  const tex = [0, 1.5, 4].map(b => makeCloudTexture(rand, b));
+
+  const W = 1148, H = 578;
+  const clouds = [
+    { x: 0.06, y: 0.80, s: 0.17, layer: 2, a: 0.72 },
+    { x: 0.26, y: 0.92, s: 0.15, layer: 1, a: 0.6 },
+    { x: 0.46, y: 0.84, s: 0.13, layer: 0, a: 0.5 },
+    { x: 0.94, y: 0.86, s: 0.16, layer: 2, a: 0.6 },
+    { x: 0.14, y: 0.10, s: 0.11, layer: 0, a: 0.36 },
+    { x: 0.62, y: 0.06, s: 0.13, layer: 1, a: 0.4 }
+  ];
+
+  for (const cl of clouds) {
+    const size = W * cl.s;
+    ctx.globalAlpha = cl.a;
+    ctx.drawImage(tex[cl.layer], cl.x * W - size / 2, cl.y * H - size / 2, size, size);
+  }
+  ctx.globalAlpha = 1;
+  document.body.dataset.ready = 'true';
+</script>
+</body>
+</html>

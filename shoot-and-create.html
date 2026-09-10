@@ -11,14 +11,15 @@
 <meta property="og:url"         content="https://wcloud.nz/shoot-and-create">
 <meta property="og:title"       content="Shoot &amp; Create – Photography &amp; Short-Form Video, Christchurch">
 <meta property="og:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Packages from NZ$399 incl. GST — 15 edited photos and 3 vertical clips. Every enquiry answered personally in 3–6 hours.">
-<meta property="og:image"       content="https://wcloud.nz/og-image.jpg">
+<meta property="og:image"       content="https://wcloud.nz/og-shoot.jpg">
+<meta property="og:image:alt"   content="Shot the way you'd remember it — three photographs fanned out over a Christchurch sky.">
 <meta property="og:image:type"  content="image/jpeg">
 <meta property="og:image:width" content="2400">
 <meta property="og:image:height" content="1260">
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:title"       content="Shoot &amp; Create – Photography &amp; Short-Form Video, Christchurch">
 <meta name="twitter:description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Packages from NZ$399 incl. GST — 15 edited photos and 3 vertical clips.">
-<meta name="twitter:image"       content="https://wcloud.nz/og-image.jpg">
+<meta name="twitter:image"       content="https://wcloud.nz/og-shoot.jpg">
 
 <!-- SEO -->
 <meta name="description" content="Photography and short-form video for Christchurch events, cafés and restaurants, and running events. Packages from NZ$399 incl. GST — 15 edited photos and 3 captioned vertical clips, delivered in days, not weeks.">
@@ -394,6 +395,38 @@
   /* ── BOOKING FORM (same controls as the main contact form) ──── */
   #book { padding: var(--sp-7) 4.5rem; background: var(--brand-pale); }
   .sc-form-inner { max-width: 760px; margin: 0 auto; }
+  /* Two ways in, side by side in the same section: pick a time, or
+     send an enquiry. The scheduler is Google's, so it cannot inherit
+     the page's styling — it sits in one of our cards instead, and
+     loads lazily so it costs nothing until someone scrolls to it. */
+  .sc-book-split { display: flex; flex-direction: column; gap: var(--sp-3); }
+  .sc-way {
+    background: var(--glass-bg-strong);
+    backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+    border-radius: 24px; border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow); overflow: hidden;
+  }
+  .sc-way-head { padding: 1.6rem 1.8rem .2rem; }
+  .sc-way-head h3 { font-size: 1.15rem; margin-bottom: .3rem; }
+  .sc-way-head p { font-size: .9rem; }
+  /* Same heading inside the form card, which has its own padding */
+  .sc-form-head { margin-bottom: 1.6rem; }
+  .sc-form-head h3 { font-size: 1.15rem; margin-bottom: .3rem; }
+  .sc-form-head p { font-size: .9rem; }
+  .sc-cal { padding: .6rem .6rem 1rem; }
+  .sc-cal iframe { width: 100%; height: 620px; border: 0; display: block; border-radius: var(--radius); background: var(--white); }
+  /* The line between the two paths, so neither reads as the only way */
+  .sc-or {
+    display: flex; align-items: center; gap: 1rem;
+    font-family: var(--mark); font-size: .68rem; font-weight: 700;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--body);
+  }
+  .sc-or::before, .sc-or::after { content: ''; flex: 1; height: 1px; background: var(--brand-mist); }
+  @media (max-width: 700px) {
+    .sc-cal iframe { height: 560px; }
+    .sc-way-head { padding: 1.3rem 1.2rem .2rem; }
+  }
+
   .sc-form {
     background: var(--glass-bg-strong);
     backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
@@ -923,8 +956,8 @@
   <ol class="sc-steps fug">
     <li>
       <span class="sc-step-n">01</span>
-      <h3>You enquire</h3>
-      <p>Fill in the form below with the date, the place and roughly what you&rsquo;re after. If you&rsquo;re not sure yet, say that &mdash; &ldquo;not sure&rdquo; is a perfectly good answer to every question on it.</p>
+      <h3>You get in touch</h3>
+      <p>Take a slot straight from my calendar if you already know when you want me, or fill in the form with the date, the place and roughly what you&rsquo;re after. If you&rsquo;re not sure yet, say that &mdash; &ldquo;not sure&rdquo; is a perfectly good answer to every question on it.</p>
     </li>
     <li>
       <span class="sc-step-n">02</span>
@@ -933,7 +966,7 @@
     </li>
     <li>
       <span class="sc-step-n">03</span>
-      <h3>We confirm and I shoot</h3>
+      <h3>We lock it in and I shoot</h3>
       <p>We lock the date, agree a backup if it&rsquo;s outdoors, and I turn up. Your edited photos and clips land within the turnaround listed for your category.</p>
     </li>
   </ol>
@@ -944,11 +977,34 @@
   <div class="sc-form-inner">
     <div class="sc-head centred">
       <span class="lbl">Book a shoot</span>
-      <h2>Tell me about it</h2>
-      <p>No brief needed and nothing locked in by sending this &mdash; it just starts the conversation.</p>
+      <h2>Two ways to start</h2>
+      <p>Grab a time straight from my calendar, or tell me about it first and I&rsquo;ll come back to you.</p>
     </div>
 
+    <div class="sc-book-split">
+      <div class="sc-way fu">
+        <div class="sc-way-head">
+          <h3>Check my availability</h3>
+          <p>Live from my calendar &mdash; pick a slot that suits and it&rsquo;s booked.</p>
+        </div>
+        <!-- Google Calendar Appointment Scheduling. Lazy so it does not
+             load until someone scrolls to it: this page has to open fast
+             from an ad tap, and the embed is not small. -->
+        <div class="sc-cal">
+          <iframe
+            src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ32mt7Nz3GBKvV98qTEn-BpGULdH0rb3BZpn0Jz5MCWye9n5tLf52om2g_J4sFsg1iLrXzb3Lm-?gv=true"
+            title="Book a time with Jay &mdash; live availability calendar"
+            loading="lazy" width="100%" height="620" frameborder="0"></iframe>
+        </div>
+      </div>
+
+      <div class="sc-or">Or</div>
+
     <div class="sc-form">
+      <div class="sc-form-head">
+        <h3>Tell me about it first</h3>
+        <p>Not sure when, or it&rsquo;s not a standard shoot? Send this instead and I&rsquo;ll come back within 3&ndash;6 hours. Nothing is locked in by sending it.</p>
+      </div>
       <form name="shoot-booking" netlify netlify-honeypot="bot-field" id="shootForm">
         <input type="hidden" name="form-name" value="shoot-booking">
         <p style="display:none"><label>Don't fill this in: <input name="bot-field"></label></p>
@@ -1018,6 +1074,7 @@
 
         <button type="submit" class="form-submit">Send my enquiry &rarr;</button>
       </form>
+    </div>
     </div>
   </div>
 </section>

@@ -39,15 +39,16 @@
   #content {
     position: absolute; inset: 0; z-index: 2;
     display: grid; grid-template-columns: 55fr 45fr; align-items: center;
-    padding-top: 5.5rem;
   }
-  .og-copy { display: flex; flex-direction: column; gap: 1.1rem; padding: 0 0 0 4rem; }
+  /* Nudged down so the wordmark above it has room; the photographs
+     stay centred in their own column. */
+  .og-copy { display: flex; flex-direction: column; gap: 1.1rem; padding: 0 0 0 4rem; position: relative; top: 10px; }
   .og-mark { display: flex; align-items: center; gap: .75rem; position: absolute; top: 2.6rem; left: 4rem; z-index: 3; }
   .og-mark .logo-wordmark span { color: var(--deep); }
   .og-mark .logo-wordmark span:last-child { color: var(--body); }
   h1 { font-size: 56px; line-height: 1.06; letter-spacing: -.022em; max-width: 13ch; margin: 0; }
   .og-sub { font-size: 21px; color: var(--dusk); font-weight: 500; max-width: 34ch; margin: 0; line-height: 1.55; }
-  .og-chips { display: flex; gap: .5rem; margin-top: .3rem; flex-wrap: wrap; max-width: 30ch; }
+  .og-chips { display: flex; gap: .5rem; margin-top: .3rem; }
   .og-chips .wc-chip { font-size: 15px; padding: .42rem 1rem; }
 
   /* The hero's fan, at card scale */

@@ -160,12 +160,13 @@
      lot of weight for behaviour the browser ships with. JS only keeps
      the dots and counter in step and moves the desktop arrows, so a
      script that fails costs the arrows, never the swipe. */
-  /* align-items:start so each post keeps its own height. These are
-     SCRL-composed layout cards, not raw photos, and they arrive at
-     different ratios — stretching them to match would crop the margins
-     the layout was built around. Two posts of different heights is what
-     a real feed looks like anyway. */
-  .sc-posts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-3); align-items: start; width: 100%; max-width: 900px; margin: 0 auto; }
+  /* One column, always. The two sets are SCRL-composed layout cards at
+     different ratios — 4:5 and 3:4 — so side by side they could only be
+     matched by cropping the margins those layouts were built around, or
+     by letterboxing one of them. Stacked, each keeps its full frame and
+     there is nothing to compare it against. It is also how a feed reads:
+     one post, then the next. */
+  .sc-posts { display: grid; grid-template-columns: 1fr; gap: var(--sp-4); width: 100%; max-width: 500px; margin: 0 auto; }
   .sc-post {
     background: var(--white); border: 1px solid rgba(127,168,190,.28);
     border-radius: var(--radius-lg); overflow: hidden;
@@ -258,22 +259,9 @@
   }
   .sc-reel:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(42,61,74,.2); }
   .sc-reel > img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  /* Decorative: the whole tile is the link, so this is not a button. */
-  .sc-reel-play {
-    position: absolute; inset: 0; margin: auto;
-    width: 52px; height: 52px; border-radius: 50%;
-    background: rgba(255,255,255,.78); border: 1px solid rgba(255,255,255,.9);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 24px rgba(42,61,74,.18);
-    display: flex; align-items: center; justify-content: center;
-    transition: transform .25s var(--ease), background .25s;
-  }
-  .sc-reel:hover .sc-reel-play { transform: scale(1.1); background: rgba(255,255,255,.95); }
-  .sc-reel-play::before {
-    content: ''; width: 0; height: 0; margin-left: 3px;
-    border-left: 14px solid var(--dusk);
-    border-top: 9px solid transparent; border-bottom: 9px solid transparent;
-  }
+  /* No play badge of our own: the cover frames are screen grabs from
+     Instagram and already carry its play glyph. A second one just
+     stacked on top of the first. */
   /* Signposts the jump, so nobody is surprised to land on Instagram. */
   .sc-reel-ig {
     position: absolute; top: .7rem; right: .7rem;
@@ -496,8 +484,7 @@
   }
   @media (max-width: 700px) {
     .sc-band, #book { padding: var(--sp-5) 1.6rem; }
-    /* One post at a time, full width — the phone reading of a timeline */
-    .sc-posts { grid-template-columns: 1fr; max-width: 460px; }
+    .sc-posts { gap: var(--sp-3); }
     /* A 9:16 tile at full phone width is taller than the screen, so the
        reels become a swipeable strip rather than a stack. */
     .sc-reels {
@@ -757,37 +744,31 @@
        aria-label="Reel: Christchurch’s most stunning sunrise trail run — watch on Instagram (opens in a new tab)">
       <img src="/assets/reel-1.jpg" alt="" loading="lazy" decoding="async" width="720" height="1280" onerror="this.remove()">
       <span class="sc-reel-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>Reel</span>
-      <span class="sc-reel-play" aria-hidden="true"></span>
     </a>
     <a class="sc-reel" href="https://www.instagram.com/reel/DYbcWq0yCx6/" target="_blank" rel="noopener"
        aria-label="Reel: Christchurch’s most epic road running route — watch on Instagram (opens in a new tab)">
       <img src="/assets/reel-2.jpg" alt="" loading="lazy" decoding="async" width="720" height="1280" onerror="this.remove()">
       <span class="sc-reel-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>Reel</span>
-      <span class="sc-reel-play" aria-hidden="true"></span>
     </a>
     <a class="sc-reel" href="https://www.instagram.com/reel/DaPTPC0yfR6/" target="_blank" rel="noopener"
        aria-label="Reel: Christchurch’s hidden valley trail run — watch on Instagram (opens in a new tab)">
       <img src="/assets/reel-3.jpg" alt="" loading="lazy" decoding="async" width="720" height="1280" onerror="this.remove()">
       <span class="sc-reel-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>Reel</span>
-      <span class="sc-reel-play" aria-hidden="true"></span>
     </a>
     <a class="sc-reel" href="https://www.instagram.com/reel/DaTuPs7SDSg/" target="_blank" rel="noopener"
        aria-label="Reel: the one Michelin-starred restaurant in Christchurch, Tussock Hill Vineyard — watch on Instagram (opens in a new tab)">
       <img src="/assets/reel-4.jpg" alt="" loading="lazy" decoding="async" width="720" height="1280" onerror="this.remove()">
       <span class="sc-reel-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>Reel</span>
-      <span class="sc-reel-play" aria-hidden="true"></span>
     </a>
     <a class="sc-reel" href="https://www.instagram.com/reel/DbKhlLHzE39/" target="_blank" rel="noopener"
        aria-label="Reel: a plate-by-plate look at Pak Soii Eatery — watch on Instagram (opens in a new tab)">
       <img src="/assets/reel-5.jpg" alt="" loading="lazy" decoding="async" width="720" height="1280" onerror="this.remove()">
       <span class="sc-reel-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>Reel</span>
-      <span class="sc-reel-play" aria-hidden="true"></span>
     </a>
     <a class="sc-reel" href="https://www.instagram.com/reel/DYk3ZM1zVk0/" target="_blank" rel="noopener"
        aria-label="Reel: colour hunting around the Christchurch CBD — watch on Instagram (opens in a new tab)">
       <img src="/assets/reel-6.jpg" alt="" loading="lazy" decoding="async" width="720" height="1280" onerror="this.remove()">
       <span class="sc-reel-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>Reel</span>
-      <span class="sc-reel-play" aria-hidden="true"></span>
     </a>
   </div>
   <p class="sc-reels-more">A mix of running, hospitality and everyday Christchurch &mdash; all shot, cut and posted by me. <a href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener">See the rest at @jay.d.vera &rarr;</a></p>

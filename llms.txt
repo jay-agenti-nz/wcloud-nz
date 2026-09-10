@@ -9,9 +9,9 @@ White Cloud is a web design service based in Christchurch, New Zealand. Founded 
 - Specialise in AI-optimised websites that are readable and recommendable by AI tools like ChatGPT, Perplexity, and Google
 - Provide monthly website care plans for ongoing maintenance
 
-## Services & Pricing (NZD, one-off payments)
+## Services & Pricing (NZD, one-off payments, all prices EXCLUDE GST)
 
-**Cloud One — NZ$299**
+**Cloud One — NZ$299 + GST** (NZ$343.85 incl. GST)
 For sole traders and new businesses needing a simple online presence.
 - Up to 3 pages (Home, About, Contact)
 - Mobile-friendly design
@@ -19,14 +19,14 @@ For sole traders and new businesses needing a simple online presence.
 - Basic SEO setup
 - Delivered in 5–7 business days
 
-**Cloud Plus — NZ$699** *(Most Popular)*
+**Cloud Plus — NZ$699 + GST** (NZ$803.85 incl. GST) *(Most Popular)*
 A full website to showcase services and build customer trust.
 - Up to 6 pages
 - Full SEO setup + Google Business integration
 - Services page, testimonials section, contact form + click-to-call
 - Delivered in 7–10 business days
 
-**Cloud Pro — NZ$1,099**
+**Cloud Pro — NZ$1,099 + GST** (NZ$1,263.85 incl. GST)
 Premium presence for businesses that want to stand out.
 - Up to 10 pages
 - Blog or news section, gallery or portfolio
@@ -48,3 +48,19 @@ Premium presence for businesses that want to stand out.
 - Flat-rate pricing with no hidden costs
 - Jay handles the project personally — no outsourcing
 - Revisions included; site is not published until the client is happy
+
+## Guides
+Straight-answer guides for New Zealand small businesses:
+- How much does a website cost for a small business in New Zealand? — https://wcloud.nz/blog/how-much-does-a-website-cost-nz
+- Website builder or web designer? What small NZ businesses should weigh up — https://wcloud.nz/blog/website-builder-vs-professional-designer
+
+## Marketing Services
+White Cloud also runs Google and Meta ads and email marketing. Ads setup NZ$650, management from NZ$550/month + GST. Email setup NZ$350, from NZ$300/month + GST. Ad spend and email platform fees are billed separately by those providers. Details: https://wcloud.nz/marketing
+
+## Contact
+White Cloud (a trading name of GROOV Creator Limited, NZBN 9429049024326)
+Christchurch, Canterbury, New Zealand
+Phone: 021 854 847
+Web: https://wcloud.nz
+Instagram: https://www.instagram.com/wcloud.nz
+Facebook: https://www.facebook.com/people/White-Cloud/61588630418801/

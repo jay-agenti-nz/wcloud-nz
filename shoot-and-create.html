@@ -160,7 +160,12 @@
      lot of weight for behaviour the browser ships with. JS only keeps
      the dots and counter in step and moves the desktop arrows, so a
      script that fails costs the arrows, never the swipe. */
-  .sc-posts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-3); width: 100%; max-width: 900px; margin: 0 auto; }
+  /* align-items:start so each post keeps its own height. These are
+     SCRL-composed layout cards, not raw photos, and they arrive at
+     different ratios — stretching them to match would crop the margins
+     the layout was built around. Two posts of different heights is what
+     a real feed looks like anyway. */
+  .sc-posts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-3); align-items: start; width: 100%; max-width: 900px; margin: 0 auto; }
   .sc-post {
     background: var(--white); border: 1px solid rgba(127,168,190,.28);
     border-radius: var(--radius-lg); overflow: hidden;
@@ -199,6 +204,7 @@
     background: linear-gradient(150deg, #e8f1f6 0%, #d6e6ef 55%, #cbdfea 100%);
   }
   .sc-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .sc-post[data-ratio="3-4"] .sc-slide { aspect-ratio: 3 / 4; }
 
   /* Desktop arrows. Hidden where there is no hover — a touch device
      swipes, and the arrows would only cover the photo. */
@@ -804,17 +810,17 @@
       </header>
 
       <div class="sc-post-frame">
-        <div class="sc-post-track" data-track tabindex="0" role="region" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; 10 frames, swipe or use the arrow keys">
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 1 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-1.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 2 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-2.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 3 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-3.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 4 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-4.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 5 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-5.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 6 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-6.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 7 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-7.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 8 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-8.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 9 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-9.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Restaurant and caf&eacute; interiors in Christchurch &mdash; frame 10 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-10.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <div class="sc-post-track" data-track tabindex="0" role="region" aria-label="Hospitality content set &mdash; 10 frames, swipe or use the arrow keys">
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Hospitality content set &mdash; frame 1 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-1.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1500" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Hospitality content set &mdash; frame 2 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-2.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1500" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Hospitality content set &mdash; frame 3 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-3.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1500" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Hospitality content set &mdash; frame 4 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-4.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1500" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Hospitality content set &mdash; frame 5 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-5.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1500" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Hospitality content set &mdash; frame 6 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-6.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1500" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Hospitality content set &mdash; frame 7 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-7.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1500" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Hospitality content set &mdash; frame 8 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-8.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1500" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Hospitality content set &mdash; frame 9 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-9.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1500" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Hospitality content set &mdash; frame 10 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-10.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1500" onerror="this.remove()"></a>
         </div>
         <button type="button" class="sc-post-arrow prev" data-prev aria-label="Previous frame" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
         <button type="button" class="sc-post-arrow next" data-next aria-label="Next frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
@@ -834,30 +840,30 @@
       </div>
 
       <div class="sc-post-cap">
-        <p><b>jay.d.vera</b> Rooms, plates and the light that makes someone stop scrolling. Shot across a morning, cut for a month of posts.</p>
-        <a href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener">View on Instagram &rarr;</a>
+        <p><b>jay.d.vera</b> Rooms, plates and the light that makes someone stop scrolling &mdash; laid out ready to post, not just handed over as a folder of files.</p>
+        <a href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener">View this post on Instagram &rarr;</a>
       </div>
     </article>
 
-    <article class="sc-post" id="post-stays">
+    <article class="sc-post" id="post-stays" data-ratio="3-4">
       <header class="sc-post-head">
         <span class="sc-post-avatar"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/></svg></span>
-        <span class="sc-post-who"><b>jay.d.vera</b><span>Canterbury, NZ</span></span>
+        <span class="sc-post-who"><b>jay.d.vera</b><span>Aotearoa New Zealand</span></span>
         <span class="sc-post-count" data-count>1/10</span>
       </header>
 
       <div class="sc-post-frame">
-        <div class="sc-post-track" data-track tabindex="0" role="region" aria-label="Airbnb and hotel interiors in Canterbury &mdash; 10 frames, swipe or use the arrow keys">
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 1 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-1.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 2 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-2.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 3 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-3.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 4 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-4.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 5 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-5.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 6 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-6.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 7 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-7.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 8 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-8.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 9 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-9.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
-        <a class="sc-slide" href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener" aria-label="Airbnb and hotel interiors in Canterbury &mdash; frame 10 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-10.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350" onerror="this.remove()"></a>
+        <div class="sc-post-track" data-track tabindex="0" role="region" aria-label="Stays and travel content set &mdash; 10 frames, swipe or use the arrow keys">
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Stays and travel content set &mdash; frame 1 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-1.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1600" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Stays and travel content set &mdash; frame 2 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-2.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1600" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Stays and travel content set &mdash; frame 3 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-3.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1600" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Stays and travel content set &mdash; frame 4 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-4.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1600" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Stays and travel content set &mdash; frame 5 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-5.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1600" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Stays and travel content set &mdash; frame 6 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-6.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1600" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Stays and travel content set &mdash; frame 7 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-7.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1600" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Stays and travel content set &mdash; frame 8 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-8.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1600" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Stays and travel content set &mdash; frame 9 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-9.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1600" onerror="this.remove()"></a>
+        <a class="sc-slide" href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener" aria-label="Stays and travel content set &mdash; frame 10 of 10. Opens Instagram in a new tab."><img src="/assets/gallery-airbnb-10.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1600" onerror="this.remove()"></a>
         </div>
         <button type="button" class="sc-post-arrow prev" data-prev aria-label="Previous frame" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
         <button type="button" class="sc-post-arrow next" data-next aria-label="Next frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
@@ -877,8 +883,8 @@
       </div>
 
       <div class="sc-post-cap">
-        <p><b>jay.d.vera</b> Airbnb and hotel spaces, shot so the listing does the selling. Every room, in its best hour of the day.</p>
-        <a href="https://www.instagram.com/jay.d.vera/" target="_blank" rel="noopener">View on Instagram &rarr;</a>
+        <p><b>jay.d.vera</b> Stays and places worth the drive. Same treatment for an Airbnb or a hotel: shot, laid out, and ready to go up.</p>
+        <a href="https://www.instagram.com/p/DdDRykDkv-I/" target="_blank" rel="noopener">View this post on Instagram &rarr;</a>
       </div>
     </article>
   </div>

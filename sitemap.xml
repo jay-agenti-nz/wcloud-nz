@@ -3,15 +3,15 @@
 
   <url>
     <loc>https://wcloud.nz/</loc>
-    <lastmod>2026-03-22</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-09-11</lastmod>
+<changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://wcloud.nz/intake</loc>
-    <lastmod>2026-03-22</lastmod>
-    <changefreq>yearly</changefreq>
+    <lastmod>2026-09-11</lastmod>
+<changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
@@ -24,50 +24,54 @@
 
   <url>
     <loc>https://wcloud.nz/terms</loc>
-    <lastmod>2026-03-22</lastmod>
-    <changefreq>yearly</changefreq>
+    <lastmod>2026-09-11</lastmod>
+<changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
 
   <url>
     <loc>https://wcloud.nz/card</loc>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>yearly</changefreq>
+    <lastmod>2026-09-11</lastmod>
+<changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://wcloud.nz/marketing</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-09-11</lastmod>
+<changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://wcloud.nz/restaurants</loc>
-    <lastmod>2026-07-03</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-09-11</lastmod>
+<changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://wcloud.nz/shoot-and-create</loc>
-    <lastmod>2026-09-08</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-09-11</lastmod>
+<changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://wcloud.nz/blog</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-09-11</lastmod>
+<changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://wcloud.nz/blog/how-much-does-a-website-cost-nz</loc>
-    <changefreq>yearly</changefreq>
+    <lastmod>2026-09-11</lastmod>
+<changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://wcloud.nz/blog/website-builder-vs-professional-designer</loc>
-    <changefreq>yearly</changefreq>
+    <lastmod>2026-09-11</lastmod>
+<changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 </urlset>

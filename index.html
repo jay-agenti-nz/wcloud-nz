@@ -659,6 +659,32 @@
 
   .v2-price-gst { font-size: .78rem; color: var(--body); font-weight: 600; }
 
+  /* Hosting is a recurring cost on a one-off price, so it sits on every
+     card rather than only in a note underneath — nobody should be able
+     to read a package and miss it. The explanation lives once, below. */
+  .v2-price-host {
+    font-size: .78rem; font-weight: 700; color: var(--brand-ink);
+    margin-top: .45rem;
+  }
+  .v2-hosting {
+    max-width: 1100px; margin: var(--sp-2) auto 0;
+    background: var(--white); border: 1px solid rgba(127,168,190,.28);
+    border-radius: var(--radius); padding: 1.5rem 1.8rem;
+    display: flex; align-items: flex-start; gap: 1.2rem;
+  }
+  .v2-hosting-icon {
+    flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%;
+    background: var(--brand-pale); display: flex; align-items: center; justify-content: center;
+    color: var(--brand-ink);
+  }
+  .v2-hosting-icon svg { width: 19px; height: 19px; }
+  .v2-hosting h3 { font-size: 1rem; margin-bottom: .3rem; }
+  .v2-hosting p { font-size: .9rem; line-height: 1.7; }
+  .v2-hosting strong { color: var(--deep); font-weight: 700; }
+  @media (max-width: 700px) {
+    .v2-hosting { flex-direction: column; gap: .9rem; padding: 1.3rem 1.3rem; }
+  }
+
 </style>
 <script type="application/ld+json">
 [
@@ -809,7 +835,7 @@
         "name": "Do I need a domain name and hosting already?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. If you don't have one yet, we'll help you choose a good .co.nz domain name and point you to a reliable, affordable NZ hosting provider. We guide you through it step by step."
+          "text": "No. We host your site for you on cloud hosting with automatic backups, $25 + GST a month. If you don't have a domain yet, we'll help you choose a good .co.nz one and get it pointed at the site. We guide you through it step by step."
         }
       },
       {
@@ -817,7 +843,7 @@
         "name": "Is there anything ongoing I need to pay for?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The packages are one-off payments. The only ongoing costs are your domain (usually NZ$20–40/year) and hosting (usually NZ$10–25/month). Our care plans are optional extras."
+          "text": "The packages are one-off payments for the build. The ongoing costs are hosting at $25 + GST a month — cloud hosting with automatic backups and SSL — and your own domain name, usually NZ$20–40 a year. Our care plans are optional, and both include the hosting rather than charging it on top."
         }
       },
       {
@@ -1125,6 +1151,7 @@
         <p class="v2-price-amt">NZ$<strong>299</strong></p>
         <span class="v2-price-note">One-off payment + GST</span>
         <span class="v2-price-gst">$343.85 including GST</span>
+        <span class="v2-price-host">+ $25/month hosting</span>
         <p class="v2-price-desc">Perfect for sole traders and new businesses that need a clean, simple online presence fast.</p>
         <ul>
           <li>Up to 3 pages (Home, About, Contact)</li>
@@ -1144,6 +1171,7 @@
         <p class="v2-price-amt">NZ$<strong>699</strong></p>
         <span class="v2-price-note">One-off payment + GST</span>
         <span class="v2-price-gst">$803.85 including GST</span>
+        <span class="v2-price-host">+ $25/month hosting</span>
         <p class="v2-price-desc">A full website that tells your whole story, showcases your services, and builds trust with new customers.</p>
         <ul>
           <li>Up to 6 pages</li>
@@ -1164,6 +1192,7 @@
         <p class="v2-price-amt">NZ$<strong>1,099</strong></p>
         <span class="v2-price-note">One-off payment + GST</span>
         <span class="v2-price-gst">$1,263.85 including GST</span>
+        <span class="v2-price-host">+ $25/month hosting</span>
         <p class="v2-price-desc">A premium presence with everything you need to stand out online and attract more customers.</p>
         <ul>
           <li>Up to 10 pages</li>
@@ -1177,6 +1206,18 @@
           <li>Unlimited revisions (30 days)</li>
         </ul>
         <button type="button" class="btn-o" onclick="selectPackage('Cloud Pro — NZ$1,099')">Get started</button>
+      </div>
+    </div>
+
+    <div class="v2-hosting">
+      <span class="v2-hosting-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6.5 6.5 0 0 0 5.2 11.2 3.9 3.9 0 0 0 6 19h11.5z"/>
+        </svg>
+      </span>
+      <div>
+        <h3>Hosting isn&rsquo;t included in the build price</h3>
+        <p>Every package is a one-off payment for the website itself. Keeping it online is <strong>$25 + GST a month ($28.75 including GST)</strong> &mdash; cloud hosting with automatic backups, an SSL certificate and updates handled, so your site stays fast, secure and recoverable if anything ever goes wrong. You&rsquo;ll also need your own domain name, usually NZ$20&ndash;40 a year. <strong>Both care plans below include the hosting</strong>, so you don&rsquo;t pay for it twice.</p>
       </div>
     </div>
   </section>
@@ -1204,7 +1245,7 @@
       <h2>Two ways we can keep helping</h2>
       <p>Neither is required. Your website is yours once it&rsquo;s built. Prices exclude GST, with the inclusive figure shown underneath.</p>
     </div>
-    <p class="v2-care-lead">Your site is built and ready. If you&rsquo;d like someone to look after it &mdash; updated, backed up and running smoothly &mdash; we offer optional care plans. No lock-in, cancel any time.</p>
+    <p class="v2-care-lead">Your site is built and ready. If you&rsquo;d like someone to look after it &mdash; hosted, updated, backed up and running smoothly &mdash; we offer optional care plans. Both include the $25/month hosting, so you pay one monthly figure rather than two. No lock-in, cancel any time.</p>
 
     <div class="v2-care-grid">
       <div class="v2-price">
@@ -1212,10 +1253,11 @@
         <p class="v2-price-amt">NZ$<strong>49</strong></p>
         <span class="v2-price-note">Per month + GST</span>
         <span class="v2-price-gst">$56.35 / month including GST</span>
-        <p class="v2-price-desc">Great for keeping things running smoothly in the background.</p>
+        <p class="v2-price-desc">Great for keeping things running smoothly in the background &mdash; hosting included, so this replaces the $25/month rather than adding to it.</p>
         <ul>
+          <li><strong>Cloud hosting with automatic backups included</strong></li>
           <li>Monthly security updates</li>
-          <li>Regular backups</li>
+          <li>SSL certificate kept current</li>
           <li>Uptime monitoring</li>
           <li>1 small content change per month</li>
           <li>Email support</li>
@@ -1228,9 +1270,10 @@
         <p class="v2-price-amt">NZ$<strong>99</strong></p>
         <span class="v2-price-note">Per month + GST</span>
         <span class="v2-price-gst">$113.85 / month including GST</span>
-        <p class="v2-price-desc">Everything in Basic, plus hands-on help whenever you need it.</p>
+        <p class="v2-price-desc">Everything in Basic, plus hands-on help whenever you need it. Hosting included here too.</p>
         <ul>
-          <li>Everything in Basic Care</li>
+          <li><strong>Cloud hosting with automatic backups included</strong></li>
+          <li>Everything else in Basic Care</li>
           <li>Up to 3 content updates per month</li>
           <li>Priority support (phone + email)</li>
           <li>Performance check &amp; improvements</li>
@@ -1240,7 +1283,7 @@
       </div>
     </div>
 
-    <p class="v2-fineprint">Care plans are month-to-month. Cancel any time, no fees. Hosting is separate and we&rsquo;ll help you find the best option.</p>
+    <p class="v2-fineprint">Care plans are month-to-month. Cancel any time, no fees. Cloud hosting with backups is included in both, so there is no separate hosting bill while you are on one. Your domain stays yours and is billed separately by your registrar.</p>
 
     <!-- Not a card: it is a footnote to the care plans above, not a
          second option competing with them. -->
@@ -1306,11 +1349,11 @@
       </div>
       <div class="v2-faq-item">
         <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="faq5">Do I need a domain name and hosting already?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>
-        <div class="v2-faq-a" id="faq5" hidden><p>No. If you don&rsquo;t have one yet, we&rsquo;ll help you choose a good .co.nz domain and point you to a reliable, affordable NZ host. We guide you through it step by step.</p></div>
+        <div class="v2-faq-a" id="faq5" hidden><p>No. We host your site for you &mdash; cloud hosting with automatic backups, $25 + GST a month. If you don&rsquo;t have a domain yet, we&rsquo;ll help you choose a good .co.nz one and get it pointed at the site. We guide you through it step by step.</p></div>
       </div>
       <div class="v2-faq-item">
         <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="faq6">Is there anything ongoing I need to pay for?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>
-        <div class="v2-faq-a" id="faq6" hidden><p>The packages are one-off payments. The only ongoing costs are your domain (usually NZ$20&ndash;40/year) and hosting (usually NZ$10&ndash;25/month). Care plans are optional extras.</p></div>
+        <div class="v2-faq-a" id="faq6" hidden><p>The packages are one-off payments for the build. The ongoing costs are hosting at $25 + GST a month &mdash; cloud hosting with automatic backups and SSL &mdash; and your own domain name, usually NZ$20&ndash;40 a year. Care plans are optional, and both include the hosting rather than charging it on top.</p></div>
       </div>
       <div class="v2-faq-item">
         <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="faq7">What if I&rsquo;m not happy with how it looks?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>

@@ -621,6 +621,15 @@
   }
 ]
 </script>
+
+<!-- Google tag (gtag.js) — GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BERHW3QBYX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BERHW3QBYX');
+</script>
 </head>
 <body class="wc-canvas">
 
@@ -1199,6 +1208,20 @@
      nobody is left staring at a form wondering whether it sent. */
   (function () {
     var form = document.getElementById('shootForm');
+
+  /* One recommended GA4 event per completed enquiry, so the forms show
+     up as conversions rather than just another pageview. Fired on the
+     network success only — the thank-you shows either way, but a lead
+     that never reached Netlify is not a lead. */
+  function wcLead(formName, form) {
+    if (typeof gtag !== 'function') return;
+    var src = form && form.querySelector('[name="referral_source"]');
+    gtag('event', 'generate_lead', {
+      form_name: formName,
+      referral_source: (src && src.value) || 'not answered'
+    });
+  }
+
     var modal = document.getElementById('tyModal');
     if (form && modal) {
       form.addEventListener('submit', function (e) {
@@ -1208,7 +1231,7 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(new FormData(form)).toString()
-        }).then(done).catch(done);
+        }).then(function () { wcLead('shoot-booking', form); done(); }).catch(done);
       });
     }
     if (!modal) return;

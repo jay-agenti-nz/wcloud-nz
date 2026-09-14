@@ -338,6 +338,15 @@
     .form-section { box-shadow: none; break-inside: avoid; }
   }
 </style>
+
+<!-- Google tag (gtag.js) — GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BERHW3QBYX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BERHW3QBYX');
+</script>
 </head>
 <body class="wc-canvas">
 
@@ -900,6 +909,20 @@
 
     /* ── Submit ── */
     var form = document.getElementById('intakeForm');
+
+  /* One recommended GA4 event per completed enquiry, so the forms show
+     up as conversions rather than just another pageview. Fired on the
+     network success only — the thank-you shows either way, but a lead
+     that never reached Netlify is not a lead. */
+  function wcLead(formName, form) {
+    if (typeof gtag !== 'function') return;
+    var src = form && form.querySelector('[name="referral_source"]');
+    gtag('event', 'generate_lead', {
+      form_name: formName,
+      referral_source: (src && src.value) || 'not answered'
+    });
+  }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
@@ -926,6 +949,7 @@
       })
         .then(function (r) {
           if (!r.ok) throw new Error(r.status);
+          wcLead('white-cloud-intake', form);
           form.style.display = 'none';
           document.querySelector('.in-privacy').style.display = 'none';
           var ty = document.getElementById('thankyou');

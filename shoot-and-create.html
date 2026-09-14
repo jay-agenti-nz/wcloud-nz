@@ -1023,8 +1023,8 @@
 
     <div class="sc-form">
       <div class="sc-form-head">
-        <h3>Tell me about it first</h3>
-        <p>Not sure when, or it&rsquo;s not a standard shoot? Send this instead and I&rsquo;ll come back within 3&ndash;6 hours. Nothing is locked in by sending it.</p>
+        <h3>Send me a message</h3>
+        <p>Rather just ask? Send me a message and I&rsquo;ll come back within 3&ndash;6 hours with availability, a price and anything else you need. Nothing is locked in by sending it.</p>
       </div>
       <form name="shoot-booking" netlify netlify-honeypot="bot-field" id="shootForm">
         <input type="hidden" name="form-name" value="shoot-booking">
@@ -1048,46 +1048,6 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="stype">What&rsquo;s the occasion? *</label>
-          <select class="form-select" id="stype" name="shoot_type" required>
-            <option value="" disabled selected>Select an occasion&hellip;</option>
-            <option value="Event">Event &mdash; launch, function or celebration</option>
-            <option value="Caf&eacute; / Restaurant">Caf&eacute; or restaurant &mdash; food, drink &amp; ambience</option>
-            <option value="Sports / Running Event">Sports or running event</option>
-            <option value="Other">Other &mdash; I&rsquo;ll describe below</option>
-          </select>
-          <div class="other-input-wrap" id="otherWrap">
-            <input class="form-input" type="text" id="sother" name="shoot_type_other" placeholder="Tell me what you&rsquo;ve got in mind&hellip;">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="sdate">Date &amp; location</label>
-          <input class="form-input" type="text" id="sdate" name="date_location" placeholder="e.g. Sat 14 March, Hagley Park &mdash; or &ldquo;not sure yet&rdquo;">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="scoverage">What do you need? *</label>
-          <select class="form-select" id="scoverage" name="coverage" required>
-            <option value="" disabled selected>Select coverage&hellip;</option>
-            <option value="Photos only">Photos only</option>
-            <option value="Video only">Video only</option>
-            <option value="Both photos and video">Both photos and video</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="slength">Roughly how long?</label>
-          <select class="form-select" id="slength" name="length">
-            <option value="" disabled selected>Select a rough length&hellip;</option>
-            <option value="Under 2 hours">Under 2 hours</option>
-            <option value="Half day">Half day</option>
-            <option value="Full day">Full day</option>
-            <option value="Not sure">Not sure &mdash; help me work it out</option>
-          </select>
-        </div>
-
-        <div class="form-group">
           <label class="form-label" for="shear">How did you hear about me?</label>
           <select class="form-select" id="shear" name="referral_source">
             <option value="" disabled selected>Select one&hellip;</option>
@@ -1107,8 +1067,8 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="smsg">Tell me about it</label>
-          <textarea class="form-textarea" id="smsg" name="message" placeholder="e.g. Our caf&eacute; is relaunching the winter menu and I need photos plus a couple of reels. About 12 dishes. Quiet between 2 and 4pm&hellip;"></textarea>
+          <label class="form-label" for="smsg">What have you got in mind? *</label>
+          <textarea class="form-textarea" id="smsg" name="message" required placeholder="Whatever you know so far &mdash; what it&rsquo;s for, roughly when and where, photos or video or both. &ldquo;Not sure yet&rdquo; is a fine answer to any of it."></textarea>
         </div>
 
         <div class="sc-promise"><i></i>I read every enquiry personally and reply within 3&ndash;6 hours.</div>
@@ -1205,16 +1165,6 @@
 </div>
 
 <script>
-  /* ── The "Other" shoot type reveals its own field ───────────── */
-  (function () {
-    var sel = document.getElementById('stype');
-    var wrap = document.getElementById('otherWrap');
-    if (!sel || !wrap) return;
-    sel.addEventListener('change', function () {
-      wrap.classList.toggle('show', this.value === 'Other');
-    });
-  })();
-
   /* ── Booking form ────────────────────────────────────────────
      Posts to Netlify Forms, then shows the thank-you either way so
      nobody is left staring at a form wondering whether it sent. */

@@ -339,13 +339,25 @@
   }
 </style>
 
-<!-- Google tag (gtag.js) — GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BERHW3QBYX"></script>
+<!-- Google tag (gtag.js) — GA4.
+     Loaded on the live domain only. Netlify deploy previews and a local
+     server hand out this same file, and counting those as real visits
+     both distorts the reports and is what makes Google warn about
+     "additional domains detected for configuration". Off the live
+     domain gtag is never defined, so the lead event below no-ops. -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-BERHW3QBYX');
+  (function () {
+    var h = location.hostname;
+    if (h !== 'wcloud.nz' && h !== 'www.wcloud.nz') return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-BERHW3QBYX');
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-BERHW3QBYX';
+    document.head.appendChild(s);
+  })();
 </script>
 </head>
 <body class="wc-canvas">

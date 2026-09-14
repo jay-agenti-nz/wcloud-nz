@@ -1007,6 +1007,7 @@
       </div>
       <form name="shoot-booking" netlify netlify-honeypot="bot-field" id="shootForm">
         <input type="hidden" name="form-name" value="shoot-booking">
+        <input type="hidden" name="first_touch" value="">
         <p style="display:none"><label>Don't fill this in: <input name="bot-field"></label></p>
 
         <div class="form-row">
@@ -1063,6 +1064,25 @@
             <option value="Full day">Full day</option>
             <option value="Not sure">Not sure &mdash; help me work it out</option>
           </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="shear">How did you hear about me?</label>
+          <select class="form-select" id="shear" name="referral_source">
+            <option value="" disabled selected>Select one&hellip;</option>
+            <option value="Google search">Google search</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Recommended by someone">Someone recommended you</option>
+            <option value="I know Jay">I know Jay</option>
+            <option value="Saw a site you built">I saw a website you built</option>
+            <option value="Event or market">At an event or market</option>
+            <option value="Business card or flyer">Business card or flyer</option>
+            <option value="Other">Other &mdash; I&rsquo;ll say below</option>
+          </select>
+          <div class="other-input-wrap" data-referral-other>
+            <input class="form-input" type="text" name="referral_source_other" placeholder="Where did you come across me?">
+          </div>
         </div>
 
         <div class="form-group">
@@ -1142,12 +1162,13 @@
     </a>
     <div class="foot-links">
       <a href="/">Websites</a>
+      <a href="/review">Leave a Google review</a>
       <a href="/privacy" target="_blank">Privacy Policy</a>
       <a href="/terms" target="_blank">Terms &amp; Conditions</a>
       <a href="/intake">New Client Intake Form</a>
       <a href="https://agenti.nz" target="_blank" rel="noopener">Backend operations powered by Agenti NZ</a>
     </div>
-    <div>&copy; 2025 White Cloud. Christchurch, NZ. All prices NZD.</div>
+    <div>&copy; 2026 White Cloud. Christchurch, NZ. All prices NZD.</div>
   </div>
 </footer>
 </div>
@@ -1284,6 +1305,7 @@
   import { initTilt } from '/assets/tilt.js';
   import { initReveal } from '/assets/reveal.js';
   import { initNav } from '/assets/nav.js';
+  import { initAttribution } from '/assets/attribution.js';
 
   var canvas = document.getElementById('cloudCanvas');
   var headline = document.getElementById('heroHeadline');
@@ -1304,6 +1326,8 @@
 
   var stack = document.getElementById('heroStack');
   if (stack) initTilt(stack, { zone: stack.parentElement, maxX: 5, maxY: 6 });
+
+  initAttribution(document.getElementById('shootForm'));
 </script>
 
 </body>

@@ -3,6 +3,15 @@
   command = ""
   functions = "netlify/functions"
 
+# Short, sayable URL for the Google review page, so it can go in an
+# email signature or be read out over the phone. 301 so the link
+# equity and the browser's memory both point at Google, not at us.
+[[redirects]]
+  from = "/review"
+  to = "https://g.page/r/CalHuPdGyw9EECE/review"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/card"
   to = "/card.html"

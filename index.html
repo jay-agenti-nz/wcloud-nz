@@ -1367,6 +1367,7 @@
     <div class="contact-form">
       <form name="contact" netlify netlify-honeypot="bot-field" id="contactForm">
         <input type="hidden" name="form-name" value="contact">
+        <input type="hidden" name="first_touch" value="">
         <p style="display:none"><input name="bot-field"></p>
 
         <div class="form-row">
@@ -1419,6 +1420,25 @@
             <option value="Cloud Pro — NZ$1,269">Cloud Pro — NZ$1,269 incl. GST (Up to 10 pages)</option>
             <option value="Not sure — please recommend">Not sure yet — I'd love your recommendation</option>
           </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="fhear">How did you hear about us?</label>
+          <select class="form-select" id="fhear" name="referral_source">
+            <option value="" disabled selected>Select one&hellip;</option>
+            <option value="Google search">Google search</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Recommended by someone">Someone recommended you</option>
+            <option value="I know Jay">I know Jay</option>
+            <option value="Saw a site you built">I saw a website you built</option>
+            <option value="Event or market">At an event or market</option>
+            <option value="Business card or flyer">Business card or flyer</option>
+            <option value="Other">Other &mdash; I&rsquo;ll say below</option>
+          </select>
+          <div class="other-input-wrap" data-referral-other>
+            <input class="form-input" type="text" name="referral_source_other" placeholder="Where did you come across us?">
+          </div>
         </div>
 
         <div class="form-group">
@@ -1478,6 +1498,7 @@
     <div class="foot-links">
       <a href="/shoot-and-create">Photo &amp; Video</a>
       <a href="/blog">Guides</a>
+      <a href="/review">Leave a Google review</a>
       <a href="/privacy">Privacy Policy</a>
       <a href="/terms">Terms &amp; Conditions</a>
       <a href="/intake">New Client Intake Form</a>
@@ -1660,6 +1681,7 @@
 
   import { initTilt } from '/assets/tilt.js';
   import { initNav } from '/assets/nav.js';
+  import { initAttribution } from '/assets/attribution.js';
 
   // A little lean toward the cursor — enough to sit in the scene, not a toy.
   initNav(document.getElementById('v2nav'));
@@ -1687,6 +1709,8 @@
       };
     }
   });
+
+  initAttribution(document.getElementById('contactForm'));
 </script>
 
 </body>

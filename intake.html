@@ -174,6 +174,9 @@
   .field-hint { font-size: .8rem; color: var(--body); line-height: 1.6; margin-top: .45rem; }
   .field-hint a { color: var(--brand-ink); font-weight: 700; }
 
+  .other-input-wrap { display: none; margin-top: .6rem; }
+  .other-input-wrap.show { display: block; }
+
   input[type="text"], input[type="email"], input[type="tel"], input[type="url"], textarea, select {
     width: 100%; font-family: var(--sans); font-size: .98rem; color: var(--deep);
     background: var(--white); border: 1.5px solid var(--brand-mist);
@@ -480,6 +483,7 @@
 
     <form name="white-cloud-intake" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="intakeForm" novalidate>
       <input type="hidden" name="form-name" value="white-cloud-intake"/>
+      <input type="hidden" name="first_touch" value=""/>
       <p style="display:none;"><label>Don't fill this out: <input name="bot-field"/></label></p>
 
       <!-- ── 1: About ── -->
@@ -750,6 +754,25 @@
 
 
           <div class="field-group">
+            <label class="field-label" for="referral_source">How did you hear about us? <span class="field-optional">Optional</span></label>
+            <select id="referral_source" name="referral_source">
+              <option value="" disabled selected>Select one&hellip;</option>
+              <option value="Google search">Google search</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Recommended by someone">Someone recommended you</option>
+              <option value="I know Jay">I know Jay</option>
+              <option value="Saw a site you built">I saw a website you built</option>
+              <option value="Event or market">At an event or market</option>
+              <option value="Business card or flyer">Business card or flyer</option>
+              <option value="Other">Other &mdash; I&rsquo;ll say below</option>
+            </select>
+            <div class="other-input-wrap" data-referral-other>
+              <input type="text" name="referral_source_other" placeholder="Where did you come across us?"/>
+            </div>
+          </div>
+
+          <div class="field-group">
             <label class="field-label" for="anything_else">Anything Else? <span class="field-optional">Optional</span></label>
             <textarea id="anything_else" name="anything_else" placeholder="Deadlines, special requirements, ideas, questions — anything goes here." style="min-height:80px;"></textarea>
           </div>
@@ -785,6 +808,7 @@
       </a>
       <div class="foot-links">
         <a href="/blog">Guides</a>
+        <a href="/review">Leave a Google review</a>
         <a href="/privacy">Privacy Policy</a>
         <a href="/terms">Terms &amp; Conditions</a>
         <a href="/marketing">Marketing</a>
@@ -925,6 +949,7 @@
   import { initHeroCloud } from '/assets/hero-cloud.js';
   import { initTilt } from '/assets/tilt.js';
   import { initNav } from '/assets/nav.js';
+  import { initAttribution } from '/assets/attribution.js';
 
   initNav(document.getElementById('mainnav'));
 
@@ -944,6 +969,8 @@
 
   const card = document.getElementById('nextCard');
   if (card) initTilt(card, { zone: card.parentElement, maxX: 5, maxY: 6 });
+
+  initAttribution(document.getElementById('intakeForm'));
 </script>
 
 </body>

@@ -63,13 +63,14 @@
       <p>When you fill in our enquiry form, we collect the name, email address, phone number and business details you type into it, along with anything you write in the message field. Nothing is required beyond your name, email and business type.</p>
       <p>When you become a client, we collect whatever you send us to build your site &mdash; copy, photos, logos, and account access where you choose to give it.</p>
       <p>We do not ask for or store payment card details. Invoices are paid by bank transfer directly to us.</p>
+      <p>Our forms also ask, optionally, how you heard about us, and send one line describing the link you first arrived through &mdash; for example &ldquo;source=instagram &middot; medium=social &middot; landed=/shoot-and-create&rdquo;. That is the campaign label we put on our own links, plus the name of the site that referred you where there was one. It is held in your browser for the length of your visit and only sent if you choose to submit a form. It contains nothing that identifies you, and it is there so we know which of our own posts and ads are worth repeating.</p>
 
       <h2>Where your enquiry goes</h2>
       <p>The enquiry form is handled by <strong>Netlify Forms</strong>. Submissions are stored on Netlify&rsquo;s servers, which are located in the United States, and a copy is emailed to us. That means your enquiry leaves New Zealand. Netlify is bound by its own privacy commitments, which you can read on <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com</a>.</p>
       <p>Our email is provided by a third-party mail provider, so anything you email us is also stored on their systems.</p>
 
       <h2>What third parties see when you visit</h2>
-      <p>We do not run Google Analytics, Meta Pixel, or any advertising or behavioural tracking on this website. There is no cookie banner because we do not set tracking cookies. Two things are still worth telling you about:</p>
+      <p>We do not run Google Analytics, Meta Pixel, or any advertising or behavioural tracking on this website. There is no cookie banner because we do not set tracking cookies, and the campaign label described above is session storage on your own device rather than a cookie, never read across sites and never shared with anyone. Two things are still worth telling you about:</p>
       <ul>
         <li><strong>Google Fonts.</strong> Our pages load typefaces from Google&rsquo;s servers, which means Google receives your IP address and browser information when a page loads.</li>
         <li><strong>Cloudflare.</strong> Our site is served through Cloudflare, which sits between you and our host to keep the site fast and to block malicious traffic. Cloudflare sets its own functional cookies and logs request data such as IP address for that purpose.</li>
@@ -130,6 +131,7 @@
       </div>
       <div class="foot-links">
         <a href="/blog">Guides</a>
+        <a href="/review">Leave a Google review</a>
         <a href="/privacy">Privacy Policy</a>
         <a href="/terms">Terms &amp; Conditions</a>
         <a href="/intake">New Client Intake Form</a>
@@ -142,6 +144,7 @@
 
 <script type="module">
   import { initNav } from '/assets/nav.js';
+  import { initAttribution } from '/assets/attribution.js';
   initNav(document.getElementById('mainnav'));
 </script>
 

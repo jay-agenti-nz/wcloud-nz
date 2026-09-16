@@ -70,7 +70,11 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "DENY"
+    # SAMEORIGIN, not DENY: DENY blocks framing by *any* page including
+    # our own, which left the device mockups on /ascendpreview blank.
+    # Cross-origin framing — the clickjacking case this header exists
+    # for — is still refused.
+    X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"

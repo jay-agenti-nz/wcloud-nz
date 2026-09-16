@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ascent Accounting &mdash; website mockups</title>
+
+<!-- Unlisted client preview. Not in the sitemap, not linked from anywhere
+     on wcloud.nz, and explicitly excluded from search. -->
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Karla:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* Ascent's own palette, so the frame around the mockups belongs to the
+     same world as the thing being shown rather than competing with it. */
+  :root {
+    --cream:    #E9E6E0;
+    --navy:     #10283D;
+    --blue:     #1E76B4;
+    --muted:    #4C6478;
+    --faint:    #7C93A6;
+    --glass:    rgba(255,255,255,0.72);
+    --hairline: rgba(16,42,64,0.12);
+
+    --display: 'Bricolage Grotesque', system-ui, sans-serif;
+    --body:    'Karla', system-ui, sans-serif;
+    --mono:    'IBM Plex Mono', ui-monospace, monospace;
+
+    --gutter: clamp(16px, 3vw, 40px);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--muted);
+    font-family: var(--body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Shell ─────────────────────────────────────────────────────
+     A column: header sized to its content, stage taking the rest.
+     The stage is centred in whatever is left over, so the mockups
+     sit in the middle of the gap rather than hard against the copy. */
+  .shell {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-inline: var(--gutter);
+    padding-block: clamp(22px, 3.4vh, 38px) clamp(20px, 3vh, 34px);
+    gap: clamp(20px, 3vh, 34px);
+  }
+
+  /* ── Header ────────────────────────────────────────────────── */
+  .head { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+
+  .eyebrow {
+    font: 600 10px/1 var(--mono);
+    letter-spacing: .16em; text-transform: uppercase;
+    color: var(--blue); margin: 0;
+  }
+  h1 {
+    font: 600 clamp(20px, 2.1vw, 27px)/1.1 var(--display);
+    letter-spacing: -.025em; color: var(--navy); margin: 0;
+    text-wrap: balance;
+  }
+  .lede {
+    font: 400 13.5px/1.6 var(--body);
+    color: var(--muted); margin: 0;
+    max-width: 68ch; text-wrap: pretty;
+  }
+  .lede em { font-style: normal; color: var(--navy); font-weight: 600; }
+
+  .tabs {
+    display: flex; gap: 6px; margin-top: 4px;
+    background: var(--glass); border: 1px solid var(--hairline);
+    border-radius: 999px; padding: 5px;
+  }
+  .tabs button {
+    font: 600 11.5px/1 var(--mono); letter-spacing: .06em;
+    border: 0; border-radius: 999px; padding: 9px 16px;
+    background: transparent; color: var(--muted); cursor: pointer;
+    transition: background .18s, color .18s;
+  }
+  .tabs button[aria-selected="true"] { background: var(--navy); color: #fff; }
+  .tabs button:not([aria-selected="true"]):hover { color: var(--navy); }
+
+  /* ── Stage ─────────────────────────────────────────────────────
+     The devices are laid out at natural size inside .rig, then the
+     whole rig is scaled by JS to fit the space that is actually
+     left. Measuring the real content rather than assuming a fixed
+     canvas size is what keeps the margin above and below equal. */
+  .stage { flex: 1 1 auto; min-height: 0; position: relative; }
+  .rig {
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%) scale(var(--fit, 1));
+    transform-origin: center center;
+    display: flex; gap: 56px; align-items: center;
+  }
+
+  .slot   { display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 0 0 auto; }
+  .device { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .caption { font: 400 13px/1.4 var(--mono); color: var(--faint); margin: 0; text-align: center; }
+
+  /* MacBook */
+  .mac-body {
+    background: #1D1D1F; border-radius: 16px; padding: 12px 12px 16px;
+    box-shadow: 0 30px 60px -28px rgba(16,42,64,.5), inset 0 0 0 1px rgba(255,255,255,.08);
+  }
+  .mac-screen {
+    position: relative; width: 864px; height: 540px;
+    border-radius: 5px; overflow: hidden; background: #E4F1FB;
+  }
+  .mac-screen iframe {
+    width: 1440px; height: 900px; border: 0; display: block;
+    transform: scale(.6); transform-origin: top left;
+  }
+  .mac-notch { width: 52px; height: 5px; border-radius: 0 0 4px 4px; background: #2C2C2E; margin: 9px auto 0; }
+  .mac-base { width: 996px; height: 13px; border-radius: 0 0 12px 12px;
+    background: linear-gradient(180deg,#C9CCD1 0%,#9EA3AA 60%,#7C8189 100%);
+    box-shadow: 0 18px 26px -16px rgba(16,42,64,.45); }
+  .mac-foot { width: 144px; height: 6px; border-radius: 0 0 8px 8px; background: #8A8F97; margin-top: -10px; }
+
+  /* iPhone */
+  .phone-body {
+    position: relative; background: #1D1D1F; border-radius: 44px; padding: 9px;
+    box-shadow: 0 30px 60px -28px rgba(16,42,64,.5), inset 0 0 0 1px rgba(255,255,255,.08);
+  }
+  .phone-screen {
+    position: relative; width: 265px; height: 576px;
+    border-radius: 36px; overflow: hidden; background: #E4F1FB;
+  }
+  .phone-inner {
+    width: 402px; height: 874px; padding-top: 50px; background: #E4F1FB;
+    transform: scale(.659); transform-origin: top left;
+  }
+  .phone-inner iframe { width: 402px; height: 824px; border: 0; display: block; }
+  .phone-notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+    width: 78px; height: 22px; border-radius: 999px; background: #1D1D1F; }
+  .phone-bar { position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%);
+    width: 88px; height: 4px; border-radius: 999px; background: rgba(16,42,64,.32); }
+  .btn { position: absolute; background: #2C2C2E; }
+  .btn.l1 { left: -2px; top: 118px; width: 2px; height: 26px; border-radius: 2px 0 0 2px; }
+  .btn.l2 { left: -2px; top: 160px; width: 2px; height: 44px; border-radius: 2px 0 0 2px; }
+  .btn.l3 { left: -2px; top: 214px; width: 2px; height: 44px; border-radius: 2px 0 0 2px; }
+  .btn.r1 { right: -2px; top: 180px; width: 2px; height: 64px; border-radius: 0 2px 2px 0; }
+
+  .panel[hidden] { display: none !important; }
+
+  /* ── Narrow screens ────────────────────────────────────────────
+     Scaling a 1200px rig down to phone width would make the mockups
+     unreadable, so below this the devices stack and the page scrolls
+     normally instead. */
+  @media (max-width: 900px) {
+    html, body { height: auto; }
+    .shell { min-height: 0; }
+    .stage { position: static; }
+    .rig {
+      position: static; transform: none;
+      flex-direction: column; gap: 32px;
+      width: 100%; align-items: center;
+    }
+    /* Each device is scaled on its own here. Scaling the pair together
+       would size the phone off the MacBook's 996px base and leave it a
+       hundred pixels wide; this way the laptop shrinks to fit and the
+       phone stays close to life size. The caption sits outside the
+       scaled box so it stays readable rather than shrinking to 5px. */
+    .device { transform: scale(var(--dfit, 1)); transform-origin: top center; }
+    .slot { width: 100%; }
+  }
+
+  /* ── PIN gate ────────────────────────────────────────────────── */
+  #gate {
+    position: fixed; inset: 0; z-index: 50;
+    background: var(--cream);
+    display: grid; place-items: center;
+    padding: var(--gutter);
+  }
+  .gate-card {
+    width: min(380px, 100%);
+    background: rgba(255,255,255,.72);
+    border: 1px solid var(--hairline);
+    border-radius: 18px;
+    padding: 2rem 1.75rem;
+    text-align: center;
+    box-shadow: 0 30px 60px -32px rgba(16,42,64,.45);
+    display: flex; flex-direction: column; gap: .85rem; align-items: center;
+  }
+  .gate-card h2 { font: 600 20px/1.2 var(--display); color: var(--navy); margin: 0; letter-spacing: -.02em; }
+  .gate-card p { font: 400 13.5px/1.6 var(--body); color: var(--muted); margin: 0; }
+  #pin {
+    width: 100%; text-align: center;
+    font: 600 20px/1 var(--mono); letter-spacing: .3em; text-indent: .3em;
+    color: var(--navy); background: #fff;
+    border: 1.5px solid var(--hairline); border-radius: 10px;
+    padding: .75rem .5rem;
+  }
+  #pin:focus-visible, .tabs button:focus-visible, #gate button:focus-visible {
+    outline: 2px solid var(--blue); outline-offset: 2px;
+  }
+  .gate-card button {
+    width: 100%; border: 0; border-radius: 999px; cursor: pointer;
+    background: var(--navy); color: #fff;
+    font: 600 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase;
+    padding: .85rem 1rem;
+    transition: background .18s;
+  }
+  .gate-card button:hover { background: var(--blue); }
+  #gateErr { font: 500 12.5px/1.5 var(--body); color: #B3261E; min-height: 1.2em; margin: 0; }
+  .gate-mark { font: 600 10px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--blue); margin: 0; }
+
+  .foot {
+    flex: 0 0 auto; text-align: center;
+    font: 400 11.5px/1.5 var(--mono); color: var(--faint);
+    letter-spacing: .04em;
+  }
+  .foot a { color: var(--faint); }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- The gate renders first and the page underneath stays hidden until it
+     is cleared, so nothing flashes on screen before the PIN is entered. -->
+<div id="gate">
+  <form class="gate-card" id="gateForm" autocomplete="off">
+    <p class="gate-mark">White Cloud &middot; Client preview</p>
+    <h2>Ascent Accounting</h2>
+    <p>This preview is private. Enter the PIN Jay sent you to view the mockups.</p>
+    <input type="password" id="pin" inputmode="numeric" maxlength="12" aria-label="Preview PIN" placeholder="••••••" autofocus>
+    <p id="gateErr" role="alert"></p>
+    <button type="submit">View the mockups</button>
+  </form>
+</div>
+
+<div class="shell" id="shell" hidden>
+
+  <header class="head">
+    <p class="eyebrow">Ascent Accounting Limited &middot; UI mockups</p>
+    <h1>Website mockups &mdash; desktop &amp; mobile</h1>
+    <p class="lede">Calm, credible and warm &mdash; the opposite of a traditional accounting firm&rsquo;s website.
+      Soft cream and glass surfaces with a steady navy carry the professional trust, while a honey accent keeps
+      it human. Plain-English and reassuring rather than technical, written for business owners who want the
+      stress taken off their desk. Generous white space, one clear action per section, and a single calm
+      invitation throughout: <em>book a free chat</em>.</p>
+
+    <div class="tabs" role="tablist" aria-label="Choose a page">
+      <button type="button" role="tab" id="tabHome" aria-controls="panelHome" aria-selected="true">01&nbsp;&nbsp;Home</button>
+      <button type="button" role="tab" id="tabSvc"  aria-controls="panelSvc"  aria-selected="false">02&nbsp;&nbsp;Services</button>
+    </div>
+  </header>
+
+  <main class="stage" id="stage">
+    <div class="rig" id="rig">
+
+      <div class="slot">
+      <div class="device">
+        <div class="mac-body">
+          <div class="mac-screen">
+            <div class="panel" id="panelHome" role="tabpanel" aria-labelledby="tabHome">
+              <iframe src="/assets/ascend/home.html" title="Ascent Accounting home page, desktop" loading="lazy"></iframe>
+            </div>
+            <div class="panel" id="panelSvc" role="tabpanel" aria-labelledby="tabSvc" hidden>
+              <iframe src="/assets/ascend/services.html" title="Ascent Accounting services page, desktop" loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="mac-notch"></div>
+        </div>
+        <div class="mac-base"></div>
+        <div class="mac-foot"></div>
+      </div>
+      <p class="caption">MacBook Pro &middot; 1440 &times; 900</p>
+      </div>
+
+      <div class="slot">
+      <div class="device">
+        <div class="phone-body">
+          <div class="phone-screen">
+            <div class="panel" data-phone="home">
+              <div class="phone-inner">
+                <iframe src="/assets/ascend/home.html" title="Ascent Accounting home page, mobile" loading="lazy"></iframe>
+              </div>
+            </div>
+            <div class="panel" data-phone="services" hidden>
+              <div class="phone-inner">
+                <iframe src="/assets/ascend/services.html" title="Ascent Accounting services page, mobile" loading="lazy"></iframe>
+              </div>
+            </div>
+            <div class="phone-notch"></div>
+            <div class="phone-bar"></div>
+          </div>
+          <div class="btn l1"></div><div class="btn l2"></div>
+          <div class="btn l3"></div><div class="btn r1"></div>
+        </div>
+      </div>
+      <p class="caption">iPhone 17 Pro &middot; 402 &times; 874</p>
+      </div>
+
+    </div>
+  </main>
+
+  <p class="foot">Designed and built by <a href="https://wcloud.nz">White Cloud</a> &middot; Christchurch, NZ</p>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Gate ────────────────────────────────────────────────────────
+     A PIN on a static page is a courtesy lock, not security — anyone
+     who reads the source can find the check. Hashing at least keeps
+     the PIN itself out of the file. Good enough for "don't share this
+     around"; it is not a substitute for not publishing secrets. */
+  var PIN_HASH = 'ed7b9236a8315a19fbb2622cd2440d41cde87b3d7bf137bb3e2453cf6de93828';
+  var KEY = 'ascend_preview_ok';
+
+  var gate  = document.getElementById('gate');
+  var shell = document.getElementById('shell');
+  var form  = document.getElementById('gateForm');
+  var pin   = document.getElementById('pin');
+  var err   = document.getElementById('gateErr');
+
+  function unlock() {
+    gate.remove();
+    shell.hidden = false;
+    fit();
+  }
+
+  async function sha256(text) {
+    var buf = new TextEncoder().encode(text);
+    var hash = await crypto.subtle.digest('SHA-256', buf);
+    return Array.from(new Uint8Array(hash))
+      .map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+  }
+
+  try { if (sessionStorage.getItem(KEY) === '1') unlock(); } catch (e) { /* private mode */ }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    err.textContent = '';
+    var value = pin.value.trim();
+    if (!value) return;
+
+    var ok = false;
+    try {
+      ok = (await sha256(value)) === PIN_HASH;
+    } catch (e2) {
+      /* crypto.subtle needs a secure context. On http:// it is absent,
+         which would lock Jay out of her own preview with no explanation. */
+      err.textContent = 'This preview needs a secure (https) connection to check the PIN.';
+      return;
+    }
+
+    if (!ok) {
+      err.textContent = 'That PIN is not right. Check the message Jay sent you.';
+      pin.value = '';
+      pin.focus();
+      return;
+    }
+    try { sessionStorage.setItem(KEY, '1'); } catch (e3) {}
+    unlock();
+  });
+
+  /* ── Tabs ─────────────────────────────────────────────────────── */
+  var tabHome = document.getElementById('tabHome');
+  var tabSvc  = document.getElementById('tabSvc');
+
+  function show(page) {
+    var home = page === 'home';
+    tabHome.setAttribute('aria-selected', String(home));
+    tabSvc.setAttribute('aria-selected', String(!home));
+    document.getElementById('panelHome').hidden = !home;
+    document.getElementById('panelSvc').hidden  = home;
+    document.querySelector('[data-phone="home"]').hidden     = !home;
+    document.querySelector('[data-phone="services"]').hidden = home;
+  }
+  tabHome.addEventListener('click', function () { show('home'); });
+  tabSvc.addEventListener('click', function () { show('services'); });
+
+  /* ── Fit ──────────────────────────────────────────────────────────
+     Measure the rig's real size and scale it to the space actually
+     left over, so the margin above and below comes out even however
+     tall the header wraps. Never scales past 1 — the mockups are shown
+     at their intended size on a big screen, not blown up. */
+  var stage = document.getElementById('stage');
+  var rig   = document.getElementById('rig');
+
+  var devices = Array.prototype.slice.call(document.querySelectorAll('.device'));
+
+  /* Clear space kept between the mockups and whatever is above and below
+     them. Fitting to the raw stage box makes the devices touch the copy;
+     this is the margin that stops that. */
+  var BREATHE = 28;
+
+  function fit() {
+    if (shell.hidden) return;
+
+    if (window.matchMedia('(max-width: 900px)').matches) {
+      rig.style.removeProperty('--fit');
+      var availW = stage.clientWidth;
+      devices.forEach(function (d) {
+        d.style.setProperty('--dfit', '1');
+        d.style.height = '';
+        var w = d.offsetWidth, h = d.offsetHeight;
+        if (!w || !h || !availW) return;
+        var s = Math.min(1, availW / w);
+        d.style.setProperty('--dfit', String(Math.round(s * 1000) / 1000));
+        /* A transform does not shrink the box it came from, so the
+           reserved height has to be set or the stack leaves a gap. */
+        d.style.height = Math.ceil(h * s) + 'px';
+      });
+      return;
+    }
+
+    devices.forEach(function (d) {
+      d.style.removeProperty('--dfit');
+      d.style.height = '';
+    });
+
+    rig.style.setProperty('--fit', '1');
+    var rw = rig.offsetWidth, rh = rig.offsetHeight;
+    var aw = stage.clientWidth - BREATHE * 2;
+    var ah = stage.clientHeight - BREATHE * 2;
+    if (!rw || !rh || aw <= 0 || ah <= 0) return;
+    var scale = Math.min(aw / rw, ah / rh, 1);
+    rig.style.setProperty('--fit', String(Math.round(scale * 1000) / 1000));
+  }
+
+  window.addEventListener('resize', fit);
+  if (window.ResizeObserver) new ResizeObserver(fit).observe(stage);
+  window.addEventListener('load', fit);
+  document.fonts && document.fonts.ready.then(fit);
+})();
+</script>
+</body>
+</html>

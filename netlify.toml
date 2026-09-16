@@ -6,6 +6,13 @@
 # Short, sayable URL for the Google review page, so it can go in an
 # email signature or be read out over the phone. 301 so the link
 # equity and the browser's memory both point at Google, not at us.
+# Unlisted client preview. Not in the sitemap and not linked from the
+# site; the path is the only way in, plus a PIN on the page itself.
+[[redirects]]
+  from = "/ascendpreview"
+  to = "/ascendpreview.html"
+  status = 200
+
 [[redirects]]
   from = "/review"
   to = "https://g.page/r/CalHuPdGyw9EECE/review"

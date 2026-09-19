@@ -48,12 +48,12 @@
   --sage:       #6bbf9e;
 
   /* The aurora — warm hits stop it reading cold and clinical */
-  --a-blue:   rgba(104, 162, 196, .92);
-  --a-peach:  rgba(255, 186, 143, .82);
-  --a-sage:   rgba(104, 204, 167, .72);
-  --a-lilac:  rgba(174, 156, 240, .70);
-  --a-rose:   rgba(247, 160, 180, .55);
-  --ground:   #eef4f8;
+  --a-sky:    rgba(122, 176, 226, .90);
+  --a-blue:   rgba(158, 204, 240, .85);
+  --a-blush:  rgba(255, 186, 202, .62);
+  --a-dawn:   rgba(255, 214, 198, .58);
+  --a-pale:   rgba(206, 228, 248, .80);
+  --ground:   #f5f9fd;
 
   /* Glass */
   --g-fill:   linear-gradient(140deg, rgba(255,255,255,.52), rgba(255,255,255,.22));
@@ -99,11 +99,11 @@ body::before {
   position: fixed; inset: -25%;
   z-index: -2;
   background:
-    radial-gradient(30% 26% at 14% 16%, var(--a-blue),  transparent 62%),
-    radial-gradient(28% 24% at 86% 10%, var(--a-peach), transparent 62%),
-    radial-gradient(32% 28% at 78% 56%, var(--a-sage),  transparent 62%),
-    radial-gradient(30% 26% at 16% 62%, var(--a-lilac), transparent 62%),
-    radial-gradient(26% 24% at 52% 92%, var(--a-rose),  transparent 62%);
+    radial-gradient(34% 30% at 12% 14%, var(--a-sky),   transparent 64%),
+    radial-gradient(30% 26% at 88% 12%, var(--a-blush), transparent 64%),
+    radial-gradient(34% 30% at 80% 58%, var(--a-blue),  transparent 64%),
+    radial-gradient(28% 26% at 18% 64%, var(--a-pale),  transparent 64%),
+    radial-gradient(26% 24% at 54% 94%, var(--a-dawn),  transparent 64%);
   filter: blur(18px) saturate(115%);
   animation: drift 34s var(--ease) infinite alternate;
 }
@@ -169,7 +169,7 @@ p  { margin: 0; }
 }
 .eyebrow::before {
   content: ''; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--sage); box-shadow: 0 0 0 3px rgba(107,191,158,.22);
+  background: var(--brand); box-shadow: 0 0 0 3px rgba(127,168,190,.26);
 }
 
 .lede { font-size: clamp(1.02rem, 1.5vw, 1.18rem); max-width: 56ch; }
@@ -506,6 +506,63 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .hero { padding-block: 7.5rem 3rem; }
 }
 
+  /* ── Projects ─────────────────────────────────────────────────
+     Two up, and each card carries the name, the domain and what the
+     job actually was. The old strip was four thumbnails with a
+     one-word caption, which showed that work exists without showing
+     what any of it is. */
+  .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1rem, 2vw, 1.6rem); }
+  .proj {
+    display: flex; flex-direction: column;
+    padding: clamp(.8rem, 1.4vw, 1rem);
+    text-decoration: none; color: inherit;
+    transition: transform .45s var(--ease), box-shadow .45s var(--ease);
+  }
+  .proj:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 62px -26px rgba(34,51,63,.36), inset 0 1px 0 var(--g-spec);
+  }
+  .proj-shot {
+    border-radius: calc(var(--r-md) - 4px); overflow: hidden;
+    aspect-ratio: 16 / 11;
+    box-shadow: 0 12px 28px -16px rgba(34,51,63,.4), inset 0 0 0 1px rgba(255,255,255,.55);
+  }
+  .proj-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform .7s var(--ease); }
+  .proj:hover .proj-shot img { transform: scale(1.04); }
+  .proj-body { display: flex; flex-direction: column; gap: .45rem; padding: 1.1rem .6rem .5rem; }
+  .proj-tag { font-family: var(--mark); font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--brand-ink); }
+  .proj h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+  .proj p { font-size: .92rem; }
+  .proj-go {
+    display: inline-flex; align-items: center; gap: .4rem; margin-top: .35rem;
+    font-size: .88rem; font-weight: 700; color: var(--brand-ink);
+  }
+  .proj-go svg { width: 14px; height: 14px; stroke: currentColor; transition: transform .3s var(--ease); }
+  .proj:hover .proj-go svg { transform: translate(2px, -2px); }
+
+  /* ── The feed ─────────────────────────────────────────────────
+     Photography sells better as a feed than as one framed photo:
+     it shows the volume and the rhythm, which is what the package
+     actually is. */
+  .ig-media { aspect-ratio: auto; background: rgba(255,255,255,.55); padding: .75rem; }
+  .ig { display: flex; flex-direction: column; gap: .6rem; }
+  .ig-head { display: flex; align-items: center; gap: .6rem; padding: .1rem .2rem; }
+  .ig-av { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; flex: 0 0 auto; box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--brand); }
+  .ig-av img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ig-who { display: flex; flex-direction: column; line-height: 1.25; }
+  .ig-who b { font-size: .84rem; color: var(--deep); }
+  .ig-who small { font-size: .72rem; color: var(--body); }
+  .ig-post { border-radius: var(--r-sm); overflow: hidden; aspect-ratio: 1; }
+  .ig-post img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ig-acts { display: flex; gap: .85rem; padding: 0 .2rem; }
+  .ig-acts svg { width: 20px; height: 20px; stroke: var(--deep); opacity: .75; }
+  .ig-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: .35rem; }
+  .ig-strip img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; display: block; }
+
+  @media (max-width: 1000px) {
+    .proj-grid { grid-template-columns: 1fr; }
+  }
+
 </style>
 <script type="application/ld+json">
 [
@@ -660,7 +717,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     <li><a href="/websites">Websites</a></li>
     <li><a href="/marketing">Marketing</a></li>
     <li><a href="/shoot-and-create">Photo &amp; Video</a></li>
-    <li><a href="#work">Work</a></li>
+    <li><a href="#work">Projects</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact" class="cta">Get started</a></li>
   </ul>
@@ -750,8 +807,25 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
           <div class="svc-tags"><span>Photography</span><span>Reels</span><span>Events</span><span>Hospitality</span></div>
           <span class="svc-go">See photo &amp; video <i><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></span>
         </div>
-        <div class="svc-media">
-          <img src="/assets/hero-cafe.jpg" alt="Caf&eacute; photography shot by White Cloud in Christchurch" loading="lazy" width="1000" height="1250">
+        <div class="svc-media ig-media">
+          <div class="ig">
+            <div class="ig-head">
+              <span class="ig-av"><img src="/assets/jay.jpg" alt="" loading="lazy" width="80" height="80"></span>
+              <span class="ig-who"><b>jay.d.vera</b><small>Christchurch, New Zealand</small></span>
+            </div>
+            <div class="ig-post"><img src="/assets/gallery-3.jpeg" alt="Food photography shot by White Cloud" loading="lazy" width="1200" height="1200"></div>
+            <div class="ig-acts" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.2A4 4 0 0 1 12 8a4 4 0 0 1 7-1.2C19 15.6 12 20 12 20z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8 8 0 1 1-3.4-6.5L20.5 4l-1 4.2A8 8 0 0 1 20.5 12z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L10.5 13.5M21 3l-6.5 18-4-8-8-4L21 3z"/></svg>
+            </div>
+            <div class="ig-strip">
+              <img src="/assets/reel-1.jpg" alt="" loading="lazy" width="360" height="640">
+              <img src="/assets/gallery-airbnb-3.jpeg" alt="" loading="lazy" width="1200" height="1200">
+              <img src="/assets/reel-4.jpg" alt="" loading="lazy" width="360" height="640">
+              <img src="/assets/gallery-7.jpeg" alt="" loading="lazy" width="1200" height="1200">
+            </div>
+          </div>
         </div>
       </a>
 
@@ -762,18 +836,61 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     </div>
   </section>
 
-  <!-- WORK -->
+  <!-- PROJECTS -->
   <section id="work">
     <div class="shell">
-      <div class="fu" style="display:flex;flex-direction:column;gap:.9rem;align-items:flex-start;max-width:46rem">
-        <span class="eyebrow">Recent work</span>
-        <h2>Sites that went live and stayed useful.</h2>
+      <div class="fu" style="display:flex;flex-direction:column;gap:.9rem;align-items:flex-start;max-width:46rem;margin-bottom:clamp(1.8rem,3.5vw,2.8rem)">
+        <span class="eyebrow">Recent projects</span>
+        <h2>Built, launched, still running.</h2>
+        <p class="lede">Real sites for real businesses &mdash; have a look for yourself, they are all live.</p>
       </div>
-      <div class="work-grid fug">
-        <figure class="work-item"><img src="/assets/biblio-preview-900.jpg" alt="Biblio website" loading="lazy" width="900" height="675"><figcaption>Hospitality</figcaption></figure>
-        <figure class="work-item"><img src="/assets/rakkhun-preview-900.jpg" alt="Rakkhun website" loading="lazy" width="900" height="675"><figcaption>Restaurant</figcaption></figure>
-        <figure class="work-item"><img src="/assets/groovnz-preview-900.jpg" alt="Groov NZ website" loading="lazy" width="900" height="675"><figcaption>Services</figcaption></figure>
-        <figure class="work-item"><img src="/assets/agenti-preview-900.jpg" alt="Agenti NZ website" loading="lazy" width="900" height="675"><figcaption>Technology</figcaption></figure>
+
+      <div class="proj-grid fug">
+
+        <a class="proj glass" href="https://biblio.ink" target="_blank" rel="noopener">
+          <div class="proj-shot"><img src="/assets/biblio-preview-900.jpg" alt="Biblio, a 3D bookshelf web and iOS app" loading="lazy" width="900" height="675"></div>
+          <div class="proj-body">
+            <span class="proj-tag">Web app &amp; native iOS</span>
+            <h3>Biblio</h3>
+            <p>Turns an ePub and PDF collection into a playful 3D bookshelf you can browse and read &mdash;
+              the same experience in the browser and on iPhone.</p>
+            <span class="proj-go">biblio.ink <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </div>
+        </a>
+
+        <a class="proj glass" href="https://rakkhun.co.nz" target="_blank" rel="noopener">
+          <div class="proj-shot"><img src="/assets/rakkhun-preview-900.jpg" alt="Rak Khun Thai Eatery and Bar website" loading="lazy" width="900" height="675"></div>
+          <div class="proj-body">
+            <span class="proj-tag">Restaurant &middot; full rebuild</span>
+            <h3>Rak Khun Thai Eatery &amp; Bar</h3>
+            <p>A ground-up, mobile-first rebuild for a Takanini Thai restaurant &mdash; bold food
+              photography, tabbed menus, and one-tap calling, ordering and directions.</p>
+            <span class="proj-go">rakkhun.co.nz <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </div>
+        </a>
+
+        <a class="proj glass" href="https://groov.nz" target="_blank" rel="noopener">
+          <div class="proj-shot"><img src="/assets/groovnz-preview-900.jpg" alt="Groov NZ online store" loading="lazy" width="900" height="675"></div>
+          <div class="proj-body">
+            <span class="proj-tag">E-commerce</span>
+            <h3>Groov NZ</h3>
+            <p>A complete online store set up end to end &mdash; products, secure checkout, payments,
+              shipping and inventory. Everything needed to sell from day one.</p>
+            <span class="proj-go">groov.nz <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </div>
+        </a>
+
+        <a class="proj glass" href="https://agenti.nz" target="_blank" rel="noopener">
+          <div class="proj-shot"><img src="/assets/agenti-preview-900.jpg" alt="Agenti NZ brand and design system" loading="lazy" width="900" height="675"></div>
+          <div class="proj-body">
+            <span class="proj-tag">Brand &amp; design system</span>
+            <h3>Agenti NZ</h3>
+            <p>A full brand and design system &mdash; colours, typography, components and guidelines,
+              built to stay consistent across every touchpoint.</p>
+            <span class="proj-go">agenti.nz <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>

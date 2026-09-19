@@ -4,756 +4,507 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>White Cloud &ndash; Web Design, Marketing &amp; Photography | Christchurch</title>
-<!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
-<!-- Open Graph / Social Share -->
 <meta property="og:type"        content="website">
 <meta property="og:url"         content="https://wcloud.nz/">
-<meta property="og:title"       content="White Cloud &ndash; Small Business Websites, Christchurch NZ">
+<meta property="og:title"       content="White Cloud – Web Design, Marketing &amp; Photography">
 <meta property="og:description" content="Websites, marketing and photography for NZ small businesses. One person, Christchurch based. Pick the bit you need.">
 <meta property="og:image"       content="https://wcloud.nz/og-image.jpg">
 <meta property="og:image:type"  content="image/jpeg">
 <meta property="og:image:width" content="2400">
 <meta property="og:image:height" content="1260">
 <meta name="twitter:card"        content="summary_large_image">
-<meta name="twitter:title"       content="White Cloud &ndash; Web Design, Marketing &amp; Photography">
+<meta name="twitter:title"       content="White Cloud – Web Design, Marketing &amp; Photography">
 <meta name="twitter:description" content="Websites, marketing and photography for NZ small businesses. One person, Christchurch based.">
 <meta name="twitter:image"       content="https://wcloud.nz/og-image.jpg">
 
-<!-- SEO -->
 <meta name="description" content="Websites, Google and Meta ads, email marketing and photography for NZ small businesses. One person, Christchurch based. Pick the bit you need.">
 <link rel="canonical" href="https://wcloud.nz/">
+<meta name="robots" content="index, follow">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/wc.css">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@600;700&display=swap" rel="stylesheet">
+
 <style>
-  /* ── PHASE 2 HERO ───────────────────────────────────────────
-     One environment, not two panels: the tinted sky and the cloud
-     canvas run edge to edge, and the 54/46 split only governs
-     where the content sits. */
+/* ══════════════════════════════════════════════════════════════
+   White Cloud — homepage, liquid glass
+   ══════════════════════════════════════════════════════════════
+   Glass only reads as glass when something is happening behind it.
+   A flat white ground gives the blur nothing to work on, which is
+   why the old page looked flat no matter how much translucency was
+   added. So: a slow aurora field underneath, and every surface on
+   top of it is a real material — blurred, saturated, with a bright
+   specular rim on the lit edge and a soft ambient shadow below.
+   ══════════════════════════════════════════════════════════════ */
 
-  .v2-hero {
-    position: relative;
-    display: grid; grid-template-columns: 54fr 46fr;
-    min-height: min(780px, 94vh);
-    padding: 0;                    /* overrides the shared section padding */
-    isolation: isolate;
-    /* The sky. Also the fallback: with no WebGL this is the hero. */
-    background:
-      radial-gradient(58% 46% at 74% 24%, rgba(255,255,255,.85), transparent 62%),
-      radial-gradient(52% 52% at 14% 84%, rgba(255,255,255,.42), transparent 64%),
-      linear-gradient(168deg, #e3eff6 0%, #cee2ee 46%, #bed7e7 100%);
-  }
+:root {
+  /* Brand, carried over */
+  --brand:      #7fa8be;
+  --brand-ink:  #3d6a85;
+  --deep:       #22333f;
+  --body:       #55707f;
+  --sage:       #6bbf9e;
 
-  /* Cloud field sits above the sky, below everything readable. */
-  #cloudCanvas {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    display: block; z-index: 0; pointer-events: none;
-  }
+  /* The aurora — warm hits stop it reading cold and clinical */
+  --a-blue:   rgba(104, 162, 196, .92);
+  --a-peach:  rgba(255, 186, 143, .82);
+  --a-sage:   rgba(104, 204, 167, .72);
+  --a-lilac:  rgba(174, 156, 240, .70);
+  --a-rose:   rgba(247, 160, 180, .55);
+  --ground:   #eef4f8;
 
-  .v2-hero-copy,
-  .v2-hero-stage { position: relative; z-index: 1; }
+  /* Glass */
+  --g-fill:   linear-gradient(140deg, rgba(255,255,255,.52), rgba(255,255,255,.22));
+  --g-edge:   rgba(255,255,255,.65);
+  --g-spec:   rgba(255,255,255,.92);
+  --g-shadow: 0 10px 34px -12px rgba(34,51,63,.22), 0 2px 8px -3px rgba(34,51,63,.10);
+  --g-blur:   blur(26px) saturate(190%);
 
-  .v2-hero-copy {
-    display: flex; flex-direction: column; align-items: flex-start;
-    justify-content: center; gap: var(--sp-3);
-    padding: 8rem 4.5rem 5rem;
-  }
-  .v2-hero-copy h1 { max-width: 16ch; }
-  .v2-hero-sub { font-size: var(--fs-lead); max-width: 44ch; line-height: 1.75; color: var(--dusk); }
-  .v2-actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: var(--sp-1); }
+  --serif: 'Lora', Georgia, serif;
+  --sans:  'Nunito', system-ui, -apple-system, sans-serif;
+  --mark:  'Raleway', system-ui, sans-serif;
 
-  .v2-chips { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: var(--sp-2); }
+  --r-lg: 32px;
+  --r-md: 22px;
+  --r-sm: 14px;
 
-  /* ── Floating project card ──────────────────────────────────
-     The right half proves the work rather than holding weather. */
-  .v2-hero-stage {
-    display: flex; align-items: center; justify-content: center;
-    padding: 7rem 3.5rem 4rem 1rem;
-    perspective: 1400px;
-  }
+  --gutter: clamp(18px, 4vw, 48px);
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
 
-  
+* { box-sizing: border-box; }
 
-  
-  
-  .v2-dot { width: 7px; height: 7px; border-radius: 50%; background: #d9e2e8; }
-  
-  
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-  
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--body);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-  
-  
+/* ── The field ────────────────────────────────────────────────
+   Fixed so it does not scroll with the content: panels slide over
+   a stationary light source, which is what makes the glass edges
+   catch differently as you move down the page. */
+body::before {
+  content: '';
+  position: fixed; inset: -25%;
+  z-index: -2;
+  background:
+    radial-gradient(30% 26% at 14% 16%, var(--a-blue),  transparent 62%),
+    radial-gradient(28% 24% at 86% 10%, var(--a-peach), transparent 62%),
+    radial-gradient(32% 28% at 78% 56%, var(--a-sage),  transparent 62%),
+    radial-gradient(30% 26% at 16% 62%, var(--a-lilac), transparent 62%),
+    radial-gradient(26% 24% at 52% 92%, var(--a-rose),  transparent 62%);
+  filter: blur(18px) saturate(115%);
+  animation: drift 34s var(--ease) infinite alternate;
+}
 
-  
-  
+/* Fine grain. Without it, gradients this wide band visibly on a
+   good screen — the noise is doing real work, not texture for its
+   own sake. */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  z-index: -1; pointer-events: none;
+  opacity: .30; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
+@keyframes drift {
+  0%   { transform: translate3d(0,0,0) scale(1); }
+  50%  { transform: translate3d(-3%, 2%, 0) scale(1.06); }
+  100% { transform: translate3d(2%, -3%, 0) scale(1.02); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+}
 
-  /* ── WORK ───────────────────────────────────────────────────
-     Deliberately not the hero's interaction: the hero cycles one
-     screenshot, this shows the whole shelf at once. Cards lean
-     toward the cursor rather than swapping. */
-  .v2-work {
-    background: var(--white);
-    padding: var(--sp-7) 4.5rem;
-    display: flex; flex-direction: column; gap: var(--sp-3);
-  }
-  .v2-work-head { max-width: 58ch; display: flex; flex-direction: column; gap: .3rem; margin-bottom: var(--sp-2); }
-  .v2-work-head p { font-size: 1.02rem; margin-top: .4rem; }
+/* ── Glass ────────────────────────────────────────────────────
+   One material, used at three weights. The inset highlight on the
+   top edge is the whole trick: it is the lit rim that tells the eye
+   this is a pane of something rather than a tinted box. */
+.glass {
+  background: var(--g-fill);
+  backdrop-filter: var(--g-blur);
+  -webkit-backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-edge);
+  border-radius: var(--r-lg);
+  box-shadow:
+    var(--g-shadow),
+    inset 0 1px 0 var(--g-spec),
+    inset 0 -1px 0 rgba(255,255,255,.28);
+}
+.glass-soft { background: linear-gradient(140deg, rgba(255,255,255,.44), rgba(255,255,255,.18)); }
 
-  .v2-proj {
-    display: block; text-decoration: none; color: inherit;
-    background: var(--brand-pale);
-    border: 1px solid rgba(127,168,190,.2);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .3s;
-    box-shadow: 0 2px 8px rgba(42,61,74,.05);
-  }
-  .v2-proj:hover, .v2-proj:focus-visible {
-    box-shadow: 0 26px 60px rgba(42,61,74,.2);
-    border-color: rgba(127,168,190,.45);
-  }
+/* Some people turn translucency off at the OS level, and old
+   browsers never had it. Either way a readable solid beats a
+   muddy wash. */
+@supports not (backdrop-filter: blur(1px)) {
+  .glass, .glass-soft { background: rgba(255,255,255,.88); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass, .glass-soft { background: rgba(255,255,255,.92); backdrop-filter: none; }
+}
 
-  .v2-proj-feature { display: grid; grid-template-columns: 1.1fr .9fr; align-items: stretch; }
-  /* Grid items default to min-width:auto, so the screenshot's own
-     width stops the column shrinking and it runs over the text.
-     Below about 1150px that overlap reached 236px. */
-  .v2-proj-feature > * { min-width: 0; }
-  /* The shot is stretched to the row height by the grid. With an
-     aspect-ratio still set, its width gets derived from that height
-     and spills out of its column — 625px inside a 470px column, right
-     over the text. Fill the grid area instead and let object-fit do
-     the cropping. */
-  /* Sized by its column, with its own aspect ratio deciding the
-     height. Stretching it to the row height was what drove the width
-     out of the column and over the text; letting it size from the
-     width fixes that and stops the screenshot being cropped to a
-     shape it was never composed for. */
-  .v2-proj-feature .v2-proj-shot {
-    border-radius: 0;
-    align-self: stretch;
-    width: 100%; height: 100%;
-    aspect-ratio: auto;
-  }
-  .v2-proj-feature .v2-proj-shot img { object-position: center top; }
-  .v2-proj-feature .v2-proj-body { padding: 2rem 2.4rem; justify-content: center; }
-  .v2-proj-feature h3 { font-size: 1.55rem; }
+/* ── Type ─────────────────────────────────────────────────────── */
+h1, h2, h3 { font-family: var(--serif); color: var(--deep); margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(2.6rem, 6.4vw, 4.6rem); line-height: 1.02; letter-spacing: -.035em; font-weight: 700; }
+h2 { font-size: clamp(1.9rem, 4vw, 3rem);     line-height: 1.08; letter-spacing: -.028em; font-weight: 700; }
+h3 { font-size: 1.25rem; line-height: 1.25; letter-spacing: -.015em; font-weight: 700; }
+p  { margin: 0; }
 
-  .v2-proj-shot { position: relative; overflow: hidden; aspect-ratio: 16 / 10; background: #fff; }
-  .v2-proj-shot img {
-    width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
-    transition: transform .6s var(--ease), filter .5s var(--ease);
-  }
-  /* Biblio's composition sits in the middle of its frame, so cropping
-     from the top leaves it looking off-balance. */
-  .v2-proj-feature .v2-proj-shot img { object-position: center; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: var(--mark); font-size: .68rem; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--brand-ink);
+}
+.eyebrow::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--sage); box-shadow: 0 0 0 3px rgba(107,191,158,.22);
+}
 
-  /* The featured project is the one that should stand out, so it
-     keeps its true colours. The three below it sit under a brand veil
-     that clears on hover — the same device the previous site used,
-     without a label telling you to hover. Moving the cursor over a
-     card explains itself.
-     Pointer devices only: with no hover, a veil on touch would just
-     be a screenshot you can never see. */
-  @media (hover: hover) {
-    .v2-proj-grid .v2-proj-shot::after {
-      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-      background: linear-gradient(160deg, rgba(127,168,190,.92), rgba(200,220,230,.88) 55%, rgba(234,243,247,.9));
-      opacity: 1; transition: opacity .5s var(--ease);
-    }
-    .v2-proj-grid .v2-proj:hover .v2-proj-shot::after,
-    .v2-proj-grid .v2-proj:focus-visible .v2-proj-shot::after { opacity: 0; }
-  }
-  .v2-proj:hover .v2-proj-shot img { transform: scale(1.035); }
+.lede { font-size: clamp(1.02rem, 1.5vw, 1.18rem); max-width: 56ch; }
 
-  .v2-proj-body { padding: 1.5rem 1.6rem 1.7rem; display: flex; flex-direction: column; gap: .3rem; }
-  .v2-proj-body h3 { margin: 0; }
-  .v2-proj-body p { font-size: .89rem; line-height: 1.7; margin-top: .5rem; }
-  .v2-proj-tag {
-    font-family: var(--mark); font-size: .63rem; font-weight: 600;
-    letter-spacing: .17em; text-transform: uppercase; color: var(--body);
-  }
-  .v2-proj-url { font-family: var(--mark); font-size: .7rem; font-weight: 600; letter-spacing: .11em; color: var(--brand-ink); }
+/* ── Shell ────────────────────────────────────────────────────── */
+.shell { max-width: 1240px; margin: 0 auto; padding-inline: var(--gutter); }
+section { padding-block: clamp(4rem, 9vw, 7.5rem); }
 
-  .v2-proj-pills { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .7rem; }
-  .v2-proj-pills span {
-    font-size: .7rem; font-weight: 700; color: var(--dusk);
-    background: rgba(127,168,190,.14); border: 1px solid rgba(127,168,190,.24);
-    padding: .28rem .75rem; border-radius: var(--pill);
-  }
+/* ── Nav ──────────────────────────────────────────────────────
+   Floats over the field rather than sitting in a bar: the page
+   scrolls underneath it and you can see it happening. */
+.nav {
+  position: fixed; top: clamp(12px, 2vw, 22px); left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  width: min(1240px, calc(100% - var(--gutter) * 2));
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem;
+  padding: .55rem .6rem .55rem 1.2rem;
+  border-radius: 999px;
+  transition: box-shadow .35s var(--ease), background .35s var(--ease);
+}
+.nav.scrolled { box-shadow: 0 16px 44px -18px rgba(34,51,63,.34), inset 0 1px 0 var(--g-spec); }
 
-  .v2-proj-go {
-    display: inline-flex; align-items: center; gap: .45rem; margin-top: 1rem;
-    color: var(--brand-ink); font-size: .8rem; font-weight: 700;
-  }
-  .v2-proj-go svg { width: 15px; height: 15px; transition: transform .25s var(--ease); }
-  .v2-proj:hover .v2-proj-go svg { transform: translateX(4px); }
+.logo { display: flex; align-items: center; gap: .6rem; text-decoration: none; flex: 0 0 auto; }
+.logo svg { width: 38px; height: auto; display: block; }
+.logo-word {
+  display: flex; flex-direction: column; line-height: 1;
+  font-family: var(--mark); font-size: .62rem; font-weight: 700;
+  letter-spacing: .26em; color: var(--deep);
+}
 
-  .v2-proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); }
+.wc-nav-links {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; align-items: center; gap: .15rem;
+}
+.wc-nav-links a {
+  display: block; padding: .5rem .85rem; border-radius: 999px;
+  font-size: .9rem; font-weight: 600; color: var(--deep);
+  text-decoration: none; white-space: nowrap;
+  transition: background .25s var(--ease), color .25s var(--ease);
+}
+.wc-nav-links a:hover { background: rgba(255,255,255,.55); }
+.wc-nav-links a.cta {
+  background: linear-gradient(140deg, var(--brand-ink), var(--deep));
+  color: #fff; padding-inline: 1.15rem; margin-left: .35rem;
+  box-shadow: 0 6px 18px -8px rgba(34,51,63,.6), inset 0 1px 0 rgba(255,255,255,.28);
+}
+.wc-nav-links a.cta:hover { filter: brightness(1.12); }
 
-  .v2-proj-more { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-2); }
-  .v2-proj-lite {
-    display: flex; flex-direction: column; gap: .3rem;
-    text-decoration: none; color: inherit;
-    padding: 1.5rem 1.7rem; border-radius: var(--radius);
-    background: var(--white); border: 1px solid rgba(127,168,190,.24);
-    transition: background .25s, border-color .25s, transform .25s var(--ease);
-  }
-  .v2-proj-lite:hover, .v2-proj-lite:focus-visible {
-    background: var(--brand-pale); border-color: rgba(127,168,190,.5);
-    transform: translateY(-2px);
-  }
-  .v2-proj-lite p { font-size: .87rem; margin: .35rem 0 .6rem; }
+.wc-nav-toggle { display: none; }
 
-  /* Side by side, the row height comes from the text column, and
-     below about 1150px that squeezes the screenshot into a shape it
-     was not composed for — a third of it cropped away at 940px.
-     Stack before that happens. */
-  @media (max-width: 1150px) {
-    .v2-proj-feature { grid-template-columns: 1fr; }
-    .v2-proj-feature .v2-proj-shot { aspect-ratio: 16 / 10; height: auto; }
-    .v2-proj-feature .v2-proj-body { padding: 1.6rem 1.7rem 1.9rem; }
-  }
-  @media (max-width: 1050px) {
-    .v2-proj-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 900px) {
-    .v2-work { padding: var(--sp-5) 1.6rem; }
-    .v2-proj-feature { grid-template-columns: 1fr; }
-    .v2-proj-feature .v2-proj-body { padding: 1.6rem 1.5rem 1.8rem; }
-    .v2-proj-grid, .v2-proj-more { grid-template-columns: 1fr; }
-  }
+/* ── Buttons ──────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .85rem 1.6rem; border-radius: 999px;
+  font-family: var(--sans); font-size: .95rem; font-weight: 700;
+  text-decoration: none; cursor: pointer; border: 1px solid transparent;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), filter .25s var(--ease);
+}
+.btn:active { transform: translateY(1px); }
+.btn-solid {
+  background: linear-gradient(140deg, var(--brand-ink), var(--deep));
+  color: #fff;
+  box-shadow: 0 12px 28px -14px rgba(34,51,63,.75), inset 0 1px 0 rgba(255,255,255,.3);
+}
+.btn-solid:hover { filter: brightness(1.12); box-shadow: 0 18px 36px -16px rgba(34,51,63,.8), inset 0 1px 0 rgba(255,255,255,.3); }
+.btn-glass {
+  background: linear-gradient(140deg, rgba(255,255,255,.6), rgba(255,255,255,.3));
+  backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
+  border-color: var(--g-edge); color: var(--deep);
+  box-shadow: var(--g-shadow), inset 0 1px 0 var(--g-spec);
+}
+.btn-glass:hover { background: linear-gradient(140deg, rgba(255,255,255,.78), rgba(255,255,255,.42)); }
 
-  /* ── Foundations notes — deleted before ship ─────────────── */
-  .v2-notes { padding: var(--sp-6) 4.5rem; background: var(--white); display: flex; flex-direction: column; gap: var(--sp-3); }
-  .v2-notes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--sp-2); }
-  .v2-note { background: var(--brand-pale); border: 1px solid rgba(127,168,190,.18); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
-  .v2-note p { font-size: .88rem; margin-top: .25rem; }
+/* ── Hero ─────────────────────────────────────────────────────── */
+.hero { padding-block: clamp(8rem, 17vh, 12rem) clamp(3rem, 6vw, 5rem); }
+.hero-in {
+    display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-start;
+    padding: clamp(2rem, 4.5vw, 3.6rem);
+    border-radius: clamp(28px, 4vw, 44px);
+  }
+  .hero h1 { font-size: clamp(2.6rem, 6vw, 4.4rem); }
+.hero h1 { max-width: 15ch; }
+.hero .lede { max-width: 48ch; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
 
-  @media (max-width: 900px) {
-    .v2-hero { grid-template-columns: 1fr; min-height: 0; }
-    .v2-hero-copy { padding: 7rem 1.6rem 2.5rem; align-items: center; text-align: center; }
-    .v2-hero-copy h1 { max-width: none; }
-    .v2-actions, .v2-chips { justify-content: center; }
-    .v2-hero-stage { padding: 0 1.6rem 3.5rem; }
-    .v2-notes { padding: var(--sp-5) 1.6rem; }
-  }
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .4rem; }
+.chip {
+  padding: .45rem 1rem; border-radius: 999px;
+  font-size: .82rem; font-weight: 600; color: var(--deep);
+  background: linear-gradient(140deg, rgba(255,255,255,.55), rgba(255,255,255,.26));
+  backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid var(--g-edge);
+  box-shadow: inset 0 1px 0 var(--g-spec);
+}
 
+/* ── Services ─────────────────────────────────────────────────
+   One full-width slab each, alternating side, rather than three
+   small cards in a row. A card row asks you to compare; a slab
+   asks you to look — which is the job here, since the detail and
+   the prices live on the service pages. */
+.svc {
+  display: grid; grid-template-columns: 1.02fr .98fr;
+  gap: clamp(1.5rem, 3vw, 3.2rem); align-items: center;
+  padding: clamp(1.6rem, 3vw, 2.6rem);
+  text-decoration: none; color: inherit;
+  transition: transform .45s var(--ease), box-shadow .45s var(--ease);
+}
+.svc + .svc { margin-top: clamp(1.5rem, 3vw, 2.4rem); }
+.svc:nth-of-type(even) .svc-media { order: -1; }
+.svc:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 28px 60px -24px rgba(34,51,63,.34),
+    inset 0 1px 0 var(--g-spec),
+    inset 0 -1px 0 rgba(255,255,255,.3);
+}
 
-  /* ── PHASE 4: everything below the work ─────────────────────
-     Sections alternate white and pale so the page has a rhythm
-     without every block shouting. */
+.svc-copy { display: flex; flex-direction: column; gap: .85rem; align-items: flex-start; padding: clamp(.5rem, 1.5vw, 1.4rem); }
+.svc-num {
+  font-family: var(--mark); font-size: .7rem; font-weight: 700;
+  letter-spacing: .24em; color: var(--brand-ink);
+}
+.svc h3 { font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.06; letter-spacing: -.028em; }
+.svc-line { font-size: clamp(.98rem, 1.3vw, 1.06rem); max-width: 40ch; }
 
-  .v2-band { padding: var(--sp-7) 4.5rem; display: flex; flex-direction: column; gap: var(--sp-4); }
-  .v2-band.alt { background: var(--brand-pale); }
-  .v2-head { max-width: 60ch; display: flex; flex-direction: column; gap: .25rem; }
-  .v2-head p { font-size: 1.02rem; margin-top: .5rem; }
+.svc-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .2rem; }
+.svc-tags span {
+  font-size: .76rem; font-weight: 700; color: var(--brand-ink);
+  padding: .3rem .7rem; border-radius: 999px;
+  background: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.7);
+}
 
-  /* Trust strip — a quiet band, not three big numbers. */
-  /* Spread across the full width — left, middle, right — rather than
-     three facts bunched at the left of a wide stripe. */
-  .v2-trust {
-    display: flex; flex-wrap: wrap; gap: var(--sp-3) var(--sp-4);
-    justify-content: space-between; align-items: baseline;
-    padding: 2.2rem 4.5rem; background: var(--deep);
-  }
-  .v2-trust div:nth-child(2) { justify-content: center; }
-  .v2-trust div:last-child { justify-content: flex-end; }
-  .v2-trust div { display: flex; align-items: baseline; gap: .6rem; }
-  .v2-trust strong { font-family: var(--serif); font-size: 1.45rem; color: var(--white); font-weight: 700; }
-  .v2-trust span { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.55); font-weight: 600; }
+.svc-go {
+  display: inline-flex; align-items: center; gap: .55rem; margin-top: .6rem;
+  font-family: var(--mark); font-size: .78rem; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--deep);
+}
+.svc-go i {
+  display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+  background: linear-gradient(140deg, var(--brand-ink), var(--deep));
+  box-shadow: 0 8px 18px -8px rgba(34,51,63,.7), inset 0 1px 0 rgba(255,255,255,.3);
+  transition: transform .35s var(--ease);
+}
+.svc-go svg { width: 15px; height: 15px; stroke: #fff; }
+.svc:hover .svc-go i { transform: translateX(5px); }
 
-  .v2-three { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); }
-  .v2-four  { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-2); }
-  .v2-tile { display: flex; flex-direction: column; gap: .2rem; }
-  .v2-tile p { font-size: .92rem; }
-  .v2-tile.glass-tile {
-    background: var(--glass-bg-strong);
-    backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
-    border-radius: var(--radius); padding: 1.5rem 1.6rem 1.7rem;
-  }
-  .v2-problem .v2-tile {
-    border-left: 2px solid rgba(127,168,190,.35);
-    padding: .1rem 0 .1rem 1.2rem;
-  }
+.svc-media {
+  position: relative; border-radius: var(--r-md); overflow: hidden;
+  aspect-ratio: 4 / 3;
+  box-shadow: 0 20px 44px -20px rgba(34,51,63,.45), inset 0 0 0 1px rgba(255,255,255,.5);
+}
+.svc-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s var(--ease); }
+.svc:hover .svc-media img { transform: scale(1.04); }
 
-  /* Process — numbered because the order is real information. */
-  .v2-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-3); counter-reset: step; }
-  .v2-steps li { display: flex; flex-direction: column; gap: .3rem; padding-top: 1.1rem; border-top: 2px solid var(--brand-mist); }
-  .v2-step-n {
-    font-family: var(--serif); font-size: .85rem; font-weight: 700; color: var(--brand);
-    letter-spacing: .1em;
-  }
-  .v2-steps p { font-size: .92rem; }
+/* The marketing panel has no photograph to show, so it gets a
+   built composition instead of a stock image that would be a lie
+   about work we did. */
+.mk-scene {
+  position: absolute; inset: 0;
+  display: grid; place-items: center; gap: .7rem;
+  background: linear-gradient(150deg, rgba(127,168,190,.42), rgba(255,201,166,.38));
+  padding: 1.4rem;
+}
+.mk-stack { display: flex; flex-direction: column; gap: .7rem; width: min(100%, 320px); }
+.mk-card {
+  background: linear-gradient(140deg, rgba(255,255,255,.88), rgba(255,255,255,.66));
+  border: 1px solid rgba(255,255,255,.9); border-radius: var(--r-sm);
+  padding: .8rem .9rem;
+  box-shadow: 0 10px 24px -14px rgba(34,51,63,.4);
+  display: flex; flex-direction: column; gap: .3rem;
+}
+.mk-card .tag {
+  align-self: flex-start;
+  font-family: var(--mark); font-size: .56rem; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: #fff; background: var(--brand-ink);
+  padding: .15rem .45rem; border-radius: 4px;
+}
+.mk-card b { font-size: .84rem; color: var(--brand-ink); font-weight: 700; }
+.mk-card small { font-size: .72rem; color: var(--body); line-height: 1.45; }
+.mk-card .bar { height: 6px; border-radius: 3px; background: rgba(127,168,190,.35); }
+.mk-card .bar.s { width: 60%; }
 
-  /* AI search — the one dark panel on the page, so it reads as a
-     different kind of claim from the rest. */
-  .v2-ai { background: var(--deep); color: var(--white); }
-  .v2-ai .v2-head h2, .v2-ai h3 { color: var(--white); }
-  .v2-ai .v2-head p, .v2-ai p { color: rgba(255,255,255,.62); }
-  .v2-ai .lbl { color: var(--brand-light); }
-  .v2-ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-5); align-items: center; }
-  .v2-ai-points { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: var(--sp-2); }
-  .v2-ai-points span {
-    font-size: .72rem; font-weight: 700; color: rgba(255,255,255,.75);
-    border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06);
-    padding: .32rem .85rem; border-radius: var(--pill);
-  }
-  .v2-chat {
-    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
-    border-radius: var(--radius-lg); padding: 1.4rem 1.5rem;
-    display: flex; flex-direction: column; gap: .9rem;
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-  }
-  .v2-chat-who { font-family: var(--mark); font-size: .66rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.45); }
-  .v2-chat-q { background: rgba(255,255,255,.1); border-radius: 14px; padding: .8rem 1rem; font-size: .92rem; color: #fff; font-weight: 600; }
-  .v2-chat-a { background: rgba(127,168,190,.22); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: .9rem 1.05rem; min-height: 52px; display: flex; align-items: center; }
-  .v2-chat-a p { color: rgba(255,255,255,.9); font-size: .9rem; line-height: 1.7; }
-  .v2-typing { display: flex; gap: 5px; align-items: center; }
-  .v2-typing span { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.45); animation: typingBounce 1.2s ease-in-out infinite; }
-  .v2-typing span:nth-child(2) { animation-delay: .2s; }
-  .v2-typing span:nth-child(3) { animation-delay: .4s; }
-  @keyframes typingBounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
-  .v2-ai-sources { display: flex; gap: .5rem; flex-wrap: wrap; }
-  .v2-ai-sources span { font-family: var(--mark); font-size: .64rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); border: 1px solid rgba(255,255,255,.1); padding: .3rem .8rem; border-radius: var(--pill); }
+/* ── Work ─────────────────────────────────────────────────────── */
+.work-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: clamp(.8rem, 1.6vw, 1.2rem); margin-top: clamp(1.6rem, 3vw, 2.4rem);
+}
+.work-item {
+  border-radius: var(--r-md); overflow: hidden; position: relative;
+  aspect-ratio: 4 / 3;
+  box-shadow: 0 16px 36px -20px rgba(34,51,63,.4), inset 0 0 0 1px rgba(255,255,255,.55);
+  transition: transform .45s var(--ease);
+}
+.work-item:hover { transform: translateY(-5px); }
+.work-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.work-item figcaption {
+  position: absolute; left: .6rem; bottom: .6rem;
+  font-family: var(--mark); font-size: .64rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--deep);
+  background: rgba(255,255,255,.72); backdrop-filter: blur(10px);
+  padding: .3rem .6rem; border-radius: 999px;
+}
 
-  /* Pricing */
-  /* stretch, not start: Cloud One has fewer lines than the others, so
-     aligning to the top left its card visibly short. Equal heights
-     also line the three Get started buttons up with each other. */
-  .v2-price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); align-items: stretch; }
-  .v2-price {
-    background: var(--white); border: 1px solid rgba(127,168,190,.28);
-    border-radius: var(--radius-lg); padding: 2rem 1.9rem 2.1rem;
-    display: flex; flex-direction: column; gap: .3rem;
-    height: 100%;
-  }
-  .v2-price-feat { border-color: var(--brand); box-shadow: 0 20px 50px rgba(127,168,190,.25); position: relative; }
-  .v2-price-flag {
-    position: absolute; top: -.7rem; left: 1.9rem;
-    background: var(--brand); color: var(--white);
-    font-size: .64rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-    padding: .28rem .8rem; border-radius: var(--pill);
-  }
-  .v2-price-amt { font-family: var(--serif); font-size: 1.05rem; color: var(--deep); margin-top: .4rem; }
-  .v2-price-amt strong { font-size: 2.5rem; font-weight: 700; letter-spacing: -.02em; }
-  .v2-price-note { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--body); }
-  .v2-price-desc { font-size: .9rem; margin: .9rem 0 .3rem; }
-  .v2-price ul { list-style: none; margin: .8rem 0 1.4rem; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
-  .v2-price li { position: relative; padding-left: 1.5rem; font-size: .88rem; color: var(--body); font-weight: 500; }
-  .v2-price li::before {
-    content: ''; position: absolute; left: 0; top: .42em;
-    width: 9px; height: 5px; border-left: 2px solid var(--sage); border-bottom: 2px solid var(--sage);
-    transform: rotate(-45deg);
-  }
-  .v2-price button { margin-top: auto; align-self: flex-start; cursor: pointer; font-family: var(--sans); }
+/* ── About ────────────────────────────────────────────────────── */
+.about { display: grid; grid-template-columns: minmax(0, 320px) 1fr; gap: clamp(1.5rem, 3vw, 3rem); align-items: center; padding: clamp(1.6rem, 3vw, 2.8rem); }
+.about-photo { border-radius: var(--r-md); overflow: hidden; aspect-ratio: 4 / 5; box-shadow: 0 20px 44px -20px rgba(34,51,63,.45), inset 0 0 0 1px rgba(255,255,255,.5); }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.about-copy { display: flex; flex-direction: column; gap: .9rem; align-items: flex-start; }
 
-  /* Working with us */
-  /* Stacked and centred: label, heading, photo, then the bio. The
-     paragraphs stay ranged left inside a centred column — centring
-     four paragraphs of body copy makes every line start in a
-     different place and is markedly harder to read. */
-  .v2-working .v2-head { text-align: center; align-items: center; margin: 0 auto; }
-  .v2-about {
-    display: flex; flex-direction: column; align-items: center;
-    gap: var(--sp-3); text-align: center;
-  }
-  /* Dropped below the "Hi, I'm Jay" line so the photo sits against the
-     bio rather than crowding the heading. */
-  .v2-about-mark { margin-top: 0; }
-  .v2-about-mark { display: flex; flex-direction: column; align-items: center; gap: .7rem; }
-  /* Wider crop than a headshot — the framing people recognise from
-     Instagram — so the circle is bigger to keep the face readable. */
-  .v2-about-mark img {
-    width: 190px; height: 190px; border-radius: 50%;
-    object-fit: cover; object-position: center;
-    display: block;
-    border: 3px solid var(--white);
-    box-shadow: 0 14px 40px rgba(127,168,190,.35);
-  }
-  .v2-about-mark em {
-    font-style: normal; font-size: .64rem; font-weight: 700;
-    letter-spacing: .13em; text-transform: uppercase; color: var(--body);
-    text-align: center; max-width: 210px; line-height: 1.7;
-  }
-  .v2-about-copy { display: flex; flex-direction: column; gap: .9rem; max-width: 66ch; text-align: left; }
-  .v2-about-copy h3 { text-align: center; font-size: 1.3rem; }
-  .v2-about-copy p { font-size: .98rem; }
-  .v2-extra-lbl { font-family: var(--mark); font-size: .63rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--brand-ink); }
-  .v2-extra > p { font-size: .92rem; }
-  .v2-care > div { background: var(--brand-pale); border-radius: var(--radius); padding: 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .2rem; }
-  .v2-care strong { font-family: var(--serif); font-size: 1rem; color: var(--deep); }
-  .v2-care p { font-size: .84rem; margin-top: .3rem; }
-  .v2-fineprint { font-size: .78rem; color: var(--body); margin-top: 1rem; }
+/* ── Contact ──────────────────────────────────────────────────── */
+.contact-wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(1.5rem, 3vw, 3rem); align-items: start; }
+.contact-card { padding: clamp(1.5rem, 3vw, 2.4rem); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; min-width: 0; }
+.form-label { font-family: var(--mark); font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--brand-ink); }
+.form-input, .form-select, .form-textarea {
+  width: 100%; font-family: var(--sans); font-size: .96rem; color: var(--deep);
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(255,255,255,.9); border-radius: var(--r-sm);
+  padding: .78rem .95rem;
+  transition: border-color .25s, box-shadow .25s, background .25s;
+}
+.form-textarea { min-height: 120px; resize: vertical; }
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none; background: #fff;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px rgba(127,168,190,.22);
+}
+.form-submit {
+  width: 100%; margin-top: .4rem; border: 0; cursor: pointer;
+  padding: 1rem; border-radius: 999px;
+  font-family: var(--sans); font-size: .98rem; font-weight: 700; color: #fff;
+  background: linear-gradient(140deg, var(--brand-ink), var(--deep));
+  box-shadow: 0 14px 30px -14px rgba(34,51,63,.75), inset 0 1px 0 rgba(255,255,255,.3);
+  transition: filter .25s var(--ease), transform .25s var(--ease);
+}
+.form-submit:hover { filter: brightness(1.12); }
+.form-submit:active { transform: translateY(1px); }
+.form-call { text-align: center; font-size: .88rem; margin-top: .9rem; }
+.form-call a { color: var(--brand-ink); font-weight: 700; }
+.other-input-wrap { display: none; margin-top: .55rem; }
+.other-input-wrap.show { display: block; }
 
-  /* FAQ — a real disclosure list, not divs pretending to be buttons. */
-  /* Centred: a single narrow column of questions hugging the left
-     edge of a wide band read as misaligned. */
-  .v2-faq .v2-head { text-align: center; align-items: center; margin: 0 auto; }
-  .v2-faq-list { display: flex; flex-direction: column; max-width: 78ch; margin: 0 auto; width: 100%; }
-  .v2-faq-item { border-bottom: 1px solid rgba(127,168,190,.28); }
-  .v2-faq-item h3 { margin: 0; font-size: 1rem; }
-  .v2-faq-btn {
-    width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
-    background: none; border: 0; padding: 1.15rem 0; cursor: pointer; text-align: left;
-    font-family: var(--serif); font-size: 1.02rem; font-weight: 700; color: var(--deep);
-  }
-  .v2-faq-btn:hover { color: var(--brand); }
-  .v2-faq-mark { position: relative; width: 14px; height: 14px; flex-shrink: 0; }
-  .v2-faq-mark::before, .v2-faq-mark::after {
-    content: ''; position: absolute; background: var(--brand);
-    left: 50%; top: 50%; transform: translate(-50%,-50%);
-    transition: opacity .2s, transform .2s;
-  }
-  .v2-faq-mark::before { width: 14px; height: 2px; }
-  .v2-faq-mark::after  { width: 2px; height: 14px; }
-  .v2-faq-btn[aria-expanded="true"] .v2-faq-mark::after { opacity: 0; transform: translate(-50%,-50%) rotate(90deg); }
-  .v2-faq-a p { font-size: .93rem; padding: 0 0 1.2rem; max-width: 68ch; }
+.contact-aside { display: flex; flex-direction: column; gap: 1rem; position: sticky; top: 7rem; }
+.contact-aside .line { display: flex; gap: .8rem; align-items: flex-start; padding: 1rem 1.2rem; border-radius: var(--r-md); }
+.contact-aside .line b { display: block; color: var(--deep); font-size: .95rem; }
+.contact-aside .line span { font-size: .87rem; }
+.contact-aside .line svg { width: 20px; height: 20px; stroke: var(--brand-ink); flex: 0 0 auto; margin-top: .15rem; }
 
-  /* Contact + closing CTA */
-  #contact { background: var(--brand-pale); padding: var(--sp-7) 4.5rem; }
-  .v2-cta {
-    background: linear-gradient(150deg, var(--dusk), var(--deep));
-    padding: var(--sp-6) 4.5rem; text-align: center;
-    display: flex; flex-direction: column; align-items: center; gap: 1rem;
-  }
-  .v2-cta h2 { color: var(--white); max-width: 20ch; }
-  .v2-cta p { color: rgba(255,255,255,.6); max-width: 52ch; }
-  .v2-cta-btns { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; margin-top: .6rem; }
+/* ── Footer ───────────────────────────────────────────────────── */
+.foot { padding: clamp(2.5rem, 5vw, 4rem) 0 2.5rem; }
+.foot-in { display: flex; flex-wrap: wrap; gap: 1.4rem 2.5rem; align-items: flex-start; justify-content: space-between; padding: clamp(1.6rem, 3vw, 2.4rem); }
+.foot-links { display: flex; flex-wrap: wrap; gap: .3rem 1.2rem; }
+.foot-links a { font-size: .86rem; color: var(--body); text-decoration: none; }
+.foot-links a:hover { color: var(--brand-ink); }
+.foot-legal { width: 100%; font-size: .8rem; color: var(--body); opacity: .85; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.55); }
 
-  @media (max-width: 1050px) {
-    .v2-four { grid-template-columns: 1fr 1fr; }
-    .v2-price-grid { grid-template-columns: 1fr; max-width: 520px; }
-  }
-  @media (max-width: 900px) {
-    .v2-band, #contact { padding: var(--sp-5) 1.6rem; }
-    .v2-trust { padding: 1.2rem 1.6rem; gap: .8rem 2rem; }
-    .v2-three, .v2-four, .v2-steps, .v2-ai-grid { grid-template-columns: 1fr; }
-    .v2-about { grid-template-columns: 1fr; }
-    .v2-cta { padding: var(--sp-5) 1.6rem; }
-    .contact-form { padding: 1.8rem 1.4rem; }
-  }
+/* ── Reveal ───────────────────────────────────────────────────── */
+.fu, .fug > * { opacity: 1; }
+.fu.pre, .fug.pre > * { opacity: 0; transform: translateY(22px); }
+.fu.in, .fug.in > * { opacity: 1; transform: none; transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.fug.in > *:nth-child(2) { transition-delay: .08s; }
+.fug.in > *:nth-child(3) { transition-delay: .16s; }
+.fug.in > *:nth-child(4) { transition-delay: .24s; }
 
-  /* ── Carried from the current site: form and thank-you modal ── */
-  .contact-inner { max-width:760px; margin:0 auto; }
-  .contact-form { background:var(--glass-bg-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border-radius:24px; padding:3rem; border:1px solid var(--glass-border); box-shadow:var(--glass-shadow); margin-top:3rem; }
-  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.2rem; }
-  .form-group { display:flex; flex-direction:column; gap:.4rem; margin-bottom:1.2rem; }
-  .form-group:last-child { margin-bottom:0; }
-  .form-label { font-size:.76rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--dusk); }
-  .form-input, .form-select, .form-textarea {
-    width:100%; padding:.85rem 1.1rem; border:1.5px solid var(--brand-mist); border-radius:12px;
-    font-family:var(--sans); font-size:.95rem; font-weight:500; color:var(--deep);
-    background:var(--white); transition:border-color .2s, box-shadow .2s; outline:none;
-  }
-  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color:var(--brand); box-shadow:0 0 0 3px rgba(127,168,190,.15); }
-  .form-select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237fa8be' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 1rem center; cursor:pointer; }
-  .form-textarea { resize:vertical; min-height:120px; }
-  .other-input-wrap { display:none; margin-top:.6rem; }
-  .other-input-wrap.show { display:block; }
-  .form-submit { width:100%; background:linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94)); color:var(--white); border:1px solid rgba(255,255,255,.35); padding:1rem 2rem; border-radius:50px; font-family:var(--sans); font-size:.9rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; backdrop-filter:blur(12px) saturate(160%); -webkit-backdrop-filter:blur(12px) saturate(160%); transition:background .25s,transform .25s,box-shadow .25s; box-shadow:0 6px 24px rgba(127,168,190,.35),inset 0 1px 0 rgba(255,255,255,.45); margin-top:1.5rem; }
-  .form-submit:hover { background:linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.97)); transform:translateY(-2px); box-shadow:0 10px 32px rgba(77,110,128,.3),inset 0 1px 0 rgba(255,255,255,.45); }
-  .ty-modal-overlay { display:none; position:fixed; inset:0; background:rgba(42,61,74,.55); backdrop-filter:blur(4px); z-index:9999; align-items:center; justify-content:center; }
-  .ty-modal-overlay.show { display:flex; animation:fadeIn .3s ease; }
-  .ty-modal { background:rgba(255,255,255,.82); backdrop-filter:blur(30px) saturate(180%); -webkit-backdrop-filter:blur(30px) saturate(180%); border:1px solid rgba(255,255,255,.6); border-radius:24px; padding:3rem 2.5rem; max-width:420px; width:90%; text-align:center; box-shadow:0 32px 80px rgba(42,61,74,.25),inset 0 1px 0 rgba(255,255,255,.6); position:relative; animation:slideUp .35s cubic-bezier(.22,1,.36,1); }
-  .ty-modal-icon { display:inline-flex; margin-bottom:1rem; color:var(--sage); }
-  .ty-modal-icon svg { width:56px; height:56px; }
-  .ty-modal h3 { font-family:var(--serif); font-size:1.4rem; font-weight:700; color:var(--deep); margin-bottom:.6rem; }
-  .ty-modal p { font-size:.92rem; color:var(--body); font-weight:500; line-height:1.75; margin-bottom:1.6rem; }
-  .ty-modal p strong { color:var(--deep); }
-  .ty-modal p a { color:var(--brand); text-decoration:none; }
-  .ty-modal-close { background:linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94)); color:#fff; border:1px solid rgba(255,255,255,.35); padding:.8rem 2.2rem; border-radius:50px; font-family:var(--sans); font-size:.8rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; transition:background .2s,transform .2s; box-shadow:0 6px 20px rgba(127,168,190,.35),inset 0 1px 0 rgba(255,255,255,.4); }
-  .ty-modal-close:hover { background:linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.96)); transform:translateY(-2px); }
-    .form-row { grid-template-columns:1fr; }
-    .contact-form { padding:2rem 1.5rem; }
+/* ── Thank-you modal ──────────────────────────────────────────── */
+.ty-modal-overlay {
+  position: fixed; inset: 0; z-index: 90; display: none;
+  place-items: center; padding: var(--gutter);
+  background: rgba(34,51,63,.32); backdrop-filter: blur(6px);
+}
+.ty-modal-overlay.show { display: grid; }
+.ty-modal {
+  width: min(420px, 100%); text-align: center; padding: 2.2rem 1.8rem;
+  border-radius: var(--r-lg);
+  background: linear-gradient(140deg, rgba(255,255,255,.92), rgba(255,255,255,.8));
+  backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-edge);
+  box-shadow: 0 30px 70px -28px rgba(34,51,63,.55), inset 0 1px 0 var(--g-spec);
+  display: flex; flex-direction: column; gap: .8rem; align-items: center;
+}
+.ty-modal-icon { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; background: rgba(107,191,158,.18); color: var(--sage); }
+.ty-modal-icon svg { width: 26px; height: 26px; }
+.ty-modal h3 { font-size: 1.3rem; }
+.ty-modal p { font-size: .92rem; }
+.ty-modal a { color: var(--brand-ink); font-weight: 700; }
+.ty-modal-close { margin-top: .4rem; border: 0; cursor: pointer; background: none; font-family: var(--mark); font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--brand-ink); }
 
-  /* ── Carried: footer and the idea banner ── */
-  .agentic-banner {
-    max-width:1100px; margin:2.5rem auto 0;
-    background:linear-gradient(135deg,var(--deep) 0%,var(--dusk) 100%);
-    border-radius:22px; padding:2.8rem 3.5rem;
-    display:flex; align-items:center; justify-content:space-between; gap:2rem;
-    position:relative; overflow:hidden;
-  }
-  .agentic-banner::before {
-    content:''; position:absolute; inset:0; pointer-events:none;
-    background-image:url("data:image/svg+xml,%3Csvg width='700' height='160' viewBox='0 0 700 160' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 80 C70 30,140 130,210 80 C280 30,350 130,420 80 C490 30,560 130,630 80 C662 60,680 66,700 62' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' opacity='0.09'/%3E%3Cpath d='M0 115 C80 55,160 165,240 110 C320 55,400 160,480 108 C540 68,600 88,700 80' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' opacity='0.06'/%3E%3C/svg%3E");
-    background-size:cover;
-  }
-  .agentic-left { position:relative; z-index:1; }
-  .agentic-eyebrow { display:inline-flex; align-items:center; gap:.5rem; background:rgba(255,255,255,.12); color:rgba(255,255,255,.8); font-size:.68rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; padding:.3rem .9rem; border-radius:50px; margin-bottom:1rem; }
-  .agentic-eyebrow-dot { width:6px; height:6px; background:var(--sage); border-radius:50%; animation:pulse 2.5s ease-in-out infinite; }
-  .agentic-banner h3 { font-family:var(--serif); font-size:clamp(1.4rem,2.5vw,1.9rem); font-weight:700; color:#fff; margin-bottom:.6rem; line-height:1.25; }
-  .agentic-banner p { color:rgba(255,255,255,.6); font-size:.95rem; font-weight:500; max-width:520px; line-height:1.7; }
-  .agentic-cta { display:inline-flex; align-items:center; gap:.6rem; background:rgba(255,255,255,.9); color:var(--deep); padding:.9rem 2rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; white-space:nowrap; border:1px solid rgba(255,255,255,.6); backdrop-filter:blur(14px) saturate(180%); -webkit-backdrop-filter:blur(14px) saturate(180%); transition:background .25s,transform .25s,box-shadow .25s; box-shadow:0 6px 28px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.7); flex-shrink:0; position:relative; z-index:1; }
-  .agentic-cta:hover { background:rgba(255,255,255,.98); transform:translateY(-2px); box-shadow:0 10px 36px rgba(0,0,0,.25); }
-  .agentic-cta-arrow { transition:transform .2s; }
-  .agentic-cta:hover .agentic-cta-arrow { transform:translateX(4px); }
-  .idea-banner {
-    max-width:760px; margin:2rem auto 0;
-    background:linear-gradient(135deg,var(--brand-pale),var(--brand-mist));
-    border:1.5px solid var(--brand-light);
-    border-radius:20px; padding:2.2rem 2.5rem;
-    display:flex; align-items:center; justify-content:space-between; gap:2rem;
-    flex-wrap:wrap;
-  }
-  .idea-left { flex:1; min-width:200px; }
-  .idea-banner .lbl { color:var(--dusk); margin-bottom:.5rem; }
-  .idea-banner h3 { font-family:var(--serif); font-size:1.2rem; font-weight:700; color:var(--deep); margin-bottom:.4rem; line-height:1.3; }
-  .idea-banner p { font-size:.88rem; color:var(--body); font-weight:500; line-height:1.65; }
-  .idea-btn { display:inline-flex; align-items:center; gap:.5rem; background:linear-gradient(135deg,rgba(127,168,190,.92),rgba(77,110,128,.94)); color:#fff; padding:.8rem 1.8rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; border:1px solid rgba(255,255,255,.35); box-shadow:inset 0 1px 0 rgba(255,255,255,.4); transition:background .2s,transform .2s; white-space:nowrap; flex-shrink:0; }
-  .idea-btn:hover { background:linear-gradient(135deg,rgba(107,148,170,.96),rgba(61,92,110,.96)); transform:translateY(-2px); }
-  .foot-links a:hover { color:rgba(255,255,255,.7); }
-    .agentic-banner { flex-direction:column; align-items:flex-start; padding:2rem; }
-    .agentic-cta { width:100%; justify-content:center; }
-  /* ── HERO GRAPHIC ───────────────────────────────────────────
-     A schematic of the site being built, in our colours. It says
-     what we do without borrowing a client's palette, and it cannot
-     fall out of sync with a caption the way a screenshot carousel
-     could. */
-  .v2-build {
-    width: 100%; max-width: 560px;
-    border-radius: var(--radius-lg);
-    background: rgba(255,255,255,.62);
-    backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
-    border: 1px solid rgba(255,255,255,.75);
-    box-shadow: 0 30px 70px rgba(42,61,74,.22), inset 0 1px 0 rgba(255,255,255,.8);
-    padding: .7rem .7rem 1rem;
-    display: flex; flex-direction: column; gap: .75rem;
-    transition: transform .5s var(--ease);
-  }
-  .v2-build-frame {
-    position: relative; overflow: hidden;
-    aspect-ratio: 16 / 11; border-radius: 14px; background: #fff;
-    box-shadow: 0 10px 26px rgba(42,61,74,.16);
-  }
-  .v2-build-bar {
-    display: flex; align-items: center; gap: 5px;
-    background: #f6f9fb; padding: .5rem .7rem;
-    border-bottom: 1px solid #e8ecef;
-  }
-  .v2-build-url {
-    margin-left: .45rem; background: #fff; border-radius: 5px;
-    padding: .16rem .6rem; font-size: .62rem; font-weight: 700;
-    letter-spacing: .04em; color: var(--body);
-  }
-  .v2-build-svg { display: block; width: 100%; height: calc(100% - 33px); }
-  .v2-build-svg rect {
-    fill: #dfe9ef;
-    transition: fill .45s var(--ease), opacity .45s var(--ease);
-  }
-  /* The active capability tints the parts it is responsible for. */
-  .v2-build[data-active="words"]  .p-words  { fill: var(--brand); }
-  .v2-build[data-active="design"] .p-design { fill: var(--brand); }
+/* ── Focus ────────────────────────────────────────────────────── */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--brand-ink); outline-offset: 3px;
+}
 
-  .v2-build-phone, .v2-build-answer {
-    position: absolute; opacity: 0; pointer-events: none;
-    transition: opacity .45s var(--ease), transform .45s var(--ease);
+/* ── Narrow ───────────────────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .wc-nav-links {
+    position: absolute; top: calc(100% + .6rem); right: 0;
+    flex-direction: column; align-items: stretch; gap: .2rem;
+    min-width: 230px; padding: .6rem;
+    border-radius: var(--r-md);
+    background: linear-gradient(140deg, rgba(255,255,255,.88), rgba(255,255,255,.72));
+    backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
+    border: 1px solid var(--g-edge);
+    box-shadow: 0 24px 50px -20px rgba(34,51,63,.4), inset 0 1px 0 var(--g-spec);
+    display: none;
   }
-  .v2-build-phone {
-    right: 16px; bottom: 12px; width: 76px; height: 132px;
-    border-radius: 12px; background: #fff; border: 2px solid var(--dusk);
-    box-shadow: 0 12px 30px rgba(42,61,74,.28);
-    transform: translateY(14px);
-    display: flex; flex-direction: column; gap: 7px; padding: 14px 10px;
+  .wc-nav-links.open { display: flex; }
+  .wc-nav-links a.cta { margin-left: 0; margin-top: .3rem; text-align: center; justify-content: center; }
+  .nav { position: fixed; }
+  .wc-nav-toggle {
+    display: grid; place-content: center; gap: 5px;
+    width: 42px; height: 42px; border-radius: 50%; cursor: pointer;
+    background: rgba(255,255,255,.6); border: 1px solid var(--g-edge);
+    box-shadow: inset 0 1px 0 var(--g-spec);
   }
-  .v2-build-phone span { display: block; height: 8px; border-radius: 3px; background: var(--brand-mist); }
-  .v2-build-phone span:first-child { height: 22px; background: var(--brand); }
-  .v2-build[data-active="mobile"] .v2-build-phone { opacity: 1; transform: translateY(0); }
+  .wc-nav-toggle span { display: block; width: 17px; height: 2px; border-radius: 2px; background: var(--deep); transition: transform .3s var(--ease), opacity .3s; }
+  .wc-nav-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
+  .wc-nav-toggle[aria-expanded="true"] span:last-child  { transform: translateY(-3.5px) rotate(-45deg); }
 
-  .v2-build-answer {
-    left: 14px; right: 14px; bottom: 12px;
-    background: var(--deep); border-radius: 12px; padding: .7rem .85rem;
-    box-shadow: 0 14px 34px rgba(42,61,74,.3);
-    transform: translateY(14px);
-  }
-  .v2-build-answer strong { display: block; color: rgba(255,255,255,.55); font-size: .64rem; font-weight: 700; letter-spacing: .04em; }
-  .v2-build-answer p { color: #fff; font-size: .76rem; margin-top: .25rem; line-height: 1.5; }
-  .v2-build[data-active="search"] .v2-build-answer { opacity: 1; transform: translateY(0); }
+  .svc { grid-template-columns: 1fr; }
+  .svc:nth-of-type(even) .svc-media { order: 0; }
+  .work-grid { grid-template-columns: repeat(2, 1fr); }
+  .about { grid-template-columns: 1fr; }
+  .about-photo { max-width: 280px; aspect-ratio: 1; }
+  .contact-wrap { grid-template-columns: 1fr; }
+  .contact-aside { position: static; }
+}
 
-  /* Two by two rather than a ragged wrap with one tab stranded. */
-  .v2-build-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem; padding: 0 .2rem; }
-  .v2-build-tabs button {
-    font-family: var(--sans); font-size: .73rem; font-weight: 700;
-    color: var(--dusk); cursor: pointer;
-    background: rgba(255,255,255,.55); border: 1px solid rgba(255,255,255,.7);
-    padding: .45rem .8rem; border-radius: var(--pill);
-    display: flex; align-items: center; justify-content: center; text-align: center;
-    transition: background .25s, color .25s, border-color .25s;
-  }
-  .v2-build-tabs button:hover { background: #fff; }
-  .v2-build-tabs button[aria-selected="true"] {
-    background: var(--brand-ink); color: #fff; border-color: transparent;
-  }
-  .v2-build-note {
-    font-size: .8rem; color: var(--dusk); padding: 0 .3rem; min-height: 2.4em;
-  }
-
-  /* Comfortable thumb targets — these are the interactive part of
-     the hero, and 32px is under the guideline. */
-  @media (max-width: 900px) {
-    .v2-build-tabs button { padding: .7rem .8rem; font-size: .78rem; min-height: 46px; }
-    .v2-build-note { font-size: .85rem; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .v2-build-svg rect, .v2-build-phone, .v2-build-answer { transition: none; }
-  }
-
-  /* Marketing teaser */
-  /* Sits directly under the pricing cards, so it does not need a
-     full band's worth of air above it. */
-  .v2-marketing-teaser { background: var(--brand-pale); padding-top: var(--sp-4); }
-  #pricing { padding-bottom: var(--sp-5); }
-  /* Capped so the button sits a readable distance from the copy
-     instead of pinned to the far edge of a wide band. */
-  .v2-teaser {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: var(--sp-5); flex-wrap: wrap;
-    max-width: 940px;
-  }
-  .v2-teaser > div { max-width: 60ch; display: flex; flex-direction: column; gap: .25rem; }
-  .v2-teaser p { margin-top: .5rem; font-size: 1rem; }
-  .v2-teaser .btn-p { flex-shrink: 0; }
-
-  /* Care plans get the full width; casual help sits underneath as a
-     note rather than a second card competing for the same attention. */
-  .v2-casual {
-    display: flex; flex-direction: column; gap: .3rem;
-    max-width: 62ch; margin-top: var(--sp-2);
-  }
-  .v2-casual p { font-size: .95rem; }
-  .v2-casual .v2-proj-go { margin-top: .7rem; }
-
-  /* Care plans use the same card as the website packages, so the two
-     kinds of pricing on this page look like one system. Two columns,
-     not three, so the cards do not stretch thin. */
-  /* Spans the band like the package row above, rather than a narrow
-     pair hugging the left edge. */
-  .v2-care-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: var(--sp-2); align-items: stretch;
-  }
-  .v2-care-lead { max-width: 66ch; font-size: 1rem; }
-  .v2-care-band .v2-price { background: var(--brand-pale); border-color: rgba(127,168,190,.28); }
-  .v2-care-band .v2-price .btn-o { margin-top: auto; align-self: flex-start; }
-  @media (max-width: 700px) {
-    .v2-care-grid { grid-template-columns: 1fr; max-width: 440px; }
-  }
-
-  .form-call {
-    text-align: center; margin-top: 1.1rem;
-    font-size: .9rem; color: var(--body);
-  }
-  .form-call a {
-    color: var(--brand-ink); font-weight: 700; text-decoration: none;
-    border-bottom: 1px solid rgba(68,109,133,.35); padding-bottom: 1px;
-  }
-  .form-call a:hover { border-bottom-color: var(--brand-ink); }
-
-
-  /* Hosting is a recurring cost on a one-off price, so it sits on every
-     card rather than only in a note underneath — nobody should be able
-     to read a package and miss it. The explanation lives once, below. */
-  .v2-price-host {
-    font-size: .78rem; font-weight: 700; color: var(--brand-ink);
-    margin-top: .45rem;
-  }
-  .v2-hosting {
-    max-width: 1100px; margin: var(--sp-2) auto 0;
-    background: var(--white); border: 1px solid rgba(127,168,190,.28);
-    border-radius: var(--radius); padding: 1.5rem 1.8rem;
-    display: flex; align-items: flex-start; gap: 1.2rem;
-  }
-  .v2-hosting-icon {
-    flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%;
-    background: var(--brand-pale); display: flex; align-items: center; justify-content: center;
-    color: var(--brand-ink);
-  }
-  .v2-hosting-icon svg { width: 19px; height: 19px; }
-  .v2-hosting h3 { font-size: 1rem; margin-bottom: .3rem; }
-  .v2-hosting p { font-size: .9rem; line-height: 1.7; }
-  .v2-hosting strong { color: var(--deep); font-weight: 700; }
-  @media (max-width: 700px) {
-    .v2-hosting { flex-direction: column; gap: .9rem; padding: 1.3rem 1.3rem; }
-  }
-
-  /* ── SERVICE CHOOSER ─────────────────────────────────────────
-     The homepage's job. Three cards of the same shape so the row
-     can be compared rather than read three times; the whole card
-     is the link, because a card with one link in it is a card
-     people click in the wrong place. */
-  .v2-svc-grid {
-    max-width: 1100px; margin: var(--sp-3) auto 0;
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2);
-    align-items: stretch;
-  }
-  .v2-svc {
-    display: flex; flex-direction: column; gap: .55rem;
-    background: var(--white);
-    border: 1px solid rgba(127,168,190,.28);
-    border-radius: var(--radius);
-    padding: 1.6rem 1.5rem 1.5rem;
-    text-decoration: none; color: inherit;
-    transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
-  }
-  .v2-svc:hover {
-    transform: translateY(-4px);
-    border-color: var(--brand);
-    box-shadow: 0 18px 40px -22px rgba(42,61,74,.45);
-  }
-  .v2-svc-icon {
-    width: 42px; height: 42px; border-radius: 12px;
-    display: grid; place-items: center;
-    background: var(--brand-pale); color: var(--brand-ink);
-    margin-bottom: .3rem;
-  }
-  .v2-svc-icon svg { width: 22px; height: 22px; }
-  .v2-svc h3 { font-family: var(--serif); font-size: 1.35rem; color: var(--deep); margin: 0; }
-  .v2-svc-line { font-size: .95rem; color: var(--body); margin: 0; }
-  .v2-svc ul {
-    list-style: none; margin: .5rem 0 0; padding: 0;
-    display: flex; flex-direction: column; gap: .45rem;
-  }
-  .v2-svc li {
-    position: relative; padding-left: 1.4rem;
-    font-size: .88rem; color: var(--body); font-weight: 500;
-  }
-  .v2-svc li::before {
-    content: ''; position: absolute; left: 0; top: .42em;
-    width: 9px; height: 5px;
-    border-left: 2px solid var(--sage); border-bottom: 2px solid var(--sage);
-    transform: rotate(-45deg);
-  }
-  .v2-svc-from {
-    margin-top: auto; padding-top: 1rem;
-    font-size: .85rem; color: var(--body);
-  }
-  .v2-svc-from strong { font-family: var(--serif); font-size: 1.15rem; color: var(--deep); }
-  .v2-svc-go {
-    display: inline-flex; align-items: center; gap: .4rem;
-    margin-top: .7rem;
-    font-family: var(--mark); font-size: .72rem; font-weight: 700;
-    letter-spacing: .14em; text-transform: uppercase; color: var(--brand-ink);
-  }
-  .v2-svc-go svg { width: 15px; height: 15px; transition: transform .25s var(--ease); }
-  .v2-svc:hover .v2-svc-go svg { transform: translateX(4px); }
-
-  .v2-svc-foot {
-    max-width: 1100px; margin: var(--sp-2) auto 0;
-    text-align: center; font-size: .92rem; color: var(--body);
-  }
-  .v2-svc-foot a { color: var(--brand-ink); font-weight: 700; }
-
-  @media (max-width: 900px) {
-    .v2-svc-grid { grid-template-columns: 1fr; }
-  }
+@media (max-width: 560px) {
+  .form-row { grid-template-columns: 1fr; }
+  .work-grid { grid-template-columns: 1fr; }
+  .hero { padding-block: 7.5rem 3rem; }
+}
 
 </style>
 <script type="application/ld+json">
@@ -895,328 +646,185 @@
   })();
 </script>
 </head>
-<body class="wc-canvas">
+<body>
 
-<nav class="wc-nav" id="v2nav">
-  <a href="/" class="logo-mark">
-    <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
-      <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
-      <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+<nav class="nav glass" id="v2nav">
+  <a href="/" class="logo" aria-label="White Cloud, home">
+    <svg viewBox="0 0 76 44" fill="none" aria-hidden="true">
+      <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/>
     </svg>
-    <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
+    <span class="logo-word"><span>WHITE</span><span>CLOUD</span></span>
   </a>
   <ul class="wc-nav-links">
     <li><a href="/websites">Websites</a></li>
     <li><a href="/marketing">Marketing</a></li>
     <li><a href="/shoot-and-create">Photo &amp; Video</a></li>
-    <li><a href="#work">Our work</a></li>
+    <li><a href="#work">Work</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="/blog">Guides</a></li>
-    <li><a href="#contact" class="wc-nav-cta">Get started</a></li>
+    <li><a href="#contact" class="cta">Get started</a></li>
   </ul>
 </nav>
 
+<main>
 
-<script>
-  /* Anything already shared as wcloud.nz/#pricing — the guides, the
-     marketing page, links in past emails — used to land on a section
-     that has moved. A hash never reaches the server, so this is the
-     only place the forward can happen. */
-  (function () {
-    var moved = { '#pricing': 1, '#care': 1, '#how': 1, '#process': 1, '#ai-search': 1 };
-    if (moved[location.hash]) location.replace('/websites' + location.hash);
-  })();
-</script>
-
-<div class="wc-sheet">
-
-  <section class="v2-hero">
-    <canvas id="cloudCanvas" aria-hidden="true"></canvas>
-
-    <div class="v2-hero-copy">
-      <span class="badge"><span class="badge-dot"></span>Christchurch, New Zealand</span>
-      <h1 class="wc-display" id="heroHeadline">Everything your business needs to be found.</h1>
-      <p class="v2-hero-sub">A proper website, the ads and email that bring people to it, and the photography that makes it worth the visit. Christchurch based, no lock-in, no jargon.</p>
-      <div class="v2-actions">
-        <a href="#services" class="btn-p">See what I do</a>
-        <a href="#contact" class="btn-o">Talk it through</a>
-      </div>
-      <div class="v2-chips">
-        <span class="wc-chip">Everything under one roof</span>
-        <span class="wc-chip">Plain English, no jargon</span>
-        <span class="wc-chip">No lock-in contracts</span>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="shell">
+      <div class="hero-in glass fu">
+        <span class="eyebrow">Christchurch, New Zealand</span>
+        <h1>Everything your business needs to be found.</h1>
+        <p class="lede">A proper website, the ads and email that bring people to it, and the
+          photography that makes it worth the visit. Christchurch based, no lock-in, no jargon.</p>
+        <div class="hero-actions">
+          <a href="#what" class="btn btn-solid">See what I do</a>
+          <a href="#contact" class="btn btn-glass">Talk it through</a>
+        </div>
+        <div class="chips">
+          <span class="chip">Everything under one roof</span>
+          <span class="chip">Plain English, no jargon</span>
+          <span class="chip">No lock-in contracts</span>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="v2-hero-stage">
-      <div class="v2-build" id="buildCard">
-        <div class="v2-build-frame">
-          <div class="v2-build-bar">
-            <span class="v2-dot"></span><span class="v2-dot"></span><span class="v2-dot"></span>
-            <span class="v2-build-url">yourbusiness.co.nz</span>
+  <!-- WHAT I DO -->
+  <section id="what">
+    <div class="shell">
+      <div class="fu" style="display:flex;flex-direction:column;gap:.9rem;align-items:flex-start;max-width:46rem;margin-bottom:clamp(2rem,4vw,3rem)">
+        <span class="eyebrow">What I do</span>
+        <h2>Three things, one person, start to finish.</h2>
+        <p class="lede">Have a look at whichever one you came for &mdash; each has its own page with
+          the detail, the timings and what it costs.</p>
+      </div>
+
+      <a class="svc glass fu" href="/websites">
+        <div class="svc-copy">
+          <span class="svc-num">01 &mdash; Websites</span>
+          <h3>Built, written, and live in about a week.</h3>
+          <p class="svc-line">Up to ten pages, written for you, quick on a phone, and set up to be found
+            by Google and by the AI assistants people now ask instead. You never touch the technical part.</p>
+          <div class="svc-tags"><span>Design</span><span>Copywriting</span><span>SEO</span><span>Hosting</span></div>
+          <span class="svc-go">See websites <i><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></span>
+        </div>
+        <div class="svc-media">
+          <img src="/assets/biblio-preview-900.jpg" alt="A website built by White Cloud for a Christchurch business" loading="lazy" width="900" height="675">
+        </div>
+      </a>
+
+      <a class="svc glass fu" href="/marketing">
+        <div class="svc-copy">
+          <span class="svc-num">02 &mdash; Marketing</span>
+          <h3>For the people who haven&rsquo;t found you yet.</h3>
+          <p class="svc-line">Google and Meta ads that put you in front of someone at the moment they are
+            looking, and email that brings them back after they have gone. Managed every month, reported
+            in plain English.</p>
+          <div class="svc-tags"><span>Google Ads</span><span>Meta Ads</span><span>Email</span><span>Monthly reports</span></div>
+          <span class="svc-go">See marketing <i><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></span>
+        </div>
+        <div class="svc-media">
+          <div class="mk-scene" aria-hidden="true">
+            <div class="mk-stack">
+              <div class="mk-card">
+                <span class="tag">Ad</span>
+                <b>yourbusiness.co.nz</b>
+                <small>Trusted local service in Christchurch &mdash; get a free quote today.</small>
+              </div>
+              <div class="mk-card">
+                <b>Your monthly email</b>
+                <div class="bar"></div><div class="bar s"></div>
+              </div>
+            </div>
           </div>
+        </div>
+      </a>
 
-          <!-- A schematic of the site being built, in our own colours
-               rather than a client's. Each part lights up with the
-               capability it belongs to. -->
-          <svg class="v2-build-svg" viewBox="0 0 320 200" role="img" aria-label="A website being assembled: words, design, mobile and search">
-            <rect class="p-design" x="16" y="14" width="288" height="18" rx="5"/>
-            <rect class="p-words"  x="16" y="44" width="150" height="11" rx="4"/>
-            <rect class="p-words"  x="16" y="62" width="120" height="11" rx="4"/>
-            <rect class="p-words"  x="16" y="80" width="86"  height="9"  rx="4" opacity=".7"/>
-            <rect class="p-design" x="16" y="102" width="62" height="16" rx="8"/>
-            <rect class="p-design" x="184" y="44" width="120" height="74" rx="8"/>
-            <rect class="p-design" x="16"  y="132" width="88" height="52" rx="8"/>
-            <rect class="p-design" x="116" y="132" width="88" height="52" rx="8"/>
-            <rect class="p-design" x="216" y="132" width="88" height="52" rx="8"/>
-          </svg>
+      <a class="svc glass fu" href="/shoot-and-create">
+        <div class="svc-copy">
+          <span class="svc-num">03 &mdash; Photo &amp; Video</span>
+          <h3>Something worth posting, back in days.</h3>
+          <p class="svc-line">Photography and vertical video for caf&eacute;s, restaurants, events and
+            running. Enough edited photos and captioned clips to keep posting two or three times a week
+            for a month or two, all yours to use anywhere.</p>
+          <div class="svc-tags"><span>Photography</span><span>Reels</span><span>Events</span><span>Hospitality</span></div>
+          <span class="svc-go">See photo &amp; video <i><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></span>
+        </div>
+        <div class="svc-media">
+          <img src="/assets/hero-cafe.jpg" alt="Caf&eacute; photography shot by White Cloud in Christchurch" loading="lazy" width="1000" height="1250">
+        </div>
+      </a>
 
-          <!-- Mobile: slides in when that capability is active -->
-          <div class="v2-build-phone" aria-hidden="true">
-            <span></span><span></span><span></span>
+      <p style="text-align:center;margin-top:clamp(1.6rem,3vw,2.4rem);font-size:.95rem">
+        Run a caf&eacute; or restaurant? There is
+        <a href="/restaurants" style="color:var(--brand-ink);font-weight:700">a page just for you</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="shell">
+      <div class="fu" style="display:flex;flex-direction:column;gap:.9rem;align-items:flex-start;max-width:46rem">
+        <span class="eyebrow">Recent work</span>
+        <h2>Sites that went live and stayed useful.</h2>
+      </div>
+      <div class="work-grid fug">
+        <figure class="work-item"><img src="/assets/biblio-preview-900.jpg" alt="Biblio website" loading="lazy" width="900" height="675"><figcaption>Hospitality</figcaption></figure>
+        <figure class="work-item"><img src="/assets/rakkhun-preview-900.jpg" alt="Rakkhun website" loading="lazy" width="900" height="675"><figcaption>Restaurant</figcaption></figure>
+        <figure class="work-item"><img src="/assets/groovnz-preview-900.jpg" alt="Groov NZ website" loading="lazy" width="900" height="675"><figcaption>Services</figcaption></figure>
+        <figure class="work-item"><img src="/assets/agenti-preview-900.jpg" alt="Agenti NZ website" loading="lazy" width="900" height="675"><figcaption>Technology</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="shell">
+      <div class="about glass fu">
+        <div class="about-photo"><img src="/assets/jay.jpg" alt="Jay, founder of White Cloud" loading="lazy" width="800" height="1000"></div>
+        <div class="about-copy">
+          <span class="eyebrow">Who you&rsquo;ll work with</span>
+          <h2>Hi, I&rsquo;m Jay.</h2>
+          <p class="lede">More than ten years across e-commerce, web design, photography, content and
+            online marketing &mdash; here and overseas. I started White Cloud because small business
+            owners know their craft inside out, and then getting found online turns into a second job.</p>
+          <p class="lede">That is the gap I fill: design, photography, writing and marketing under one
+            roof, so you are not stitching together five freelancers to end up with something that works.</p>
+          <a href="#contact" class="btn btn-glass">Say hello</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="shell">
+      <div class="fu" style="display:flex;flex-direction:column;gap:.9rem;align-items:flex-start;max-width:46rem;margin-bottom:clamp(1.8rem,3vw,2.6rem)">
+        <span class="eyebrow">Let&rsquo;s talk</span>
+        <h2>Tell me what you&rsquo;re after.</h2>
+        <p class="lede">No brief needed and nothing is locked in by sending this. I read every enquiry
+          myself and come back within one business day.</p>
+      </div>
+
+      <div class="contact-wrap">
+        <div class="contact-aside fug">
+          <div class="line glass glass-soft">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+            <div><b>kiaora@wcloud.nz</b><span>Email, any time</span></div>
           </div>
-
-          <!-- Search: an AI answer, same idea -->
-          <div class="v2-build-answer" aria-hidden="true">
-            <strong>Who&rsquo;s a good web designer in Christchurch?</strong>
-            <p>White Cloud &mdash; small business sites from NZ$349 incl. GST.</p>
+          <div class="line glass glass-soft">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h4l2 5-2.5 1.5a11 11 0 005 5L14 12l5 2v4a1.5 1.5 0 01-1.5 1.5A15.5 15.5 0 012.5 4.5 1.5 1.5 0 014 3z"/></svg>
+            <div><b>021 854 847</b><span>Prefer to talk? Give me a ring</span></div>
+          </div>
+          <div class="line glass glass-soft">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 7v5.2l3.3 2"/></svg>
+            <div><b>Within one business day</b><span>Usually a good deal sooner</span></div>
           </div>
         </div>
 
-        <div class="v2-build-tabs" role="tablist" aria-label="What we do">
-          <button type="button" role="tab" data-part="words"  aria-selected="true">We write the words</button>
-          <button type="button" role="tab" data-part="design" aria-selected="false">We design it</button>
-          <button type="button" role="tab" data-part="mobile" aria-selected="false">Works on mobile</button>
-          <button type="button" role="tab" data-part="search" aria-selected="false">Found by AI</button>
-        </div>
-        <p class="v2-build-note" id="buildNote">Not sure what to say? We put it into clear, simple language.</p>
-      </div>
-  </section>
-  <!-- THE THREE SERVICES — the point of the homepage. One shape per
-       card: outcome, starting price, three concrete things, one link.
-       Same shape each so the row can actually be compared. -->
-  <section id="services" class="v2-band v2-services">
-    <div class="v2-head">
-      <span class="lbl">What I do</span>
-      <h2>Pick the bit you need</h2>
-      <p>Most people start with one and come back for another. You can take them in any order,
-        or all at once &mdash; it is the same person either way.</p>
-    </div>
-
-    <div class="v2-svc-grid">
-
-      <a class="v2-svc fu" href="/websites">
-        <span class="v2-svc-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2.5" y="4" width="19" height="14.5" rx="2.2"/><path d="M2.5 8.4h19M6 6.2h.01M8.6 6.2h.01"/>
-          </svg>
-        </span>
-        <h3>Websites</h3>
-        <p class="v2-svc-line">A site that does the explaining, so you do not have to.</p>
-        <ul>
-          <li>Up to 10 pages, written for you</li>
-          <li>Live in about a week</li>
-          <li>Found on Google and AI search</li>
-        </ul>
-        <span class="v2-svc-from">From <strong>NZ$349</strong> incl. GST</span>
-        <span class="v2-svc-go">See websites
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-        </span>
-      </a>
-
-      <a class="v2-svc fu" href="/marketing">
-        <span class="v2-svc-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3.5 9.5v5a1.5 1.5 0 0 0 1.5 1.5h2l6 4V4l-6 4H5a1.5 1.5 0 0 0-1.5 1.5zM17.5 9a4.5 4.5 0 0 1 0 6"/>
-          </svg>
-        </span>
-        <h3>Marketing</h3>
-        <p class="v2-svc-line">People who do not know you yet, brought to the door.</p>
-        <ul>
-          <li>Google &amp; Meta ads, managed monthly</li>
-          <li>Email that brings them back</li>
-          <li>Plain-English monthly reporting</li>
-        </ul>
-        <span class="v2-svc-from">From <strong>NZ$649</strong> a month, incl. GST</span>
-        <span class="v2-svc-go">See marketing
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-        </span>
-      </a>
-
-      <a class="v2-svc fu" href="/shoot-and-create">
-        <span class="v2-svc-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 8.5h3.2l1.4-2.2h8.8L17.8 8.5H21v10.5H3z"/><circle cx="12" cy="13.2" r="3.4"/>
-          </svg>
-        </span>
-        <h3>Shoot &amp; Create</h3>
-        <p class="v2-svc-line">Something worth posting, back in days rather than weeks.</p>
-        <ul>
-          <li>15 edited photos + 3 vertical clips</li>
-          <li>Caf&eacute;s, events and running</li>
-          <li>Yours to use anywhere, forever</li>
-        </ul>
-        <span class="v2-svc-from">From <strong>NZ$399</strong> incl. GST</span>
-        <span class="v2-svc-go">See photo &amp; video
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-        </span>
-      </a>
-
-    </div>
-
-    <p class="v2-svc-foot">Run a caf&eacute; or restaurant? There is a
-      <a href="/restaurants">page just for you</a> &mdash; menus, ordering and being found at dinner time.</p>
-  </section>
-
-  <section id="work" class="v2-work">
-    <div class="v2-work-head">
-      <span class="lbl">Our work</span>
-      <h2>Projects we&rsquo;ve built</h2>
-      <p>From e-commerce stores to full restaurant rebuilds &mdash; here&rsquo;s a taste of what we can do.</p>
-    </div>
-
-    <a class="v2-proj v2-proj-feature" href="https://biblio.ink" target="_blank" rel="noopener">
-      <div class="v2-proj-shot">
-        <img src="/assets/biblio-preview-900.jpg" srcset="/assets/biblio-preview-900.jpg 900w, /assets/biblio-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, 48vw" alt="The Biblio web app, showing a 3D bookshelf of covers" width="1600" height="1004" loading="lazy" decoding="async">
-      </div>
-      <div class="v2-proj-body">
-        <span class="v2-proj-tag">Latest project</span>
-        <h3>Biblio</h3>
-        <span class="v2-proj-url">biblio.ink</span>
-        <p>A full product build &mdash; a web app and a native iOS app. Biblio turns your ePub and PDF collection into a playful 3D bookshelf you can organise, browse and read, with the same experience in the browser and on iPhone.</p>
-        <div class="v2-proj-pills"><span>Web app</span><span>Native iOS app</span></div>
-        <span class="v2-proj-go">See the live app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
-      </div>
-    </a>
-
-    <div class="v2-proj-grid">
-      <a class="v2-proj" href="https://rakkhun.co.nz" target="_blank" rel="noopener">
-        <div class="v2-proj-shot">
-          <img src="/assets/rakkhun-preview-900.jpg" srcset="/assets/rakkhun-preview-900.jpg 900w, /assets/rakkhun-preview.jpg 960w" sizes="(max-width: 900px) 92vw, (max-width: 1050px) 45vw, 30vw" alt="The Rak Khun website" width="960" height="600" loading="lazy" decoding="async">
-        </div>
-        <div class="v2-proj-body">
-          <span class="v2-proj-tag">Restaurant &middot; full redesign</span>
-          <h3>Rak Khun Thai Eatery &amp; Bar</h3>
-          <span class="v2-proj-url">rakkhun.co.nz</span>
-          <p>A ground-up, mobile-first rebuild for a Takanini Thai restaurant &mdash; bold food photography, tabbed menus, and one-tap calling, ordering and directions.</p>
-          <span class="v2-proj-go">Visit site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
-        </div>
-      </a>
-
-      <a class="v2-proj" href="https://groov.nz" target="_blank" rel="noopener">
-        <div class="v2-proj-shot">
-          <img src="/assets/groovnz-preview-900.jpg" srcset="/assets/groovnz-preview-900.jpg 900w, /assets/groovnz-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, (max-width: 1050px) 45vw, 30vw" alt="The Groov NZ store" width="1600" height="1040" loading="lazy" decoding="async">
-        </div>
-        <div class="v2-proj-body">
-          <span class="v2-proj-tag">E-commerce</span>
-          <h3>Groov NZ</h3>
-          <span class="v2-proj-url">groov.nz</span>
-          <p>A complete online store set up end-to-end &mdash; products, secure checkout, payments, shipping and inventory. Everything needed to start selling from day one.</p>
-          <span class="v2-proj-go">Visit site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
-        </div>
-      </a>
-
-      <a class="v2-proj" href="https://agenti.nz/design_system.html" target="_blank" rel="noopener">
-        <div class="v2-proj-shot">
-          <img src="/assets/agenti-preview-900.jpg" srcset="/assets/agenti-preview-900.jpg 900w, /assets/agenti-preview.jpg 1600w" sizes="(max-width: 900px) 92vw, (max-width: 1050px) 45vw, 30vw" alt="The Agenti design system" width="1600" height="1040" loading="lazy" decoding="async">
-        </div>
-        <div class="v2-proj-body">
-          <span class="v2-proj-tag">Brand &amp; design</span>
-          <h3>Agenti Design System</h3>
-          <span class="v2-proj-url">agenti.nz</span>
-          <p>A full brand and design system &mdash; colours, typography, components and guidelines built for consistency across every touchpoint.</p>
-          <span class="v2-proj-go">Visit site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
-        </div>
-      </a>
-    </div>
-
-    <!-- No screenshot for these two, so they are set as type rather
-         than given a placeholder pretending to be one. -->
-    <div class="v2-proj-more">
-      <a class="v2-proj-lite" href="https://groov.store" target="_blank" rel="noopener">
-        <span class="v2-proj-tag">E-commerce</span>
-        <h3>Groov Store</h3>
-        <p>A clean, conversion-focused shop for the Groov brand.</p>
-        <span class="v2-proj-url">groov.store</span>
-      </a>
-      <a class="v2-proj-lite" href="https://evx.life" target="_blank" rel="noopener">
-        <span class="v2-proj-tag">EV &amp; equipment rentals</span>
-        <h3>EVX</h3>
-        <p>EV vehicles, Starlink and equipment rentals &mdash; a modern rental platform for New Zealand.</p>
-        <span class="v2-proj-url">evx.life</span>
-      </a>
-    </div>
-  </section>
-  <!-- TRUST STRIP -->
-  <div class="v2-trust">
-    <div><strong>150+</strong><span>Businesses &amp; self-employed helped</span></div>
-    <div><strong>7 days</strong><span>Average website delivery</span></div>
-    <div><strong>3&ndash;6 hrs</strong><span>Average reply to an enquiry</span></div>
-  </div>
-
-  <!-- WORKING WITH US — About, care plans and casual help, merged -->
-  <section id="about" class="v2-band alt v2-working">
-    <div class="v2-head">
-      <span class="lbl">Who you&rsquo;ll work with</span>
-      <h2>The person behind White Cloud</h2>
-    </div>
-
-    <div class="v2-about">
-      <div class="v2-about-mark">
-        <img src="/assets/jay.jpg" alt="Jay, who runs White Cloud, out running above Lyttelton Harbour" width="560" height="560" loading="lazy" decoding="async">
-        <em>Jay D Vera</em>
-      </div>
-      <div class="v2-about-copy">
-        <h3>Hi, I&rsquo;m Jay.</h3>
-        <p>I&rsquo;ve spent more than 10 years working across e-commerce, web design, photography, content creation and online marketing, here in New Zealand and internationally.</p>
-        <p>I started White Cloud because I kept seeing the same problem: small business owners, self-employed Kiwis and online sellers know their craft inside out, but building a website that looks professional and actually brings in business feels like its own full-time job.</p>
-        <p>That&rsquo;s the gap I fill &mdash; bringing web design, photography, content writing and marketing under one roof, so you&rsquo;re not stitching together five different freelancers to get a site that works.</p>
-        <p>My job is simple: get you online fast, make it look great, and help you start finding customers as soon as possible.</p>
-      </div>
-    </div>
-  </section>
-  <!-- FAQ — cross-service only. Anything website-specific now lives
-       on /websites so the two do not drift apart. -->
-  <section id="faq" class="v2-band v2-faq">
-    <div class="v2-head">
-      <span class="lbl">Common questions</span>
-      <h2>The things people ask first</h2>
-      <p>Anything specific to a service is answered on its own page.</p>
-    </div>
-    <div class="v2-faq-list">
-      <div class="v2-faq-item">
-        <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="hfaq1">Do I have to pick just one service?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>
-        <div class="v2-faq-a" id="hfaq1" hidden><p>No. Most people start with a website and come back later for photography or marketing, but you can take them in any order, or all at once. It is the same person doing all three, so nothing has to be explained twice.</p></div>
-      </div>
-      <div class="v2-faq-item">
-        <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="hfaq2">Do your prices include GST?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>
-        <div class="v2-faq-a" id="hfaq2" hidden><p>Yes. Every price published on this site includes GST at 15% &mdash; the figure you see is the figure on the invoice, with nothing added later.</p></div>
-      </div>
-      <div class="v2-faq-item">
-        <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="hfaq3">Am I locked into a contract?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>
-        <div class="v2-faq-a" id="hfaq3" hidden><p>No. Website packages are a one-off payment. Hosting and care plans are month to month and can be cancelled any time. Ad management has a three-month minimum only where the setup fee has been waived under the launch offer.</p></div>
-      </div>
-      <div class="v2-faq-item">
-        <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="hfaq4">Who owns the work once it is paid for?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>
-        <div class="v2-faq-a" id="hfaq4" hidden><p>You do. Once the invoice is paid, your website, the photographs and the video are yours to keep, move or hand to someone else.</p></div>
-      </div>
-      <div class="v2-faq-item">
-        <h3><button type="button" class="v2-faq-btn" aria-expanded="false" aria-controls="hfaq5">Where are you based, and do you travel?<span class="v2-faq-mark" aria-hidden="true"></span></button></h3>
-        <div class="v2-faq-a" id="hfaq5" hidden><p>Christchurch. Websites and marketing are done for businesses anywhere in New Zealand. Photography and video are Christchurch and Canterbury, with travel further afield quoted first.</p></div>
-      </div>
-    </div>
-  </section>
-
-<section id="contact">
-  <div class="contact-inner">
-    <div class="sec-hd">
-      <span class="lbl">Let's talk</span>
-      <h2>Ready to get started?</h2>
-      <p>Fill in the form below and Jay will get back to you within one business day. No pressure, no jargon — just a friendly conversation about your business.</p>
-    </div>
-
-    <div class="contact-form">
-      <form name="contact" netlify netlify-honeypot="bot-field" id="contactForm">
+        <div class="contact-card glass fu">
+<form name="contact" netlify netlify-honeypot="bot-field" id="contactForm">
         <input type="hidden" name="form-name" value="contact">
         <input type="hidden" name="first_touch" value="">
         <p style="display:none"><input name="bot-field"></p>
@@ -1266,9 +874,9 @@
           <label class="form-label" for="fpackage">Which package are you interested in?</label>
           <select class="form-select" id="fpackage" name="package">
             <option value="" disabled selected>Select a package…</option>
-            <option value="Cloud One — NZ$349">Cloud One — NZ$349 incl. GST (Up to 3 pages)</option>
-            <option value="Cloud Plus — NZ$799">Cloud Plus — NZ$799 incl. GST (Up to 6 pages) — Most Popular</option>
-            <option value="Cloud Pro — NZ$1,269">Cloud Pro — NZ$1,269 incl. GST (Up to 10 pages)</option>
+            <option value="Cloud One — NZ$349">Cloud One &mdash; up to 3 pages</option>
+            <option value="Cloud Plus — NZ$799">Cloud Plus &mdash; up to 6 pages (most popular)</option>
+            <option value="Cloud Pro — NZ$1,269">Cloud Pro &mdash; up to 10 pages</option>
             <option value="Not sure — please recommend">Not sure yet — I'd love your recommendation</option>
           </select>
         </div>
@@ -1305,61 +913,39 @@
           <a href="tel:+6421854847">021 854 847</a>
         </p>
       </form>
-
-      <div class="form-success" id="formSuccess" style="display:none;">
-        <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg></span>
-        <h3>Thanks! We'll be in touch soon.</h3>
-        <p>Jay will get back to you within one business day at <a href="mailto:kiaora@wcloud.nz">kiaora@wcloud.nz</a></p>
+        </div>
       </div>
-    </div>
-
-    <!-- Not sure banner -->
-    <div class="idea-banner">
-      <div class="idea-left">
-        <span class="lbl">Not sure where to start?</span>
-        <h3>Send us your idea — we'll take it from there.</h3>
-        <p>No brief needed. Just tell us what you're thinking and Jay will come back with a recommendation that fits your business and budget.</p>
-      </div>
-      <a href="mailto:kiaora@wcloud.nz?subject=My%20website%20idea" class="idea-btn">Share your idea →</a>
-    </div>
-
-  </div>
-</section>
-  <!-- CTA -->
-  <section class="v2-cta">
-    <h2>Let&rsquo;s build something you&rsquo;re proud of.</h2>
-    <p>Based in Christchurch &mdash; helping small businesses, self-employed Kiwis and online sellers across New Zealand get online fast.</p>
-    <div class="v2-cta-btns">
-      <a href="#contact" class="btn-w">Get in touch</a>
-      <a href="#pricing" class="btn-g">View packages</a>
     </div>
   </section>
 
+</main>
 
-<footer>
-  <div class="foot-in">
-    <a href="#" class="logo-mark">
-      <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
-        <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
-        <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
-      </svg>
-      <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
-    </a>
-    <div class="foot-links">
-      <a href="/shoot-and-create">Shoot &amp; Create</a>
-      <a href="/blog">Guides</a>
-      <a href="/review">Leave a Google review</a>
-      <a href="/privacy">Privacy Policy</a>
-      <a href="/terms">Terms &amp; Conditions</a>
-      <a href="/intake">New Client Intake Form</a>
-      <a href="https://agenti.nz" target="_blank">Backend operations powered by Agenti NZ</a>
+<footer class="foot">
+  <div class="shell">
+    <div class="foot-in glass glass-soft">
+      <a href="/" class="logo" aria-label="White Cloud, home">
+        <svg viewBox="0 0 76 44" fill="none" aria-hidden="true">
+      <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+        <span class="logo-word"><span>WHITE</span><span>CLOUD</span></span>
+      </a>
+      <div class="foot-links">
+        <a href="/websites">Websites</a>
+        <a href="/marketing">Marketing</a>
+        <a href="/shoot-and-create">Photo &amp; Video</a>
+        <a href="/restaurants">Restaurants</a>
+        <a href="/blog">Guides</a>
+        <a href="/review">Leave a Google review</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/intake">Intake form</a>
+      </div>
+      <div class="foot-legal">&copy; 2026 White Cloud &middot; Christchurch, Canterbury, New Zealand &middot;
+        <a href="tel:+6421854847" style="color:inherit">021 854 847</a> &middot; All prices NZD, incl. GST.</div>
     </div>
-    <div class="foot-legal">&copy; 2026 White Cloud &middot; Christchurch, Canterbury, New Zealand &middot; <a href="tel:+6421854847">021 854 847</a> &middot; All prices NZD.</div>
   </div>
 </footer>
-
-</div>
-
 
 <div class="ty-modal-overlay" id="tyModal">
   <div class="ty-modal">
@@ -1370,32 +956,17 @@
   </div>
 </div>
 
-<!-- FOOTER -->
+
 
 <script>
-
-  /* ── FAQ ──────────────────────────────────────────────────────
-     Real buttons with aria-expanded and a hidden panel, so screen
-     readers and keyboards get the same behaviour as a mouse. */
+  /* Old deep links to sections that now live on /websites. A hash
+     never reaches the server, so this is the only place to forward it. */
   (function () {
-    var items = document.querySelectorAll('.v2-faq-item');
-    items.forEach(function (item) {
-      var btn = item.querySelector('.v2-faq-btn');
-      var panel = item.querySelector('.v2-faq-a');
-      btn.addEventListener('click', function () {
-        var open = btn.getAttribute('aria-expanded') === 'true';
-        items.forEach(function (other) {
-          other.querySelector('.v2-faq-btn').setAttribute('aria-expanded', 'false');
-          other.querySelector('.v2-faq-a').hidden = true;
-        });
-        if (!open) { btn.setAttribute('aria-expanded', 'true'); panel.hidden = false; }
-      });
-    });
+    var moved = { '#pricing': 1, '#care': 1, '#how': 1, '#process': 1, '#ai-search': 1, '#services': 1 };
+    if (moved[location.hash]) location.replace('/websites' + location.hash);
   })();
 
-  /* ── A package chosen on /websites arrives here as ?package= ──
-     The pricing cards live on the other page now, so the choice has
-     to survive the hop rather than being lost at the form. */
+  /* A package chosen on /websites arrives here as ?package= */
   (function () {
     var want = new URLSearchParams(location.search).get('package');
     if (!want) return;
@@ -1410,27 +981,24 @@
     else apply();
   })();
 
-  /* ── Pricing buttons pre-fill the package field ─────────────── */
-  function selectPackage(value) {
-    var sel = document.getElementById('fpackage');
-    if (sel) {
-      for (var i = 0; i < sel.options.length; i++) {
-        if (sel.options[i].value === value) { sel.selectedIndex = i; break; }
-      }
-    }
-    var el = document.getElementById('contact');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  }
+  /* Nav lifts off the field once the page moves under it. */
+  (function () {
+    var nav = document.getElementById('v2nav');
+    var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 18); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
 
-  /* ── Contact form ─────────────────────────────────────────────
-     Unchanged behaviour: posts to Netlify Forms, then shows the
-     thank-you modal either way so nobody is left staring at a form
-     wondering whether it sent. */
+  /* "Other" business type reveals its own field. */
+  (function () {
+    var sel = document.getElementById('fbiz');
+    if (!sel) return;
+    sel.addEventListener('change', function () {
+      var wrap = document.getElementById('otherWrap');
+      if (wrap) wrap.classList.toggle('show', this.value === 'Other');
+    });
+  })();
 
-  /* One recommended GA4 event per completed enquiry, so the forms show
-     up as conversions rather than just another pageview. Fired on the
-     network success only — the thank-you shows either way, but a lead
-     that never reached Netlify is not a lead. */
   function wcLead(formName, form) {
     if (typeof gtag !== 'function') return;
     var src = form && form.querySelector('[name="referral_source"]');
@@ -1440,23 +1008,14 @@
     });
   }
 
+  /* Contact form → Netlify, then the thank-you either way. */
   (function () {
-    var bizSel = document.getElementById('fbiz');
-    if (bizSel) {
-      bizSel.addEventListener('change', function () {
-        var wrap = document.getElementById('otherWrap');
-        if (wrap) wrap.classList.toggle('show', this.value === 'Other');
-      });
-    }
-
     var form = document.getElementById('contactForm');
+    var modal = document.getElementById('tyModal');
     if (form) {
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        var done = function () {
-          form.reset();
-          document.getElementById('tyModal').classList.add('show');
-        };
+        var done = function () { form.reset(); if (modal) modal.classList.add('show'); };
         fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -1464,133 +1023,22 @@
         }).then(function () { wcLead('contact', form); done(); }).catch(done);
       });
     }
-
-    var modal = document.getElementById('tyModal');
     if (modal) {
-      modal.addEventListener('click', function (e) {
-        if (e.target === this) this.classList.remove('show');
-      });
+      modal.addEventListener('click', function (e) { if (e.target === this) this.classList.remove('show'); });
       var close = modal.querySelector('.ty-modal-close');
       if (close) close.addEventListener('click', function () { modal.classList.remove('show'); });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') modal.classList.remove('show');
-      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') modal.classList.remove('show'); });
     }
-  })();
-
-  /* ── The AI answer types itself in, once, when you reach it ─── */
-  (function () {
-    var typing = document.getElementById('aiTyping');
-    var answer = document.getElementById('aiResponse');
-    if (!typing || !answer) return;
-    var reveal = function () { typing.hidden = true; answer.hidden = false; };
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { reveal(); return; }
-    if (!('IntersectionObserver' in window)) { reveal(); return; }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        setTimeout(reveal, 2000);
-        io.unobserve(entry.target);
-      });
-    }, { threshold: 0.5 });
-    io.observe(typing);
-  })();
-
-  (function () {
-    var nav = document.getElementById('v2nav');
-    var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 20); };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  })();
-
-  /* ── Hero graphic ─────────────────────────────────────────────
-     Four capabilities, one schematic. Hovering or focusing a tab
-     shows that capability; otherwise it cycles slowly on its own.
-     There is no image to keep in sync with a caption, so the class
-     of bug that plagued the screenshot carousel cannot occur here. */
-  (function () {
-    var card = document.getElementById('buildCard');
-    if (!card) return;
-    var note = document.getElementById('buildNote');
-    var tabs = Array.prototype.slice.call(card.querySelectorAll('[role="tab"]'));
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    var COPY = {
-      words:  'Not sure what to say? We put it into clear, simple language.',
-      design: 'Clean layout, good type, your colours \u2014 done properly.',
-      mobile: 'Phones, tablets, laptops. It works however customers find you.',
-      search: 'Structured so Google and AI tools can read and recommend you.'
-    };
-
-    var i = 0, timer = 0, held = false;
-
-    function show(n) {
-      i = ((n % tabs.length) + tabs.length) % tabs.length;
-      var part = tabs[i].dataset.part;
-      card.setAttribute('data-active', part);
-      note.textContent = COPY[part];
-      tabs.forEach(function (t, idx) {
-        t.setAttribute('aria-selected', idx === i ? 'true' : 'false');
-      });
-    }
-
-    function play() {
-      clearInterval(timer);
-      if (reduced.matches) return;
-      timer = setInterval(function () { if (!held) show(i + 1); }, 3200);
-    }
-
-    tabs.forEach(function (t, idx) {
-      t.addEventListener('mouseenter', function () { held = true; show(idx); });
-      t.addEventListener('focus',      function () { held = true; show(idx); });
-      t.addEventListener('click',      function () { show(idx); play(); });
-      t.addEventListener('mouseleave', function () { held = false; });
-      t.addEventListener('blur',       function () { held = false; });
-    });
-
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) clearInterval(timer); else play();
-    });
-
-    show(0);
-    play();
   })();
 </script>
 
 <script type="module">
-  import { initHeroCloud } from '/assets/hero-cloud.js';
-
-  import { initTilt } from '/assets/tilt.js';
   import { initNav } from '/assets/nav.js';
+  import { initReveal } from '/assets/reveal.js';
   import { initAttribution } from '/assets/attribution.js';
 
-  // A little lean toward the cursor — enough to sit in the scene, not a toy.
   initNav(document.getElementById('v2nav'));
-
-  var heroCard = document.getElementById('buildCard');
-  if (heroCard) initTilt(heroCard, { zone: heroCard.parentElement, maxX: 5, maxY: 6 });
-  document.querySelectorAll('.v2-proj').forEach(function (card) {
-    initTilt(card, { maxX: 3.5, maxY: 4.5, lift: 4 });
-  });
-
-  var canvas = document.getElementById('cloudCanvas');
-  var headline = document.getElementById('heroHeadline');
-
-  window.__heroCloud = initHeroCloud(canvas, {
-    // The headline's box, in canvas space — clouds fade inside it.
-    clearing: function () {
-      var c = canvas.getBoundingClientRect();
-      var h = headline.getBoundingClientRect();
-      if (window.innerWidth <= 900) return null;
-      return {
-        left:   h.left   - c.left - 40,
-        right:  h.right  - c.left + 40,
-        top:    h.top    - c.top  - 30,
-        bottom: h.bottom - c.top  + 30
-      };
-    }
-  });
-
+  initReveal();
   initAttribution(document.getElementById('contactForm'));
 </script>
 

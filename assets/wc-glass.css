@@ -1,0 +1,223 @@
+/* ══════════════════════════════════════════════════════════════
+   White Cloud — liquid glass theme
+   ══════════════════════════════════════════════════════════════
+   Loaded AFTER each page's own <style>, so it wins on equal
+   specificity without needing !important everywhere.
+
+   The homepage was rebuilt from scratch in this language. Every
+   other page shares wc.css, so rather than rewrite eight files this
+   retunes the surfaces they already use: the ground becomes a
+   morning-sky field, the white sheet and bands become translucent
+   so that field shows through, and the cards become glass.
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  --sky-base: #f5f9fd;
+  --a-sky:    rgba(122, 176, 226, .90);
+  --a-blue:   rgba(158, 204, 240, .85);
+  --a-blush:  rgba(255, 186, 202, .62);
+  --a-dawn:   rgba(255, 214, 198, .58);
+  --a-pale:   rgba(206, 228, 248, .80);
+
+  --g-fill:   linear-gradient(140deg, rgba(255,255,255,.52), rgba(255,255,255,.22));
+  --g-solid:  linear-gradient(140deg, rgba(255,255,255,.70), rgba(255,255,255,.44));
+  --g-edge:   rgba(255,255,255,.65);
+  --g-spec:   rgba(255,255,255,.92);
+  --g-shadow: 0 10px 34px -12px rgba(34,51,63,.22), 0 2px 8px -3px rgba(34,51,63,.10);
+  --g-blur:   blur(26px) saturate(190%);
+  --d-fill:   linear-gradient(150deg, rgba(47,73,88,.88), rgba(28,46,56,.92));
+}
+
+/* ── The field ────────────────────────────────────────────────
+   Fixed, so panels slide over a stationary light source. The old
+   canvas painted an inset white card on a pale gradient; that frame
+   is what made every page read as a flat sheet of paper. */
+body.wc-canvas {
+  background: var(--sky-base);
+  padding: 0;
+}
+body.wc-canvas::before {
+  content: '';
+  position: fixed; inset: -25%;
+  z-index: -2; pointer-events: none;
+  background:
+    radial-gradient(34% 30% at 12% 14%, var(--a-sky),   transparent 64%),
+    radial-gradient(30% 26% at 88% 12%, var(--a-blush), transparent 64%),
+    radial-gradient(34% 30% at 80% 58%, var(--a-blue),  transparent 64%),
+    radial-gradient(28% 26% at 18% 64%, var(--a-pale),  transparent 64%),
+    radial-gradient(26% 24% at 54% 94%, var(--a-dawn),  transparent 64%);
+  filter: blur(18px) saturate(115%);
+  animation: wcDrift 34s cubic-bezier(.22,1,.36,1) infinite alternate;
+}
+/* Gradients this wide band visibly without grain. */
+body.wc-canvas::after {
+  content: '';
+  position: fixed; inset: 0;
+  z-index: -1; pointer-events: none;
+  opacity: .30; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@keyframes wcDrift {
+  0%   { transform: translate3d(0,0,0) scale(1); }
+  50%  { transform: translate3d(-3%, 2%, 0) scale(1.06); }
+  100% { transform: translate3d(2%, -3%, 0) scale(1.02); }
+}
+@media (prefers-reduced-motion: reduce) { body.wc-canvas::before { animation: none; } }
+
+body.wc-canvas > .wc-sheet {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+}
+
+/* ── Bands ────────────────────────────────────────────────────
+   Plain bands go clear so the field shows; "alt" bands become a
+   pane of glass rather than a block of pale blue. */
+.v2-band, .mk-band, .sc-band, .v2-hero, .sc-hero, .mk-hero,
+.v2-work, .v2-faq, #contact, .in-body, .v2-notes {
+  background: transparent;
+}
+.v2-band.alt, .mk-band.alt, .sc-band.alt,
+.v2-marketing-teaser, .v2-care-band {
+  background: var(--g-fill);
+  backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
+  border-block: 1px solid var(--g-edge);
+  box-shadow: inset 0 1px 0 var(--g-spec);
+}
+
+/* ── Dark sections ────────────────────────────────────────────
+   Several bands are navy with white type. Made transparent they
+   would be unreadable, and left as full-bleed slabs they read as a
+   hole cut in the sky. So they become the same material, smoked:
+   dark enough for white text, still letting the field through. */
+.v2-band.v2-ai, .v2-ai, .sc-band.dark, .v2-cta,
+.mk-quote, .mk-cta, #ai-search, #cta, .v2-trust, footer {
+  background: var(--d-fill) !important;
+  backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
+  border-block: 1px solid rgba(255,255,255,.14);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+/* ── Cards ────────────────────────────────────────────────────
+   Everything that used to be a white or pale-blue box. */
+.v2-price, .v2-note, .v2-hosting, .v2-casual, .v2-proj,
+.v2-care > div, .form-section, .asset-card, .sc-deliv,
+.mk-price, .mk-tablewrap, .mk-separate, .mk-step,
+.sc-price-panel, .sc-form, .sc-way, .sc-post, .sc-cal,
+.search-card, .work-card, .v2-faq-list {
+  background: var(--g-solid) !important;
+  backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-edge);
+  border-radius: 24px;
+  box-shadow: var(--g-shadow), inset 0 1px 0 var(--g-spec);
+}
+
+/* ── Long-form pages (privacy, terms, guides) ─────────────────
+   The article was a full-bleed white slab. It becomes one floating
+   pane instead, so those pages belong to the same world. */
+.wc-article { background: transparent; padding-top: 8.5rem; }
+.wc-article-inner {
+  background: var(--g-solid);
+  backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-edge);
+  border-radius: 28px;
+  box-shadow: var(--g-shadow), inset 0 1px 0 var(--g-spec);
+  padding: clamp(1.8rem, 4vw, 3.2rem);
+}
+.wc-article-cta {
+  background: var(--g-fill);
+  border: 1px solid var(--g-edge);
+  border-radius: 20px;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────
+   One solid and one glass, matching the homepage. */
+.btn-p, .form-submit, .btn-submit {
+  background: linear-gradient(140deg, #3d6a85, #22333f);
+  border: 1px solid transparent;
+  box-shadow: 0 12px 28px -14px rgba(34,51,63,.75), inset 0 1px 0 rgba(255,255,255,.3);
+}
+.btn-p:hover, .form-submit:hover, .btn-submit:hover {
+  background: linear-gradient(140deg, #3d6a85, #22333f);
+  filter: brightness(1.12);
+  box-shadow: 0 18px 36px -16px rgba(34,51,63,.8), inset 0 1px 0 rgba(255,255,255,.3);
+}
+.btn-o, .btn-w {
+  background: linear-gradient(140deg, rgba(255,255,255,.6), rgba(255,255,255,.3));
+  backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-edge);
+  color: #22333f;
+  box-shadow: var(--g-shadow), inset 0 1px 0 var(--g-spec);
+}
+.btn-o:hover, .btn-w:hover {
+  background: linear-gradient(140deg, rgba(255,255,255,.78), rgba(255,255,255,.42));
+  color: #22333f; border-color: var(--g-edge);
+}
+.btn-g { background: rgba(255,255,255,.22); border: 1px solid var(--g-edge); color: #22333f; }
+
+/* ── Form controls ────────────────────────────────────────────── */
+.form-input, .form-select, .form-textarea,
+input[type="text"], input[type="email"], input[type="tel"], input[type="url"],
+textarea, select {
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 14px;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus,
+input:focus, textarea:focus, select:focus {
+  background: #fff;
+  border-color: #7fa8be;
+  box-shadow: 0 0 0 4px rgba(127,168,190,.22);
+}
+
+/* ── Footer ───────────────────────────────────────────────────
+   Stays dark — the type on it is white — but becomes smoked glass
+   (set with the dark sections above) and floats as a pane rather
+   than running edge to edge under the sky. */
+footer {
+  border-radius: 28px 28px 0 0;
+  margin-inline: auto;
+  max-width: 1320px;
+  width: calc(100% - clamp(24px, 5vw, 64px));
+  border-block-end: 0 !important;
+}
+
+/* ── Nav ──────────────────────────────────────────────────────
+   Already glass; this just lifts it to the homepage's weight and
+   removes the inset the old canvas frame assumed. */
+.wc-nav {
+  top: clamp(12px, 2vw, 22px);
+  width: min(1240px, calc(100% - clamp(36px, 8vw, 96px)));
+  background: var(--g-fill);
+  backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-edge);
+  box-shadow: inset 0 1px 0 var(--g-spec);
+}
+.wc-nav.scrolled {
+  background: var(--g-solid);
+  box-shadow: 0 16px 44px -18px rgba(34,51,63,.34), inset 0 1px 0 var(--g-spec);
+}
+.wc-nav-links a.wc-nav-cta {
+  background: linear-gradient(140deg, #3d6a85, #22333f);
+  color: #fff;
+  box-shadow: 0 6px 18px -8px rgba(34,51,63,.6), inset 0 1px 0 rgba(255,255,255,.28);
+}
+.wc-nav-links a.wc-nav-cta:hover { filter: brightness(1.12); }
+
+/* ── Graceful degradation ─────────────────────────────────────
+   Turned-off transparency, or no backdrop-filter, should give a
+   readable solid rather than a muddy wash. */
+@supports not (backdrop-filter: blur(1px)) {
+  .v2-band.alt, .mk-band.alt, .sc-band.alt,
+  .v2-price, .mk-price, .sc-post, .wc-article-inner,
+  footer .foot-in, .wc-nav { background: rgba(255,255,255,.90) !important; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .v2-band.alt, .mk-band.alt, .sc-band.alt,
+  .v2-price, .mk-price, .sc-post, .wc-article-inner,
+  footer .foot-in, .wc-nav {
+    background: rgba(255,255,255,.93) !important;
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+  }
+}

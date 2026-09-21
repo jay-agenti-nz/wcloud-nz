@@ -582,7 +582,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     background: rgba(34,51,63,.62); backdrop-filter: blur(6px);
     padding: .2rem .5rem; border-radius: 999px;
   }
-  .ig-cap { font-size: .74rem; color: var(--body); padding-left: .1rem; }
+  /* The post frame is square and the Reel frame is vertical, so the
+     post column always had height left over. A caption — the thing a
+     real post has anyway — takes up the slack, and both captions pin
+     to the bottom so the two columns finish level. */
+  .ig-text {
+    flex: 1 1 auto;
+    font-size: .76rem; line-height: 1.5; color: var(--body);
+    padding-left: .1rem; text-wrap: pretty;
+  }
+  .ig-text b { color: var(--deep); font-weight: 700; }
+  .ig-cap { margin-top: auto; font-size: .74rem; color: var(--body); padding-left: .1rem; }
   .ig-cap b { color: var(--deep); font-weight: 700; }
 
   @media (max-width: 520px) {
@@ -851,6 +861,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
                   <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8 8 0 1 1-3.4-6.5L20.5 4l-1 4.2A8 8 0 0 1 20.5 12z"/></svg>
                   <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L10.5 13.5M21 3l-6.5 18-4-8-8-4L21 3z"/></svg>
                 </div>
+                <p class="ig-text"><b>jay.d.vera</b> Winter menu, shot between services. Fifteen like
+                  this landed the same week &mdash; enough to keep the grid going for a month.</p>
                 <p class="ig-cap"><b>Post</b> &middot; stills for the grid</p>
               </div>
 

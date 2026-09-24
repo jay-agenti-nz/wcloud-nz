@@ -26,6 +26,13 @@
   --g-shadow: 0 10px 34px -12px rgba(34,51,63,.22), 0 2px 8px -3px rgba(34,51,63,.10);
   --g-blur:   blur(26px) saturate(190%);
   --d-fill:   linear-gradient(150deg, rgba(47,73,88,.88), rgba(28,46,56,.92));
+
+  /* The frame. Same edges as the homepage: a 1240px column with a
+     gutter inside it, so the nav, every band's content and the
+     footer line up on one left and one right edge at every width. */
+  --wg-gutter: clamp(18px, 4vw, 48px);
+  --wg-frame:  min(calc(1240px - var(--wg-gutter) * 2), calc(100% - var(--wg-gutter) * 2));
+  --wg-pad:    clamp(1.5rem, 3vw, 2.5rem);
 }
 
 /* ── The field ────────────────────────────────────────────────
@@ -97,6 +104,33 @@ body.wc-canvas > .wc-sheet {
   backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
   border-block: 1px solid rgba(255,255,255,.14);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+
+/* ── Frame ────────────────────────────────────────────────────
+   Bands stay full-bleed (the glass and the smoked panes run edge to
+   edge) but what is inside them sits on the frame. Side padding is
+   worked out from the band's own width, so it is the gutter on a
+   phone and grows to centre a 1240px column on a wide screen. */
+.v2-band, .mk-band, .sc-band, .v2-notes, .v2-trust, .v2-work,
+#contact, #book, .v2-cta, .mk-quote, .mk-cta,
+#solution, #ai-search, #faq, #portfolio, #cta, .banner-block,
+.in-progress, .in-body {
+  padding-inline: max(var(--wg-gutter), calc((100% - 1240px) / 2 + var(--wg-gutter)));
+}
+/* Restaurants centres its own inner columns; let them fill the frame
+   instead of stopping a few pixels short of it. */
+.hero-inner, .ai-inner, .banner-inner { max-width: none; }
+
+/* Split heroes: the frame goes on the hero, the halves lose their
+   own outer padding so the copy starts on the same edge as the nav. */
+.v2-hero, .mk-hero, .sc-hero, .in-hero, .r-hero {
+  padding-inline: max(var(--wg-gutter), calc((100% - 1240px) / 2 + var(--wg-gutter))) !important;
+}
+.v2-hero-copy, .mk-hero-copy, .sc-hero-copy, .in-hero-copy, .r-hero-copy { padding-inline: 0 !important; }
+.v2-hero-stage, .mk-hero-stage, .sc-hero-stage, .in-hero-stage, .r-hero-stage { padding-right: 0 !important; }
+@media (max-width: 900px) {
+  .v2-hero-stage, .mk-hero-stage, .sc-hero-stage, .in-hero-stage, .r-hero-stage { padding-inline: 0 !important; }
 }
 
 /* ── Cards ────────────────────────────────────────────────────
@@ -178,8 +212,8 @@ input:focus, textarea:focus, select:focus {
 footer {
   border-radius: 28px 28px 0 0;
   margin-inline: auto;
-  max-width: 1320px;
-  width: calc(100% - clamp(24px, 5vw, 64px));
+  width: var(--wg-frame);
+  padding-inline: var(--wg-pad);
   border-block-end: 0 !important;
 }
 
@@ -188,7 +222,7 @@ footer {
    removes the inset the old canvas frame assumed. */
 .wc-nav {
   top: clamp(12px, 2vw, 22px);
-  width: min(1240px, calc(100% - clamp(36px, 8vw, 96px)));
+  width: var(--wg-frame);
   background: var(--g-fill);
   backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
   border: 1px solid var(--g-edge);

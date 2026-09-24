@@ -71,6 +71,13 @@
   --r-sm: 14px;
 
   --gutter: clamp(18px, 4vw, 48px);
+
+  /* Spacing. Every gap on the page comes from one of these four, so
+     the rhythm holds when one of them is tuned. */
+  --s-section: clamp(2.75rem, 5.5vw, 4.5rem);  /* above and below each section */
+  --s-head:    clamp(1.75rem, 3.2vw, 2.5rem);  /* section heading to its content */
+  --s-stack:   clamp(1.25rem, 2.4vw, 1.75rem); /* between panels in a section */
+  --s-pad:     clamp(1.5rem, 3vw, 2.5rem);     /* inside a panel */
   --ease: cubic-bezier(.22, 1, .36, 1);
 }
 
@@ -176,7 +183,12 @@ p  { margin: 0; }
 
 /* ── Shell ────────────────────────────────────────────────────── */
 .shell { max-width: 1240px; margin: 0 auto; padding-inline: var(--gutter); }
-section { padding-block: clamp(4rem, 9vw, 7.5rem); }
+section { padding-block: var(--s-section); }
+
+.sec-head {
+  display: flex; flex-direction: column; gap: .9rem; align-items: flex-start;
+  max-width: 46rem; margin-bottom: var(--s-head);
+}
 
 /* ── Nav ──────────────────────────────────────────────────────
    Floats over the field rather than sitting in a bar: the page
@@ -185,7 +197,8 @@ section { padding-block: clamp(4rem, 9vw, 7.5rem); }
   position: fixed; top: clamp(12px, 2vw, 22px); left: 50%;
   transform: translateX(-50%);
   z-index: 60;
-  width: min(1240px, calc(100% - var(--gutter) * 2));
+  /* Same edges as the panels below it, not the full shell. */
+  width: min(calc(1240px - var(--gutter) * 2), calc(100% - var(--gutter) * 2));
   display: flex; align-items: center; justify-content: space-between;
   gap: 1rem;
   padding: .55rem .6rem .55rem 1.2rem;
@@ -246,15 +259,7 @@ section { padding-block: clamp(4rem, 9vw, 7.5rem); }
 .btn-glass:hover { background: linear-gradient(140deg, rgba(255,255,255,.78), rgba(255,255,255,.42)); }
 
 /* ── Hero ─────────────────────────────────────────────────────── */
-.hero { padding-block: clamp(8rem, 17vh, 12rem) clamp(3rem, 6vw, 5rem); }
-.hero-in {
-    display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-start;
-    padding: clamp(2rem, 4.5vw, 3.6rem);
-    border-radius: clamp(28px, 4vw, 44px);
-  }
-  .hero h1 { font-size: clamp(2.6rem, 6vw, 4.4rem); }
-.hero h1 { max-width: 15ch; }
-.hero .lede { max-width: 48ch; }
+.hero { padding-block: clamp(6.5rem, 13vh, 8.5rem) var(--s-section); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
 
 .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .4rem; }
@@ -275,11 +280,13 @@ section { padding-block: clamp(4rem, 9vw, 7.5rem); }
 .svc {
   display: grid; grid-template-columns: 1.02fr .98fr;
   gap: clamp(1.5rem, 3vw, 3.2rem); align-items: center;
-  padding: clamp(1.6rem, 3vw, 2.6rem);
+  padding: var(--s-pad);
   text-decoration: none; color: inherit;
   transition: transform .45s var(--ease), box-shadow .45s var(--ease);
 }
-.svc + .svc { margin-top: clamp(1.5rem, 3vw, 2.4rem); }
+.svc + .svc { margin-top: var(--s-stack); }
+.svc-foot { text-align: center; margin-top: var(--s-stack); font-size: .95rem; }
+.svc-foot a { color: var(--brand-ink); font-weight: 700; }
 .svc:nth-of-type(even) .svc-media { order: -1; }
 .svc:hover {
   transform: translateY(-6px);
@@ -289,7 +296,7 @@ section { padding-block: clamp(4rem, 9vw, 7.5rem); }
     inset 0 -1px 0 rgba(255,255,255,.3);
 }
 
-.svc-copy { display: flex; flex-direction: column; gap: .85rem; align-items: flex-start; padding: clamp(.5rem, 1.5vw, 1.4rem); }
+.svc-copy { display: flex; flex-direction: column; gap: .85rem; align-items: flex-start; }
 .svc-num {
   font-family: var(--mark); font-size: .7rem; font-weight: 700;
   letter-spacing: .24em; color: var(--brand-ink);
@@ -354,36 +361,12 @@ section { padding-block: clamp(4rem, 9vw, 7.5rem); }
 .mk-card .bar { height: 6px; border-radius: 3px; background: rgba(127,168,190,.35); }
 .mk-card .bar.s { width: 60%; }
 
-/* ── Work ─────────────────────────────────────────────────────── */
-.work-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: clamp(.8rem, 1.6vw, 1.2rem); margin-top: clamp(1.6rem, 3vw, 2.4rem);
-}
-.work-item {
-  border-radius: var(--r-md); overflow: hidden; position: relative;
-  aspect-ratio: 4 / 3;
-  box-shadow: 0 16px 36px -20px rgba(34,51,63,.4), inset 0 0 0 1px rgba(255,255,255,.55);
-  transition: transform .45s var(--ease);
-}
-.work-item:hover { transform: translateY(-5px); }
-.work-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.work-item figcaption {
-  position: absolute; left: .6rem; bottom: .6rem;
-  font-family: var(--mark); font-size: .64rem; font-weight: 700;
-  letter-spacing: .14em; text-transform: uppercase; color: var(--deep);
-  background: rgba(255,255,255,.72); backdrop-filter: blur(10px);
-  padding: .3rem .6rem; border-radius: 999px;
-}
-
 /* ── About ────────────────────────────────────────────────────── */
-.about { display: grid; grid-template-columns: minmax(0, 320px) 1fr; gap: clamp(1.5rem, 3vw, 3rem); align-items: center; padding: clamp(1.6rem, 3vw, 2.8rem); }
+.about { display: grid; grid-template-columns: minmax(0, 320px) 1fr; gap: var(--s-pad); align-items: center; padding: var(--s-pad); }
 .about-photo { border-radius: var(--r-md); overflow: hidden; aspect-ratio: 4 / 5; box-shadow: 0 20px 44px -20px rgba(34,51,63,.45), inset 0 0 0 1px rgba(255,255,255,.5); }
 .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .about-copy { display: flex; flex-direction: column; gap: .9rem; align-items: flex-start; }
 
-/* ── Contact ──────────────────────────────────────────────────── */
-.contact-wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(1.5rem, 3vw, 3rem); align-items: start; }
-.contact-card { padding: clamp(1.5rem, 3vw, 2.4rem); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; min-width: 0; }
 .form-label { font-family: var(--mark); font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--brand-ink); }
@@ -395,8 +378,16 @@ section { padding-block: clamp(4rem, 9vw, 7.5rem); }
   transition: border-color .25s, box-shadow .25s, background .25s;
 }
 .form-textarea { min-height: 120px; resize: vertical; }
+.form-select {
+  appearance: none; -webkit-appearance: none; padding-right: 2.6rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233d6a85' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right .95rem center; background-size: 16px;
+}
+.form-input::placeholder, .form-textarea::placeholder { color: #8ea3b0; }
+.form-select:has(option[value=""]:checked) { color: #8ea3b0; }
+.form-select option { color: var(--deep); }
 .form-input:focus, .form-select:focus, .form-textarea:focus {
-  outline: none; background: #fff;
+  outline: none; background-color: #fff;
   border-color: var(--brand);
   box-shadow: 0 0 0 4px rgba(127,168,190,.22);
 }
@@ -410,20 +401,13 @@ section { padding-block: clamp(4rem, 9vw, 7.5rem); }
 }
 .form-submit:hover { filter: brightness(1.12); }
 .form-submit:active { transform: translateY(1px); }
-.form-call { text-align: center; font-size: .88rem; margin-top: .9rem; }
-.form-call a { color: var(--brand-ink); font-weight: 700; }
 .other-input-wrap { display: none; margin-top: .55rem; }
 .other-input-wrap.show { display: block; }
 
-.contact-aside { display: flex; flex-direction: column; gap: 1rem; position: sticky; top: 7rem; }
-.contact-aside .line { display: flex; gap: .8rem; align-items: flex-start; padding: 1rem 1.2rem; border-radius: var(--r-md); }
-.contact-aside .line b { display: block; color: var(--deep); font-size: .95rem; }
-.contact-aside .line span { font-size: .87rem; }
-.contact-aside .line svg { width: 20px; height: 20px; stroke: var(--brand-ink); flex: 0 0 auto; margin-top: .15rem; }
 
 /* ── Footer ───────────────────────────────────────────────────── */
-.foot { padding: clamp(2.5rem, 5vw, 4rem) 0 2.5rem; }
-.foot-in { display: flex; flex-wrap: wrap; gap: 1.4rem 2.5rem; align-items: flex-start; justify-content: space-between; padding: clamp(1.6rem, 3vw, 2.4rem); }
+.foot { padding: 0 0 var(--s-stack); }
+.foot-in { display: flex; flex-wrap: wrap; gap: 1.4rem 2.5rem; align-items: flex-start; justify-content: space-between; padding: var(--s-pad); }
 .foot-links { display: flex; flex-wrap: wrap; gap: .3rem 1.2rem; }
 .foot-links a { font-size: .86rem; color: var(--body); text-decoration: none; }
 .foot-links a:hover { color: var(--brand-ink); }
@@ -493,17 +477,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
   .svc { grid-template-columns: 1fr; }
   .svc:nth-of-type(even) .svc-media { order: 0; }
-  .work-grid { grid-template-columns: repeat(2, 1fr); }
   .about { grid-template-columns: 1fr; }
   .about-photo { max-width: 280px; aspect-ratio: 1; }
-  .contact-wrap { grid-template-columns: 1fr; }
-  .contact-aside { position: static; }
 }
 
 @media (max-width: 560px) {
   .form-row { grid-template-columns: 1fr; }
-  .work-grid { grid-template-columns: 1fr; }
-  .hero { padding-block: 7.5rem 3rem; }
+  .hero { padding-block: 6rem var(--s-section); }
 }
 
   /* ── Projects ─────────────────────────────────────────────────
@@ -511,7 +491,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
      job actually was. The old strip was four thumbnails with a
      one-word caption, which showed that work exists without showing
      what any of it is. */
-  .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1rem, 2vw, 1.6rem); }
+  .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-stack); }
   .proj {
     display: flex; flex-direction: column;
     padding: clamp(.8rem, 1.4vw, 1rem);
@@ -544,8 +524,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
      Photography sells better as a feed than as one framed photo:
      it shows the volume and the rhythm, which is what the package
      actually is. */
-  .ig-media { aspect-ratio: auto; background: rgba(255,255,255,.55); padding: .75rem; }
-  .ig { display: flex; flex-direction: column; gap: .6rem; }
+  .ig-media { aspect-ratio: auto; background: rgba(255,255,255,.55); padding: .85rem; }
+  .ig { display: flex; flex-direction: column; gap: .6rem; max-width: 420px; margin-inline: auto; width: 100%; }
   .ig-head { display: flex; align-items: center; gap: .6rem; padding: .1rem .2rem; }
   .ig-av { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; flex: 0 0 auto; box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--brand); }
   .ig-av img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -559,44 +539,163 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     .proj-grid { grid-template-columns: 1fr; }
   }
 
-  /* ── Post and Reel, side by side ──────────────────────────────
-     The Reel column stretches to whatever height the post column
-     ends up, so the two line up however the panel is sized rather
-     than needing a magic ratio that breaks at another width. */
-  .ig-pair { display: grid; grid-template-columns: 1.22fr .78fr; gap: .6rem; align-items: stretch; }
-  .ig-post, .ig-reel { display: flex; flex-direction: column; gap: .45rem; min-width: 0; }
-  .ig-frame { position: relative; border-radius: var(--r-sm); overflow: hidden; aspect-ratio: 1; }
-  .ig-frame.tall { aspect-ratio: auto; flex: 1 1 auto; }
-  .ig-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .ig-play {
-    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
-    background: rgba(255,255,255,.82); color: var(--deep);
-    backdrop-filter: blur(6px); box-shadow: 0 6px 18px -6px rgba(34,51,63,.5);
-  }
-  .ig-play svg { width: 20px; height: 20px; margin-left: 2px; }
-  .ig-badge {
-    position: absolute; top: .5rem; right: .5rem;
-    font-family: var(--mark); font-size: .58rem; font-weight: 700;
-    letter-spacing: .14em; text-transform: uppercase; color: #fff;
-    background: rgba(34,51,63,.62); backdrop-filter: blur(6px);
-    padding: .2rem .5rem; border-radius: 999px;
-  }
-  /* The post frame is square and the Reel frame is vertical, so the
-     post column always had height left over. A caption — the thing a
-     real post has anyway — takes up the slack, and both captions pin
-     to the bottom so the two columns finish level. */
-  .ig-text {
-    flex: 1 1 auto;
-    font-size: .76rem; line-height: 1.5; color: var(--body);
-    padding-left: .1rem; text-wrap: pretty;
-  }
-  .ig-text b { color: var(--deep); font-weight: 700; }
-  .ig-cap { margin-top: auto; font-size: .74rem; color: var(--body); padding-left: .1rem; }
-  .ig-cap b { color: var(--deep); font-weight: 700; }
 
-  @media (max-width: 520px) {
-    .ig-pair { grid-template-columns: 1fr 1fr; }
+  /* ── Hero art ─────────────────────────────────────────────────
+     The three services as three objects. Sized off the container,
+     so the composition scales as one piece instead of reflowing. */
+  .hero-in {
+    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    gap: var(--s-pad); align-items: center;
+    padding: clamp(1.75rem, 4vw, 3.25rem);
+    border-radius: clamp(28px, 4vw, 44px);
+  }
+  .hero-copy { display: flex; flex-direction: column; gap: 1.4rem; align-items: flex-start; }
+  .hero h1 { font-size: clamp(2.4rem, 4.8vw, 3.9rem); max-width: 13ch; }
+  .hero .lede { max-width: 46ch; }
+
+  .hero-art { position: relative; container-type: inline-size; aspect-ratio: 1 / 1.02; }
+  .ha {
+    position: absolute; display: flex; flex-direction: column; gap: 2.4cqw;
+    padding: 2.6cqw; border-radius: 5.5cqw;
+    text-decoration: none; color: inherit;
+    background: linear-gradient(140deg, rgba(255,255,255,.72), rgba(255,255,255,.4));
+    backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255,255,255,.85);
+    box-shadow: 0 22px 46px -22px rgba(34,51,63,.42), inset 0 1px 0 var(--g-spec);
+    animation: haFloat 7s var(--ease) infinite alternate;
+    transition: transform .45s var(--ease), box-shadow .45s var(--ease);
+  }
+  .ha:hover { animation-play-state: paused; transform: translateY(-6px) scale(1.015); box-shadow: 0 30px 60px -24px rgba(34,51,63,.5), inset 0 1px 0 var(--g-spec); z-index: 5; }
+  .ha-web   { left: 0;  top: 0;    width: 68%; z-index: 1; }
+  .ha-shoot { right: 0; top: 22%;  width: 40%; z-index: 2; animation-delay: -2.4s; }
+  .ha-mk    { left: 9%; bottom: 0; width: 50%; z-index: 3; animation-delay: -4.6s; }
+  @keyframes haFloat { from { translate: 0 0; } to { translate: 0 -1.6cqw; } }
+  @media (prefers-reduced-motion: reduce) { .ha { animation: none; } }
+
+  .ha-label {
+    align-self: flex-start; display: inline-flex; align-items: center; gap: 1.2cqw;
+    font-family: var(--mark); font-size: max(.6rem, 2.3cqw); font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--deep); white-space: nowrap;
+    padding: .8cqw 2cqw; border-radius: 999px;
+    background: rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.95);
+  }
+  .ha-label b { color: var(--brand-ink); }
+
+  /* 01 — a browser with a page in it */
+  .ha-browser { display: flex; flex-direction: column; border-radius: 3.4cqw; overflow: hidden; background: #fff; box-shadow: inset 0 0 0 1px rgba(127,168,190,.25); }
+  .ha-bar { display: flex; align-items: center; gap: .9cqw; padding: 1.6cqw 2cqw; background: #eef4f8; }
+  .ha-bar i { width: 1.4cqw; height: 1.4cqw; border-radius: 50%; background: #c9d9e3; }
+  .ha-bar em { margin-left: 1.4cqw; font-style: normal; font-size: max(.5rem, 1.8cqw); font-weight: 700; color: var(--body); background: #fff; padding: .4cqw 1.6cqw; border-radius: 999px; }
+  .ha-page { display: flex; flex-direction: column; gap: 2.2cqw; padding: 2.6cqw 3cqw 3.2cqw; }
+  .ha-nav { display: flex; justify-content: flex-end; gap: 1.4cqw; }
+  .ha-nav i { width: 5cqw; height: 1cqw; border-radius: 1cqw; background: #dbe7ee; }
+  .ha-hero-row { display: grid; grid-template-columns: 1.1fr .9fr; gap: 2.4cqw; align-items: center; }
+  .ha-lines { display: flex; flex-direction: column; gap: 1.2cqw; }
+  .ha-lines i { height: 2cqw; border-radius: 2cqw; background: var(--deep); opacity: .85; }
+  .ha-lines .l1 { width: 100%; } .ha-lines .l2 { width: 78%; }
+  .ha-lines .l3 { width: 90%; height: 1.1cqw; background: #c9d9e3; opacity: 1; margin-top: .6cqw; }
+  .ha-lines .btnish { width: 44%; height: 3.2cqw; margin-top: 1cqw; background: linear-gradient(140deg, var(--brand-ink), var(--deep)); opacity: 1; }
+  .ha-pic { aspect-ratio: 1 / .82; border-radius: 2.4cqw; background: linear-gradient(150deg, #bcd6e8, #f6d3d9); }
+  .ha-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6cqw; }
+  .ha-cards i { aspect-ratio: 1.5; border-radius: 1.8cqw; background: #eef4f8; }
+
+  /* 03 — a frame through the viewfinder */
+  .ha-photo { position: relative; display: block; border-radius: 3.4cqw; overflow: hidden; aspect-ratio: 4 / 5; }
+  .ha-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ha-corners i { position: absolute; width: 5cqw; height: 5cqw; border: 0 solid rgba(255,255,255,.9); }
+  .ha-corners i:nth-child(1) { top: 3cqw; left: 3cqw; border-top-width: 2px; border-left-width: 2px; }
+  .ha-corners i:nth-child(2) { top: 3cqw; right: 3cqw; border-top-width: 2px; border-right-width: 2px; }
+  .ha-corners i:nth-child(3) { bottom: 3cqw; left: 3cqw; border-bottom-width: 2px; border-left-width: 2px; }
+  .ha-corners i:nth-child(4) { bottom: 3cqw; right: 3cqw; border-bottom-width: 2px; border-right-width: 2px; }
+  .ha-rec {
+    position: absolute; left: 50%; bottom: 3.2cqw; translate: -50% 0;
+    font-family: var(--mark); font-size: max(.5rem, 1.7cqw); font-weight: 700; letter-spacing: .14em;
+    color: #fff; background: rgba(34,51,63,.45); backdrop-filter: blur(6px);
+    padding: .5cqw 1.6cqw; border-radius: 999px; white-space: nowrap;
+  }
+
+  /* 02 — an ad, and what it did */
+  .ha-ad { display: flex; flex-direction: column; gap: .5cqw; padding: 2.2cqw 2.6cqw; border-radius: 3cqw; background: #fff; box-shadow: inset 0 0 0 1px rgba(127,168,190,.22); }
+  .ha-ad-tag { align-self: flex-start; font-family: var(--mark); font-size: max(.48rem, 1.6cqw); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--brand-ink); padding: .3cqw 1.1cqw; border-radius: .8cqw; }
+  .ha-ad b { font-size: max(.62rem, 2.4cqw); color: var(--brand-ink); }
+  .ha-ad small { font-size: max(.55rem, 2cqw); color: var(--body); line-height: 1.35; }
+  .ha-chart { display: flex; flex-direction: column; gap: .8cqw; padding: 1.8cqw 2.6cqw 1.4cqw; border-radius: 3cqw; background: rgba(255,255,255,.7); }
+  .ha-chart-head { display: flex; justify-content: space-between; align-items: center; }
+  .ha-chart-head small { font-family: var(--mark); font-size: max(.5rem, 1.7cqw); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--body); }
+  .ha-chart-head em { font-style: normal; font-weight: 800; font-size: max(.7rem, 2.6cqw); color: var(--sage); }
+  .ha-chart svg { width: 100%; height: 9cqw; display: block; }
+
+  /* ── One post ────────────────────────────────────────────────── */
+  .ig-post { display: flex; flex-direction: column; gap: .55rem; }
+  .ig-frame { position: relative; border-radius: var(--r-sm); overflow: hidden; aspect-ratio: 1; }
+  .ig-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ig-text { font-size: .8rem; line-height: 1.5; color: var(--body); padding: 0 .2rem .1rem; text-wrap: pretty; }
+  .ig-text b { color: var(--deep); font-weight: 700; }
+
+  /* ── Projects, frosted until you look ─────────────────────────
+     Four full-colour screenshots were louder than the services
+     above them. Behind glass they sit back as a quiet row, and the
+     one you point at clears. */
+  .proj-shot { position: relative; }
+  .proj-shot img { filter: saturate(.55); transition: transform .7s var(--ease), filter .6s var(--ease); }
+  .proj-frost {
+    position: absolute; inset: 0; z-index: 1;
+    display: grid; place-items: center;
+    background: linear-gradient(150deg, rgba(248,251,254,.74), rgba(222,236,248,.6));
+    backdrop-filter: blur(14px) saturate(130%); -webkit-backdrop-filter: blur(14px) saturate(130%);
+    transition: opacity .55s var(--ease), backdrop-filter .55s var(--ease);
+  }
+  .proj-frost span {
+    font-family: var(--mark); font-size: .7rem; font-weight: 700; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--deep);
+    padding: .55rem 1.1rem; border-radius: 999px;
+    background: rgba(255,255,255,.72); border: 1px solid rgba(255,255,255,.95);
+    box-shadow: 0 10px 24px -12px rgba(34,51,63,.4), inset 0 1px 0 var(--g-spec);
+    transition: transform .45s var(--ease);
+  }
+  .proj:hover .proj-frost, .proj:focus-visible .proj-frost { opacity: 0; }
+  .proj:hover .proj-frost span { transform: scale(.94); }
+  .proj:hover .proj-shot img, .proj:focus-visible .proj-shot img { filter: none; }
+  /* No hover on a phone, so nothing would ever clear. Lighter frost
+     there, enough to calm the colour without hiding the work. */
+  @media (hover: none) {
+    .proj-frost { backdrop-filter: blur(2px) saturate(110%); -webkit-backdrop-filter: blur(2px) saturate(110%); background: linear-gradient(150deg, rgba(248,251,254,.34), rgba(222,236,248,.22)); }
+    .proj-frost span { display: none; }
+  }
+  @supports not (backdrop-filter: blur(1px)) {
+    .proj-frost { background: rgba(245,249,253,.62); }
+  }
+
+  /* ── Contact: details across the top, form underneath ─────────
+     One panel. The form used to scroll past a sticky column of
+     details; now everything reads top to bottom and nothing moves. */
+  .contact-wrap { padding: var(--s-pad); display: flex; flex-direction: column; gap: var(--s-pad); }
+  .contact-aside { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-stack); padding-bottom: var(--s-pad); border-bottom: 1px solid rgba(255,255,255,.7); }
+  .contact-aside .line {
+    display: flex; gap: .85rem; align-items: center;
+    padding: 1rem 1.15rem; border-radius: var(--r-md);
+    background: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.8);
+    box-shadow: inset 0 1px 0 var(--g-spec);
+    text-decoration: none; color: inherit;
+    transition: background .25s var(--ease);
+  }
+  a.line:hover { background: rgba(255,255,255,.78); }
+  .contact-aside .line b { display: block; color: var(--deep); font-size: .95rem; }
+  .contact-aside .line span { font-size: .85rem; }
+  .contact-aside .line svg { width: 20px; height: 20px; stroke: var(--brand-ink); flex: 0 0 auto; }
+  .contact-card form { display: grid; grid-template-columns: 1fr 1fr; column-gap: 1rem; }
+  .contact-card form > * { grid-column: 1 / -1; }
+  .contact-card form > .form-group.half { grid-column: auto; }
+  .contact-card .form-row { display: contents; }
+
+  @media (max-width: 1000px) {
+    .hero-in { grid-template-columns: 1fr; }
+    .hero-art { max-width: 560px; width: 100%; margin-inline: auto; }
+    .contact-aside { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .contact-card form { grid-template-columns: 1fr; }
+    .contact-card form > .form-group.half { grid-column: 1 / -1; }
   }
 
 </style>
@@ -765,18 +864,66 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   <section class="hero">
     <div class="shell">
       <div class="hero-in glass fu">
-        <span class="eyebrow">Christchurch, New Zealand</span>
-        <h1>Everything your business needs to be found.</h1>
-        <p class="lede">A proper website, the ads and email that bring people to it, and the
-          photography that makes it worth the visit. Christchurch based, no lock-in, no jargon.</p>
-        <div class="hero-actions">
-          <a href="#what" class="btn btn-solid">See what I do</a>
-          <a href="#contact" class="btn btn-glass">Talk it through</a>
+        <div class="hero-copy">
+          <span class="eyebrow">Christchurch, New Zealand</span>
+          <h1>Everything your business needs to be found.</h1>
+          <p class="lede">A proper website, the ads and email that bring people to it, and the
+            photography that makes it worth the visit. Christchurch based, no lock-in, no jargon.</p>
+          <div class="hero-actions">
+            <a href="#what" class="btn btn-solid">See what I do</a>
+            <a href="#contact" class="btn btn-glass">Talk it through</a>
+          </div>
+          <div class="chips">
+            <span class="chip">Everything under one roof</span>
+            <span class="chip">Plain English, no jargon</span>
+            <span class="chip">No lock-in contracts</span>
+          </div>
         </div>
-        <div class="chips">
-          <span class="chip">Everything under one roof</span>
-          <span class="chip">Plain English, no jargon</span>
-          <span class="chip">No lock-in contracts</span>
+
+        <!-- The three services as three objects, so the promise in the
+             headline is something you can see before you read it. Each
+             tile goes to its own page. -->
+        <div class="hero-art">
+          <a class="ha ha-web" href="/websites" aria-label="Websites">
+            <span class="ha-label"><b>01</b> Websites</span>
+            <span class="ha-browser" aria-hidden="true">
+              <span class="ha-bar"><i></i><i></i><i></i><em>yourbusiness.co.nz</em></span>
+              <span class="ha-page">
+                <span class="ha-nav"><i></i><i></i><i></i></span>
+                <span class="ha-hero-row">
+                  <span class="ha-lines"><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="btnish"></i></span>
+                  <span class="ha-pic"></span>
+                </span>
+                <span class="ha-cards"><i></i><i></i><i></i></span>
+              </span>
+            </span>
+          </a>
+
+          <a class="ha ha-shoot" href="/shoot-and-create" aria-label="Shoot and Create">
+            <span class="ha-label"><b>03</b> Shoot &amp; Create</span>
+            <span class="ha-photo">
+              <img src="/assets/hero-plate-640.jpg" alt="" width="640" height="800" fetchpriority="high">
+              <span class="ha-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+              <span class="ha-rec" aria-hidden="true">4:5 &middot; RAW</span>
+            </span>
+          </a>
+
+          <a class="ha ha-mk" href="/marketing" aria-label="Marketing">
+            <span class="ha-label"><b>02</b> Marketing</span>
+            <span class="ha-ad" aria-hidden="true">
+              <span class="ha-ad-tag">Sponsored</span>
+              <b>yourbusiness.co.nz</b>
+              <small>Trusted local service in Christchurch</small>
+            </span>
+            <span class="ha-chart" aria-hidden="true">
+              <span class="ha-chart-head"><small>Enquiries</small><em>&uarr;</em></span>
+              <svg viewBox="0 0 200 64" preserveAspectRatio="none">
+                <defs><linearGradient id="haFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fa8be" stop-opacity=".45"/><stop offset="1" stop-color="#7fa8be" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0 56 C24 52,36 50,52 44 S84 40,100 32 S134 26,150 18 S182 10,200 6 L200 64 L0 64Z" fill="url(#haFill)"/>
+                <path d="M0 56 C24 52,36 50,52 44 S84 40,100 32 S134 26,150 18 S182 10,200 6" fill="none" stroke="#3d6a85" stroke-width="2.4" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </a>
         </div>
       </div>
     </div>
@@ -785,7 +932,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   <!-- WHAT I DO -->
   <section id="what">
     <div class="shell">
-      <div class="fu" style="display:flex;flex-direction:column;gap:.9rem;align-items:flex-start;max-width:46rem;margin-bottom:clamp(2rem,4vw,3rem)">
+      <div class="sec-head fu">
         <span class="eyebrow">What I do</span>
         <h2>Three things, one person, start to finish.</h2>
         <p class="lede">Have a look at whichever one you came for &mdash; each has its own page with
@@ -850,38 +997,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
               <span class="ig-who"><b>jay.d.vera</b><small>Christchurch, New Zealand</small></span>
             </div>
 
-            <div class="ig-pair">
-              <!-- A post and a Reel side by side, because the package is
-                   both: stills to fill a grid and vertical video to fill
-                   the tab people actually watch. -->
-              <div class="ig-post">
-                <div class="ig-frame"><img src="/assets/hero-cafe.jpg" alt="Caf&eacute; interior shot by White Cloud in Christchurch" loading="lazy" width="1000" height="1250"></div>
-                <div class="ig-acts" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.2A4 4 0 0 1 12 8a4 4 0 0 1 7-1.2C19 15.6 12 20 12 20z"/></svg>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8 8 0 1 1-3.4-6.5L20.5 4l-1 4.2A8 8 0 0 1 20.5 12z"/></svg>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L10.5 13.5M21 3l-6.5 18-4-8-8-4L21 3z"/></svg>
-                </div>
-                <p class="ig-text"><b>jay.d.vera</b> Winter menu, shot between services. Fifteen like
-                  this landed the same week &mdash; enough to keep the grid going for a month.</p>
-                <p class="ig-cap"><b>Post</b> &middot; stills for the grid</p>
+            <div class="ig-post">
+              <div class="ig-frame"><img src="/assets/hero-cafe.jpg" alt="Caf&eacute; interior shot by White Cloud in Christchurch" loading="lazy" width="1000" height="1250"></div>
+              <div class="ig-acts" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.2A4 4 0 0 1 12 8a4 4 0 0 1 7-1.2C19 15.6 12 20 12 20z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8 8 0 1 1-3.4-6.5L20.5 4l-1 4.2A8 8 0 0 1 20.5 12z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L10.5 13.5M21 3l-6.5 18-4-8-8-4L21 3z"/></svg>
               </div>
-
-              <div class="ig-reel">
-                <div class="ig-frame tall">
-                  <img src="/assets/reel-1.jpg" alt="A short-form vertical video made by White Cloud" loading="lazy" width="360" height="640">
-                  <span class="ig-play" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
-                  </span>
-                  <span class="ig-badge">Reel</span>
-                </div>
-                <p class="ig-cap"><b>Reel</b> &middot; vertical, captioned</p>
-              </div>
+              <p class="ig-text"><b>jay.d.vera</b> Winter menu, shot between services. Fifteen like
+                this landed the same week &mdash; enough to keep the grid going for a month.</p>
             </div>
           </div>
         </div>
       </a>
 
-      <p style="text-align:center;margin-top:clamp(1.6rem,3vw,2.4rem);font-size:.95rem">
+      <p class="svc-foot">
         Run a caf&eacute; or restaurant? There is
         <a href="/restaurants" style="color:var(--brand-ink);font-weight:700">a page just for you</a>.
       </p>
@@ -891,7 +1021,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   <!-- PROJECTS -->
   <section id="work">
     <div class="shell">
-      <div class="fu" style="display:flex;flex-direction:column;gap:.9rem;align-items:flex-start;max-width:46rem;margin-bottom:clamp(1.8rem,3.5vw,2.8rem)">
+      <div class="sec-head fu">
         <span class="eyebrow">Recent projects</span>
         <h2>Built, launched, still running.</h2>
         <p class="lede">Real sites for real businesses &mdash; have a look for yourself, they are all live.</p>
@@ -900,7 +1030,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
       <div class="proj-grid fug">
 
         <a class="proj glass" href="https://biblio.ink" target="_blank" rel="noopener">
-          <div class="proj-shot"><img src="/assets/biblio-preview-900.jpg" alt="Biblio, a 3D bookshelf web and iOS app" loading="lazy" width="900" height="675"></div>
+          <div class="proj-shot"><span class="proj-frost" aria-hidden="true"><span>View project</span></span><img src="/assets/biblio-preview-900.jpg" alt="Biblio, a 3D bookshelf web and iOS app" loading="lazy" width="900" height="675"></div>
           <div class="proj-body">
             <span class="proj-tag">Web app &amp; native iOS</span>
             <h3>Biblio</h3>
@@ -911,7 +1041,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
         </a>
 
         <a class="proj glass" href="https://rakkhun.co.nz" target="_blank" rel="noopener">
-          <div class="proj-shot"><img src="/assets/rakkhun-preview-900.jpg" alt="Rak Khun Thai Eatery and Bar website" loading="lazy" width="900" height="675"></div>
+          <div class="proj-shot"><span class="proj-frost" aria-hidden="true"><span>View project</span></span><img src="/assets/rakkhun-preview-900.jpg" alt="Rak Khun Thai Eatery and Bar website" loading="lazy" width="900" height="675"></div>
           <div class="proj-body">
             <span class="proj-tag">Restaurant &middot; full rebuild</span>
             <h3>Rak Khun Thai Eatery &amp; Bar</h3>
@@ -922,7 +1052,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
         </a>
 
         <a class="proj glass" href="https://groov.nz" target="_blank" rel="noopener">
-          <div class="proj-shot"><img src="/assets/groovnz-preview-900.jpg" alt="Groov NZ online store" loading="lazy" width="900" height="675"></div>
+          <div class="proj-shot"><span class="proj-frost" aria-hidden="true"><span>View project</span></span><img src="/assets/groovnz-preview-900.jpg" alt="Groov NZ online store" loading="lazy" width="900" height="675"></div>
           <div class="proj-body">
             <span class="proj-tag">E-commerce</span>
             <h3>Groov NZ</h3>
@@ -933,7 +1063,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
         </a>
 
         <a class="proj glass" href="https://agenti.nz" target="_blank" rel="noopener">
-          <div class="proj-shot"><img src="/assets/agenti-preview-900.jpg" alt="Agenti NZ brand and design system" loading="lazy" width="900" height="675"></div>
+          <div class="proj-shot"><span class="proj-frost" aria-hidden="true"><span>View project</span></span><img src="/assets/agenti-preview-900.jpg" alt="Agenti NZ brand and design system" loading="lazy" width="900" height="675"></div>
           <div class="proj-body">
             <span class="proj-tag">Brand &amp; design system</span>
             <h3>Agenti NZ</h3>
@@ -969,30 +1099,30 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   <!-- CONTACT -->
   <section id="contact">
     <div class="shell">
-      <div class="fu" style="display:flex;flex-direction:column;gap:.9rem;align-items:flex-start;max-width:46rem;margin-bottom:clamp(1.8rem,3vw,2.6rem)">
+      <div class="sec-head fu">
         <span class="eyebrow">Let&rsquo;s talk</span>
         <h2>Tell me what you&rsquo;re after.</h2>
         <p class="lede">No brief needed and nothing is locked in by sending this. I read every enquiry
           myself and come back within one business day.</p>
       </div>
 
-      <div class="contact-wrap">
-        <div class="contact-aside fug">
-          <div class="line glass glass-soft">
+      <div class="contact-wrap glass fu">
+        <div class="contact-aside">
+          <a class="line" href="mailto:kiaora@wcloud.nz">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
             <div><b>kiaora@wcloud.nz</b><span>Email, any time</span></div>
-          </div>
-          <div class="line glass glass-soft">
+          </a>
+          <a class="line" href="tel:+6421854847">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h4l2 5-2.5 1.5a11 11 0 005 5L14 12l5 2v4a1.5 1.5 0 01-1.5 1.5A15.5 15.5 0 012.5 4.5 1.5 1.5 0 014 3z"/></svg>
             <div><b>021 854 847</b><span>Prefer to talk? Give me a ring</span></div>
-          </div>
-          <div class="line glass glass-soft">
+          </a>
+          <div class="line">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 7v5.2l3.3 2"/></svg>
             <div><b>Within one business day</b><span>Usually a good deal sooner</span></div>
           </div>
         </div>
 
-        <div class="contact-card glass fu">
+        <div class="contact-card">
 <form name="contact" netlify netlify-honeypot="bot-field" id="contactForm">
         <input type="hidden" name="form-name" value="contact">
         <input type="hidden" name="first_touch" value="">
@@ -1009,12 +1139,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group half">
           <label class="form-label" for="fphone">Phone Number</label>
           <input class="form-input" type="tel" id="fphone" name="phone" placeholder="e.g. 021 123 4567">
         </div>
 
-        <div class="form-group">
+        <div class="form-group half">
           <label class="form-label" for="fbiz">What type of business are you? *</label>
           <select class="form-select" id="fbiz" name="business_type" required>
             <option value="" disabled selected>Select your business type…</option>
@@ -1039,7 +1169,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group half">
           <label class="form-label" for="fpackage">Which package are you interested in?</label>
           <select class="form-select" id="fpackage" name="package">
             <option value="" disabled selected>Select a package…</option>
@@ -1050,7 +1180,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
           </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group half">
           <label class="form-label" for="fhear">How did you hear about us?</label>
           <select class="form-select" id="fhear" name="referral_source">
             <option value="" disabled selected>Select one&hellip;</option>
@@ -1076,11 +1206,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
         <button type="submit" class="form-submit">Send My Enquiry →</button>
 
-        <!-- Secondary on purpose: the form is still the main path, but
-             plenty of small business owners would rather just ring. -->
-        <p class="form-call">Prefer to talk? Call
-          <a href="tel:+6421854847">021 854 847</a>
-        </p>
       </form>
         </div>
       </div>

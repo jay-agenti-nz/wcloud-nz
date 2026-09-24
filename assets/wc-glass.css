@@ -19,12 +19,12 @@
   --a-dawn:   rgba(255, 214, 198, .58);
   --a-pale:   rgba(206, 228, 248, .80);
 
-  --g-fill:   linear-gradient(140deg, rgba(255,255,255,.52), rgba(255,255,255,.22));
-  --g-solid:  linear-gradient(140deg, rgba(255,255,255,.70), rgba(255,255,255,.44));
+  --g-fill:   linear-gradient(140deg, rgba(255,255,255,.48), rgba(255,255,255,.18));
+  --g-solid:  linear-gradient(140deg, rgba(255,255,255,.64), rgba(255,255,255,.38));
   --g-edge:   rgba(255,255,255,.65);
   --g-spec:   rgba(255,255,255,.92);
   --g-shadow: 0 10px 34px -12px rgba(34,51,63,.22), 0 2px 8px -3px rgba(34,51,63,.10);
-  --g-blur:   blur(26px) saturate(190%);
+  --g-blur:   blur(12px) saturate(170%);
   --d-fill:   linear-gradient(150deg, rgba(47,73,88,.88), rgba(28,46,56,.92));
 
   /* The frame. Same edges as the homepage: a 1240px column with a

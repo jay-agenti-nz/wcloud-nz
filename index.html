@@ -56,11 +56,11 @@
   --ground:   #f5f9fd;
 
   /* Glass */
-  --g-fill:   linear-gradient(140deg, rgba(255,255,255,.52), rgba(255,255,255,.22));
+  --g-fill:   linear-gradient(140deg, rgba(255,255,255,.48), rgba(255,255,255,.18));
   --g-edge:   rgba(255,255,255,.65);
   --g-spec:   rgba(255,255,255,.92);
   --g-shadow: 0 10px 34px -12px rgba(34,51,63,.22), 0 2px 8px -3px rgba(34,51,63,.10);
-  --g-blur:   blur(26px) saturate(190%);
+  --g-blur:   blur(12px) saturate(170%);
 
   --serif: 'Lora', Georgia, serif;
   --sans:  'Nunito', system-ui, -apple-system, sans-serif;
@@ -259,7 +259,25 @@ section { padding-block: var(--s-section); }
 .btn-glass:hover { background: linear-gradient(140deg, rgba(255,255,255,.78), rgba(255,255,255,.42)); }
 
 /* ── Hero ─────────────────────────────────────────────────────── */
-.hero { padding-block: clamp(6.5rem, 13vh, 8.5rem) var(--s-section); }
+.hero { position: relative; isolation: isolate; padding-block: clamp(6.5rem, 13vh, 8.5rem) var(--s-section); }
+/* The same cloud field as the service pages. A sky sits under it so
+   white clouds have something to read against, and both fade out at
+   the bottom into the page's own field rather than stopping on a line. */
+.hero::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(58% 46% at 74% 24%, rgba(255,255,255,.7), transparent 62%),
+    linear-gradient(168deg, #dcebf6 0%, #c9e0f0 50%, #bcd8ec 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent);
+          mask-image: linear-gradient(to bottom, #000 62%, transparent);
+}
+#cloudCanvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  display: block; z-index: 0; pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
+          mask-image: linear-gradient(to bottom, #000 70%, transparent);
+}
+.hero > .shell { position: relative; z-index: 1; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
 
 .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .4rem; }
@@ -267,7 +285,7 @@ section { padding-block: var(--s-section); }
   padding: .45rem 1rem; border-radius: 999px;
   font-size: .82rem; font-weight: 600; color: var(--deep);
   background: linear-gradient(140deg, rgba(255,255,255,.55), rgba(255,255,255,.26));
-  backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(8px) saturate(150%); -webkit-backdrop-filter: blur(8px) saturate(150%);
   border: 1px solid var(--g-edge);
   box-shadow: inset 0 1px 0 var(--g-spec);
 }
@@ -559,7 +577,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     padding: 2.6cqw; border-radius: 5.5cqw;
     text-decoration: none; color: inherit;
     background: linear-gradient(140deg, rgba(255,255,255,.72), rgba(255,255,255,.4));
-    backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(10px) saturate(160%); -webkit-backdrop-filter: blur(10px) saturate(160%);
     border: 1px solid rgba(255,255,255,.85);
     box-shadow: 0 22px 46px -22px rgba(34,51,63,.42), inset 0 1px 0 var(--g-spec);
     animation: haFloat 7s var(--ease) infinite alternate;
@@ -642,7 +660,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     position: absolute; inset: 0; z-index: 1;
     display: grid; place-items: center;
     background: linear-gradient(150deg, rgba(248,251,254,.74), rgba(222,236,248,.6));
-    backdrop-filter: blur(14px) saturate(130%); -webkit-backdrop-filter: blur(14px) saturate(130%);
+    backdrop-filter: blur(7px) saturate(125%); -webkit-backdrop-filter: blur(7px) saturate(125%);
     transition: opacity .55s var(--ease), backdrop-filter .55s var(--ease);
   }
   .proj-frost span {
@@ -862,6 +880,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
   <!-- HERO -->
   <section class="hero">
+    <canvas id="cloudCanvas" aria-hidden="true"></canvas>
     <div class="shell">
       <div class="hero-in glass fu">
         <div class="hero-copy">
@@ -1330,10 +1349,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   import { initNav } from '/assets/nav.js';
   import { initReveal } from '/assets/reveal.js';
   import { initAttribution } from '/assets/attribution.js';
+  import { initHeroCloud } from '/assets/hero-cloud.js';
 
   initNav(document.getElementById('v2nav'));
   initReveal();
   initAttribution(document.getElementById('contactForm'));
+
+  // Clouds thin out behind the headline so it never reads over a puff.
+  var canvas = document.getElementById('cloudCanvas');
+  var headline = document.querySelector('.hero h1');
+  window.__heroCloud = initHeroCloud(canvas, {
+    clearing: function () {
+      if (window.innerWidth <= 900) return null;
+      var c = canvas.getBoundingClientRect(), h = headline.getBoundingClientRect();
+      return { left: h.left - c.left - 40, right: h.right - c.left + 40,
+               top: h.top - c.top - 30, bottom: h.bottom - c.top + 30 };
+    }
+  });
 </script>
 
 </body>

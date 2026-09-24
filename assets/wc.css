@@ -163,7 +163,7 @@ nav {
   display: flex; align-items: center; justify-content: space-between;
   padding: 1.1rem var(--gutter);
   background: rgba(127,168,190,.7);
-  backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(10px) saturate(180%); -webkit-backdrop-filter: blur(10px) saturate(180%);
   border-bottom: 1px solid rgba(255,255,255,.25);
   transition: box-shadow .3s, background .3s;
 }
@@ -316,7 +316,7 @@ body.wc-canvas > .wc-sheet {
 .btn-w {
   background: rgba(255,255,255,.62); color: var(--deep); padding: .9rem 2.2rem;
   border: 1px solid rgba(255,255,255,.6);
-  backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(8px) saturate(180%); -webkit-backdrop-filter: blur(8px) saturate(180%);
   box-shadow: 0 6px 24px rgba(42,61,74,.12), inset 0 1px 0 rgba(255,255,255,.6);
   transition: background .25s, transform .25s;
 }

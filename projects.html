@@ -62,11 +62,14 @@
     transition: transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s cubic-bezier(.22,1,.36,1);
   }
   .proj:hover { transform: translateY(-6px); box-shadow: 0 30px 62px -26px rgba(34,51,63,.36), inset 0 1px 0 var(--g-spec); }
+  /* Each screenshot at its own ratio: nothing cropped, nothing
+     stretched. The card grows to fit the image rather than the other
+     way round. */
   .proj-shot {
-    border-radius: 18px; overflow: hidden; aspect-ratio: 16 / 11;
+    border-radius: 18px; overflow: hidden;
     box-shadow: 0 12px 28px -16px rgba(34,51,63,.4), inset 0 0 0 1px rgba(255,255,255,.55);
   }
-  .proj-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform .7s cubic-bezier(.22,1,.36,1); }
+  .proj-shot img { width: 100%; height: auto; display: block; transition: transform .7s cubic-bezier(.22,1,.36,1); }
   .proj:hover .proj-shot img { transform: scale(1.03); }
   .proj-body { display: flex; flex-direction: column; gap: .45rem; padding: 1.2rem .7rem .6rem; }
   .proj-tag { font-family: 'Raleway', sans-serif; font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--brand-ink); }
@@ -144,7 +147,7 @@
       <div class="proj-grid">
 
         <a class="proj glass" href="https://biblio.ink" target="_blank" rel="noopener">
-          <div class="proj-shot"><img src="/assets/biblio-preview.jpg" alt="Biblio, a 3D bookshelf web and iOS app" loading="lazy" width="1200" height="900"></div>
+          <div class="proj-shot"><img src="/assets/biblio-preview.jpg" alt="Biblio, a 3D bookshelf web and iOS app" loading="lazy" width="1600" height="1005"></div>
           <div class="proj-body">
             <span class="proj-tag">Web app &amp; native iOS</span>
             <h3>Biblio</h3>
@@ -155,7 +158,7 @@
         </a>
 
         <a class="proj glass" href="https://rakkhun.co.nz" target="_blank" rel="noopener">
-          <div class="proj-shot"><img src="/assets/rakkhun-preview.jpg" alt="Rak Khun Thai Eatery and Bar website" loading="lazy" width="1200" height="900"></div>
+          <div class="proj-shot"><img src="/assets/rakkhun-preview.jpg" alt="Rak Khun Thai Eatery and Bar website" loading="lazy" width="1600" height="1004"></div>
           <div class="proj-body">
             <span class="proj-tag">Restaurant &middot; full rebuild</span>
             <h3>Rak Khun Thai Eatery &amp; Bar</h3>
@@ -166,7 +169,7 @@
         </a>
 
         <a class="proj glass" href="https://groov.nz" target="_blank" rel="noopener">
-          <div class="proj-shot"><img src="/assets/groovnz-preview.jpg" alt="Groov NZ online store" loading="lazy" width="1200" height="900"></div>
+          <div class="proj-shot"><img src="/assets/groovnz-preview.jpg" alt="Groov NZ online store" loading="lazy" width="1600" height="1040"></div>
           <div class="proj-body">
             <span class="proj-tag">E-commerce</span>
             <h3>Groov NZ</h3>
@@ -177,7 +180,7 @@
         </a>
 
         <a class="proj glass" href="https://agenti.nz" target="_blank" rel="noopener">
-          <div class="proj-shot"><img src="/assets/agenti-preview.jpg" alt="Agenti NZ brand and design system" loading="lazy" width="1200" height="900"></div>
+          <div class="proj-shot"><img src="/assets/agenti-preview.jpg" alt="Agenti NZ brand and design system" loading="lazy" width="1600" height="1004"></div>
           <div class="proj-body">
             <span class="proj-tag">Brand &amp; design system</span>
             <h3>Agenti NZ</h3>

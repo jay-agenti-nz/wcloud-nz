@@ -1,4 +1,4 @@
-:root {
+  :root {
     color-scheme: light;
     --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, sans-serif;
     --font-body: "Karla", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -41,6 +41,21 @@
     --band-foot: #F5FAFD;
     --band-top: #E4F1FB;
     --band-lip: inset 0 1px 0 rgba(255,255,255,0.75);
+    --portrait-a: #D6EAF8;
+    --portrait-b: #A7CDEB;
+    --portrait-glow: rgba(251,231,199,0.95);
+    --field-bg: #FFFFFF;
+    --field-border: rgba(16,40,61,0.28);
+    /* get-in-touch band: frosted cream glass (Meet Bee's warmth) fading to a
+       pale blue corner, see-through enough to show the glows behind it */
+    --cta-bg: linear-gradient(210deg, rgba(255,251,243,0.78) 0%, rgba(253,244,227,0.72) 45%, rgba(249,236,214,0.68) 70%, rgba(222,236,248,0.72) 100%);
+    --cta-ink: #10283D;
+    --cta-ink-soft: #4C6478;
+    --cta-border: rgba(255,255,255,0.85);
+    --cta-shadow: rgba(15,64,110,0.22);
+    --cta-link-bg: rgba(255,255,255,0.6);
+    --cta-link-bg-hover: rgba(255,255,255,0.9);
+    --cta-link-border: rgba(16,42,64,0.10);
     --nav-h: 66px;
 
     --safe-t: env(safe-area-inset-top, 0px);
@@ -84,6 +99,19 @@
       --band-foot: #051520;
       --band-top: #0C2739;
       --band-lip: inset 0 1px 0 rgba(255,255,255,0.07);
+      --portrait-a: #1C4867;
+      --portrait-b: #10304A;
+      --portrait-glow: rgba(231,174,85,0.35);
+      --field-bg: rgba(255,255,255,0.06);
+      --field-border: rgba(255,255,255,0.28);
+      --cta-bg: linear-gradient(210deg, rgba(255,236,200,0.09) 0%, rgba(255,255,255,0.05) 50%, rgba(93,170,224,0.12) 100%);
+      --cta-ink: #F2EDE4;
+      --cta-ink-soft: #C9D3DB;
+      --cta-border: rgba(255,255,255,0.14);
+      --cta-shadow: rgba(0,0,0,0.55);
+      --cta-link-bg: rgba(255,255,255,0.06);
+      --cta-link-bg-hover: rgba(255,255,255,0.12);
+      --cta-link-border: rgba(255,255,255,0.14);
     }
   }
   :root[data-theme="dark"] {
@@ -121,10 +149,23 @@
     --band-foot: #051520;
     --band-top: #0C2739;
     --band-lip: inset 0 1px 0 rgba(255,255,255,0.07);
+    --portrait-a: #1C4867;
+    --portrait-b: #10304A;
+    --portrait-glow: rgba(231,174,85,0.35);
+    --field-bg: rgba(255,255,255,0.06);
+    --field-border: rgba(255,255,255,0.28);
+    --cta-bg: linear-gradient(210deg, rgba(255,236,200,0.09) 0%, rgba(255,255,255,0.05) 50%, rgba(93,170,224,0.12) 100%);
+    --cta-ink: #F2EDE4;
+    --cta-ink-soft: #C9D3DB;
+    --cta-border: rgba(255,255,255,0.14);
+    --cta-shadow: rgba(0,0,0,0.55);
+    --cta-link-bg: rgba(255,255,255,0.06);
+    --cta-link-bg-hover: rgba(255,255,255,0.12);
+    --cta-link-border: rgba(255,255,255,0.14);
   }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; overflow-x: clip; }
+  html { scroll-behavior: smooth; }
   html, body { margin: 0; }
   body {
     background: var(--band-top);
@@ -335,7 +376,8 @@
 
   /* ---------- hero ---------- */
   main { margin-top: calc(-1 * var(--nav-h)); }
-  .hero { padding-block: calc(var(--nav-h) + clamp(28px, 4vw, 54px)) clamp(44px, 7vw, 84px); }
+  /* overflow-x clip: the glow behind the hero cards is wider than a phone screen */
+  .hero { padding-block: calc(var(--nav-h) + clamp(28px, 4vw, 54px)) clamp(44px, 7vw, 84px); overflow-x: clip; }
   .hero-grid {
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
@@ -380,7 +422,7 @@
   }
   .hero          { background: var(--band-hero); }
   #services      { background: var(--band-services); }
-  #why-us        { background: var(--band-why); }
+  #about         { background: var(--band-why); }
   #who-we-help   { background: var(--band-who); }
   #testimonials  { background: var(--band-testi); }
   #contact       { background: var(--band-contact); }
@@ -407,65 +449,165 @@
   }
   .service-card p { font-size: 0.94rem; color: var(--ink-soft); margin: 0; }
 
-  /* why us */
-  .why-grid {
+  /* about */
+  .about-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 0.7fr 1.3fr;
     gap: clamp(32px, 6vw, 72px);
     align-items: center;
   }
-  .why-copy p { font-size: 1.06rem; color: var(--ink-soft); margin: 0 0 16px; }
-  .why-copy p:last-child { margin-bottom: 0; }
-  .why-panel { padding: 26px; display: flex; flex-direction: column; gap: 14px; }
-  .why-row { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 14px; background: var(--glass-fill-soft); }
-  .why-row .icon {
-    width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    background: var(--primary-tint); color: var(--primary-deep);
+  .portrait {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    max-width: 300px;
+    justify-self: center;
   }
-  .why-row b { display: block; font-size: 0.94rem; font-weight: 600; }
-  .why-row span { font-size: 0.82rem; color: var(--ink-soft); }
+  /* arch behind the cutout; the photo's head rises above its top edge */
+  .portrait-arch {
+    position: absolute;
+    inset: 18% 0 0 0;
+    border-radius: 999px 999px 28px 28px;
+    background:
+      radial-gradient(circle at 72% 18%, var(--portrait-glow) 0%, transparent 58%),
+      linear-gradient(170deg, var(--portrait-a) 0%, var(--portrait-b) 100%);
+    box-shadow: var(--glass-shadow);
+  }
+  .portrait img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0 0 28px 28px;
+  }
+  .portrait-badge {
+    position: absolute;
+    left: -14px;
+    bottom: 28px;
+    padding: 12px 18px;
+    background: var(--glass-fill-strong);
+  }
+  .portrait-badge b { display: block; font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; }
+  .portrait-badge span { display: block; font-size: 0.8rem; color: var(--ink-soft); font-weight: 600; }
+  .about-copy p:not(.eyebrow) { font-size: 1.06rem; color: var(--ink-soft); margin: 0 0 16px; }
+  .partners .eyebrow { margin: 0; }
+  .about-copy h2 { font-size: clamp(1.7rem, 3vw, 2.35rem); margin: 10px 0 20px; }
+  .partners {
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid var(--glass-border-soft);
+  }
+  .partner-list { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .partner-list li { font-size: 0.88rem; font-weight: 600; padding: 9px 18px; color: var(--ink); }
 
   /* who we help */
   .chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
   .chip { font-size: 0.86rem; font-weight: 500; padding: 9px 16px; color: var(--ink-soft); }
   .who-lede { font-size: 1.1rem; max-width: 62ch; color: var(--ink-soft); }
 
-  /* testimonials */
-  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  /* testimonials: one long review featured, the rest in a 2x2 beside it */
+  .testi-grid { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 20px; }
   .testi-card { padding: 26px 24px; display: flex; flex-direction: column; gap: 16px; }
+  .testi-feature { grid-row: span 2; padding: 34px 32px; }
   .testi-mark { font-family: var(--font-display); font-weight: 700; font-size: 2.4rem; color: var(--honey); line-height: 1; }
+  .testi-feature .testi-mark { font-size: 3.2rem; }
   .testi-card p.quote { margin: 0; font-size: 1rem; color: var(--ink); flex-grow: 1; }
-  .testi-attr { font-size: 0.82rem; color: var(--ink-faint); font-weight: 600; letter-spacing: 0.02em; }
+  .testi-feature p.quote { font-size: 1.14rem; line-height: 1.65; color: var(--ink-soft); }
+  .testi-feature p.quote strong { color: var(--ink); font-weight: 600; }
+  .testi-attr { font-size: 0.9rem; color: var(--ink); font-weight: 700; letter-spacing: -0.005em; }
 
   /* cta band */
+  #contact { overflow-x: clip; }
+  #contact .wrap { position: relative; }
+  .contact-glow {
+    position: absolute;
+    inset: -8% 2%;
+    background:
+      radial-gradient(closest-side, var(--blob-b) 0%, transparent 72%) 12% 20% / 55% 70% no-repeat,
+      radial-gradient(closest-side, var(--blob-a) 0%, transparent 72%) 90% 85% / 55% 70% no-repeat;
+    filter: blur(36px);
+    opacity: 0.9;
+    pointer-events: none;
+  }
   .cta-band {
+    position: relative;
     padding: clamp(36px, 6vw, 56px);
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 32px;
-    align-items: center;
-    background: var(--primary-glass);
+    grid-template-columns: 1fr 1.15fr;
+    gap: clamp(28px, 4vw, 48px);
+    align-items: start;
+    background: var(--cta-bg);
     backdrop-filter: blur(30px) saturate(180%);
     -webkit-backdrop-filter: blur(30px) saturate(180%);
-    border: 1px solid rgba(255,255,255,0.4);
-    box-shadow: 0 30px 70px -30px rgba(15,64,110,0.5), inset 0 1px 0 rgba(255,255,255,0.5);
+    border: 1px solid var(--cta-border);
+    box-shadow: 0 30px 70px -30px var(--cta-shadow), inset 0 1px 0 rgba(255,255,255,0.7), inset 0 -1px 0 rgba(255,255,255,0.25);
     border-radius: 26px;
+    color: var(--cta-ink);
   }
-  .cta-band h2 { color: #fff; font-size: clamp(1.6rem, 3vw, 2.1rem); }
-  .cta-band .lede { color: rgba(255,255,255,0.86); }
-  .cta-band .eyebrow { color: rgba(255,255,255,0.8); }
-  .cta-contact { display: flex; flex-direction: column; gap: 14px; }
+  /* same diagonal sheen as the other glass surfaces */
+  .cta-band::before {
+    content: "";
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    background: var(--sheen);
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+  /* content above the sheen, so the overlay only lightens the background */
+  .cta-band > * { position: relative; }
+  .cta-band h2 { color: var(--cta-ink); font-size: clamp(1.6rem, 3vw, 2.1rem); margin-top: 12px; }
+  .cta-band .lede { color: var(--cta-ink-soft); }
+  .cta-band .eyebrow { color: var(--primary-deep); margin: 0; }
+  .cta-contact { display: flex; flex-direction: column; gap: 12px; margin-top: 26px; }
   .cta-contact a {
     display: flex; align-items: center; gap: 12px;
-    text-decoration: none; color: #fff; font-weight: 600; font-size: 1rem;
-    background: rgba(255,255,255,0.14);
-    border: 1px solid rgba(255,255,255,0.28);
+    text-decoration: none; color: var(--cta-ink); font-weight: 600; font-size: 1rem;
+    background: var(--cta-link-bg);
+    border: 1px solid var(--cta-link-border);
     padding: 13px 18px; border-radius: 14px;
     transition: background 0.15s ease;
   }
-  .cta-contact a:hover { background: rgba(255,255,255,0.22); }
+  .cta-contact a:hover { background: var(--cta-link-bg-hover); }
   .cta-contact svg { flex-shrink: 0; }
+
+  /* enquiry form (Netlify Forms) */
+  .enquiry {
+    position: relative;
+    display: grid;
+    gap: 14px;
+    padding: clamp(20px, 3vw, 28px);
+    background: var(--glass-fill-menu);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: var(--glass-shadow-sm);
+    color: var(--ink);
+  }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .field { display: grid; gap: 6px; min-width: 0; }
+  .field label { font-size: 0.82rem; font-weight: 600; color: var(--ink-soft); }
+  .field .opt { font-weight: 400; color: var(--ink-faint); }
+  /* 1rem, not smaller: iOS Safari zooms the page into any field under 16px */
+  .field input, .field select, .field textarea {
+    width: 100%;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--ink);
+    background: var(--field-bg);
+    border: 1px solid var(--field-border);
+    border-radius: 12px;
+    padding: 11px 13px;
+  }
+  .field textarea { resize: vertical; min-height: 104px; }
+  .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible {
+    outline: 2px solid var(--primary); outline-offset: 1px; border-color: var(--primary);
+  }
+  .enquiry .btn { width: 100%; justify-content: center; padding-block: 13px; font-size: 0.95rem; }
+  .enquiry .btn:disabled { opacity: 0.6; cursor: progress; transform: none; }
+  .form-note { margin: 0; font-size: 0.8rem; color: var(--ink-faint); }
+  .form-status { margin: 0; font-size: 0.92rem; font-weight: 600; color: var(--primary-deep); }
+  .form-status:empty { display: none; }
+  /* honeypot: off-screen rather than display:none, which bots detect and skip */
+  .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
   /* footer */
   footer { padding-block: 34px 44px; }
@@ -488,10 +630,13 @@
     .hero-grid { grid-template-columns: 1fr; }
     .hero-art { min-height: 300px; margin-top: 8px; }
     .service-grid { grid-template-columns: 1fr; }
-    .why-grid { grid-template-columns: 1fr; }
-    .why-panel { order: -1; max-width: 420px; margin-inline: auto; }
+    .about-grid { grid-template-columns: 1fr; }
+    .portrait { max-width: 250px; }
+    .portrait-badge { left: 8px; }
     .testi-grid { grid-template-columns: 1fr; }
+    .testi-feature { grid-row: auto; }
     .cta-band { grid-template-columns: 1fr; text-align: left; }
+    .field-row { grid-template-columns: 1fr; }
   }
 
   @media (prefers-reduced-motion: reduce) {

@@ -234,7 +234,10 @@
     <p class="gate-mark">White Cloud &middot; Client preview</p>
     <h2>Ascent Accounting</h2>
     <p>This preview is private. Enter the PIN Jay sent you to view the mockups.</p>
-    <input type="password" id="pin" inputmode="numeric" maxlength="12" aria-label="Preview PIN" placeholder="••••••" autofocus>
+    <!-- inputmode text, not numeric: the PIN can contain letters, and numeric
+         pins the phone to the digit pad with no way to reach them.
+         autocapitalize off so iOS doesn't send "Jay" when "jay" was typed. -->
+    <input type="password" id="pin" inputmode="text" autocapitalize="off" autocorrect="off" spellcheck="false" maxlength="12" aria-label="Preview PIN" placeholder="Enter PIN" autofocus>
     <p id="gateErr" role="alert"></p>
     <button type="submit">View the mockups</button>
   </form>
@@ -345,7 +348,10 @@
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     err.textContent = '';
-    var value = pin.value.trim();
+    /* Lowercased before hashing: the PIN starts with letters, and a keyboard
+       that capitalises the first character would otherwise fail a correct PIN
+       with no way for the client to tell why. The stored hash is lowercase. */
+    var value = pin.value.trim().toLowerCase();
     if (!value) return;
 
     var ok = false;

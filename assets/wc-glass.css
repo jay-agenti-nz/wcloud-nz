@@ -98,14 +98,42 @@ body.wc-canvas > .wc-sheet {
    would be unreadable, and left as full-bleed slabs they read as a
    hole cut in the sky. So they become the same material, smoked:
    dark enough for white text, still letting the field through. */
-.v2-band.v2-ai, .v2-ai, .sc-band.dark, .v2-cta,
-.mk-quote, .mk-cta, #ai-search, #cta, .v2-trust, footer {
+.v2-band.v2-ai, .v2-ai, .sc-band.dark,
+.mk-quote, #ai-search, .v2-trust {
   background: var(--d-fill) !important;
   backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
   border-block: 1px solid rgba(255,255,255,.14);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
 }
 
+
+
+/* ── Closing call to action ───────────────────────────────────
+   Light, the same sky as the heroes, so each page ends where it
+   began rather than on a dark slab. */
+.v2-cta, .mk-cta, #cta {
+  position: relative; isolation: isolate;
+  background:
+    radial-gradient(58% 60% at 74% 20%, rgba(255,255,255,.75), transparent 62%),
+    radial-gradient(40% 50% at 12% 90%, rgba(255,214,222,.45), transparent 64%),
+    linear-gradient(168deg, #e3eff8 0%, #cfe3f1 55%, #c3dcee 100%) !important;
+  border-block: 1px solid var(--g-edge);
+  box-shadow: inset 0 1px 0 var(--g-spec);
+}
+.v2-cta h2, .mk-cta h2, #cta h2 { color: #22333f; }
+.v2-cta p, .mk-cta p, #cta p { color: #55707f; }
+.mk-cta a.mail { color: #3d6a85; }
+#cta .cta-deco { opacity: .35; }
+.v2-cta .btn-w, .mk-cta .btn-w, #cta .btn-w {
+  background: linear-gradient(140deg, #3d6a85, #22333f); color: #fff; border-color: transparent;
+  box-shadow: 0 12px 28px -14px rgba(34,51,63,.75), inset 0 1px 0 rgba(255,255,255,.3);
+}
+.v2-cta .btn-w:hover, .mk-cta .btn-w:hover, #cta .btn-w:hover { color: #fff; filter: brightness(1.12); }
+.v2-cta .btn-g, .mk-cta .btn-g, #cta .btn-g {
+  background: linear-gradient(140deg, rgba(255,255,255,.66), rgba(255,255,255,.34));
+  border: 1px solid var(--g-edge); color: #22333f;
+  box-shadow: var(--g-shadow), inset 0 1px 0 var(--g-spec);
+}
 
 /* ── Frame ────────────────────────────────────────────────────
    Bands stay full-bleed (the glass and the smoked panes run edge to
@@ -206,16 +234,33 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* ── Footer ───────────────────────────────────────────────────
-   Stays dark — the type on it is white — but becomes smoked glass
-   (set with the dark sections above) and floats as a pane rather
-   than running edge to edge under the sky. */
-footer {
-  border-radius: 28px 28px 0 0;
-  margin-inline: auto;
-  width: var(--wg-frame);
-  padding-inline: var(--wg-pad);
-  border-block-end: 0 !important;
+   Identical on every page, and identical to the homepage: one light
+   glass pane on the frame, logo left, links right, the legal line
+   under a hairline. */
+footer.wc-foot {
+  background: transparent; color: #55707f;
+  padding: clamp(2.75rem, 5.5vw, 4.5rem) 0 clamp(1.25rem, 2.4vw, 1.75rem);
+  font-size: .86rem; font-weight: 400; letter-spacing: 0;
 }
+footer.wc-foot .foot-in {
+  width: var(--wg-frame); max-width: none; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 1.4rem 2.5rem;
+  align-items: flex-start; justify-content: space-between;
+  padding: var(--wg-pad);
+  background: linear-gradient(140deg, rgba(255,255,255,.44), rgba(255,255,255,.18));
+  backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-edge); border-radius: 32px;
+  box-shadow: var(--g-shadow), inset 0 1px 0 var(--g-spec), inset 0 -1px 0 rgba(255,255,255,.28);
+}
+footer.wc-foot .logo-mark { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
+footer.wc-foot .logo-wave-svg { width: 38px; height: auto; }
+footer.wc-foot .logo-wordmark { display: flex; flex-direction: column; line-height: 1; font-family: 'Raleway', sans-serif; font-size: .62rem; font-weight: 700; letter-spacing: .26em; }
+footer.wc-foot .logo-wordmark span, footer.wc-foot .logo-wordmark span:last-child { color: #22333f; }
+footer.wc-foot .foot-links { display: flex; flex-wrap: wrap; gap: .3rem 1.2rem; }
+footer.wc-foot .foot-links a { font-size: .86rem; color: #55707f; text-decoration: none; }
+footer.wc-foot .foot-links a:hover { color: #3d6a85; }
+footer.wc-foot .foot-legal { width: 100%; font-size: .8rem; color: #55707f; opacity: .85; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.55); line-height: 1.7; }
+footer.wc-foot .foot-legal a { color: inherit; text-decoration: underline; }
 
 /* ── Nav ──────────────────────────────────────────────────────
    Already glass; this just lifts it to the homepage's weight and

@@ -37,6 +37,12 @@
   </url>
 
   <url>
+    <loc>https://wcloud.nz/projects</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://wcloud.nz/websites</loc>
     <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>

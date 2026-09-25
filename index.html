@@ -504,40 +504,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .hero { padding-block: 6rem var(--s-section); }
 }
 
-  /* ── Projects ─────────────────────────────────────────────────
-     Two up, and each card carries the name, the domain and what the
-     job actually was. The old strip was four thumbnails with a
-     one-word caption, which showed that work exists without showing
-     what any of it is. */
-  .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-stack); }
-  .proj {
-    display: flex; flex-direction: column;
-    padding: clamp(.8rem, 1.4vw, 1rem);
-    text-decoration: none; color: inherit;
-    transition: transform .45s var(--ease), box-shadow .45s var(--ease);
-  }
-  .proj:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 30px 62px -26px rgba(34,51,63,.36), inset 0 1px 0 var(--g-spec);
-  }
-  .proj-shot {
-    border-radius: calc(var(--r-md) - 4px); overflow: hidden;
-    aspect-ratio: 16 / 11;
-    box-shadow: 0 12px 28px -16px rgba(34,51,63,.4), inset 0 0 0 1px rgba(255,255,255,.55);
-  }
-  .proj-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform .7s var(--ease); }
-  .proj:hover .proj-shot img { transform: scale(1.04); }
-  .proj-body { display: flex; flex-direction: column; gap: .45rem; padding: 1.1rem .6rem .5rem; }
-  .proj-tag { font-family: var(--mark); font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--brand-ink); }
-  .proj h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
-  .proj p { font-size: .92rem; }
-  .proj-go {
-    display: inline-flex; align-items: center; gap: .4rem; margin-top: .35rem;
-    font-size: .88rem; font-weight: 700; color: var(--brand-ink);
-  }
-  .proj-go svg { width: 14px; height: 14px; stroke: currentColor; transition: transform .3s var(--ease); }
-  .proj:hover .proj-go svg { transform: translate(2px, -2px); }
-
   /* ── The feed ─────────────────────────────────────────────────
      Photography sells better as a feed than as one framed photo:
      it shows the volume and the rhythm, which is what the package
@@ -553,9 +519,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .ig-acts { display: flex; gap: .85rem; padding: 0 .2rem; }
   .ig-acts svg { width: 20px; height: 20px; stroke: var(--deep); opacity: .75; }
 
-  @media (max-width: 1000px) {
-    .proj-grid { grid-template-columns: 1fr; }
-  }
 
 
   /* ── Hero art ─────────────────────────────────────────────────
@@ -649,40 +612,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .ig-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .ig-text { font-size: .8rem; line-height: 1.5; color: var(--body); padding: 0 .2rem .1rem; text-wrap: pretty; }
   .ig-text b { color: var(--deep); font-weight: 700; }
-
-  /* ── Projects, frosted until you look ─────────────────────────
-     Four full-colour screenshots were louder than the services
-     above them. Behind glass they sit back as a quiet row, and the
-     one you point at clears. */
-  .proj-shot { position: relative; }
-  .proj-shot img { filter: saturate(.55); transition: transform .7s var(--ease), filter .6s var(--ease); }
-  .proj-frost {
-    position: absolute; inset: 0; z-index: 1;
-    display: grid; place-items: center;
-    background: linear-gradient(150deg, rgba(248,251,254,.74), rgba(222,236,248,.6));
-    backdrop-filter: blur(7px) saturate(125%); -webkit-backdrop-filter: blur(7px) saturate(125%);
-    transition: opacity .55s var(--ease), backdrop-filter .55s var(--ease);
-  }
-  .proj-frost span {
-    font-family: var(--mark); font-size: .7rem; font-weight: 700; letter-spacing: .18em;
-    text-transform: uppercase; color: var(--deep);
-    padding: .55rem 1.1rem; border-radius: 999px;
-    background: rgba(255,255,255,.72); border: 1px solid rgba(255,255,255,.95);
-    box-shadow: 0 10px 24px -12px rgba(34,51,63,.4), inset 0 1px 0 var(--g-spec);
-    transition: transform .45s var(--ease);
-  }
-  .proj:hover .proj-frost, .proj:focus-visible .proj-frost { opacity: 0; }
-  .proj:hover .proj-frost span { transform: scale(.94); }
-  .proj:hover .proj-shot img, .proj:focus-visible .proj-shot img { filter: none; }
-  /* No hover on a phone, so nothing would ever clear. Lighter frost
-     there, enough to calm the colour without hiding the work. */
-  @media (hover: none) {
-    .proj-frost { backdrop-filter: blur(2px) saturate(110%); -webkit-backdrop-filter: blur(2px) saturate(110%); background: linear-gradient(150deg, rgba(248,251,254,.34), rgba(222,236,248,.22)); }
-    .proj-frost span { display: none; }
-  }
-  @supports not (backdrop-filter: blur(1px)) {
-    .proj-frost { background: rgba(245,249,253,.62); }
-  }
 
   /* ── Contact: details across the top, form underneath ─────────
      One panel. The form used to scroll past a sticky column of
@@ -870,7 +799,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     <li><a href="/websites">Websites</a></li>
     <li><a href="/marketing">Marketing</a></li>
     <li><a href="/shoot-and-create">Shoot &amp; Create</a></li>
-    <li><a href="#work">Projects</a></li>
+    <li><a href="/projects">Projects</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact" class="cta">Get started</a></li>
   </ul>
@@ -921,7 +850,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
           <a class="ha ha-shoot" href="/shoot-and-create" aria-label="Shoot and Create">
             <span class="ha-label"><b>03</b> Shoot &amp; Create</span>
             <span class="ha-photo">
-              <img src="/assets/hero-plate-640.jpg" alt="" width="640" height="800" fetchpriority="high">
+              <img src="/assets/hero-thonglor-640.jpg" alt="" width="640" height="800" fetchpriority="high">
               <span class="ha-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
               <span class="ha-rec" aria-hidden="true">4:5 &middot; RAW</span>
             </span>
@@ -968,7 +897,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
           <span class="svc-go">See websites <i><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></span>
         </div>
         <div class="svc-media">
-          <img src="/assets/biblio-preview-900.jpg" alt="A website built by White Cloud for a Christchurch business" loading="lazy" width="900" height="675">
+          <img src="/assets/biblio-cascade-1200.jpg" alt="Biblio, a 3D bookshelf app built by White Cloud, showing books in a cascading row" loading="lazy" width="1200" height="754" style="object-position:72% 50%">
         </div>
       </a>
 
@@ -1034,65 +963,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
         Run a caf&eacute; or restaurant? There is
         <a href="/restaurants" style="color:var(--brand-ink);font-weight:700">a page just for you</a>.
       </p>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="work">
-    <div class="shell">
-      <div class="sec-head fu">
-        <span class="eyebrow">Recent projects</span>
-        <h2>Built, launched, still running.</h2>
-        <p class="lede">Real sites for real businesses &mdash; have a look for yourself, they are all live.</p>
-      </div>
-
-      <div class="proj-grid fug">
-
-        <a class="proj glass" href="https://biblio.ink" target="_blank" rel="noopener">
-          <div class="proj-shot"><span class="proj-frost" aria-hidden="true"><span>View project</span></span><img src="/assets/biblio-preview-900.jpg" alt="Biblio, a 3D bookshelf web and iOS app" loading="lazy" width="900" height="675"></div>
-          <div class="proj-body">
-            <span class="proj-tag">Web app &amp; native iOS</span>
-            <h3>Biblio</h3>
-            <p>Turns an ePub and PDF collection into a playful 3D bookshelf you can browse and read &mdash;
-              the same experience in the browser and on iPhone.</p>
-            <span class="proj-go">biblio.ink <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-
-        <a class="proj glass" href="https://rakkhun.co.nz" target="_blank" rel="noopener">
-          <div class="proj-shot"><span class="proj-frost" aria-hidden="true"><span>View project</span></span><img src="/assets/rakkhun-preview-900.jpg" alt="Rak Khun Thai Eatery and Bar website" loading="lazy" width="900" height="675"></div>
-          <div class="proj-body">
-            <span class="proj-tag">Restaurant &middot; full rebuild</span>
-            <h3>Rak Khun Thai Eatery &amp; Bar</h3>
-            <p>A ground-up, mobile-first rebuild for a Takanini Thai restaurant &mdash; bold food
-              photography, tabbed menus, and one-tap calling, ordering and directions.</p>
-            <span class="proj-go">rakkhun.co.nz <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-
-        <a class="proj glass" href="https://groov.nz" target="_blank" rel="noopener">
-          <div class="proj-shot"><span class="proj-frost" aria-hidden="true"><span>View project</span></span><img src="/assets/groovnz-preview-900.jpg" alt="Groov NZ online store" loading="lazy" width="900" height="675"></div>
-          <div class="proj-body">
-            <span class="proj-tag">E-commerce</span>
-            <h3>Groov NZ</h3>
-            <p>A complete online store set up end to end &mdash; products, secure checkout, payments,
-              shipping and inventory. Everything needed to sell from day one.</p>
-            <span class="proj-go">groov.nz <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-
-        <a class="proj glass" href="https://agenti.nz" target="_blank" rel="noopener">
-          <div class="proj-shot"><span class="proj-frost" aria-hidden="true"><span>View project</span></span><img src="/assets/agenti-preview-900.jpg" alt="Agenti NZ brand and design system" loading="lazy" width="900" height="675"></div>
-          <div class="proj-body">
-            <span class="proj-tag">Brand &amp; design system</span>
-            <h3>Agenti NZ</h3>
-            <p>A full brand and design system &mdash; colours, typography, components and guidelines,
-              built to stay consistent across every touchpoint.</p>
-            <span class="proj-go">agenti.nz <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-
-      </div>
     </div>
   </section>
 
@@ -1247,6 +1117,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
         <a href="/websites">Websites</a>
         <a href="/marketing">Marketing</a>
         <a href="/shoot-and-create">Shoot &amp; Create</a>
+        <a href="/projects">Projects</a>
         <a href="/restaurants">Restaurants</a>
         <a href="/blog">Guides</a>
         <a href="/review">Leave a Google review</a>
@@ -1277,6 +1148,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   (function () {
     var moved = { '#pricing': 1, '#care': 1, '#how': 1, '#process': 1, '#ai-search': 1, '#services': 1 };
     if (moved[location.hash]) location.replace('/websites' + location.hash);
+    if (location.hash === '#work') location.replace('/projects');
   })();
 
   /* A package chosen on /websites arrives here as ?package= */

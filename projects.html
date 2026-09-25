@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | White Cloud &mdash; Websites &amp; Apps Built in Christchurch</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://wcloud.nz/projects">
+<meta property="og:title"       content="Projects | White Cloud">
+<meta property="og:description" content="Websites, apps, online stores and brand systems built by White Cloud in Christchurch, all live. Biblio, Rak Khun Thai Eatery, Groov NZ and Agenti NZ.">
+<meta property="og:image"       content="https://wcloud.nz/og-image.jpg">
+<meta property="og:image:type"  content="image/jpeg">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Projects | White Cloud">
+<meta name="twitter:description" content="Websites, apps, online stores and brand systems built by White Cloud in Christchurch, all live. Biblio, Rak Khun Thai Eatery, Groov NZ and Agenti NZ.">
+<meta name="twitter:image"       content="https://wcloud.nz/og-image.jpg">
+
+<meta name="description" content="Websites, apps, online stores and brand systems built by White Cloud in Christchurch, all live. Biblio, Rak Khun Thai Eatery, Groov NZ and Agenti NZ.">
+<link rel="canonical" href="https://wcloud.nz/projects">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/wc.css">
+<meta name="robots" content="index, follow">
+<style>
+  /* Projects — the work, shown full colour. It lived on the homepage,
+     where four bright screenshots out-shouted the services; here it
+     is the point of the page, so nothing is frosted. */
+  .pj-hero {
+    position: relative; isolation: isolate; overflow: hidden;
+    padding-block: 9rem 3.5rem;
+  }
+  /* Sky and clouds fade into the page at the bottom; the words don't. */
+  .pj-hero::before {
+    content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(58% 46% at 74% 24%, rgba(255,255,255,.7), transparent 62%),
+      linear-gradient(168deg, #dcebf6 0%, #c9e0f0 50%, #bcd8ec 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent);
+            mask-image: linear-gradient(to bottom, #000 62%, transparent);
+  }
+  #cloudCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; pointer-events: none;
+    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent); mask-image: linear-gradient(to bottom, #000 70%, transparent); }
+  .pj-hero-copy { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; max-width: 46rem; }
+  .pj-hero-copy h1 { max-width: 14ch; }
+  .pj-hero-sub { font-size: var(--fs-lead); color: var(--dusk); max-width: 46ch; line-height: 1.75; }
+
+  .pj-band { padding-block: 1rem clamp(3rem, 6vw, 5rem); }
+  .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1.25rem, 2.4vw, 1.75rem); }
+  .proj {
+    display: flex; flex-direction: column;
+    padding: clamp(.8rem, 1.4vw, 1rem);
+    text-decoration: none; color: inherit;
+    background: var(--g-solid); backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
+    border: 1px solid var(--g-edge); border-radius: 28px;
+    box-shadow: var(--g-shadow), inset 0 1px 0 var(--g-spec);
+    transition: transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s cubic-bezier(.22,1,.36,1);
+  }
+  .proj:hover { transform: translateY(-6px); box-shadow: 0 30px 62px -26px rgba(34,51,63,.36), inset 0 1px 0 var(--g-spec); }
+  .proj-shot {
+    border-radius: 18px; overflow: hidden; aspect-ratio: 16 / 11;
+    box-shadow: 0 12px 28px -16px rgba(34,51,63,.4), inset 0 0 0 1px rgba(255,255,255,.55);
+  }
+  .proj-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform .7s cubic-bezier(.22,1,.36,1); }
+  .proj:hover .proj-shot img { transform: scale(1.03); }
+  .proj-body { display: flex; flex-direction: column; gap: .45rem; padding: 1.2rem .7rem .6rem; }
+  .proj-tag { font-family: 'Raleway', sans-serif; font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--brand-ink); }
+  .proj h3 { font-family: 'Lora', serif; font-size: clamp(1.25rem, 2vw, 1.55rem); color: var(--ink); line-height: 1.2; }
+  .proj p { font-size: .95rem; }
+  .proj-go { display: inline-flex; align-items: center; gap: .4rem; margin-top: .35rem; font-size: .9rem; font-weight: 700; color: var(--brand-ink); }
+  .proj-go svg { width: 14px; height: 14px; stroke: currentColor; transition: transform .3s; }
+  .proj:hover .proj-go svg { transform: translate(2px, -2px); }
+
+  .pj-cta { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; padding-block: clamp(3rem, 6vw, 5rem); }
+  .pj-cta h2 { color: var(--white); max-width: 22ch; }
+  .pj-cta p { color: rgba(255,255,255,.72); max-width: 48ch; }
+  .pj-cta .btns { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; margin-top: .4rem; }
+
+  @media (max-width: 900px) {
+    .pj-hero { padding-block: 7rem 2.5rem; }
+    .proj-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- Google tag (gtag.js) — GA4.
+     Loaded on the live domain only. Netlify deploy previews and a local
+     server hand out this same file, and counting those as real visits
+     both distorts the reports and is what makes Google warn about
+     "additional domains detected for configuration". Off the live
+     domain gtag is never defined, so the lead event below no-ops. -->
+<script>
+  (function () {
+    var h = location.hostname;
+    if (h !== 'wcloud.nz' && h !== 'www.wcloud.nz') return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-BERHW3QBYX');
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-BERHW3QBYX';
+    document.head.appendChild(s);
+  })();
+</script>
+<link rel="stylesheet" href="/assets/wc-glass.css">
+</head>
+<body class="wc-canvas">
+
+<nav class="wc-nav" id="mainnav">
+  <a href="/" class="logo-mark">
+    <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
+      <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
+  </a>
+  <ul class="wc-nav-links">
+      <li><a href="/websites">Websites</a></li>
+      <li><a href="/marketing">Marketing</a></li>
+      <li><a href="/shoot-and-create">Shoot &amp; Create</a></li>
+      <li><a href="/projects" aria-current="page">Projects</a></li>
+      <li><a href="/blog">Guides</a></li>
+      <li><a href="/#contact" class="wc-nav-cta">Get started</a></li>
+  </ul>
+</nav>
+
+<div class="wc-sheet">
+
+  <section class="pj-hero">
+    <canvas id="cloudCanvas" aria-hidden="true"></canvas>
+    <div class="pj-hero-copy">
+      <span class="badge"><span class="badge-dot"></span>Recent projects</span>
+      <h1 class="wc-display" id="heroHeadline">Built, launched, still running.</h1>
+      <p class="pj-hero-sub">Real sites for real businesses &mdash; have a look for yourself, they are all live.</p>
+    </div>
+  </section>
+
+  <section class="pj-band">
+      <div class="proj-grid">
+
+        <a class="proj glass" href="https://biblio.ink" target="_blank" rel="noopener">
+          <div class="proj-shot"><img src="/assets/biblio-preview.jpg" alt="Biblio, a 3D bookshelf web and iOS app" loading="lazy" width="1200" height="900"></div>
+          <div class="proj-body">
+            <span class="proj-tag">Web app &amp; native iOS</span>
+            <h3>Biblio</h3>
+            <p>Turns an ePub and PDF collection into a playful 3D bookshelf you can browse and read &mdash;
+              the same experience in the browser and on iPhone.</p>
+            <span class="proj-go">biblio.ink <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </div>
+        </a>
+
+        <a class="proj glass" href="https://rakkhun.co.nz" target="_blank" rel="noopener">
+          <div class="proj-shot"><img src="/assets/rakkhun-preview.jpg" alt="Rak Khun Thai Eatery and Bar website" loading="lazy" width="1200" height="900"></div>
+          <div class="proj-body">
+            <span class="proj-tag">Restaurant &middot; full rebuild</span>
+            <h3>Rak Khun Thai Eatery &amp; Bar</h3>
+            <p>A ground-up, mobile-first rebuild for a Takanini Thai restaurant &mdash; bold food
+              photography, tabbed menus, and one-tap calling, ordering and directions.</p>
+            <span class="proj-go">rakkhun.co.nz <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </div>
+        </a>
+
+        <a class="proj glass" href="https://groov.nz" target="_blank" rel="noopener">
+          <div class="proj-shot"><img src="/assets/groovnz-preview.jpg" alt="Groov NZ online store" loading="lazy" width="1200" height="900"></div>
+          <div class="proj-body">
+            <span class="proj-tag">E-commerce</span>
+            <h3>Groov NZ</h3>
+            <p>A complete online store set up end to end &mdash; products, secure checkout, payments,
+              shipping and inventory. Everything needed to sell from day one.</p>
+            <span class="proj-go">groov.nz <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </div>
+        </a>
+
+        <a class="proj glass" href="https://agenti.nz" target="_blank" rel="noopener">
+          <div class="proj-shot"><img src="/assets/agenti-preview.jpg" alt="Agenti NZ brand and design system" loading="lazy" width="1200" height="900"></div>
+          <div class="proj-body">
+            <span class="proj-tag">Brand &amp; design system</span>
+            <h3>Agenti NZ</h3>
+            <p>A full brand and design system &mdash; colours, typography, components and guidelines,
+              built to stay consistent across every touchpoint.</p>
+            <span class="proj-go">agenti.nz <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="pj-cta v2-cta">
+    <h2>Want yours on this page?</h2>
+    <p>Tell me what you are after and I will come back within one business day with how I would go about it.</p>
+    <div class="btns">
+      <a href="/#contact" class="btn-p">Get started</a>
+      <a href="/websites" class="btn-o">See websites</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-in">
+      <a href="/" class="logo-mark">
+        <svg class="logo-wave-svg" viewBox="0 0 76 44" fill="none">
+          <path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="logo-wordmark"><span>WHITE</span><span>CLOUD</span></div>
+      </a>
+      <div class="foot-nap">
+        <strong>White Cloud</strong>
+        <span>Christchurch, Canterbury, New Zealand</span>
+        <a href="tel:+6421854847">021 854 847</a>
+      </div>
+      <div class="foot-links">
+        <a href="/blog">Guides</a>
+        <a href="/review">Leave a Google review</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+        <a href="/intake">New Client Intake Form</a>
+      </div>
+      <div>&copy; 2026 White Cloud. Christchurch, NZ. All prices NZD.</div>
+    </div>
+  </footer>
+
+</div>
+
+<script type="module">
+  import { initNav } from '/assets/nav.js';
+  import { initAttribution } from '/assets/attribution.js';
+  import { initHeroCloud } from '/assets/hero-cloud.js';
+  initNav(document.getElementById('mainnav'));
+
+  var canvas = document.getElementById('cloudCanvas');
+  var headline = document.getElementById('heroHeadline');
+  window.__heroCloud = initHeroCloud(canvas, {
+    clearing: function () {
+      if (window.innerWidth <= 900) return null;
+      var c = canvas.getBoundingClientRect(), h = headline.getBoundingClientRect();
+      return { left: h.left - c.left - 40, right: h.right - c.left + 40,
+               top: h.top - c.top - 30, bottom: h.bottom - c.top + 30 };
+    }
+  });
+</script>
+
+<script>
+  (function () {
+    var nav = document.getElementById('mainnav');
+    var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 20); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>

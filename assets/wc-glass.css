@@ -113,7 +113,7 @@ body.wc-canvas > .wc-sheet {
    worked out from the band's own width, so it is the gutter on a
    phone and grows to centre a 1240px column on a wide screen. */
 .v2-band, .mk-band, .sc-band, .v2-notes, .v2-trust, .v2-work,
-#contact, #book, .v2-cta, .mk-quote, .mk-cta,
+#contact, #book, .v2-cta, .mk-quote, .mk-cta, .pj-hero, .pj-band,
 #solution, #ai-search, #faq, #portfolio, #cta, .banner-block,
 .in-progress, .in-body {
   padding-inline: max(var(--wg-gutter), calc((100% - 1240px) / 2 + var(--wg-gutter)));

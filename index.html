@@ -48,11 +48,11 @@
   --sage:       #6bbf9e;
 
   /* The aurora — warm hits stop it reading cold and clinical */
-  --a-sky:    rgba(122, 176, 226, .90);
-  --a-blue:   rgba(158, 204, 240, .85);
+  --a-sky:    rgba(184, 216, 242, .72);
+  --a-blue:   rgba(200, 226, 247, .70);
   --a-blush:  rgba(255, 186, 202, .62);
   --a-dawn:   rgba(255, 214, 198, .58);
-  --a-pale:   rgba(206, 228, 248, .80);
+  --a-pale:   rgba(222, 237, 250, .75);
   --ground:   #f5f9fd;
 
   /* Glass */
@@ -267,7 +267,7 @@ section { padding-block: var(--s-section); }
   content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background:
     radial-gradient(58% 46% at 74% 24%, rgba(255,255,255,.7), transparent 62%),
-    linear-gradient(168deg, #dcebf6 0%, #c9e0f0 50%, #bcd8ec 100%);
+    linear-gradient(168deg, #f1f7fc 0%, #e6f1fa 50%, #dcecf8 100%);
   -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent);
           mask-image: linear-gradient(to bottom, #000 62%, transparent);
 }
@@ -709,6 +709,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .foot-legal a { color: inherit; text-decoration: none; white-space: nowrap; }
   .foot-legal a:hover { color: var(--brand-ink); text-decoration: underline; }
   @media (max-width: 600px) { .foot-in { flex-direction: column; text-align: center; } }
+
+  /* About on a phone: the photo centred, and the copy with it, the
+     same way the hero reads. */
+  @media (max-width: 960px) {
+    .about { justify-items: center; text-align: center; }
+    .about-photo { width: 100%; margin-inline: auto; }
+    .about-copy { align-items: center; }
+    .about-copy .eyebrow { justify-content: center; }
+    .about-copy .lede { margin-inline: auto; }
+  }
 </style>
 <script type="application/ld+json">
 [

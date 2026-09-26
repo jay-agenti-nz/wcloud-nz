@@ -13,11 +13,11 @@
 
 :root {
   --sky-base: #f5f9fd;
-  --a-sky:    rgba(122, 176, 226, .90);
-  --a-blue:   rgba(158, 204, 240, .85);
+  --a-sky:    rgba(184, 216, 242, .72);
+  --a-blue:   rgba(200, 226, 247, .70);
   --a-blush:  rgba(255, 186, 202, .62);
   --a-dawn:   rgba(255, 214, 198, .58);
-  --a-pale:   rgba(206, 228, 248, .80);
+  --a-pale:   rgba(222, 237, 250, .75);
 
   --g-fill:   linear-gradient(140deg, rgba(255,255,255,.22), rgba(255,255,255,.12));
   --g-solid:  linear-gradient(140deg, rgba(255,255,255,.46), rgba(255,255,255,.2));
@@ -96,18 +96,38 @@ body.wc-canvas > .wc-sheet {
   box-shadow: var(--g-rim);
 }
 
-/* ── Dark sections ────────────────────────────────────────────
-   Several bands are navy with white type. Made transparent they
-   would be unreadable, and left as full-bleed slabs they read as a
-   hole cut in the sky. So they become the same material, smoked:
-   dark enough for white text, still letting the field through. */
-.v2-band.v2-ai, .v2-ai, .sc-band.dark,
-.mk-quote, #ai-search, .v2-trust {
-  background: var(--d-fill) !important;
-  backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
-  border-block: 1px solid rgba(255,255,255,.14);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+/* ── Formerly dark sections ───────────────────────────────────
+   These bands were navy with white type. The site is light cloud
+   throughout now, so they take the same pale sky as the heroes and
+   their type turns dark. Dark cards inside them (the AI chat window)
+   keep their own styling. */
+.v2-band.v2-ai, .v2-ai, .sc-band.dark, .mk-quote, #ai-search, .v2-trust {
+  background:
+    radial-gradient(50% 60% at 80% 20%, rgba(255,255,255,.7), transparent 62%),
+    linear-gradient(168deg, #f1f7fc 0%, #e6f1fa 50%, #dcecf8 100%) !important;
+  border-block: 1px solid rgba(255,255,255,.6);
+  box-shadow: none;
 }
+.v2-ai h2, .v2-ai h3, .v2-ai .v2-head h2, #ai-search h2,
+.mk-quote blockquote, .sc-band.dark h2, .sc-band.dark h3,
+.v2-trust strong { color: #22333f !important; }
+.v2-ai > * p, .v2-ai .v2-head p, .v2-ai-copy p, #ai-search p:not(.ai-response p),
+.mk-quote p, .sc-band.dark p, .v2-trust span { color: #55707f !important; }
+.v2-ai .lbl, #ai-search .lbl, .sc-band.dark .lbl, .mk-quote .lbl { color: #3d6a85 !important; }
+.v2-ai-sources span { color: #7f97a6; }
+#ai-search::before, #ai-search::after { opacity: .25; }
+
+/* Dark cards become light glass too. */
+.mk-offer, .sc-monthly {
+  background: linear-gradient(140deg, rgba(255,255,255,.62), rgba(255,255,255,.34)) !important;
+  border: 1px solid rgba(255,255,255,.6);
+  box-shadow: var(--g-shadow), var(--g-rim);
+}
+.mk-offer h2, .mk-offer h3, .mk-offer-now, .sc-monthly h3 { color: #22333f !important; }
+.mk-offer p, .mk-offer li, .sc-monthly p { color: #55707f !important; }
+.mk-offer-was { color: #8ea3b0 !important; }
+.mk-offer .lbl, .mk-offer-cap { color: #3d6a85 !important; }
+.sc-monthly::before { opacity: .2; }
 
 
 
@@ -119,7 +139,7 @@ body.wc-canvas > .wc-sheet {
   background:
     radial-gradient(58% 60% at 74% 20%, rgba(255,255,255,.75), transparent 62%),
     radial-gradient(40% 50% at 12% 90%, rgba(255,214,222,.45), transparent 64%),
-    linear-gradient(168deg, #e3eff8 0%, #cfe3f1 55%, #c3dcee 100%) !important;
+    linear-gradient(168deg, #f1f7fc 0%, #e6f1fa 50%, #dcecf8 100%) !important;
   border-block: 1px solid var(--g-edge);
   box-shadow: var(--g-rim);
 }
@@ -325,3 +345,24 @@ footer.wc-foot .foot-legal a:hover { color: #3d6a85; text-decoration: underline;
   box-shadow: var(--g-rim);
 }
 .wc-nav-toggle span { width: 17px; background: #22333f; }
+
+/* ── AI sections, retuned for the light sky ───────────────────
+   Every piece that was white-on-navy gets dark type on pale glass.
+   The user's question bubble keeps its brand fill and white text. */
+.v2-ai, #ai-search { color: #22333f; }
+.v2-ai-points span, .ai-pill {
+  color: #3d6a85 !important; background: rgba(255,255,255,.55) !important;
+  border: 1px solid rgba(255,255,255,.8) !important;
+}
+.v2-chat, .ai-chat-mock {
+  background: linear-gradient(140deg, rgba(255,255,255,.62), rgba(255,255,255,.34)) !important;
+  border: 1px solid rgba(255,255,255,.7) !important;
+  box-shadow: var(--g-shadow), var(--g-rim) !important;
+}
+.v2-chat-who, .ai-chat-header { color: #6a8392 !important; border-color: rgba(127,168,190,.2) !important; background: transparent !important; }
+.v2-chat-q { background: #7fa8be !important; color: #fff !important; }
+.v2-chat-a, .ai-msg.bot { background: rgba(255,255,255,.7) !important; border-color: rgba(127,168,190,.2) !important; }
+.v2-chat-a p, .ai-msg.bot, .ai-msg.bot p { color: #33495a !important; }
+.ai-response strong { color: #22333f !important; }
+.v2-typing span, .ai-typing-indicator span { background: rgba(61,106,133,.45) !important; }
+.v2-ai-sources span, .ai-source-badge { color: #6a8392 !important; border-color: rgba(127,168,190,.3) !important; }

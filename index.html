@@ -469,19 +469,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ── Narrow ───────────────────────────────────────────────────── */
 @media (max-width: 960px) {
-  .wc-nav-links {
-    position: absolute; top: calc(100% + .6rem); right: 0;
-    flex-direction: column; align-items: stretch; gap: .2rem;
-    min-width: 230px; padding: .6rem;
-    border-radius: var(--r-md);
-    background: linear-gradient(140deg, rgba(255,255,255,.88), rgba(255,255,255,.72));
-    backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
-    border: 1px solid var(--g-edge);
-    box-shadow: 0 24px 50px -20px rgba(34,51,63,.4), inset 0 1px 0 var(--g-spec);
-    display: none;
-  }
-  .nav.open .wc-nav-links { display: flex; }
-  .wc-nav-links a.cta { margin-left: 0; margin-top: .3rem; text-align: center; justify-content: center; }
   .nav { position: fixed; }
   .wc-nav-toggle {
     display: grid; place-content: center; gap: 5px;
@@ -677,17 +664,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .ha:hover { box-shadow: 0 18px 40px -22px rgba(34,51,63,.38), var(--g-rim); }
   .contact-aside .line { background: rgba(255,255,255,.3); box-shadow: var(--g-rim); }
   .form-input, .form-select, .form-textarea { background-color: rgba(255,255,255,.62); }
+  /* ── Phone menu ───────────────────────────────────────────────
+     Same as every other page: the pill itself opens downward into a
+     panel, so the menu is the nav's own glass rather than a second
+     pane nested inside it. Clear, lightly frosted, never solid white. */
   @media (max-width: 960px) {
-    /* A menu has to be read over whatever is behind it, so it is the
-       one surface that stays frosted. */
-    .wc-nav-links {
-      /* Nested inside the nav's own glass, a second backdrop blur
-         only sees the nav, not the page, so it can't frost. A near-
-         solid pane is what actually keeps the links legible. */
-      background: #f7fbfe;
-      backdrop-filter: none; -webkit-backdrop-filter: none;
-      box-shadow: 0 18px 40px -20px rgba(34,51,63,.4), var(--g-rim);
+    .nav { flex-wrap: wrap; }
+    .nav.open {
+      border-radius: 28px; padding: .55rem .7rem .8rem 1.2rem;
+      background: linear-gradient(140deg, rgba(255,255,255,.58), rgba(255,255,255,.36));
+      backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%);
     }
+    .nav .wc-nav-links {
+      display: none; order: 3; width: 100%;
+      flex-direction: column; align-items: stretch; gap: .15rem;
+      padding: .55rem .25rem 0; margin-top: .55rem;
+      border-top: 1px solid rgba(127,168,190,.22);
+    }
+    .nav.open .wc-nav-links { display: flex; }
+    .nav .wc-nav-links a { display: block; padding: .7rem 1rem; font-size: .9rem; font-weight: 700; color: var(--deep); border-radius: 999px; }
+    .nav .wc-nav-links a.cta { text-align: center; margin: .5rem 0 0; padding: .8rem 1.3rem; color: #fff; }
   }
 
   /* ── Hero on a phone ──────────────────────────────────────────
@@ -706,6 +702,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     .chip { font-size: .76rem; padding: .38rem .8rem; }
     .hero-art { max-width: 340px; text-align: left; }
   }
+
+  /* Footer: the logo and one small line, nothing to navigate. */
+  .foot-in { align-items: center; gap: .8rem 2rem; padding-block: 1.3rem; }
+  .foot-legal { width: auto; padding-top: 0; border-top: 0; font-size: .74rem; opacity: 1; }
+  .foot-legal a { color: inherit; text-decoration: none; white-space: nowrap; }
+  .foot-legal a:hover { color: var(--brand-ink); text-decoration: underline; }
+  @media (max-width: 600px) { .foot-in { flex-direction: column; text-align: center; } }
 </style>
 <script type="application/ld+json">
 [
@@ -862,6 +865,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     <li><a href="/shoot-and-create">Shoot &amp; Create</a></li>
     <li><a href="/projects">Projects</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="/blog">Guides</a></li>
     <li><a href="#contact" class="cta">Get started</a></li>
   </ul>
 </nav>
@@ -1174,20 +1178,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     </svg>
         <span class="logo-word"><span>WHITE</span><span>CLOUD</span></span>
       </a>
-      <div class="foot-links">
-        <a href="/websites">Websites</a>
-        <a href="/marketing">Marketing</a>
-        <a href="/shoot-and-create">Shoot &amp; Create</a>
-        <a href="/projects">Projects</a>
-        <a href="/restaurants">Restaurants</a>
-        <a href="/blog">Guides</a>
-        <a href="/review">Leave a Google review</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-        <a href="/intake">Intake form</a>
-      </div>
-      <div class="foot-legal">&copy; 2026 White Cloud &middot; Christchurch, Canterbury, New Zealand &middot;
-        <a href="tel:+6421854847" style="color:inherit">021 854 847</a> &middot; All prices NZD, incl. GST.</div>
+      <div class="foot-legal">&copy; 2026 White Cloud &middot; Christchurch, New Zealand &middot;
+        <a href="tel:+6421854847">021 854 847</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a></div>
     </div>
   </div>
 </footer>

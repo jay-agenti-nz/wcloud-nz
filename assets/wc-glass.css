@@ -19,12 +19,15 @@
   --a-dawn:   rgba(255, 214, 198, .58);
   --a-pale:   rgba(206, 228, 248, .80);
 
-  --g-fill:   linear-gradient(140deg, rgba(255,255,255,.48), rgba(255,255,255,.18));
-  --g-solid:  linear-gradient(140deg, rgba(255,255,255,.64), rgba(255,255,255,.38));
-  --g-edge:   rgba(255,255,255,.65);
+  --g-fill:   linear-gradient(140deg, rgba(255,255,255,.30), rgba(255,255,255,.10));
+  --g-solid:  linear-gradient(140deg, rgba(255,255,255,.46), rgba(255,255,255,.2));
+  --g-edge:   rgba(255,255,255,.42);
   --g-spec:   rgba(255,255,255,.92);
-  --g-shadow: 0 10px 34px -12px rgba(34,51,63,.22), 0 2px 8px -3px rgba(34,51,63,.10);
-  --g-blur:   blur(12px) saturate(170%);
+  --g-shadow: 0 1px 2px rgba(34,51,63,.04), 0 10px 28px -20px rgba(34,51,63,.22);
+  /* The rim: a hairline that catches light top-left and fades
+     bottom-right. This, not a thick fill, is what reads as glass. */
+  --g-rim:    inset 1px 1px 0 rgba(255,255,255,.8), inset -1px -1px 0 rgba(255,255,255,.28);
+  --g-blur:   blur(7px) saturate(185%);
   --d-fill:   linear-gradient(150deg, rgba(47,73,88,.88), rgba(28,46,56,.92));
 
   /* The frame. Same edges as the homepage: a 1240px column with a
@@ -90,7 +93,7 @@ body.wc-canvas > .wc-sheet {
   background: var(--g-fill);
   backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
   border-block: 1px solid var(--g-edge);
-  box-shadow: inset 0 1px 0 var(--g-spec);
+  box-shadow: var(--g-rim);
 }
 
 /* ── Dark sections ────────────────────────────────────────────
@@ -118,7 +121,7 @@ body.wc-canvas > .wc-sheet {
     radial-gradient(40% 50% at 12% 90%, rgba(255,214,222,.45), transparent 64%),
     linear-gradient(168deg, #e3eff8 0%, #cfe3f1 55%, #c3dcee 100%) !important;
   border-block: 1px solid var(--g-edge);
-  box-shadow: inset 0 1px 0 var(--g-spec);
+  box-shadow: var(--g-rim);
 }
 .v2-cta h2, .mk-cta h2, #cta h2 { color: #22333f; }
 .v2-cta p, .mk-cta p, #cta p { color: #55707f; }
@@ -126,13 +129,13 @@ body.wc-canvas > .wc-sheet {
 #cta .cta-deco { opacity: .35; }
 .v2-cta .btn-w, .mk-cta .btn-w, #cta .btn-w {
   background: linear-gradient(140deg, #3d6a85, #22333f); color: #fff; border-color: transparent;
-  box-shadow: 0 12px 28px -14px rgba(34,51,63,.75), inset 0 1px 0 rgba(255,255,255,.3);
+  box-shadow: 0 8px 20px -12px rgba(34,51,63,.6), inset 1px 1px 0 rgba(255,255,255,.28);
 }
 .v2-cta .btn-w:hover, .mk-cta .btn-w:hover, #cta .btn-w:hover { color: #fff; filter: brightness(1.12); }
 .v2-cta .btn-g, .mk-cta .btn-g, #cta .btn-g {
   background: linear-gradient(140deg, rgba(255,255,255,.66), rgba(255,255,255,.34));
   border: 1px solid var(--g-edge); color: #22333f;
-  box-shadow: var(--g-shadow), inset 0 1px 0 var(--g-spec);
+  box-shadow: var(--g-shadow), var(--g-rim);
 }
 
 /* ── Frame ────────────────────────────────────────────────────
@@ -172,7 +175,7 @@ body.wc-canvas > .wc-sheet {
   backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
   border: 1px solid var(--g-edge);
   border-radius: 24px;
-  box-shadow: var(--g-shadow), inset 0 1px 0 var(--g-spec);
+  box-shadow: var(--g-shadow), var(--g-rim);
 }
 
 /* ── Long-form pages (privacy, terms, guides) ─────────────────
@@ -184,7 +187,7 @@ body.wc-canvas > .wc-sheet {
   backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
   border: 1px solid var(--g-edge);
   border-radius: 28px;
-  box-shadow: var(--g-shadow), inset 0 1px 0 var(--g-spec);
+  box-shadow: var(--g-shadow), var(--g-rim);
   padding: clamp(1.8rem, 4vw, 3.2rem);
 }
 .wc-article-cta {
@@ -198,19 +201,19 @@ body.wc-canvas > .wc-sheet {
 .btn-p, .form-submit, .btn-submit {
   background: linear-gradient(140deg, #3d6a85, #22333f);
   border: 1px solid transparent;
-  box-shadow: 0 12px 28px -14px rgba(34,51,63,.75), inset 0 1px 0 rgba(255,255,255,.3);
+  box-shadow: 0 8px 20px -12px rgba(34,51,63,.6), inset 1px 1px 0 rgba(255,255,255,.28);
 }
 .btn-p:hover, .form-submit:hover, .btn-submit:hover {
   background: linear-gradient(140deg, #3d6a85, #22333f);
   filter: brightness(1.12);
-  box-shadow: 0 18px 36px -16px rgba(34,51,63,.8), inset 0 1px 0 rgba(255,255,255,.3);
+  box-shadow: 0 12px 26px -14px rgba(34,51,63,.65), inset 1px 1px 0 rgba(255,255,255,.28);
 }
 .btn-o, .btn-w {
   background: linear-gradient(140deg, rgba(255,255,255,.6), rgba(255,255,255,.3));
   backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
   border: 1px solid var(--g-edge);
   color: #22333f;
-  box-shadow: var(--g-shadow), inset 0 1px 0 var(--g-spec);
+  box-shadow: var(--g-shadow), var(--g-rim);
 }
 .btn-o:hover, .btn-w:hover {
   background: linear-gradient(140deg, rgba(255,255,255,.78), rgba(255,255,255,.42));
@@ -250,7 +253,7 @@ footer.wc-foot .foot-in {
   background: linear-gradient(140deg, rgba(255,255,255,.44), rgba(255,255,255,.18));
   backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
   border: 1px solid var(--g-edge); border-radius: 32px;
-  box-shadow: var(--g-shadow), inset 0 1px 0 var(--g-spec), inset 0 -1px 0 rgba(255,255,255,.28);
+  box-shadow: var(--g-shadow), var(--g-rim), inset 0 -1px 0 rgba(255,255,255,.28);
 }
 footer.wc-foot .logo-mark { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
 footer.wc-foot .logo-wave-svg { width: 38px; height: auto; }
@@ -271,11 +274,12 @@ footer.wc-foot .foot-legal a { color: inherit; text-decoration: underline; }
   background: var(--g-fill);
   backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
   border: 1px solid var(--g-edge);
-  box-shadow: inset 0 1px 0 var(--g-spec);
+  box-shadow: var(--g-rim);
 }
 .wc-nav.scrolled {
-  background: var(--g-solid);
-  box-shadow: 0 16px 44px -18px rgba(34,51,63,.34), inset 0 1px 0 var(--g-spec);
+  backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background: linear-gradient(140deg, rgba(255,255,255,.66), rgba(255,255,255,.44));
+  box-shadow: 0 16px 44px -18px rgba(34,51,63,.34), var(--g-rim);
 }
 .wc-nav-links a.wc-nav-cta {
   background: linear-gradient(140deg, #3d6a85, #22333f);
@@ -298,5 +302,13 @@ footer.wc-foot .foot-legal a { color: inherit; text-decoration: underline; }
   footer .foot-in, .wc-nav {
     background: rgba(255,255,255,.93) !important;
     backdrop-filter: none; -webkit-backdrop-filter: none;
+  }
+}
+
+/* The open phone menu is read over the page, so it stays frosted. */
+@media (max-width: 960px) {
+  .wc-nav.open {
+    background: linear-gradient(140deg, rgba(255,255,255,.9), rgba(255,255,255,.8));
+    backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
   }
 }

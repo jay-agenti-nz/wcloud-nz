@@ -468,7 +468,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 
 /* ── Narrow ───────────────────────────────────────────────────── */
-@media (max-width: 1000px) {
+@media (max-width: 960px) {
   .wc-nav-links {
     position: absolute; top: calc(100% + .6rem); right: 0;
     flex-direction: column; align-items: stretch; gap: .2rem;
@@ -480,7 +480,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     box-shadow: 0 24px 50px -20px rgba(34,51,63,.4), inset 0 1px 0 var(--g-spec);
     display: none;
   }
-  .wc-nav-links.open { display: flex; }
+  .nav.open .wc-nav-links { display: flex; }
   .wc-nav-links a.cta { margin-left: 0; margin-top: .3rem; text-align: center; justify-content: center; }
   .nav { position: fixed; }
   .wc-nav-toggle {
@@ -490,6 +490,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     box-shadow: inset 0 1px 0 var(--g-spec);
   }
   .wc-nav-toggle span { display: block; width: 17px; height: 2px; border-radius: 2px; background: var(--deep); transition: transform .3s var(--ease), opacity .3s; }
+  .wc-nav-toggle { position: relative; z-index: 2; }
   .wc-nav-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
   .wc-nav-toggle[aria-expanded="true"] span:last-child  { transform: translateY(-3.5px) rotate(-45deg); }
 
@@ -645,6 +646,66 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     .contact-card form > .form-group.half { grid-column: 1 / -1; }
   }
 
+  /* ── Thin glass ───────────────────────────────────────────────
+     Glass the way iOS draws it now: almost clear, a light blur, and
+     a hairline rim that catches light on the top-left edge and fades
+     on the bottom-right. No thick frosted fill, no heavy drop shadow;
+     the edge does the work. */
+  :root {
+    --g-fill:   linear-gradient(140deg, rgba(255,255,255,.30), rgba(255,255,255,.10));
+    --g-edge:   rgba(255,255,255,.42);
+    --g-spec:   rgba(255,255,255,.9);
+    --g-shadow: 0 1px 2px rgba(34,51,63,.04), 0 10px 28px -20px rgba(34,51,63,.22);
+    --g-blur:   blur(7px) saturate(185%);
+    --g-rim:    inset 1px 1px 0 rgba(255,255,255,.8), inset -1px -1px 0 rgba(255,255,255,.28);
+  }
+  .glass { box-shadow: var(--g-shadow), var(--g-rim); }
+  .glass-soft { background: linear-gradient(140deg, rgba(255,255,255,.26), rgba(255,255,255,.08)); }
+  .nav.scrolled { backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%); background: linear-gradient(140deg, rgba(255,255,255,.66), rgba(255,255,255,.44)); box-shadow: 0 8px 26px -18px rgba(34,51,63,.3), var(--g-rim); }
+  .btn-glass { background: linear-gradient(140deg, rgba(255,255,255,.4), rgba(255,255,255,.14)); box-shadow: var(--g-shadow), var(--g-rim); }
+  .btn-glass:hover { background: linear-gradient(140deg, rgba(255,255,255,.56), rgba(255,255,255,.24)); }
+  .btn-solid { box-shadow: 0 8px 20px -12px rgba(34,51,63,.6), inset 1px 1px 0 rgba(255,255,255,.28); }
+  .chip { background: linear-gradient(140deg, rgba(255,255,255,.34), rgba(255,255,255,.1)); backdrop-filter: blur(6px) saturate(170%); -webkit-backdrop-filter: blur(6px) saturate(170%); box-shadow: var(--g-rim); }
+  .svc:hover { box-shadow: 0 16px 36px -22px rgba(34,51,63,.3), var(--g-rim); }
+  .svc-media, .about-photo { box-shadow: 0 10px 26px -18px rgba(34,51,63,.35), inset 0 0 0 1px rgba(255,255,255,.5); }
+  .ha {
+    background: linear-gradient(140deg, rgba(255,255,255,.42), rgba(255,255,255,.14));
+    backdrop-filter: blur(6px) saturate(180%); -webkit-backdrop-filter: blur(6px) saturate(180%);
+    border-color: rgba(255,255,255,.5);
+    box-shadow: 0 10px 26px -18px rgba(34,51,63,.32), var(--g-rim);
+  }
+  .ha:hover { box-shadow: 0 18px 40px -22px rgba(34,51,63,.38), var(--g-rim); }
+  .contact-aside .line { background: rgba(255,255,255,.3); box-shadow: var(--g-rim); }
+  .form-input, .form-select, .form-textarea { background-color: rgba(255,255,255,.62); }
+  @media (max-width: 960px) {
+    /* A menu has to be read over whatever is behind it, so it is the
+       one surface that stays frosted. */
+    .wc-nav-links {
+      /* Nested inside the nav's own glass, a second backdrop blur
+         only sees the nav, not the page, so it can't frost. A near-
+         solid pane is what actually keeps the links legible. */
+      background: #f7fbfe;
+      backdrop-filter: none; -webkit-backdrop-filter: none;
+      box-shadow: 0 18px 40px -20px rgba(34,51,63,.4), var(--g-rim);
+    }
+  }
+
+  /* ── Hero on a phone ──────────────────────────────────────────
+     Centred, with the two buttons sharing a row and the chips as one
+     tidy wrapped line, so the column reads as composed rather than
+     everything pushed against the left edge. */
+  @media (max-width: 700px) {
+    .hero-in { padding: 2rem 1.25rem 1.5rem; gap: 1.75rem; text-align: center; }
+    .hero-copy { align-items: center; gap: 1.1rem; }
+    .hero-copy .eyebrow { justify-content: center; }
+    .hero h1 { font-size: clamp(2.1rem, 9.4vw, 2.6rem); max-width: 12ch; margin-inline: auto; }
+    .hero .lede { font-size: 1rem; max-width: 34ch; margin-inline: auto; }
+    .hero-actions { justify-content: center; gap: .6rem; flex-wrap: nowrap; width: 100%; }
+    .hero-actions .btn { flex: 1 1 0; justify-content: center; padding: .8rem 1rem; font-size: .92rem; max-width: 12rem; }
+    .chips { justify-content: center; gap: .4rem; margin-top: 0; }
+    .chip { font-size: .76rem; padding: .38rem .8rem; }
+    .hero-art { max-width: 340px; text-align: left; }
+  }
 </style>
 <script type="application/ld+json">
 [

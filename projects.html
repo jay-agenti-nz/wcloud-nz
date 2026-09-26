@@ -58,10 +58,10 @@
     text-decoration: none; color: inherit;
     background: var(--g-solid); backdrop-filter: var(--g-blur); -webkit-backdrop-filter: var(--g-blur);
     border: 1px solid var(--g-edge); border-radius: 28px;
-    box-shadow: var(--g-shadow), inset 0 1px 0 var(--g-spec);
+    box-shadow: var(--g-shadow), var(--g-rim);
     transition: transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s cubic-bezier(.22,1,.36,1);
   }
-  .proj:hover { transform: translateY(-6px); box-shadow: 0 30px 62px -26px rgba(34,51,63,.36), inset 0 1px 0 var(--g-spec); }
+  .proj:hover { transform: translateY(-6px); box-shadow: 0 16px 36px -22px rgba(34,51,63,.3), var(--g-rim); }
   /* Each screenshot at its own ratio: nothing cropped, nothing
      stretched. The card grows to fit the image rather than the other
      way round. */

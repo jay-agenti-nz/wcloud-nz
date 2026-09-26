@@ -19,15 +19,15 @@
   --a-dawn:   rgba(255, 214, 198, .58);
   --a-pale:   rgba(206, 228, 248, .80);
 
-  --g-fill:   linear-gradient(140deg, rgba(255,255,255,.30), rgba(255,255,255,.10));
+  --g-fill:   linear-gradient(140deg, rgba(255,255,255,.22), rgba(255,255,255,.12));
   --g-solid:  linear-gradient(140deg, rgba(255,255,255,.46), rgba(255,255,255,.2));
-  --g-edge:   rgba(255,255,255,.42);
+  --g-edge:   rgba(255,255,255,.5);
   --g-spec:   rgba(255,255,255,.92);
   --g-shadow: 0 1px 2px rgba(34,51,63,.04), 0 10px 28px -20px rgba(34,51,63,.22);
   /* The rim: a hairline that catches light top-left and fades
      bottom-right. This, not a thick fill, is what reads as glass. */
-  --g-rim:    inset 1px 1px 0 rgba(255,255,255,.8), inset -1px -1px 0 rgba(255,255,255,.28);
-  --g-blur:   blur(7px) saturate(185%);
+  --g-rim:    inset 0 .5px 0 rgba(255,255,255,.55);
+  --g-blur:   blur(3px) saturate(170%);
   --d-fill:   linear-gradient(150deg, rgba(47,73,88,.88), rgba(28,46,56,.92));
 
   /* The frame. Same edges as the homepage: a 1240px column with a
@@ -277,8 +277,8 @@ footer.wc-foot .foot-legal a { color: inherit; text-decoration: underline; }
   box-shadow: var(--g-rim);
 }
 .wc-nav.scrolled {
-  backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background: linear-gradient(140deg, rgba(255,255,255,.66), rgba(255,255,255,.44));
+  backdrop-filter: blur(10px) saturate(180%); -webkit-backdrop-filter: blur(10px) saturate(180%);
+  background: linear-gradient(140deg, rgba(255,255,255,.6), rgba(255,255,255,.44));
   box-shadow: 0 16px 44px -18px rgba(34,51,63,.34), var(--g-rim);
 }
 .wc-nav-links a.wc-nav-cta {

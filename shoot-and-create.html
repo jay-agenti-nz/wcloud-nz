@@ -169,13 +169,13 @@
      lot of weight for behaviour the browser ships with. JS only keeps
      the dots and counter in step and moves the desktop arrows, so a
      script that fails costs the arrows, never the swipe. */
-  /* Three to a row on a laptop, the way a profile grid reads. Posts
-     keep their own ratio (one set is 3:4), so a row lines up along its
-     top edge rather than stretching anything to match. On a phone the
+  /* Three to a row on a laptop, the way a profile grid reads. Every
+     frame is 4:5, like Instagram, and every card in a row is the same
+     height. On a phone the
      row becomes a swipeable strip, like the Reels above. */
   .sc-posts {
     --cols: 3;
-    display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start;
+    display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch;
     gap: var(--sp-3); width: 100%; max-width: 1180px; margin: 0 auto;
   }
   /* A short last row centres instead of hugging the left edge. */
@@ -219,7 +219,6 @@
     background: linear-gradient(150deg, #f1f7fc 0%, #e8f2fa 55%, #deedf8 100%);
   }
   .sc-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .sc-post[data-ratio="3-4"] .sc-slide { aspect-ratio: 3 / 4; }
 
   /* Desktop arrows. Hidden where there is no hover — a touch device
      swipes, and the arrows would only cover the photo. */
@@ -250,7 +249,10 @@
   .sc-post-dots button[aria-current="true"] { background: var(--brand-ink); transform: scale(1.25); }
 
   /* Caption */
-  .sc-post-cap { padding: .7rem 1.1rem 1.2rem; }
+  /* The caption fills whatever height is left, so every card in a row
+     ends on the same line; the Instagram link pins to the bottom. */
+  .sc-post-cap { padding: .7rem 1.1rem 1.2rem; flex: 1 1 auto; display: flex; flex-direction: column; }
+  .sc-post-cap > a { margin-top: auto; padding-top: .5rem; align-self: flex-start; }
   .sc-post-cap p { font-size: .88rem; line-height: 1.6; }
   .sc-post-cap p b { color: var(--deep); font-weight: 800; }
   .sc-post-cap a { display: inline-block; margin-top: .5rem; font-size: .82rem; font-weight: 700; color: var(--brand-ink); text-decoration: none; }
@@ -544,7 +546,7 @@
       display: flex; flex-wrap: nowrap; justify-content: flex-start;
       gap: .8rem; overflow-x: auto; padding-bottom: .5rem;
       scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-      align-items: flex-start;
+      align-items: stretch;
     }
     .sc-posts > .sc-post { flex: 0 0 86%; scroll-snap-align: center; }
     /* A 9:16 tile at full phone width is taller than the screen, so the
@@ -977,7 +979,7 @@
       </div>
     </article>
 
-    <article class="sc-post" id="post-stays" data-ratio="3-4">
+    <article class="sc-post" id="post-stays">
       <header class="sc-post-head">
         <span class="sc-post-avatar"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/></svg></span>
         <span class="sc-post-who"><b>jay.d.vera</b><span>Aotearoa New Zealand</span></span>

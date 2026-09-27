@@ -250,6 +250,7 @@
   .sc-post-cap p b { color: var(--deep); font-weight: 800; }
   .sc-post-cap a { display: inline-block; margin-top: .5rem; font-size: .82rem; font-weight: 700; color: var(--brand-ink); text-decoration: none; }
   .sc-post-cap a:hover { text-decoration: underline; }
+  .sc-post-cap p a.sc-tag { display: inline; margin: 0; font-size: inherit; }
 
   .sc-gallery-note { font-size: .88rem; color: var(--body); font-weight: 600; text-align: center; }
 
@@ -838,7 +839,8 @@
 
   <!-- CAROUSEL POSTS
        ────────────────────────────────────────────────────────────
-       Two swipeable posts, ten frames each, built from:
+       Swipeable posts. Majestic (assets/majestic-N.jpg) is newest;
+       the two older sets, ten frames each, are built from:
          assets/gallery-1.jpg … gallery-10.jpg                (hospitality)
          assets/gallery-airbnb-1.jpg … gallery-airbnb-10.jpg  (stays)
        A frame whose file is missing removes its own <img> and falls
@@ -846,6 +848,38 @@
        photos are being added.
        ──────────────────────────────────────────────────────────── -->
   <div class="sc-posts fug">
+    <article class="sc-post" id="post-majestic">
+      <header class="sc-post-head">
+        <span class="sc-post-avatar"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/></svg></span>
+        <span class="sc-post-who"><b>jay.d.vera</b><span>Westfield Riccarton, Christchurch</span></span>
+        <span class="sc-post-count" data-count>1/5</span>
+      </header>
+
+      <div class="sc-post-frame">
+        <div class="sc-post-track" data-track tabindex="0" role="region" aria-label="Majestic Caf&eacute;, Westfield Riccarton &mdash; 5 frames, swipe or use the arrow keys">
+        <div class="sc-slide" role="group" aria-label="Majestic Caf&eacute;, Westfield Riccarton &mdash; frame 1 of 5"><img src="/assets/majestic-1.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Majestic Caf&eacute;, Westfield Riccarton &mdash; frame 2 of 5"><img src="/assets/majestic-2.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Majestic Caf&eacute;, Westfield Riccarton &mdash; frame 3 of 5"><img src="/assets/majestic-3.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Majestic Caf&eacute;, Westfield Riccarton &mdash; frame 4 of 5"><img src="/assets/majestic-4.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Majestic Caf&eacute;, Westfield Riccarton &mdash; frame 5 of 5"><img src="/assets/majestic-5.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        </div>
+        <button type="button" class="sc-post-arrow prev" data-prev aria-label="Previous frame" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="sc-post-arrow next" data-next aria-label="Next frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+
+      <div class="sc-post-dots" data-dots>
+        <button type="button" data-go="0" aria-current="true" aria-label="Go to frame 1"></button>
+        <button type="button" data-go="1" aria-label="Go to frame 2"></button>
+        <button type="button" data-go="2" aria-label="Go to frame 3"></button>
+        <button type="button" data-go="3" aria-label="Go to frame 4"></button>
+        <button type="button" data-go="4" aria-label="Go to frame 5"></button>
+      </div>
+
+      <div class="sc-post-cap">
+        <p><b>jay.d.vera</b> Thank you <a class="sc-tag" href="https://www.instagram.com/majesticriccarton/" target="_blank" rel="noopener">@majesticriccarton</a> for having me in to capture your beautiful little caf&eacute;. Such a cozy spot tucked inside Westfield Riccarton &mdash; perfect for catching up with friends over coffee and a good chat.</p>
+      </div>
+    </article>
+
     <article class="sc-post" id="post-hospitality">
       <header class="sc-post-head">
         <span class="sc-post-avatar"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/></svg></span>
@@ -933,7 +967,7 @@
     </article>
   </div>
 
-  <p class="sc-gallery-note">Swipe through either one. Want a full gallery from a shoot like yours before you book? Ask in the form below and I&rsquo;ll send one over.</p>
+  <p class="sc-gallery-note">Swipe through any of them. Want a full gallery from a shoot like yours before you book? Ask in the form below and I&rsquo;ll send one over.</p>
 </section>
 
 <!-- PRICING -->

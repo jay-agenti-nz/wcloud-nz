@@ -169,13 +169,18 @@
      lot of weight for behaviour the browser ships with. JS only keeps
      the dots and counter in step and moves the desktop arrows, so a
      script that fails costs the arrows, never the swipe. */
-  /* One column, always. The two sets are SCRL-composed layout cards at
-     different ratios — 4:5 and 3:4 — so side by side they could only be
-     matched by cropping the margins those layouts were built around, or
-     by letterboxing one of them. Stacked, each keeps its full frame and
-     there is nothing to compare it against. It is also how a feed reads:
-     one post, then the next. */
-  .sc-posts { display: grid; grid-template-columns: 1fr; gap: var(--sp-4); width: 100%; max-width: 500px; margin: 0 auto; }
+  /* Three to a row on a laptop, the way a profile grid reads. Posts
+     keep their own ratio (one set is 3:4), so a row lines up along its
+     top edge rather than stretching anything to match. On a phone the
+     row becomes a swipeable strip, like the Reels above. */
+  .sc-posts {
+    --cols: 3;
+    display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start;
+    gap: var(--sp-3); width: 100%; max-width: 1180px; margin: 0 auto;
+  }
+  /* A short last row centres instead of hugging the left edge. */
+  .sc-posts > .sc-post { flex: 0 0 calc((100% - (var(--cols) - 1) * var(--sp-3)) / var(--cols)); min-width: 0; }
+  @media (max-width: 1000px) { .sc-posts { --cols: 2; } }
   .sc-post {
     background: var(--white); border: 1px solid rgba(127,168,190,.28);
     border-radius: var(--radius-lg); overflow: hidden;
@@ -532,7 +537,16 @@
   }
   @media (max-width: 700px) {
     .sc-band, #book { padding: var(--sp-5) 1.6rem; }
-    .sc-posts { gap: var(--sp-3); }
+    /* Posts slide sideways like the Reels. Swiping inside a post moves
+       through its frames; at its last frame the swipe carries on to the
+       next post. */
+    .sc-posts {
+      display: flex; flex-wrap: nowrap; justify-content: flex-start;
+      gap: .8rem; overflow-x: auto; padding-bottom: .5rem;
+      scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+      align-items: flex-start;
+    }
+    .sc-posts > .sc-post { flex: 0 0 86%; scroll-snap-align: center; }
     /* A 9:16 tile at full phone width is taller than the screen, so the
        reels become a swipeable strip rather than a stack. */
     .sc-reels {

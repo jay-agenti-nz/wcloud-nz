@@ -7,8 +7,10 @@
 <!--
   Source for the three social cards, each 1200x630 and captured at 2x:
     #og-main    -> og-image.jpg   (homepage)
-    #og-site    -> og-site.jpg    (every other page)
     #og-intake  -> og-intake.jpg  (intake form)
+    #og-<page>  -> og-<page>.jpg  (one per page: websites, marketing,
+                   projects, restaurants, guides, cost, builder,
+                   privacy, terms, card)
   Shoot & Create keeps its own card (og-shoot.html).
   Built with the site's real fonts, logo, cloud textures and the
   homepage's hero tiles, so the cards match the site.
@@ -142,14 +144,6 @@
   .ha { animation: none !important; }
 
   /* ── Site: the brand, for every other page ─────────────────── */
-  #og-site .centre { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; text-align: center; }
-  #og-site .big-mark { display: flex; align-items: center; gap: 22px; }
-  #og-site .big-mark svg { width: 110px; height: auto; }
-  #og-site .big-mark span { display: flex; flex-direction: column; line-height: 1.02; font-family: var(--mark); font-size: 40px; font-weight: 700; letter-spacing: .3em; color: var(--deep); text-align: left; }
-  #og-site h1 { font-size: 50px; max-width: 18ch; }
-  #og-site .svc { display: flex; gap: 14px; }
-  #og-site .svc .chip { font-size: 19px; padding: 12px 26px; display: flex; align-items: center; gap: 10px; }
-  #og-site .svc .chip b { font-family: var(--mark); color: var(--brand-ink); font-size: 14px; letter-spacing: .1em; }
 
   /* ── Intake ────────────────────────────────────────────────── */
   #og-intake .copy { position: absolute; left: 72px; top: 150px; width: 600px; display: flex; flex-direction: column; gap: 24px; }
@@ -160,6 +154,47 @@
   #og-intake .step { display: flex; align-items: center; gap: 16px; font-size: 21px; font-weight: 700; color: var(--deep); }
   #og-intake .step i { font-style: normal; flex: 0 0 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-size: 16px; font-weight: 800; color: var(--brand-ink); background: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.9); }
   #og-intake .panel hr { border: 0; border-top: 1px solid rgba(127,168,190,.25); margin: 4px 0 0; }
+
+  /* ── Page cards: the main card's layout, one per page ─────── */
+  .pg .copy { position: absolute; left: 72px; top: 110px; bottom: 50px; width: 560px; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+  .pg h1 { font-size: 66px; }
+  .pg h1.md { font-size: 56px; }
+  .pg h1.sm { font-size: 50px; }
+  .pg .sub { font-size: 24px; }
+  .pg .right { position: absolute; right: 64px; top: 0; bottom: 0; width: 480px; display: flex; align-items: center; justify-content: center; }
+  .tile { border-radius: 28px; padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+  .tile .lbl { align-self: flex-start; font-family: var(--mark); font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--deep); padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.95); }
+  .tile .lbl b { color: var(--brand-ink); margin-right: 6px; }
+  .shot { border-radius: 16px; overflow: hidden; box-shadow: 0 10px 26px -16px rgba(34,51,63,.4); display: block; }
+  .shot img { display: block; width: 100%; height: auto; }
+  .bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #eef4f8; }
+  .bar i { width: 9px; height: 9px; border-radius: 50%; background: #c9d9e3; }
+  .bar em { margin-left: 8px; font-style: normal; font-size: 12px; font-weight: 700; color: var(--body); background: #fff; padding: 3px 10px; border-radius: 999px; }
+  .white { background: #fff; border-radius: 16px; padding: 16px 18px; box-shadow: inset 0 0 0 1px rgba(127,168,190,.22); display: flex; flex-direction: column; gap: 6px; }
+  .white b { color: var(--brand-ink); font-size: 18px; }
+  .white small { color: var(--body); font-size: 15px; line-height: 1.4; }
+  .tag { align-self: flex-start; font-family: var(--mark); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--brand-ink); padding: 3px 8px; border-radius: 5px; }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 19px; font-weight: 700; color: var(--deep); padding: 14px 4px; border-bottom: 1px solid rgba(127,168,190,.22); }
+  .row:last-child { border-bottom: 0; }
+  .row span { font-family: var(--serif); font-size: 22px; color: var(--brand-ink); white-space: nowrap; }
+  .row small { display: block; font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--body); margin-top: 2px; }
+  .fan { position: relative; width: 480px; height: 420px; }
+  .fan .tile { position: absolute; width: 330px; padding: 10px; }
+  .fan .a { left: 0; top: 30px; transform: rotate(-6deg); }
+  .fan .b { right: 0; top: 10px; transform: rotate(5deg); }
+  .fan .c { left: 70px; bottom: 10px; z-index: 2; }
+  .gcard { border-radius: 24px; padding: 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+  .gcard .k { font-family: var(--mark); font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--brand-ink); }
+  .gcard b { font-family: var(--serif); font-size: 24px; line-height: 1.2; color: var(--deep); }
+  .vs { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center; }
+  .vs .white { align-items: center; text-align: center; padding: 22px 16px; }
+  .vs .or { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--brand-ink); }
+  .doc .item { display: flex; gap: 14px; align-items: center; font-size: 18px; font-weight: 700; color: var(--deep); }
+  .doc .item i { font-style: normal; width: 30px; height: 30px; flex: 0 0 30px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 800; color: var(--brand-ink); background: rgba(255,255,255,.75); border: 1px solid rgba(255,255,255,.95); }
+  .bcard { width: 440px; border-radius: 26px; padding: 30px 32px; display: flex; flex-direction: column; gap: 18px; }
+  .bcard .nm { font-family: var(--serif); font-size: 38px; font-weight: 700; color: var(--deep); line-height: 1; }
+  .bcard .role { font-size: 18px; font-weight: 600; color: var(--body); }
+  .bcard .ln { display: flex; flex-direction: column; gap: 8px; font-size: 20px; font-weight: 700; color: var(--brand-ink); }
 </style>
 </head>
 <body>
@@ -222,23 +257,6 @@
   </div>
 </div>
 
-<!-- SITE -->
-<div class="og" id="og-site">
-  <canvas width="2400" height="1260"></canvas>
-  <div class="in">
-    <div class="centre">
-      <div class="big-mark"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></svg><span><span>WHITE</span><span>CLOUD</span></span></div>
-      <h1>Everything your business needs to be found.</h1>
-      <div class="svc">
-        <span class="chip glass"><b>01</b> Websites</span>
-        <span class="chip glass"><b>02</b> Marketing</span>
-        <span class="chip glass"><b>03</b> Shoot &amp; Create</span>
-      </div>
-      <span class="url">wcloud.nz &middot; Christchurch, NZ</span>
-    </div>
-  </div>
-</div>
-
 <!-- INTAKE -->
 <div class="og" id="og-intake">
   <canvas width="2400" height="1260"></canvas>
@@ -265,6 +283,158 @@
   </div>
 </div>
 
+
+<div class="og pg" id="og-websites">
+  <canvas width="2400" height="1260"></canvas>
+  <div class="in">
+    <div class="logo"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></svg><span><span>WHITE</span><span>CLOUD</span></span></div>
+    <div class="copy">
+      <span class="eyebrow">Websites</span>
+      <h1 class="">A proper website. Done for you.</h1>
+      <p class="sub">Websites for NZ small businesses and self-employed Kiwis.</p><div class="chips"><span class="chip glass">From NZ$349 incl. GST</span><span class="chip glass">Live in about a week</span></div>
+    </div>
+    <div class="right"><div class="tile glass" style="width:470px"><span class="lbl"><b>01</b>Websites</span>
+     <div class="shot"><div class="bar"><i></i><i></i><i></i><em>biblio.ink</em></div><img src="/assets/biblio-cascade-1200.jpg" alt=""></div></div></div>
+  </div>
+</div>
+
+<div class="og pg" id="og-marketing">
+  <canvas width="2400" height="1260"></canvas>
+  <div class="in">
+    <div class="logo"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></svg><span><span>WHITE</span><span>CLOUD</span></span></div>
+    <div class="copy">
+      <span class="eyebrow">Marketing</span>
+      <h1 class="md">We build the site. We can bring the customers too.</h1>
+      <p class="sub">Google and Meta ads, plus email that brings people back.</p><div class="chips"><span class="chip glass">Managed monthly</span><span class="chip glass">Plain-English reports</span></div>
+    </div>
+    <div class="right"><div class="tile glass" style="width:420px"><span class="lbl"><b>02</b>Marketing</span>
+     <div class="white"><span class="tag">Sponsored</span><b>yourbusiness.co.nz</b><small>Trusted local service in Christchurch &mdash; get a free quote today.</small></div>
+     <div class="white"><div style="display:flex;justify-content:space-between;align-items:center"><span class="k" style="font-family:var(--mark);font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--body)">ENQUIRIES</span><span style="color:var(--sage);font-weight:800;font-size:20px">&uarr;</span></div>
+       <svg viewBox="0 0 200 64" preserveAspectRatio="none" style="width:100%;height:70px"><defs><linearGradient id="mf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fa8be" stop-opacity=".45"/><stop offset="1" stop-color="#7fa8be" stop-opacity="0"/></linearGradient></defs><path d="M0 56 C24 52,36 50,52 44 S84 40,100 32 S134 26,150 18 S182 10,200 6 L200 64 L0 64Z" fill="url(#mf)"/><path d="M0 56 C24 52,36 50,52 44 S84 40,100 32 S134 26,150 18 S182 10,200 6" fill="none" stroke="#3d6a85" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+     <div class="white"><b>Your monthly email</b><small>Back in their inbox, every month.</small></div></div></div>
+  </div>
+</div>
+
+<div class="og pg" id="og-projects">
+  <canvas width="2400" height="1260"></canvas>
+  <div class="in">
+    <div class="logo"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></svg><span><span>WHITE</span><span>CLOUD</span></span></div>
+    <div class="copy">
+      <span class="eyebrow">Recent projects</span>
+      <h1 class="">Built, launched, still running.</h1>
+      <p class="sub">Real sites for real businesses &mdash; all live.</p><div class="chips"><span class="chip glass">Biblio</span><span class="chip glass">Rak Khun</span><span class="chip glass">Groov NZ</span><span class="chip glass">Agenti NZ</span></div>
+    </div>
+    <div class="right"><div class="fan"><div class="tile glass a"><div class="shot"><img src="/assets/agenti-preview-900.jpg" alt=""></div></div>
+     <div class="tile glass b"><div class="shot"><img src="/assets/biblio-preview-900.jpg" alt=""></div></div>
+     <div class="tile glass c"><div class="shot"><img src="/assets/rakkhun-preview-900.jpg" alt=""></div></div></div></div>
+  </div>
+</div>
+
+<div class="og pg" id="og-restaurants">
+  <canvas width="2400" height="1260"></canvas>
+  <div class="in">
+    <div class="logo"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></svg><span><span>WHITE</span><span>CLOUD</span></span></div>
+    <div class="copy">
+      <span class="eyebrow">Restaurants, caf&eacute;s &amp; food trucks</span>
+      <h1 class="md">Someone just searched for a place like yours.</h1>
+      <p class="sub">Websites that show up on Google and AI search, with menus that are easy to keep current.</p><div class="chips"><span class="chip glass">Christchurch, NZ</span></div>
+    </div>
+    <div class="right"><div style="position:relative;width:470px;height:420px">
+     <div class="tile glass" style="position:absolute;right:0;top:40px;width:400px;padding:10px"><div class="shot"><img src="/assets/rakkhun-preview-900.jpg" alt=""></div></div>
+     <div class="white" style="position:absolute;left:0;bottom:40px;width:340px;box-shadow:0 18px 40px -22px rgba(34,51,63,.4),inset 0 0 0 1px rgba(127,168,190,.22)"><small style="font-style:italic">&ldquo;food trucks near me open now&rdquo;</small><b style="font-size:16px">&check; 3 results nearby, open now, top rated.</b></div></div></div>
+  </div>
+</div>
+
+<div class="og pg" id="og-guides">
+  <canvas width="2400" height="1260"></canvas>
+  <div class="in">
+    <div class="logo"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></svg><span><span>WHITE</span><span>CLOUD</span></span></div>
+    <div class="copy">
+      <span class="eyebrow">Guides</span>
+      <h1 class="">Straight answers about websites.</h1>
+      <p class="sub">No jargon and no sales pitch &mdash; just what small business owners actually ask.</p>
+    </div>
+    <div class="right"><div style="display:flex;flex-direction:column;gap:16px;width:440px">
+     <div class="gcard glass"><span class="k">Guide &middot; 8 min read</span><b>How much does a website cost for a small business in New Zealand?</b></div>
+     <div class="gcard glass"><span class="k">Guide &middot; 4 min read</span><b>Website builder or web designer?</b></div></div></div>
+  </div>
+</div>
+
+<div class="og pg" id="og-cost">
+  <canvas width="2400" height="1260"></canvas>
+  <div class="in">
+    <div class="logo"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></svg><span><span>WHITE</span><span>CLOUD</span></span></div>
+    <div class="copy">
+      <span class="eyebrow">Guide &middot; 8 min read</span>
+      <h1 class="sm">How much does a website cost for a small business in New Zealand?</h1>
+      <p class="sub">What you actually get at each price point.</p>
+    </div>
+    <div class="right"><div class="tile glass" style="width:430px;padding:24px 26px">
+     <div class="row"><div>Do it yourself<small>Builder subscription + your time</small></div></div>
+     <div class="row"><div>Done for you<small>Written, built, live in a week</small></div><span>from $349</span></div>
+     <div class="row"><div>Custom agency<small>Bespoke design and development</small></div><span>$8,000+</span></div></div></div>
+  </div>
+</div>
+
+<div class="og pg" id="og-builder">
+  <canvas width="2400" height="1260"></canvas>
+  <div class="in">
+    <div class="logo"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></svg><span><span>WHITE</span><span>CLOUD</span></span></div>
+    <div class="copy">
+      <span class="eyebrow">Guide &middot; 4 min read</span>
+      <h1 class="md">Website builder or web designer?</h1>
+      <p class="sub">An honest comparison for small NZ businesses &mdash; including when DIY genuinely makes sense.</p>
+    </div>
+    <div class="right"><div class="tile glass" style="width:450px;padding:24px"><div class="vs">
+     <div class="white"><b>Builder</b><small>Squarespace, Wix &mdash; you do it</small></div><span class="or">or</span>
+     <div class="white"><b>Designer</b><small>Done for you, start to finish</small></div></div></div></div>
+  </div>
+</div>
+
+<div class="og pg" id="og-privacy">
+  <canvas width="2400" height="1260"></canvas>
+  <div class="in">
+    <div class="logo"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></svg><span><span>WHITE</span><span>CLOUD</span></span></div>
+    <div class="copy">
+      <span class="eyebrow">Last updated 14 September 2026</span>
+      <h1 class="">Privacy Policy</h1>
+      <p class="sub">What we collect, where it&rsquo;s stored, and your rights under the NZ Privacy Act 2020.</p>
+    </div>
+    <div class="right"><div class="tile glass doc" style="width:400px;padding:28px;gap:18px">
+     <div class="item"><i>1</i>What we collect</div><div class="item"><i>2</i>Where your enquiry goes</div>
+     <div class="item"><i>3</i>How long we keep it</div><div class="item"><i>4</i>Your rights</div></div></div>
+  </div>
+</div>
+
+<div class="og pg" id="og-terms">
+  <canvas width="2400" height="1260"></canvas>
+  <div class="in">
+    <div class="logo"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></svg><span><span>WHITE</span><span>CLOUD</span></span></div>
+    <div class="copy">
+      <span class="eyebrow">Last updated 27 August 2026</span>
+      <h1 class="">Terms &amp; Conditions</h1>
+      <p class="sub">Pricing and GST, payment, revisions, who owns the finished work, and cancellation.</p>
+    </div>
+    <div class="right"><div class="tile glass doc" style="width:400px;padding:28px;gap:18px">
+     <div class="item"><i>3</i>Prices and GST</div><div class="item"><i>4</i>Payment</div>
+     <div class="item"><i>7</i>Who owns the finished work</div><div class="item"><i>11</i>Cancellation</div></div></div>
+  </div>
+</div>
+
+<div class="og pg" id="og-card">
+  <canvas width="2400" height="1260"></canvas>
+  <div class="in">
+    <div class="logo"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></svg><span><span>WHITE</span><span>CLOUD</span></span></div>
+    <div class="copy">
+      <span class="eyebrow">Digital business card</span>
+      <h1 class="">Say hello to Jay.</h1>
+      <p class="sub">Web design, marketing and photography, Christchurch.</p>
+    </div>
+    <div class="right"><div class="bcard glass"><div><div class="nm">Jay Vera</div><div class="role">White Cloud &middot; Christchurch, NZ</div></div>
+     <div class="ln"><span>021 854 847</span><span>kiaora@wcloud.nz</span><span>wcloud.nz</span></div></div></div>
+  </div>
+</div>
+
 <script type="module">
   import { makeCloudTexture, makeRandom } from '/assets/hero-cloud.js';
   const rand = makeRandom(20260821);            // same seed as the hero
@@ -273,9 +443,10 @@
   // Clouds kept to the edges, clear of the words on each card.
   const sets = {
     'og-main':   [[.46,.10,.13,2,.8],[.60,.94,.16,1,.7],[.98,.60,.14,2,.8],[.04,.96,.14,0,.55],[.36,.98,.12,1,.5]],
-    'og-site':   [[.10,.18,.16,2,.85],[.90,.16,.15,2,.85],[.04,.78,.15,1,.7],[.95,.82,.17,2,.8],[.28,.95,.11,0,.5],[.74,.96,.12,0,.5],[.22,.05,.09,0,.45],[.78,.04,.1,1,.5]],
     'og-intake': [[.50,.10,.12,1,.65],[.62,.95,.15,2,.75],[.98,.97,.14,1,.65],[.04,.97,.13,0,.5],[.40,.99,.11,1,.5]],
   };
+  const edge = [[.50,.08,.11,1,.6],[.60,.96,.14,2,.7],[.99,.95,.13,1,.6],[.03,.97,.13,0,.5],[.38,.99,.1,1,.45]];
+  document.querySelectorAll('.og.pg').forEach(el => { sets[el.id] = edge; });
   for (const [id, clouds] of Object.entries(sets)) {
     const ctx = document.querySelector('#' + id + ' canvas').getContext('2d');
     for (const [x, y, s, layer, a] of clouds) {

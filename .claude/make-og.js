@@ -2,8 +2,9 @@
 /**
  * Renders the social cards in og-cards.html at 2x (2400x1260):
  *   #og-main   -> og-image.jpg   (homepage)
- *   #og-site   -> og-site.jpg    (every other page)
  *   #og-intake -> og-intake.jpg  (intake form)
+ *   #og-<page> -> og-<page>.jpg  (websites, marketing, projects,
+ *                 restaurants, guides, cost, builder, privacy, terms, card)
  *
  * Single-card sources (og-shoot.html) still work: set OG_URL and OG_OUT
  * and the page's #card is captured to that file.
@@ -22,14 +23,16 @@ catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_PATH || 'playwright')
 const URL = process.env.OG_URL || 'http://localhost:8899/og-cards.html';
 const CARDS = process.env.OG_OUT
   ? { card: process.env.OG_OUT }
-  : { 'og-main': 'og-image.jpg', 'og-site': 'og-site.jpg', 'og-intake': 'og-intake.jpg' };
+  : Object.assign({ 'og-main': 'og-image.jpg', 'og-intake': 'og-intake.jpg' },
+      Object.fromEntries(['websites','marketing','projects','restaurants','guides','cost','builder','privacy','terms','card']
+        .map(n => ['og-' + n, 'og-' + n + '.jpg'])));
 
 (async () => {
   const browser = await chromium.launch({
     executablePath: process.env.CHROME || undefined,
     args: ['--no-sandbox', '--font-render-hinting=none']
   });
-  const page = await browser.newPage({ viewport: { width: 1300, height: 2200 }, deviceScaleFactor: 2 });
+  const page = await browser.newPage({ viewport: { width: 1300, height: 9000 }, deviceScaleFactor: 2 });
   await page.goto(URL, { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
   await page.waitForFunction(() => document.body.dataset.ready === 'true', null, { timeout: 10000 });

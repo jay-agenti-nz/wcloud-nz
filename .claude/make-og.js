@@ -4,10 +4,7 @@
  *   #og-main   -> og-image.jpg   (homepage)
  *   #og-intake -> og-intake.jpg  (intake form)
  *   #og-<page> -> og-<page>.jpg  (websites, marketing, projects,
- *                 restaurants, guides, cost, builder, privacy, terms, card)
- *
- * Single-card sources (og-shoot.html) still work: set OG_URL and OG_OUT
- * and the page's #card is captured to that file.
+ *                 restaurants, guides, cost, builder, privacy, terms, card, shoot)
  *
  * Needs the local preview server running (paths are absolute, /assets/...):
  *   python3 .claude/preview-server.py 8899
@@ -21,10 +18,8 @@ try { ({ chromium } = require('playwright-core')); }
 catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_PATH || 'playwright')); }
 
 const URL = process.env.OG_URL || 'http://localhost:8899/og-cards.html';
-const CARDS = process.env.OG_OUT
-  ? { card: process.env.OG_OUT }
-  : Object.assign({ 'og-main': 'og-image.jpg', 'og-intake': 'og-intake.jpg' },
-      Object.fromEntries(['websites','marketing','projects','restaurants','guides','cost','builder','privacy','terms','card']
+const CARDS = Object.assign({ 'og-main': 'og-image.jpg', 'og-intake': 'og-intake.jpg' },
+      Object.fromEntries(['websites','marketing','projects','restaurants','guides','cost','builder','privacy','terms','card','shoot']
         .map(n => ['og-' + n, 'og-' + n + '.jpg'])));
 
 (async () => {

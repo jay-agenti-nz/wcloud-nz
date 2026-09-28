@@ -10,8 +10,7 @@
     #og-intake  -> og-intake.jpg  (intake form)
     #og-<page>  -> og-<page>.jpg  (one per page: websites, marketing,
                    projects, restaurants, guides, cost, builder,
-                   privacy, terms, card)
-  Shoot & Create keeps its own card (og-shoot.html).
+                   privacy, terms, card, shoot)
   Built with the site's real fonts, logo, cloud textures and the
   homepage's hero tiles, so the cards match the site.
   To regenerate: node .claude/make-og.js
@@ -195,6 +194,15 @@
   .bcard .nm { font-family: var(--serif); font-size: 38px; font-weight: 700; color: var(--deep); line-height: 1; }
   .bcard .role { font-size: 18px; font-weight: 600; color: var(--body); }
   .bcard .ln { display: flex; flex-direction: column; gap: 8px; font-size: 20px; font-weight: 700; color: var(--brand-ink); }
+  .shoot { position: relative; width: 480px; height: 460px; }
+  .shoot .tile { position: absolute; padding: 10px; border-radius: 24px; }
+  .shoot .shot { border-radius: 14px; }
+  .shoot .p1 { width: 250px; left: 0; top: 40px; transform: rotate(-6deg); }
+  .shoot .p2 { width: 250px; right: 0; top: 20px; transform: rotate(5deg); }
+  .shoot .rl { width: 190px; left: 145px; top: 70px; z-index: 2; }
+  .shoot .rl .shot { aspect-ratio: 9 / 16; }
+  .shoot .rl img { height: 100%; object-fit: cover; }
+  .shoot .badge { position: absolute; top: 20px; right: 20px; font-family: var(--mark); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: rgba(34,51,63,.6); padding: 4px 10px; border-radius: 999px; }
 </style>
 </head>
 <body>
@@ -432,6 +440,25 @@
     </div>
     <div class="right"><div class="bcard glass"><div><div class="nm">Jay Vera</div><div class="role">White Cloud &middot; Christchurch, NZ</div></div>
      <div class="ln"><span>021 854 847</span><span>kiaora@wcloud.nz</span><span>wcloud.nz</span></div></div></div>
+  </div>
+</div>
+
+
+<div class="og pg" id="og-shoot">
+  <canvas width="2400" height="1260"></canvas>
+  <div class="in">
+    <div class="logo"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></svg><span><span>WHITE</span><span>CLOUD</span></span></div>
+    <div class="copy">
+      <span class="eyebrow">Shoot &amp; Create &middot; Christchurch</span>
+      <h1>Shot the way you&rsquo;d remember it.</h1>
+      <p class="sub">Photography and short-form video for caf&eacute;s, restaurants and events.</p>
+      <div class="chips"><span class="chip glass">15 photos + 3 clips</span><span class="chip glass">From NZ$399 incl. GST</span></div>
+    </div>
+    <div class="right"><div class="shoot">
+      <div class="tile glass p1"><div class="shot"><img src="/assets/treasure-1.jpg" alt=""></div></div>
+      <div class="tile glass p2"><div class="shot"><img src="/assets/majestic-1.jpg" alt=""></div></div>
+      <div class="tile glass rl"><div class="shot" style="position:relative"><img src="/assets/reel-4.jpg" alt=""><span class="badge">Reel</span></div></div>
+    </div></div>
   </div>
 </div>
 

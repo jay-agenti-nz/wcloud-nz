@@ -1,41 +1,43 @@
 #!/usr/bin/env node
 /**
- * Renders og.html at 1200x630 and writes og-image.jpg.
+ * Renders the social cards in og-cards.html at 2x (2400x1260):
+ *   #og-main   -> og-image.jpg   (homepage)
+ *   #og-site   -> og-site.jpg    (every other page)
+ *   #og-intake -> og-intake.jpg  (intake form)
  *
- * The card is captured from a real page load so it uses the site's
- * actual webfonts, the actual logo mark and the same cloud textures
- * hero-cloud.js draws — an SVG approximation drifts away from the
- * site the moment either changes.
+ * Single-card sources (og-shoot.html) still work: set OG_URL and OG_OUT
+ * and the page's #card is captured to that file.
  *
- * Needs the local preview server running (paths are absolute, /assets/…):
+ * Needs the local preview server running (paths are absolute, /assets/...):
  *   python3 .claude/preview-server.py 8899
  *   node .claude/make-og.js
+ * Uses playwright-core; set CHROME to a Chromium binary if it is not
+ * at the default path.
  */
 const path = require('path');
-const PUPPETEER = process.env.PUPPETEER_PATH ||
-  '/private/tmp/claude-501/-Users-jay-white-cloud/aac3b13e-e94b-4efb-9b0d-f8978c36849e/scratchpad/pptr/node_modules/puppeteer';
-const puppeteer = require(PUPPETEER);
+let chromium;
+try { ({ chromium } = require('playwright-core')); }
+catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_PATH || 'playwright')); }
 
-const URL = process.env.OG_URL || 'http://localhost:8899/og.html';
-const OUT = path.join(__dirname, '..', 'og-image.jpg');
+const URL = process.env.OG_URL || 'http://localhost:8899/og-cards.html';
+const CARDS = process.env.OG_OUT
+  ? { card: process.env.OG_OUT }
+  : { 'og-main': 'og-image.jpg', 'og-site': 'og-site.jpg', 'og-intake': 'og-intake.jpg' };
 
 (async () => {
-  const browser = await puppeteer.launch({
-    headless: 'new',
+  const browser = await chromium.launch({
+    executablePath: process.env.CHROME || undefined,
     args: ['--no-sandbox', '--font-render-hinting=none']
   });
-  const page = await browser.newPage();
-  await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 2 });
-  await page.goto(URL, { waitUntil: 'networkidle0' });
-
-  // Wait for the webfonts and the cloud pass, not just the network.
+  const page = await browser.newPage({ viewport: { width: 1300, height: 2200 }, deviceScaleFactor: 2 });
+  await page.goto(URL, { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
-  await page.waitForFunction(() => document.body.dataset.ready === 'true', { timeout: 10000 });
-  await new Promise(r => setTimeout(r, 300));
-
-  const card = await page.$('#card');
-  await card.screenshot({ path: OUT, type: 'jpeg', quality: 88 });
-
+  await page.waitForFunction(() => document.body.dataset.ready === 'true', null, { timeout: 10000 });
+  await page.waitForTimeout(300);
+  for (const [id, file] of Object.entries(CARDS)) {
+    const out = path.join(__dirname, '..', file);
+    await page.locator('#' + id).screenshot({ path: out, type: 'jpeg', quality: 88 });
+    console.log('wrote', out);
+  }
   await browser.close();
-  console.log('wrote', OUT);
 })().catch(e => { console.error('ERR', e.message); process.exit(1); });

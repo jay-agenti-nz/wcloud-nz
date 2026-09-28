@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>White Cloud &mdash; social cards source</title>
+<meta name="robots" content="noindex, nofollow">
+<!--
+  Source for the three social cards, each 1200x630 and captured at 2x:
+    #og-main    -> og-image.jpg   (homepage)
+    #og-site    -> og-site.jpg    (every other page)
+    #og-intake  -> og-intake.jpg  (intake form)
+  Shoot & Create keeps its own card (og-shoot.html).
+  Built with the site's real fonts, logo, cloud textures and the
+  homepage's hero tiles, so the cards match the site.
+  To regenerate: node .claude/make-og.js
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #7fa8be; --brand-ink: #3d6a85; --deep: #22333f; --body: #55707f; --sage: #6bbf9e;
+    --serif: 'Lora', Georgia, serif; --sans: 'Nunito', system-ui, sans-serif; --mark: 'Raleway', system-ui, sans-serif;
+    --g-spec: rgba(255,255,255,.9);
+    --g-rim: inset 0 .5px 0 rgba(255,255,255,.55);
+    --ease: cubic-bezier(.22,1,.36,1);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #fff; font-family: var(--sans); color: var(--body); -webkit-font-smoothing: antialiased; }
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; }
+
+  /* ── The card ─────────────────────────────────────────────── */
+  .og {
+    position: relative; width: 1200px; height: 630px; overflow: hidden;
+    background:
+      radial-gradient(40% 50% at 8% 10%, rgba(184,216,242,.75), transparent 64%),
+      radial-gradient(34% 44% at 92% 8%, rgba(255,198,210,.5), transparent 64%),
+      radial-gradient(40% 50% at 88% 92%, rgba(200,226,247,.8), transparent 64%),
+      radial-gradient(30% 40% at 30% 100%, rgba(255,222,206,.45), transparent 64%),
+      linear-gradient(168deg, #f4f9fd 0%, #e8f2fa 55%, #dcecf8 100%);
+  }
+  .og canvas { position: absolute; inset: 0; width: 1200px; height: 630px; z-index: 0; }
+  .og .in { position: absolute; inset: 0; z-index: 1; }
+
+  /* thin glass, as on the site */
+  .glass {
+    background: linear-gradient(140deg, rgba(255,255,255,.5), rgba(255,255,255,.22));
+    backdrop-filter: blur(3px) saturate(170%);
+    border: 1px solid rgba(255,255,255,.6);
+    box-shadow: 0 1px 2px rgba(34,51,63,.04), 0 18px 40px -26px rgba(34,51,63,.35), var(--g-rim);
+  }
+
+  .logo { position: absolute; top: 52px; left: 72px; display: flex; align-items: center; gap: 14px; }
+  .logo svg { width: 54px; height: auto; }
+  .logo span { display: flex; flex-direction: column; line-height: 1.05; font-family: var(--mark); font-size: 15px; font-weight: 700; letter-spacing: .28em; color: var(--deep); }
+
+  h1 { font-family: var(--serif); color: var(--deep); margin: 0; font-weight: 700; letter-spacing: -.03em; line-height: 1.02; }
+  .sub { font-size: 25px; line-height: 1.45; margin: 0; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mark); font-size: 14px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--brand-ink); }
+  .eyebrow::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 4px rgba(127,168,190,.25); }
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip { font-size: 17px; font-weight: 700; color: var(--deep); padding: 10px 20px; border-radius: 999px; }
+  .url { font-family: var(--mark); font-size: 15px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--brand-ink); }
+
+  /* ── Main: the homepage hero, as a card ───────────────────── */
+  #og-main .copy { position: absolute; left: 72px; top: 150px; width: 560px; display: flex; flex-direction: column; gap: 22px; }
+  #og-main h1 { font-size: 70px; }
+  #og-main .art-wrap { position: absolute; right: 64px; top: 70px; width: 470px; }
+  .hero-art { position: relative; container-type: inline-size; aspect-ratio: 1 / 1.02; }
+  .ha {
+    position: absolute; display: flex; flex-direction: column; gap: 2.4cqw;
+    padding: 2.6cqw; border-radius: 5.5cqw;
+    text-decoration: none; color: inherit;
+    background: linear-gradient(140deg, rgba(255,255,255,.72), rgba(255,255,255,.4));
+    backdrop-filter: blur(10px) saturate(160%); -webkit-backdrop-filter: blur(10px) saturate(160%);
+    border: 1px solid rgba(255,255,255,.85);
+    box-shadow: 0 22px 46px -22px rgba(34,51,63,.42), inset 0 1px 0 var(--g-spec);
+    animation: haFloat 7s var(--ease) infinite alternate;
+    transition: transform .45s var(--ease), box-shadow .45s var(--ease);
+  }
+  .ha:hover { animation-play-state: paused; transform: translateY(-6px) scale(1.015); box-shadow: 0 30px 60px -24px rgba(34,51,63,.5), inset 0 1px 0 var(--g-spec); z-index: 5; }
+  .ha-web   { left: 0;  top: 0;    width: 68%; z-index: 1; }
+  .ha-shoot { right: 0; top: 22%;  width: 40%; z-index: 2; animation-delay: -2.4s; }
+  .ha-mk    { left: 9%; bottom: 0; width: 50%; z-index: 3; animation-delay: -4.6s; }
+  @keyframes haFloat { from { translate: 0 0; } to { translate: 0 -1.6cqw; } }
+  @media (prefers-reduced-motion: reduce) { .ha { animation: none; } }
+
+  .ha-label {
+    align-self: flex-start; display: inline-flex; align-items: center; gap: 1.2cqw;
+    font-family: var(--mark); font-size: max(.6rem, 2.3cqw); font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--deep); white-space: nowrap;
+    padding: .8cqw 2cqw; border-radius: 999px;
+    background: rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.95);
+  }
+  .ha-label b { color: var(--brand-ink); }
+
+  /* 01 — a browser with a page in it */
+  .ha-browser { display: flex; flex-direction: column; border-radius: 3.4cqw; overflow: hidden; background: #fff; box-shadow: inset 0 0 0 1px rgba(127,168,190,.25); }
+  .ha-bar { display: flex; align-items: center; gap: .9cqw; padding: 1.6cqw 2cqw; background: #eef4f8; }
+  .ha-bar i { width: 1.4cqw; height: 1.4cqw; border-radius: 50%; background: #c9d9e3; }
+  .ha-bar em { margin-left: 1.4cqw; font-style: normal; font-size: max(.5rem, 1.8cqw); font-weight: 700; color: var(--body); background: #fff; padding: .4cqw 1.6cqw; border-radius: 999px; }
+  .ha-page { display: flex; flex-direction: column; gap: 2.2cqw; padding: 2.6cqw 3cqw 3.2cqw; }
+  .ha-nav { display: flex; justify-content: flex-end; gap: 1.4cqw; }
+  .ha-nav i { width: 5cqw; height: 1cqw; border-radius: 1cqw; background: #dbe7ee; }
+  .ha-hero-row { display: grid; grid-template-columns: 1.1fr .9fr; gap: 2.4cqw; align-items: center; }
+  .ha-lines { display: flex; flex-direction: column; gap: 1.2cqw; }
+  .ha-lines i { height: 2cqw; border-radius: 2cqw; background: var(--deep); opacity: .85; }
+  .ha-lines .l1 { width: 100%; } .ha-lines .l2 { width: 78%; }
+  .ha-lines .l3 { width: 90%; height: 1.1cqw; background: #c9d9e3; opacity: 1; margin-top: .6cqw; }
+  .ha-lines .btnish { width: 44%; height: 3.2cqw; margin-top: 1cqw; background: linear-gradient(140deg, var(--brand-ink), var(--deep)); opacity: 1; }
+  .ha-pic { aspect-ratio: 1 / .82; border-radius: 2.4cqw; background: linear-gradient(150deg, #bcd6e8, #f6d3d9); }
+  .ha-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6cqw; }
+  .ha-cards i { aspect-ratio: 1.5; border-radius: 1.8cqw; background: #eef4f8; }
+
+  /* 03 — a frame through the viewfinder */
+  .ha-photo { position: relative; display: block; border-radius: 3.4cqw; overflow: hidden; aspect-ratio: 4 / 5; }
+  .ha-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ha-corners i { position: absolute; width: 5cqw; height: 5cqw; border: 0 solid rgba(255,255,255,.9); }
+  .ha-corners i:nth-child(1) { top: 3cqw; left: 3cqw; border-top-width: 2px; border-left-width: 2px; }
+  .ha-corners i:nth-child(2) { top: 3cqw; right: 3cqw; border-top-width: 2px; border-right-width: 2px; }
+  .ha-corners i:nth-child(3) { bottom: 3cqw; left: 3cqw; border-bottom-width: 2px; border-left-width: 2px; }
+  .ha-corners i:nth-child(4) { bottom: 3cqw; right: 3cqw; border-bottom-width: 2px; border-right-width: 2px; }
+  .ha-rec {
+    position: absolute; left: 50%; bottom: 3.2cqw; translate: -50% 0;
+    font-family: var(--mark); font-size: max(.5rem, 1.7cqw); font-weight: 700; letter-spacing: .14em;
+    color: #fff; background: rgba(34,51,63,.45); backdrop-filter: blur(6px);
+    padding: .5cqw 1.6cqw; border-radius: 999px; white-space: nowrap;
+  }
+
+  /* 02 — an ad, and what it did */
+  .ha-ad { display: flex; flex-direction: column; gap: .5cqw; padding: 2.2cqw 2.6cqw; border-radius: 3cqw; background: #fff; box-shadow: inset 0 0 0 1px rgba(127,168,190,.22); }
+  .ha-ad-tag { align-self: flex-start; font-family: var(--mark); font-size: max(.48rem, 1.6cqw); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--brand-ink); padding: .3cqw 1.1cqw; border-radius: .8cqw; }
+  .ha-ad b { font-size: max(.62rem, 2.4cqw); color: var(--brand-ink); }
+  .ha-ad small { font-size: max(.55rem, 2cqw); color: var(--body); line-height: 1.35; }
+  .ha-chart { display: flex; flex-direction: column; gap: .8cqw; padding: 1.8cqw 2.6cqw 1.4cqw; border-radius: 3cqw; background: rgba(255,255,255,.7); }
+  .ha-chart-head { display: flex; justify-content: space-between; align-items: center; }
+  .ha-chart-head small { font-family: var(--mark); font-size: max(.5rem, 1.7cqw); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--body); }
+  .ha-chart-head em { font-style: normal; font-weight: 800; font-size: max(.7rem, 2.6cqw); color: var(--sage); }
+  .ha-chart svg { width: 100%; height: 9cqw; display: block; }
+
+
+  .ha { animation: none !important; }
+
+  /* ── Site: the brand, for every other page ─────────────────── */
+  #og-site .centre { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; text-align: center; }
+  #og-site .big-mark { display: flex; align-items: center; gap: 22px; }
+  #og-site .big-mark svg { width: 110px; height: auto; }
+  #og-site .big-mark span { display: flex; flex-direction: column; line-height: 1.02; font-family: var(--mark); font-size: 40px; font-weight: 700; letter-spacing: .3em; color: var(--deep); text-align: left; }
+  #og-site h1 { font-size: 50px; max-width: 18ch; }
+  #og-site .svc { display: flex; gap: 14px; }
+  #og-site .svc .chip { font-size: 19px; padding: 12px 26px; display: flex; align-items: center; gap: 10px; }
+  #og-site .svc .chip b { font-family: var(--mark); color: var(--brand-ink); font-size: 14px; letter-spacing: .1em; }
+
+  /* ── Intake ────────────────────────────────────────────────── */
+  #og-intake .copy { position: absolute; left: 72px; top: 150px; width: 600px; display: flex; flex-direction: column; gap: 24px; }
+  #og-intake h1 { font-size: 78px; }
+  #og-intake h1 em { font-style: italic; font-weight: 400; color: var(--brand-ink); }
+  #og-intake .panel { position: absolute; right: 72px; top: 112px; width: 400px; border-radius: 30px; padding: 32px 32px 28px; display: flex; flex-direction: column; gap: 18px; }
+  #og-intake .panel h2 { margin: 0; font-family: var(--mark); font-size: 13px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--brand-ink); }
+  #og-intake .step { display: flex; align-items: center; gap: 16px; font-size: 21px; font-weight: 700; color: var(--deep); }
+  #og-intake .step i { font-style: normal; flex: 0 0 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-size: 16px; font-weight: 800; color: var(--brand-ink); background: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.9); }
+  #og-intake .panel hr { border: 0; border-top: 1px solid rgba(127,168,190,.25); margin: 4px 0 0; }
+</style>
+</head>
+<body>
+
+<!-- MAIN -->
+<div class="og" id="og-main">
+  <canvas width="2400" height="1260"></canvas>
+  <div class="in">
+    <div class="logo"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></svg><span><span>WHITE</span><span>CLOUD</span></span></div>
+    <div class="copy">
+      <span class="eyebrow">Christchurch, New Zealand</span>
+      <h1>Everything your business needs to be found.</h1>
+      <p class="sub">Websites, marketing, and photography &amp; video &mdash; one person, start to finish.</p>
+    </div>
+    <div class="art-wrap">
+        <div class="hero-art">
+          <div class="ha ha-web" aria-label="Websites">
+            <span class="ha-label"><b>01</b> Websites</span>
+            <span class="ha-browser" aria-hidden="true">
+              <span class="ha-bar"><i></i><i></i><i></i><em>yourbusiness.co.nz</em></span>
+              <span class="ha-page">
+                <span class="ha-nav"><i></i><i></i><i></i></span>
+                <span class="ha-hero-row">
+                  <span class="ha-lines"><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="btnish"></i></span>
+                  <span class="ha-pic"></span>
+                </span>
+                <span class="ha-cards"><i></i><i></i><i></i></span>
+              </span>
+            </span>
+          </div>
+
+          <div class="ha ha-shoot" aria-label="Shoot and Create">
+            <span class="ha-label"><b>03</b> Shoot &amp; Create</span>
+            <span class="ha-photo">
+              <img src="/assets/hero-thonglor-640.jpg" alt="" width="640" height="800">
+              <span class="ha-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+              <span class="ha-rec" aria-hidden="true">4:5 &middot; RAW</span>
+            </span>
+          </div>
+
+          <div class="ha ha-mk" aria-label="Marketing">
+            <span class="ha-label"><b>02</b> Marketing</span>
+            <span class="ha-ad" aria-hidden="true">
+              <span class="ha-ad-tag">Sponsored</span>
+              <b>yourbusiness.co.nz</b>
+              <small>Trusted local service in Christchurch</small>
+            </span>
+            <span class="ha-chart" aria-hidden="true">
+              <span class="ha-chart-head"><small>Enquiries</small><em>&uarr;</em></span>
+              <svg viewBox="0 0 200 64" preserveAspectRatio="none">
+                <defs><linearGradient id="haFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fa8be" stop-opacity=".45"/><stop offset="1" stop-color="#7fa8be" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0 56 C24 52,36 50,52 44 S84 40,100 32 S134 26,150 18 S182 10,200 6 L200 64 L0 64Z" fill="url(#haFill)"/>
+                <path d="M0 56 C24 52,36 50,52 44 S84 40,100 32 S134 26,150 18 S182 10,200 6" fill="none" stroke="#3d6a85" stroke-width="2.4" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SITE -->
+<div class="og" id="og-site">
+  <canvas width="2400" height="1260"></canvas>
+  <div class="in">
+    <div class="centre">
+      <div class="big-mark"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></svg><span><span>WHITE</span><span>CLOUD</span></span></div>
+      <h1>Everything your business needs to be found.</h1>
+      <div class="svc">
+        <span class="chip glass"><b>01</b> Websites</span>
+        <span class="chip glass"><b>02</b> Marketing</span>
+        <span class="chip glass"><b>03</b> Shoot &amp; Create</span>
+      </div>
+      <span class="url">wcloud.nz &middot; Christchurch, NZ</span>
+    </div>
+  </div>
+</div>
+
+<!-- INTAKE -->
+<div class="og" id="og-intake">
+  <canvas width="2400" height="1260"></canvas>
+  <div class="in">
+    <div class="logo"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#3d6a85" stroke-width="4.5" stroke-linecap="round"/><path d="M4 36 C16 16,30 54,44 30 C56 10,66 46,74 28" stroke="#7fa8be" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></svg><span><span>WHITE</span><span>CLOUD</span></span></div>
+    <div class="copy">
+      <span class="eyebrow">New client intake</span>
+      <h1>Let&rsquo;s get your <em>website started.</em></h1>
+      <div class="chips">
+        <span class="chip glass">About 10 minutes</span>
+        <span class="chip glass">5 required fields</span>
+        <span class="chip glass">Reply in 1 business day</span>
+      </div>
+    </div>
+    <div class="panel glass">
+      <h2>What we&rsquo;ll ask</h2>
+      <div class="step"><i>1</i>About your business</div>
+      <div class="step"><i>2</i>Contact &amp; legal</div>
+      <div class="step"><i>3</i>Branding &amp; content</div>
+      <div class="step"><i>4</i>Technical</div>
+      <hr>
+      <span class="url">wcloud.nz/intake</span>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import { makeCloudTexture, makeRandom } from '/assets/hero-cloud.js';
+  const rand = makeRandom(20260821);            // same seed as the hero
+  const tex = [0, 1.5, 4].map(b => makeCloudTexture(rand, b));
+  const W = 2400, H = 1260;
+  // Clouds kept to the edges, clear of the words on each card.
+  const sets = {
+    'og-main':   [[.46,.10,.13,2,.8],[.60,.94,.16,1,.7],[.98,.60,.14,2,.8],[.04,.96,.14,0,.55],[.36,.98,.12,1,.5]],
+    'og-site':   [[.10,.18,.16,2,.85],[.90,.16,.15,2,.85],[.04,.78,.15,1,.7],[.95,.82,.17,2,.8],[.28,.95,.11,0,.5],[.74,.96,.12,0,.5],[.22,.05,.09,0,.45],[.78,.04,.1,1,.5]],
+    'og-intake': [[.50,.10,.12,1,.65],[.62,.95,.15,2,.75],[.98,.97,.14,1,.65],[.04,.97,.13,0,.5],[.40,.99,.11,1,.5]],
+  };
+  for (const [id, clouds] of Object.entries(sets)) {
+    const ctx = document.querySelector('#' + id + ' canvas').getContext('2d');
+    for (const [x, y, s, layer, a] of clouds) {
+      const size = W * s; ctx.globalAlpha = a;
+      ctx.drawImage(tex[layer], x * W - size / 2, y * H - size / 2, size, size);
+    }
+  }
+  document.body.dataset.ready = 'true';
+</script>
+</body>
+</html>

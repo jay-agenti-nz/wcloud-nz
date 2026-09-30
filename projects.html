@@ -9,17 +9,17 @@
 <meta property="og:type"        content="website">
 <meta property="og:url"         content="https://wcloud.nz/projects">
 <meta property="og:title"       content="Projects | White Cloud">
-<meta property="og:description" content="Websites, apps, online stores and brand systems built by White Cloud in Christchurch, all live. Biblio, Rak Khun Thai Eatery, Groov NZ and Agenti NZ.">
-<meta property="og:image"       content="https://wcloud.nz/og-projects.jpg">
+<meta property="og:description" content="Websites, apps, online stores and brand systems built by White Cloud in Christchurch, all live. Ascent Accounting, Biblio, Rak Khun Thai Eatery, Groov NZ and Agenti NZ.">
+<meta property="og:image"       content="https://wcloud.nz/og-projects.jpg?v=2">
 <meta property="og:image:type"  content="image/jpeg">
 <meta property="og:image:width" content="2400">
 <meta property="og:image:height" content="1260">
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:title"       content="Projects | White Cloud">
-<meta name="twitter:description" content="Websites, apps, online stores and brand systems built by White Cloud in Christchurch, all live. Biblio, Rak Khun Thai Eatery, Groov NZ and Agenti NZ.">
-<meta name="twitter:image"       content="https://wcloud.nz/og-projects.jpg">
+<meta name="twitter:description" content="Websites, apps, online stores and brand systems built by White Cloud in Christchurch, all live. Ascent Accounting, Biblio, Rak Khun Thai Eatery, Groov NZ and Agenti NZ.">
+<meta name="twitter:image"       content="https://wcloud.nz/og-projects.jpg?v=2">
 
-<meta name="description" content="Websites, apps, online stores and brand systems built by White Cloud in Christchurch, all live. Biblio, Rak Khun Thai Eatery, Groov NZ and Agenti NZ.">
+<meta name="description" content="Websites, apps, online stores and brand systems built by White Cloud in Christchurch, all live. Ascent Accounting, Biblio, Rak Khun Thai Eatery, Groov NZ and Agenti NZ.">
 <link rel="canonical" href="https://wcloud.nz/projects">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,7 +84,17 @@
   .pj-cta p { color: rgba(255,255,255,.72); max-width: 48ch; }
   .pj-cta .btns { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; margin-top: .4rem; }
 
+  /* The newest project runs the full width: screenshot left, story right. */
+  .proj-feat { grid-column: 1 / -1; display: grid; grid-template-columns: 1.35fr 1fr; gap: 1rem; align-items: center; }
+  .proj-feat .proj-body { padding: 1rem 1.4rem; }
+  .proj-feat h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+  .proj-feat p { font-size: 1rem; }
+
   @media (max-width: 900px) {
+    .proj-feat { grid-template-columns: 1fr; gap: 0; }
+    .proj-feat .proj-body { padding: 1.2rem .7rem .6rem; }
+    .proj-feat h3 { font-size: clamp(1.25rem, 2vw, 1.55rem); }
+    .proj-feat p { font-size: .95rem; }
     .pj-hero { padding-block: 7rem 2.5rem; }
     .proj-grid { grid-template-columns: 1fr; }
   }
@@ -147,6 +157,17 @@
   <section class="pj-band">
       <div class="proj-grid">
 
+        <a class="proj proj-feat glass" href="https://ascentaccounting.co.nz" target="_blank" rel="noopener">
+          <div class="proj-shot"><img src="/assets/ascent-preview.jpg" alt="Ascent Accounting website" loading="lazy" width="1600" height="1005"></div>
+          <div class="proj-body">
+            <span class="proj-tag">Newest &middot; Accounting &amp; tax firm</span>
+            <h3>Ascent Accounting</h3>
+            <p>A calm, clear website for a boutique accounting and tax practice working with businesses right across New Zealand &mdash; light glass panels, a dark mode, and at-a-glance cards for GST, Xero and cashflow that show what the firm does before a word is read.</p>
+            <span class="proj-go">ascentaccounting.co.nz <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </div>
+        </a>
+
+
         <a class="proj glass" href="https://biblio.ink" target="_blank" rel="noopener">
           <div class="proj-shot"><img src="/assets/biblio-preview.jpg" alt="Biblio, a 3D bookshelf web and iOS app" loading="lazy" width="1600" height="1005"></div>
           <div class="proj-body">
@@ -159,7 +180,7 @@
         </a>
 
         <a class="proj glass" href="https://rakkhun.co.nz" target="_blank" rel="noopener">
-          <div class="proj-shot"><img src="/assets/rakkhun-preview.jpg" alt="Rak Khun Thai Eatery and Bar website" loading="lazy" width="1600" height="1004"></div>
+          <div class="proj-shot"><img src="/assets/rakkhun-preview.jpg" alt="Rak Khun Thai Eatery and Bar website" loading="lazy" width="1600" height="1005"></div>
           <div class="proj-body">
             <span class="proj-tag">Restaurant &middot; full rebuild</span>
             <h3>Rak Khun Thai Eatery &amp; Bar</h3>
@@ -181,7 +202,7 @@
         </a>
 
         <a class="proj glass" href="https://agenti.nz" target="_blank" rel="noopener">
-          <div class="proj-shot"><img src="/assets/agenti-preview.jpg" alt="Agenti NZ brand and design system" loading="lazy" width="1600" height="1004"></div>
+          <div class="proj-shot"><img src="/assets/agenti-preview.jpg" alt="Agenti NZ brand and design system" loading="lazy" width="1600" height="1005"></div>
           <div class="proj-body">
             <span class="proj-tag">Brand &amp; design system</span>
             <h3>Agenti NZ</h3>

@@ -12,6 +12,20 @@
   status = 301
   force = true
 
+# Jay's photography gallery lives at /jaygallery; the short and
+# possessive spellings people are likely to type land there too.
+[[redirects]]
+  from = "/jaysgallery"
+  to = "/jaygallery"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/jay"
+  to = "/jaygallery"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/card"
   to = "/card.html"
@@ -81,6 +95,12 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Gallery photos never change once published under a name
+[[headers]]
+  for = "/jaygallery/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
 
 [[headers]]
   for = "/og-*.jpg"

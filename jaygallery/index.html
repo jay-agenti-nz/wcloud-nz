@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jay D Vera | Christchurch Photographer for Food, Brands and Families</title>
+<meta name="description" content="Jay D Vera is a Christchurch photographer and content creator. Food, cake and product photography for small businesses, plus landscape and family photography across Canterbury, New Zealand.">
+<link rel="canonical" href="https://wcloud.nz/jaygallery">
+<link rel="icon" type="image/svg+xml" href="/jaygallery/favicon.svg">
+<meta name="theme-color" content="#e9e5df">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jay D Vera">
+<meta property="og:title" content="Jay D Vera | Christchurch Photographer">
+<meta property="og:description" content="Food, product, landscape and family photography in Christchurch, New Zealand.">
+<meta property="og:url" content="https://wcloud.nz/jaygallery">
+<meta property="og:image" content="https://wcloud.nz/og-jaygallery.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_NZ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jay D Vera | Christchurch Photographer">
+<meta name="twitter:description" content="Food, product, landscape and family photography in Christchurch, New Zealand.">
+<meta name="twitter:image" content="https://wcloud.nz/og-jaygallery.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://wcloud.nz/jaygallery#jay",
+      "name": "Jay D Vera",
+      "jobTitle": ["Photographer", "Content Creator", "Web Designer"],
+      "description": "Christchurch photographer and content creator for food businesses, cafes, bakeries and small brands, also photographing landscapes and families around Canterbury.",
+      "url": "https://wcloud.nz/jaygallery",
+      "email": "mailto:kiaora@wcloud.nz",
+      "address": { "@type": "PostalAddress", "addressLocality": "Christchurch", "addressRegion": "Canterbury", "addressCountry": "NZ" },
+      "worksFor": { "@type": "Organization", "name": "White Cloud", "url": "https://wcloud.nz" },
+      "sameAs": ["https://www.instagram.com/jay.d.vera/"],
+      "knowsAbout": ["Food photography", "Product photography", "Cake photography", "Content creation", "Landscape photography", "Family photography", "Website design"]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://wcloud.nz/jaygallery#photography",
+      "name": "Jay D Vera Photography",
+      "description": "Photography and content creation in Christchurch: food and product shoots for cafes, bakeries and small businesses, and landscape and family photography.",
+      "url": "https://wcloud.nz/jaygallery",
+      "email": "kiaora@wcloud.nz",
+      "image": "https://wcloud.nz/og-jaygallery.jpg",
+      "founder": { "@id": "https://wcloud.nz/jaygallery#jay" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Christchurch", "addressRegion": "Canterbury", "addressCountry": "NZ" },
+      "areaServed": [{ "@type": "City", "name": "Christchurch" }, { "@type": "AdministrativeArea", "name": "Canterbury" }],
+      "serviceType": ["Food photography", "Product photography", "Content creation for social media", "Landscape photography", "Family photography"]
+    },
+    {
+      "@type": "ImageGallery",
+      "name": "Jay D Vera, selected photographs",
+      "url": "https://wcloud.nz/jaygallery",
+      "creator": { "@id": "https://wcloud.nz/jaygallery#jay" },
+      "hasPart": [
+        { "@type": "CreativeWork", "name": "Horm Choy, homemade custom cakes", "description": "Content creation and cake photography for Horm Choy, a Christchurch custom cake maker." },
+        { "@type": "CreativeWork", "name": "Coastal Walk", "description": "Landscape and family photography on the coast near Christchurch." }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Gilda+Display&display=swap">
+<style>
+/* Jay D Vera gallery: stone ground, dark cherry mark, Garamond type.
+   Each project is a film strip; scrolling glides it sideways, then on to the next. */
+:root {
+  --c-bg: #e9e5df; --c-ink: #262321; --c-mute: #7d766e; --c-line: #d6d0c8; --c-mark: #4a1220;
+  --lb-bg: #0c0b0a; --lb-ink: #efe9e1; --lb-mute: #8c847a;
+  --f-c-display: 'EB Garamond', Garamond, Georgia, serif;
+  --f-c-italic: 'EB Garamond', Garamond, Georgia, serif;
+  color-scheme: light;
+}
+html, body { background: var(--c-bg); }
+body { margin: 0; -webkit-font-smoothing: antialiased; }
+.vh { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+/* No saving: no drag, no selection, no long-press menu, images never take pointer events */
+.shot, .lb-img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.shot img { pointer-events: none; -webkit-user-drag: none; display: block; width: 100%; height: 100%; object-fit: cover; }
+.shot { position: relative; display: block; padding: 0; border: 0; background: #d9d4cd; cursor: zoom-in; overflow: hidden; }
+.shot::after { content: ""; position: absolute; inset: 0; } /* shield over the image */
+.shot:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+/* ───────── C · Film strip ───────── */
+#c { color: var(--c-ink); background: var(--c-bg); font-family: var(--f-c-display); }
+/* header: logo, then a short centred bio with the contact icons under it */
+.c-head { position: fixed; z-index: 32; top: 0; left: 0; right: 0; background: var(--c-bg); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 18px clamp(16px, 3vw, 40px) 8px; }
+.c-head .c-name { display: grid; place-items: center; }
+.c-bio { display: flex; flex-direction: column; align-items: center; gap: 3px; margin-top: clamp(14px, 2.6vh, 26px); max-width: 34em; transition: opacity .8s ease; }
+.c-bio p { margin: 0; }
+.c-who { font: 400 16px/1.3 var(--f-c-display); color: var(--c-ink); letter-spacing: .02em; }
+.c-tag { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0 14px; font: 400 11px/1.9 var(--f-c-display); letter-spacing: .22em; text-transform: uppercase; color: var(--c-ink); opacity: .78; }
+.c-tag i { display: block; width: 1px; height: 11px; background: currentColor; opacity: .45; }
+.c-about { margin-top: 10px !important; font: italic 400 14px/1.6 var(--f-c-italic); color: var(--c-mute); text-wrap: balance; }
+.c-bio .c-links { margin-top: 14px; }
+#c.intro .c-bio { opacity: 0; }
+#c.intro .c-head { background: transparent; }
+.c-links { display: flex; justify-content: center; gap: 16px; }
+.c-links a { color: var(--c-ink); display: grid; place-items: center; width: 22px; height: 22px; opacity: .65; transition: opacity .3s, color .3s; }
+.c-links a:hover { opacity: 1; color: var(--c-mark); }
+.c-links a:focus-visible { outline: 1px solid var(--c-ink); outline-offset: 3px; }
+.c-links svg { width: 16px; height: 16px; }
+/* each project is a tall section; while it is on screen the page's vertical scroll
+   glides its strip sideways, then the page moves down to the next project */
+.c-sec { position: relative; }
+.c-stick { box-sizing: border-box; position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; flex-direction: column; padding-top: var(--hh, 150px); }
+.c-strip { flex: 1; display: flex; align-items: center; gap: clamp(18px, 2.4vw, 36px); padding: 0 clamp(16px, 6vw, 96px) 4vh; width: max-content; will-change: transform; cursor: grab; }
+.c-strip.dragging { cursor: grabbing; }
+.c-item { flex: 0 0 auto; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.c-item .shot { height: min(calc(100vh - var(--hh, 150px) - 170px), 560px); background: #d3cdc5; clip-path: inset(0 0 0 0); transition: clip-path 1.5s cubic-bezier(.77,0,.18,1); }
+.c-item:nth-child(even) { margin-top: 5vh; }
+/* reveal: the frame opens like a curtain, the photo settles inside it */
+.c-item.pre .shot { clip-path: inset(100% 0 0 0); }
+.c-item .pl { position: absolute; inset: 0 -9%; pointer-events: none; will-change: transform; }
+.c-item .shot img { transform: scale(1.18); filter: saturate(.22) brightness(.97); transition: filter .9s ease, transform 1.8s cubic-bezier(.2,.7,.1,1); }
+.c-item:not(.pre) .shot img { transform: scale(1); }
+.c-item.lit .shot img, .c-item:hover .shot img, .c-item .shot:focus-visible img { filter: none; }
+.c-item:hover .shot img { transform: scale(1.035); }
+.c-item figcaption { width: 0; min-width: 100%; display: flex; gap: 12px; align-items: baseline; font: italic 400 16px/1.2 var(--f-c-italic); color: var(--c-mute); opacity: 0; transform: translateY(-6px); transition: opacity .6s, transform .6s; }
+.c-item figcaption span { font: 400 14px/1 var(--f-c-display); font-style: normal; font-variant-numeric: oldstyle-nums; }
+.c-item.lit figcaption, .c-item:hover figcaption { opacity: 1; transform: none; }
+/* opening: a living blob with the J, which then settles into the header as the logo */
+.c-curtain { position: fixed; inset: 0; z-index: 30; background: var(--c-bg); transition: opacity 1s ease; }
+.c-curtain.clear { opacity: 0; pointer-events: none; }
+.c-curtain { cursor: pointer; }
+.c-enter { position: absolute; left: 50%; top: calc(50% + min(100vw, 100vh) * .22 + 34px); transform: translate(-50%, 6px); background: none; border: 0; padding: 10px 14px; cursor: pointer; color: var(--c-ink); font: 400 11px/1 var(--f-c-display); letter-spacing: .34em; text-transform: uppercase; opacity: 0; transition: opacity 1s ease, transform 1s ease; }
+.c-curtain.ready .c-enter { opacity: .7; transform: translate(-50%, 0); animation: c-breathe 2.8s ease-in-out 1s infinite; }
+.c-curtain.clear .c-enter { animation: none; opacity: 0; }
+.c-enter:focus-visible { outline: 1px solid var(--c-ink); outline-offset: 4px; }
+@keyframes c-breathe { 0%, 100% { opacity: .7; } 50% { opacity: .3; } }
+/* the logo lives in the header; during the intro it starts large in the centre and glides up into place */
+.c-mark { position: relative; z-index: 35; display: block; width: clamp(88px, 8vw, 118px); aspect-ratio: 1; transform-origin: 50% 50%; }
+.c-mark.intro { opacity: 0; }
+.c-mark.grow { opacity: 1; transition: opacity .9s ease, transform 1.1s cubic-bezier(.2,.8,.1,1); }
+.c-mark.go { transition: transform 1.25s cubic-bezier(.65,0,.2,1); }
+.c-mark text { transition: opacity .9s ease .4s; }
+.c-mark.intro:not(.grow) text { opacity: 0; }
+.blob-svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.blob-svg path { fill: var(--c-mark); }
+.blob-svg text { fill: var(--c-bg); font: 400 1.35px 'Gilda Display', Georgia, serif; letter-spacing: 0; text-transform: none; }
+.c-chap { flex: 0 0 auto; align-self: center; display: flex; flex-direction: column; justify-content: center; gap: 10px; width: clamp(200px, 17vw, 260px); height: min(calc(100vh - var(--hh, 150px) - 170px), 560px); padding-right: 12px; }
+.c-chap-rule { display: block; width: 36px; height: 1px; background: var(--c-mute); opacity: .6; margin: 10px 0 6px; }
+.c-chap-n { font: 400 15px/1 'Gilda Display', Georgia, serif; color: var(--c-mark); letter-spacing: .12em; }
+.c-chap-t { font: 400 clamp(28px, 2.6vw, 38px)/1.05 var(--f-c-display); color: var(--c-ink); text-wrap: balance; }
+.c-chap-s { font: italic 400 16px/1.3 var(--f-c-italic); color: var(--c-mute); }
+.c-chap-p { display: flex; flex-direction: column; gap: 4px; font: 400 16px/1.3 var(--f-c-display); color: var(--c-ink); }
+.c-chap-p small { font: 400 11px/1 var(--f-c-display); letter-spacing: .22em; text-transform: uppercase; color: var(--c-mute); }
+.c-cnt { font-variant-numeric: tabular-nums; } .c-cnt b { font-weight: 400; color: var(--c-ink); }
+.c-foot { flex: 0 0 auto; display: flex; align-items: center; gap: 18px; padding: 0 clamp(16px, 3vw, 40px) calc(36px + env(safe-area-inset-bottom, 0px)); font-size: 14px; color: var(--c-mute); }
+.c-track { flex: 1; height: 1px; background: var(--c-line); position: relative; }
+.c-track span { position: absolute; left: 0; top: -1px; height: 3px; width: 0; background: var(--c-ink); }
+
+/* left edge: scrolling here skips straight to the next project */
+.c-skip { position: fixed; z-index: 25; left: 0; top: var(--hh, 150px); bottom: 0; width: 14vw; display: flex; align-items: flex-end; padding: 0 0 calc(70px + env(safe-area-inset-bottom, 0px)) clamp(16px, 3vw, 40px); background: none; border: 0; color: var(--c-ink); cursor: pointer; opacity: 0; transition: opacity .5s ease; font: italic 400 16px/1.2 var(--f-c-italic); }
+.c-skip span { display: inline-flex; align-items: center; gap: 10px; padding: 10px 0; }
+.c-skip svg { width: 15px; height: 15px; transition: transform .4s ease; }
+#c.in-left .c-skip { opacity: 1; }
+[data-grid="c"] { transition: opacity .42s ease; }
+[data-grid="c"].jump { opacity: 0; }
+#c.in-left .c-skip:hover svg { transform: translateY(3px); }
+#c.intro .c-skip, .c-skip[hidden] { display: none; }
+.c-skip:focus-visible { opacity: 1; outline: none; }
+.c-skip:focus-visible span { outline: 1px solid var(--c-ink); outline-offset: 4px; }
+
+/* ───────── Lightbox (shared) ───────── */
+.lb { position: fixed; inset: 0; z-index: 60; background: var(--lb-bg); color: var(--lb-ink); display: grid; grid-template-rows: auto 1fr auto; opacity: 0; visibility: hidden; transition: opacity .45s ease, visibility 0s .45s; font-family: var(--f-c-display); }
+.lb.open { opacity: 1; visibility: visible; transition: opacity .45s ease; }
+.lb-top, .lb-bot { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: calc(14px + env(safe-area-inset-top, 0px)) clamp(16px, 3vw, 36px) 14px; font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--lb-mute); }
+.lb-bot { padding: 14px clamp(16px, 3vw, 36px) calc(18px + env(safe-area-inset-bottom, 0px)); justify-content: center; }
+.lb-cap { font: italic 300 1.15rem/1.3 var(--f-c-italic); letter-spacing: .02em; text-transform: none; color: var(--lb-ink); text-align: center; }
+.lb-stage { position: relative; min-height: 0; }
+.lb-img { position: absolute; inset: 0 clamp(8px, 7vw, 110px); background: center / contain no-repeat; transform: scale(.985); opacity: 0; transition: opacity .5s ease, transform .9s cubic-bezier(.2,.7,.1,1); }
+.lb-img.show { opacity: 1; transform: none; }
+.lb button { background: none; border: 0; color: var(--lb-ink); cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; padding: 8px; }
+.lb button:focus-visible { outline: 1px solid var(--lb-ink); outline-offset: 2px; }
+.lb-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 52px; height: 52px; display: grid; place-items: center; opacity: .55; transition: opacity .3s; }
+.lb-nav:hover { opacity: 1; }
+.lb-nav svg { width: 26px; height: 26px; }
+.lb-prev { left: clamp(4px, 2vw, 30px); } .lb-next { right: clamp(4px, 2vw, 30px); }
+
+.fly { position: fixed; z-index: 70; background: center / cover no-repeat; pointer-events: none; transition: top .8s cubic-bezier(.7,0,.2,1), left .8s cubic-bezier(.7,0,.2,1), width .8s cubic-bezier(.7,0,.2,1), height .8s cubic-bezier(.7,0,.2,1); }
+
+/* ───────── Narrow screens ───────── */
+@media (max-width: 760px) {
+  .c-head { gap: 10px; padding-top: 16px; } .c-mark { width: 78px; } .c-about { font-size: 13px; } .c-tag { font-size: 9.5px; letter-spacing: .12em; gap: 0 8px; flex-wrap: nowrap; white-space: nowrap; } .c-tag i { height: 9px; }
+  .c-head { position: static; } .c-skip { display: none !important; }
+  .c-sec { height: auto !important; }
+  .c-stick { position: static; height: auto; overflow: visible; padding-top: 0; }
+  .c-strip { flex-direction: column; width: auto; transform: none !important; padding: 8px 16px 40px; gap: 40px; cursor: auto; }
+  .c-item { width: 100%; } .c-item:nth-child(even) { margin-top: 0; width: 82%; align-self: flex-end; }
+  .c-item .shot { height: auto !important; width: 100% !important; }
+  .c-item .pl { inset: -8% 0; }
+  .c-item figcaption { opacity: 1; transform: none; }
+  .c-foot { display: none; }
+  .c-chap { width: 100%; height: auto; padding: 18px 0 4px; align-self: stretch; }
+  .lb-img { inset: 0 6px; } .lb-nav { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+</style>
+<script>
+  // GA4 on the live domain only, same as the rest of wcloud.nz
+  (function () {
+    var h = location.hostname;
+    if (h !== 'wcloud.nz' && h !== 'www.wcloud.nz') return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-BERHW3QBYX');
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-BERHW3QBYX';
+    document.head.appendChild(s);
+  })();
+</script>
+</head>
+<body>
+<!-- Plain text for search engines, AI assistants and screen readers -->
+<section class="vh">
+  <h1>Jay D Vera, Christchurch Photographer</h1>
+  <p>Jay D Vera is a photographer, content creator and web designer based in Christchurch, New Zealand. Jay photographs food, cakes and products for cafes, bakeries and small businesses, creates content for their social media, and photographs landscapes and families around Canterbury.</p>
+  <h2>Projects</h2>
+  <ul>
+    <li>Horm Choy, homemade custom cakes, Christchurch. Project: creating content and cake photography.</li>
+    <li>Coastal Walk, Christchurch. Project: landscape and family photography.</li>
+  </ul>
+  <p>To book a shoot, email kiaora@wcloud.nz. Websites by the same studio: <a href="https://wcloud.nz">White Cloud</a>.</p>
+</section>
+
+<main id="c">
+  <div class="c-curtain"><button type="button" class="c-enter">Tap to enter</button></div>
+  <header class="c-head"><span class="c-name"><span class="c-mark"><svg class="blob-svg" viewBox="-1.3 -1.3 2.6 2.6" role="img" aria-label="Jay D Vera"><path d=""/><text x="-.03" y=".48" text-anchor="middle">J</text></svg></span></span><div class="c-bio"><p class="c-who">Jay D Vera</p><p class="c-tag">Photographer<i aria-hidden="true"></i>Content Creator<i aria-hidden="true"></i>Web Designer</p><p class="c-about">Christchurch, New Zealand</p><span class="c-links"><a href="mailto:kiaora@wcloud.nz" aria-label="Email kiaora@wcloud.nz" title="kiaora@wcloud.nz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg></a><a href="https://wcloud.nz" target="_blank" rel="noopener" aria-label="Website wcloud.nz" title="wcloud.nz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.8 5.8 3.8 9s-1.2 6.2-3.8 9c-2.6-2.8-3.8-5.8-3.8-9S9.4 5.8 12 3z"/></svg></a></span></div></header>
+  <div data-grid="c"></div>
+  <button type="button" class="c-skip" aria-label="Go to the next project"><span>Next project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg></span></button>
+</main>
+
+<div class="lb" role="dialog" aria-modal="true" aria-label="Photo viewer" aria-hidden="true">
+  <div class="lb-top"><span class="lb-count">01 / 20</span><button type="button" class="lb-close">Close</button></div>
+  <div class="lb-stage">
+    <div class="lb-img" role="img" aria-label=""></div>
+    <button type="button" class="lb-nav lb-prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M15 4l-8 8 8 8"/></svg></button>
+    <button type="button" class="lb-nav lb-next" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 4l8 8-8 8"/></svg></button>
+  </div>
+  <div class="lb-bot"><span class="lb-cap"></span></div>
+</div>
+
+<script>
+(() => {
+  // Chapters run one after another in a single strip; each opens with a quiet title card
+  const CH = [
+    { n: 'I',  title: 'Horm Choy',    sub: 'Homemade Custom Cakes', project: 'Creating content' },
+    { n: 'II', title: 'Coastal Walk', sub: '',                      project: 'Landscape and family photography' },
+  ];
+  const P = [
+    ['hc01',1498,2000,'Horm Choy \u00b7 Creating content',0],
+    ['hc02',1333,2000,'Horm Choy \u00b7 Creating content',0],
+    ['hc03',1333,2000,'Horm Choy \u00b7 Creating content',0],
+    ['hc04',1333,2000,'Horm Choy \u00b7 Creating content',0],
+    ['hc05',2000,1333,'Horm Choy \u00b7 Creating content',0],
+    ['hc06',1333,2000,'Horm Choy \u00b7 Creating content',0],
+    ['hc07',1333,2000,'Horm Choy \u00b7 Creating content',0],
+    ['hc08',1334,2000,'Horm Choy \u00b7 Creating content',0],
+    ['hc09',1333,2000,'Horm Choy \u00b7 Creating content',0],
+    ['cw16',1333,2000,'Coastal Walk \u00b7 Landscape and family photography',1],
+    ['cw01',2000,1333,'Coastal Walk \u00b7 Landscape and family photography',1],
+    ['cw02',1332,2000,'Coastal Walk \u00b7 Landscape and family photography',1],
+    ['cw04',2000,1333,'Coastal Walk \u00b7 Landscape and family photography',1],
+    ['cw05',1335,2000,'Coastal Walk \u00b7 Landscape and family photography',1],
+    ['cw06',1333,2000,'Coastal Walk \u00b7 Landscape and family photography',1],
+    ['cw12',2000,1333,'Coastal Walk \u00b7 Landscape and family photography',1],
+    ['cw08',1333,2000,'Coastal Walk \u00b7 Landscape and family photography',1],
+    ['cw09',1332,2000,'Coastal Walk \u00b7 Landscape and family photography',1],
+    ['cw14',2000,1333,'Coastal Walk \u00b7 Landscape and family photography',1],
+    ['cw10',1333,2000,'Coastal Walk \u00b7 Landscape and family photography',1],
+    ['cw07',1335,2000,'Coastal Walk \u00b7 Landscape and family photography',1],
+    ['cw03',2000,1333,'Coastal Walk \u00b7 Landscape and family photography',1],
+    ['cw13',1333,2000,'Coastal Walk \u00b7 Landscape and family photography',1],
+    ['cw15',2000,1333,'Coastal Walk \u00b7 Landscape and family photography',1],
+    ['cw11',1333,2000,'Coastal Walk \u00b7 Landscape and family photography',1]
+  ].map(([f,w,h,cap,ch], i) => ({ src: '/jaygallery/img/' + f + '.jpg', w, h, r: w / h, cap, ch, i }));
+  const pad = n => String(n).padStart(2, '0');
+
+  const shot = (p, eager) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'shot'; b.dataset.i = p.i;
+    b.setAttribute('aria-label', 'Open ' + p.cap);
+    const img = document.createElement('img');
+    img.alt = p.cap; img.decoding = 'async'; img.loading = eager ? 'eager' : 'lazy'; img.draggable = false; img.src = p.src;
+    b.append(img); return b;
+  };
+
+  // C · film strips with motion. Each project gets its own strip; scrolling the page glides
+  // the strip sideways (smoothed), and once a project ends the page carries on to the next.
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const narrow = () => innerWidth <= 760;
+  const host = document.querySelector('[data-grid="c"]');
+  const secs = CH.map((c, ci) => {
+    const sec = document.createElement('section'); sec.className = 'c-sec'; sec.setAttribute('aria-label', c.title);
+    sec.innerHTML = '<div class="c-stick"><div class="c-strip"></div><div class="c-foot"><span>Scroll</span><div class="c-track"><span></span></div><span class="c-cnt"><b>01</b> / ' + pad(P.filter(p => p.ch === ci).length) + '</span></div></div>';
+    const strip = sec.querySelector('.c-strip');
+    const d = document.createElement('div'); d.className = 'c-chap';
+    d.innerHTML = '<span class="c-chap-n"></span><span class="c-chap-t"></span><span class="c-chap-s"></span><span class="c-chap-rule" aria-hidden="true"></span><span class="c-chap-p"><small>Project</small><span></span></span>';
+    d.querySelector('.c-chap-n').textContent = c.n; d.querySelector('.c-chap-t').textContent = c.title;
+    const sub = d.querySelector('.c-chap-s'); sub.textContent = c.sub; sub.hidden = !c.sub;
+    d.querySelector('.c-chap-p span').textContent = c.project;
+    strip.append(d);
+    const items = P.filter(p => p.ch === ci).map((p, k) => {
+      const f = document.createElement('figure'); f.className = 'c-item' + (reduce ? '' : ' pre');
+      const s = shot(p); s.style.aspectRatio = p.w + ' / ' + p.h;
+      const pl = document.createElement('div'); pl.className = 'pl'; pl.append(s.querySelector('img')); s.append(pl);
+      f.append(s);
+      const fc = document.createElement('figcaption'); fc.innerHTML = '<span>' + pad(k + 1) + '</span>';
+      fc.append(document.createTextNode(p.cap)); f.append(fc);
+      strip.append(f); return f;
+    });
+    host.append(sec);
+    return { sec, strip, items, bar: sec.querySelector('.c-track span'), cnt: sec.querySelector('.c-cnt b'), max: 0, cur: 0 };
+  });
+  const items = secs.flatMap(S => S.items);
+  const head = document.querySelector('.c-head');
+  const layoutC = () => {
+    if (document.getElementById('c').hidden) return;
+    document.documentElement.style.setProperty('--hh', head.offsetHeight + 'px');
+    secs.forEach(S => {
+      if (narrow()) { S.sec.style.height = ''; S.max = 0; return; }
+      S.max = Math.max(0, S.strip.scrollWidth - innerWidth);
+      S.sec.style.height = (innerHeight + S.max) + 'px';
+    });
+  };
+  // where each strip should be for the current page scroll
+  const goal = S => Math.max(0, Math.min(S.max, scrollY - S.sec.offsetTop));
+  let raf = 0;
+  const frame = () => {
+    raf = 0; let moving = false;
+    secs.forEach(S => {
+      if (narrow()) return;
+      const g = goal(S);
+      S.cur += (g - S.cur) * (reduce ? 1 : .085);
+      if (Math.abs(g - S.cur) < .3) S.cur = g; else moving = true;
+      S.strip.style.transform = 'translate3d(' + (-S.cur).toFixed(2) + 'px,0,0)';
+      S.bar.style.width = (S.max ? S.cur / S.max * 100 : 0) + '%';
+    });
+    paintC();
+    if (moving) raf = requestAnimationFrame(frame);
+  };
+  const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
+  const paintC = () => {
+    const vw = innerWidth, vh = innerHeight, n = narrow();
+    let best = -1, bestD = 1e9;
+    items.forEach((el, i) => {
+      const r = el.querySelector('.shot').getBoundingClientRect();
+      const onScreen = r.bottom > 0 && r.top < vh;
+      const c = n ? r.top + r.height / 2 : r.left + r.width / 2;
+      const d = (c - (n ? vh : vw) / 2) / (n ? vh : vw);       // -1 … 1 across the screen
+      if (!reduce) el.querySelector('.pl').style.transform = n ? 'translateY(' + (d * -7) + '%)' : 'translateX(' + (d * -7) + '%)';
+      if (onScreen && el.classList.contains('pre') && Math.abs(d) < .62) setTimeout(() => el.classList.remove('pre'), n ? 0 : 60 * (i % 4));
+      if (onScreen && Math.abs(d) < bestD) { bestD = Math.abs(d); best = i; }
+    });
+    items.forEach((el, i) => el.classList.toggle('lit', i === best && bestD < .3));
+    if (best >= 0) {
+      const S = secs.find(S => S.items.includes(items[best]));
+      S.cnt.textContent = pad(S.items.indexOf(items[best]) + 1);
+    }
+  };
+  addEventListener('scroll', () => { if (!document.getElementById('c').hidden) kick(); }, { passive: true });
+  // sideways trackpad swipes and drags move through the strip too
+  host.addEventListener('wheel', e => {
+    if (narrow() || Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    e.preventDefault(); scrollBy(0, e.deltaX);
+  }, { passive: false });
+  let drag = null, moved = false;
+  host.addEventListener('pointerdown', e => { if (narrow() || e.pointerType === 'touch' || e.button !== 0) return; drag = { x: e.clientX, y: scrollY, v: 0, lx: e.clientX }; moved = false; });
+  addEventListener('pointermove', e => {
+    if (!drag) return; const dx = e.clientX - drag.x;
+    if (Math.abs(dx) > 6) { moved = true; host.querySelectorAll('.c-strip').forEach(s => s.classList.add('dragging')); }
+    drag.v = e.clientX - drag.lx; drag.lx = e.clientX;
+    scrollTo(0, drag.y - dx * 1.4);
+  });
+  addEventListener('pointerup', () => {
+    if (!drag) return; const v = drag.v; drag = null;
+    setTimeout(() => host.querySelectorAll('.c-strip').forEach(s => s.classList.remove('dragging')), 0);
+    if (moved && Math.abs(v) > 2) scrollBy({ top: -v * 18, behavior: 'smooth' });
+  });
+  host.addEventListener('click', e => { if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
+  addEventListener('keydown', e => {
+    if (document.getElementById('c').hidden || narrow() || document.querySelector('.lb.open')) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); scrollBy({ top: (e.key === 'ArrowRight' ? 1 : -1) * innerWidth * .45, behavior: 'smooth' }); }
+  });
+  addEventListener('load', () => { layoutC(); kick(); });
+  // Left edge: the wheel there jumps between projects instead of gliding through photos
+  const cEl = document.getElementById('c'), skip = document.querySelector('.c-skip');
+  const secIndex = () => { let k = 0; secs.forEach((S, i) => { if (scrollY >= S.sec.offsetTop - 2) k = i; }); return k; };
+  let jumping = 0;
+  const jump = dir => {
+    const k = secIndex(), S = secs[k];
+    let to = null;
+    if (dir > 0 && k < secs.length - 1) to = secs[k + 1].sec.offsetTop;
+    if (dir < 0) to = scrollY > S.sec.offsetTop + 4 ? S.sec.offsetTop : (k > 0 ? secs[k - 1].sec.offsetTop : null);
+    if (to === null) return false;
+    // fade out, move, fade back in, so the photos in between don't race past
+    jumping = Date.now();
+    const go = () => {
+      scrollTo(0, to); secs.forEach(T => { T.cur = goal(T); }); kick();
+      host.classList.remove('jump');
+    };
+    if (reduce) go(); else { host.classList.add('jump'); setTimeout(go, 420); }
+    return true;
+  };
+  const inLeft = x => !narrow() && x < innerWidth * .14;
+  const updateSkip = () => { skip.hidden = secIndex() >= secs.length - 1; };
+  addEventListener('pointermove', e => { if (!cEl.hidden && e.pointerType !== 'touch') cEl.classList.toggle('in-left', inLeft(e.clientX)); });
+  document.addEventListener('pointerleave', () => cEl.classList.remove('in-left'));
+  addEventListener('scroll', () => { if (!cEl.hidden) updateSkip(); }, { passive: true });
+  host.parentElement.addEventListener('wheel', e => {
+    if (cEl.hidden || !inLeft(e.clientX) || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+    e.preventDefault();
+    if (Date.now() - jumping < 900) return;
+    jump(e.deltaY > 0 ? 1 : -1);
+  }, { passive: false });
+  skip.addEventListener('click', () => jump(1));
+
+
+  // The logo: a soft blob made from a few slow waves, so the outline never forms a corner.
+  const blobPath = t => {
+    const N = 72, pts = [];
+    for (let i = 0; i < N; i++) {
+      const a = i / N * Math.PI * 2;
+      const r = 1 + .075 * Math.sin(2 * a + t * .55) + .05 * Math.sin(3 * a - t * .41 + 1.3) + .025 * Math.sin(4 * a + t * .33 + 2.1);
+      pts.push([Math.cos(a) * r, Math.sin(a) * r]);
+    }
+    let d = 'M' + pts[0][0].toFixed(4) + ' ' + pts[0][1].toFixed(4);
+    for (let i = 0; i < N; i++) {
+      const p0 = pts[(i - 1 + N) % N], p1 = pts[i], p2 = pts[(i + 1) % N], p3 = pts[(i + 2) % N];
+      d += 'C' + [[p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6], [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6], p2]
+        .map(q => q[0].toFixed(4) + ' ' + q[1].toFixed(4)).join(' ');
+    }
+    return d + 'Z';
+  };
+  const logoPath = document.querySelector('.c-mark path');
+  const breathe = now => {
+    logoPath.setAttribute('d', blobPath(reduce ? 0 : now / 1000));
+    if (!reduce) requestAnimationFrame(breathe);
+  };
+  requestAnimationFrame(breathe);
+
+  // The J is set in Gilda Display and re-centred in the blob once the font has loaded
+  const jText = document.querySelector('.c-mark text');
+  jText.setAttribute('text-anchor', 'start');
+  const centreJ = () => {
+    jText.setAttribute('x', 0); jText.setAttribute('y', 0);
+    const b = jText.getBBox(); if (!b.width) return;
+    jText.setAttribute('x', (-(b.x + b.width / 2)).toFixed(3)); jText.setAttribute('y', (-(b.y + b.height / 2) + .02).toFixed(3));
+  };
+  if (document.fonts) { document.fonts.load("400 40px 'Gilda Display'", 'J').then(centreJ, () => {}); document.fonts.addEventListener('loadingdone', centreJ); }
+
+  const curtain = document.querySelector('.c-curtain'), mark = document.querySelector('.c-mark');
+  let introTimers = [];
+  const later = (fn, ms) => introTimers.push(setTimeout(fn, ms));
+  const cStart = () => {
+    introTimers.forEach(clearTimeout); introTimers = [];
+    centreJ();
+    layoutC(); scrollTo(0, 0); secs.forEach(S => { S.cur = 0; S.strip.style.transform = ''; });
+    if (reduce) { curtain.hidden = true; items.forEach(el => el.classList.remove('pre')); paintC(); return; }
+    curtain.hidden = false; curtain.classList.remove('clear'); document.getElementById('c').classList.add('intro');
+    items.forEach(el => el.classList.add('pre'));
+    mark.className = 'c-mark'; mark.style.transform = '';
+    const r = mark.getBoundingClientRect(), k = Math.min(innerWidth, innerHeight) * .44 / r.width;
+    const centred = 'translate(' + (innerWidth / 2 - r.left - r.width / 2) + 'px,' + (innerHeight / 2 - r.top - r.height / 2) + 'px) scale(' + k + ')';
+    mark.style.transform = centred + ' scale(.4)'; mark.classList.add('intro');
+    later(() => { mark.classList.add('grow'); mark.style.transform = centred; }, 80);       // appear large in the centre
+    // wait for the visitor to tap before the page opens
+    document.documentElement.style.overflow = 'hidden';
+    const enterBtn = curtain.querySelector('.c-enter');
+    enterBtn.textContent = matchMedia('(pointer: coarse)').matches ? 'Tap to enter' : 'Click to enter';
+    curtain.classList.remove('ready');
+    later(() => curtain.classList.add('ready'), 1100);
+    const enter = e => {
+      if (e.type === 'keydown' && !['Enter', ' ', 'ArrowDown'].includes(e.key)) return;
+      if (e.type === 'keydown') e.preventDefault();
+      document.removeEventListener('click', enter, true); removeEventListener('keydown', enter, true);
+      introTimers.forEach(clearTimeout); introTimers = [];
+      mark.className = 'c-mark go'; mark.style.transform = ''; curtain.classList.add('clear'); curtain.classList.remove('ready');
+      document.getElementById('c').classList.remove('intro'); document.documentElement.style.overflow = '';
+      later(paintC, 400);
+      later(() => { curtain.hidden = true; mark.className = 'c-mark'; paintC(); }, 1300);
+    };
+    later(() => { document.addEventListener('click', enter, true); addEventListener('keydown', enter, true); }, 300);
+  };
+  const cUpdate = paintC;
+
+  cStart();
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { layoutC(); kick(); }, 120); });
+
+  // Lightbox: the photo is a CSS background, so there is no image to right-click or long-press
+  const lb = document.querySelector('.lb'), lbImg = lb.querySelector('.lb-img');
+  const lbCount = lb.querySelector('.lb-count'), lbCap = lb.querySelector('.lb-cap');
+  let cur = 0, lastFocus = null;
+  const go = i => {
+    cur = (i + P.length) % P.length; const p = P[cur];
+    lbImg.classList.remove('show');
+    const im = new Image(); im.onload = () => { lbImg.style.backgroundImage = 'url("' + p.src + '")'; requestAnimationFrame(() => lbImg.classList.add('show')); }; im.src = p.src;
+    lbImg.setAttribute('aria-label', p.cap); lbCount.textContent = pad(cur + 1) + ' / ' + pad(P.length); lbCap.textContent = p.cap;
+  };
+  // Opening zooms the photo out of its frame to full screen, closing sends it back
+  const fitRect = p => {
+    const st = lb.querySelector('.lb-stage').getBoundingClientRect(), cs = getComputedStyle(lbImg);
+    const l = st.left + parseFloat(cs.left), t = st.top + parseFloat(cs.top);
+    const W = st.right - parseFloat(cs.right) - l, H = st.bottom - parseFloat(cs.bottom) - t;
+    const k = Math.min(W / p.w, H / p.h), w = p.w * k, h = p.h * k;
+    return { left: l + (W - w) / 2, top: t + (H - h) / 2, width: w, height: h };
+  };
+  const fly = (from, to, src, done) => {
+    if (reduce || !from) { done(); return; }
+    const f = document.createElement('div'); f.className = 'fly'; f.style.backgroundImage = 'url("' + src + '")';
+    Object.entries(from).forEach(([k, v]) => f.style[k] = v + 'px'); document.body.append(f);
+    requestAnimationFrame(() => requestAnimationFrame(() => Object.entries(to).forEach(([k, v]) => f.style[k] = v + 'px')));
+    setTimeout(() => { done(); setTimeout(() => f.remove(), 60); }, 820);
+  };
+  const rectOf = el => { if (!el) return null; const r = el.getBoundingClientRect(); return (r.bottom < 0 || r.top > innerHeight || r.right < 0 || r.left > innerWidth) ? null : { left: r.left, top: r.top, width: r.width, height: r.height }; };
+  const open = (i, from) => {
+    lastFocus = document.activeElement; document.documentElement.style.overflow = 'hidden';
+    lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false');
+    const p = P[i]; lbImg.style.transition = 'none'; lbImg.classList.remove('show');
+    fly(rectOf(from), fitRect(p), p.src, () => { lbImg.style.transition = ''; go(i); });
+    lb.querySelector('.lb-close').focus();
+  };
+  const close = () => {
+    const vis = [...document.querySelectorAll('.design:not([hidden]) button.shot[data-i="' + cur + '"]')].map(rectOf).find(Boolean);
+    const p = P[cur];
+    if (vis && !reduce) { lbImg.style.transition = 'none'; lbImg.classList.remove('show'); }
+    lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true');
+    fly(vis ? fitRect(p) : null, vis, p.src, () => { lbImg.style.transition = ''; document.documentElement.style.overflow = ''; });
+    lastFocus && lastFocus.focus({ preventScroll: true });
+  };
+  document.addEventListener('click', e => { const s = e.target.closest('button.shot'); if (s) open(+s.dataset.i, s); });
+  lb.querySelector('.lb-close').addEventListener('click', close);
+  lb.querySelector('.lb-prev').addEventListener('click', () => go(cur - 1));
+  lb.querySelector('.lb-next').addEventListener('click', () => go(cur + 1));
+  lb.querySelector('.lb-stage').addEventListener('click', e => { if (e.target === e.currentTarget) close(); });
+  addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close(); else if (e.key === 'ArrowRight') go(cur + 1); else if (e.key === 'ArrowLeft') go(cur - 1);
+  });
+  let tx = null;
+  lb.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) go(cur + (dx < 0 ? 1 : -1)); tx = null; });
+
+  // Discourage saving: no context menu or dragging on photos
+  document.addEventListener('contextmenu', e => { if (e.target.closest('.shot, .lb-stage')) e.preventDefault(); });
+  document.addEventListener('dragstart', e => { if (e.target.closest('.shot, .lb-stage')) e.preventDefault(); });
+})();
+</script>
+</body>
+</html>

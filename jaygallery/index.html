@@ -133,10 +133,9 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
 .c-group { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px 16px; }
 .c-ilogo { width: min(50vw, 34vh, 300px); aspect-ratio: 1; flex: 0 0 auto; transform-origin: 50% 50%; opacity: 0; transform: scale(.4); transition: opacity .9s ease, transform 1.1s cubic-bezier(.2,.8,.1,1); will-change: transform; }
 .c-curtain.show .c-ilogo { opacity: 1; transform: none; }
-.c-ilogo.swell { transform: scale(1.24) !important; transition: transform .6s cubic-bezier(.34,1.56,.64,1); }
 .c-ilogo.go { transition: transform 1.2s cubic-bezier(.65,0,.2,1), opacity .3s ease 1s; }
 .c-ilogo svg { width: 100%; height: 100%; display: block; overflow: visible; }
-.c-ilogo .ink, .c-ilogo .dropl { fill: var(--c-mark); }
+.c-ilogo .ink { fill: var(--c-mark); }
 .c-ilogo text { fill: var(--c-bg); font: 400 1.35px 'Gilda Display', Georgia, serif; }
 .c-welcome { margin-top: clamp(26px, 4.5vh, 46px); display: flex; flex-direction: column; align-items: center; gap: 10px; pointer-events: none; transition: opacity .5s ease; }
 .c-w-small { font: 400 13px/1 var(--f-c-display); letter-spacing: .34em; padding-left: .34em; text-transform: uppercase; color: var(--c-ink); opacity: .85; }
@@ -243,7 +242,7 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
 </section>
 
 <main id="c">
-  <div class="c-curtain"><div class="c-group"><div class="c-ilogo"><svg viewBox="-1.3 -1.3 2.6 2.6" aria-hidden="true"><defs><filter id="goo" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation=".075"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 26 -12"/></filter></defs><g class="liquid" filter="url(#goo)"><path class="ink" d=""/></g><text>J</text></svg></div><div class="c-welcome"><span class="c-w-small">Welcome to</span><span class="c-w-big">Jay&rsquo;s Gallery</span></div><button type="button" class="c-enter">Tap to enter</button></div></div>
+  <div class="c-curtain"><div class="c-group"><div class="c-ilogo"><svg viewBox="-1.3 -1.3 2.6 2.6" aria-hidden="true"><path class="ink" d=""/><text>J</text></svg></div><div class="c-welcome"><span class="c-w-small">Welcome to</span><span class="c-w-big">Jay&rsquo;s Gallery</span></div><button type="button" class="c-enter">Tap to enter</button></div></div>
   <header class="c-head"><span class="c-name"><span class="c-mark"><svg class="blob-svg" viewBox="-1.3 -1.3 2.6 2.6" role="img" aria-label="Jay D Vera"><path d=""/><text x="-.03" y=".48" text-anchor="middle">J</text></svg></span></span><div class="c-bio"><p class="c-who">Jay D Vera</p><p class="c-tag">Photographer<i aria-hidden="true"></i>Content Creator<i aria-hidden="true"></i>Web Designer</p><p class="c-about">Christchurch, New Zealand</p><span class="c-links"><a href="mailto:kiaora@wcloud.nz" aria-label="Email kiaora@wcloud.nz" title="kiaora@wcloud.nz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg></a><a href="https://wcloud.nz" target="_blank" rel="noopener" aria-label="Website wcloud.nz" title="wcloud.nz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.8 5.8 3.8 9s-1.2 6.2-3.8 9c-2.6-2.8-3.8-5.8-3.8-9S9.4 5.8 12 3z"/></svg></a></span></div></header>
   <div data-grid="c"></div>
   <button type="button" class="c-skip" aria-label="Go to the next project"><span>Next project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg></span></button>
@@ -479,7 +478,7 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
     if (reduce) { curtain.hidden = true; items.forEach(el => el.classList.remove('pre')); paintC(); return; }
     curtain.hidden = false; curtain.classList.remove('clear'); document.getElementById('c').classList.add('intro');
     items.forEach(el => el.classList.add('pre'));
-    const ilogo = curtain.querySelector('.c-ilogo'), liquid = ilogo.querySelector('.liquid');
+    const ilogo = curtain.querySelector('.c-ilogo');
     const welcome = curtain.querySelector('.c-welcome'), enterBtn = curtain.querySelector('.c-enter');
     if (!welcome.dataset.split) {
       welcome.dataset.split = 1;
@@ -489,7 +488,7 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
       });
     }
     curtain.classList.remove('show', 'say', 'ready', 'leaving');
-    ilogo.className = 'c-ilogo'; ilogo.style.transform = ''; ilogo.style.opacity = ''; liquid.querySelectorAll('.dropl').forEach(d => d.remove());
+    ilogo.className = 'c-ilogo'; ilogo.style.transform = ''; ilogo.style.opacity = '';
     later(() => { centreJ(); curtain.classList.add('show'); }, 60);
     later(() => curtain.classList.add('say'), 600);
     // wait for the visitor to tap before the page opens
@@ -502,35 +501,16 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
       document.removeEventListener('click', enter, true); removeEventListener('keydown', enter, true);
       introTimers.forEach(clearTimeout); introTimers = [];
       curtain.classList.add('leaving'); curtain.classList.remove('ready');
-      // 1 · the ink swells and throws out liquid droplets, which stretch away and pour back in
-      ilogo.classList.add('swell');
-      const drops = [0, 1, 2, 3, 4, 5, 6, 7].map(i => {
-        const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); c.setAttribute('class', 'dropl'); liquid.append(c);
-        return { c, a: i / 8 * Math.PI * 2 + (i % 2 ? .25 : -.1), d: .95 + (i * 37 % 5) * .13, r: .12 + (i * 53 % 4) * .045 };
-      });
-      const t0 = performance.now();
-      const splash = now => {
-        const x = Math.min(1, (now - t0) / 1000);
-        // out fast, hang for a beat, then get pulled back in
-        const out = x < .38 ? 1 - Math.pow(1 - x / .38, 3) : x < .5 ? 1 : 1 - Math.pow((x - .5) / .5, 2);
-        drops.forEach(o => {
-          const rr = .55 + o.d * out;
-          o.c.setAttribute('cx', (Math.cos(o.a) * rr).toFixed(4)); o.c.setAttribute('cy', (Math.sin(o.a) * rr).toFixed(4));
-          o.c.setAttribute('r', (o.r * Math.min(1, x * 6) * (x < .5 ? 1 : 1 - (x - .5) * 1.2)).toFixed(4));
-        });
-        if (x < 1) requestAnimationFrame(splash); else drops.forEach(o => o.c.remove());
-      };
-      requestAnimationFrame(splash);
-      // 2 · then it flies up into the header and the gallery opens
+      // one tap: the logo glides up into the header and the gallery opens
       later(() => {
-        const from = ilogo.getBoundingClientRect(), to = mark.getBoundingClientRect(), k = to.width / from.width * 1.24;
-        ilogo.classList.remove('swell'); ilogo.classList.add('go');
+        const from = ilogo.getBoundingClientRect(), to = mark.getBoundingClientRect(), k = to.width / from.width;
+        ilogo.classList.add('go');
         ilogo.style.transform = 'translate(' + (to.left + to.width / 2 - from.left - from.width / 2) + 'px,' + (to.top + to.height / 2 - from.top - from.height / 2) + 'px) scale(' + k + ')';
         curtain.classList.add('clear');
         document.documentElement.style.overflow = '';
-      }, 1000);
-      later(() => { document.getElementById('c').classList.remove('intro'); paintC(); }, 2150);
-      later(() => { curtain.hidden = true; paintC(); }, 2600);
+      }, 0);
+      later(() => { document.getElementById('c').classList.remove('intro'); paintC(); }, 1150);
+      later(() => { curtain.hidden = true; paintC(); }, 1600);
     };
     later(() => { document.addEventListener('click', enter, true); addEventListener('keydown', enter, true); }, 300);
   };

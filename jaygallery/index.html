@@ -135,7 +135,9 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
 .c-curtain.show .c-ilogo { opacity: 1; transform: none; }
 .c-ilogo.go { transition: transform 1.2s cubic-bezier(.65,0,.2,1), opacity .3s ease 1s; }
 .c-ilogo svg { width: 100%; height: 100%; display: block; overflow: visible; }
-.c-ilogo .ink { fill: var(--c-mark); }
+.c-ilogo .ink, .c-ilogo .blob { fill: var(--c-mark); }
+.c-welcome, .c-enter { position: relative; z-index: 1; }
+.c-curtain { touch-action: none; -webkit-user-select: none; user-select: none; }
 .c-ilogo text { fill: var(--c-bg); font: 400 1.35px 'Gilda Display', Georgia, serif; }
 .c-welcome { margin-top: clamp(26px, 4.5vh, 46px); display: flex; flex-direction: column; align-items: center; gap: 10px; pointer-events: none; transition: opacity .5s ease; }
 .c-w-small { font: 400 13px/1 var(--f-c-display); letter-spacing: .34em; padding-left: .34em; text-transform: uppercase; color: var(--c-ink); opacity: .85; }
@@ -242,7 +244,7 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
 </section>
 
 <main id="c">
-  <div class="c-curtain"><div class="c-group"><div class="c-ilogo"><svg viewBox="-1.3 -1.3 2.6 2.6" aria-hidden="true"><path class="ink" d=""/><text>J</text></svg></div><div class="c-welcome"><span class="c-w-small">Welcome to</span><span class="c-w-big">Jay&rsquo;s Gallery</span></div><button type="button" class="c-enter">Tap to enter</button></div></div>
+  <div class="c-curtain"><div class="c-group"><div class="c-ilogo"><svg viewBox="-1.3 -1.3 2.6 2.6" aria-hidden="true"><defs><filter id="goo" filterUnits="userSpaceOnUse" x="-4" y="-6" width="8" height="12" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation=".09"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -11"/></filter></defs><g class="liquid" filter="url(#goo)"><path class="ink" d=""/></g><path class="ink crisp" d=""/><text>J</text></svg></div><div class="c-welcome"><span class="c-w-small">Welcome to</span><span class="c-w-big">Jay&rsquo;s Gallery</span></div><button type="button" class="c-enter">Tap to enter</button></div></div>
   <header class="c-head"><span class="c-name"><span class="c-mark"><svg class="blob-svg" viewBox="-1.3 -1.3 2.6 2.6" role="img" aria-label="Jay D Vera"><path d=""/><text x="-.03" y=".48" text-anchor="middle">J</text></svg></span></span><div class="c-bio"><p class="c-who">Jay D Vera</p><p class="c-tag">Photographer<i aria-hidden="true"></i>Content Creator<i aria-hidden="true"></i>Web Designer</p><p class="c-about">Christchurch, New Zealand</p><span class="c-links"><a href="mailto:kiaora@wcloud.nz" aria-label="Email kiaora@wcloud.nz" title="kiaora@wcloud.nz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg></a><a href="https://wcloud.nz" target="_blank" rel="noopener" aria-label="Website wcloud.nz" title="wcloud.nz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.8 5.8 3.8 9s-1.2 6.2-3.8 9c-2.6-2.8-3.8-5.8-3.8-9S9.4 5.8 12 3z"/></svg></a></span></div></header>
   <div data-grid="c"></div>
   <button type="button" class="c-skip" aria-label="Go to the next project"><span>Next project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg></span></button>
@@ -450,7 +452,7 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
     }
     return d + 'Z';
   };
-  const logoPaths = [document.querySelector('.c-mark path'), document.querySelector('.c-ilogo .ink')];
+  const logoPaths = [document.querySelector('.c-mark path'), ...document.querySelectorAll('.c-ilogo .ink')];
   const breathe = now => {
     const d = blobPath(reduce ? 0 : now / 1000 * 1.7);   // a touch livelier than real time
     logoPaths.forEach(p => p.setAttribute('d', d));
@@ -469,6 +471,65 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
   if (document.fonts) { document.fonts.load("400 40px 'Gilda Display'", 'J').then(centreJ, () => {}); document.fonts.addEventListener('loadingdone', centreJ); }
 
   const curtain = document.querySelector('.c-curtain'), mark = document.querySelector('.c-mark');
+  let dragMoved = false;
+  // Welcome toy: drag anywhere and the ink follows your finger like thick liquid,
+  // leaving smooth droplets that melt away; let go and it springs back into the J.
+  (() => {
+    const ilogo = curtain.querySelector('.c-ilogo'), liquid = ilogo.querySelector('.liquid');
+    const NS = 'http://www.w3.org/2000/svg';
+    const mk = () => { const c = document.createElementNS(NS, 'circle'); c.setAttribute('class', 'blob'); c.setAttribute('r', 0); liquid.append(c); return c; };
+    const head = mk(), bridge = [mk(), mk(), mk(), mk(), mk()];
+    let drops = [], down = false, sx = 0, sy = 0, tx = 0, ty = 0, hx = 0, hy = 0, hr = 0, last = 0, lastSpawn = 0;
+    // keep the liquid's drawing area exactly the size of the screen, so phones render it at full sharpness
+    const goo = ilogo.querySelector('#goo');
+    const fitGoo = () => {
+      const r = ilogo.getBoundingClientRect(); if (!r.width) return;
+      const k = 2.6 / r.width, pad = .4;
+      goo.setAttribute('x', ((-r.left - r.width / 2) * k - pad).toFixed(3)); goo.setAttribute('y', ((-r.top - r.height / 2) * k - pad).toFixed(3));
+      goo.setAttribute('width', (innerWidth * k + pad * 2).toFixed(3)); goo.setAttribute('height', (innerHeight * k + pad * 2).toFixed(3));
+    };
+    addEventListener('resize', fitGoo); setTimeout(fitGoo, 1300); setTimeout(fitGoo, 3000);
+    const toUnits = (x, y) => { const r = ilogo.getBoundingClientRect(), k = 2.6 / r.width; return [(x - r.left - r.width / 2) * k, (y - r.top - r.height / 2) * k]; };
+    addEventListener('pointerdown', e => { if (curtain.hidden || curtain.classList.contains('leaving')) return; fitGoo(); down = true; dragMoved = false; sx = e.clientX; sy = e.clientY; [tx, ty] = toUnits(e.clientX, e.clientY); });
+    addEventListener('pointermove', e => {
+      if (!down) return;
+      if (Math.hypot(e.clientX - sx, e.clientY - sy) > 8) dragMoved = true;
+      [tx, ty] = toUnits(e.clientX, e.clientY);
+    });
+    const up = () => { down = false; };
+    addEventListener('pointerup', up); addEventListener('pointercancel', up);
+    const step = now => {
+      requestAnimationFrame(step);
+      if (curtain.hidden) return;
+      const dt = Math.min(48, now - (last || now)) / 16.7; last = now;
+      const active = down && dragMoved;
+      // the head of the stream chases the finger, or settles back into the logo
+      const gx = active ? tx : 0, gy = active ? ty : 0;
+      hx += (gx - hx) * (active ? .22 : .1) * dt; hy += (gy - hy) * (active ? .22 : .1) * dt;
+      hr += ((active ? .44 : 0) - hr) * .2 * dt;
+      head.setAttribute('cx', hx.toFixed(3)); head.setAttribute('cy', hy.toFixed(3)); head.setAttribute('r', Math.max(0, hr).toFixed(3));
+      // a stretchy bridge back to the J, which thins and snaps when pulled too far
+      const d = Math.hypot(hx, hy), hold = Math.max(0, 1 - d / 5);
+      bridge.forEach((c, i) => {
+        const f = (i + 1) / (bridge.length + 1);
+        c.setAttribute('cx', (hx * f).toFixed(3)); c.setAttribute('cy', (hy * f).toFixed(3));
+        c.setAttribute('r', (hr > .02 ? (.4 - .16 * Math.sin(f * Math.PI)) * hold * Math.min(1, hr / .3) : 0).toFixed(3));
+      });
+      // droplets shed along the path, shrinking as they melt
+      if (active && now - lastSpawn > 22 && d > .5) {
+        lastSpawn = now;
+        const c = mk(); drops.push({ c, x: hx + (Math.random() - .5) * .08, y: hy + (Math.random() - .5) * .08, r: .2 + Math.random() * .14, vy: .001 });
+      }
+      drops = drops.filter(o => {
+        o.r *= Math.pow(.972, dt); o.vy += .0006 * dt; o.y += o.vy * dt;
+        if (o.r < .015) { o.c.remove(); return false; }
+        o.c.setAttribute('cx', o.x.toFixed(3)); o.c.setAttribute('cy', o.y.toFixed(3)); o.c.setAttribute('r', o.r.toFixed(3));
+        return true;
+      });
+    };
+    requestAnimationFrame(step);
+  })();
+
   let introTimers = [];
   const later = (fn, ms) => introTimers.push(setTimeout(fn, ms));
   const cStart = () => {
@@ -496,6 +557,7 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
     enterBtn.textContent = matchMedia('(pointer: coarse)').matches ? 'Tap to enter' : 'Click to enter';
     later(() => curtain.classList.add('ready'), 1900);
     const enter = e => {
+      if (e.type === 'click' && dragMoved) { dragMoved = false; return; }   // a drag is play, not a tap
       if (e.type === 'keydown' && !['Enter', ' ', 'ArrowDown'].includes(e.key)) return;
       if (e.type === 'keydown') e.preventDefault();
       document.removeEventListener('click', enter, true); removeEventListener('keydown', enter, true);

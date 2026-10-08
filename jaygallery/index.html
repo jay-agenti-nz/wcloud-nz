@@ -58,6 +58,7 @@
       "creator": { "@id": "https://wcloud.nz/jaygallery#jay" },
       "hasPart": [
         { "@type": "CreativeWork", "name": "Light and Space", "description": "Interior and lighting photography of cafés, restaurants and hotels in Christchurch and around New Zealand." },
+        { "@type": "CreativeWork", "name": "Kinloch Glamping", "description": "Personal interior and landscape photography at a glamping stay in Marotiri, near Taupō." },
         { "@type": "CreativeWork", "name": "Horm Choy, homemade custom cakes", "description": "Content creation and cake photography for Horm Choy, a Christchurch custom cake maker." },
         { "@type": "CreativeWork", "name": "Coastal Walk", "description": "Landscape and family photography on the coast near Christchurch." }
       ]
@@ -239,6 +240,7 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
   <h2>Projects</h2>
   <ul>
     <li>Light and Space. Project: interior and lighting photography of cafés, restaurants and hotels.</li>
+    <li>Kinloch Glamping, Marotiri, near Taupō. Personal project: interiors and landscape.</li>
     <li>Horm Choy, homemade custom cakes, Christchurch. Project: creating content and cake photography.</li>
     <li>Coastal Walk, Christchurch. Project: landscape and family photography.</li>
   </ul>
@@ -268,7 +270,8 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
   const CH = [
     { n: 'I',   title: 'Light and Space', sub: 'Caf\u00e9s, restaurants and hotels', project: 'Interior and lighting photography' },
     { n: 'II',  title: 'Coastal Walk',    sub: '',                      project: 'Landscape and family photography' },
-    { n: 'III', title: 'Horm Choy',       sub: 'Homemade Custom Cakes', project: 'Creating content' },
+    { n: 'III', title: 'Kinloch Glamping', sub: 'Marotiri, near Taup\u014d', project: 'Personal, interiors and landscape' },
+    { n: 'IV',  title: 'Horm Choy',       sub: 'Homemade Custom Cakes', project: 'Creating content' },
   ];
   const P = [
     ['li01',1334,2000,'Light and Space \u00b7 Interior and lighting photography',0],
@@ -308,15 +311,28 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
     ['cw15',2000,1333,'Coastal Walk \u00b7 Landscape and family photography',1],
     ['cw11',1333,2000,'Coastal Walk \u00b7 Landscape and family photography',1],
     ['cw22',2000,1333,'Coastal Walk \u00b7 Landscape and family photography',1],
-    ['hc01',1498,2000,'Horm Choy \u00b7 Creating content',2],
-    ['hc02',1333,2000,'Horm Choy \u00b7 Creating content',2],
-    ['hc03',1333,2000,'Horm Choy \u00b7 Creating content',2],
-    ['hc04',1333,2000,'Horm Choy \u00b7 Creating content',2],
-    ['hc05',2000,1333,'Horm Choy \u00b7 Creating content',2],
-    ['hc06',1333,2000,'Horm Choy \u00b7 Creating content',2],
-    ['hc07',1333,2000,'Horm Choy \u00b7 Creating content',2],
-    ['hc08',1334,2000,'Horm Choy \u00b7 Creating content',2],
-    ['hc09',1333,2000,'Horm Choy \u00b7 Creating content',2]
+    ['kg08',2000,1333,'Kinloch Glamping \u00b7 Personal, interiors and landscape',2],
+    ['kg01',1333,2000,'Kinloch Glamping \u00b7 Personal, interiors and landscape',2],
+    ['kg03',2000,1333,'Kinloch Glamping \u00b7 Personal, interiors and landscape',2],
+    ['kg12',1333,2000,'Kinloch Glamping \u00b7 Personal, interiors and landscape',2],
+    ['kg05',2000,1333,'Kinloch Glamping \u00b7 Personal, interiors and landscape',2],
+    ['kg04',1333,2000,'Kinloch Glamping \u00b7 Personal, interiors and landscape',2],
+    ['kg06',2000,1333,'Kinloch Glamping \u00b7 Personal, interiors and landscape',2],
+    ['kg07',1333,2000,'Kinloch Glamping \u00b7 Personal, interiors and landscape',2],
+    ['kg11',2000,1333,'Kinloch Glamping \u00b7 Personal, interiors and landscape',2],
+    ['kg13',1333,2000,'Kinloch Glamping \u00b7 Personal, interiors and landscape',2],
+    ['kg10',2000,1333,'Kinloch Glamping \u00b7 Personal, interiors and landscape',2],
+    ['kg09',1333,2000,'Kinloch Glamping \u00b7 Personal, interiors and landscape',2],
+    ['kg02',2000,1333,'Kinloch Glamping \u00b7 Personal, interiors and landscape',2],
+    ['hc01',1498,2000,'Horm Choy \u00b7 Creating content',3],
+    ['hc02',1333,2000,'Horm Choy \u00b7 Creating content',3],
+    ['hc03',1333,2000,'Horm Choy \u00b7 Creating content',3],
+    ['hc04',1333,2000,'Horm Choy \u00b7 Creating content',3],
+    ['hc05',2000,1333,'Horm Choy \u00b7 Creating content',3],
+    ['hc06',1333,2000,'Horm Choy \u00b7 Creating content',3],
+    ['hc07',1333,2000,'Horm Choy \u00b7 Creating content',3],
+    ['hc08',1334,2000,'Horm Choy \u00b7 Creating content',3],
+    ['hc09',1333,2000,'Horm Choy \u00b7 Creating content',3]
   ].map(([f,w,h,cap,ch], i) => ({ src: '/jaygallery/img/' + f + '.jpg', w, h, r: w / h, cap, ch, i }));
   const pad = n => String(n).padStart(2, '0');
 

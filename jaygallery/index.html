@@ -62,7 +62,8 @@
         { "@type": "CreativeWork", "name": "Thonglor Sumner, Spring/Summer menu 2026", "description": "Food, drinks and interior photography for Thonglor Sumner, a Thai restaurant in Sumner, Christchurch, for their Spring/Summer 2026 menu." },
         { "@type": "CreativeWork", "name": "Horm Choy, homemade custom cakes", "description": "Content creation and cake photography for Horm Choy, a Christchurch custom cake maker." },
         { "@type": "CreativeWork", "name": "Light and Space", "description": "Interior and lighting photography of cafés, restaurants and hotels in Christchurch and around New Zealand." },
-        { "@type": "CreativeWork", "name": "Kinloch Glamping", "description": "Personal interior and landscape photography at a glamping stay in Marotiri, near Taupō." }
+        { "@type": "CreativeWork", "name": "Kinloch Glamping", "description": "Personal interior and landscape photography at a glamping stay in Marotiri, near Taupō." },
+        { "@type": "CreativeWork", "name": "First Summer", "description": "Lifestyle photography of puppies and family play for a dog breeder's website." }
       ]
     }
   ]
@@ -247,6 +248,7 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
     <li>Horm Choy, homemade custom cakes, Christchurch. Project: creating content and cake photography.</li>
     <li>Light and Space. Project: interior and lighting photography of cafés, restaurants and hotels.</li>
     <li>Kinloch Glamping, Marotiri, near Taupō. Personal project: interiors and landscape.</li>
+    <li>First Summer, puppies at play. Project: website imagery for a dog breeder.</li>
   </ul>
   <p>To book a shoot, email kiaora@wcloud.nz. Websites by the same studio: <a href="https://wcloud.nz">White Cloud</a>.</p>
 </section>
@@ -278,6 +280,7 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
     { n: 'IV',  title: 'Horm Choy',       sub: 'Homemade Custom Cakes', project: 'Creating content' },
     { n: 'V',   title: 'Light and Space', sub: 'Caf\u00e9s, restaurants and hotels', project: 'Interior and lighting photography' },
     { n: 'VI',  title: 'Kinloch Glamping', sub: 'Marotiri, near Taup\u014d', project: 'Personal, interiors and landscape' },
+    { n: 'VII', title: 'First Summer',    sub: 'For a puppy breeder', project: 'Website imagery' },
   ];
   const P = [
     ['gd01',1500,2000,'Low Cloud \u00b7 Personal, black and white landscape',0],
@@ -368,7 +371,18 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
     ['kg13',1333,2000,'Kinloch Glamping \u00b7 Personal, interiors and landscape',5],
     ['kg10',2000,1333,'Kinloch Glamping \u00b7 Personal, interiors and landscape',5],
     ['kg09',1333,2000,'Kinloch Glamping \u00b7 Personal, interiors and landscape',5],
-    ['kg02',2000,1333,'Kinloch Glamping \u00b7 Personal, interiors and landscape',5]
+    ['kg02',2000,1333,'Kinloch Glamping \u00b7 Personal, interiors and landscape',5],
+    ['pp01',2000,1333,'First Summer \u00b7 Website imagery',6],
+    ['pp02',1332,2000,'First Summer \u00b7 Website imagery',6],
+    ['pp03',2000,1333,'First Summer \u00b7 Website imagery',6],
+    ['pp04',2000,1335,'First Summer \u00b7 Website imagery',6],
+    ['pp05',1332,2000,'First Summer \u00b7 Website imagery',6],
+    ['pp06',2000,1333,'First Summer \u00b7 Website imagery',6],
+    ['pp07',1332,2000,'First Summer \u00b7 Website imagery',6],
+    ['pp08',2000,1333,'First Summer \u00b7 Website imagery',6],
+    ['pp09',1333,2000,'First Summer \u00b7 Website imagery',6],
+    ['pp10',2000,1335,'First Summer \u00b7 Website imagery',6],
+    ['pp11',1332,2000,'First Summer \u00b7 Website imagery',6]
   ].map(([f,w,h,cap,ch], i) => ({ src: '/jaygallery/img/' + f + '.jpg', w, h, r: w / h, cap, ch, i }));
   const pad = n => String(n).padStart(2, '0');
 

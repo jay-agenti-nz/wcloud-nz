@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Jay D Vera, new work</title>
+    <link>https://wcloud.nz/jaygallery</link>
+    <atom:link href="https://wcloud.nz/jaygallery/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>The newest photography set from Jay D Vera, photographer and content creator in Christchurch, New Zealand.</description>
+    <language>en-nz</language>
+    <lastBuildDate>Sun, 15 Nov 2026 06:56:55 +0000</lastBuildDate>
+    <item>
+      <title>First Summer</title>
+      <link>https://wcloud.nz/jaygallery#first-summer</link>
+      <guid isPermaLink="false">https://wcloud.nz/jaygallery#first-summer</guid>
+      <pubDate>Wed, 11 Nov 2026 09:00:00 +1300</pubDate>
+      <description>Lifestyle photography of puppies and family play for a dog breeder's website. 11 photographs.</description>
+      <content:encoded><![CDATA[<p>For a puppy breeder</p><p>Project: Website imagery</p><p>Lifestyle photography of puppies and family play for a dog breeder's website.</p><p><img src="https://wcloud.nz/jaygallery/img/pp01.jpg" width="2000" height="1333" alt="First Summer, photograph 1 of 11"></p><p><img src="https://wcloud.nz/jaygallery/img/pp02.jpg" width="1332" height="2000" alt="First Summer, photograph 2 of 11"></p><p><img src="https://wcloud.nz/jaygallery/img/pp03.jpg" width="2000" height="1333" alt="First Summer, photograph 3 of 11"></p><p><img src="https://wcloud.nz/jaygallery/img/pp04.jpg" width="2000" height="1335" alt="First Summer, photograph 4 of 11"></p><p><img src="https://wcloud.nz/jaygallery/img/pp05.jpg" width="1332" height="2000" alt="First Summer, photograph 5 of 11"></p><p><img src="https://wcloud.nz/jaygallery/img/pp06.jpg" width="2000" height="1333" alt="First Summer, photograph 6 of 11"></p><p><img src="https://wcloud.nz/jaygallery/img/pp07.jpg" width="1332" height="2000" alt="First Summer, photograph 7 of 11"></p><p><img src="https://wcloud.nz/jaygallery/img/pp08.jpg" width="2000" height="1333" alt="First Summer, photograph 8 of 11"></p><p><img src="https://wcloud.nz/jaygallery/img/pp09.jpg" width="1333" height="2000" alt="First Summer, photograph 9 of 11"></p><p><img src="https://wcloud.nz/jaygallery/img/pp10.jpg" width="2000" height="1335" alt="First Summer, photograph 10 of 11"></p><p><img src="https://wcloud.nz/jaygallery/img/pp11.jpg" width="1332" height="2000" alt="First Summer, photograph 11 of 11"></p><p><a href="https://wcloud.nz/jaygallery#first-summer">See First Summer in the gallery</a></p>]]></content:encoded>
+      <enclosure url="https://wcloud.nz/jaygallery/img/pp01.jpg" length="529956" type="image/jpeg"/>
+      <media:content url="https://wcloud.nz/jaygallery/img/pp01.jpg" medium="image" type="image/jpeg" width="2000" height="1333"/>
+    </item>
+  </channel>
+</rss>

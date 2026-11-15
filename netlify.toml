@@ -96,6 +96,13 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
+# RSS feed of the gallery's newest set (rebuilt by .claude/make-gallery-feed.py)
+[[headers]]
+  for = "/jaygallery/feed.xml"
+  [headers.values]
+    Content-Type = "application/rss+xml; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+
 # Gallery photos never change once published under a name
 [[headers]]
   for = "/jaygallery/img/*"

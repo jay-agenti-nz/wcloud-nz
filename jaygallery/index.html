@@ -7,6 +7,7 @@
 <meta name="description" content="Jay D Vera is a Christchurch photographer and content creator. Interior, food and product photography for cafés, restaurants, hotels and small businesses, plus landscape and family photography across Canterbury, New Zealand.">
 <link rel="canonical" href="https://wcloud.nz/jaygallery">
 <link rel="icon" type="image/svg+xml" href="/jaygallery/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="Jay D Vera, new work" href="https://wcloud.nz/jaygallery/feed.xml">
 <meta name="theme-color" content="#e9e5df">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Jay D Vera">
@@ -272,15 +273,17 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
 
 <script>
 (() => {
-  // Chapters run one after another in a single strip; each opens with a quiet title card
+  // Chapters run one after another in a single strip; each opens with a quiet title card.
+  // id is the #link for a project and added is when it went up: #latest and the RSS feed
+  // (made by .claude/make-gallery-feed.py) both pick the newest by that date.
   const CH = [
-    { n: 'I',   title: 'Low Cloud',       sub: 'Godley Head track, Christchurch', project: 'Personal, black and white landscape' },
-    { n: 'II',  title: 'Coastal Walk',    sub: '',                      project: 'Landscape and family photography' },
-    { n: 'III', title: 'Thonglor Sumner', sub: 'Thai restaurant, Sumner, Christchurch', project: 'Spring/Summer menu 2026' },
-    { n: 'IV',  title: 'Horm Choy',       sub: 'Homemade Custom Cakes', project: 'Creating content' },
-    { n: 'V',   title: 'Light and Space', sub: 'Caf\u00e9s, restaurants and hotels', project: 'Interior and lighting photography' },
-    { n: 'VI',  title: 'Kinloch Glamping', sub: 'Marotiri, near Taup\u014d', project: 'Personal, interiors and landscape' },
-    { n: 'VII', title: 'First Summer',    sub: 'For a puppy breeder', project: 'Website imagery' },
+    { n: 'I',   title: 'Low Cloud',       sub: 'Godley Head track, Christchurch', project: 'Personal, black and white landscape', id: 'low-cloud', added: '2026-11-09' },
+    { n: 'II',  title: 'Coastal Walk',    sub: '',                      project: 'Landscape and family photography', id: 'coastal-walk', added: '2026-10-07' },
+    { n: 'III', title: 'Thonglor Sumner', sub: 'Thai restaurant, Sumner, Christchurch', project: 'Spring/Summer menu 2026', id: 'thonglor-sumner', added: '2026-10-21' },
+    { n: 'IV',  title: 'Horm Choy',       sub: 'Homemade Custom Cakes', project: 'Creating content', id: 'horm-choy', added: '2026-10-07' },
+    { n: 'V',   title: 'Light and Space', sub: 'Caf\u00e9s, restaurants and hotels', project: 'Interior and lighting photography', id: 'light-and-space', added: '2026-10-08' },
+    { n: 'VI',  title: 'Kinloch Glamping', sub: 'Marotiri, near Taup\u014d', project: 'Personal, interiors and landscape', id: 'kinloch-glamping', added: '2026-10-08' },
+    { n: 'VII', title: 'First Summer',    sub: 'For a puppy breeder', project: 'Website imagery', id: 'first-summer', added: '2026-11-11' },
   ];
   const P = [
     ['gd01',1500,2000,'Low Cloud \u00b7 Personal, black and white landscape',0],
@@ -512,6 +515,14 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
     if (reduce) go(); else { host.classList.add('jump'); setTimeout(go, 420); }
     return true;
   };
+  // wcloud.nz/jaygallery#latest (or a project's #id) opens at that strip once the visitor is in.
+  // The sections carry no id, so the browser can't jump there behind the welcome curtain.
+  const hashSec = () => {
+    const h = decodeURIComponent(location.hash.slice(1));
+    const ci = !h ? -1 : h === 'latest' ? CH.reduce((b, c, i) => (c.added >= CH[b].added ? i : b), 0) : CH.findIndex(c => c.id === h);
+    return ci < 0 ? null : secs[ci];
+  };
+  const toHash = () => { const S = hashSec(); if (!S) return; scrollTo(0, S.sec.offsetTop); secs.forEach(T => { T.cur = goal(T); }); kick(); };
   const inLeft = x => !narrow() && x < innerWidth * .14;
   const updateSkip = () => { skip.hidden = secIndex() >= secs.length - 1; };
   addEventListener('pointermove', e => { if (!cEl.hidden && e.pointerType !== 'touch') cEl.classList.toggle('in-left', inLeft(e.clientX)); });
@@ -626,7 +637,11 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
     introTimers.forEach(clearTimeout); introTimers = [];
     centreJ();
     layoutC(); scrollTo(0, 0); secs.forEach(S => { S.cur = 0; S.strip.style.transform = ''; });
-    if (reduce) { curtain.hidden = true; items.forEach(el => el.classList.remove('pre')); paintC(); return; }
+    if (reduce) {
+      curtain.hidden = true; items.forEach(el => el.classList.remove('pre')); paintC();
+      if (document.readyState === 'complete') toHash(); else addEventListener('load', toHash, { once: true });
+      return;
+    }
     curtain.hidden = false; curtain.classList.remove('clear'); document.getElementById('c').classList.add('intro');
     items.forEach(el => el.classList.add('pre'));
     const ilogo = curtain.querySelector('.c-ilogo');
@@ -660,6 +675,7 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
         ilogo.style.transform = 'translate(' + (to.left + to.width / 2 - from.left - from.width / 2) + 'px,' + (to.top + to.height / 2 - from.top - from.height / 2) + 'px) scale(' + k + ')';
         curtain.classList.add('clear');
         document.documentElement.style.overflow = '';
+        toHash();
       }, 0);
       later(() => { document.getElementById('c').classList.remove('intro'); paintC(); }, 1150);
       later(() => { curtain.hidden = true; paintC(); }, 1600);
@@ -669,6 +685,7 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
   const cUpdate = paintC;
 
   cStart();
+  addEventListener('hashchange', () => { if (curtain.hidden) toHash(); });
   let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { layoutC(); kick(); }, 120); });
 
   // Lightbox: the photo is a CSS background, so there is no image to right-click or long-press

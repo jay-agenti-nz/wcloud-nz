@@ -81,6 +81,30 @@
   to = "/shoot-and-create.html"
   status = 200
 
+# Peelie (the café stamp-card app) lives in /peelieapp. These serve the
+# folder pages at the exact addresses given to Apple (no trailing slash),
+# and send the shorter /peelie spelling there too.
+[[redirects]]
+  from = "/peelie"
+  to = "/peelieapp"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/peelieapp"
+  to = "/peelieapp/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/peelieapp/privacy"
+  to = "/peelieapp/privacy/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/peelieapp/support"
+  to = "/peelieapp/support/index.html"
+  status = 200
+
 [build.environment]
   NODE_VERSION = "20"
 

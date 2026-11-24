@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Peelie | The digital stamp card for Christchurch cafés</title>
-<meta name="description" content="Peelie replaces paper stamp cards with stickers made from photos of your food. Collect the food you love at Christchurch cafés and restaurants. Coming soon to the App Store.">
+<title>Peelie: digital stamp card & loyalty app for Christchurch cafés</title>
+<meta name="description" content="Peelie replaces paper loyalty cards for cafés, bakeries and eateries in Christchurch, NZ. Show your code, snap your food, and it becomes a sticker. Coming soon to the App Store.">
 <link rel="canonical" href="https://wcloud.nz/peelieapp">
 <link rel="icon" type="image/png" href="/peelieapp/img/icon-64.png">
 <link rel="apple-touch-icon" href="/peelieapp/img/icon-180.png">
@@ -18,6 +18,12 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card"       content="summary_large_image">
+<meta property="og:site_name"  content="Peelie by White Cloud">
+<meta property="og:locale"     content="en_NZ">
+<meta property="og:image:alt"  content="Peelie on iPhone: a stack of stamp cards from Christchurch cafés, with a Get my sticker button">
+<meta name="twitter:title"       content="Peelie: collect the food you love">
+<meta name="twitter:description" content="The digital stamp card for Christchurch cafés, bakeries and eateries. Show your code, snap your food, and it becomes a sticker. Coming soon to the App Store.">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="twitter:image"      content="https://wcloud.nz/og-peelie.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,13 +49,106 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "MobileApplication",
-  "name": "Peelie",
-  "operatingSystem": "iOS",
-  "applicationCategory": "LifestyleApplication",
-  "description": "A digital loyalty stamp card for cafés and restaurants in New Zealand. Customers collect stickers made from photos of their food.",
-  "url": "https://wcloud.nz/peelieapp",
-  "publisher": { "@type": "Organization", "name": "White Cloud", "url": "https://wcloud.nz" }
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      "@id": "https://wcloud.nz/peelieapp#app",
+      "name": "Peelie",
+      "alternateName": "Peelie: Digital Stamp Card",
+      "description": "Peelie is a digital loyalty stamp card for cafés, bakeries and eateries in Christchurch (Ōtautahi), New Zealand. Customers show a QR code at the counter, staff scan it with the shop's own phone or iPad, and the customer's photo of their food becomes a sticker on the card. A full card earns the shop's reward, and every sticker is kept in a food diary.",
+      "url": "https://wcloud.nz/peelieapp",
+      "image": "https://wcloud.nz/peelieapp/img/icon-512.png",
+      "screenshot": [
+        "https://wcloud.nz/peelieapp/img/phone-01-my-cards.webp",
+        "https://wcloud.nz/peelieapp/img/phone-02-sticker-added.webp",
+        "https://wcloud.nz/peelieapp/img/phone-03-diary-book.webp",
+        "https://wcloud.nz/peelieapp/img/phone-04-offers.webp",
+        "https://wcloud.nz/peelieapp/img/phone-05-explore.webp",
+        "https://wcloud.nz/peelieapp/img/phone-07-give-sticker.webp"
+      ],
+      "operatingSystem": "iOS, iPadOS",
+      "applicationCategory": "LifestyleApplication",
+      "applicationSubCategory": "Loyalty program",
+      "inLanguage": "en-NZ",
+      "countriesSupported": "NZ",
+      "featureList": [
+        "Digital stamp cards for local cafés, bakeries and eateries",
+        "Staff scan the customer's QR code to give a sticker",
+        "Photos of your food become stickers",
+        "Food diary of every sticker you collect",
+        "Offers from nearby shops and a map of Peelie shops",
+        "For shops: card designer, staff check-in with PINs, ads, analytics and a window poster with QR code",
+        "Shops only see a customer's name if the customer chooses to share it"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "NZD",
+        "description": "Free for customers"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Christchurch",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "New Zealand"
+        }
+      },
+      "publisher": {
+        "@id": "https://wcloud.nz/#business",
+        "@type": [
+          "LocalBusiness",
+          "ProfessionalService"
+        ],
+        "name": "White Cloud",
+        "url": "https://wcloud.nz"
+      },
+      "author": {
+        "@id": "https://wcloud.nz/#business"
+      },
+      "privacyPolicy": "https://wcloud.nz/peelieapp/privacy"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://wcloud.nz/peelieapp#webpage",
+      "url": "https://wcloud.nz/peelieapp",
+      "name": "Peelie: digital stamp card & loyalty app for Christchurch cafés",
+      "description": "Peelie replaces paper loyalty cards for cafés, bakeries and eateries in Christchurch, NZ. Show your code, snap your food, and it becomes a sticker. Coming soon to the App Store.",
+      "inLanguage": "en-NZ",
+      "about": {
+        "@id": "https://wcloud.nz/peelieapp#app"
+      },
+      "mainEntity": {
+        "@id": "https://wcloud.nz/peelieapp#app"
+      },
+      "publisher": {
+        "@id": "https://wcloud.nz/#business"
+      },
+      "primaryImageOfPage": "https://wcloud.nz/og-peelie.jpg",
+      "breadcrumb": {
+        "@id": "https://wcloud.nz/peelieapp#breadcrumb"
+      },
+      "dateModified": "2026-11-24"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://wcloud.nz/peelieapp#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "White Cloud",
+          "item": "https://wcloud.nz/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Peelie",
+          "item": "https://wcloud.nz/peelieapp"
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -90,7 +189,7 @@
       </div>
       <div class="hero-art">
         <img class="stk s1" src="/peelieapp/img/sticker-croissant.webp" alt="" width="112" height="112">
-        <img class="phone" src="/peelieapp/img/phone-01-my-cards.webp" alt="Peelie's My cards screen: a stack of stamp cards from local shops, with a Get my sticker button" width="700" height="1431">
+        <img class="phone" fetchpriority="high" src="/peelieapp/img/phone-01-my-cards.webp" alt="Peelie's My cards screen: a stack of stamp cards from local shops, with a Get my sticker button" width="700" height="1431">
         <div class="toast" aria-hidden="true"><img src="/peelieapp/img/sticker-flatwhite.webp" alt=""><div><b>Sticker added!</b><small>5 of 8 · Little Café</small></div></div>
         <img class="stk s2" src="/peelieapp/img/sticker-dumpling.webp" alt="" width="100" height="100">
       </div>
@@ -181,7 +280,7 @@
         <div class="section-head">
           <span class="kick">for café &amp; shop owners</span>
           <h2>Replace your paper card. Set up in minutes.</h2>
-          <p>No scanners, no till changes, nothing new to buy. Peelie runs on the phone or iPad you already have behind the counter, and your regulars already carry their card in their pocket.</p>
+          <p>A loyalty program your regulars will actually use, with no scanners, no till changes and nothing new to buy. Peelie runs on the phone or iPad you already have behind the counter, and your regulars already carry their card in their pocket.</p>
         </div>
         <img class="ipad" src="/peelieapp/img/ipad-10-analytics.webp" alt="Peelie's Analytics on iPad mini: visits up 32%, your busiest day, and a chart of visits over time" loading="lazy" width="900" height="1308">
       </div>

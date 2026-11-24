@@ -38,7 +38,7 @@
 
   <url>
     <loc>https://wcloud.nz/projects</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -95,19 +95,19 @@
   </url>
   <url>
     <loc>https://wcloud.nz/peelieapp</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://wcloud.nz/peelieapp/support</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://wcloud.nz/peelieapp/privacy</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>

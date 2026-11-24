@@ -65,6 +65,19 @@ Jay D Vera, the founder of White Cloud, is also a Christchurch photographer and 
 - Portfolio: https://wcloud.nz/jaygallery
 - Bookings: kiaora@wcloud.nz
 
+## Peelie (White Cloud's own app)
+Peelie is a digital loyalty stamp card app for cafés, bakeries and eateries in Christchurch (Ōtautahi), New Zealand, made by White Cloud. It replaces paper coffee and loyalty cards.
+- Status: in beta testing with local Christchurch shops; coming soon to the App Store (iPhone and iPad). Not on Android yet.
+- How it works for customers: at the counter, tap the Sticker button to show a QR code; staff scan it with the shop's own phone or iPad and a sticker lands on the card. Snap a photo of your food and it becomes the sticker (or pick a ready-made one). Fill the card to get the shop's reward, such as a free coffee. Every sticker is kept in a food diary.
+- Free for customers.
+- For shop owners: design your own card (colour, logo or photo, reward, stickers per card, minimum spend), staff check in once a shift with their own PIN, post ads and offers (notifications to opted-in customers, at most two a week), plain-English analytics, and a printable window poster with QR code. No scanners or till changes needed.
+- Built-in anti-cheat: only signed-in staff on the shop's device can give stickers, one sticker per customer per shop every 3 hours, a shift log, and alerts for unusual activity.
+- Privacy: shops see a customer code and stickers, not the customer's name, unless the customer switches on sharing for that shop. Location stays on the phone. Data is stored with Supabase in Sydney, Australia. Customers can delete their account in the app (NZ Privacy Act 2020).
+- Shops interested in Peelie: email kiaora@wcloud.nz or call 021 854 847.
+- Peelie page: https://wcloud.nz/peelieapp
+- Help and FAQ: https://wcloud.nz/peelieapp/support
+- Privacy policy: https://wcloud.nz/peelieapp/privacy
+
 ## Contact
 White Cloud (a trading name of GROOV Creator Limited, NZBN 9429049024326)
 Christchurch, Canterbury, New Zealand

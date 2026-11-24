@@ -126,7 +126,8 @@ section { padding: 88px 0; }
 .step .shot { margin-top: auto; padding-top: 8px; height: 330px; overflow: hidden; display: flex; justify-content: center; }
 .step .shot img { width: 250px; max-width: none; align-self: flex-start; filter: drop-shadow(0 12px 18px rgba(42,37,34,.18)); }
 .step .stickers { margin-top: auto; height: 330px; position: relative; background: var(--slot); margin-left: -22px; margin-right: -22px; }
-.step .stickers img { position: absolute; width: 130px; filter: drop-shadow(0 8px 10px rgba(42,37,34,.18)); }
+.step .stickers { overflow: hidden; }
+.step .stickers img { position: absolute; width: 130px; filter: drop-shadow(0 2px 1px rgba(42,37,34,.12)) drop-shadow(0 10px 12px rgba(42,37,34,.2)); }
 .step.snap .stickers { background: linear-gradient(var(--slot), var(--p-pink)); }
 @media (max-width: 900px) { .steps { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; } .step .shot, .step .stickers { height: 300px; } }
 

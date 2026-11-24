@@ -1,6 +1,7 @@
 /* Peelie pages (wcloud.nz/peelieapp). Matches the app: Theme.swift colours,
    Fraunces headings with a Caveat note above, rounded cream cards, the
-   forest-green shop card and a floating pill bar like the app's tab bar. */
+   pastel pink, terracotta and blue sections and a floating pill bar like the
+   app's tab bar. */
 :root {
   --page: #F4ECE1;
   --app: #FFF8F0;
@@ -24,6 +25,13 @@
   --teal: #A9CFCB;
   --blush: #F4C9C0;
   --wash-terra: #F0A47E;
+  /* Pastels for the big sections */
+  --p-pink: #FBE6DF;
+  --p-pink-2: #F4C9C0;
+  --p-terra: #F6CDB8;
+  --p-blue: #E1ECF1;
+  --p-blue-2: #C7DCE6;
+  --p-blue-ink: #2E4A57;
   --radius: 26px;
   --shadow: 0 1px 0 rgba(42,37,34,.04), 0 14px 34px -16px rgba(42,37,34,.28);
   --display: 'Fraunces', Georgia, serif;
@@ -87,8 +95,8 @@ p { margin: 0 0 1em; }
 .hero .lead { font-size: 1.2rem; color: var(--muted); max-width: 33ch; }
 .hero .note { margin-top: 18px; font-size: .95rem; color: var(--muted); }
 .hero-art { position: relative; display: grid; place-items: center; min-height: 560px; }
-.hero-art::before { content: ""; position: absolute; width: 400px; height: 400px; border-radius: 50%; background: var(--mustard); opacity: .55; top: 40px; right: -10px; }
-.hero-art::after { content: ""; position: absolute; width: 230px; height: 230px; border-radius: 50%; background: var(--sage-wash); opacity: .6; bottom: 10px; left: 10px; }
+.hero-art::before { content: ""; position: absolute; width: 400px; height: 400px; border-radius: 50%; background: var(--p-pink-2); opacity: .7; top: 40px; right: -10px; }
+.hero-art::after { content: ""; position: absolute; width: 230px; height: 230px; border-radius: 50%; background: var(--p-blue-2); opacity: .8; bottom: 10px; left: 10px; }
 .hero-art .phone { position: relative; z-index: 1; max-width: 290px; transform: rotate(3deg); }
 .stk { position: absolute; z-index: 2; width: 112px; filter: drop-shadow(0 8px 10px rgba(42,37,34,.2)); }
 .stk.s1 { left: 4%; top: 14%; transform: rotate(-14deg); }
@@ -119,7 +127,7 @@ section { padding: 88px 0; }
 .step .shot img { width: 250px; max-width: none; align-self: flex-start; filter: drop-shadow(0 12px 18px rgba(42,37,34,.18)); }
 .step .stickers { margin-top: auto; height: 330px; position: relative; background: var(--slot); margin-left: -22px; margin-right: -22px; }
 .step .stickers img { position: absolute; width: 130px; filter: drop-shadow(0 8px 10px rgba(42,37,34,.18)); }
-.step.snap .stickers { background: linear-gradient(var(--slot), var(--mustard-soft)); }
+.step.snap .stickers { background: linear-gradient(var(--slot), var(--p-pink)); }
 @media (max-width: 900px) { .steps { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; } .step .shot, .step .stickers { height: 300px; } }
 
 /* Fill the card */
@@ -129,7 +137,7 @@ section { padding: 88px 0; }
 @media (max-width: 900px) { .split { grid-template-columns: 1fr; gap: 36px; } .split .art { order: -1; } }
 .ticks { list-style: none; padding: 0; margin: 0 0 1em; }
 .ticks li { position: relative; padding-left: 34px; margin-bottom: 10px; }
-.ticks li::before { content: ""; position: absolute; left: 0; top: .3em; width: 22px; height: 22px; border-radius: 50%; background: var(--sage-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%232F5B2E' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat; }
+.ticks li::before { content: ""; position: absolute; left: 0; top: .3em; width: 22px; height: 22px; border-radius: 50%; background: var(--p-pink-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%238A3A1C' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat; }
 
 /* Customer features: three phones */
 .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
@@ -143,36 +151,33 @@ section { padding: 88px 0; }
   .feat { flex: 0 0 78%; scroll-snap-align: center; }
 }
 
-/* Owners: the forest-green shop card */
-.owners { background: var(--forest); color: var(--forest-ink); border-radius: 40px; margin: 0 12px; }
-.owners h2, .owners h3 { color: #fff; }
-.owners .kick { color: var(--mustard); }
-.owners .section-head p { color: #C9D8C0; }
+/* Owners: a pastel pink band with cream cards */
+.owners { background: var(--p-pink); color: var(--ink); border-radius: 40px; margin: 0 12px; }
+.owners .section-head p { color: #6B5A54; }
 .owners-top { display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: center; margin-bottom: 56px; }
 .owners-top .section-head { margin: 0; }
 .owners-top > *, .split > *, .hero .wrap > * { min-width: 0; }
-.owners-top .ipad { width: 100%; }
-.owners-top .ipad { filter: drop-shadow(0 30px 36px rgba(0,0,0,.35)); transform: rotate(-2deg); max-width: 520px; justify-self: end; }
-@media (max-width: 900px) { .owners-top { grid-template-columns: 1fr; } .owners-top .ipad { justify-self: center; max-width: 420px; } .owners { margin: 0; border-radius: 28px; } }
+.owners-top .ipad { width: 100%; filter: drop-shadow(0 28px 32px rgba(138,58,28,.22)); transform: rotate(-2deg); max-width: 500px; justify-self: end; }
+@media (max-width: 900px) { .owners-top { grid-template-columns: 1fr; } .owners-top .ipad { justify-self: center; max-width: 400px; } .owners { margin: 0; border-radius: 28px; } }
 .perks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.perk { background: var(--forest-2); border-radius: 22px; padding: 24px; }
+.perk { background: var(--surface); border-radius: 22px; padding: 24px; border: 1px solid #F1D6CC; box-shadow: 0 10px 26px -18px rgba(138,58,28,.35); }
 .perk .dot { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 14px; }
 .perk .dot svg { width: 24px; height: 24px; }
 .perk h3 { font-size: 1.2rem; margin-bottom: .35em; }
-.perk p { color: #C9D8C0; margin: 0; font-size: .98rem; }
+.perk p { color: var(--muted); margin: 0; font-size: .98rem; }
 @media (max-width: 900px) { .perks { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .perks { grid-template-columns: 1fr; } }
-.duo-phones { display: flex; justify-content: center; align-items: flex-end; }
-.duo-phones .phone { max-width: 240px; }
-.duo-phones .phone + .phone { margin-left: -50px; transform: translateY(30px) rotate(4deg); }
-.duo-phones .phone:first-child { transform: rotate(-4deg); }
 .owners .split { margin-top: 72px; }
-@media (max-width: 560px) { .duo-phones .phone { max-width: 52%; } .duo-phones .phone + .phone { margin-left: -12%; transform: translateY(20px) rotate(4deg); } .owners .split { margin-top: 56px; } }
-.owners .split p { color: #C9D8C0; }
-.setup { margin-top: 56px; display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between; border-top: 1px dashed #5E8A5B; padding-top: 28px; }
-.setup p { margin: 0; color: #C9D8C0; max-width: 56ch; }
-.setup .btn-ink { background: var(--mustard); color: var(--mustard-ink); border-color: var(--mustard); }
-.setup .btn-ink:hover { background: #fff; border-color: #fff; color: var(--ink); }
+.owners .split p { color: #6B5A54; }
+/* iPad mini with an iPhone Duo in front of it */
+.devices { position: relative; justify-content: flex-start; padding-bottom: 40px; }
+.devices .ipad { width: 78%; max-width: 420px; filter: drop-shadow(0 26px 30px rgba(138,58,28,.22)); transform: rotate(-3deg); }
+.devices .duo { position: absolute; right: 0; bottom: 0; width: 46%; max-width: 250px; transform: rotate(5deg); }
+.duo { width: 100%; max-width: 360px; filter: drop-shadow(0 24px 28px rgba(42,37,34,.24)); }
+.setup { margin-top: 56px; display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between; border-top: 1px dashed #E2B3A2; padding-top: 28px; }
+.setup p { margin: 0; color: #6B5A54; max-width: 56ch; }
+.setup .btn-ink { background: var(--terra); color: #fff; border-color: var(--terra); }
+.setup .btn-ink:hover { background: var(--terra-deep); border-color: var(--terra-deep); color: #fff; }
 
 /* Privacy promise */
 .promise .art img { max-width: 360px; border-radius: var(--radius); }
@@ -189,8 +194,8 @@ section { padding: 88px 0; }
 
 /* Contact CTA */
 .cta { padding: 88px 0 96px; }
-.cta-box { background: var(--mustard-soft); border-radius: 36px; padding: 56px 48px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; }
-.cta-box p { color: #5A4720; font-size: 1.1rem; }
+.cta-box { background: var(--p-blue); border-radius: 36px; padding: 56px 48px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; }
+.cta-box p { color: var(--p-blue-ink); font-size: 1.1rem; }
 .cta-box img { width: 100%; max-width: 300px; justify-self: center; border-radius: 24px; }
 @media (max-width: 900px) { .cta-box { grid-template-columns: 1fr; padding: 40px 24px; } }
 
@@ -210,7 +215,7 @@ section { padding: 88px 0; }
 .doc ul { padding-left: 1.2em; margin: 0 0 1em; }
 .doc li { margin-bottom: .45em; }
 .doc .box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; margin: 1.6em 0; box-shadow: var(--shadow); }
-.doc .box.sage { background: var(--sage-soft); border-color: #CFDEC0; box-shadow: none; }
+.doc .box.sage { background: var(--p-blue); border-color: var(--p-blue-2); box-shadow: none; }
 .doc .box > :last-child { margin-bottom: 0; }
 .doc table { width: 100%; border-collapse: collapse; margin: 0 0 1.2em; font-size: .97rem; }
 .doc th, .doc td { text-align: left; vertical-align: top; padding: 12px 10px; border-bottom: 1px solid var(--line); }
@@ -224,3 +229,4 @@ section { padding: 88px 0; }
 .faq details > div { padding: 0 20px 6px; color: #463F3A; }
 .faq h2 { margin-top: 1.6em; font-size: 1.45rem; }
 .doc .meta { color: var(--muted); font-weight: 700; font-size: .9rem; margin: -6px 0 14px; }
+@media (max-width: 560px) { .owners .split { margin-top: 56px; } .devices .duo { width: 50%; } }

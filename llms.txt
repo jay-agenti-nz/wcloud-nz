@@ -66,17 +66,19 @@ Jay D Vera, the founder of White Cloud, is also a Christchurch photographer and 
 - Bookings: kiaora@wcloud.nz
 
 ## Peelie (White Cloud's own app)
-Peelie is a digital loyalty stamp card app for cafés, bakeries and eateries in Christchurch (Ōtautahi), New Zealand, made by White Cloud. It replaces paper coffee and loyalty cards.
-- Status: in beta testing with local Christchurch shops; coming soon to the App Store (iPhone and iPad). Not on Android yet.
-- How it works for customers: at the counter, tap the Sticker button to show a QR code; staff scan it with the shop's own phone or iPad and a sticker lands on the card. Snap a photo of your food and it becomes the sticker (or pick a ready-made one). Fill the card to get the shop's reward, such as a free coffee. Every sticker is kept in a food diary.
-- Free for customers.
-- For shop owners: design your own card (colour, logo or photo, reward, stickers per card, minimum spend), staff check in once a shift with their own PIN, post ads and offers (notifications to opted-in customers, at most two a week), plain-English analytics, and a printable window poster with QR code. No scanners or till changes needed.
-- Built-in anti-cheat: only signed-in staff on the shop's device can give stickers, one sticker per customer per shop every 3 hours, a shift log, and alerts for unusual activity.
-- Privacy: shops see a customer code and stickers, not the customer's name, unless the customer switches on sharing for that shop. Location stays on the phone. Data is stored with Supabase in Sydney, Australia. Customers can delete their account in the app (NZ Privacy Act 2020).
-- Shops interested in Peelie: email kiaora@wcloud.nz or call 021 854 847.
-- Peelie page: https://wcloud.nz/peelieapp
-- Help and FAQ: https://wcloud.nz/peelieapp/support
-- Privacy policy: https://wcloud.nz/peelieapp/privacy
+Peelie is a digital loyalty stamp card app for cafés, restaurants and local shops (bakeries, bookshops, toy shops, gift shops and more), made by White Cloud. It replaces paper stamp and loyalty cards. Launching in Christchurch (Ōtautahi), New Zealand, and available worldwide on the App Store.
+- Status: coming soon to the App Store. Works on iPhone, iPad and iPhone Duo. Not on Android yet.
+- For customers: at the counter, open Peelie, tap "Get my sticker" and show your QR code (or the code under it, like PL-7K2QX9). Staff scan it with the shop's own phone or iPad and the sticker lands on the card; location isn't needed. Snap a photo of your food and it becomes the sticker, or pick a ready-made one. Fill the card to get the shop's reward. Every sticker is kept in a food diary you can download.
+- Customers never pay. Sign in with Apple, or with email (a sign-in link and a 6-digit code); no passwords.
+- For shops: card designer, staff check in once a shift with their own PIN, ads and offers (notifications only to customers who opted in, at most two a week), plain-English analytics, and a printable window poster with QR code. No scanners or till changes. New shops are approved by the Peelie team before they can post.
+- Plans for shops: Free plan with every feature for 1 staff member and up to 50 customers. Peelie Pro adds unlimited customers and staff: NZ$139.99 a year, with NZ$69.99 for the first year for new subscribers (about NZ$5.83 a month). Bought in the app through Apple ("Get Peelie Pro"); cancel any time in iPhone Settings > your name > Subscriptions. Apple sets matching prices in other countries.
+- Safety: every shop post has a menu to report it or hide that shop's posts; the Peelie team reviews reports within 24 hours.
+- Anti-cheat: only signed-in staff on the shop's device can give stickers, one sticker per customer per shop every 3 hours, a shift log, and alerts for unusual activity.
+- Privacy: shops see a customer code and their own visits, not the customer's name, unless the customer switches on sharing for that shop. Location is only used on the phone and never stored. No ads, tracking or analytics companies. Data is stored with Supabase in Sydney, Australia. Accounts can be deleted in the app (NZ Privacy Act 2020).
+- Contact: teampeelie@wcloud.nz
+- Peelie website: https://peelie.wcloud.nz (also https://wcloud.nz/peelieapp)
+- Help and FAQ: https://peelie.wcloud.nz/support
+- Privacy policy: https://peelie.wcloud.nz/privacy
 
 ## Contact
 White Cloud (a trading name of GROOV Creator Limited, NZBN 9429049024326)

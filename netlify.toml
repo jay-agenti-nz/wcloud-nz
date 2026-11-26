@@ -3,6 +3,29 @@
   command = ""
   functions = "netlify/functions"
 
+# peelie.wcloud.nz: the addresses the Peelie app and its App Store listing
+# link to. Only these three are mapped (shown in place, not redirected), so
+# the rest of the subdomain stays free for the app's passkey file and
+# QR-code links later. Needs peelie.wcloud.nz added as a domain alias in
+# Netlify and a DNS record in Cloudflare.
+[[redirects]]
+  from = "https://peelie.wcloud.nz/"
+  to = "/peelieapp/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://peelie.wcloud.nz/privacy"
+  to = "/peelieapp/privacy/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://peelie.wcloud.nz/support"
+  to = "/peelieapp/support/index.html"
+  status = 200
+  force = true
+
 # Short, sayable URL for the Google review page, so it can go in an
 # email signature or be read out over the phone. 301 so the link
 # equity and the browser's memory both point at Google, not at us.

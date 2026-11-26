@@ -129,7 +129,8 @@ section { padding: 88px 0; }
 .step .stickers { overflow: hidden; }
 .step .stickers img { position: absolute; width: 130px; filter: drop-shadow(0 2px 1px rgba(42,37,34,.12)) drop-shadow(0 10px 12px rgba(42,37,34,.2)); }
 .step.snap .stickers { background: linear-gradient(var(--slot), var(--p-pink)); }
-@media (max-width: 900px) { .steps { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; } .step .shot, .step .stickers { height: 300px; } }
+@media (max-width: 900px) { .steps { gap: 14px; } .step { padding: 20px 16px 0; } .step h3 { font-size: 1.2rem; } .step p { font-size: .95rem; } .step .shot, .step .stickers { height: 260px; } .step .shot img { width: min(230px, 100%); } .step .stickers { margin-left: -16px; margin-right: -16px; } }
+@media (max-width: 640px) { .steps { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; } .step { padding: 26px 22px 0; } .step h3 { font-size: 1.45rem; } .step .shot, .step .stickers { height: 300px; } .step .shot img { width: 250px; } .step .stickers { margin-left: -22px; margin-right: -22px; } }
 
 /* Fill the card */
 .reward { background: var(--page); }
@@ -146,10 +147,12 @@ section { padding: 88px 0; }
 .feat .phone { margin: 0 auto 22px; max-width: 260px; }
 .feat h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; }
 .feat p { color: var(--muted); max-width: 30ch; margin: 0 auto; }
-@media (max-width: 900px) {
+@media (max-width: 900px) { .trio { gap: 16px; } .feat .phone { max-width: 220px; } .feat h3 { font-size: 1.3rem; } .feat p { font-size: .95rem; } }
+@media (max-width: 640px) {
   .trio { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 18px; margin: 0 -24px; padding: 0 24px 16px; scrollbar-width: none; }
   .trio::-webkit-scrollbar { display: none; }
   .feat { flex: 0 0 78%; scroll-snap-align: center; }
+  .feat .phone { max-width: 260px; }
 }
 
 /* Owners: a pastel pink band with cream cards */
@@ -231,3 +234,37 @@ section { padding: 88px 0; }
 .faq h2 { margin-top: 1.6em; font-size: 1.45rem; }
 .doc .meta { color: var(--muted); font-weight: 700; font-size: .9rem; margin: -6px 0 14px; }
 @media (max-width: 560px) { .owners .split { margin-top: 56px; } .devices .duo { width: 50%; } }
+
+/* Small print, e.g. "Shops shown are examples." */
+.fine { font-size: .88rem; color: var(--muted); margin-top: 28px; }
+.fine.center { text-align: center; max-width: 70ch; margin-left: auto; margin-right: auto; }
+
+/* Pricing for shops (no buy buttons: Peelie Pro is bought in the app) */
+.pricing { background: var(--p-blue); border-radius: 40px; margin: 28px 12px 0; }
+.plans { display: grid; grid-template-columns: 1fr 1fr .9fr; gap: 22px; align-items: stretch; max-width: 1040px; margin: 0 auto; }
+.plan { position: relative; background: var(--surface); border: 1px solid var(--p-blue-2); border-radius: var(--radius); padding: 28px 26px 24px; box-shadow: 0 12px 30px -20px rgba(46,74,87,.45); display: flex; flex-direction: column; }
+.plan h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; }
+.plan .price { margin: 0 0 4px; color: var(--muted); }
+.plan .price b { font: 800 2.2rem/1.1 var(--display); color: var(--ink); margin-right: 4px; }
+.plan .then { color: var(--muted); font-size: .95rem; }
+.plan .ticks { margin: 12px 0 16px; }
+.plan .small { font-size: .9rem; color: var(--muted); margin: auto 0 0; padding-top: 12px; border-top: 1px dashed var(--line); }
+.plan.pro { border: 2px solid var(--terra); }
+.plan .badge { position: absolute; top: -14px; right: 20px; background: var(--terra); color: #fff; font: 800 .78rem/1 var(--body); padding: 8px 12px; border-radius: 999px; }
+.plan-shot { display: flex; align-items: center; justify-content: center; }
+.plan-shot img { width: 100%; max-width: 300px; border-radius: 28px; border: 8px solid var(--ink); box-shadow: 0 20px 34px -20px rgba(42,37,34,.5); }
+@media (max-width: 980px) { .plans { grid-template-columns: 1fr 1fr; } .plan-shot { grid-column: 1 / -1; } .plan-shot img { max-width: 280px; } }
+@media (max-width: 640px) { .plans { grid-template-columns: 1fr; } .pricing { margin: 0; border-radius: 28px; } }
+
+/* Small phones */
+.chip-card .row > div:not(.ava):not(.toggle) { min-width: 0; }
+.chip-card .code { white-space: nowrap; }
+@media (max-width: 400px) {
+  .chip-card { padding: 16px; }
+  .chip-card .code { font-size: .68rem; padding: 5px 7px; }
+  .chip-card .ava { width: 36px; height: 36px; }
+  .btns .btn { flex: 1 1 auto; justify-content: center; }
+  .wrap { padding: 0 18px; }
+}
+.pill-short { display: none; }
+@media (max-width: 400px) { .pill-long { display: none; } .pill-short { display: inline; } }

@@ -3,39 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Peelie: digital stamp card & loyalty app for Christchurch cafés</title>
-<meta name="description" content="Peelie replaces paper loyalty cards for cafés, bakeries and eateries in Christchurch, NZ. Show your code, snap your food, and it becomes a sticker. Coming soon to the App Store.">
+<title>Peelie: digital stamp card & loyalty app for cafés and local shops</title>
+<meta name="description" content="Peelie replaces paper loyalty cards for cafés, restaurants and local shops, starting in Christchurch, NZ. Show your code, snap your food, and it becomes a sticker. Free for customers. Coming soon to the App Store.">
 <link rel="canonical" href="https://wcloud.nz/peelieapp">
 <link rel="icon" type="image/png" href="/peelieapp/img/icon-64.png">
 <link rel="apple-touch-icon" href="/peelieapp/img/icon-180.png">
 <meta name="theme-color" content="#FFF8F0">
-
-<meta property="og:type"        content="website">
-<meta property="og:url"         content="https://wcloud.nz/peelieapp">
-<meta property="og:title"       content="Peelie: collect the food you love">
-<meta property="og:description" content="The digital stamp card for Christchurch cafés. Show your code, snap your food, and it becomes a sticker. Coming soon to the App Store.">
-<meta property="og:image"       content="https://wcloud.nz/og-peelie.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card"       content="summary_large_image">
-<meta property="og:site_name"  content="Peelie by White Cloud">
-<meta property="og:locale"     content="en_NZ">
-<meta property="og:image:alt"  content="Peelie on iPhone: a stack of stamp cards from Christchurch cafés, with a Get my sticker button">
-<meta name="twitter:title"       content="Peelie: collect the food you love">
-<meta name="twitter:description" content="The digital stamp card for Christchurch cafés, bakeries and eateries. Show your code, snap your food, and it becomes a sticker. Coming soon to the App Store.">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="twitter:image"      content="https://wcloud.nz/og-peelie.jpg">
+
+<meta property="og:type"         content="website">
+<meta property="og:site_name"    content="Peelie by White Cloud">
+<meta property="og:locale"       content="en_NZ">
+<meta property="og:url"          content="https://wcloud.nz/peelieapp">
+<meta property="og:title"        content="Peelie: collect the food you love">
+<meta property="og:description"  content="The digital stamp card for cafés, restaurants and local shops. Show your code, snap your food, and it becomes a sticker. Coming soon to the App Store.">
+<meta property="og:image"        content="https://wcloud.nz/og-peelie.jpg">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"    content="Peelie on iPhone: a stack of stamp cards from local shops, with a Get my sticker button">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Peelie: collect the food you love">
+<meta name="twitter:description" content="The digital stamp card for cafés, restaurants and local shops. Show your code, snap your food, and it becomes a sticker. Coming soon to the App Store.">
+<meta name="twitter:image"       content="https://wcloud.nz/og-peelie.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/peelieapp/peelie.css">
 
-<!-- GA4, live domain only (same as the rest of wcloud.nz). -->
+<!-- GA4 on the live domains only (same as the rest of wcloud.nz). -->
 <script>
   (function () {
     var h = location.hostname;
-    if (h !== 'wcloud.nz' && h !== 'www.wcloud.nz') return;
+    if (h !== 'wcloud.nz' && h !== 'www.wcloud.nz' && h !== 'peelie.wcloud.nz') return;
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
     gtag('js', new Date());
@@ -55,7 +55,7 @@
       "@id": "https://wcloud.nz/peelieapp#app",
       "name": "Peelie",
       "alternateName": "Peelie: Digital Stamp Card",
-      "description": "Peelie is a digital loyalty stamp card for cafés, bakeries and eateries in Christchurch (Ōtautahi), New Zealand. Customers show a QR code at the counter, staff scan it with the shop's own phone or iPad, and the customer's photo of their food becomes a sticker on the card. A full card earns the shop's reward, and every sticker is kept in a food diary.",
+      "description": "Peelie is a digital loyalty stamp card app for cafés, restaurants and local shops, launching in Christchurch (Ōtautahi), New Zealand. Customers show a QR code at the counter, staff scan it with the shop's own phone or iPad, and the customer's photo of their food becomes a sticker on the card. A full card earns the shop's reward, and every sticker is kept in a food diary. Free for customers; shops can use a free plan or Peelie Pro.",
       "url": "https://wcloud.nz/peelieapp",
       "image": "https://wcloud.nz/peelieapp/img/icon-512.png",
       "screenshot": [
@@ -70,30 +70,48 @@
       "applicationCategory": "LifestyleApplication",
       "applicationSubCategory": "Loyalty program",
       "inLanguage": "en-NZ",
-      "countriesSupported": "NZ",
       "featureList": [
-        "Digital stamp cards for local cafés, bakeries and eateries",
-        "Staff scan the customer's QR code to give a sticker",
-        "Photos of your food become stickers",
-        "Food diary of every sticker you collect",
-        "Offers from nearby shops and a map of Peelie shops",
-        "For shops: card designer, staff check-in with PINs, ads, analytics and a window poster with QR code",
-        "Shops only see a customer's name if the customer chooses to share it"
+        "Digital stamp cards for cafés, restaurants and local shops",
+        "Staff scan the customer's QR code to give a sticker; location isn't needed",
+        "Photos of your food become stickers, kept in a food diary",
+        "Offers from nearby shops, with options to hide or report posts",
+        "For shops: card designer, staff check-in with PINs, ads, notifications, analytics and a window poster with QR code",
+        "Shops only see a customer's name and contact details if the customer chooses to share them"
       ],
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "NZD",
-        "description": "Free for customers"
-      },
-      "areaServed": {
-        "@type": "City",
-        "name": "Christchurch",
-        "containedInPlace": {
-          "@type": "Country",
-          "name": "New Zealand"
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Customers",
+          "price": "0",
+          "priceCurrency": "NZD",
+          "description": "Peelie is always free for customers."
+        },
+        {
+          "@type": "Offer",
+          "name": "Free plan for shops",
+          "price": "0",
+          "priceCurrency": "NZD",
+          "description": "Every feature, for 1 staff member and up to 50 customers."
+        },
+        {
+          "@type": "Offer",
+          "name": "Peelie Pro",
+          "price": "139.99",
+          "priceCurrency": "NZD",
+          "description": "Yearly subscription for shops, bought in the app through Apple: unlimited customers and staff. New subscribers pay NZ$69.99 for the first year."
         }
-      },
+      ],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Christchurch",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "New Zealand"
+          }
+        },
+        "Worldwide"
+      ],
       "publisher": {
         "@id": "https://wcloud.nz/#business",
         "@type": [
@@ -112,8 +130,8 @@
       "@type": "WebPage",
       "@id": "https://wcloud.nz/peelieapp#webpage",
       "url": "https://wcloud.nz/peelieapp",
-      "name": "Peelie: digital stamp card & loyalty app for Christchurch cafés",
-      "description": "Peelie replaces paper loyalty cards for cafés, bakeries and eateries in Christchurch, NZ. Show your code, snap your food, and it becomes a sticker. Coming soon to the App Store.",
+      "name": "Peelie: digital stamp card & loyalty app for cafés and local shops",
+      "description": "Peelie replaces paper loyalty cards for cafés, restaurants and local shops, starting in Christchurch, NZ. Show your code, snap your food, and it becomes a sticker. Free for customers. Coming soon to the App Store.",
       "inLanguage": "en-NZ",
       "about": {
         "@id": "https://wcloud.nz/peelieapp#app"
@@ -128,7 +146,7 @@
       "breadcrumb": {
         "@id": "https://wcloud.nz/peelieapp#breadcrumb"
       },
-      "dateModified": "2026-11-24"
+      "dateModified": "2026-11-26"
     },
     {
       "@type": "BreadcrumbList",
@@ -164,8 +182,9 @@
     <nav aria-label="Peelie">
       <a href="/peelieapp#how">How it works</a>
       <a href="/peelieapp#cafes">For shops</a>
+      <a href="/peelieapp#pricing">Pricing</a>
       <a href="/peelieapp/support">Help</a>
-      <a class="pill" href="/peelieapp#contact">Get Peelie for your shop</a>
+      <a class="pill" href="/peelieapp#contact"><span class="pill-long">Get Peelie for your shop</span><span class="pill-short">For shops</span></a>
     </nav>
   </div>
 </header>
@@ -177,7 +196,7 @@
       <div>
         <span class="kick tilt">eat. snap. stick.</span>
         <h1>Collect the <em>food</em> you love.</h1>
-        <p class="lead">Peelie is the digital stamp card for cafés, bakeries and eateries in Ōtautahi Christchurch. Every visit becomes a sticker of what you ate, and every card you fill earns you a treat.</p>
+        <p class="lead">Peelie is the digital stamp card for cafés, restaurants and local shops. Every visit becomes a sticker of what you got, and every card you fill earns you a treat.</p>
         <div class="btns">
           <div class="soon" role="img" aria-label="Coming soon to the App Store">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>
@@ -185,12 +204,12 @@
           </div>
           <a class="btn btn-line" href="#cafes">I own a shop →</a>
         </div>
-        <p class="note">Free for customers. On iPhone and iPad. Now testing with local shops.</p>
+        <p class="note">Free for customers. On iPhone, iPad and iPhone Duo. Launching in Ōtautahi Christchurch.</p>
       </div>
       <div class="hero-art">
         <img class="stk s1" src="/peelieapp/img/sticker-croissant.webp" alt="" width="112" height="112">
         <img class="phone" fetchpriority="high" src="/peelieapp/img/phone-01-my-cards.webp" alt="Peelie's My cards screen: a stack of stamp cards from local shops, with a Get my sticker button" width="700" height="1431">
-        <div class="toast" aria-hidden="true"><img src="/peelieapp/img/sticker-flatwhite.webp" alt=""><div><b>Sticker added!</b><small>5 of 8 · Little Café</small></div></div>
+        <div class="toast" aria-hidden="true"><img src="/peelieapp/img/sticker-flatwhite.webp" alt=""><div><b>Sticker added!</b><small>7 of 12 · White Cloud Café</small></div></div>
         <img class="stk s2" src="/peelieapp/img/sticker-dumpling.webp" alt="" width="100" height="100">
       </div>
     </div>
@@ -207,13 +226,13 @@
         <article class="step">
           <span class="num">one</span>
           <h3>Show your code</h3>
-          <p>At the counter, tap the Sticker button. Your QR code comes up.</p>
+          <p>At the counter, open Peelie and tap Get my sticker. Your QR code comes up.</p>
           <div class="shot"><img src="/peelieapp/img/phone-02-sticker-added.webp" alt="The Get your sticker screen, showing a QR code to show the staff" loading="lazy" width="700" height="1431"></div>
         </article>
         <article class="step">
           <span class="num">two</span>
           <h3>Staff scan it</h3>
-          <p>They scan your code, tap Give sticker, and it's on your card.</p>
+          <p>They scan your code (or type the one under it) and the sticker's on your card. No location needed.</p>
           <div class="shot"><img src="/peelieapp/img/phone-07-give-sticker.webp" alt="The staff's Scan customer screen, with 4 of 8 stickers and a Give sticker button" loading="lazy" width="700" height="1431"></div>
         </article>
         <article class="step snap">
@@ -233,11 +252,11 @@
 
   <section class="reward">
     <div class="wrap split">
-      <div class="art"><img class="duo" src="/peelieapp/img/duo-06-full-card.webp" alt="A full Japanese Bakery card on iPhone Duo, with six stickers and a Claim my reward button" loading="lazy" width="820" height="1143"></div>
+      <div class="art"><img class="duo" src="/peelieapp/img/duo-06-full-card.webp" alt="A full Little Toy Box card on iPhone Duo, with six stickers and a Claim my reward button" loading="lazy" width="820" height="1143"></div>
       <div>
         <span class="kick">fill the card</span>
         <h2>Every sticker gets you closer to a treat.</h2>
-        <p>Each shop sets its own reward: a free coffee, a pastry, a curry of your choice. When your card's full, show your code again and the treat is yours.</p>
+        <p>Each shop sets its own reward: a free coffee, a pastry, $10 off a toy. When your card's full, tap Claim my reward and show your code again. The treat is yours.</p>
         <ul class="ticks">
           <li>Some shops add little rewards along the way</li>
           <li>Peelie tells you when a reward is ready</li>
@@ -252,25 +271,26 @@
       <div class="section-head center">
         <span class="kick">and there's more</span>
         <h2>Your own food diary.</h2>
-        <p>Every sticker you collect is kept, so Peelie slowly becomes a record of everything you've loved eating around town.</p>
+        <p>Every sticker you collect is kept, so Peelie slowly becomes a record of everything you've loved around town.</p>
       </div>
       <div class="trio">
         <div class="feat">
-          <img class="phone" src="/peelieapp/img/phone-03-diary-book.webp" alt="The Diary: a sticker book page for November with a sticker for each meal out" loading="lazy" width="700" height="1431">
+          <img class="phone" src="/peelieapp/img/phone-03-diary-book.webp" alt="The Diary: a sticker book page for November with a sticker for each visit" loading="lazy" width="700" height="1431">
           <h3>Sticker book</h3>
-          <p>A page for every month, with each meal out as a sticker. Flip back through your year.</p>
+          <p>A page for every month, with each visit as a sticker. Flip back through your year, or download it.</p>
         </div>
         <div class="feat">
-          <img class="phone" src="/peelieapp/img/phone-04-offers.webp" alt="The Offers screen with deals like Pastry hour and Tuesday curry night" loading="lazy" width="700" height="1431">
+          <img class="phone" src="/peelieapp/img/phone-04-offers.webp" alt="The Offers screen with offers like Matcha Monday and Pastry hour" loading="lazy" width="700" height="1431">
           <h3>Offers</h3>
-          <p>See what's on at shops near you, like pastry hour or curry night.</p>
+          <p>See what's on at shops near you. Tap ••• on any post to hide that shop's posts or report it.</p>
         </div>
         <div class="feat">
-          <img class="phone" src="/peelieapp/img/phone-05-explore.webp" alt="The Explore map of Christchurch with Peelie shops nearby" loading="lazy" width="700" height="1431">
+          <img class="phone" src="/peelieapp/img/phone-05-explore.webp" alt="The Explore map with Peelie shops nearby" loading="lazy" width="700" height="1431">
           <h3>Explore</h3>
           <p>Find Peelie shops on the map and see what each one gives you for a full card.</p>
         </div>
       </div>
+      <p class="fine center">Shops shown are examples.</p>
     </div>
   </section>
 
@@ -278,11 +298,11 @@
     <div class="wrap">
       <div class="owners-top">
         <div class="section-head">
-          <span class="kick">for café &amp; shop owners</span>
+          <span class="kick">for cafés, restaurants &amp; shops</span>
           <h2>Replace your paper card. Set up in minutes.</h2>
           <p>A loyalty program your regulars will actually use, with no scanners, no till changes and nothing new to buy. Peelie runs on the phone or iPad you already have behind the counter, and your regulars already carry their card in their pocket.</p>
         </div>
-        <img class="ipad" src="/peelieapp/img/ipad-10-analytics.webp" alt="Peelie's Analytics on iPad mini: visits up 32%, your busiest day, and a chart of visits over time" loading="lazy" width="900" height="1308">
+        <img class="ipad" src="/peelieapp/img/ipad-10-analytics.webp" alt="Peelie's Analytics on iPad mini: visits up 37%, your busiest day, and a chart of visits over time" loading="lazy" width="900" height="1308">
       </div>
 
       <div class="perks">
@@ -304,7 +324,7 @@
         <article class="perk">
           <div class="dot" style="background:var(--p-pink-2)"><svg viewBox="0 0 24 24" fill="none" stroke="#2A2522" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1zM16 8a5 5 0 0 1 0 8M19 5a9 9 0 0 1 0 14"/></svg></div>
           <h3>Ads &amp; offers</h3>
-          <p>Post an offer that shows on your card, free and unlimited. Send it as a notification to people who've opted in, up to twice a week.</p>
+          <p>Post offers that show on your card. Send one as a notification to customers who've switched on your promotions, up to twice a week.</p>
         </article>
         <article class="perk">
           <div class="dot" style="background:var(--p-blue-2)"><svg viewBox="0 0 24 24" fill="none" stroke="#2A2522" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg></div>
@@ -321,20 +341,51 @@
       <div class="split">
         <div class="art devices">
           <img class="ipad" src="/peelieapp/img/ipad-08-card-designer.webp" alt="The card designer on iPad mini, with designs called Simple, Bistro, Garden, Waves, Gallery and Sunrise" loading="lazy" width="900" height="1308">
-          <img class="duo" src="/peelieapp/img/duo-09-new-ad.webp" alt="Writing a new ad on iPhone Duo: Pastry hour, 2 for $8 after 2pm" loading="lazy" width="820" height="1143">
+          <img class="duo" src="/peelieapp/img/duo-09-new-ad.webp" alt="Writing a new ad on iPhone Duo: Noodle Friday, 2 noodle dishes for $25 after 5pm" loading="lazy" width="820" height="1143">
         </div>
         <div>
           <span class="kick">made to feel like yours</span>
           <h2>A card that looks like your shop.</h2>
           <p>Choose from designs like Simple, Bistro, Garden, Waves, Gallery and Sunrise, then add your colours, logo or a photo. Swipe the card to see the back, with your address and links.</p>
-          <p>When you've got something on, write an ad in a minute and it shows on your card straight away.</p>
+          <p>When you've got something on, write an ad in a minute and it shows on your card. New shops are checked by the Peelie team before they can post.</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="setup">
-        <p><span class="kick">we'll help you set up</span>We're starting with a small group of Christchurch cafés, bakeries and eateries. Want to be one of them?</p>
-        <a class="btn btn-ink" href="#contact">Tell me more</a>
+  <section class="pricing" id="pricing">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="kick">plans for shops</span>
+        <h2>Free to start. Pro when you grow.</h2>
+        <p>Customers never pay for anything. Shops get every feature on both plans: the card designer, ads, notifications and analytics.</p>
       </div>
+      <div class="plans">
+        <article class="plan">
+          <h3>Free</h3>
+          <p class="price"><b>NZ$0</b></p>
+          <ul class="ticks">
+            <li>1 staff member</li>
+            <li>Up to 50 customers</li>
+            <li>Every feature included</li>
+          </ul>
+          <p class="small">When you reach 50, everyone who already has your card keeps collecting. New customers can join once you upgrade.</p>
+        </article>
+        <article class="plan pro">
+          <span class="badge">Half price first year</span>
+          <h3>Peelie Pro</h3>
+          <p class="price"><b>NZ$69.99</b> for your first year</p>
+          <p class="then">then NZ$139.99 a year. That's about NZ$5.83 a month in your first year, less than printing paper stamp cards.</p>
+          <ul class="ticks">
+            <li>Unlimited customers</li>
+            <li>Unlimited staff, each with their own PIN</li>
+            <li>Everything else stays the same</li>
+          </ul>
+          <p class="small"><strong>Upgrade to Peelie Pro in the app</strong>: Home → Get Peelie Pro. Paid yearly through Apple, and cancel any time.</p>
+        </article>
+        <div class="plan-shot"><img src="/peelieapp/img/pro-screen.webp" alt="The Peelie Pro screen in the app: unlimited customers, unlimited staff, everything else stays the same, NZ$69.99 for your first year" loading="lazy" width="700" height="630"></div>
+      </div>
+      <p class="fine center">Prices in NZD, including GST. The first-year price is for new subscribers, and Apple sets the matching price in other countries. Peelie Pro renews each year unless you turn it off at least 24 hours before the year ends (iPhone Settings → your name → Subscriptions).</p>
     </div>
   </section>
 
@@ -342,16 +393,16 @@
     <div class="wrap split">
       <div class="art">
         <div class="chip-card" aria-hidden="true">
-          <div class="row"><div class="ava"><svg viewBox="0 0 24 24" width="22" height="22" fill="#2A2522"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></div><div><span class="kick">what the shop sees</span><b>Customer</b></div><span class="code">PL-4K7Q2M</span></div>
-          <div class="row"><div><b style="font-size:1.05rem">Share my name</b><small>Off until you turn it on</small></div><div class="toggle"></div></div>
+          <div class="row"><div class="ava"><svg viewBox="0 0 24 24" width="22" height="22" fill="#2A2522"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></div><div><span class="kick">what the shop sees</span><b>Customer</b></div><span class="code">PL-7K2QX9</span></div>
+          <div class="row"><div><b style="font-size:1.05rem">Share my details</b><small>Off until you turn it on</small></div><div class="toggle"></div></div>
           <div class="row"><div><b style="font-size:1.05rem">Promotions from this shop</b><small>Off until you turn it on</small></div><div class="toggle"></div></div>
         </div>
       </div>
       <div>
         <span class="kick">privacy, done properly</span>
         <h2>Shops see your code, not you.</h2>
-        <p>When staff scan you, they see a customer code and your stickers. They only see your name and email if you switch on sharing for that shop. Promotions are off until you turn them on, and your food photos are just for you.</p>
-        <p>Your location stays on your phone. Peelie follows the New Zealand Privacy Act 2020, and you can delete your account in the app at any time. <a href="/peelieapp/privacy">Read the privacy policy</a>.</p>
+        <p>When staff scan you, they see a customer code and your stickers with them. They only see your name and contact details if you switch on sharing for that shop. Promotions are off until you turn them on, and your food photos are just for you.</p>
+        <p>Your location is only used on your phone and never sent to us. No ads, no tracking, and you can delete your account in the app at any time. <a href="/peelieapp/privacy">Read the privacy policy</a>.</p>
       </div>
     </div>
   </section>
@@ -360,15 +411,15 @@
     <div class="wrap">
       <div class="cta-box">
         <div>
-          <span class="kick">café, bakery or eatery?</span>
+          <span class="kick">café, restaurant or shop?</span>
           <h2>Interested in Peelie for your shop?</h2>
-          <p>Send us a note with your shop's name and we'll be in touch for a chat. We'll show you around the app and help you design your card.</p>
+          <p>Set up your shop in the app once Peelie is on the App Store, or email <a href="mailto:teampeelie@wcloud.nz?subject=Peelie%20for%20my%20shop">teampeelie@wcloud.nz</a> with your shop's name and we'll help you get started and design your card.</p>
           <div class="btns">
-            <a class="btn btn-ink" href="mailto:kiaora@wcloud.nz?subject=Peelie%20for%20my%20shop">Email kiaora@wcloud.nz</a>
+            <a class="btn btn-ink" href="mailto:teampeelie@wcloud.nz?subject=Peelie%20for%20my%20shop">Email the Peelie team</a>
             <a class="btn btn-line" href="tel:+6421854847">021 854 847</a>
           </div>
         </div>
-        <img src="/peelieapp/img/scene-door.webp" alt="A hand-drawn café door with an 'open, come in' sign" loading="lazy" width="640" height="640">
+        <img src="/peelieapp/img/scene-door.webp" alt="A hand-drawn shop door with an 'open, come in' sign" loading="lazy" width="640" height="640">
       </div>
     </div>
   </section>
@@ -377,11 +428,11 @@
 
 <footer class="foot">
   <div class="wrap">
-    <span>Peelie is made in Ōtautahi by <a href="/">White Cloud</a>.</span>
+    <span>Peelie is made in Ōtautahi by <a href="https://wcloud.nz/">White Cloud</a>.</span>
     <nav aria-label="Footer">
       <a href="/peelieapp/support">Help &amp; support</a>
       <a href="/peelieapp/privacy">Privacy</a>
-      <a href="mailto:kiaora@wcloud.nz">Contact</a>
+      <a href="mailto:teampeelie@wcloud.nz">Contact</a>
     </nav>
   </div>
 </footer>

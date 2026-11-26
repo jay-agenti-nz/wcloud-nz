@@ -177,8 +177,9 @@ section { padding: 88px 0; }
 /* iPad mini with an iPhone Duo in front of it */
 .devices { position: relative; justify-content: flex-start; padding-bottom: 40px; }
 .devices .ipad { width: 78%; max-width: 420px; filter: drop-shadow(0 26px 30px rgba(138,58,28,.22)); transform: rotate(-3deg); }
-.devices .duo { position: absolute; right: 0; bottom: 0; width: 46%; max-width: 250px; transform: rotate(5deg); }
-.duo { width: 100%; max-width: 360px; filter: drop-shadow(0 24px 28px rgba(42,37,34,.24)); }
+/* Duo pictures carry their own shadow (Safari drew a box around a CSS shadow on rotated images) */
+.devices .duo { position: absolute; right: 0; bottom: 0; width: 58%; max-width: 317px; transform: translate(10.6%, 8.1%) rotate(5deg); }
+.duo { width: 100%; max-width: 457px; }
 .setup { margin-top: 56px; display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between; border-top: 1px dashed #E2B3A2; padding-top: 28px; }
 .setup p { margin: 0; color: #6B5A54; max-width: 56ch; }
 .setup .btn-ink { background: var(--terra); color: #fff; border-color: var(--terra); }
@@ -234,7 +235,7 @@ section { padding: 88px 0; }
 .faq details > div { padding: 0 20px 6px; color: #463F3A; }
 .faq h2 { margin-top: 1.6em; font-size: 1.45rem; }
 .doc .meta { color: var(--muted); font-weight: 700; font-size: .9rem; margin: -6px 0 14px; }
-@media (max-width: 560px) { .owners .split { margin-top: 56px; } .devices .duo { width: 50%; } }
+@media (max-width: 560px) { .owners .split { margin-top: 56px; } .devices .duo { width: 63%; } }
 
 /* Small print, e.g. "Shops shown are examples." */
 .fine { font-size: .88rem; color: var(--muted); margin-top: 28px; }

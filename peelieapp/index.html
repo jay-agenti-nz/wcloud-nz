@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Peelie: digital stamp card & loyalty app for cafés and local shops</title>
-<meta name="description" content="Peelie replaces paper loyalty cards for cafés, restaurants and local shops, starting in Christchurch, NZ. Show your code, snap your food, and it becomes a sticker. Free for customers. Coming soon to the App Store.">
+<meta name="description" content="Peelie replaces paper loyalty cards for cafés, restaurants and local shops, starting in Christchurch, NZ. Show your code, snap what you got, and it becomes a sticker. Free for customers. Coming soon to the App Store.">
 <link rel="canonical" href="https://wcloud.nz/peelieapp">
 <link rel="icon" type="image/png" href="/peelieapp/img/icon-64.png">
 <link rel="apple-touch-icon" href="/peelieapp/img/icon-180.png">
@@ -15,15 +15,15 @@
 <meta property="og:site_name"    content="Peelie by White Cloud">
 <meta property="og:locale"       content="en_NZ">
 <meta property="og:url"          content="https://wcloud.nz/peelieapp">
-<meta property="og:title"        content="Peelie: collect the food you love">
-<meta property="og:description"  content="The digital stamp card for cafés, restaurants and local shops. Show your code, snap your food, and it becomes a sticker. Coming soon to the App Store.">
+<meta property="og:title"        content="Peelie: collect the places you love">
+<meta property="og:description"  content="The digital stamp card for cafés, restaurants and local shops. Show your code, snap what you got, and it becomes a sticker. Coming soon to the App Store.">
 <meta property="og:image"        content="https://wcloud.nz/og-peelie.jpg">
 <meta property="og:image:width"  content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt"    content="Peelie on iPhone: a stack of stamp cards from local shops, with a Get my sticker button">
 <meta name="twitter:card"        content="summary_large_image">
-<meta name="twitter:title"       content="Peelie: collect the food you love">
-<meta name="twitter:description" content="The digital stamp card for cafés, restaurants and local shops. Show your code, snap your food, and it becomes a sticker. Coming soon to the App Store.">
+<meta name="twitter:title"       content="Peelie: collect the places you love">
+<meta name="twitter:description" content="The digital stamp card for cafés, restaurants and local shops. Show your code, snap what you got, and it becomes a sticker. Coming soon to the App Store.">
 <meta name="twitter:image"       content="https://wcloud.nz/og-peelie.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,7 +55,7 @@
       "@id": "https://wcloud.nz/peelieapp#app",
       "name": "Peelie",
       "alternateName": "Peelie: Digital Stamp Card",
-      "description": "Peelie is a digital loyalty stamp card app for cafés, restaurants and local shops, launching in Christchurch (Ōtautahi), New Zealand. Customers show a QR code at the counter, staff scan it with the shop's own phone or iPad, and the customer's photo of their food becomes a sticker on the card. A full card earns the shop's reward, and every sticker is kept in a food diary. Free for customers; shops can use a free plan or Peelie Pro.",
+      "description": "Peelie is a digital loyalty stamp card app for cafés, restaurants and local shops, launching in Christchurch (Ōtautahi), New Zealand. Customers show a QR code at the counter, staff scan it with the shop's own phone or iPad, and the customer's photo of what they got (a coffee, a pastry, a new book) becomes a sticker on the card. A full card earns the shop's reward, and every sticker is kept in a diary of visits. Free for customers; shops can use a free plan or Peelie Pro.",
       "url": "https://wcloud.nz/peelieapp",
       "image": "https://wcloud.nz/peelieapp/img/icon-512.png",
       "screenshot": [
@@ -73,7 +73,7 @@
       "featureList": [
         "Digital stamp cards for cafés, restaurants and local shops",
         "Staff scan the customer's QR code to give a sticker; location isn't needed",
-        "Photos of your food become stickers, kept in a food diary",
+        "Photos of what you got become stickers, kept in a sticker-book diary",
         "Offers from nearby shops, with options to hide or report posts",
         "For shops: card designer, staff check-in with PINs, ads, notifications, analytics and a window poster with QR code",
         "Shops only see a customer's name and contact details if the customer chooses to share them"
@@ -131,7 +131,7 @@
       "@id": "https://wcloud.nz/peelieapp#webpage",
       "url": "https://wcloud.nz/peelieapp",
       "name": "Peelie: digital stamp card & loyalty app for cafés and local shops",
-      "description": "Peelie replaces paper loyalty cards for cafés, restaurants and local shops, starting in Christchurch, NZ. Show your code, snap your food, and it becomes a sticker. Free for customers. Coming soon to the App Store.",
+      "description": "Peelie replaces paper loyalty cards for cafés, restaurants and local shops, starting in Christchurch, NZ. Show your code, snap what you got, and it becomes a sticker. Free for customers. Coming soon to the App Store.",
       "inLanguage": "en-NZ",
       "about": {
         "@id": "https://wcloud.nz/peelieapp#app"
@@ -186,16 +186,37 @@
       <a href="/peelieapp/support">Help</a>
       <a class="pill" href="/peelieapp#contact"><span class="pill-long">Get Peelie for your shop</span><span class="pill-short">For shops</span></a>
     </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="peelie-menu" aria-label="Menu">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg>
+    </button>
   </div>
+  <nav class="menu-panel" id="peelie-menu" aria-label="Peelie menu" hidden>
+    <a href="/peelieapp#how">How it works</a>
+    <a href="/peelieapp#cafes">For shops</a>
+    <a href="/peelieapp#pricing">Pricing</a>
+    <a href="/peelieapp/support">Help &amp; support</a>
+    <a href="/peelieapp/privacy">Privacy</a>
+  </nav>
 </header>
+<script>
+  (function () {
+    var top = document.getElementById('top'), btn = top.querySelector('.menu-btn'), panel = document.getElementById('peelie-menu');
+    function set(open) { top.classList.toggle('open', open); btn.setAttribute('aria-expanded', open); panel.hidden = !open; }
+    btn.addEventListener('click', function () { set(panel.hidden); });
+    panel.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) { set(false); btn.focus(); } });
+    document.addEventListener('click', function (e) { if (!panel.hidden && !top.contains(e.target)) set(false); });
+    addEventListener('resize', function () { if (innerWidth > 900 && !panel.hidden) set(false); });
+  })();
+</script>
 
 <main id="main">
 
   <section class="hero">
     <div class="wrap">
       <div>
-        <span class="kick tilt">eat. snap. stick.</span>
-        <h1>Collect the <em>food</em> you love.</h1>
+        <span class="kick tilt">visit. snap. stick.</span>
+        <h1>Collect the <em>places</em> you love.</h1>
         <p class="lead">Peelie is the digital stamp card for cafés, restaurants and local shops. Every visit becomes a sticker of what you got, and every card you fill earns you a treat.</p>
         <div class="btns">
           <div class="soon" role="img" aria-label="Coming soon to the App Store">
@@ -219,7 +240,7 @@
     <div class="wrap">
       <div class="section-head">
         <span class="kick">how it works</span>
-        <h2>Show your code. Snap your food. That's it.</h2>
+        <h2>Show your code. Snap what you got. That's it.</h2>
         <p>No paper cards to lose, and nothing for the shop to install. Staff scan your code with the shop's own phone or iPad.</p>
       </div>
       <div class="steps">
@@ -238,7 +259,7 @@
         <article class="step snap">
           <span class="num">three</span>
           <h3>Snap what you got</h3>
-          <p>Take a photo of your food and it becomes your sticker. Or pick one of ours.</p>
+          <p>Take a photo of your coffee, your lunch or your new find, and it becomes your sticker. Or pick one of ours.</p>
           <div class="stickers">
             <img src="/peelieapp/img/photo-tteokbokki.webp" alt="Sticker made from a photo of tteokbokki" loading="lazy" width="600" height="564" style="width:40%;right:5%;top:5%;transform:rotate(7deg)">
             <img src="/peelieapp/img/photo-matcha.webp" alt="Sticker made from a photo of a matcha latte" loading="lazy" width="534" height="599" style="width:36%;left:6%;top:4%;transform:rotate(-9deg)">
@@ -270,7 +291,7 @@
     <div class="wrap">
       <div class="section-head center">
         <span class="kick">and there's more</span>
-        <h2>Your own food diary.</h2>
+        <h2>Your own sticker diary.</h2>
         <p>Every sticker you collect is kept, so Peelie slowly becomes a record of everything you've loved around town.</p>
       </div>
       <div class="trio">
@@ -408,7 +429,7 @@
       <div>
         <span class="kick">privacy, done properly</span>
         <h2>Shops see your code, not you.</h2>
-        <p>When staff scan you, they see a customer code and your stickers with them. They only see your name and contact details if you switch on sharing for that shop. Promotions are off until you turn them on, and your food photos are just for you.</p>
+        <p>When staff scan you, they see a customer code and your stickers with them. They only see your name and contact details if you switch on sharing for that shop. Promotions are off until you turn them on, and your photos are just for you.</p>
         <p>Your location is only used on your phone and never sent to us. No ads, no tracking, and you can delete your account in the app at any time. <a href="/peelieapp/privacy">Read the privacy policy</a>.</p>
       </div>
     </div>

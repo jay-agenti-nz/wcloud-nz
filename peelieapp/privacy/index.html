@@ -112,8 +112,29 @@
       <a href="/peelieapp/support">Help</a>
       <a class="pill" href="/peelieapp#contact"><span class="pill-long">Get Peelie for your shop</span><span class="pill-short">For shops</span></a>
     </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="peelie-menu" aria-label="Menu">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg>
+    </button>
   </div>
+  <nav class="menu-panel" id="peelie-menu" aria-label="Peelie menu" hidden>
+    <a href="/peelieapp#how">How it works</a>
+    <a href="/peelieapp#cafes">For shops</a>
+    <a href="/peelieapp#pricing">Pricing</a>
+    <a href="/peelieapp/support">Help &amp; support</a>
+    <a href="/peelieapp/privacy">Privacy</a>
+  </nav>
 </header>
+<script>
+  (function () {
+    var top = document.getElementById('top'), btn = top.querySelector('.menu-btn'), panel = document.getElementById('peelie-menu');
+    function set(open) { top.classList.toggle('open', open); btn.setAttribute('aria-expanded', open); panel.hidden = !open; }
+    btn.addEventListener('click', function () { set(panel.hidden); });
+    panel.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) { set(false); btn.focus(); } });
+    document.addEventListener('click', function (e) { if (!panel.hidden && !top.contains(e.target)) set(false); });
+    addEventListener('resize', function () { if (innerWidth > 900 && !panel.hidden) set(false); });
+  })();
+</script>
 
 <main id="main" class="doc">
   <div class="wrap">
@@ -127,7 +148,7 @@
       <ul>
         <li>We collect what Peelie needs to run your stamp cards, and nothing for advertising.</li>
         <li>When staff scan you, the shop sees a customer code and your stickers with them, not your name. They only see your details if you switch on sharing for that shop.</li>
-        <li>Your food photos are private to you.</li>
+        <li>Your sticker photos are private to you.</li>
         <li>Your location is only used on your phone. We never receive or store it.</li>
         <li>No tracking across other apps or websites, no advertising networks, no analytics companies, and we never sell your data.</li>
         <li>You can delete your account, and everything linked to it, from inside the app.</li>
@@ -149,7 +170,7 @@
         <tr><td>Phone number and birthday <em>(optional)</em></td><td>Only if you add them. A shop you share your details with can use your birthday to send you a birthday treat.</td></tr>
         <tr><td>Your customer code</td><td>A random code like PL-7K2QX9, shown as a QR code. Staff scan or type it to give you a sticker or reward. It doesn't contain your name.</td></tr>
         <tr><td>Your cards, stickers and rewards</td><td>Which shop, when, and which staff member gave each sticker or reward. This is how your cards and diary work.</td></tr>
-        <tr><td>Your sticker photos and dish names</td><td>The photos you add to your stickers, and what you call each dish. These are private: only your own account can see them.</td></tr>
+        <tr><td>Your sticker photos and their names</td><td>The photos you add to your stickers, and what you call each one (like a dish name). These are private: only your own account can see them.</td></tr>
         <tr><td>Your settings</td><td>Reward-ready alerts, birthday treats, photo reminders, promotion alerts for each shop, and whether you share your details with each shop, including when you made each choice.</td></tr>
         <tr><td>A notification token</td><td>So we can send you the notifications you've switched on.</td></tr>
         <tr><td>Reports you make</td><td>If you report a post, we keep the report so the Peelie team can review it.</td></tr>
@@ -171,7 +192,7 @@
       <li>Your name, email, phone and birthday <strong>only</strong> if you switch on sharing for that shop in Settings → <strong>Who can see my name</strong>. It's off by default and you can switch it off any time. Once a shop has your details, it's responsible for looking after them under the Privacy Act.</li>
       <li>Shops can only send promotion notifications to customers who've switched on promotion alerts for that shop. These are off by default, and a shop can send at most two a week.</li>
     </ul>
-    <p>Shops never see your food photos, your location, or your stickers at other shops.</p>
+    <p>Shops never see your sticker photos, your location, or your stickers at other shops.</p>
 
     <h2>What we don't do</h2>
     <ul>

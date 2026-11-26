@@ -116,7 +116,7 @@
           "name": "When do I take the photo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Whenever your food or order arrives. Take a photo and Peelie turns it into a sticker, or pick one of ours instead. If you don't get to it, after 24 hours the spot becomes the shop's own sticker, so you never lose a stamp."
+            "text": "Whenever your order arrives, or once you've got your new find. Take a photo and Peelie turns it into a sticker, or pick one of ours instead. If you don't get to it, after 24 hours the spot becomes the shop's own sticker, so you never lose a stamp."
           }
         },
         {
@@ -156,7 +156,7 @@
           "name": "Can the shop see who I am?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Not unless you want them to. When they scan you, they see your customer code and your visits, stickers and rewards with them. They only see your name, email, phone and birthday if you switch on sharing for that shop in Settings → Who can see my name. It's off by default, and you can switch it off any time. Shops never see your food photos."
+            "text": "Not unless you want them to. When they scan you, they see your customer code and your visits, stickers and rewards with them. They only see your name, email, phone and birthday if you switch on sharing for that shop in Settings → Who can see my name. It's off by default, and you can switch it off any time. Shops never see your photos."
           }
         },
         {
@@ -309,8 +309,29 @@
       <a href="/peelieapp/support">Help</a>
       <a class="pill" href="/peelieapp#contact"><span class="pill-long">Get Peelie for your shop</span><span class="pill-short">For shops</span></a>
     </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="peelie-menu" aria-label="Menu">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg>
+    </button>
   </div>
+  <nav class="menu-panel" id="peelie-menu" aria-label="Peelie menu" hidden>
+    <a href="/peelieapp#how">How it works</a>
+    <a href="/peelieapp#cafes">For shops</a>
+    <a href="/peelieapp#pricing">Pricing</a>
+    <a href="/peelieapp/support">Help &amp; support</a>
+    <a href="/peelieapp/privacy">Privacy</a>
+  </nav>
 </header>
+<script>
+  (function () {
+    var top = document.getElementById('top'), btn = top.querySelector('.menu-btn'), panel = document.getElementById('peelie-menu');
+    function set(open) { top.classList.toggle('open', open); btn.setAttribute('aria-expanded', open); panel.hidden = !open; }
+    btn.addEventListener('click', function () { set(panel.hidden); });
+    panel.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) { set(false); btn.focus(); } });
+    document.addEventListener('click', function (e) { if (!panel.hidden && !top.contains(e.target)) set(false); });
+    addEventListener('resize', function () { if (innerWidth > 900 && !panel.hidden) set(false); });
+  })();
+</script>
 
 <main id="main" class="doc faq">
   <div class="wrap">
@@ -343,7 +364,7 @@
     </details>
     <details>
       <summary>When do I take the photo?</summary>
-      <div><p>Whenever your food or order arrives. Take a photo and Peelie turns it into a sticker, or pick one of ours instead. If you don't get to it, after 24 hours the spot becomes the shop's own sticker, so you never lose a stamp.</p></div>
+      <div><p>Whenever your order arrives, or once you've got your new find. Take a photo and Peelie turns it into a sticker, or pick one of ours instead. If you don't get to it, after 24 hours the spot becomes the shop's own sticker, so you never lose a stamp.</p></div>
     </details>
     <details>
       <summary>How do I claim my reward?</summary>
@@ -365,7 +386,7 @@
     <h2>Privacy &amp; safety</h2>
     <details>
       <summary>Can the shop see who I am?</summary>
-      <div><p>Not unless you want them to. When they scan you, they see your customer code and your visits, stickers and rewards with them. They only see your name, email, phone and birthday if you switch on sharing for that shop in Settings → <strong>Who can see my name</strong>. It's off by default, and you can switch it off any time. Shops never see your food photos.</p></div>
+      <div><p>Not unless you want them to. When they scan you, they see your customer code and your visits, stickers and rewards with them. They only see your name, email, phone and birthday if you switch on sharing for that shop in Settings → <strong>Who can see my name</strong>. It's off by default, and you can switch it off any time. Shops never see your photos.</p></div>
     </details>
     <details>
       <summary>How do I stop promotion notifications?</summary>

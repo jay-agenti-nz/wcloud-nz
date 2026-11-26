@@ -197,6 +197,7 @@
   .sc-post-avatar svg { width: 18px; height: 11px; }
   .sc-post-who { display: flex; flex-direction: column; line-height: 1.3; min-width: 0; }
   .sc-post-who b { font-size: .85rem; font-weight: 800; color: var(--deep); }
+  .sc-post-who b i { font-style: normal; font-weight: 600; color: var(--body); }
   .sc-post-who span { font-size: .72rem; color: var(--body); font-weight: 600; }
   .sc-post-count {
     margin-left: auto; flex-shrink: 0;
@@ -219,6 +220,22 @@
     background: linear-gradient(150deg, #f1f7fc 0%, #e8f2fa 55%, #deedf8 100%);
   }
   .sc-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* A last frame that is a link out, standing in for the video slide on
+     Instagram: the photo goes soft behind a short call to play. */
+  .sc-slide-play { overflow: hidden; color: #fff; text-decoration: none; }
+  .sc-slide-play img { filter: blur(5px) brightness(.5) saturate(1.1); transform: scale(1.08); }
+  .sc-play {
+    position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: .75rem; padding: 1.5rem; text-align: center;
+  }
+  .sc-play-k { font-family: var(--mark); font-size: .66rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; opacity: .85; }
+  .sc-play-h { font-size: 1.35rem; font-weight: 800; line-height: 1.25; max-width: 12em; }
+  .sc-play-u {
+    margin-top: .3rem; padding: .55rem 1.05rem; border-radius: var(--pill);
+    background: rgba(255,255,255,.9); color: var(--deep); font-size: .82rem; font-weight: 700;
+    transition: background .2s;
+  }
+  .sc-slide-play:hover .sc-play-u { background: #fff; }
 
   /* Desktop arrows. Hidden where there is no hover — a touch device
      swipes, and the arrows would only cover the photo. */
@@ -258,6 +275,12 @@
   .sc-post-cap a { display: inline-block; margin-top: .5rem; font-size: .82rem; font-weight: 700; color: var(--brand-ink); text-decoration: none; }
   .sc-post-cap a:hover { text-decoration: underline; }
   .sc-post-cap p a.sc-tag { display: inline; margin: 0; font-size: inherit; }
+  /* A long caption shows its first lines and a "more", as on Instagram,
+     so it doesn't stretch every card in its row. Only once the script
+     has run: without it the whole caption simply shows. */
+  .sc-post-cap.is-clamped p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; line-clamp: 4; overflow: hidden; }
+  .sc-more { align-self: flex-start; background: none; border: 0; padding: .2rem 0 0; cursor: pointer; font: inherit; font-size: .84rem; font-weight: 700; color: var(--body); }
+  .sc-more:hover { color: var(--brand-ink); }
   .sc-post-cap p span.sc-tag { color: var(--brand-ink); font-weight: 600; }
 
   .sc-gallery-note { font-size: .88rem; color: var(--body); font-weight: 600; text-align: center; }
@@ -856,7 +879,9 @@
 
   <!-- CAROUSEL POSTS
        ────────────────────────────────────────────────────────────
-       Swipeable posts. Majestic (assets/majestic-N.jpg) is newest;
+       Swipeable posts, newest first: the Thonglor Sumner menu shoot
+       (assets/thonglor-menu-N.jpg, last frame links to their site).
+       Majestic is assets/majestic-N.jpg;
        the two older sets, ten frames each, are built from:
          assets/gallery-1.jpg … gallery-10.jpg                (hospitality)
          assets/gallery-airbnb-1.jpg … gallery-airbnb-10.jpg  (stays)
@@ -865,6 +890,47 @@
        photos are being added.
        ──────────────────────────────────────────────────────────── -->
   <div class="sc-posts fug">
+    <article class="sc-post" id="post-thonglor-menu">
+      <header class="sc-post-head">
+        <span class="sc-post-avatar"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/></svg></span>
+        <span class="sc-post-who"><b>wcloud.nz <i>and</i> thonglorsumner</b><span>Christchurch, New Zealand</span></span>
+        <span class="sc-post-count" data-count>1/8</span>
+      </header>
+
+      <div class="sc-post-frame">
+        <div class="sc-post-track" data-track tabindex="0" role="region" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; 8 frames, swipe or use the arrow keys">
+        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 1 of 8"><img src="/assets/thonglor-menu-1.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 2 of 8"><img src="/assets/thonglor-menu-2.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 3 of 8"><img src="/assets/thonglor-menu-3.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 4 of 8"><img src="/assets/thonglor-menu-4.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 5 of 8"><img src="/assets/thonglor-menu-5.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 6 of 8"><img src="/assets/thonglor-menu-6.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 7 of 8"><img src="/assets/thonglor-menu-7.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <a class="sc-slide sc-slide-play" href="https://thonglorsumner.co.nz" target="_blank" rel="noopener" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 8 of 8: play the game on the new website, thonglorsumner.co.nz (opens in a new tab)">
+          <img src="/assets/thonglor-menu-6.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500">
+          <span class="sc-play" aria-hidden="true"><span class="sc-play-k">The hero game</span><span class="sc-play-h">Have a play on the new website</span><span class="sc-play-u">thonglorsumner.co.nz &#x2197;</span></span>
+        </a>
+        </div>
+        <button type="button" class="sc-post-arrow prev" data-prev aria-label="Previous frame" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="sc-post-arrow next" data-next aria-label="Next frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+
+      <div class="sc-post-dots" data-dots>
+        <button type="button" data-go="0" aria-current="true" aria-label="Go to frame 1"></button>
+        <button type="button" data-go="1" aria-label="Go to frame 2"></button>
+        <button type="button" data-go="2" aria-label="Go to frame 3"></button>
+        <button type="button" data-go="3" aria-label="Go to frame 4"></button>
+        <button type="button" data-go="4" aria-label="Go to frame 5"></button>
+        <button type="button" data-go="5" aria-label="Go to frame 6"></button>
+        <button type="button" data-go="6" aria-label="Go to frame 7"></button>
+        <button type="button" data-go="7" aria-label="Go to frame 8"></button>
+      </div>
+
+      <div class="sc-post-cap" data-more>
+        <p><b>wcloud.nz</b> Recent project with <a class="sc-tag" href="https://www.instagram.com/thonglorsumner/" target="_blank" rel="noopener">@thonglorsumner</a> &#x1F90D; &#x1F30A; &#x1F3D6;&#xFE0F;<br><br>A fresh new look for Thonglor Sumner! I had the pleasure of creating the photography for their redesigned website, giving their online presence a fresh, modern and interactive feel.<br><br>And for a little extra fun, I added an interactive game right in the hero section. Swipe to the last slide to see it in action! &#x1F440;&#x1F92D;<br><br>Making the Thonglor Sumner experience a little different from the rest.<br><br>A little bit of creativity, photography and web design all in one project &#x2728;<br><br>Once again, thank you so much for the opportunity and for trusting me with this project. It means a lot! &#x1F979;&#x1F90D;</p>
+        <a href="https://thonglorsumner.co.nz" target="_blank" rel="noopener">See the new website &rarr;</a>
+      </div>
+    </article>
     <article class="sc-post" id="post-hormchoy">
       <header class="sc-post-head">
         <span class="sc-post-avatar"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/></svg></span>
@@ -1417,6 +1483,25 @@
         if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1); }
         if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(index - 1); }
       });
+    });
+  })();
+
+  /* ── "more" on long captions ─────────────────────────────── */
+  (function () {
+    document.querySelectorAll('.sc-post-cap[data-more]').forEach(function (cap) {
+      var p = cap.querySelector('p');
+      if (!p) return;
+      cap.classList.add('is-clamped');
+      if (p.scrollHeight <= p.clientHeight + 2) { cap.classList.remove('is-clamped'); return; }
+      var btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'sc-more'; btn.textContent = 'more';
+      btn.setAttribute('aria-expanded', 'false');
+      btn.addEventListener('click', function () {
+        var open = cap.classList.toggle('is-clamped') === false;
+        btn.textContent = open ? 'less' : 'more';
+        btn.setAttribute('aria-expanded', String(open));
+      });
+      p.after(btn);
     });
   })();
 

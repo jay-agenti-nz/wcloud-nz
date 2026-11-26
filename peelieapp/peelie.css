@@ -106,7 +106,7 @@ p { margin: 0 0 1em; }
 .toast img { width: 44px; }
 .toast b { display: block; font: 700 1rem/1.1 var(--display); }
 .toast small { color: var(--muted); font-weight: 700; font-size: .8rem; }
-@media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } .hero-art { min-height: 0; padding: 20px 0 10px; } .hero-art::before { width: 300px; height: 300px; right: 0; top: 0; } }
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } .hero-art { min-height: 0; padding: 20px 0 10px; width: 100%; max-width: 480px; margin: 0 auto; } .hero-art::before { width: 300px; height: 300px; right: 0; top: 0; } }
 @media (max-width: 560px) { .hero { padding-top: 28px; } .hero-art .phone { max-width: 236px; } .stk { width: 80px; } .stk.s2 { width: 74px; } .toast { bottom: 12%; left: -4px; } .toast img { width: 36px; } }
 @media (prefers-reduced-motion: no-preference) { .toast { animation: pop .7s cubic-bezier(.2,.9,.3,1.3) .8s both; } }
 @keyframes pop { from { opacity: 0; transform: translateY(14px) rotate(-3deg) scale(.9); } to { opacity: 1; transform: rotate(-3deg); } }

@@ -301,9 +301,7 @@ section { padding: 88px 0; }
 @media (max-width: 900px) { .menu-btn { display: grid; } }
 @media (min-width: 901px) { .top .menu-panel { display: none !important; } }
 @media (prefers-reduced-motion: reduce) { .menu-btn path { transition: none; } }
-.stk.s3 { right: 4%; top: 4%; width: 96px; transform: rotate(10deg); }
-@media (max-width: 560px) { .stk.s3 { width: 70px; right: 2%; top: 2%; } }
-
+@media (max-width: 560px) { 
 /* "Any place with regulars": example businesses */
 .uses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .use { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 22px; box-shadow: 0 10px 26px -20px rgba(42,37,34,.4); }

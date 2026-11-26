@@ -220,9 +220,6 @@
     background: linear-gradient(150deg, #f1f7fc 0%, #e8f2fa 55%, #deedf8 100%);
   }
   .sc-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  /* A last frame that links out to the site, standing in for the video
-     slide on Instagram. The screenshot shows as is, nothing laid over it. */
-  .sc-slide-play { cursor: pointer; }
 
   /* Desktop arrows. Hidden where there is no hover — a touch device
      swipes, and the arrows would only cover the photo. */
@@ -867,7 +864,7 @@
   <!-- CAROUSEL POSTS
        ────────────────────────────────────────────────────────────
        Swipeable posts, newest first: the Thonglor Sumner menu shoot
-       (assets/thonglor-menu-N.jpg; frame 8 is their homepage and links to it).
+       (assets/thonglor-menu-N.jpg).
        Majestic is assets/majestic-N.jpg;
        the two older sets, ten frames each, are built from:
          assets/gallery-1.jpg … gallery-10.jpg                (hospitality)
@@ -881,21 +878,18 @@
       <header class="sc-post-head">
         <span class="sc-post-avatar"><svg viewBox="0 0 76 44" fill="none" aria-hidden="true"><path d="M4 26 C14 6,26 46,38 20 C50 0,62 40,72 16" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/></svg></span>
         <span class="sc-post-who"><b>wcloud.nz <i>and</i> thonglorsumner</b><span>Christchurch, New Zealand</span></span>
-        <span class="sc-post-count" data-count>1/8</span>
+        <span class="sc-post-count" data-count>1/7</span>
       </header>
 
       <div class="sc-post-frame">
-        <div class="sc-post-track" data-track tabindex="0" role="region" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; 8 frames, swipe or use the arrow keys">
-        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 1 of 8"><img src="/assets/thonglor-menu-1.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
-        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 2 of 8"><img src="/assets/thonglor-menu-2.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
-        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 3 of 8"><img src="/assets/thonglor-menu-3.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
-        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 4 of 8"><img src="/assets/thonglor-menu-4.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
-        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 5 of 8"><img src="/assets/thonglor-menu-5.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
-        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 6 of 8"><img src="/assets/thonglor-menu-6.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
-        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 7 of 8"><img src="/assets/thonglor-menu-7.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
-        <a class="sc-slide sc-slide-play" href="https://thonglorsumner.co.nz" target="_blank" rel="noopener" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 8 of 8: the new website, where you drag the plates and catch a crab. Opens thonglorsumner.co.nz in a new tab">
-          <img src="/assets/thonglor-menu-8.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500">
-        </a>
+        <div class="sc-post-track" data-track tabindex="0" role="region" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; 7 frames, swipe or use the arrow keys">
+        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 1 of 7"><img src="/assets/thonglor-menu-1.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 2 of 7"><img src="/assets/thonglor-menu-2.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 3 of 7"><img src="/assets/thonglor-menu-3.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 4 of 7"><img src="/assets/thonglor-menu-4.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 5 of 7"><img src="/assets/thonglor-menu-5.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 6 of 7"><img src="/assets/thonglor-menu-6.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
+        <div class="sc-slide" role="group" aria-label="Thonglor Sumner, Spring/Summer menu &mdash; frame 7 of 7"><img src="/assets/thonglor-menu-7.jpg" alt="" loading="lazy" decoding="async" width="1200" height="1500"></div>
         </div>
         <button type="button" class="sc-post-arrow prev" data-prev aria-label="Previous frame" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
         <button type="button" class="sc-post-arrow next" data-next aria-label="Next frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
@@ -909,7 +903,6 @@
         <button type="button" data-go="4" aria-label="Go to frame 5"></button>
         <button type="button" data-go="5" aria-label="Go to frame 6"></button>
         <button type="button" data-go="6" aria-label="Go to frame 7"></button>
-        <button type="button" data-go="7" aria-label="Go to frame 8"></button>
       </div>
 
       <div class="sc-post-cap" data-more>

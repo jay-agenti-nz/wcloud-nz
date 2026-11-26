@@ -303,3 +303,15 @@ section { padding: 88px 0; }
 @media (prefers-reduced-motion: reduce) { .menu-btn path { transition: none; } }
 .stk.s3 { right: 4%; top: 4%; width: 96px; transform: rotate(10deg); }
 @media (max-width: 560px) { .stk.s3 { width: 70px; right: 2%; top: 2%; } }
+
+/* "Any place with regulars": example businesses */
+.uses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.use { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 22px; box-shadow: 0 10px 26px -20px rgba(42,37,34,.4); }
+.use .dot { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 14px; }
+.use .dot svg { width: 25px; height: 25px; }
+.use h3 { font-size: 1.2rem; margin-bottom: .45em; }
+.use .stk-line { margin: 0 0 6px; font-weight: 700; font-size: .95rem; }
+.use .stk-line span { font: 700 1.25rem/1 var(--hand); color: var(--terra); margin-right: 2px; }
+.use .eg { margin: 0; color: var(--muted); font-size: .95rem; }
+@media (max-width: 900px) { .uses { grid-template-columns: 1fr 1fr; gap: 14px; } }
+@media (max-width: 560px) { .uses { grid-template-columns: 1fr; } }

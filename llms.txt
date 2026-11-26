@@ -66,7 +66,7 @@ Jay D Vera, the founder of White Cloud, is also a Christchurch photographer and 
 - Bookings: kiaora@wcloud.nz
 
 ## Peelie (White Cloud's own app)
-Peelie is a digital loyalty stamp card app for cafés, restaurants and local shops (bakeries, bookshops, toy shops, gift shops and more), made by White Cloud. It replaces paper stamp and loyalty cards. Launching in Christchurch (Ōtautahi), New Zealand, and available worldwide on the App Store.
+Peelie is a digital loyalty stamp card app for any business with regulars: cafés, restaurants and bakeries, hair and nail salons, barbers, massage and day spas, photography studios, bookshops, gift and toy shops, made by White Cloud. It replaces paper stamp and loyalty cards. Launching in Christchurch (Ōtautahi), New Zealand, and available worldwide on the App Store.
 - Status: coming soon to the App Store. Works on iPhone, iPad and iPhone Duo. Not on Android yet.
 - For customers: at the counter, open Peelie, tap "Get my sticker" and show your QR code (or the code under it, like PL-7K2QX9). Staff scan it with the shop's own phone or iPad and the sticker lands on the card; location isn't needed. Snap a photo of what you got (a coffee, a meal, a new book) and it becomes the sticker, or pick a ready-made one. Fill the card to get the shop's reward. Every sticker is kept in a sticker-book diary you can download.
 - Customers never pay. Sign in with Apple, or with email (a sign-in link and a 6-digit code); no passwords.

@@ -76,9 +76,9 @@ Peelie is a digital loyalty stamp card app for cafés, restaurants and local sho
 - Anti-cheat: only signed-in staff on the shop's device can give stickers, one sticker per customer per shop every 3 hours, a shift log, and alerts for unusual activity.
 - Privacy: shops see a customer code and their own visits, not the customer's name, unless the customer switches on sharing for that shop. Location is only used on the phone and never stored. No ads, tracking or analytics companies. Data is stored with Supabase in Sydney, Australia. Accounts can be deleted in the app (NZ Privacy Act 2020).
 - Contact: teampeelie@wcloud.nz
-- Peelie website: https://peelie.wcloud.nz (also https://wcloud.nz/peelieapp)
-- Help and FAQ: https://peelie.wcloud.nz/support
-- Privacy policy: https://peelie.wcloud.nz/privacy
+- Peelie website: https://wcloud.nz/peelieapp
+- Help and FAQ: https://wcloud.nz/peelieapp/support
+- Privacy policy: https://wcloud.nz/peelieapp/privacy
 
 ## Contact
 White Cloud (a trading name of GROOV Creator Limited, NZBN 9429049024326)

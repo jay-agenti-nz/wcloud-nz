@@ -301,3 +301,5 @@ section { padding: 88px 0; }
 @media (max-width: 900px) { .menu-btn { display: grid; } }
 @media (min-width: 901px) { .top .menu-panel { display: none !important; } }
 @media (prefers-reduced-motion: reduce) { .menu-btn path { transition: none; } }
+.stk.s3 { right: 4%; top: 4%; width: 96px; transform: rotate(10deg); }
+@media (max-width: 560px) { .stk.s3 { width: 70px; right: 2%; top: 2%; } }

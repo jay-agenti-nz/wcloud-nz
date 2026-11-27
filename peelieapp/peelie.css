@@ -69,7 +69,8 @@ p { margin: 0 0 1em; }
 .top .bar nav { margin-left: auto; display: flex; gap: 4px; align-items: center; }
 .top .bar nav a { color: var(--ink); text-decoration: none; font-weight: 800; font-size: .92rem; padding: 9px 14px; border-radius: 999px; }
 .top .bar nav a:hover { background: var(--terra-soft); color: var(--terra-deep); }
-.top .bar nav .pill { background: var(--ink); color: var(--app); margin-left: 6px; }
+.top .bar nav .pill { background: var(--ink); color: var(--app); margin-left: 6px; white-space: nowrap; }
+.brand { min-width: 0; flex-shrink: 0; }
 .top .bar nav .pill:hover { background: var(--terra); color: #fff; }
 @media (max-width: 900px) { .top .bar nav a:not(.pill) { display: none; } }
 @media (max-width: 760px) { .top .bar nav .pill { font-size: .85rem; padding: 9px 14px; } .brand b { font-size: 1.3rem; } }
@@ -266,7 +267,7 @@ section { padding: 88px 0; }
   .wrap { padding: 0 18px; }
 }
 .pill-short { display: none; }
-@media (max-width: 400px) { .pill-long { display: none; } .pill-short { display: inline; } }
+@media (max-width: 600px) { .pill-long { display: none; } .pill-short { display: inline; } }
 
 /* Plan cards v2: price, a line under it, two number tiles, ticks, a soft note */
 .plan .price { margin: 0; }
@@ -317,3 +318,4 @@ section { padding: 88px 0; }
 @media (max-width: 900px) { .uses { grid-template-columns: 1fr 1fr; gap: 14px; } }
 @media (max-width: 560px) { .uses { grid-template-columns: 1fr; } }
 @media (min-width: 561px) and (max-width: 900px) { .devices .duo { right: 5%; } }
+@media (max-width: 360px) { .top { padding: 0 10px; } .top .bar { gap: 8px; padding: 0 8px 0 10px; } .brand { gap: 7px; } .brand img { width: 32px; height: 32px; } .brand b { font-size: 1.15rem; } .top .bar nav .pill { padding: 8px 11px; font-size: .8rem; margin-left: 0; } .menu-btn { width: 40px; height: 40px; margin-left: 2px; } }
